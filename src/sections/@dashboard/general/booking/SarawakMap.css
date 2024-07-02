@@ -1,0 +1,522 @@
+#rect2015 {
+    opacity: 0;
+    fill-opacity: 1;
+    stroke: none;
+    stroke-width: 3.48206162;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 4;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+    marker: none;
+    paint-order: stroke fill markers;
+}
+
+#Q01, #Q02, #Q03, #Q04, #Q05, #Q06, #Q07, #Q08, #Q09, #Q10,
+#Q11, #Q12, #Q13, #Q14, #Q15, #Q16, #Q17, #Q18, #Q19, #Q20,
+#Q21, #Q22, #Q23, #Q24, #Q25, #Q26, #Q27, #Q28, #Q29, #Q30,
+#Q31, #Q32, #Q33, #Q34, #Q35, #Q36, #Q37, #Q38, #Q39, #Q40,
+#Q41, #Q42, #Q43, #Q44, #Q45, #Q46, #Q47, #Q48, #Q49, #Q50,
+#Q51, #Q52, #Q53, #Q54, #Q55, #Q56, #Q57, #Q58, #Q59, #Q60,
+#Q61, #Q62, #Q63, #Q64, #Q65, #Q66, #Q67, #Q68, #Q69, #Q70,
+#Q71, #Q72, #Q73, #Q74, #Q15, #Q76, #Q77, #Q78, #Q79, #Q80,
+#Q81, #Q82 {
+    fill-opacity: 1;
+    stroke: #ffffff;
+    stroke-width: 0.26458335;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 4;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+}
+
+.P192, .P193, .P194, .P195, .P196, .P197, .P198, .P199, .P200,
+.P201, .P202, .P203, .P204, .P205, .P206, .P207, .P208, .P209, .P210,
+.P211, .P212, .P213, .P214, .P215, .P216, .P217, .P218, .P219, .P220,
+.P221, .P222 {
+    cursor: pointer;
+}
+
+.P192:hover, .P193:hover, .P194:hover, .P195:hover, .P196:hover, .P197:hover, .P198:hover, .P199:hover, .P200:hover,
+.P201:hover, .P202:hover, .P203:hover, .P204:hover, .P205:hover, .P206:hover, .P207:hover, .P208:hover, .P209:hover, .P210:hover,
+.P211:hover, .P212:hover, .P213:hover, .P214:hover, .P215:hover, .P216:hover, .P217:hover, .P218:hover, .P219:hover, .P220:hover,
+.P221:hover, .P222:hover {
+    opacity: 0.5 ;
+    cursor: pointer;
+}
+
+.disabledDiv {
+    opacity: 0.5 ;
+}
+
+.Kuching:hover, .Sibu:hover, .Miri:hover {
+    opacity: 0.5 ;
+    cursor: pointer;
+}
+
+.Kuching, .Sibu, .Miri {
+    cursor: pointer;
+}
+
+/* #Q81 {
+    fill: #d38d5f;
+}
+
+#Q80 {
+    fill: #ff7f2a;
+}
+
+#Q79 {
+    fill: #ff9955;
+}
+
+#Q78 {
+    fill: #37c837;
+}
+
+#Q77 {
+    fill: #5fd35f;
+}
+
+#Q76 {
+    fill: #fffeff;
+}
+
+#Q75 {
+    fill: #ffdd55;
+}
+
+#Q74 {
+    fill: #ffdd55;
+}
+
+#Q73 {
+    fill: #ffdd55;
+}
+
+#Q72 {
+    fill: #ff8080;
+}
+
+#Q71 {
+    fill: #ff2a2a;
+}
+
+#Q70 {
+    fill: #0066ff;
+}
+
+#Q69 {
+    fill: #5599ff;
+}
+
+#Q68 {
+    fill: #aaccff;
+}
+
+#Q67 {
+    fill: #2a7fff;
+}
+
+#Q66 {
+    fill: #c87137;
+}
+
+#Q65 {
+    fill: #d38d5f;
+}
+
+#Q64 {
+    fill: #deaa87;
+}
+
+#Q63 {
+    fill: #ff2a2a;
+}
+
+#Q62 {
+    fill: #ff2a2a;
+}
+
+#Q61 {
+    fill: #ff2a2a;
+}
+
+#Q60 {
+    fill: #ff2a2a;
+}
+
+#Q59 {
+    fill: #ff2a2a;
+}
+
+#Q58 {
+    fill: #ff2a2a;
+}
+
+#Q57 {
+    fill: #ff2a2a;
+}
+
+#Q56 {
+    fill: #ff2a2a;
+}
+
+#Q55 {
+    fill: #ff2a2a;
+}
+
+#Q54 {
+    fill: #ff2a2a;
+}
+
+#Q53 {
+    fill: #ff2a2a;
+}
+
+#Q52 {
+    fill: #ff2a2a;
+}
+
+#Q51 {
+    fill: #ff2a2a;
+}
+
+#Q50 {
+    fill: #ff2a2a;
+}
+
+#Q49 {
+    fill: #ff2a2a;
+}
+
+#Q48 {
+    fill: #ff2a2a;
+}
+
+#Q47 {
+    fill: #ff2a2a;
+}
+
+#Q46 {
+    fill: #ff2a2a;
+}
+
+#Q45 {
+    fill: #ff2a2a;
+}
+
+#Q44 {
+    fill: #ff2a2a;
+}
+
+#Q43 {
+    fill: #f7c9c9;
+}
+
+#Q42 {
+    fill: #ff2a2a;
+}
+
+#Q41 {
+    fill: #ff2a2a;
+}
+
+#Q40 {
+    fill: #ff2a2a;
+}
+
+#Q39 {
+    fill: #ff2a2a;
+}
+
+#Q38 {
+    fill: #ff2a2a;
+}
+
+#Q37 {
+    fill: #ff2a2a;
+}
+
+#Q36 {
+    fill: #ff2a2a;
+}
+
+#Q35 {
+    fill: #ff2a2a;
+}
+
+#Q34 {
+    fill: #ff2a2a;
+}
+
+#Q33 {
+    fill: #ff2a2a;
+}
+
+#Q32 {
+    fill: #ff2a2a;
+}
+
+#Q31 {
+    fill: #ff2a2a;
+}
+
+#Q30 {
+    fill: #ff5599;
+}
+
+#Q29 {
+    fill: #ff2a2a;
+}
+
+#Q28 {
+    fill: #ff2a2a;
+}
+
+#Q27 {
+    fill: #ff2a2a;
+}
+
+#Q26 {
+    fill: #ff2a2a;
+}
+
+#Q25 {
+    fill: #ff2a2a;
+}
+
+#Q24 {
+    fill: #ff2a2a;
+}
+
+#Q23 {
+    fill: #ff2a2a;
+}
+
+#Q22 {
+    fill: #ff2a2a;
+}
+
+#Q21 {
+    fill: #ff2a2a;
+}
+
+#Q20 {
+    fill: #ff2a2a;
+}
+
+#Q19 {
+    fill: #ff2a2a;
+}
+
+#Q18 {
+    fill: #ff2a2a;
+}
+
+#Q17 {
+    fill: #ff2a2a;
+}
+
+#Q16 {
+    fill: #ff2a2a;
+}
+
+#Q15 {
+    fill: #ff2a2a;
+}
+
+#Q14 {
+    fill: #ff2a2a;
+}
+
+#Q13 {
+    fill: #ff2a2a;
+}
+
+#Q12 {
+    fill: #ff2a2a;
+}
+
+#Q11 {
+    fill: #ff2a2a;
+}
+
+#Q10 {
+    fill: #ff2a2a;
+}
+
+#Q09 {
+    fill: #ff2a2a;
+}
+
+#Q08 {
+    fill: #ff2a2a;
+}
+
+#Q07 {
+    fill: #ff2a2a;
+}
+
+#Q06 {
+    fill: #ff2a2a;
+}
+
+#Q05 {
+    fill: #ff2a2a;
+}
+
+#Q04 {
+    fill: #ff2a2a;
+}
+
+#Q03 {
+    fill: #ff2a2a;
+}
+
+#Q02 {
+    fill: #ff2a2a;
+}
+
+#Q01 {
+    fill: #ff2a2a;
+} */
+
+.P222 {
+    fill: #c87137 !important;
+}
+
+.P221 {
+    fill: #d35f5f !important;
+}
+
+.P220 {
+    fill: #37c837 !important;
+}
+
+.P219 {
+    fill: #ffd42a !important;
+}
+
+.P218 {
+    fill: #ff2a2a !important;
+}
+
+.P217 {
+    fill: #5599ff !important;
+}
+
+.P216 {
+    fill: #c87137 !important;
+}
+
+.P215 {
+    fill: #ff2a2a !important;
+}
+
+.P214 {
+    fill: #37c837 !important;
+}
+
+.P213 {
+    fill: #e9afaf !important;
+}
+
+.P212 {
+    fill: #2a7fff !important;
+}
+
+.P211 {
+    fill: #ff7f2a !important;
+}
+
+.P210 {
+    fill: #ff5599 !important;
+}
+
+.P209 {
+    fill: #5599ff !important;
+}
+
+.P208 {
+    fill: #ffdd55 !important;
+}
+
+.P207 {
+    fill: #c87137 !important;
+}
+
+.P206 {
+    fill: #80ffe6 !important;
+}
+
+.P205 {
+    fill: #d35f5f !important;
+}
+
+.P204 {
+    fill: #37c837 !important;
+}
+
+.P203 {
+    fill: #ff7f2a !important;
+}
+
+.P202 {
+    fill: #ff5599 !important;
+}
+
+.P201 {
+    fill: #2a7fff !important;
+}
+
+.P200 {
+    fill: #ffdd55 !important;
+}
+
+.P199 {
+    fill: #c87137 !important;
+}
+
+.P198 {
+    fill: #55ffdd !important;
+}
+
+.P197 {
+    fill: #ff2a2a !important;
+}
+
+.P196 {
+    fill: #37c837 !important;
+}
+
+.P195 {
+    fill: #ffdd55 !important;
+}
+
+.P194 {
+    fill: #0066ff !important;
+}
+
+.P193 {
+    fill: #ff6600 !important;
+}
+
+.P192 {
+    fill: #d35f5f !important;
+}
+
+.disabled{
+    opacity: 1;
+    fill: #697075 !important;
+    cursor: default !important;
+}
+
+.disabled:hover{
+    opacity: 1 !important;
+    fill: #697075 !important;
+    cursor: default !important;
+}
