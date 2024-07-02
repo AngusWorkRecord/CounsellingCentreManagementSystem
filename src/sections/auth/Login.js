@@ -1,6 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Alert, Tooltip, Stack, Typography, Link, Box } from '@mui/material';
+import { Alert, Tooltip, Stack, Typography, Link, Box, Button } from '@mui/material';
 // auth
 import { useAuthContext } from '../../auth/useAuthContext';
 // routes

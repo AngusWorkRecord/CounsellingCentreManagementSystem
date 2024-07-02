@@ -17,6 +17,7 @@ import {
   Container,
   IconButton,
   TableContainer,
+  DeleteIcon,
 } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
@@ -44,6 +45,7 @@ import {
 // sections
 import InvoiceAnalytic from '../../sections/@dashboard/invoice/InvoiceAnalytic';
 import { InvoiceTableRow, InvoiceTableToolbar } from '../../sections/@dashboard/invoice/list';
+
 
 // ----------------------------------------------------------------------
 
@@ -772,6 +774,7 @@ export default function EventListPage() {
               New Event
             </Button>
           }
+          
         />
 
         <Card sx={{ mb: 5 }}>

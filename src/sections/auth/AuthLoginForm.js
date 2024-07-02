@@ -28,7 +28,7 @@ export default function AuthLoginForm() {
   });
 
   const defaultValues = {
-    email: 'pee0803@unimas.my',
+    email: 'admin@gmail.com',
     password: 'admin',
   };
 
