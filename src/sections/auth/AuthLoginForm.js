@@ -19,7 +19,6 @@ import FormProvider, { RHFTextField } from '../../components/hook-form';
 
 export default function AuthLoginForm() {
   const { login } = useAuthContext();
-
   const [showPassword, setShowPassword] = useState(false);
 
   const LoginSchema = Yup.object().shape({
@@ -28,7 +27,7 @@ export default function AuthLoginForm() {
   });
 
   const defaultValues = {
-    email: 'admin@gmail.com',
+    email: 'admin@gmail.com', // pee0803@unimas.my
     password: 'admin',
   };
 
@@ -46,16 +45,12 @@ export default function AuthLoginForm() {
 
   const onSubmit = async (data) => {
     try {
-      // await login(data.email, data.password);
       const resp = await login(data.email, 1, data.password);
       if (!resp) {
         setError('afterSubmit', {
           message: 'Invalid username or password.',
         });
       }
-      //  else {
-      //   setOpen(true);
-      // }
     } catch (error) {
       console.error(error);
       reset();
@@ -71,20 +66,67 @@ export default function AuthLoginForm() {
       <Stack spacing={3}>
         {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
 
-        <RHFTextField name="email" label="Email address" />
+        <RHFTextField
+          name="email"
+          label="Email address"
+          variant="standard"
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Iconify icon="eva:email-fill" sx={{ color: 'grey.800' }} />
+              </InputAdornment>
+            ),
+          }}
+          sx={{
+            '& .MuiInputBase-root': {
+              borderBottom: '2px solid #333333', // Darker underline color
+            },
+            '& .MuiInputLabel-root': {
+              color: '#333333', // Darker color for the label
+            },
+            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+              transform: 'translate(0, 1.5px) scale(0.75)', // Adjust label position
+            },
+            '& .MuiInputBase-input': {
+              padding: '12px 0', // Adjust padding as needed
+            },
+          }}
+        />
 
         <RHFTextField
           name="password"
           label="Password"
           type={showPassword ? 'text' : 'password'}
+          variant="standard"
+          fullWidth
           InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Iconify icon="eva:lock-fill" sx={{ color: 'grey.800' }} />
+              </InputAdornment>
+            ),
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
+                  <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} sx={{ color: 'grey.800' }} />
                 </IconButton>
               </InputAdornment>
             ),
+          }}
+          sx={{
+            '& .MuiInputBase-root': {
+              borderBottom: '2px solid #333333', // Darker underline color
+            },
+            '& .MuiInputLabel-root': {
+              color: '#333333', // Darker color for the label
+            },
+            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+              transform: 'translate(0, 1.5px) scale(0.75)', // Adjust label position
+            },
+            '& .MuiInputBase-input': {
+              padding: '12px 0', // Adjust padding as needed
+            },
           }}
         />
       </Stack>
@@ -109,11 +151,10 @@ export default function AuthLoginForm() {
         variant="contained"
         loading={isSubmitSuccessful || isSubmitting}
         sx={{
-          bgcolor: 'text.primary',
-          color: (theme) => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
+          bgcolor: 'grey.800', // Darker background color
+          color: 'common.white', // White text color for contrast
           '&:hover': {
-            bgcolor: 'text.primary',
-            color: (theme) => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
+            bgcolor: 'grey.900', // Slightly lighter dark color on hover
           },
         }}
       >

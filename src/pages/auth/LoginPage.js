@@ -9,7 +9,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | BESarawak</title>
+        <title> Login | JobMaster</title>
       </Helmet>
 
       <Login />

@@ -49,9 +49,10 @@ export default function AuthWithSocial() {
         sx={{
           my: 2.5,
           typography: 'overline',
-          color: 'text.disabled',
+          color: 'grey.800',
           '&::before, ::after': {
-            borderTopStyle: 'dashed',
+            borderTopStyle: 'solid',
+            borderColor: 'grey.800',
           },
         }}
       >

@@ -1015,7 +1015,7 @@ function applyFilter({
   if (filterName) {
     inputData = inputData.filter(
       (invoice) =>
-        invoice.invoiceNumber.toLowerCase().indexOf(filterName.toLowerCase()) !== -1 ||
+        invoice.invoiceNumber.toLowerCase().indexOf(filterName.toLowerCase()) !== -1 || // Got runtime error ("toLowerCase")
         invoice.invoiceTo.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1
     );
   }
@@ -1026,7 +1026,7 @@ function applyFilter({
 
   if (filterService !== 'All') {
     inputData = inputData.filter((invoice) =>
-      invoice.items.some((c) => c.service === filterService)
+      invoice.items.some((c) => c.service === filterService) // Got runtime error ("some")
     );
   }
 

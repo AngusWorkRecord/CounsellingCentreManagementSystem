@@ -13,6 +13,7 @@ import { PasswordIcon } from '../../assets/icons';
 
 // ----------------------------------------------------------------------
 
+
 export default function ResetPasswordPage() {
   return (
     <>

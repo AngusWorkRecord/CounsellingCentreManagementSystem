@@ -1,63 +1,50 @@
 import PropTypes from 'prop-types';
 // @mui
-import { Typography, Stack } from '@mui/material';
-// components
-import Logo from '../../components/logo';
-import Image from '../../components/image';
-//
-import { StyledRoot, StyledSectionBg, StyledSection, StyledContent } from './styles';
+import { Stack } from '@mui/material';
+// styles
+import { StyledRoot, StyledContent } from './styles';
 
 // ----------------------------------------------------------------------
 
 LoginLayout.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
-  illustration: PropTypes.string,
+  padding: PropTypes.number, // Add padding prop
+  paddingTop: PropTypes.number, // Add paddingTop prop
 };
 
-export default function LoginLayout({ children, illustration, title }) {
+export default function LoginLayout({ children, title, padding = 4, paddingTop = 12 }) {
   return (
-    <StyledRoot>
-
-
-      <StyledSection>
-        <Typography variant="h3" sx={{ mb: 10, maxWidth: 480, textAlign: 'center' }}>
-          {title || 'Hi, Welcome back'}
-        </Typography>
-
-        {/* <Logo
-  
+    <StyledRoot
+      sx={{
+        backgroundImage: 'url(https://waifu2x.booru.pics/outfiles/f749a294c2117a1540ac2a13266e126aea82030e_s2_n3_y1.jpg)', // Add background image URL
+        backgroundSize: 'cover', // Ensure the image covers the entire background
+        backgroundPosition: 'center', // Center the image
+        minHeight: '100vh', // Ensure it takes full viewport height
+        overflow: 'hidden', // Prevent unnecessary scrolling
+      }}
+    >
+      <StyledContent
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh', // Ensure it takes full viewport height
+          overflow: 'hidden', // Prevent unnecessary scrolling
+        }}
+      >
+        <Stack
           sx={{
-            zIndex: 9,
-            position: 'absolute',
-            mt: { xs: 1.5, md: 10 },
-            ml: { xs: 2, md: 10 },
+            width: 1,
+            maxWidth: 480,
+            padding, // Use shorthand for padding
+            paddingTop, // Use shorthand for paddingTop
+            backgroundColor: 'white', // Ensures form background color is white
+            position: 'relative', // To position elements within the form
           }}
-        /> */}
-        {/* <Image
-          disabledEffect
-          visibleByDefault
-          alt="auth"
-          src={illustration || '/assets/illustrations/illustration_dashboard.png'}
-          sx={{ maxWidth: 720 }}
-        /> */}
-
-        <Image
-          disabledEffect
-          visibleByDefault
-          alt="auth"
-          src='https://cphtravel.com.my/wp-content/uploads/2018/11/Picture3.png'
-          sx={{ maxWidth: 720 }}
-        />
-
-        {/* <img src="https://cphtravel.com.my/wp-content/uploads/2018/11/Picture3.png" alt="Home" style={{ width: '50%' }} /> */}
-
-
-        <StyledSectionBg />
-      </StyledSection>
-
-      <StyledContent>
-        <Stack sx={{ width: 1 }}> {children} </Stack>
+        >
+          {children}
+        </Stack>
       </StyledContent>
     </StyledRoot>
   );

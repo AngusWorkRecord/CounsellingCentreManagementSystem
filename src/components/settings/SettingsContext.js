@@ -85,25 +85,41 @@ export function SettingsProvider({ children }) {
 
   // Direction
   const onToggleDirection = useCallback(() => {
-    const themeDirection = settings.themeDirection === 'rtl' ? 'ltr' : 'rtl';
-    setSettings({ ...settings, themeDirection });
+    console.log("Current settings:", settings);
+    setSettings(prevSettings => {
+      console.log("Updating direction to:", prevSettings.themeDirection === 'rtl' ? 'ltr' : 'rtl');
+      return {
+        ...prevSettings,
+        themeDirection: prevSettings.themeDirection === 'rtl' ? 'ltr' : 'rtl',
+      };
+    });
   }, [setSettings, settings]);
-
+  
   const onChangeDirection = useCallback(
     (event) => {
       const themeDirection = event.target.value;
-      setSettings({ ...settings, themeDirection });
+      console.log("Changing direction to:", themeDirection);
+      setSettings(prevSettings => ({
+        ...prevSettings,
+        themeDirection,
+      }));
     },
-    [setSettings, settings]
+    [setSettings]
   );
-
+  
   const onChangeDirectionByLang = useCallback(
     (lang) => {
       const themeDirection = lang === 'ar' ? 'rtl' : 'ltr';
-      setSettings({ ...settings, themeDirection });
+      console.log("Changing direction by language to:", themeDirection);
+      setSettings(prevSettings => ({
+        ...prevSettings,
+        themeDirection,
+      }));
     },
-    [setSettings, settings]
+    [setSettings]
   );
+  
+
 
   // Layout
   const onToggleLayout = useCallback(() => {

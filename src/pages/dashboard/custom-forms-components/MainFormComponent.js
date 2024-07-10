@@ -239,6 +239,7 @@ export default function MainFormComponent({ questions, title, description, isEdi
         }
     }
 
+   
     // function handleFormTitleChange(e) {
     //     setFormTitle(e.target.value)
     // }
@@ -314,9 +315,10 @@ export default function MainFormComponent({ questions, title, description, isEdi
                         )
                         )
                     }
-                    <Button variant="text" onClick={() => handleAddQuestion} sx={{ mt: 2 }}>
+                    <Button variant="text" onClick={handleAddQuestion} sx={{ mt: 2 }}>
                         Add Question
                     </Button>
+
                 </Stack>
             </Scrollbar>
         </Box>
