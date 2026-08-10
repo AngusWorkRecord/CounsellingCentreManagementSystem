@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types';
 
 // mui
@@ -136,7 +136,7 @@ export default function MainFormComponent({ questions, title, description, isEdi
         return null;
     }
 
-    function handleAddQuestion() {
+    const handleAddQuestion = useCallback(() => {
         try {
             setCurrentFormLayout((prevState) => {
                 const newStructure = { ...FormStructureTemplate.shortAnswerComponent }
@@ -147,7 +147,7 @@ export default function MainFormComponent({ questions, title, description, isEdi
         catch (error) {
             console.log(error)
         }
-    }
+    }, [])
 
     function deleteSurveyQuestion(index) {
         try {

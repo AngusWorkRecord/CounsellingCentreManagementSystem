@@ -137,7 +137,7 @@ export function AuthProvider({ children }) {
 
   const login = useCallback(async (email, projectId, password) => {
     const response = await fetch(
-      `${url}User_Login?USEREMAIL=${email}&PROJECTID=${projectId}&PASSWORD=${password}`
+      `${url}User_Login?USEREMAIL=${email}&USERPASSWORD=${password}`
     )
     const json = await response.json();
     const data = JSON.parse(json)[0];
