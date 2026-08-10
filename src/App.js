@@ -66,7 +66,7 @@ export default function App() {
           <PersistGate loading={null} persistor={persistor}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <SettingsProvider>
-                <BrowserRouter basename="/BESarawak">
+                <BrowserRouter>
                   <ScrollToTop />
                   <MotionLazyContainer>
                     <ThemeProvider>
