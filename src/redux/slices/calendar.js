@@ -31,7 +31,7 @@ const slice = createSlice({
     // GET EVENTS
     getEventsSuccess(state, action) {
       state.isLoading = false;
-      state.events = action.payload;
+      state.events = Array.isArray(action.payload) ? action.payload : [];
     },
 
     // CREATE EVENT
@@ -99,7 +99,7 @@ export function getEvents() {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get('/api/calendar/events');
-      dispatch(slice.actions.getEventsSuccess(response.data.events));
+      dispatch(slice.actions.getEventsSuccess(response.data?.events));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
