@@ -34,6 +34,9 @@ export const GeneralBankingPage = Loadable(
 export const GeneralBookingPage = Loadable(
   lazy(() => import('../pages/dashboard/GeneralBookingPage'))
 );
+export const CounsellingDashboardPage = Loadable(
+  lazy(() => import('../pages/dashboard/CounsellingDashboardPage'))
+);
 export const GeneralSDGPage = Loadable(
   lazy(() => import('../pages/dashboard/GeneralSDGPage'))
 );

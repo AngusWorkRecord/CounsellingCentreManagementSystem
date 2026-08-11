@@ -51,6 +51,7 @@ const navConfig = [
       // { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking },
       // { title: 'SDG', path: PATH_DASHBOARD.general.SDG, icon: ICONS.analytics },
       { title: 'Dashboard', path: PATH_DASHBOARD.general.booking, icon: ICONS.dashboard },
+      { title: '辅导个案管理', path: PATH_DASHBOARD.general.counselling, icon: ICONS.analytics },
       { title: 'Convention', path: PATH_DASHBOARD.general.events, icon: ICONS.booking },
       // { title: 'conference', path: PATH_CONFERENCE_MANAGEMENT.conference.root, icon: ICONS.conference },
       { title: 'survey', path: PATH_CONFERENCE_MANAGEMENT.survey.root, icon: ICONS.survey },
