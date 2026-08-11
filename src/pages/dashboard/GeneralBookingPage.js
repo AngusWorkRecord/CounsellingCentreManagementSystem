@@ -1,11 +1,13 @@
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography, Stack, Card, CardHeader, CardContent } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
+// services
+import { getCounsellingSessions } from '../../services/counsellingSessionService';
 // _mock_
 import { _bookings, _bookingNew, _bookingsOverview, _bookingReview, _ecommerceSalesOverview, _customMapData } from '../../_mock/arrays';
 // components
@@ -75,6 +77,25 @@ export default function GeneralBookingPage() {
 
   const [openDetails, setOpenDetails] = useState(false);
   const [selectedDetails, setselectedDetails] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadCounsellingSessions() {
+      try {
+        const sessions = await getCounsellingSessions({ signal: controller.signal });
+        console.log('Counselling Sessions:', sessions);
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          console.error('Failed to load counselling sessions:', error);
+        }
+      }
+    }
+
+    loadCounsellingSessions();
+
+    return () => controller.abort();
+  }, []);
 
   const handleOpenDetails = (detailsID) => {
     setOpenDetails(true);
