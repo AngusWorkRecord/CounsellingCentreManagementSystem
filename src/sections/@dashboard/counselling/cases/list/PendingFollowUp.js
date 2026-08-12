@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Box, Button, Divider, Stack, Typography } from '@mui/material';
-import Iconify from '../../../../components/iconify';
-import { TablePaginationCustom, useTable } from '../../../../components/table';
+import Iconify from '../../../../../components/iconify';
+import { TablePaginationCustom, useTable } from '../../../../../components/table';
 
 const reminderColors = {
   首次提醒: 'warning',

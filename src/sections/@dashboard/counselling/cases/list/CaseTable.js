@@ -13,9 +13,9 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import Label from '../../../../components/label';
-import Iconify from '../../../../components/iconify';
-import { TablePaginationCustom, useTable } from '../../../../components/table';
+import Label from '../../../../../components/label';
+import Iconify from '../../../../../components/iconify';
+import { TablePaginationCustom, useTable } from '../../../../../components/table';
 
 const columns = ['个案编号', '日期', '案主简称', '值班类别', '个案类别', '辅导员', '辅导时长', '简要报告', '详细报告', '款项', '操作'];
 
