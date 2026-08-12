@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import {
   Alert,
   Box,
@@ -12,6 +13,7 @@ import {
 } from '@mui/material';
 import Iconify from '../../components/iconify';
 import { getCounsellingSessions } from '../../services/counsellingSessionService';
+import { PATH_DASHBOARD } from '../../routes/paths';
 import {
   CounsellingPeriodFilter,
   filterSessionsByPeriod,
@@ -57,7 +59,7 @@ function mapSession(session, index) {
       : null;
 
   return {
-    id: session.case_number || session.submission_id || `case-${index + 1}`,
+    id: String(session.id || `case-${index + 1}`),
     submissionId: session.submission_id || '',
     caseNumber: String(session.case_number || '').trim(),
     reportUrl: String(session.report_url || '').trim(),
@@ -78,6 +80,7 @@ function mapSession(session, index) {
 }
 
 export default function CounsellingCaseListPage() {
+  const navigate = useNavigate();
   const [sessions, setSessions] = useState([]);
   const [filterMode, setFilterMode] = useState('month');
   const [selectedMonth, setSelectedMonth] = useState(getCurrentMonth);
@@ -205,7 +208,7 @@ export default function CounsellingCaseListPage() {
 
   return (
     <>
-      <Helmet><title>个案管理 | 辅导中心</title></Helmet>
+      <Helmet><title>个案列表 | 辅导中心</title></Helmet>
       <Container maxWidth={false}>
         <Stack
           direction={{ xs: 'column', md: 'row' }}
@@ -215,10 +218,8 @@ export default function CounsellingCaseListPage() {
           sx={{ mb: 3 }}
         >
           <Box>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-              个案管理&nbsp;&nbsp;/&nbsp;&nbsp;个案列表
-            </Typography>
-            <Typography variant="h3" gutterBottom>个案管理</Typography>
+           
+            <Typography variant="h3" gutterBottom>个案列表</Typography>
             <Typography variant="body2" color="text.secondary">
               样本期间：{periodLabel} ｜ 数据笔数：{filteredSessions.length}
             </Typography>
@@ -284,7 +285,10 @@ export default function CounsellingCaseListPage() {
             </Card>
 
             <Stack spacing={3}>
-              <CaseTable cases={cases} />
+              <CaseTable
+                cases={cases}
+                onView={(id) => navigate(PATH_DASHBOARD.general.counsellingCaseDetail(id))}
+              />
               <PendingFollowUp cases={pendingCases} />
             </Stack>
           </>

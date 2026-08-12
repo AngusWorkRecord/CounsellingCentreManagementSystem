@@ -4,7 +4,7 @@
   "version": "4.1.0",
   "description": "Javascript Version",
   "private": true,
-  "proxy": "https://job-master-pi.vercel.app",
+  "proxy": "https://counselling-centre-management-system.vercel.app",
   "engines": {
     "node": ">=18 <23",
     "npm": ">=9 <11"
