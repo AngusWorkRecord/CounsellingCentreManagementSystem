@@ -1,7 +1,13 @@
-export { default as CaseFilters } from './CaseFilters';
-export { default as CaseSummary } from './CaseSummary';
-export { default as CaseTable } from './CaseTable';
-export { default as PendingFollowUp } from './PendingFollowUp';
+export {
+  CaseFilters,
+  CaseListContent,
+  CaseListFeedback,
+  CaseListHeader,
+  CaseSummary,
+  CaseTable,
+  PendingFollowUp,
+  useCounsellingCaseList,
+} from './list';
 export {
   REMINDER_STAGE,
   WORKFLOW_STATUS,

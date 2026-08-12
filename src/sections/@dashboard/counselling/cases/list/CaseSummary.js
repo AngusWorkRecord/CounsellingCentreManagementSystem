@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import { alpha } from '@mui/material/styles';
-import Iconify from '../../../../components/iconify';
+import Iconify from '../../../../../components/iconify';
 
 const items = [
   { key: 'total', label: '总个案', icon: 'eva:folder-outline', color: 'primary' },
