@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Box, Card, CardHeader } from '@mui/material';
-import Chart, { useChart } from '../../../components/chart';
+import Chart, { useChart } from '../../../../components/chart';
 import ChartEmptyState from './ChartEmptyState';
-import { formatCurrency, getSessionDateKey, toNumber } from './utils';
+import { formatCurrency, getSessionDateKey, toNumber } from '../utils';
 
 DailyCollectionChart.propTypes = { sessions: PropTypes.array.isRequired };
 
