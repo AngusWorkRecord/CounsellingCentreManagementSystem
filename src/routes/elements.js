@@ -37,6 +37,9 @@ export const GeneralBookingPage = Loadable(
 export const CounsellingDashboardPage = Loadable(
   lazy(() => import('../pages/dashboard/CounsellingDashboardPage'))
 );
+export const CounsellingCaseListPage = Loadable(
+  lazy(() => import('../pages/dashboard/CounsellingCaseListPage'))
+);
 export const GeneralSDGPage = Loadable(
   lazy(() => import('../pages/dashboard/GeneralSDGPage'))
 );
