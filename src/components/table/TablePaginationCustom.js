@@ -6,6 +6,7 @@ import { Box, Switch, TablePagination, FormControlLabel } from '@mui/material';
 
 TablePaginationCustom.propTypes = {
   dense: PropTypes.bool,
+  denseLabel: PropTypes.string,
   onChangeDense: PropTypes.func,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   sx: PropTypes.object,
@@ -13,6 +14,7 @@ TablePaginationCustom.propTypes = {
 
 export default function TablePaginationCustom({
   dense,
+  denseLabel = 'Dense',
   onChangeDense,
   rowsPerPageOptions = [5, 10, 25],
   sx,
@@ -24,7 +26,7 @@ export default function TablePaginationCustom({
 
       {onChangeDense && (
         <FormControlLabel
-          label="Dense"
+          label={denseLabel}
           control={<Switch checked={dense} onChange={onChangeDense} />}
           sx={{
             pl: 2,

@@ -67,6 +67,7 @@ export const PATH_DASHBOARD = {
     banking: path(ROOTS_DASHBOARD, '/banking'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
     counselling: path(ROOTS_DASHBOARD, '/counselling'),
+    counsellingCases: path(ROOTS_DASHBOARD, '/counselling/cases'),
     view: (name) =>  path(ROOTS_DASHBOARD, `/sdg/${name}`),
     events: path(ROOTS_DASHBOARD, '/events'),
     file: path(ROOTS_DASHBOARD, '/file'),
