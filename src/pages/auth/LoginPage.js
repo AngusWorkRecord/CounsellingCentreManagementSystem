@@ -9,7 +9,8 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | JobMaster</title>
+        <title> Login | CounsellingCentreManagementSystem
+</title>
       </Helmet>
 
       <Login />

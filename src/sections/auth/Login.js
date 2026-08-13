@@ -19,7 +19,8 @@ export default function Login() {
       <Stack spacing={2} sx={{ mb: 5, position: 'relative', textAlign: 'center' }}>
         {/* Optional title */}
         <Typography variant="h4" sx={{ color: 'grey.800' }}>
-          Sign in to JobMaster
+          Sign in to CounsellingCentreManagementSystem
+
         </Typography>
 
         <Stack direction="row" spacing={0.5} sx={{ justifyContent: 'center' }}>
