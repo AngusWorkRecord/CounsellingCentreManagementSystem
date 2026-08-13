@@ -618,7 +618,7 @@ export default function GeneralSDGPage() {
   return (
     <>
       <Helmet>
-        <title> BE | BE Legacy Indicators </title>
+        <title> Counselling | BE Legacy Indicators </title>
       </Helmet>
 
       <Container maxWidth={false}>

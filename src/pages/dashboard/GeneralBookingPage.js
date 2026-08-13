@@ -114,7 +114,7 @@ export default function GeneralBookingPage() {
   return (
     <>
       <Helmet>
-        <title> BE | Dashboard </title>
+        <title> Counselling | Dashboard </title>
       </Helmet>
 
       <Container maxWidth={false}>

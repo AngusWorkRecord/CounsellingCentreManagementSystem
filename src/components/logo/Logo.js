@@ -79,11 +79,12 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   }
 
   return (
-    <Link component={RouterLink}
-      // to="/" 
-      sx={{ display: 'contents', }}>
+    <Link
+      component={RouterLink}
+      sx={{ display: 'flex', justifyContent: 'center', width: 1 }}
+    >
       {/* {logo} */}
-      <img src="https://cphtravel.com.my/wp-content/uploads/2018/11/Picture3.png" alt="Home" style={{ width: '80px' }} />
+      <img src="/logo/BodhiCounsellingLogo.png" alt="Home" style={{ width: '100px' }} />
     </Link>
   );
 });
