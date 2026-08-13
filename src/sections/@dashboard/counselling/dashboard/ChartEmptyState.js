@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
-import Iconify from '../../../components/iconify';
+import Iconify from '../../../../components/iconify';
 
 ChartEmptyState.propTypes = {
   height: PropTypes.number,
