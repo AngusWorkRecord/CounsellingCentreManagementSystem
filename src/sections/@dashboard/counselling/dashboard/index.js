@@ -1,6 +1,8 @@
 export { default as CaseCategoryDistributionChart } from './CaseCategoryDistributionChart';
 export { default as ChartEmptyState } from './ChartEmptyState';
 export { default as CounsellingAiInsights } from './CounsellingAiInsights';
+export { default as CounsellingCasePreviewCard } from './CounsellingCasePreviewCard';
+export { default as CounsellingCasesDialog } from './CounsellingCasesDialog';
 export { default as CounsellingDashboardContent } from './CounsellingDashboardContent';
 export { default as CounsellingDashboardFeedback } from './CounsellingDashboardFeedback';
 export { default as CounsellingDashboardHeader } from './CounsellingDashboardHeader';
