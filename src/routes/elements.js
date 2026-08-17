@@ -40,6 +40,9 @@ export const CounsellingDashboardPage = Loadable(
 export const CounsellingCaseListPage = Loadable(
   lazy(() => import('../pages/dashboard/CounsellingCaseListPage'))
 );
+export const CounsellingCaseCreatePage = Loadable(
+  lazy(() => import('../pages/dashboard/CounsellingCaseCreatePage'))
+);
 export const CounsellingCaseDetailPage = Loadable(
   lazy(() => import('../pages/dashboard/CounsellingCaseDetailPage'))
 );

@@ -45,12 +45,12 @@ const navConfig = [
   {
     subheader: 'general',
     items: [
-      { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
+      // { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
       // { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
       // { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
       // { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking },
       // { title: 'SDG', path: PATH_DASHBOARD.general.SDG, icon: ICONS.analytics },
-      { title: 'Dashboard', path: PATH_DASHBOARD.general.booking, icon: ICONS.dashboard },
+      // { title: 'Dashboard', path: PATH_DASHBOARD.general.booking, icon: ICONS.dashboard },
       {
         title: '辅导个案管理',
         path: PATH_DASHBOARD.general.counselling,
@@ -60,9 +60,9 @@ const navConfig = [
           { title: '个案管理', path: PATH_DASHBOARD.general.counsellingCases },
         ],
       },
-      { title: 'Convention', path: PATH_DASHBOARD.general.events, icon: ICONS.booking },
+      // { title: 'Convention', path: PATH_DASHBOARD.general.events, icon: ICONS.booking },
       // { title: 'conference', path: PATH_CONFERENCE_MANAGEMENT.conference.root, icon: ICONS.conference },
-      { title: 'survey', path: PATH_CONFERENCE_MANAGEMENT.survey.root, icon: ICONS.survey },
+      // { title: 'survey', path: PATH_CONFERENCE_MANAGEMENT.survey.root, icon: ICONS.survey },
       // { title: 'Goals', path: PATH_DASHBOARD.general.goals, icon: ICONS.analytics },
       // { title: 'file', path: PATH_DASHBOARD.general.file, icon: ICONS.file },
     ],

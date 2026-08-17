@@ -19,6 +19,7 @@ export default function CounsellingCaseListPage() {
       <Container maxWidth={false}>
         <CaseListHeader
           filteredCount={caseList.filteredCount}
+          onCreateCase={() => navigate(PATH_DASHBOARD.general.counsellingCaseCreate)}
           periodFilter={caseList.periodFilter}
           periodLabel={caseList.periodLabel}
         />
