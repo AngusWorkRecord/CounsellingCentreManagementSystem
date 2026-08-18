@@ -3,7 +3,7 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 import Iconify from '../../../../../components/iconify';
 import { CounsellingPeriodFilter } from '../..';
 
-export default function CaseListHeader({ filteredCount, periodFilter, periodLabel }) {
+export default function CaseListHeader({ filteredCount, onCreateCase, periodFilter, periodLabel }) {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -21,7 +21,12 @@ export default function CaseListHeader({ filteredCount, periodFilter, periodLabe
 
       <Stack alignItems={{ xs: 'stretch', md: 'flex-end' }} spacing={2}>
         <CounsellingPeriodFilter {...periodFilter} />
-        <Button variant="contained" size="large" startIcon={<Iconify icon="eva:plus-circle-outline" />}>
+        <Button
+          variant="contained"
+          size="large"
+          startIcon={<Iconify icon="eva:plus-circle-outline" />}
+          onClick={onCreateCase}
+        >
           新增个案
         </Button>
       </Stack>
@@ -31,6 +36,7 @@ export default function CaseListHeader({ filteredCount, periodFilter, periodLabe
 
 CaseListHeader.propTypes = {
   filteredCount: PropTypes.number.isRequired,
+  onCreateCase: PropTypes.func.isRequired,
   periodFilter: PropTypes.object.isRequired,
   periodLabel: PropTypes.string.isRequired,
 };

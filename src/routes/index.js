@@ -24,6 +24,7 @@ import {
   GeneralBookingPage,
   CounsellingDashboardPage,
   CounsellingCaseListPage,
+  CounsellingCaseCreatePage,
   CounsellingCaseDetailPage,
   GeneralSDGPage,
   EventListPage,
@@ -157,11 +158,12 @@ export default function Router() {
       children: [
         {
           path: '',
-          element: (
-            <GuestGuard>
-              <LoginPage />
-            </GuestGuard>
-          ),
+          element: <Navigate to={PATH_AFTER_LOGIN} replace />,
+          // (
+          //   <GuestGuard>
+          //     <LoginPage />
+          //   </GuestGuard>
+          // ),
         },
         {
           path: 'register',
@@ -200,6 +202,7 @@ export default function Router() {
         { path: 'booking', element: <GeneralBookingPage /> },
         { path: 'counselling', element: <CounsellingDashboardPage /> },
         { path: 'counselling/cases', element: <CounsellingCaseListPage /> },
+        { path: 'counselling/cases/new', element: <CounsellingCaseCreatePage /> },
         { path: 'counselling/cases/:id', element: <CounsellingCaseDetailPage /> },
         // { path: 'goals', element: <GeneralGoalsPage /> },
         { path: 'place/:selectedPlaceID', element: <GeneralPlaceDetailPage /> },

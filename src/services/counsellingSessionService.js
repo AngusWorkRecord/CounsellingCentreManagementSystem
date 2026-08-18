@@ -19,3 +19,29 @@ export async function getCounsellingSessions({ signal } = {}) {
 
   return result.data;
 }
+
+export async function createCounsellingSession(payload) {
+  const response = await fetch('/api/counselling-sessions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  let result;
+
+  try {
+    result = await response.json();
+  } catch (error) {
+    throw new Error('The counselling sessions API returned an invalid response');
+  }
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.message || '无法新增个案');
+  }
+
+  if (!result.data || typeof result.data !== 'object') {
+    throw new Error('The counselling sessions API returned invalid data');
+  }
+
+  return result.data;
+}
