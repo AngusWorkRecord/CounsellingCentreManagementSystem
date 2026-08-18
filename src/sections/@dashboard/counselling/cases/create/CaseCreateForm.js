@@ -42,7 +42,7 @@ const schema = Yup.object().shape({
   clientSummary: Yup.string().trim(),
   volunteerActions: Yup.string().trim(),
   caseNumber: Yup.string().trim().required('请输入个案编号'),
-  reportUrl: Yup.string().trim()('请输入有效的报告链接'),
+  reportUrl: Yup.string().trim(),
   amountReceivedRm: Yup.number()
     .typeError('收款金额必须是数字')
     .min(0, '收款金额不能小于 0')
