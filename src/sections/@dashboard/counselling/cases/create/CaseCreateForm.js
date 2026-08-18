@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,7 +9,10 @@ import { Button, Card, Divider, Grid, MenuItem, Stack, TextField, Typography } f
 import FormProvider, { RHFSelect, RHFTextField } from '../../../../../components/hook-form';
 import { useSnackbar } from '../../../../../components/snackbar';
 import { PATH_DASHBOARD } from '../../../../../routes/paths';
-import { createCounsellingSession } from '../../../../../services/counsellingSessionService';
+import {
+  createCounsellingSession,
+  updateCounsellingSession,
+} from '../../../../../services/counsellingSessionService';
 import { CASE_CATEGORIES, COUNSELLORS, SESSION_MODES } from './constants';
 
 function getToday() {
@@ -49,30 +53,35 @@ const schema = Yup.object().shape({
     .required('请输入收款金额'),
 });
 
-const defaultValues = {
-  submissionId: '',
-  respondentId: '',
-  counsellingDate: getToday(),
-  counsellor: '',
-  sessionMode: '',
-  caseCategory: '',
-  sessionStart: '',
-  sessionEnd: '',
-  clientInitials: '',
-  clientPhone: '',
-  clientSummary: '',
-  volunteerActions: '',
-  caseNumber: '',
-  reportUrl: '',
-  amountReceivedRm: '0.00',
-};
+function getDefaultValues(session) {
+  return {
+    submissionId: session?.submission_id || '',
+    respondentId: session?.respondent_id || '',
+    counsellingDate: String(session?.counselling_date || getToday()).slice(0, 10),
+    counsellor: session?.counsellor || '',
+    sessionMode: session?.session_mode || '',
+    caseCategory: session?.case_category || '',
+    sessionStart: String(session?.session_start || '').slice(0, 5),
+    sessionEnd: String(session?.session_end || '').slice(0, 5),
+    clientInitials: session?.client_initials || '',
+    clientPhone: session?.client_phone || '',
+    clientSummary: session?.client_summary || '',
+    volunteerActions: session?.volunteer_actions || '',
+    caseNumber: session?.case_number || '',
+    reportUrl: session?.report_url || '',
+    amountReceivedRm: String(session?.amount_received_rm ?? '0.00'),
+  };
+}
 
-export default function CaseCreateForm() {
+export default function CaseCreateForm({ currentSession = null }) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const isEdit = Boolean(currentSession);
+  const defaultValues = useMemo(() => getDefaultValues(currentSession), [currentSession]);
   const methods = useForm({ resolver: yupResolver(schema), defaultValues });
   const {
     handleSubmit,
+    reset,
     setError,
     watch,
     formState: { isSubmitting },
@@ -83,9 +92,13 @@ export default function CaseCreateForm() {
     [sessionEnd, sessionStart]
   );
 
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues, reset]);
+
   const onSubmit = async (values) => {
     try {
-      const created = await createCounsellingSession({
+      const payload = {
         ...values,
         respondentId: values.respondentId || null,
         clientPhone: values.clientPhone || null,
@@ -93,9 +106,12 @@ export default function CaseCreateForm() {
         volunteerActions: values.volunteerActions || null,
         reportUrl: values.reportUrl || null,
         amountReceivedRm: Number(values.amountReceivedRm),
-      });
-      enqueueSnackbar('个案新增成功', { variant: 'success' });
-      navigate(PATH_DASHBOARD.general.counsellingCaseDetail(created.id));
+      };
+      const saved = isEdit
+        ? await updateCounsellingSession(currentSession.id, payload)
+        : await createCounsellingSession(payload);
+      enqueueSnackbar(isEdit ? '个案更新成功' : '个案新增成功', { variant: 'success' });
+      navigate(PATH_DASHBOARD.general.counsellingCaseDetail(saved.id));
     } catch (error) {
       const message = error.message || '无法新增个案，请稍后再试';
       if (/Submission ID already exists/i.test(message)) {
@@ -166,10 +182,14 @@ export default function CaseCreateForm() {
             取消
           </Button>
           <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-            保存个案
+            {isEdit ? '更新个案' : '保存个案'}
           </LoadingButton>
         </Stack>
       </Stack>
     </FormProvider>
   );
 }
+
+CaseCreateForm.propTypes = {
+  currentSession: PropTypes.object,
+};

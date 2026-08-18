@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
@@ -12,13 +12,13 @@ import {
 } from '@mui/material';
 import Iconify from '../../components/iconify';
 import { PATH_DASHBOARD } from '../../routes/paths';
-import { getCounsellingSessions } from '../../services/counsellingSessionService';
+import { getCounsellingSessionById } from '../../services/counsellingSessionService';
 import { CaseDetailContent } from '../../sections/@dashboard/counselling/cases/detail';
 
 export default function CounsellingCaseDetailPage() {
   const { id = '' } = useParams();
   const navigate = useNavigate();
-  const [sessions, setSessions] = useState([]);
+  const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [reloadKey, setReloadKey] = useState(0);
@@ -29,10 +29,15 @@ export default function CounsellingCaseDetailPage() {
     async function loadSession() {
       setLoading(true);
       setError('');
+      setSession(null);
+
+      if (!/^[1-9]\d*$/.test(id)) {
+        setLoading(false);
+        return;
+      }
 
       try {
-        const data = await getCounsellingSessions({ signal: controller.signal });
-        setSessions(data);
+        setSession(await getCounsellingSessionById(id, { signal: controller.signal }));
       } catch (requestError) {
         if (requestError.name !== 'AbortError') {
           setError(requestError.message || '无法读取辅导个案资料');
@@ -44,17 +49,10 @@ export default function CounsellingCaseDetailPage() {
 
     loadSession();
     return () => controller.abort();
-  }, [reloadKey]);
+  }, [id, reloadKey]);
 
-  const session = useMemo(
-    () => sessions.find((item) => String(item.id) === String(id)),
-    [id, sessions]
-  );
-  const validId = /^\d+$/.test(id);
+  const validId = /^[1-9]\d*$/.test(id);
   const goBack = () => navigate(PATH_DASHBOARD.general.counsellingCases);
-  const periodLabel = session
-    ? `${String(session.counselling_date || '').slice(0, 7).replace('-', '年')}月`
-    : '';
 
   return (
     <>
