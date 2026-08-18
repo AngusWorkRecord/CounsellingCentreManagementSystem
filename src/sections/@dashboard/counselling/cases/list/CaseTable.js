@@ -19,7 +19,7 @@ import { TablePaginationCustom, useTable } from '../../../../../components/table
 
 const columns = ['个案编号', '日期', '案主简称', '值班类别', '个案类别', '辅导员', '辅导时长', '简要报告', '详细报告', '款项', '操作'];
 
-export default function CaseTable({ cases, onView }) {
+export default function CaseTable({ cases, onEdit, onView }) {
   const {
     dense,
     page,
@@ -100,7 +100,13 @@ export default function CaseTable({ cases, onView }) {
                     >
                       查看详情
                     </Button>
-                    <Button size="small" startIcon={<Iconify icon="eva:edit-2-outline" />}>编辑</Button>
+                    <Button
+                      size="small"
+                      startIcon={<Iconify icon="eva:edit-2-outline" />}
+                      onClick={() => onEdit(item.id)}
+                    >
+                      编辑
+                    </Button>
                     <IconButton size="small"><Iconify icon="eva:more-vertical-fill" /></IconButton>
                   </Stack>
                 </TableCell>
@@ -133,5 +139,6 @@ export default function CaseTable({ cases, onView }) {
 
 CaseTable.propTypes = {
   cases: PropTypes.array.isRequired,
+  onEdit: PropTypes.func.isRequired,
   onView: PropTypes.func.isRequired,
 };

@@ -1,8 +1,8 @@
 import { neon } from '@neondatabase/serverless';
 
 export default async function handler(request, response) {
-  if (!['GET', 'POST'].includes(request.method)) {
-    response.setHeader('Allow', 'GET, POST');
+  if (!['GET', 'POST', 'PUT'].includes(request.method)) {
+    response.setHeader('Allow', 'GET, POST, PUT');
     return response.status(405).json({
       success: false,
       message: 'Method not allowed',
@@ -19,6 +19,34 @@ export default async function handler(request, response) {
 
     const sql = neon(process.env.DATABASE_URL);
     if (request.method === 'GET') {
+      const requestedId = request.query?.id;
+
+      if (requestedId !== undefined) {
+        if (Array.isArray(requestedId) || !/^[1-9]\d*$/.test(String(requestedId))) {
+          return response.status(400).json({
+            success: false,
+            message: 'A valid counselling session ID is required',
+          });
+        }
+
+        const rows = await sql`
+          SELECT *
+          FROM public.get_counselling_session_by_id(${String(requestedId)}::bigint)
+        `;
+
+        if (rows.length === 0) {
+          return response.status(404).json({
+            success: false,
+            message: 'Counselling session not found',
+          });
+        }
+
+        return response.status(200).json({
+          success: true,
+          data: rows[0],
+        });
+      }
+
       const rows = await sql`
         SELECT *
         FROM public.get_all_counselling_sessions()
@@ -32,6 +60,16 @@ export default async function handler(request, response) {
     }
 
     const body = request.body || {};
+    const requestedId = request.query?.id;
+
+    if (request.method === 'PUT'
+      && (Array.isArray(requestedId) || !/^[1-9]\d*$/.test(String(requestedId || '')))) {
+      return response.status(400).json({
+        success: false,
+        message: 'A valid counselling session ID is required',
+      });
+    }
+
     const requiredFields = [
       'submissionId',
       'counsellingDate',
@@ -65,28 +103,57 @@ export default async function handler(request, response) {
       });
     }
 
-    const rows = await sql`
-      SELECT *
-      FROM public.create_counselling_session(
-        ${body.submissionId}::varchar,
-        ${body.respondentId || null}::varchar,
-        ${body.counsellingDate}::date,
-        ${body.counsellor}::varchar,
-        ${body.sessionMode}::varchar,
-        ${body.caseCategory}::varchar,
-        ${body.sessionStart}::time,
-        ${body.sessionEnd}::time,
-        ${body.clientInitials}::varchar,
-        ${body.clientPhone || null}::varchar,
-        ${body.clientSummary || null}::text,
-        ${body.volunteerActions || null}::text,
-        ${body.caseNumber}::varchar,
-        ${body.reportUrl || null}::text,
-        ${amount}::numeric
-      )
-    `;
+    const rows = request.method === 'PUT'
+      ? await sql`
+          SELECT *
+          FROM public.update_counselling_session(
+            ${String(requestedId)}::bigint,
+            ${body.submissionId}::varchar,
+            ${body.respondentId || null}::varchar,
+            ${body.counsellingDate}::date,
+            ${body.counsellor}::varchar,
+            ${body.sessionMode}::varchar,
+            ${body.caseCategory}::varchar,
+            ${body.sessionStart}::time,
+            ${body.sessionEnd}::time,
+            ${body.clientInitials}::varchar,
+            ${body.clientPhone || null}::varchar,
+            ${body.clientSummary || null}::text,
+            ${body.volunteerActions || null}::text,
+            ${body.caseNumber}::varchar,
+            ${body.reportUrl || null}::text,
+            ${amount}::numeric
+          )
+        `
+      : await sql`
+          SELECT *
+          FROM public.create_counselling_session(
+            ${body.submissionId}::varchar,
+            ${body.respondentId || null}::varchar,
+            ${body.counsellingDate}::date,
+            ${body.counsellor}::varchar,
+            ${body.sessionMode}::varchar,
+            ${body.caseCategory}::varchar,
+            ${body.sessionStart}::time,
+            ${body.sessionEnd}::time,
+            ${body.clientInitials}::varchar,
+            ${body.clientPhone || null}::varchar,
+            ${body.clientSummary || null}::text,
+            ${body.volunteerActions || null}::text,
+            ${body.caseNumber}::varchar,
+            ${body.reportUrl || null}::text,
+            ${amount}::numeric
+          )
+        `;
 
-    return response.status(201).json({
+    if (request.method === 'PUT' && rows.length === 0) {
+      return response.status(404).json({
+        success: false,
+        message: 'Counselling session not found',
+      });
+    }
+
+    return response.status(request.method === 'POST' ? 201 : 200).json({
       success: true,
       data: rows[0],
     });

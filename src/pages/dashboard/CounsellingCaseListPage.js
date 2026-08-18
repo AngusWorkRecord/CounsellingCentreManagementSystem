@@ -34,6 +34,9 @@ export default function CounsellingCaseListPage() {
             cases={caseList.cases}
             pendingCases={caseList.pendingCases}
             summary={caseList.summary}
+            onEditCase={(id) =>
+              navigate(PATH_DASHBOARD.general.counsellingCaseEdit(id))
+            }
             onViewCase={(id) =>
               navigate(PATH_DASHBOARD.general.counsellingCaseDetail(id))
             }
