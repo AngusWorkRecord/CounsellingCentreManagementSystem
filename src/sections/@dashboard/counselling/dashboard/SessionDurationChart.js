@@ -25,11 +25,16 @@ function buildLabels(sessions) {
 }
 
 export default function SessionDurationChart({ onSelect, sessions }) {
+  const sortedSessions = [...sessions].sort(
+    (a, b) => toNumber(b.duration_minutes) - toNumber(a.duration_minutes)
+  );
+  const showDataLabels = sortedSessions.length <= 12;
+  const chartMinWidth = sortedSessions.length > 12 ? sortedSessions.length * 58 : '100%';
   const options = useChart({
     chart: {
       events: {
         dataPointSelection: (event, chartContext, config) => {
-          const session = sessions[config.dataPointIndex];
+          const session = sortedSessions[config.dataPointIndex];
           if (session) {
             onSelect({
               title: `${session.client_initials || '个案'}辅导概览`,
@@ -39,10 +44,19 @@ export default function SessionDurationChart({ onSelect, sessions }) {
         },
       },
     },
-    xaxis: { categories: buildLabels(sessions) },
+    xaxis: {
+      categories: buildLabels(sortedSessions),
+      labels: {
+        rotate: -35,
+        rotateAlways: sortedSessions.length > 12,
+        hideOverlappingLabels: false,
+        trim: false,
+      },
+    },
     yaxis: { min: 0, title: { text: '分钟' } },
     colors: ['#10A7B5'],
-    dataLabels: { enabled: true },
+    dataLabels: { enabled: showDataLabels },
+    grid: { padding: { bottom: 12 } },
     legend: { show: false },
     tooltip: { y: { formatter: (value) => `${value} 分钟` } },
     plotOptions: { bar: { columnWidth: '45%' } },
@@ -51,14 +65,25 @@ export default function SessionDurationChart({ onSelect, sessions }) {
   return (
     <Card sx={{ height: 1 }}>
       <CardHeader title="D. 个案辅导时长（分钟）" />
-      <Box sx={{ px: 2, pb: 2, '& .apexcharts-series': { cursor: 'pointer' } }} dir="ltr">
-        {sessions.length ? (
-          <Chart
-            type="bar"
-            series={[{ name: '时长', data: sessions.map((session) => toNumber(session.duration_minutes)) }]}
-            options={options}
-            height={300}
-          />
+      <Box
+        sx={{
+          px: 2,
+          pb: 2,
+          maxWidth: 1,
+          overflowX: 'auto',
+          '& .apexcharts-series': { cursor: 'pointer' },
+        }}
+        dir="ltr"
+      >
+        {sortedSessions.length ? (
+          <Box sx={{ minWidth: chartMinWidth }}>
+            <Chart
+              type="bar"
+              series={[{ name: '时长', data: sortedSessions.map((session) => toNumber(session.duration_minutes)) }]}
+              options={options}
+              height={340}
+            />
+          </Box>
         ) : (
           <ChartEmptyState />
         )}
