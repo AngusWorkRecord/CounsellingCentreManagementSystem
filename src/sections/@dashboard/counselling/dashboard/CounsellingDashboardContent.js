@@ -44,22 +44,22 @@ export default function CounsellingDashboardContent({ metrics, sessions }) {
           </Grid>
         ))}
 
-        <Grid item xs={12} md={6} xl={3}>
+        <Grid item xs={12} md={6} lg={4}>
           <SessionModeDistributionChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12} md={6} xl={3}>
+        <Grid item xs={12} md={6} lg={4}>
           <CaseCategoryDistributionChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12} md={6} xl={3}>
+        <Grid item xs={12} md={6} lg={4}>
           <CounsellorWorkloadChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12} md={6} xl={3}>
+        <Grid item xs={12}>
           <SessionDurationChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12}>
           <DailyCollectionChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12} lg={8}><CounsellingAiInsights /></Grid>
+        <Grid item xs={12}><CounsellingAiInsights /></Grid>
       </Grid>
 
       <CounsellingCasesDialog

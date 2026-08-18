@@ -11,6 +11,7 @@ CounsellorWorkloadChart.propTypes = {
 
 export default function CounsellorWorkloadChart({ onSelect, sessions }) {
   const data = groupCount(sessions, 'counsellor').sort((a, b) => b.value - a.value);
+  const chartHeight = Math.max(300, data.length * 44);
   const options = useChart({
     chart: {
       toolbar: { show: false },
@@ -36,9 +37,24 @@ export default function CounsellorWorkloadChart({ onSelect, sessions }) {
   return (
     <Card sx={{ height: 1 }}>
       <CardHeader title="C. 每位辅导员处理个案数" />
-      <Box sx={{ px: 2, pb: 2, '& .apexcharts-series': { cursor: 'pointer' } }} dir="ltr">
+      <Box
+        sx={{
+          px: 2,
+          pb: 2,
+          maxHeight: 332,
+          overflowX: 'hidden',
+          overflowY: data.length > 6 ? 'auto' : 'hidden',
+          '& .apexcharts-series': { cursor: 'pointer' },
+        }}
+        dir="ltr"
+      >
         {data.length ? (
-          <Chart type="bar" series={[{ name: '个案数', data: data.map((item) => item.value) }]} options={options} height={300} />
+          <Chart
+            type="bar"
+            series={[{ name: '个案数', data: data.map((item) => item.value) }]}
+            options={options}
+            height={chartHeight}
+          />
         ) : (
           <ChartEmptyState />
         )}

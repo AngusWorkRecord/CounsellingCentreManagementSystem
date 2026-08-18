@@ -10,7 +10,7 @@ CaseCategoryDistributionChart.propTypes = {
 };
 
 export default function CaseCategoryDistributionChart({ onSelect, sessions }) {
-  const data = groupCount(sessions, 'case_category');
+  const data = groupCount(sessions, 'case_category').sort((a, b) => b.value - a.value);
   const options = useChart({
     chart: {
       events: {
