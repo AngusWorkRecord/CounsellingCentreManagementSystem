@@ -1,10 +1,17 @@
-export { default as CounsellingMetricCard } from './CounsellingMetricCard';
-export { default as SessionModeDistributionChart } from './SessionModeDistributionChart';
-export { default as CaseCategoryDistributionChart } from './CaseCategoryDistributionChart';
-export { default as CounsellorWorkloadChart } from './CounsellorWorkloadChart';
-export { default as SessionDurationChart } from './SessionDurationChart';
-export { default as DailyCollectionChart } from './DailyCollectionChart';
-export { default as CounsellingAiInsights } from './CounsellingAiInsights';
+export {
+  CaseCategoryDistributionChart,
+  ChartEmptyState,
+  CounsellingAiInsights,
+  CounsellingDashboardContent,
+  CounsellingDashboardFeedback,
+  CounsellingDashboardHeader,
+  CounsellingMetricCard,
+  CounsellorWorkloadChart,
+  DailyCollectionChart,
+  SessionDurationChart,
+  SessionModeDistributionChart,
+  useCounsellingDashboard,
+} from './dashboard';
 export { default as CounsellingPeriodFilter } from './CounsellingPeriodFilter';
 export {
   filterSessionsByPeriod,

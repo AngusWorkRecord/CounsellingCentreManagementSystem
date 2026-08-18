@@ -1,6 +1,6 @@
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Card, CardContent, Chip, Divider, Grid, Stack, Typography } from '@mui/material';
-import Iconify from '../../../components/iconify';
+import Iconify from '../../../../components/iconify';
 
 const observations = [
   { color: 'success.main', icon: 'eva:checkmark-circle-2-fill', text: '所有详细报告均已完成，行政记录完整。' },

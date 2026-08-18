@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import { Box, Card, CardHeader } from '@mui/material';
-import Chart, { useChart } from '../../../components/chart';
+import Chart, { useChart } from '../../../../components/chart';
 import ChartEmptyState from './ChartEmptyState';
-import { formatCurrency, getSessionDateKey, toNumber } from './utils';
+import { formatCurrency, getSessionDateKey, toNumber } from '../utils';
 
-DailyCollectionChart.propTypes = { sessions: PropTypes.array.isRequired };
+DailyCollectionChart.propTypes = {
+  onSelect: PropTypes.func.isRequired,
+  sessions: PropTypes.array.isRequired,
+};
 
-export default function DailyCollectionChart({ sessions }) {
+export default function DailyCollectionChart({ onSelect, sessions }) {
   const dailyTotals = new Map();
   sessions.forEach((session) => {
     const date = getSessionDateKey(session.counselling_date);
@@ -16,6 +19,21 @@ export default function DailyCollectionChart({ sessions }) {
     a.date.localeCompare(b.date)
   );
   const options = useChart({
+    chart: {
+      events: {
+        dataPointSelection: (event, chartContext, config) => {
+          const selected = data[config.dataPointIndex];
+          if (selected) {
+            onSelect({
+              title: `${selected.date} 收款个案`,
+              sessions: sessions.filter(
+                (session) => getSessionDateKey(session.counselling_date) === selected.date
+              ),
+            });
+          }
+        },
+      },
+    },
     xaxis: { categories: data.map((item) => item.date.slice(5)) },
     yaxis: { min: 0, labels: { formatter: (value) => formatCurrency(value) } },
     colors: ['#10A7B5'],
@@ -29,7 +47,14 @@ export default function DailyCollectionChart({ sessions }) {
   return (
     <Card sx={{ height: 1 }}>
       <CardHeader title="F. 每日收到款项" subheader="（RM）" />
-      <Box sx={{ px: 2, pb: 2 }} dir="ltr">
+      <Box
+        sx={{
+          px: 2,
+          pb: 2,
+          '& .apexcharts-series, & .apexcharts-marker': { cursor: 'pointer' },
+        }}
+        dir="ltr"
+      >
         {data.length ? (
           <Chart type="line" series={[{ name: '金额（RM）', data: data.map((item) => item.value) }]} options={options} height={330} />
         ) : (

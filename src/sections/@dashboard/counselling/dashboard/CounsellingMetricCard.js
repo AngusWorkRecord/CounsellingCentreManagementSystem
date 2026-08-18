@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Stack, Typography } from '@mui/material';
-import Iconify from '../../../components/iconify';
+import Iconify from '../../../../components/iconify';
 
 const IconWrapper = styled('div')(({ theme, color }) => ({
   width: 72,
