@@ -1,6 +1,6 @@
 {
-  "name": "BESarawak",
-  "short_name": "BESarawak",
+  "name": "Counselling Centre Management System",
+  "short_name": "Counselling Centre Management System",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#000000",
