@@ -17,7 +17,7 @@ export default function NewPasswordPage() {
   return (
     <>
       <Helmet>
-        <title> New Password | BESarawak</title>
+        <title> New Password | Counselling Centre Management System</title>
       </Helmet>
 
       <SentIcon sx={{ mb: 5, height: 96 }} />

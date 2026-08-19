@@ -187,7 +187,7 @@ export default function FileManagerPage() {
   return (
     <>
       <Helmet>
-        <title> File Manager | BESarawak</title>
+        <title> File Manager | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

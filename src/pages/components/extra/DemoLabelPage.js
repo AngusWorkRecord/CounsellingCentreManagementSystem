@@ -20,7 +20,7 @@ export default function DemoLabelPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Label | BESarawak</title>
+        <title> Extra Components: Label | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

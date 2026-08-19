@@ -34,7 +34,7 @@ export default function DemoCarouselsPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Carousels | BESarawak</title>
+        <title> Extra Components: Carousels | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

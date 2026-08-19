@@ -40,7 +40,7 @@ export default function GeneralEcommercePage() {
   return (
     <>
       <Helmet>
-        <title> General: E-commerce | BESarawak</title>
+        <title> General: E-commerce | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>

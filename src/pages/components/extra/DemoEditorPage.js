@@ -28,7 +28,7 @@ export default function DemoEditorPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Editor | BESarawak</title>
+        <title> Extra Components: Editor | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

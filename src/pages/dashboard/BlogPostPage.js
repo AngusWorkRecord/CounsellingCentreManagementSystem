@@ -76,7 +76,7 @@ export default function BlogPostPage() {
   return (
     <>
       <Helmet>
-        <title>{`Blog: ${post?.title || ''} | BESarawak`}</title>
+        <title>{`Blog: ${post?.title || ''} | Counselling Centre Management System`}</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

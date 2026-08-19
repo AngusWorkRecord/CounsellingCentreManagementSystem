@@ -58,7 +58,7 @@ export default function DemoCopyToClipboardPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Copy To Clipboard | BESarawak</title>
+        <title> Extra Components: Copy To Clipboard | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

@@ -11,7 +11,7 @@ export default function MaintenancePage() {
   return (
     <>
       <Helmet>
-        <title> Maintenance | BESarawak</title>
+        <title> Maintenance | Counselling Centre Management System</title>
       </Helmet>
 
       <Stack sx={{ alignItems: 'center' }}>

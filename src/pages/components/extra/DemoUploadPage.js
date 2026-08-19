@@ -81,7 +81,7 @@ export default function DemoUploadPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Upload | BESarawak</title>
+        <title> Extra Components: Upload | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

@@ -17,7 +17,7 @@ export default function InvoiceCreatePage() {
   return (
     <>
       <Helmet>
-        <title> Invoices: Create a new invoice | BESarawak</title>
+        <title> Invoices: Create a new invoice | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

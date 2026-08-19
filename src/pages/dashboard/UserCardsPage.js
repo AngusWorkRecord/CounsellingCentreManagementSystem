@@ -19,7 +19,7 @@ export default function UserCardsPage() {
   return (
     <>
       <Helmet>
-        <title> User: Cards | BESarawak</title>
+        <title> User: Cards | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

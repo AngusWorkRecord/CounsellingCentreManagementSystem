@@ -13,7 +13,7 @@ export default function ComponentsOverviewPage() {
   return (
     <>
       <Helmet>
-        <title> Components Overview | BESarawak</title>
+        <title> Components Overview | Counselling Centre Management System</title>
       </Helmet>
 
       <ComponentHero />

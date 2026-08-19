@@ -12,7 +12,7 @@ export default function PricingPage() {
   return (
     <>
       <Helmet>
-        <title> Pricing | BESarawak</title>
+        <title> Pricing | Counselling Centre Management System</title>
       </Helmet>
 
       <Container

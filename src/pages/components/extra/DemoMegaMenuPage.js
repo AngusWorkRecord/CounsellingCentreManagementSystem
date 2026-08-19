@@ -22,7 +22,7 @@ export default function DemoMegaMenuPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Mega Menu | BESarawak</title>
+        <title> Extra Components: Mega Menu | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

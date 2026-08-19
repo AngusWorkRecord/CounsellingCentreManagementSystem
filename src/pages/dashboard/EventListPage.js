@@ -749,7 +749,7 @@ export default function EventListPage() {
   return (
     <>
       <Helmet>
-        <title> Invoice: List | BESarawak</title>
+        <title> Invoice: List | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={false}>

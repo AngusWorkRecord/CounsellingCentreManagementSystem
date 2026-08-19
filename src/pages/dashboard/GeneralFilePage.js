@@ -128,7 +128,7 @@ export default function GeneralFilePage() {
   return (
     <>
       <Helmet>
-        <title> General: File | BESarawak</title>
+        <title> General: File | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>

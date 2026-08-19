@@ -33,7 +33,7 @@ export default function MUIDataGridPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: DataGrid | BESarawak</title>
+        <title> MUI Components: DataGrid | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

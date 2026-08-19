@@ -17,7 +17,7 @@ export default function MUITablePage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Table | BESarawak</title>
+        <title> MUI Components: Table | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

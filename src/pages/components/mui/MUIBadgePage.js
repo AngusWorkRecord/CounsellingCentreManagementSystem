@@ -16,7 +16,7 @@ export default function MUIBadgePage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Badge | BESarawak</title>
+        <title> MUI Components: Badge | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

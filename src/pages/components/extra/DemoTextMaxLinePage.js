@@ -14,7 +14,7 @@ export default function DemoTextMaxLinePage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Text Max Line | BESarawak</title>
+        <title> Extra Components: Text Max Line | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

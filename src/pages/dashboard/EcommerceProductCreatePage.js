@@ -17,7 +17,7 @@ export default function EcommerceProductCreatePage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Create a new product | BESarawak</title>
+        <title> Ecommerce: Create a new product | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

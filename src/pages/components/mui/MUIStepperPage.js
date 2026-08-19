@@ -18,7 +18,7 @@ export default function MUIStepperPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Stepper | BESarawak</title>
+        <title> MUI Components: Stepper | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

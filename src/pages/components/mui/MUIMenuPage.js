@@ -92,7 +92,7 @@ export default function MUIMenuPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Menu | BESarawak</title>
+        <title> MUI Components: Menu | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

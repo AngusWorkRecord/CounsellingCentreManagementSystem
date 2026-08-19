@@ -29,7 +29,7 @@ export default function GeneralAnalyticsPage() {
   return (
     <>
       <Helmet>
-        <title> General: Analytics | BESarawak</title>
+        <title> General: Analytics | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>

@@ -25,7 +25,7 @@ export default function MUITransferListPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Transfer List | BESarawak</title>
+        <title> MUI Components: Transfer List | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

@@ -25,7 +25,7 @@ export default function UserEditPage() {
   return (
     <>
       <Helmet>
-        <title> User: Edit user | BESarawak</title>
+        <title> User: Edit user | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

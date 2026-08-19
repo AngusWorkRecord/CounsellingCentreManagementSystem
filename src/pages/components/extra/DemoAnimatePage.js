@@ -33,7 +33,7 @@ export default function DemoAnimatePage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Animate | BESarawak</title>
+        <title> Extra Components: Animate | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

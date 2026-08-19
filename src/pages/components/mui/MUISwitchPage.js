@@ -29,7 +29,7 @@ export default function MUISwitchPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Switch | BESarawak</title>
+        <title> MUI Components: Switch | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

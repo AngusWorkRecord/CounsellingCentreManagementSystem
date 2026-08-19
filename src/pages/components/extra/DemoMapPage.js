@@ -56,7 +56,7 @@ export default function DemoMapPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Map | BESarawak</title>
+        <title> Extra Components: Map | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

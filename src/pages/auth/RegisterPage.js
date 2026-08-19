@@ -8,7 +8,7 @@ export default function RegisterPage() {
   return (
     <>
       <Helmet>
-        <title> Register | BESarawak</title>
+        <title> Register | Counselling Centre Management System</title>
       </Helmet>
 
       <Register />

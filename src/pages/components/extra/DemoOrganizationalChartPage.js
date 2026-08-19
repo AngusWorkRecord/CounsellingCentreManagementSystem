@@ -20,7 +20,7 @@ export default function DemoOrganizationalChartPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Organizational Chart | BESarawak</title>
+        <title> Extra Components: Organizational Chart | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

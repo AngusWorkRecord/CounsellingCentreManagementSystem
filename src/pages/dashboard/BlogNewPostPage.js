@@ -17,7 +17,7 @@ export default function BlogNewPostPage() {
   return (
     <>
       <Helmet>
-        <title> Blog: New Post | BESarawak</title>
+        <title> Blog: New Post | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

@@ -11,7 +11,7 @@ export default function BlankPage() {
   return (
     <>
       <Helmet>
-        <title> Blank Page | BESarawak</title>
+        <title> Blank Page | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>

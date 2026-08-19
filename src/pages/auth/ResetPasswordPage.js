@@ -18,7 +18,7 @@ export default function ResetPasswordPage() {
   return (
     <>
       <Helmet>
-        <title> Reset Password | BESarawak</title>
+        <title> Reset Password | Counselling Centre Management System</title>
       </Helmet>
 
       <PasswordIcon sx={{ mb: 5, height: 96 }} />

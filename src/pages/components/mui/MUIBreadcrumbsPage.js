@@ -15,7 +15,7 @@ export default function MUIBreadcrumbsPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Breadcrumbs | BESarawak</title>
+        <title> MUI Components: Breadcrumbs | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

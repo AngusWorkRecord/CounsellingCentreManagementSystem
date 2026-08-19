@@ -14,7 +14,7 @@ export default function Page403() {
   return (
     <>
       <Helmet>
-        <title> 403 Forbidden | BESarawak</title>
+        <title> 403 Forbidden | Counselling Centre Management System</title>
       </Helmet>
 
       <MotionContainer>
