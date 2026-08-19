@@ -14,7 +14,7 @@ export default function Page404() {
   return (
     <>
       <Helmet>
-        <title> 404 Page Not Found | BESarawak</title>
+        <title> 404 Page Not Found | Counselling Centre Management System</title>
       </Helmet>
 
       <MotionContainer>

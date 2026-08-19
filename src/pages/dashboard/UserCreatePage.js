@@ -17,7 +17,7 @@ export default function UserCreatePage() {
   return (
     <>
       <Helmet>
-        <title> User: Create a new user | BESarawak</title>
+        <title> User: Create a new user | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

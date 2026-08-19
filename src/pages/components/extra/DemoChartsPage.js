@@ -27,7 +27,7 @@ export default function DemoChartsPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Charts | BESarawak</title>
+        <title> Extra Components: Charts | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

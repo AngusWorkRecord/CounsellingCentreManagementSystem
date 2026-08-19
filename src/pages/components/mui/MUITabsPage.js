@@ -72,7 +72,7 @@ export default function MUITabsPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Tabs | BESarawak</title>
+        <title> MUI Components: Tabs | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

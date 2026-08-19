@@ -185,7 +185,7 @@ export default function UserListPage() {
   return (
     <>
       <Helmet>
-        <title> User: List | BESarawak</title>
+        <title> User: List | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

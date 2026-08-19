@@ -44,7 +44,7 @@ export default function DemoMultiLanguagePage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Multi Language | BESarawak</title>
+        <title> Extra Components: Multi Language | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

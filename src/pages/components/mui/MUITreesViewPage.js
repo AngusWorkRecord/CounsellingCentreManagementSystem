@@ -38,7 +38,7 @@ export default function MUITreesViewPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Tree View | BESarawak</title>
+        <title> MUI Components: Tree View | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

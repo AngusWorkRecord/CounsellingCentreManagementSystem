@@ -90,7 +90,7 @@ export default function MUITimelinePage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Timeline | BESarawak</title>
+        <title> MUI Components: Timeline | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

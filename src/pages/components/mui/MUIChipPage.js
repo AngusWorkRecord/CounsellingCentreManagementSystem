@@ -14,7 +14,7 @@ export default function MUIChipPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Chip | BESarawak</title>
+        <title> MUI Components: Chip | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

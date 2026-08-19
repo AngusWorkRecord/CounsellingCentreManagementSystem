@@ -68,7 +68,7 @@ export default function MUIRatingPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Rating | BESarawak</title>
+        <title> MUI Components: Rating | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

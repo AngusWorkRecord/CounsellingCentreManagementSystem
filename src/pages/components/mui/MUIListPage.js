@@ -87,7 +87,7 @@ export default function MUIListPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: List | BESarawak</title>
+        <title> MUI Components: List | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

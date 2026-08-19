@@ -43,7 +43,7 @@ export default function MUIButtonsPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Buttons | BESarawak</title>
+        <title> MUI Components: Buttons | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

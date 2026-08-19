@@ -21,7 +21,7 @@ export default function ComingSoonPage() {
   return (
     <>
       <Helmet>
-        <title> Coming Soon | BESarawak</title>
+        <title> Coming Soon | Counselling Centre Management System</title>
       </Helmet>
 
       <Typography variant="h3" paragraph>

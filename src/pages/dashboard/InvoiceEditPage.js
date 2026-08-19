@@ -24,7 +24,7 @@ export default function InvoiceEditPage() {
   return (
     <>
       <Helmet>
-        <title> Invoice: Edit | BESarawak</title>
+        <title> Invoice: Edit | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

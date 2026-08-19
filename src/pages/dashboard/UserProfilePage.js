@@ -74,7 +74,7 @@ export default function UserProfilePage() {
   return (
     <>
       <Helmet>
-        <title> User: Profile | BESarawak</title>
+        <title> User: Profile | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title> The starting point for your next project | BESarawak</title>
+        <title> The starting point for your next project | Counselling Centre Management System</title>
       </Helmet>
 
       {progress}

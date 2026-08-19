@@ -10,7 +10,7 @@ export default function FaqsPage() {
   return (
     <>
       <Helmet>
-        <title> Faqs | BESarawak</title>
+        <title> Faqs | Counselling Centre Management System</title>
       </Helmet>
 
       <FaqsHero />

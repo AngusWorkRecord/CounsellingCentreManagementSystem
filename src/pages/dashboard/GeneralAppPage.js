@@ -42,7 +42,7 @@ export default function GeneralAppPage() {
   return (
     <>
       <Helmet>
-        <title> General: App | BESarawak</title>
+        <title> General: App | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>

@@ -73,7 +73,7 @@ export default function MUISliderPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Slider | BESarawak</title>
+        <title> MUI Components: Slider | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

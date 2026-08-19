@@ -22,7 +22,7 @@ export default function DemoImagePage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Image | BESarawak</title>
+        <title> Extra Components: Image | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

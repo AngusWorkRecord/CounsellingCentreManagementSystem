@@ -110,7 +110,7 @@ export default function EcommerceCheckoutPage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Checkout | BESarawak</title>
+        <title> Ecommerce: Checkout | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

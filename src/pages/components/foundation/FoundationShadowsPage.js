@@ -45,7 +45,7 @@ export default function FoundationShadowsPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Shadows | BESarawak</title>
+        <title> Foundations: Shadows | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

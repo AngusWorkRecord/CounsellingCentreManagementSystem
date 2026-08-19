@@ -30,7 +30,7 @@ export default function MUIDialogPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Dialog | BESarawak</title>
+        <title> MUI Components: Dialog | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

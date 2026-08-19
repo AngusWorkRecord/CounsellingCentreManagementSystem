@@ -122,7 +122,7 @@ export default function DemoMarkdownPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Markdown | BESarawak</title>
+        <title> Extra Components: Markdown | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

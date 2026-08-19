@@ -43,7 +43,7 @@ export default function MUIAccordionPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Accordion | BESarawak</title>
+        <title> MUI Components: Accordion | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

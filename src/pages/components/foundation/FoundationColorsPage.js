@@ -47,7 +47,7 @@ export default function FoundationColorsPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Colors | BESarawak</title>
+        <title> Foundations: Colors | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

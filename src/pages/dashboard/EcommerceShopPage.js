@@ -85,7 +85,7 @@ export default function EcommerceShopPage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Shop | BESarawak</title>
+        <title> Ecommerce: Shop | Counselling Centre Management System</title>
       </Helmet>
 
       <FormProvider methods={methods}>

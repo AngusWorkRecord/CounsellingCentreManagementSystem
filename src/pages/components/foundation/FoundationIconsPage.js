@@ -26,7 +26,7 @@ export default function FoundationIconsPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Icons | BESarawak</title>
+        <title> Foundations: Icons | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

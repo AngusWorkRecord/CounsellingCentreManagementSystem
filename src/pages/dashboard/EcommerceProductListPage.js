@@ -182,7 +182,7 @@ export default function EcommerceProductListPage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Product List | BESarawak</title>
+        <title> Ecommerce: Product List | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

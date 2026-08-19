@@ -20,7 +20,7 @@ export default function MUIAlertPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Alert | BESarawak</title>
+        <title> MUI Components: Alert | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

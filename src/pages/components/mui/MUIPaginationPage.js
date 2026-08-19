@@ -44,7 +44,7 @@ export default function MUIPaginationPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Pagination | BESarawak</title>
+        <title> MUI Components: Pagination | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

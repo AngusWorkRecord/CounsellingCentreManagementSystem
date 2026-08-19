@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <Helmet>
-        <title> Contact us | BESarawak</title>
+        <title> Contact us | Counselling Centre Management System</title>
       </Helmet>
 
       <ContactHero />

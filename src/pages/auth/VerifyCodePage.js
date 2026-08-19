@@ -17,7 +17,7 @@ export default function VerifyCodePage() {
   return (
     <>
       <Helmet>
-        <title> Verify Code | BESarawak</title>
+        <title> Verify Code | Counselling Centre Management System</title>
       </Helmet>
 
       <EmailInboxIcon sx={{ mb: 5, height: 96 }} />

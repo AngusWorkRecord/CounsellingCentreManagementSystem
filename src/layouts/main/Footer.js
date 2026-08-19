@@ -95,7 +95,7 @@ export default function Footer() {
 
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with BESarawak Kit, built on the newest
+              The starting point for your next project with Counselling Centre Management System Kit, built on the newest
               version of Material-UI ©, ready to be customized to your style.
             </Typography>
 

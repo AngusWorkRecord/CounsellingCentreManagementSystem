@@ -13,7 +13,7 @@ export default function DemoScrollbarPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Scrollbar | BESarawak</title>
+        <title> Extra Components: Scrollbar | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

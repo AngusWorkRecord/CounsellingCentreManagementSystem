@@ -46,7 +46,7 @@ export default function MUICheckboxPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Checkbox | BESarawak</title>
+        <title> MUI Components: Checkbox | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

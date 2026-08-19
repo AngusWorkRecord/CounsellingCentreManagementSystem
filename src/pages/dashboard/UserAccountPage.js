@@ -68,7 +68,7 @@ export default function UserAccountPage() {
   return (
     <>
       <Helmet>
-        <title> User: Account Settings | BESarawak</title>
+        <title> User: Account Settings | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

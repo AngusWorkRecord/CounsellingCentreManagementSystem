@@ -52,7 +52,7 @@ export default function FoundationGridPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Grid | BESarawak</title>
+        <title> Foundations: Grid | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

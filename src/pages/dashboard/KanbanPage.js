@@ -100,7 +100,7 @@ export default function KanbanPage() {
   return (
     <>
       <Helmet>
-        <title> Kanban | BESarawak</title>
+        <title> Kanban | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={false} sx={{ height: 1 }}>

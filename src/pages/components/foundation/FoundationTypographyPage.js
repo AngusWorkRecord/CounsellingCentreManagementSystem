@@ -48,7 +48,7 @@ export default function FoundationTypographyPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Typography | BESarawak</title>
+        <title> Foundations: Typography | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

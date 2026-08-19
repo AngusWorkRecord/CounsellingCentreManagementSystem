@@ -14,7 +14,7 @@ export default function PaymentPage() {
   return (
     <>
       <Helmet>
-        <title> Payment | BESarawak</title>
+        <title> Payment | Counselling Centre Management System</title>
       </Helmet>
 
       <Container

@@ -29,7 +29,7 @@ export default function DemoFormValidationPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Form Validation | BESarawak</title>
+        <title> Extra Components: Form Validation | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

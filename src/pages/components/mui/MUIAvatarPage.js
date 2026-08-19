@@ -33,7 +33,7 @@ export default function MUIAvatarPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Avatar | BESarawak</title>
+        <title> MUI Components: Avatar | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

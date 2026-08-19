@@ -35,7 +35,7 @@ export default function EcommerceProductEditPage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Edit product | BESarawak</title>
+        <title> Ecommerce: Edit product | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

@@ -52,7 +52,7 @@ export default function DemoSnackbarPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Snackbar | BESarawak</title>
+        <title> Extra Components: Snackbar | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

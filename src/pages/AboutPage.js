@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <>
       <Helmet>
-        <title> About us | BESarawak</title>
+        <title> About us | Counselling Centre Management System</title>
       </Helmet>
 
       <AboutHero />

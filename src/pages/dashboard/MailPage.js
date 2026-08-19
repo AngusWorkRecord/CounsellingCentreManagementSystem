@@ -8,7 +8,7 @@ export default function MailPage() {
   return (
     <>
       <Helmet>
-        <title> Mail | BESarawak</title>
+        <title> Mail | Counselling Centre Management System</title>
       </Helmet>
 
       <Mail />

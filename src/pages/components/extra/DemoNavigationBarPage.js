@@ -20,7 +20,7 @@ export default function DemoNavigationBarPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Navigation Bar | BESarawak</title>
+        <title> Extra Components: Navigation Bar | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

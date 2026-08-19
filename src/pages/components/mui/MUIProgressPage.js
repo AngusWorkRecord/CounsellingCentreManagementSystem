@@ -64,7 +64,7 @@ export default function MUIProgressPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Progress | BESarawak</title>
+        <title> MUI Components: Progress | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

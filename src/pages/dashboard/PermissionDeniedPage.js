@@ -34,7 +34,7 @@ export default function PermissionDeniedPage() {
   return (
     <>
       <Helmet>
-        <title> Other Cases: Permission Denied | BESarawak</title>
+        <title> Other Cases: Permission Denied | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

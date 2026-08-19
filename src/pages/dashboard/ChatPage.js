@@ -8,7 +8,7 @@ export default function ChatPage() {
   return (
     <>
       <Helmet>
-        <title> Chat | BESarawak</title>
+        <title> Chat | Counselling Centre Management System</title>
       </Helmet>
 
       <Chat />

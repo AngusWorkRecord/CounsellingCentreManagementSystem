@@ -33,7 +33,7 @@ export default function MUITooltipPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Tooltip | BESarawak</title>
+        <title> MUI Components: Tooltip | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

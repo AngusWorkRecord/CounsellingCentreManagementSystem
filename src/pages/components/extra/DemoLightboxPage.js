@@ -64,7 +64,7 @@ export default function DemoLightboxPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Lightbox | BESarawak</title>
+        <title> Extra Components: Lightbox | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

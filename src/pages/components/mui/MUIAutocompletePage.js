@@ -33,7 +33,7 @@ export default function MUIAutocompletePage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Autocomplete | BESarawak</title>
+        <title> MUI Components: Autocomplete | Counselling Centre Management System</title>
       </Helmet>
 
       <Box

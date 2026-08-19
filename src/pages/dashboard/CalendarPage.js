@@ -239,7 +239,7 @@ export default function CalendarPage() {
   return (
     <>
       {/* <Helmet>
-        <title> Calendar | BESarawak</title>
+        <title> Calendar | Counselling Centre Management System</title>
       </Helmet> */}
 
       <Container maxWidth={false}>

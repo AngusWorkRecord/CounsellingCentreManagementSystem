@@ -30,7 +30,7 @@ export default function GeneralBankingPage() {
   return (
     <>
       <Helmet>
-        <title> General: Banking | BESarawak</title>
+        <title> General: Banking | Counselling Centre Management System</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>
