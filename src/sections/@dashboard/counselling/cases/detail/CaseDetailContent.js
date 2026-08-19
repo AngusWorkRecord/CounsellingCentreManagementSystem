@@ -49,7 +49,7 @@ export default function CaseDetailContent({ session, onBack }) {
         <Grid item xs={12} md={6}>
           <Stack spacing={2.5} sx={equalCardStackSx}>
             <CaseQuickActions session={session} onBack={onBack} />
-            <CaseAiTip />
+            <CaseAiTip session={session} />
           </Stack>
         </Grid>
       </Grid>

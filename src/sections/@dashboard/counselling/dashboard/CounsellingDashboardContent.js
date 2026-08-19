@@ -59,7 +59,9 @@ export default function CounsellingDashboardContent({ metrics, sessions }) {
         <Grid item xs={12}>
           <DailyCollectionChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12}><CounsellingAiInsights /></Grid>
+        <Grid item xs={12}>
+          <CounsellingAiInsights metrics={metrics} sessions={sessions} />
+        </Grid>
       </Grid>
 
       <CounsellingCasesDialog
