@@ -26,6 +26,7 @@ export default function CounsellingDashboardPage() {
         />
         {!dashboard.loading && !dashboard.error && (
           <CounsellingDashboardContent
+            dateRange={dashboard.dateRange}
             metrics={dashboard.metrics}
             sessions={dashboard.filteredSessions}
           />

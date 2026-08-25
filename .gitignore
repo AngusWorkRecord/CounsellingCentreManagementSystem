@@ -27,4 +27,5 @@ yarn-error.log*
 
 package-lock.json
 yark.lock
-/database/
+/database/*
+!/database/003_create_ai_analyses.sql

@@ -14,7 +14,7 @@ import DailyCollectionChart from './DailyCollectionChart';
 import SessionDurationChart from './SessionDurationChart';
 import SessionModeDistributionChart from './SessionModeDistributionChart';
 
-export default function CounsellingDashboardContent({ metrics, sessions }) {
+export default function CounsellingDashboardContent({ dateRange, metrics, sessions }) {
   const theme = useTheme();
   const navigate = useNavigate();
   const [selection, setSelection] = useState({ title: '', sessions: [] });
@@ -60,7 +60,7 @@ export default function CounsellingDashboardContent({ metrics, sessions }) {
           <DailyCollectionChart sessions={sessions} onSelect={handleSelect} />
         </Grid>
         <Grid item xs={12}>
-          <CounsellingAiInsights metrics={metrics} sessions={sessions} />
+          <CounsellingAiInsights dateRange={dateRange} metrics={metrics} sessions={sessions} />
         </Grid>
       </Grid>
 
@@ -76,6 +76,10 @@ export default function CounsellingDashboardContent({ metrics, sessions }) {
 }
 
 CounsellingDashboardContent.propTypes = {
+  dateRange: PropTypes.shape({
+    dateFrom: PropTypes.string.isRequired,
+    dateTo: PropTypes.string.isRequired,
+  }).isRequired,
   metrics: PropTypes.shape({
     averageMinutes: PropTypes.number.isRequired,
     totalCases: PropTypes.number.isRequired,

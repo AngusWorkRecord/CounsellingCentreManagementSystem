@@ -6,7 +6,7 @@ import {
   getSessionMonth,
   getSessionYear,
 } from '../utils';
-import { calculateDashboardMetrics, getCurrentMonth, getCurrentYear } from './utils';
+import { calculateDashboardMetrics, getCurrentMonth, getCurrentYear, getPeriodDateRange } from './utils';
 
 export default function useCounsellingDashboard() {
   const [sessions, setSessions] = useState([]);
@@ -88,6 +88,13 @@ export default function useCounsellingDashboard() {
     filteredCount: filteredSessions.length,
     filteredSessions,
     metrics: calculateDashboardMetrics(filteredSessions),
+    dateRange: getPeriodDateRange({
+      mode: filterMode,
+      month: selectedMonth,
+      year: selectedYear,
+      startDate: customStart,
+      endDate: customEnd,
+    }),
     periodFilter: {
       mode: filterMode,
       month: selectedMonth,
