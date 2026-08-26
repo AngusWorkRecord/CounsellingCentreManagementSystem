@@ -85,7 +85,7 @@ export default function CaseAiTip({ session }) {
   const level = LEVEL_META[ai.mode === 'general' ? general.level : result?.riskLevel || 'insufficient_data'];
 
   return (
-    <Card sx={{ p: 3, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+    <Card sx={{ p: 3, minWidth: 0, minHeight: 0, height: { md: '100%' }, display: 'flex', flexDirection: 'column' }}>
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} justifyContent="space-between" sx={{ mb: 1.5 }}>
         <Stack direction="row" spacing={1} alignItems="center">
           <Iconify icon="eva:flash-fill" width={22} sx={{ color: 'secondary.main' }} />
@@ -108,7 +108,7 @@ export default function CaseAiTip({ session }) {
         </Stack>
       )}
 
-      <Box sx={{ maxHeight: { xs: '65vh', md: 480 }, overflowY: 'auto', overflowX: 'hidden', pr: { md: 1 }, overflowWrap: 'anywhere' }}>
+      <Box sx={{ flex: { md: 1 }, minHeight: { md: 0 }, maxHeight: { xs: '65vh', md: 'none' }, overflowY: 'auto', overflowX: 'hidden', pr: { md: 1 }, overflowWrap: 'anywhere' }}>
         {ai.mode === 'general' ? (
           <>
             <Typography variant="caption" color="text.secondary">本地规则检查，不会把资料发送到外部服务。</Typography>
