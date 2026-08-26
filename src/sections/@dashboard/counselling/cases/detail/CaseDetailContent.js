@@ -9,7 +9,8 @@ import CaseTextCard from './CaseTextCard';
 
 const equalCardStackSx = {
   height: '100%',
-  '& > .MuiCard-root': { flex: { md: 1 } },
+  minHeight: 0,
+  '& > .MuiCard-root': { flex: { md: 1 }, minHeight: 0 },
 };
 
 const fullHeightCardSx = {
