@@ -18,6 +18,16 @@ const fullHeightCardSx = {
   '& > .MuiCard-root': { height: '100%' },
 };
 
+const adviceCardStackSx = {
+  width: 1,
+  height: { md: '100%' },
+  minHeight: 0,
+  '& > .MuiCard-root:last-of-type': {
+    flex: { md: 1 },
+    minHeight: 0,
+  },
+};
+
 export default function CaseDetailContent({ session, onBack }) {
   return (
     <Stack spacing={2.5}>
@@ -41,14 +51,14 @@ export default function CaseDetailContent({ session, onBack }) {
         </Grid>
       </Grid>
 
-      <Grid container spacing={2.5} alignItems="stretch">
+      <Grid container spacing={2.5} alignItems="stretch" sx={{ minHeight: { md: 820 } }}>
         <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
           <Box sx={fullHeightCardSx}>
             <CaseRecordCard session={session} />
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Stack spacing={2.5} sx={equalCardStackSx}>
+        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+          <Stack spacing={2.5} sx={adviceCardStackSx}>
             <CaseQuickActions session={session} onBack={onBack} />
             <CaseAiTip session={session} />
           </Stack>
