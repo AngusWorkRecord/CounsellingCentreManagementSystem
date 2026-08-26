@@ -1,6 +1,8 @@
-# AI Preview Runbook
+# AI Deployment Runbook
 
-This runbook enables real AI only in Vercel Preview. Production remains blocked in server code until JWT and RBAC are implemented.
+AI is controlled by `AI_FEATURE_ENABLED` in every Vercel environment. Production can call the model when the flag, API key, model, and database connection are configured.
+
+> Production currently has no complete server-side JWT/RBAC enforcement. Until that work is finished, use only test or de-identified data and disable the feature immediately if unexpected usage appears.
 
 ## 1. External setup
 
@@ -26,20 +28,19 @@ ORDER BY column_name;
 
 All listed columns are required by the current endpoints. If any are absent, update the database or endpoint query before enabling AI.
 
-## 2. Vercel Preview environment
+## 2. Vercel environment
 
-Configure these for **Preview** (and optionally Development), not Production:
+Configure the following separately for each environment where AI should run. Secrets must be entered in Vercel and never committed:
 
 ```text
 DATABASE_URL=<existing Neon pooled connection string>
 AI_FEATURE_ENABLED=true
-AI_ALLOW_NON_PRODUCTION=true
 OPENAI_API_KEY=<dedicated project secret>
 OPENAI_MODEL=gpt-4.1-mini
 AI_REQUEST_TIMEOUT_MS=20000
 ```
 
-Redeploy after changing variables. `npm start` runs only the CRA frontend and proxies API calls to the configured remote site; use a Vercel Preview deployment or `vercel dev` for full-stack testing.
+For Production, all five values must include the Production environment. For Preview testing, all five must include Preview. Redeploy the relevant environment after changing variables. `npm start` runs only the CRA frontend and proxies API calls to the configured remote site; use a Vercel deployment or `vercel dev` for full-stack testing.
 
 ## 3. Verification
 
@@ -51,7 +52,7 @@ npm run lint
 npm run build
 ```
 
-In Preview:
+In each enabled deployment:
 
 1. Open General mode and confirm no OpenAI usage is created.
 2. Switch to AI and confirm only a cached-analysis lookup occurs.
@@ -65,9 +66,9 @@ In Preview:
 
 | Error | Check |
 | --- | --- |
-| `AI_NOT_AVAILABLE` | Preview flags are both `true`; deployment is Preview, not Production; redeploy after changes. |
-| `AI_NOT_CONFIGURED` | `OPENAI_API_KEY` and `OPENAI_MODEL` exist in the Preview environment. Do not print the key. |
-| `DATABASE_NOT_CONFIGURED` | `DATABASE_URL` is assigned to Preview and the deployment was rebuilt. |
+| `AI_NOT_AVAILABLE` | `AI_FEATURE_ENABLED` is exactly `true` in the current deployment environment; redeploy after changes. |
+| `AI_NOT_CONFIGURED` | `OPENAI_API_KEY` and `OPENAI_MODEL` exist in the current environment. Do not print the key. |
+| `DATABASE_NOT_CONFIGURED` | `DATABASE_URL` is assigned to the current environment and the deployment was rebuilt. |
 | `AI_UPSTREAM_ERROR` | OpenAI project billing, model access, quota, and Vercel outbound connectivity. |
 | `AI_INVALID_OUTPUT` | Inspect only the error code and analysis ID; do not log the full prompt or sensitive record text. |
 | Database column error | Run the schema verification query above and align the endpoint with the real schema. |
@@ -76,4 +77,4 @@ Expired analyses are excluded from reads. Schedule `SELECT public.delete_expired
 
 ## 5. Production boundary
 
-Do not remove the production block until server-side JWT verification, counsellor/case assignment checks, organisation scope, management-role authorization, rate limiting, and requester audit fields are implemented and reviewed.
+Production enablement does not provide authorization. Server-side JWT verification, counsellor/case assignment checks, organisation scope, management-role authorization, rate limiting, and requester audit fields are still required before using identifiable or sensitive counselling data. To stop model calls, set Production `AI_FEATURE_ENABLED=false` and redeploy.

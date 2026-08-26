@@ -8,7 +8,6 @@ import {
 
 const ENV_NAMES = [
   'AI_FEATURE_ENABLED',
-  'AI_ALLOW_NON_PRODUCTION',
   'OPENAI_API_KEY',
   'OPENAI_MODEL',
   'AI_REQUEST_TIMEOUT_MS',
@@ -28,7 +27,6 @@ function preserveEnvironment() {
 
 function enableTestAi() {
   process.env.AI_FEATURE_ENABLED = 'true';
-  process.env.AI_ALLOW_NON_PRODUCTION = 'true';
   process.env.OPENAI_API_KEY = 'test-key';
   process.env.OPENAI_MODEL = 'test-model';
   process.env.VERCEL_ENV = 'preview';
@@ -58,12 +56,12 @@ function openAiResponse(result, status = 200) {
   }), { status, headers: { 'Content-Type': 'application/json' } });
 }
 
-test('production is blocked before a model request can be made', () => {
+test('production is allowed when the feature and model configuration are enabled', () => {
   const restore = preserveEnvironment();
   try {
     enableTestAi();
     process.env.VERCEL_ENV = 'production';
-    assert.throws(assertAiAvailable, (error) => error.code === 'AI_NOT_AVAILABLE' && error.status === 503);
+    assert.doesNotThrow(assertAiAvailable);
   } finally {
     restore();
   }
@@ -75,6 +73,21 @@ test('feature flag disabled blocks AI', () => {
     enableTestAi();
     process.env.AI_FEATURE_ENABLED = 'false';
     assert.throws(assertAiAvailable, (error) => error.code === 'AI_NOT_AVAILABLE' && error.status === 503);
+  } finally {
+    restore();
+  }
+});
+
+test('missing key or model blocks AI in every environment', () => {
+  const restore = preserveEnvironment();
+  try {
+    enableTestAi();
+    process.env.VERCEL_ENV = 'production';
+    delete process.env.OPENAI_API_KEY;
+    assert.throws(assertAiAvailable, (error) => error.code === 'AI_NOT_CONFIGURED' && error.status === 503);
+    process.env.OPENAI_API_KEY = 'test-key';
+    delete process.env.OPENAI_MODEL;
+    assert.throws(assertAiAvailable, (error) => error.code === 'AI_NOT_CONFIGURED' && error.status === 503);
   } finally {
     restore();
   }

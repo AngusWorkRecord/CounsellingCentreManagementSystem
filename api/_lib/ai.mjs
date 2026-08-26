@@ -92,11 +92,7 @@ export function getSql() {
 
 export function assertAiAvailable() {
   const enabled = process.env.AI_FEATURE_ENABLED === 'true';
-  const nonProductionAllowed = process.env.AI_ALLOW_NON_PRODUCTION === 'true';
-  const isProduction = process.env.VERCEL_ENV
-    ? process.env.VERCEL_ENV === 'production'
-    : process.env.NODE_ENV === 'production';
-  if (!enabled || isProduction || !nonProductionAllowed) throw apiError('AI_NOT_AVAILABLE', 503);
+  if (!enabled) throw apiError('AI_NOT_AVAILABLE', 503);
   if (!process.env.OPENAI_API_KEY || !process.env.OPENAI_MODEL) throw apiError('AI_NOT_CONFIGURED', 503);
 }
 
