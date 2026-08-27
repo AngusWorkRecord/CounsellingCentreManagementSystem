@@ -106,6 +106,7 @@ export function createManagementInsightsHandler(overrides = {}) {
              report_completed, notification_sent, amount_received_rm
       FROM public.counselling_sessions
       WHERE counselling_date BETWEEN ${filters.dateFrom}::date AND ${filters.dateTo}::date
+        AND deleted_at IS NULL
     `;
     const aggregate = buildAggregate(rows, filters);
     const scopeKey = createScopeKey('management_insights', { filters, aggregate: aggregate.payload });

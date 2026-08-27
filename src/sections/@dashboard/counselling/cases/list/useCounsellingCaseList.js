@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { getCounsellingSessions } from '../../../../../services/counsellingSessionService';
+import {
+  deleteCounsellingSession,
+  getCounsellingSessions,
+} from '../../../../../services/counsellingSessionService';
 import {
   filterSessionsByPeriod,
   formatPeriodLabel,
@@ -27,6 +30,7 @@ export default function useCounsellingCaseList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [reloadKey, setReloadKey] = useState(0);
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -108,6 +112,16 @@ export default function useCounsellingCaseList() {
     completed: cases.filter((item) => item.workflowStatus === WORKFLOW_STATUS.COMPLETED).length,
   };
 
+  const handleDelete = async (id) => {
+    setDeletingId(id);
+    try {
+      await deleteCounsellingSession(id);
+      setSessions((current) => current.filter((session) => String(session.id) !== String(id)));
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   return {
     loading,
     error,
@@ -139,5 +153,7 @@ export default function useCounsellingCaseList() {
     cases,
     pendingCases,
     summary,
+    deletingId,
+    deleteCase: handleDelete,
   };
 }

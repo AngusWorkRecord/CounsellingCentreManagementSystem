@@ -97,3 +97,29 @@ export async function updateCounsellingSession(id, payload) {
 
   return result.data;
 }
+
+export async function deleteCounsellingSession(id) {
+  const response = await fetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+  });
+
+  let result;
+
+  try {
+    result = await response.json();
+  } catch (error) {
+    throw new Error('The counselling sessions API returned an invalid response');
+  }
+
+  if (!response.ok || !result.success) {
+    const error = new Error(result.message || '无法删除个案');
+    error.status = response.status;
+    throw error;
+  }
+
+  if (!result.data || typeof result.data !== 'object') {
+    throw new Error('The counselling sessions API returned invalid data');
+  }
+
+  return result.data;
+}

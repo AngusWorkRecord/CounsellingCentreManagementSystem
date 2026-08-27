@@ -39,7 +39,8 @@ export function createCaseAdviceHandler(overrides = {}) {
     sql = dependencies.getSql();
     const rows = await sql`
       SELECT id, client_summary, volunteer_actions, updated_at
-      FROM public.counselling_sessions WHERE id = ${sessionId}::bigint
+      FROM public.counselling_sessions
+      WHERE id = ${sessionId}::bigint AND deleted_at IS NULL
     `;
     if (!rows.length) throw apiError('ANALYSIS_NOT_FOUND', 404);
     const row = rows[0];

@@ -1,8 +1,8 @@
 import { neon } from '@neondatabase/serverless';
 
 export default async function handler(request, response) {
-  if (!['GET', 'POST', 'PUT'].includes(request.method)) {
-    response.setHeader('Allow', 'GET, POST, PUT');
+  if (!['GET', 'POST', 'PUT', 'DELETE'].includes(request.method)) {
+    response.setHeader('Allow', 'GET, POST, PUT, DELETE');
     return response.status(405).json({
       success: false,
       message: 'Method not allowed',
@@ -62,11 +62,30 @@ export default async function handler(request, response) {
     const body = request.body || {};
     const requestedId = request.query?.id;
 
-    if (request.method === 'PUT'
+    if (['PUT', 'DELETE'].includes(request.method)
       && (Array.isArray(requestedId) || !/^[1-9]\d*$/.test(String(requestedId || '')))) {
       return response.status(400).json({
         success: false,
         message: 'A valid counselling session ID is required',
+      });
+    }
+
+    if (request.method === 'DELETE') {
+      const rows = await sql`
+        SELECT *
+        FROM public.soft_delete_counselling_session(${String(requestedId)}::bigint)
+      `;
+
+      if (rows.length === 0) {
+        return response.status(404).json({
+          success: false,
+          message: 'Counselling session not found',
+        });
+      }
+
+      return response.status(200).json({
+        success: true,
+        data: rows[0],
       });
     }
 
