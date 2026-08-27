@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
+  Alert,
   Box,
   Button,
   IconButton,
+  MenuItem,
   Stack,
   Table,
   TableBody,
@@ -15,11 +17,17 @@ import {
 } from '@mui/material';
 import Label from '../../../../../components/label';
 import Iconify from '../../../../../components/iconify';
+import ConfirmDialog from '../../../../../components/confirm-dialog';
+import MenuPopover from '../../../../../components/menu-popover';
 import { TablePaginationCustom, useTable } from '../../../../../components/table';
 
 const columns = ['个案编号', '日期', '案主简称', '值班类别', '个案类别', '辅导员', '辅导时长', '简要报告', '详细报告', '款项', '操作'];
 
-export default function CaseTable({ cases, onEdit, onView }) {
+export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView }) {
+  const [menuAnchor, setMenuAnchor] = useState(null);
+  const [selectedCase, setSelectedCase] = useState(null);
+  const [deleteCase, setDeleteCase] = useState(null);
+  const [deleteError, setDeleteError] = useState('');
   const {
     dense,
     page,
@@ -36,6 +44,24 @@ export default function CaseTable({ cases, onEdit, onView }) {
   useEffect(() => {
     if (page >= pageCount) setPage(pageCount - 1);
   }, [page, pageCount, setPage]);
+
+  const closeMenu = () => setMenuAnchor(null);
+
+  const handleMenuAction = (action) => {
+    if (selectedCase) action(selectedCase.id);
+    closeMenu();
+  };
+
+  const handleConfirmDelete = async () => {
+    setDeleteError('');
+    try {
+      await onDelete(deleteCase.id);
+      setDeleteCase(null);
+      setSelectedCase(null);
+    } catch (error) {
+      setDeleteError(error.message || '无法删除个案，请稍后再试');
+    }
+  };
 
   return (
     <Box sx={{ border: 1, borderColor: 'divider', borderRadius: 2, overflow: 'hidden' }}>
@@ -92,22 +118,17 @@ export default function CaseTable({ cases, onEdit, onView }) {
                 </TableCell>
                 <TableCell sx={{ whiteSpace: 'nowrap' }}>RM{item.amount}</TableCell>
                 <TableCell>
-                  <Stack direction="row" alignItems="center" spacing={0.25} sx={{ whiteSpace: 'nowrap' }}>
-                    <Button
+                  <Stack direction="row" alignItems="center" sx={{ whiteSpace: 'nowrap' }}>
+                    <IconButton
                       size="small"
-                      startIcon={<Iconify icon="eva:eye-outline" />}
-                      onClick={() => onView(item.id)}
+                      color={menuAnchor && selectedCase?.id === item.id ? 'primary' : 'default'}
+                      onClick={(event) => {
+                        setSelectedCase(item);
+                        setMenuAnchor(event.currentTarget);
+                      }}
                     >
-                      查看详情
-                    </Button>
-                    <Button
-                      size="small"
-                      startIcon={<Iconify icon="eva:edit-2-outline" />}
-                      onClick={() => onEdit(item.id)}
-                    >
-                      编辑
-                    </Button>
-                    <IconButton size="small"><Iconify icon="eva:more-vertical-fill" /></IconButton>
+                      <Iconify icon="eva:more-vertical-fill" />
+                    </IconButton>
                   </Stack>
                 </TableCell>
               </TableRow>
@@ -115,6 +136,55 @@ export default function CaseTable({ cases, onEdit, onView }) {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <MenuPopover open={menuAnchor} onClose={closeMenu} arrow="right-top" sx={{ width: 160 }}>
+        <MenuItem onClick={() => handleMenuAction(onView)}>
+          <Iconify icon="eva:eye-outline" />
+          查看详情
+        </MenuItem>
+        <MenuItem onClick={() => handleMenuAction(onEdit)}>
+          <Iconify icon="eva:edit-2-outline" />
+          编辑
+        </MenuItem>
+        <MenuItem
+          sx={{ color: 'error.main' }}
+          onClick={() => {
+            setDeleteCase(selectedCase);
+            setDeleteError('');
+            closeMenu();
+          }}
+        >
+          <Iconify icon="eva:trash-2-outline" />
+          删除
+        </MenuItem>
+      </MenuPopover>
+
+      <ConfirmDialog
+        open={Boolean(deleteCase)}
+        onClose={() => {
+          if (deletingId == null) {
+            setDeleteCase(null);
+            setDeleteError('');
+          }
+        }}
+        title="删除个案"
+        content={
+          <>
+            确定要删除这个个案吗？删除后将不会显示在系统中。
+            {deleteError && <Alert severity="error" sx={{ mt: 2 }}>{deleteError}</Alert>}
+          </>
+        }
+        action={
+          <Button
+            variant="contained"
+            color="error"
+            disabled={deletingId != null}
+            onClick={handleConfirmDelete}
+          >
+            {deletingId != null ? '删除中…' : '删除'}
+          </Button>
+        }
+      />
 
       <TablePaginationCustom
         component="div"
@@ -139,6 +209,8 @@ export default function CaseTable({ cases, onEdit, onView }) {
 
 CaseTable.propTypes = {
   cases: PropTypes.array.isRequired,
+  deletingId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onView: PropTypes.func.isRequired,
 };
