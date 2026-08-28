@@ -20,7 +20,8 @@ export default function SessionModeDistributionChart({ onSelect, sessions }) {
           const selected = data[config.dataPointIndex];
           if (selected) {
             onSelect({
-              title: `${selected.label}个案概览`,
+              // 中文原文：个案概览
+              title: `${selected.label} Case Overview`,
               sessions: sessions.filter((session) => session.session_mode === selected.label),
             });
           }
@@ -31,13 +32,13 @@ export default function SessionModeDistributionChart({ onSelect, sessions }) {
     colors: [theme.palette.primary.main, theme.palette.info.main, theme.palette.success.main],
     legend: { position: 'right', horizontalAlign: 'center' },
     dataLabels: { enabled: true, formatter: (value) => `${Math.round(value)}%` },
-    tooltip: { y: { formatter: (value) => `${value} 宗` } },
+    tooltip: { y: { formatter: (value) => `${value} cases` } },
     plotOptions: { pie: { donut: { size: '56%' } } },
   });
 
   return (
     <Card sx={{ height: 1 }}>
-      <CardHeader title="A. 值班类别分布" />
+      {/* 中文原文：值班类别分布 */}<CardHeader title="A. Session Mode Distribution" />
       <Box sx={{ px: 2, pb: 2, '& .apexcharts-series': { cursor: 'pointer' } }} dir="ltr">
         {data.length ? (
           <Chart type="donut" series={data.map((item) => item.value)} options={options} height={300} />

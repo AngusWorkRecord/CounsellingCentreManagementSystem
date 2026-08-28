@@ -15,7 +15,8 @@ export default function CounsellingCaseListPage() {
 
   return (
     <>
-      <Helmet><title>个案列表 | 辅导中心</title></Helmet>
+      {/* 中文原文：个案列表 | 辅导中心 */}
+      <Helmet><title>Case List | Counselling Centre</title></Helmet>
       <Container maxWidth={false}>
         <CaseListHeader
           filteredCount={caseList.filteredCount}

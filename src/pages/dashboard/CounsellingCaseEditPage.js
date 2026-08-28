@@ -32,7 +32,8 @@ export default function CounsellingCaseEditPage() {
         setSession(await getCounsellingSessionById(id, { signal: controller.signal }));
       } catch (requestError) {
         if (requestError.name !== 'AbortError') {
-          setError(requestError.message || '无法读取个案资料');
+          // 中文原文：无法读取个案资料
+          setError(requestError.message || 'Unable to retrieve case data');
         }
       } finally {
         if (!controller.signal.aborted) setLoading(false);
@@ -47,27 +48,30 @@ export default function CounsellingCaseEditPage() {
 
   return (
     <>
-      <Helmet><title>编辑个案 | 辅导中心</title></Helmet>
+      {/* 中文原文：编辑个案 | 辅导中心 */}
+      <Helmet><title>Edit Case | Counselling Centre</title></Helmet>
       <Container maxWidth="lg">
-        <Typography variant="h3" sx={{ mb: 3 }}>编辑个案</Typography>
+        {/* 中文原文：编辑个案 */}
+        <Typography variant="h3" sx={{ mb: 3 }}>Edit Case</Typography>
 
         {loading && (
           <Stack alignItems="center" justifyContent="center" sx={{ minHeight: 420 }}>
             <CircularProgress />
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>正在读取个案资料…</Typography>
+            {/* 中文原文：正在读取个案资料… */}
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>Loading case data…</Typography>
           </Stack>
         )}
 
         {!loading && !validId && (
-          <Alert severity="warning" action={<Button color="inherit" onClick={goBack}>返回列表</Button>}>
-            无效的个案 ID。
+          <Alert severity="warning" action={<Button color="inherit" onClick={goBack}>Back to List</Button>}>
+            {/* 中文原文：返回列表；无效的个案 ID。 */}Invalid case ID.
           </Alert>
         )}
 
         {!loading && validId && error && (
           <Alert
             severity="error"
-            action={<Button color="inherit" onClick={() => setReloadKey((value) => value + 1)}>重新加载</Button>}
+            action={<Button color="inherit" onClick={() => setReloadKey((value) => value + 1)}>Reload</Button>}
           >
             {error}
           </Alert>

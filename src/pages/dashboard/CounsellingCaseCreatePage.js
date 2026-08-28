@@ -5,9 +5,11 @@ import CaseCreateForm from '../../sections/@dashboard/counselling/cases/create/C
 export default function CounsellingCaseCreatePage() {
   return (
     <>
-      <Helmet><title>新增个案 | 辅导中心</title></Helmet>
+      {/* 中文原文：新增个案 | 辅导中心 */}
+      <Helmet><title>Create Case | Counselling Centre</title></Helmet>
       <Container maxWidth="lg">
-        <Typography variant="h3" sx={{ mb: 3 }}>新增个案</Typography>
+        {/* 中文原文：新增个案 */}
+        <Typography variant="h3" sx={{ mb: 3 }}>Create Case</Typography>
         <CaseCreateForm />
       </Container>
     </>

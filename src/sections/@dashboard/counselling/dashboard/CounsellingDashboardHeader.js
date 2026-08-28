@@ -12,9 +12,9 @@ export default function CounsellingDashboardHeader({ filteredCount, periodFilter
       sx={{ mb: 3 }}
     >
       <Box>
-        <Typography variant="h3" gutterBottom>辅导个案管理 Dashboard</Typography>
+        {/* 中文原文：辅导个案管理 Dashboard */}<Typography variant="h3" gutterBottom>Counselling Case Management Dashboard</Typography>
         <Typography variant="body2" color="text.secondary">
-          样本期间：{periodLabel} ｜ 数据笔数：{filteredCount}
+          {/* 中文原文：样本期间、数据笔数 */}Period: {periodLabel} | Records: {filteredCount}
         </Typography>
       </Box>
       <CounsellingPeriodFilter {...periodFilter} />

@@ -37,32 +37,32 @@ export default function CounsellingCasePreviewCard({ onView, session }) {
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
           <Typography variant="h6" color="primary.main" sx={{ wordBreak: 'break-word' }}>
-            {session.case_number || `个案 #${session.id || '-'}`}
+            {/* 中文原文：个案 */}{session.case_number || `Case #${session.id || '-'}`}
           </Typography>
           <Typography variant="subtitle1" color="primary.main" sx={{ mt: 1 }}>
-            {session.client_initials || '-'} · {session.case_category || '未分类'}
+            {/* 中文原文：未分类 */}{session.client_initials || '-'} · {session.case_category || 'Uncategorised'}
           </Typography>
         </Grid>
 
         <Grid item xs={12} md={9}>
           <Grid container spacing={1.5}>
             <Grid item xs={12} sm={6}>
-              <Info icon="eva:person-outline" label="辅导员" value={session.counsellor} />
+              <Info icon="eva:person-outline" label="Counsellor" value={session.counsellor} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Info icon="eva:calendar-outline" label="日期" value={formatDate(session.counselling_date)} />
+              <Info icon="eva:calendar-outline" label="Date" value={formatDate(session.counselling_date)} />
             </Grid>
             <Grid item xs={12} sm={6}>
               <Info
                 icon="eva:clock-outline"
-                label="时间"
+                label="Time"
                 value={`${formatTime(session.session_start)} – ${formatTime(session.session_end)}`}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <Info
                 icon="eva:pie-chart-outline"
-                label="辅导时长"
+                label="Duration"
                 value={formatDuration(session.duration_minutes)}
               />
             </Grid>
@@ -80,7 +80,7 @@ export default function CounsellingCasePreviewCard({ onView, session }) {
         sx={{ mt: 2 }}
       >
         <Box sx={{ mt: 2 }}>
-          <Typography variant="subtitle2" sx={{ mb: 0.5 }}>个案摘要</Typography>
+          {/* 中文原文：个案摘要 */}<Typography variant="subtitle2" sx={{ mb: 0.5 }}>Case Summary</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
             {session.client_summary || '-'}
           </Typography>
@@ -92,7 +92,7 @@ export default function CounsellingCasePreviewCard({ onView, session }) {
           onClick={() => onView(session.id)}
           endIcon={<Iconify icon="eva:arrow-forward-outline" />}
         >
-          查看个案详情
+          {/* 中文原文：查看个案详情 */}View Case Details
         </Button>
       </Stack>
     </Card>

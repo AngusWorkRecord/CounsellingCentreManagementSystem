@@ -19,7 +19,7 @@ export default function ChartEmptyState({ height = 300 }) {
       }}
     >
       <Iconify icon="eva:bar-chart-2-outline" width={40} sx={{ mb: 1 }} />
-      <Typography variant="body2">该月份暂无数据</Typography>
+      {/* 中文原文：该月份暂无数据 */}<Typography variant="body2">No data available for this month</Typography>
     </Box>
   );
 }

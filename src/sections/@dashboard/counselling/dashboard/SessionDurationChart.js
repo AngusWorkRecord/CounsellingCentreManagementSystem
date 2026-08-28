@@ -11,16 +11,17 @@ SessionDurationChart.propTypes = {
 
 function buildLabels(sessions) {
   const totals = sessions.reduce((counts, session) => {
-    const initials = session.client_initials || '未知';
+    // 中文原文：未知
+    const initials = session.client_initials || 'Unknown';
     counts[initials] = (counts[initials] || 0) + 1;
     return counts;
   }, {});
 
   return sessions.map((session) => {
-    const initials = session.client_initials || '未知';
+    const initials = session.client_initials || 'Unknown';
     if (totals[initials] === 1) return initials;
     const suffix = String(session.case_number || session.id || '').split('/').pop();
-    return `${initials}-${suffix || '个案'}`;
+    return `${initials}-${suffix || 'Case'}`;
   });
 }
 
@@ -37,7 +38,8 @@ export default function SessionDurationChart({ onSelect, sessions }) {
           const session = sortedSessions[config.dataPointIndex];
           if (session) {
             onSelect({
-              title: `${session.client_initials || '个案'}辅导概览`,
+              // 中文原文：个案、辅导概览
+              title: `${session.client_initials || 'Case'} Counselling Overview`,
               sessions: [session],
             });
           }
@@ -53,18 +55,18 @@ export default function SessionDurationChart({ onSelect, sessions }) {
         trim: false,
       },
     },
-    yaxis: { min: 0, title: { text: '分钟' } },
+    yaxis: { min: 0, title: { text: 'Minutes' } },
     colors: ['#10A7B5'],
     dataLabels: { enabled: showDataLabels },
     grid: { padding: { bottom: 12 } },
     legend: { show: false },
-    tooltip: { y: { formatter: (value) => `${value} 分钟` } },
+    tooltip: { y: { formatter: (value) => `${value} minutes` } },
     plotOptions: { bar: { columnWidth: '45%' } },
   });
 
   return (
     <Card sx={{ height: 1 }}>
-      <CardHeader title="D. 个案辅导时长（分钟）" />
+      {/* 中文原文：个案辅导时长（分钟） */}<CardHeader title="D. Case Counselling Duration (Minutes)" />
       <Box
         sx={{
           px: 2,
@@ -79,7 +81,7 @@ export default function SessionDurationChart({ onSelect, sessions }) {
           <Box sx={{ minWidth: chartMinWidth }}>
             <Chart
               type="bar"
-              series={[{ name: '时长', data: sortedSessions.map((session) => toNumber(session.duration_minutes)) }]}
+              series={[{ name: 'Duration', data: sortedSessions.map((session) => toNumber(session.duration_minutes)) }]}
               options={options}
               height={340}
             />

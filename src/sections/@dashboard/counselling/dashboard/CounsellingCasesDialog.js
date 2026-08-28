@@ -16,7 +16,7 @@ export default function CounsellingCasesDialog({ onClose, onView, open, sessions
       <DialogTitle sx={{ pr: 6 }}>
         <Typography variant="h4">{title}</Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-          共 {sessions.length} 宗个案
+          {/* 中文原文：共 X 宗个案 */}{sessions.length} case{sessions.length === 1 ? '' : 's'}
         </Typography>
         <IconButton onClick={onClose} sx={{ position: 'absolute', top: 12, right: 12 }}>
           <Iconify icon="eva:close-fill" />

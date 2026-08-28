@@ -20,7 +20,8 @@ export default function CounsellorWorkloadChart({ onSelect, sessions }) {
           const selected = data[config.dataPointIndex];
           if (selected) {
             onSelect({
-              title: `${selected.label}负责的个案`,
+              // 中文原文：负责的个案
+              title: `Cases Assigned to ${selected.label}`,
               sessions: sessions.filter((session) => session.counsellor === selected.label),
             });
           }
@@ -30,13 +31,13 @@ export default function CounsellorWorkloadChart({ onSelect, sessions }) {
     xaxis: { categories: data.map((item) => item.label), min: 0, tickAmount: 4 },
     dataLabels: { enabled: true },
     legend: { show: false },
-    tooltip: { y: { formatter: (value) => `${value} 宗` } },
+    tooltip: { y: { formatter: (value) => `${value} cases` } },
     plotOptions: { bar: { horizontal: true, barHeight: '45%' } },
   });
 
   return (
     <Card sx={{ height: 1 }}>
-      <CardHeader title="C. 每位辅导员处理个案数" />
+      {/* 中文原文：每位辅导员处理个案数 */}<CardHeader title="C. Cases per Counsellor" />
       <Box
         sx={{
           px: 2,
@@ -51,7 +52,7 @@ export default function CounsellorWorkloadChart({ onSelect, sessions }) {
         {data.length ? (
           <Chart
             type="bar"
-            series={[{ name: '个案数', data: data.map((item) => item.value) }]}
+            series={[{ name: 'Number of Cases', data: data.map((item) => item.value) }]}
             options={options}
             height={chartHeight}
           />

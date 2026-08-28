@@ -21,7 +21,8 @@ import ConfirmDialog from '../../../../../components/confirm-dialog';
 import MenuPopover from '../../../../../components/menu-popover';
 import { TablePaginationCustom, useTable } from '../../../../../components/table';
 
-const columns = ['个案编号', '日期', '案主简称', '值班类别', '个案类别', '辅导员', '辅导时长', '简要报告', '详细报告', '款项', '操作'];
+// 中文原文：个案编号、日期、案主简称、值班类别、个案类别、辅导员、辅导时长、简要报告、详细报告、款项、操作
+const columns = ['Case Number', 'Date', 'Client Initials', 'Session Mode', 'Case Category', 'Counsellor', 'Duration', 'Brief Report', 'Detailed Report', 'Payment', 'Actions'];
 
 export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView }) {
   const [menuAnchor, setMenuAnchor] = useState(null);
@@ -59,7 +60,8 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
       setDeleteCase(null);
       setSelectedCase(null);
     } catch (error) {
-      setDeleteError(error.message || '无法删除个案，请稍后再试');
+      // 中文原文：无法删除个案，请稍后再试
+      setDeleteError(error.message || 'Unable to delete the case. Please try again later.');
     }
   };
 
@@ -78,7 +80,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                 <TableCell colSpan={columns.length} align="center" sx={{ py: 8 }}>
                   <Iconify icon="eva:inbox-outline" width={36} sx={{ color: 'text.disabled', mb: 1 }} />
                   <Typography variant="body2" color="text.secondary">
-                    没有符合筛选条件的个案记录
+                    {/* 中文原文：没有符合筛选条件的个案记录 */}No cases match the selected filters
                   </Typography>
                 </TableCell>
               </TableRow>
@@ -96,7 +98,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                   {item.briefReportCompleted ? (
                     <Label color="success">{item.caseNumber}</Label>
                   ) : (
-                    <Button size="small" variant="outlined">立即填写</Button>
+                    <Button size="small" variant="outlined">Complete Now</Button>
                   )}
                 </TableCell>
                 <TableCell sx={{ maxWidth: 220 }}>
@@ -113,7 +115,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                       {item.reportUrl}
                     </Button>
                   ) : (
-                    <Button size="small" variant="outlined">立即填写</Button>
+                    <Button size="small" variant="outlined">Complete Now</Button>
                   )}
                 </TableCell>
                 <TableCell sx={{ whiteSpace: 'nowrap' }}>RM{item.amount}</TableCell>
@@ -140,11 +142,11 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
       <MenuPopover open={menuAnchor} onClose={closeMenu} arrow="right-top" sx={{ width: 160 }}>
         <MenuItem onClick={() => handleMenuAction(onView)}>
           <Iconify icon="eva:eye-outline" />
-          查看详情
+          {/* 中文原文：查看详情 */}View Details
         </MenuItem>
         <MenuItem onClick={() => handleMenuAction(onEdit)}>
           <Iconify icon="eva:edit-2-outline" />
-          编辑
+          {/* 中文原文：编辑 */}Edit
         </MenuItem>
         <MenuItem
           sx={{ color: 'error.main' }}
@@ -155,7 +157,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
           }}
         >
           <Iconify icon="eva:trash-2-outline" />
-          删除
+          {/* 中文原文：删除 */}Delete
         </MenuItem>
       </MenuPopover>
 
@@ -167,10 +169,11 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
             setDeleteError('');
           }
         }}
-        title="删除个案"
+        title="Delete Case"
         content={
           <>
-            确定要删除这个个案吗？删除后将不会显示在系统中。
+            {/* 中文原文：确定要删除这个个案吗？删除后将不会显示在系统中。 */}
+            Are you sure you want to delete this case? It will no longer appear in the system.
             {deleteError && <Alert severity="error" sx={{ mt: 2 }}>{deleteError}</Alert>}
           </>
         }
@@ -181,7 +184,8 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
             disabled={deletingId != null}
             onClick={handleConfirmDelete}
           >
-            {deletingId != null ? '删除中…' : '删除'}
+            {/* 中文原文：删除中…、删除 */}
+            {deletingId != null ? 'Deleting…' : 'Delete'}
           </Button>
         }
       />
@@ -195,13 +199,13 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
         onPageChange={onChangePage}
         onRowsPerPageChange={onChangeRowsPerPage}
         dense={dense}
-        denseLabel="紧凑视图"
+        denseLabel="Compact view"
         onChangeDense={onChangeDense}
-        labelRowsPerPage="每页行数："
+        labelRowsPerPage="Rows per page:"
         labelDisplayedRows={({ from, to, count }) =>
-          `显示第 ${count === 0 ? 0 : from}–${count === 0 ? 0 : to} 条，共 ${count} 条`
+          `${count === 0 ? 0 : from}–${count === 0 ? 0 : to} of ${count}`
         }
-        getItemAriaLabel={(type) => (type === 'previous' ? '上一页' : '下一页')}
+        getItemAriaLabel={(type) => (type === 'previous' ? 'Previous page' : 'Next page')}
       />
     </Box>
   );

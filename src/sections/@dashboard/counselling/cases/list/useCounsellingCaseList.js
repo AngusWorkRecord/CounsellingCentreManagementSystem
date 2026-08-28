@@ -42,7 +42,8 @@ export default function useCounsellingCaseList() {
         setSessions(await getCounsellingSessions({ signal: controller.signal }));
       } catch (requestError) {
         if (requestError.name !== 'AbortError') {
-          setError(requestError.message || '无法读取辅导个案资料');
+          // 中文原文：无法读取辅导个案资料
+          setError(requestError.message || 'Unable to retrieve counselling case data');
         }
       } finally {
         if (!controller.signal.aborted) setLoading(false);

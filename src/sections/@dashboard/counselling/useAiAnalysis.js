@@ -24,7 +24,8 @@ export default function useAiAnalysis({ generate, loadLatest, scopeKey }) {
         }
       })
       .catch((requestError) => {
-        if (requestError.name !== 'AbortError') setError(requestError.message || '无法读取 AI 分析');
+        // 中文原文：无法读取 AI 分析
+        if (requestError.name !== 'AbortError') setError(requestError.message || 'Unable to retrieve AI analysis');
       })
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
@@ -43,7 +44,8 @@ export default function useAiAnalysis({ generate, loadLatest, scopeKey }) {
       setAnalysis(data);
       setAnalysisScopeKey(scopeKey);
     } catch (requestError) {
-      if (requestError.name !== 'AbortError') setError(requestError.message || '无法生成 AI 分析');
+      // 中文原文：无法生成 AI 分析
+      if (requestError.name !== 'AbortError') setError(requestError.message || 'Unable to generate AI analysis');
     } finally {
       if (!controller.signal.aborted) setLoading(false);
     }

@@ -24,14 +24,15 @@ DetailItem.propTypes = {
 export default function CaseOverviewCard({ session }) {
   const amount = Number(session.amount_received_rm || 0);
   const details = [
-    ['eva:person-outline', '案主简称', session.client_initials],
-    ['eva:briefcase-outline', '个案类别', session.case_category],
-    ['eva:message-square-outline', '辅导类型', session.session_mode],
-    ['eva:people-outline', '辅导员', session.counsellor],
-    ['eva:calendar-outline', '日期', formatDate(session.counselling_date)],
-    ['eva:clock-outline', '时间', `${formatTime(session.session_start)} – ${formatTime(session.session_end)}`],
-    ['eva:pie-chart-outline', '时长', `${valueOrDash(session.duration_minutes)} 分钟`],
-    ['eva:phone-outline', '联系电话', session.client_phone],
+    // 中文原文：案主简称、个案类别、辅导类型、辅导员、日期、时间、时长、分钟、联系电话
+    ['eva:person-outline', 'Client Initials', session.client_initials],
+    ['eva:briefcase-outline', 'Case Category', session.case_category],
+    ['eva:message-square-outline', 'Session Mode', session.session_mode],
+    ['eva:people-outline', 'Counsellor', session.counsellor],
+    ['eva:calendar-outline', 'Date', formatDate(session.counselling_date)],
+    ['eva:clock-outline', 'Time', `${formatTime(session.session_start)} – ${formatTime(session.session_end)}`],
+    ['eva:pie-chart-outline', 'Duration', `${valueOrDash(session.duration_minutes)} minutes`],
+    ['eva:phone-outline', 'Contact Number', session.client_phone],
   ];
 
   return (
@@ -50,12 +51,12 @@ export default function CaseOverviewCard({ session }) {
           </Grid>
         </Box>
         <Stack alignItems={{ xs: 'flex-start', md: 'flex-end' }} spacing={1} sx={{ minWidth: 170 }}>
-          <Typography variant="caption" color="text.secondary">当前状态</Typography>
+          {/* 中文原文：当前状态 */}<Typography variant="caption" color="text.secondary">Current Status</Typography>
           <Chip
             color={session.report_url ? 'success' : 'warning'}
-            label={session.report_url ? '详细报告已提交' : '处理中'}
+            label={session.report_url ? 'Detailed Report Submitted' : 'In Progress'}
           />
-          <Chip color="info" variant="outlined" label={`已收款 RM${amount.toFixed(2)}`} />
+          <Chip color="info" variant="outlined" label={`Paid RM${amount.toFixed(2)}`} />
         </Stack>
       </Stack>
     </Card>

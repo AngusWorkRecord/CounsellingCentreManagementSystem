@@ -5,19 +5,20 @@ import { formatDate, formatTime } from './utils';
 
 export default function CaseStatusCard({ session }) {
   const steps = [
-    { label: '个案预约', complete: true, detail: `${formatDate(session.counselling_date)} ${formatTime(session.session_start)}` },
+    // 中文原文：个案预约、辅导已完成、简要报告已提交、详细报告已提交
+    { label: 'Case Appointment', complete: true, detail: `${formatDate(session.counselling_date)} ${formatTime(session.session_start)}` },
     {
-      label: '辅导已完成',
+      label: 'Counselling Completed',
       complete: Boolean(String(session.session_end || '').trim()),
       detail: session.session_end ? `${formatDate(session.counselling_date)} ${formatTime(session.session_end)}` : '',
     },
-    { label: '简要报告已提交', complete: Boolean(String(session.volunteer_actions || '').trim()), detail: '' },
-    { label: '详细报告已提交', complete: Boolean(String(session.report_url || '').trim()), detail: '' },
+    { label: 'Brief Report Submitted', complete: Boolean(String(session.volunteer_actions || '').trim()), detail: '' },
+    { label: 'Detailed Report Submitted', complete: Boolean(String(session.report_url || '').trim()), detail: '' },
   ];
 
   return (
     <Card sx={{ p: 3 }}>
-      <Typography variant="h6" sx={{ mb: 2.5 }}>个案状态</Typography>
+      {/* 中文原文：个案状态 */}<Typography variant="h6" sx={{ mb: 2.5 }}>Case Status</Typography>
       <Stack>
         {steps.map((step, index) => (
           <Stack key={step.label} direction="row" spacing={1.5} sx={{ minHeight: 70 }}>

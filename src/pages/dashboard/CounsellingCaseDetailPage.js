@@ -40,7 +40,8 @@ export default function CounsellingCaseDetailPage() {
         setSession(await getCounsellingSessionById(id, { signal: controller.signal }));
       } catch (requestError) {
         if (requestError.name !== 'AbortError') {
-          setError(requestError.message || '无法读取辅导个案资料');
+          // 中文原文：无法读取辅导个案资料
+          setError(requestError.message || 'Unable to retrieve counselling case data');
         }
       } finally {
         if (!controller.signal.aborted) setLoading(false);
@@ -56,7 +57,8 @@ export default function CounsellingCaseDetailPage() {
 
   return (
     <>
-      <Helmet><title>个案详情 | 辅导中心</title></Helmet>
+      {/* 中文原文：个案详情 | 辅导中心 */}
+      <Helmet><title>Case Details | Counselling Centre</title></Helmet>
       <Container maxWidth={false}>
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
@@ -67,14 +69,15 @@ export default function CounsellingCaseDetailPage() {
         >
           <Box>
           
-            <Typography variant="h3" gutterBottom>个案详情</Typography>
+            {/* 中文原文：个案详情 */}
+            <Typography variant="h3" gutterBottom>Case Details</Typography>
             
           </Box>
           <Stack alignItems={{ xs: 'stretch', sm: 'flex-end' }} spacing={1.5}>
             
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
               <Button variant="outlined" size="large" startIcon={<Iconify icon="eva:arrow-back-fill" />} onClick={goBack}>
-                返回个案列表
+                {/* 中文原文：返回个案列表 */}Back to Case List
               </Button>
               {session?.report_url && (
                 <Button
@@ -86,7 +89,7 @@ export default function CounsellingCaseDetailPage() {
                   size="large"
                   startIcon={<Iconify icon="eva:file-text-outline" />}
                 >
-                  查看详细报告
+                  {/* 中文原文：查看详细报告 */}View Detailed Report
                 </Button>
               )}
             </Stack>
@@ -96,14 +99,15 @@ export default function CounsellingCaseDetailPage() {
         {loading && (
           <Stack alignItems="center" justifyContent="center" sx={{ minHeight: 420 }}>
             <CircularProgress />
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>正在读取个案资料…</Typography>
+            {/* 中文原文：正在读取个案资料… */}
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>Loading case data…</Typography>
           </Stack>
         )}
 
         {!loading && error && (
           <Alert
             severity="error"
-            action={<Button color="inherit" size="small" onClick={() => setReloadKey((value) => value + 1)}>重新加载</Button>}
+            action={<Button color="inherit" size="small" onClick={() => setReloadKey((value) => value + 1)}>Reload</Button>}
           >
             {error}
           </Alert>
@@ -112,9 +116,10 @@ export default function CounsellingCaseDetailPage() {
         {!loading && !error && (!validId || !session) && (
           <Alert
             severity="warning"
-            action={<Button color="inherit" size="small" onClick={goBack}>返回列表</Button>}
+            action={<Button color="inherit" size="small" onClick={goBack}>Back to List</Button>}
           >
-            找不到 ID 为“{id || '-'}”的辅导个案。
+            {/* 中文原文：找不到指定 ID 的辅导个案。 */}
+            Counselling case with ID “{id || '-'}” was not found.
           </Alert>
         )}
 

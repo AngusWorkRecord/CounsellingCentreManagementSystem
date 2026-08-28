@@ -6,7 +6,8 @@ import {
   getWorkflowStatus,
 } from '../workflow';
 
-export const ALL = '全部';
+// 中文原文：全部
+export const ALL = 'All';
 export const INITIAL_FILTERS = {
   search: '',
   sessionMode: ALL,
@@ -42,8 +43,9 @@ export function mapSessionToCase(session, index) {
     reportUrl: String(session.report_url || '').trim(),
     date: String(session.counselling_date || '').slice(0, 10),
     initials: session.client_initials || '-',
-    sessionMode: session.session_mode || '未分类',
-    category: session.case_category || '未分类',
+    // 中文原文：未分类
+    sessionMode: session.session_mode || 'Uncategorised',
+    category: session.case_category || 'Uncategorised',
     counsellor: session.counsellor || '-',
     duration: formatDuration(session.duration_minutes),
     amount: toNumber(session.amount_received_rm),

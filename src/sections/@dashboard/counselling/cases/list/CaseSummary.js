@@ -4,10 +4,11 @@ import { alpha } from '@mui/material/styles';
 import Iconify from '../../../../../components/iconify';
 
 const items = [
-  { key: 'total', label: '总个案', icon: 'eva:folder-outline', color: 'primary' },
-  { key: 'briefPending', label: '待简要报告', icon: 'eva:file-text-outline', color: 'warning' },
-  { key: 'detailedPending', label: '待详细报告', icon: 'eva:clock-outline', color: 'error' },
-  { key: 'completed', label: '全部完成', icon: 'eva:checkmark-circle-2-outline', color: 'success' },
+  // 中文原文：总个案、待简要报告、待详细报告、全部完成
+  { key: 'total', label: 'Total Cases', icon: 'eva:folder-outline', color: 'primary' },
+  { key: 'briefPending', label: 'Brief Report Pending', icon: 'eva:file-text-outline', color: 'warning' },
+  { key: 'detailedPending', label: 'Detailed Report Pending', icon: 'eva:clock-outline', color: 'error' },
+  { key: 'completed', label: 'Completed', icon: 'eva:checkmark-circle-2-outline', color: 'success' },
 ];
 
 export default function CaseSummary({ total, briefPending, detailedPending, completed }) {

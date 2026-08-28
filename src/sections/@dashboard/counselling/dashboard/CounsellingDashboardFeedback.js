@@ -7,7 +7,7 @@ export default function CounsellingDashboardFeedback({ error, loading, onReload 
       <Alert
         severity="error"
         sx={{ mb: 3 }}
-        action={<Button color="inherit" size="small" onClick={onReload}>重新加载</Button>}
+        action={<Button color="inherit" size="small" onClick={onReload}>Reload</Button>}
       >
         {error}
       </Alert>
@@ -19,7 +19,7 @@ export default function CounsellingDashboardFeedback({ error, loading, onReload 
       <Stack alignItems="center" justifyContent="center" sx={{ minHeight: 420 }}>
         <CircularProgress />
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          正在读取辅导个案资料…
+          {/* 中文原文：正在读取辅导个案资料… */}Loading counselling case data…
         </Typography>
       </Stack>
     );

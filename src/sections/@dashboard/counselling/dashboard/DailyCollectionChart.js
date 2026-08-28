@@ -31,7 +31,8 @@ export default function DailyCollectionChart({ onSelect, sessions }) {
           const selected = data[config.dataPointIndex];
           if (selected) {
             onSelect({
-              title: `${selected.key} 收款个案`,
+              // 中文原文：收款个案
+              title: `${selected.key} Payment Cases`,
               sessions: datedSessions
                 .filter((item) => groupByMonth
                   ? item.date.startsWith(selected.key)
@@ -61,7 +62,7 @@ export default function DailyCollectionChart({ onSelect, sessions }) {
   return (
     <Card sx={{ height: 1 }}>
       <CardHeader
-        title={`F. ${groupByMonth ? '每月' : '每日'}收到款项`}
+        title={`F. ${groupByMonth ? 'Monthly' : 'Daily'} Payments Received`}
         subheader="（RM）"
       />
       <Box
@@ -73,7 +74,7 @@ export default function DailyCollectionChart({ onSelect, sessions }) {
         dir="ltr"
       >
         {data.length ? (
-          <Chart type="line" series={[{ name: '金额（RM）', data: data.map((item) => item.value) }]} options={options} height={330} />
+          <Chart type="line" series={[{ name: 'Amount (RM)', data: data.map((item) => item.value) }]} options={options} height={330} />
         ) : (
           <ChartEmptyState height={330} />
         )}

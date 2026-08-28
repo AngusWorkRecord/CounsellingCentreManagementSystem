@@ -36,10 +36,10 @@ export default function CaseDetailContent({ session, onBack }) {
       <Grid container spacing={2.5} alignItems="stretch">
         <Grid item xs={12} md={6}>
           <Stack spacing={2.5} sx={equalCardStackSx}>
-            <CaseTextCard icon="eva:file-text-outline" title="案主自述摘要">
+            <CaseTextCard icon="eva:file-text-outline" title="Client Statement Summary">
               {session.client_summary}
             </CaseTextCard>
-            <CaseTextCard icon="eva:activity-outline" title="志工处理步骤">
+            <CaseTextCard icon="eva:activity-outline" title="Volunteer Actions">
               {session.volunteer_actions}
             </CaseTextCard>
           </Stack>

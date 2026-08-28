@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import { Box, Button, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import Iconify from '../../../../../components/iconify';
 
-const ALL = '全部';
+// 中文原文：全部
+const ALL = 'All';
 const selectSx = {
   minWidth: { xs: 1, sm: 180 },
   '& .MuiOutlinedInput-root': { bgcolor: 'background.paper' },
@@ -11,9 +12,10 @@ const selectSx = {
 export default function CaseFilters({ filters, options, onChange, onReset }) {
   const update = (field) => (event) => onChange(field, event.target.value);
   const selects = [
-    ['sessionMode', '值班类别', [ALL, ...options.sessionModes]],
-    ['category', '个案类别', [ALL, ...options.categories]],
-    ['status', '状态', [ALL, '接案未完成', '待简要报告', '待详细报告', '全部完成']],
+    // 中文原文：值班类别、个案类别、状态、接案未完成、待简要报告、待详细报告、全部完成
+    ['sessionMode', 'Session Mode', [ALL, ...options.sessionModes]],
+    ['category', 'Case Category', [ALL, ...options.categories]],
+    ['status', 'Status', [ALL, 'Intake Incomplete', 'Brief Report Pending', 'Detailed Report Pending', 'Completed']],
   ];
 
   return (
@@ -22,7 +24,7 @@ export default function CaseFilters({ filters, options, onChange, onReset }) {
         <TextField
           value={filters.search}
           onChange={update('search')}
-          placeholder="搜索个案编号 / 案主简称 / 辅导员"
+          placeholder="Search case number / client initials / counsellor"
           sx={{ minWidth: { lg: 330 }, flexGrow: 1 }}
           InputProps={{ startAdornment: <Iconify icon="eva:search-fill" sx={{ mr: 1, color: 'text.disabled' }} /> }}
         />
@@ -37,8 +39,9 @@ export default function CaseFilters({ filters, options, onChange, onReset }) {
         ))}
 
         <Stack direction="row" spacing={1.5} sx={{ pb: { lg: 0.1 } }}>
-          <Button variant="outlined" startIcon={<Iconify icon="eva:funnel-outline" />}>筛选</Button>
-          <Button color="inherit" variant="outlined" startIcon={<Iconify icon="eva:refresh-fill" />} onClick={onReset}>重置</Button>
+          {/* 中文原文：筛选、重置 */}
+          <Button variant="outlined" startIcon={<Iconify icon="eva:funnel-outline" />}>Filter</Button>
+          <Button color="inherit" variant="outlined" startIcon={<Iconify icon="eva:refresh-fill" />} onClick={onReset}>Reset</Button>
         </Stack>
       </Stack>
     </Box>

@@ -29,28 +29,34 @@ function getDurationMinutes(start, end) {
 }
 
 const schema = Yup.object().shape({
-  submissionId: Yup.string().trim().required('请输入 Submission ID'),
+  // 中文原文：请输入 Submission ID
+  submissionId: Yup.string().trim().required('Please enter the Submission ID'),
   respondentId: Yup.string().trim(),
-  counsellingDate: Yup.string().required('请选择辅导日期'),
-  counsellor: Yup.string().oneOf(COUNSELLORS).required('请选择辅导员'),
-  sessionMode: Yup.string().oneOf(SESSION_MODES).required('请选择辅导类型'),
-  caseCategory: Yup.string().oneOf(CASE_CATEGORIES).required('请选择个案类别'),
-  sessionStart: Yup.string().required('请选择开始时间'),
+  // 中文原文：请选择辅导日期、辅导员、辅导类型、个案类别、开始时间
+  counsellingDate: Yup.string().required('Please select the counselling date'),
+  counsellor: Yup.string().oneOf(COUNSELLORS).required('Please select a counsellor'),
+  sessionMode: Yup.string().oneOf(SESSION_MODES).required('Please select a session mode'),
+  caseCategory: Yup.string().oneOf(CASE_CATEGORIES).required('Please select a case category'),
+  sessionStart: Yup.string().required('Please select the start time'),
   sessionEnd: Yup.string()
-    .required('请选择结束时间')
-    .test('after-start', '结束时间必须晚于开始时间', function validateEnd(value) {
+    // 中文原文：请选择结束时间；结束时间必须晚于开始时间
+    .required('Please select the end time')
+    .test('after-start', 'End time must be later than start time', function validateEnd(value) {
       return getDurationMinutes(this.parent.sessionStart, value) > 0;
     }),
-  clientInitials: Yup.string().trim().required('请输入案主简称'),
+  // 中文原文：请输入案主简称
+  clientInitials: Yup.string().trim().required('Please enter the client initials'),
   clientPhone: Yup.string().trim(),
   clientSummary: Yup.string().trim(),
   volunteerActions: Yup.string().trim(),
-  caseNumber: Yup.string().trim().required('请输入个案编号'),
+  // 中文原文：请输入个案编号
+  caseNumber: Yup.string().trim().required('Please enter the case number'),
   reportUrl: Yup.string().trim(),
   amountReceivedRm: Yup.number()
-    .typeError('收款金额必须是数字')
-    .min(0, '收款金额不能小于 0')
-    .required('请输入收款金额'),
+    // 中文原文：收款金额必须是数字、收款金额不能小于 0、请输入收款金额
+    .typeError('Payment amount must be a number')
+    .min(0, 'Payment amount cannot be less than 0')
+    .required('Please enter the payment amount'),
 });
 
 function getDefaultValues(session) {
@@ -110,12 +116,15 @@ export default function CaseCreateForm({ currentSession = null }) {
       const saved = isEdit
         ? await updateCounsellingSession(currentSession.id, payload)
         : await createCounsellingSession(payload);
-      enqueueSnackbar(isEdit ? '个案更新成功' : '个案新增成功', { variant: 'success' });
+      // 中文原文：个案更新成功、个案新增成功
+      enqueueSnackbar(isEdit ? 'Case updated successfully' : 'Case created successfully', { variant: 'success' });
       navigate(PATH_DASHBOARD.general.counsellingCaseDetail(saved.id));
     } catch (error) {
-      const message = error.message || '无法新增个案，请稍后再试';
+      // 中文原文：无法新增个案，请稍后再试
+      const message = error.message || 'Unable to create the case. Please try again later.';
       if (/Submission ID already exists/i.test(message)) {
-        setError('submissionId', { type: 'server', message: 'Submission ID 已存在' });
+        // 中文原文：Submission ID 已存在
+        setError('submissionId', { type: 'server', message: 'Submission ID already exists' });
       }
       enqueueSnackbar(message, { variant: 'error' });
     }
@@ -125,64 +134,67 @@ export default function CaseCreateForm({ currentSession = null }) {
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <Card sx={{ p: { xs: 2.5, md: 3 } }}>
-          <Typography variant="h6">基本资料</Typography>
+          {/* 中文原文：基本资料 */}<Typography variant="h6">Basic Information</Typography>
           <Divider sx={{ my: 2.5 }} />
           <Grid container spacing={2.5}>
             <Grid item xs={12} md={6}><RHFTextField name="submissionId" label="Submission ID *" /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="respondentId" label="Respondent ID（可选）" /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="caseNumber" label="个案编号 *" /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="clientInitials" label="案主简称 *" /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="clientPhone" label="联系电话（可选）" /></Grid>
+            {/* 中文原文：可选、个案编号、案主简称、联系电话 */}
+            <Grid item xs={12} md={6}><RHFTextField name="respondentId" label="Respondent ID (Optional)" /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="caseNumber" label="Case Number *" /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="clientInitials" label="Client Initials *" /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="clientPhone" label="Contact Number (Optional)" /></Grid>
             <Grid item xs={12} md={6}>
-              <RHFTextField name="amountReceivedRm" label="收款金额（RM）" type="number" inputProps={{ min: 0, step: '0.01' }} />
+              <RHFTextField name="amountReceivedRm" label="Payment Amount (RM)" type="number" inputProps={{ min: 0, step: '0.01' }} />
             </Grid>
           </Grid>
         </Card>
 
         <Card sx={{ p: { xs: 2.5, md: 3 } }}>
-          <Typography variant="h6">辅导资料</Typography>
+          {/* 中文原文：辅导资料 */}<Typography variant="h6">Counselling Information</Typography>
           <Divider sx={{ my: 2.5 }} />
           <Grid container spacing={2.5}>
-            <Grid item xs={12} md={6}><RHFTextField name="counsellingDate" label="辅导日期 *" type="date" InputLabelProps={{ shrink: true }} /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="counsellingDate" label="Counselling Date *" type="date" InputLabelProps={{ shrink: true }} /></Grid>
             <Grid item xs={12} md={6}>
-              <RHFSelect name="counsellor" label="辅导员 *">
+              <RHFSelect name="counsellor" label="Counsellor *">
                 {COUNSELLORS.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
               </RHFSelect>
             </Grid>
             <Grid item xs={12} md={6}>
-              <RHFSelect name="sessionMode" label="辅导类型 *">
+              <RHFSelect name="sessionMode" label="Session Mode *">
                 {SESSION_MODES.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
               </RHFSelect>
             </Grid>
             <Grid item xs={12} md={6}>
-              <RHFSelect name="caseCategory" label="个案类别 *">
+              <RHFSelect name="caseCategory" label="Case Category *">
                 {CASE_CATEGORIES.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
               </RHFSelect>
             </Grid>
-            <Grid item xs={12} md={4}><RHFTextField name="sessionStart" label="开始时间 *" type="time" InputLabelProps={{ shrink: true }} /></Grid>
-            <Grid item xs={12} md={4}><RHFTextField name="sessionEnd" label="结束时间 *" type="time" InputLabelProps={{ shrink: true }} /></Grid>
+            {/* 中文原文：开始时间、结束时间、辅导时长、分钟 */}
+            <Grid item xs={12} md={4}><RHFTextField name="sessionStart" label="Start Time *" type="time" InputLabelProps={{ shrink: true }} /></Grid>
+            <Grid item xs={12} md={4}><RHFTextField name="sessionEnd" label="End Time *" type="time" InputLabelProps={{ shrink: true }} /></Grid>
             <Grid item xs={12} md={4}>
-              <TextField fullWidth label="辅导时长" value={duration ? `${duration} 分钟` : '—'} disabled />
+              <TextField fullWidth label="Session Duration" value={duration ? `${duration} min` : '—'} disabled />
             </Grid>
           </Grid>
         </Card>
 
         <Card sx={{ p: { xs: 2.5, md: 3 } }}>
-          <Typography variant="h6">个案记录</Typography>
+          {/* 中文原文：个案记录 */}<Typography variant="h6">Case Record</Typography>
           <Divider sx={{ my: 2.5 }} />
           <Stack spacing={2.5}>
-            <RHFTextField name="clientSummary" label="案主自述摘要（可选）" multiline minRows={3} />
-            <RHFTextField name="volunteerActions" label="志工处理步骤（可选）" multiline minRows={3} />
-            <RHFTextField name="reportUrl" label="详细报告链接（可选）" placeholder="https://..." />
+            {/* 中文原文：案主自述摘要、志工处理步骤、详细报告链接、可选 */}
+            <RHFTextField name="clientSummary" label="Client Statement Summary (Optional)" multiline minRows={3} />
+            <RHFTextField name="volunteerActions" label="Volunteer Actions (Optional)" multiline minRows={3} />
+            <RHFTextField name="reportUrl" label="Detailed Report Link (Optional)" placeholder="https://..." />
           </Stack>
         </Card>
 
         <Stack direction="row" justifyContent="flex-end" spacing={1.5}>
           <Button variant="outlined" disabled={isSubmitting} onClick={() => navigate(PATH_DASHBOARD.general.counsellingCases)}>
-            取消
+            {/* 中文原文：取消 */}Cancel
           </Button>
           <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-            {isEdit ? '更新个案' : '保存个案'}
+            {/* 中文原文：更新个案、保存个案 */}{isEdit ? 'Update Case' : 'Save Case'}
           </LoadingButton>
         </Stack>
       </Stack>

@@ -1,14 +1,16 @@
 export const WORKFLOW_STATUS = {
-  INTAKE_PENDING: '接案未完成',
-  BRIEF_PENDING: '待简要报告',
-  DETAILED_PENDING: '待详细报告',
-  COMPLETED: '全部完成',
+  // 中文原文：接案未完成、待简要报告、待详细报告、全部完成
+  INTAKE_PENDING: 'Intake Incomplete',
+  BRIEF_PENDING: 'Brief Report Pending',
+  DETAILED_PENDING: 'Detailed Report Pending',
+  COMPLETED: 'Completed',
 };
 
 export const REMINDER_STAGE = {
-  FIRST: '首次提醒',
-  SECOND: '第二次提醒',
-  FINAL: '最后提醒',
+  // 中文原文：首次提醒、第二次提醒、最后提醒
+  FIRST: 'First Reminder',
+  SECOND: 'Second Reminder',
+  FINAL: 'Final Reminder',
 };
 
 export function getSessionEndedAt(date, endTime) {
@@ -44,7 +46,8 @@ export function getReminderDetails(sessionEndedAt, now = new Date()) {
 
   const days = Math.floor(elapsedHours / 24);
   const hours = Math.floor(elapsedHours % 24);
-  const elapsedLabel = days ? `${days}天${hours ? `${hours}小时` : ''}` : `${Math.floor(elapsedHours)}小时`;
+  // 中文原文：天、小时
+  const elapsedLabel = days ? `${days} day${days === 1 ? '' : 's'}${hours ? ` ${hours} hr` : ''}` : `${Math.floor(elapsedHours)} hr`;
 
   return { stage, elapsedHours, elapsedLabel };
 }

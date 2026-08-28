@@ -27,7 +27,8 @@ CounsellingPeriodFilter.propTypes = {
 
 function formatMonthLabel(month) {
   const [year, monthNumber] = month.split('-');
-  return `${year}年${Number(monthNumber)}月`;
+  // 中文原文：年、月
+  return new Date(Number(year), Number(monthNumber) - 1).toLocaleString('en-MY', { month: 'long', year: 'numeric' });
 }
 
 export default function CounsellingPeriodFilter({
@@ -80,10 +81,11 @@ export default function CounsellingPeriodFilter({
         size="small"
         value={mode}
         onChange={(_, value) => value && onModeChange(value)}
-        aria-label="筛选期间模式"
+        aria-label="Period filter mode"
       >
-        <ToggleButton value="month">月</ToggleButton>
-        <ToggleButton value="year">年</ToggleButton>
+        {/* 中文原文：月、年 */}
+        <ToggleButton value="month">Month</ToggleButton>
+        <ToggleButton value="year">Year</ToggleButton>
         <ToggleButton value="custom">Custom</ToggleButton>
       </ToggleButtonGroup>
 
@@ -91,7 +93,7 @@ export default function CounsellingPeriodFilter({
         <TextField
           select
           size="small"
-          label="选择月份"
+          label="Select Month"
           value={month}
           onChange={(event) => onMonthChange(event.target.value)}
           sx={{ minWidth: 220 }}
@@ -111,7 +113,7 @@ export default function CounsellingPeriodFilter({
         <TextField
           select
           size="small"
-          label="选择年份"
+          label="Select Year"
           value={year}
           onChange={(event) => onYearChange(event.target.value)}
           sx={{ minWidth: 220 }}
@@ -121,7 +123,7 @@ export default function CounsellingPeriodFilter({
         >
           {yearOptions.map((option) => (
             <MenuItem key={option} value={option}>
-              {option}年
+              {/* 中文原文：年 */}{option}
             </MenuItem>
           ))}
         </TextField>
@@ -130,7 +132,7 @@ export default function CounsellingPeriodFilter({
       {mode === 'custom' && (
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems={{ sm: 'flex-start' }}>
           <DatePicker
-            label="开始日期"
+            label="Start Date"
             value={draftStart}
             onChange={handleStartChange}
             renderInput={(params) => (
@@ -138,7 +140,7 @@ export default function CounsellingPeriodFilter({
             )}
           />
           <DatePicker
-            label="结束日期"
+            label="End Date"
             value={draftEnd}
             onChange={handleEndChange}
             renderInput={(params) => (
@@ -146,7 +148,7 @@ export default function CounsellingPeriodFilter({
                 {...params}
                 size="small"
                 error={Boolean(isRangeError)}
-                helperText={isRangeError ? '结束日期不能早于开始日期' : ''}
+                helperText={isRangeError ? 'End date cannot be earlier than start date' : ''}
               />
             )}
           />

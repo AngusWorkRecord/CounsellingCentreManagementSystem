@@ -29,10 +29,11 @@ export default function CounsellingDashboardContent({ dateRange, metrics, sessio
 
   const handleClose = () => setSelection({ title: '', sessions: [] });
   const metricCards = [
-    { title: '总个案数', value: metrics.totalCases, icon: 'solar:folder-with-files-bold-duotone', color: theme.palette.primary.main },
-    { title: '总辅导时长', value: formatDuration(metrics.totalMinutes), icon: 'solar:clock-circle-bold-duotone', color: theme.palette.info.main },
-    { title: '平均辅导时长', value: formatDuration(metrics.averageMinutes), icon: 'solar:stopwatch-bold-duotone', color: theme.palette.secondary.main },
-    { title: '收到款项', value: formatCurrency(metrics.totalCollection), icon: 'solar:wallet-money-bold-duotone', color: theme.palette.primary.main },
+    // 中文原文：总个案数、总辅导时长、平均辅导时长、收到款项
+    { title: 'Total Cases', value: metrics.totalCases, icon: 'solar:folder-with-files-bold-duotone', color: theme.palette.primary.main },
+    { title: 'Total Counselling Duration', value: formatDuration(metrics.totalMinutes), icon: 'solar:clock-circle-bold-duotone', color: theme.palette.info.main },
+    { title: 'Average Counselling Duration', value: formatDuration(metrics.averageMinutes), icon: 'solar:stopwatch-bold-duotone', color: theme.palette.secondary.main },
+    { title: 'Payments Received', value: formatCurrency(metrics.totalCollection), icon: 'solar:wallet-money-bold-duotone', color: theme.palette.primary.main },
   ];
 
   return (

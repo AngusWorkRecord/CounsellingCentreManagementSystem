@@ -11,8 +11,9 @@ import useAiAnalysis from '../useAiAnalysis';
 import { groupCount, toNumber } from '../utils';
 
 const STATUS_META = {
-  stable: { label: '稳定', color: 'success' }, attention: { label: '需要关注', color: 'warning' },
-  urgent: { label: '优先处理', color: 'error' }, insufficient: { label: '资料不足', color: 'default' },
+  // 中文原文：稳定、需要关注、优先处理、资料不足
+  stable: { label: 'Stable', color: 'success' }, attention: { label: 'Needs Attention', color: 'warning' },
+  urgent: { label: 'Priority Action', color: 'error' }, insufficient: { label: 'Insufficient Data', color: 'default' },
 };
 const OBSERVATION_META = {
   success: { color: 'success.main', icon: 'eva:checkmark-circle-2-fill' },
@@ -26,8 +27,9 @@ function percentage(value, total) { return total ? Math.round((value / total) * 
 function buildManagementInsights(sessions, metrics) {
   const total = sessions.length;
   if (!total) return {
-    status: 'insufficient', summaries: ['当前筛选期间没有可供分析的辅导记录。'], observations: [],
-    actions: ['调整日期筛选范围，或在录入辅导记录后重新查看。'], warnings: ['资料为空，因此没有生成运营结论。'],
+    // 中文原文：当前筛选期间没有可供分析的辅导记录；调整日期筛选范围，或在录入辅导记录后重新查看；资料为空，因此没有生成运营结论
+    status: 'insufficient', summaries: ['No counselling records are available for analysis in the selected period.'], observations: [],
+    actions: ['Adjust the date range or return after counselling records have been added.'], warnings: ['No operational conclusions were generated because no data is available.'],
   };
   const completedReports = sessions.filter((item) => Boolean(item.report_completed)).length;
   const pendingNotifications = sessions.filter((item) => !item.notification_sent).length;
@@ -44,38 +46,39 @@ function buildManagementInsights(sessions, metrics) {
   const topCounsellor = counsellors[0];
   const concentration = topCounsellor ? topCounsellor.value / Math.max(total / counsellors.length, 1) : 0;
   const summaries = [
-    `当前范围共有 ${total} 宗辅导记录，累计 ${Math.round(metrics.totalMinutes)} 分钟。`,
-    `详细报告完成率为 ${reportRate}%（${completedReports}/${total}）。`,
-    `尚未发送通知的记录占 ${pendingRate}%（${pendingNotifications}/${total}）。`,
-    `当前记录分布于 ${categories.length} 个类别及 ${counsellors.length} 位辅导人员。`,
+    // 中文原文：当前范围记录、详细报告完成率、尚未发送通知、类别及辅导人员统计
+    `${total} counselling records are in scope, totalling ${Math.round(metrics.totalMinutes)} minutes.`,
+    `The detailed report completion rate is ${reportRate}% (${completedReports}/${total}).`,
+    `${pendingRate}% of records have pending notifications (${pendingNotifications}/${total}).`,
+    `The records cover ${categories.length} categories and ${counsellors.length} counsellors.`,
   ];
   const observations = [];
   const actions = [];
   const warnings = [];
   if (pendingNotifications) {
-    observations.push({ severity: pendingRate >= 30 ? 'warning' : 'info', text: `${pendingNotifications} 宗记录尚未发送通知。` });
-    actions.push('优先检查尚未发送通知的记录，并由负责人确认后续行动。');
-  } else observations.push({ severity: 'success', text: '当前范围内的通知均已发送。' });
+    observations.push({ severity: pendingRate >= 30 ? 'warning' : 'info', text: `${pendingNotifications} records have pending notifications.` });
+    actions.push('Prioritise records with pending notifications and have the person responsible confirm the follow-up action.');
+  } else observations.push({ severity: 'success', text: 'All notifications within the current scope have been sent.' });
   if (completedReports < total) {
-    observations.push({ severity: reportRate < 70 ? 'warning' : 'info', text: `${total - completedReports} 宗记录的详细报告尚未完成。` });
-    actions.push('安排补齐未完成的详细报告，并核对报告链接和完成状态。');
-  } else observations.push({ severity: 'success', text: '当前范围内的详细报告均已完成。' });
+    observations.push({ severity: reportRate < 70 ? 'warning' : 'info', text: `${total - completedReports} detailed reports remain incomplete.` });
+    actions.push('Complete outstanding detailed reports and verify their links and completion status.');
+  } else observations.push({ severity: 'success', text: 'All detailed reports within the current scope are complete.' });
   if (zeroCollection) {
-    observations.push({ severity: zeroRate >= 50 ? 'warning' : 'info', text: `${zeroCollection} 宗记录收款为 RM0，占 ${zeroRate}%。` });
-    actions.push('人工核对 RM0 记录属于免费服务、费用豁免还是待付款。');
+    observations.push({ severity: zeroRate >= 50 ? 'warning' : 'info', text: `${zeroCollection} records show RM0 payments (${zeroRate}%).` });
+    actions.push('Manually verify whether RM0 records represent free services, fee waivers, or pending payments.');
   }
   if (topCategory && percentage(topCategory.value, total) >= 40 && total >= 5) {
-    observations.push({ severity: 'info', text: `“${topCategory.label}”是主要类别，占 ${percentage(topCategory.value, total)}%。` });
-    actions.push(`评估“${topCategory.label}”类别的人员配置和服务资源是否足够。`);
+    observations.push({ severity: 'info', text: `“${topCategory.label}” is the leading category at ${percentage(topCategory.value, total)}%.` });
+    actions.push(`Assess whether staffing and service resources for “${topCategory.label}” are sufficient.`);
   }
-  if (topMode) observations.push({ severity: 'info', text: `最常使用“${topMode.label}”，共 ${topMode.value} 宗。` });
+  if (topMode) observations.push({ severity: 'info', text: `“${topMode.label}” is the most used mode, with ${topMode.value} cases.` });
   if (concentration >= 1.5 && total >= 5) {
-    observations.push({ severity: 'warning', text: `工作量较集中于 ${topCounsellor.label}（${topCounsellor.value} 宗）。` });
-    actions.push('由管理人员复核辅导人员之间的工作量分配。');
+    observations.push({ severity: 'warning', text: `Workload is concentrated on ${topCounsellor.label} (${topCounsellor.value} cases).` });
+    actions.push('Have management review workload distribution among counsellors.');
   }
-  if (invalidDuration) warnings.push(`${invalidDuration} 宗记录缺少有效辅导时长。`);
-  if (total < 5) warnings.push('样本少于 5 宗，不显示细分趋势结论。');
-  if (!actions.length) actions.push('维持现有流程，并持续观察报告、通知和工作量指标。');
+  if (invalidDuration) warnings.push(`${invalidDuration} records do not have a valid counselling duration.`);
+  if (total < 5) warnings.push('The sample contains fewer than five cases, so no detailed trend conclusion is shown.');
+  if (!actions.length) actions.push('Maintain the current process and continue monitoring reports, notifications, and workload indicators.');
   let status = 'stable';
   if (pendingNotifications || completedReports < total || concentration >= 1.5) status = 'attention';
   if (pendingRate >= 50 || reportRate < 50) status = 'urgent';
@@ -123,7 +126,7 @@ export default function CounsellingAiInsights({ dateRange, metrics, sessions }) 
             <Box sx={{ p: 1, borderRadius: '50%', color: 'primary.main', bgcolor: alpha(theme.palette.primary.main, 0.12), display: 'flex' }}>
               <Iconify icon="mdi:robot-outline" width={26} />
             </Box>
-            <Box><Typography variant="h6">G. 运营与管理建议</Typography><Chip label={status.label} color={status.color} size="small" sx={{ mt: 0.5 }} /></Box>
+            <Box><Typography variant="h6">G. Operations and Management Recommendations</Typography><Chip label={status.label} color={status.color} size="small" sx={{ mt: 0.5 }} /></Box>
           </Stack>
           <ToggleButtonGroup exclusive size="small" value={ai.mode} onChange={(_, value) => value && ai.setMode(value)}>
             <ToggleButton value="general">General</ToggleButton><ToggleButton value="ai">AI</ToggleButton>
@@ -132,11 +135,11 @@ export default function CounsellingAiInsights({ dateRange, metrics, sessions }) 
 
         {ai.mode === 'ai' && (
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mb: 2 }}>
-            <Typography variant="caption" color="text.secondary">匿名汇总范围：{dateRange.dateFrom} 至 {dateRange.dateTo}</Typography>
+            <Typography variant="caption" color="text.secondary">Anonymised aggregate range: {dateRange.dateFrom} to {dateRange.dateTo}</Typography>
             <Stack direction="row" spacing={1}>
-              {ai.loading ? <Button size="small" color="inherit" onClick={ai.cancel}>取消</Button> : null}
+              {ai.loading ? <Button size="small" color="inherit" onClick={ai.cancel}>Cancel</Button> : null}
               <Button size="small" variant="contained" disabled={ai.loading || !sessions.length} onClick={ai.run} startIcon={ai.loading ? <CircularProgress size={16} color="inherit" /> : <Iconify icon="eva:flash-fill" />}>
-                {result && !ai.stale ? '重新生成' : '生成 AI 建议'}
+                {result && !ai.stale ? 'Regenerate' : 'Generate AI Recommendations'}
               </Button>
             </Stack>
           </Stack>
@@ -147,27 +150,27 @@ export default function CounsellingAiInsights({ dateRange, metrics, sessions }) 
             <>
               {general.warnings.map((warning) => <Alert key={warning} severity="warning" sx={{ mb: 2 }}>{warning}</Alert>)}
               <Grid container spacing={2}>
-                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2">关键指标摘要</Typography><Divider sx={{ my: 1.5 }} /><Stack spacing={1}>{general.summaries.map((text) => <Typography key={text} variant="body2">• {text}</Typography>)}</Stack></Box></Grid>
-                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>重点观察</Typography><InsightItems items={general.observations.map((item) => ({ ...item, title: '观察', detail: item.text }))} emptyText="没有足够资料形成观察。" /></Box></Grid>
-                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>建议下一步</Typography><Stack spacing={1}>{general.actions.map((text, index) => <Typography key={text} variant="body2">{index + 1}. {text}</Typography>)}</Stack></Box></Grid>
+                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2">Key Metrics Summary</Typography><Divider sx={{ my: 1.5 }} /><Stack spacing={1}>{general.summaries.map((text) => <Typography key={text} variant="body2">• {text}</Typography>)}</Stack></Box></Grid>
+                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>Key Observations</Typography><InsightItems items={general.observations.map((item) => ({ ...item, title: 'Observation', detail: item.text }))} emptyText="There is not enough data to form an observation." /></Box></Grid>
+                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>Recommended Next Steps</Typography><Stack spacing={1}>{general.actions.map((text, index) => <Typography key={text} variant="body2">{index + 1}. {text}</Typography>)}</Stack></Box></Grid>
               </Grid>
             </>
           ) : (
             <>
-              {ai.stale && <Alert severity="warning" sx={{ mb: 2 }}>筛选范围已改变；当前显示的是旧结果，请重新生成。</Alert>}
+              {ai.stale && <Alert severity="warning" sx={{ mb: 2 }}>The filter range has changed. The current result is outdated; please regenerate it.</Alert>}
               {ai.error && <Alert severity="error" sx={{ mb: 2 }}>{ai.error}</Alert>}
-              {!result && !ai.loading && <Alert severity="info">AI 不会自动运行。确认范围后点击“生成 AI 建议”。</Alert>}
+              {!result && !ai.loading && <Alert severity="info">AI does not run automatically. Confirm the scope, then select “Generate AI Recommendations”.</Alert>}
               {result && (
                 <Grid container spacing={2}>
-                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>整体摘要</Typography>{result.overview.map((text) => <Typography key={text} variant="body2" sx={{ mb: 0.75 }}>• {text}</Typography>)}<Typography variant="caption" color="text.secondary">生成：{new Date(ai.analysis.generatedAt).toLocaleString()}</Typography></Box></Grid>
-                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>趋势与待处理</Typography><InsightItems items={[...result.trends, ...result.pendingItems]} emptyText="没有识别到重点项目。" /></Box></Grid>
-                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>资源建议</Typography><InsightItems items={result.resourceRecommendations} emptyText="没有资源建议。" />{result.limitations.map((text) => <Alert key={text} severity="warning" sx={{ mt: 1 }}>{text}</Alert>)}</Box></Grid>
+                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>Overall Summary</Typography>{result.overview.map((text) => <Typography key={text} variant="body2" sx={{ mb: 0.75 }}>• {text}</Typography>)}<Typography variant="caption" color="text.secondary">Generated: {new Date(ai.analysis.generatedAt).toLocaleString()}</Typography></Box></Grid>
+                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>Trends and Pending Items</Typography><InsightItems items={[...result.trends, ...result.pendingItems]} emptyText="No priority items were identified." /></Box></Grid>
+                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>Resource Recommendations</Typography><InsightItems items={result.resourceRecommendations} emptyText="No resource recommendations are available." />{result.limitations.map((text) => <Alert key={text} severity="warning" sx={{ mt: 1 }}>{text}</Alert>)}</Box></Grid>
                 </Grid>
               )}
             </>
           )}
         </Box>
-        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>* {ai.mode === 'ai' ? 'AI-generated, authorised manager review required.' : 'General 为本地规则分析。'} 不会自动修改任何个案记录。</Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>* {ai.mode === 'ai' ? 'AI-generated, authorised manager review required.' : 'General uses local rule-based analysis.'} No case records are modified automatically.</Typography>
       </CardContent>
     </Card>
   );

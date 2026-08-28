@@ -8,9 +8,10 @@ export function formatDuration(totalMinutes) {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
 
-  if (!hours) return `${remainingMinutes}分钟`;
-  if (!remainingMinutes) return `${hours}小时`;
-  return `${hours}小时${remainingMinutes}分钟`;
+  // 中文原文：分钟、小时
+  if (!hours) return `${remainingMinutes} min`;
+  if (!remainingMinutes) return `${hours} hr`;
+  return `${hours} hr ${remainingMinutes} min`;
 }
 
 export function formatCurrency(value) {
@@ -25,7 +26,8 @@ export function groupCount(sessions, field) {
   const counts = new Map();
 
   sessions.forEach((session) => {
-    const label = session[field] || '未分类';
+    // 中文原文：未分类
+    const label = session[field] || 'Uncategorised';
     counts.set(label, (counts.get(label) || 0) + 1);
   });
 
@@ -75,9 +77,11 @@ export function filterSessionsByPeriod(sessions, period) {
 }
 
 export function formatPeriodLabel({ mode, month, year, startDate, endDate }) {
-  if (mode === 'year') return `${year}年`;
-  if (mode === 'custom') return `${formatLocalDate(startDate)} 至 ${formatLocalDate(endDate)}`;
+  // 中文原文：年、至
+  if (mode === 'year') return `${year}`;
+  if (mode === 'custom') return `${formatLocalDate(startDate)} to ${formatLocalDate(endDate)}`;
 
   const [monthYear, monthNumber] = month.split('-');
-  return `${monthYear}年${Number(monthNumber)}月`;
+  // 中文原文：年、月
+  return new Date(Number(monthYear), Number(monthNumber) - 1).toLocaleString('en-MY', { month: 'long', year: 'numeric' });
 }

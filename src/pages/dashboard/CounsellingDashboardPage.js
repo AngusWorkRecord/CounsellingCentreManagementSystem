@@ -12,7 +12,8 @@ export default function CounsellingDashboardPage() {
 
   return (
     <>
-      <Helmet><title>辅导个案管理 | Dashboard</title></Helmet>
+      {/* 中文原文：辅导个案管理 | Dashboard */}
+      <Helmet><title>Counselling Case Management | Dashboard</title></Helmet>
       <Container maxWidth={false}>
         <CounsellingDashboardHeader
           filteredCount={dashboard.filteredCount}

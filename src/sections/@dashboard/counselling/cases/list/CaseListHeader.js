@@ -13,9 +13,11 @@ export default function CaseListHeader({ filteredCount, onCreateCase, periodFilt
       sx={{ mb: 3 }}
     >
       <Box>
-        <Typography variant="h3" gutterBottom>个案列表</Typography>
+        {/* 中文原文：个案列表 */}
+        <Typography variant="h3" gutterBottom>Case List</Typography>
         <Typography variant="body2" color="text.secondary">
-          样本期间：{periodLabel} ｜ 数据笔数：{filteredCount}
+          {/* 中文原文：样本期间、数据笔数 */}
+          Period: {periodLabel} | Records: {filteredCount}
         </Typography>
       </Box>
 
@@ -27,7 +29,7 @@ export default function CaseListHeader({ filteredCount, onCreateCase, periodFilt
           startIcon={<Iconify icon="eva:plus-circle-outline" />}
           onClick={onCreateCase}
         >
-          新增个案
+          {/* 中文原文：新增个案 */}Create Case
         </Button>
       </Stack>
     </Stack>

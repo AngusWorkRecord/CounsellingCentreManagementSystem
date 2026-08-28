@@ -32,7 +32,8 @@ export async function getCounsellingSessionById(id, { signal } = {}) {
   }
 
   if (!response.ok || !result.success) {
-    const error = new Error(result.message || '无法读取个案资料');
+    // 中文原文：无法读取个案资料
+    const error = new Error(result.message || 'Unable to retrieve case data');
     error.status = response.status;
     throw error;
   }
@@ -60,7 +61,8 @@ export async function createCounsellingSession(payload) {
   }
 
   if (!response.ok || !result.success) {
-    throw new Error(result.message || '无法新增个案');
+    // 中文原文：无法新增个案
+    throw new Error(result.message || 'Unable to create case');
   }
 
   if (!result.data || typeof result.data !== 'object') {
@@ -86,7 +88,8 @@ export async function updateCounsellingSession(id, payload) {
   }
 
   if (!response.ok || !result.success) {
-    const error = new Error(result.message || '无法更新个案');
+    // 中文原文：无法更新个案
+    const error = new Error(result.message || 'Unable to update case');
     error.status = response.status;
     throw error;
   }
@@ -112,7 +115,8 @@ export async function deleteCounsellingSession(id) {
   }
 
   if (!response.ok || !result.success) {
-    const error = new Error(result.message || '无法删除个案');
+    // 中文原文：无法删除个案
+    const error = new Error(result.message || 'Unable to delete case');
     error.status = response.status;
     throw error;
   }
