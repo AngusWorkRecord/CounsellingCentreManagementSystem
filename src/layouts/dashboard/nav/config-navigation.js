@@ -52,12 +52,13 @@ const navConfig = [
       // { title: 'SDG', path: PATH_DASHBOARD.general.SDG, icon: ICONS.analytics },
       // { title: 'Dashboard', path: PATH_DASHBOARD.general.booking, icon: ICONS.dashboard },
       {
-        title: '辅导个案管理',
+        // 中文原文：辅导个案管理、数据概览、个案管理
+        title: 'Counselling Case Management',
         path: PATH_DASHBOARD.general.counselling,
         icon: ICONS.analytics,
         children: [
-          { title: '数据概览', path: PATH_DASHBOARD.general.counselling },
-          { title: '个案管理', path: PATH_DASHBOARD.general.counsellingCases },
+          { title: 'Data Overview', path: PATH_DASHBOARD.general.counselling },
+          { title: 'Case Management', path: PATH_DASHBOARD.general.counsellingCases },
         ],
       },
       // { title: 'Convention', path: PATH_DASHBOARD.general.events, icon: ICONS.booking },
