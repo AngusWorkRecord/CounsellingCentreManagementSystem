@@ -8,10 +8,12 @@ import {
   DialogContent,
   DialogContentText,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 export default function AlertDialog() {
+  useUiLanguage();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -24,25 +26,18 @@ export default function AlertDialog() {
 
   return (
     <div>
-      <Button color="info" variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button>
+      <Button color="info" variant="outlined" onClick={handleClickOpen}>{tr("Open alert dialog")}</Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{`Use Google's location service?`}</DialogTitle>
+        <DialogTitle>{tr("Use Google's location service?")}</DialogTitle>
 
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
-          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">{tr("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.")}</DialogContentText>
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
-          </Button>
+          <Button onClick={handleClose}>{tr("Disagree")}</Button>
+          <Button onClick={handleClose} autoFocus>{tr("Agree")}</Button>
         </DialogActions>
       </Dialog>
     </div>

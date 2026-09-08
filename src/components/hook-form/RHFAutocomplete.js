@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { Autocomplete, TextField } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +28,7 @@ export default function RHFAutocomplete({ name, label, helperText, ...other }) {
             <TextField
               label={label}
               error={!!error}
-              helperText={error ? error?.message : helperText}
+              helperText={error ? uiMessage(error?.message) : helperText}
               {...params}
             />
           )}

@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 // @mui
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Stack, Card, Typography, Link } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Image from '../../../../components/image';
 import { MotionContainer, varFade } from '../../../../components/animate';
@@ -28,6 +29,7 @@ AppFeatured.propTypes = {
 };
 
 export default function AppFeatured({ list, ...other }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -89,6 +91,7 @@ CarouselItem.propTypes = {
 };
 
 function CarouselItem({ item, isActive }) {
+  useUiLanguage();
   const { image, title, description } = item;
 
   return (
@@ -106,9 +109,7 @@ function CarouselItem({ item, isActive }) {
         }}
       >
         <m.div variants={varFade().inRight}>
-          <Typography variant="overline" component="div" sx={{ opacity: 0.48 }}>
-            Featured App
-          </Typography>
+          <Typography variant="overline" component="div" sx={{ opacity: 0.48 }}>{tr("Featured App")}</Typography>
         </m.div>
 
         <m.div variants={varFade().inRight}>

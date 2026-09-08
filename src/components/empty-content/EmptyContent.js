@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 //
 import Image from '../image';
 
@@ -14,6 +15,7 @@ EmptyContent.propTypes = {
 };
 
 export default function EmptyContent({ title, description, img, sx, ...other }) {
+  useUiLanguage();
   return (
     <Stack
       alignItems="center"
@@ -28,7 +30,7 @@ export default function EmptyContent({ title, description, img, sx, ...other }) 
     >
       <Image
         disabledEffect
-        alt="empty content"
+        alt={tr("empty content")}
         src={img || '/assets/illustrations/illustration_empty_content.svg'}
         sx={{ height: 240, mb: 3 }}
       />

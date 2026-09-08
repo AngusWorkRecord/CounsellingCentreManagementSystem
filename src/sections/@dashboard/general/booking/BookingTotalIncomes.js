@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Card, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fCurrency, fPercent } from '../../../../utils/formatNumber';
 // components
@@ -26,6 +27,7 @@ export default function BookingTotalIncomes({
   sx,
   ...other
 }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const { series, options } = chart;
@@ -84,7 +86,7 @@ export default function BookingTotalIncomes({
     >
       <Stack direction="row" justifyContent="space-between" sx={{ mb: 3, pt: 2, }}>
         <div>
-          <Typography sx={{typography: 'h4' }}>Total Impact Index</Typography>
+          <Typography sx={{typography: 'h4' }}>{tr("Total Impact Index")}</Typography>
           {/* <Typography sx={{ typography: 'h3' }}>{fCurrency(total)}</Typography> */}
           <Typography sx={{ typography: 'h3' }}>{fPercent(total)}</Typography>
         </div>
@@ -99,9 +101,7 @@ export default function BookingTotalIncomes({
             </Typography>
           </Stack>
 
-          <Typography variant="body2" component="span" sx={{ opacity: 0.72 }}>
-            &nbsp;than last month
-          </Typography>
+          <Typography variant="body2" component="span" sx={{ opacity: 0.72 }}>{tr("than last month")}</Typography>
         </div>
       </Stack>
 

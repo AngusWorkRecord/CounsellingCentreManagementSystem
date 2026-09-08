@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { DataGrid } from '@mui/x-data-grid';
 import { IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -15,19 +16,19 @@ const columns = [
   },
   {
     field: 'firstName',
-    headerName: 'First name',
+    get headerName() { return tr("First name"); },
     width: 160,
     editable: true,
   },
   {
     field: 'lastName',
-    headerName: 'Last name',
+    get headerName() { return tr("Last name"); },
     width: 160,
     editable: true,
   },
   {
     field: 'age',
-    headerName: 'Age',
+    get headerName() { return tr("Age"); },
     type: 'number',
     width: 120,
     editable: true,
@@ -36,8 +37,8 @@ const columns = [
   },
   {
     field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
+    get headerName() { return tr("Full name"); },
+    get description() { return tr("This column has a value getter and is not sortable."); },
     flex: 1,
     valueGetter: (params) => `${params.row.firstName || ''} ${params.row.lastName || ''}`,
   },
@@ -61,5 +62,6 @@ DataGridBasic.propTypes = {
 };
 
 export default function DataGridBasic({ data }) {
+  useUiLanguage();
   return <DataGrid columns={columns} rows={data} checkboxSelection disableSelectionOnClick />;
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { FormHelperText } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 //
 import { UploadAvatar, Upload, UploadBox } from '../upload';
 
@@ -34,7 +35,7 @@ export function RHFUploadAvatar({ name, ...other }) {
 
           {!!error && (
             <FormHelperText error sx={{ px: 2, textAlign: 'center' }}>
-              {error.message}
+              {uiMessage(error.message)}
             </FormHelperText>
           )}
         </div>
@@ -88,7 +89,7 @@ export function RHFUpload({ name, multiple, helperText, ...other }) {
             helperText={
               (!!error || helperText) && (
                 <FormHelperText error={!!error} sx={{ px: 2 }}>
-                  {error ? error?.message : helperText}
+                  {error ? uiMessage(error?.message) : helperText}
                 </FormHelperText>
               )
             }
@@ -102,7 +103,7 @@ export function RHFUpload({ name, multiple, helperText, ...other }) {
             helperText={
               (!!error || helperText) && (
                 <FormHelperText error={!!error} sx={{ px: 2 }}>
-                  {error ? error?.message : helperText}
+                  {error ? uiMessage(error?.message) : helperText}
                 </FormHelperText>
               )
             }

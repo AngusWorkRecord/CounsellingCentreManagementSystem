@@ -9,6 +9,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from '@mui/material';
+import { tr, useUiLanguage, currentLocale } from '../../../locales/translate';
 import Iconify from '../../../components/iconify';
 
 CounsellingPeriodFilter.propTypes = {
@@ -28,7 +29,7 @@ CounsellingPeriodFilter.propTypes = {
 function formatMonthLabel(month) {
   const [year, monthNumber] = month.split('-');
   // 中文原文：年、月
-  return new Date(Number(year), Number(monthNumber) - 1).toLocaleString('en-MY', { month: 'long', year: 'numeric' });
+  return new Date(Number(year), Number(monthNumber) - 1).toLocaleString(currentLocale(), { month: 'long', year: 'numeric' });
 }
 
 export default function CounsellingPeriodFilter({
@@ -44,6 +45,7 @@ export default function CounsellingPeriodFilter({
   onYearChange,
   onCustomApply,
 }) {
+  useUiLanguage();
   const [draftStart, setDraftStart] = useState(customStart);
   const [draftEnd, setDraftEnd] = useState(customEnd);
 
@@ -81,19 +83,19 @@ export default function CounsellingPeriodFilter({
         size="small"
         value={mode}
         onChange={(_, value) => value && onModeChange(value)}
-        aria-label="Period filter mode"
+        aria-label={tr("Period filter mode")}
       >
         {/* 中文原文：月、年 */}
-        <ToggleButton value="month">Month</ToggleButton>
-        <ToggleButton value="year">Year</ToggleButton>
-        <ToggleButton value="custom">Custom</ToggleButton>
+        <ToggleButton value="month">{tr("Month")}</ToggleButton>
+        <ToggleButton value="year">{tr("Year")}</ToggleButton>
+        <ToggleButton value="custom">{tr("Custom")}</ToggleButton>
       </ToggleButtonGroup>
 
       {mode === 'month' && (
         <TextField
           select
           size="small"
-          label="Select Month"
+          label={tr("Select Month")}
           value={month}
           onChange={(event) => onMonthChange(event.target.value)}
           sx={{ minWidth: 220 }}
@@ -113,7 +115,7 @@ export default function CounsellingPeriodFilter({
         <TextField
           select
           size="small"
-          label="Select Year"
+          label={tr("Select Year")}
           value={year}
           onChange={(event) => onYearChange(event.target.value)}
           sx={{ minWidth: 220 }}
@@ -132,7 +134,7 @@ export default function CounsellingPeriodFilter({
       {mode === 'custom' && (
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems={{ sm: 'flex-start' }}>
           <DatePicker
-            label="Start Date"
+            label={tr("Start Date")}
             value={draftStart}
             onChange={handleStartChange}
             renderInput={(params) => (
@@ -140,7 +142,7 @@ export default function CounsellingPeriodFilter({
             )}
           />
           <DatePicker
-            label="End Date"
+            label={tr("End Date")}
             value={draftEnd}
             onChange={handleEndChange}
             renderInput={(params) => (
@@ -148,7 +150,7 @@ export default function CounsellingPeriodFilter({
                 {...params}
                 size="small"
                 error={Boolean(isRangeError)}
-                helperText={isRangeError ? 'End date cannot be earlier than start date' : ''}
+                helperText={isRangeError ? tr("End date cannot be earlier than start date") : ''}
               />
             )}
           />

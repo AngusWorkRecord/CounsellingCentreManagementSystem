@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Container, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
@@ -34,6 +35,7 @@ const StyledBg = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function ComponentHero() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'sm');
 
   return (
@@ -47,16 +49,11 @@ export default function ComponentHero() {
       >
         <Stack spacing={3}>
           <m.div variants={varFade().inUp}>
-            <Typography variant="h3" component="h1">
-              Components
-            </Typography>
+            <Typography variant="h3" component="h1">{tr("Components")}</Typography>
           </m.div>
 
           <m.div variants={varFade().inUp}>
-            <Typography sx={{ color: 'text.secondary' }}>
-              With huge resource pack making deployment
-              <br /> easy and expanding more effectively
-            </Typography>
+            <Typography sx={{ color: 'text.secondary' }}>{tr("With huge resource pack making deployment")}<br />{tr("easy and expanding more effectively")}</Typography>
           </m.div>
         </Stack>
 
@@ -64,7 +61,7 @@ export default function ComponentHero() {
           <m.div variants={varFade().inDown}>
             <Image
               disabledEffect
-              alt="hero"
+              alt={tr("hero")}
               src="/assets/illustrations/characters/character_7.png"
               sx={{ maxWidth: 320 }}
             />

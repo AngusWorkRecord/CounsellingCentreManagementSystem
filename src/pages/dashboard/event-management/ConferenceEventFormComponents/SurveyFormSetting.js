@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // components
 import { Card, Stack, Button, Divider, Box } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import MainFormComponent from '../../custom-forms-components/MainFormComponent';
 
 // ----------------------------------------------------------------------
@@ -13,6 +14,7 @@ SurveyFormSetting.propTypes = {
 };
 
 export default function SurveyFormSetting({ formData, isEdit, handlePrevStep, handleNextStep }) {
+  useUiLanguage();
     const defaultQuestions = [
         {
             FormStructureID: 0,
@@ -39,12 +41,8 @@ export default function SurveyFormSetting({ formData, isEdit, handlePrevStep, ha
     return (
         <Card sx={{ p: 2, }} elevation={1}>
             <Stack direction="row-reverse" sx={{ py: 1, mb: 2 }} spacing={1}>
-                <Button variant="contained">
-                    Submit Layout
-                </Button>
-                <Button variant="outlined">
-                    Use a Template
-                </Button>
+                <Button variant="contained">{tr("Submit Layout")}</Button>
+                <Button variant="outlined">{tr("Use a Template")}</Button>
             </Stack>
 
             <Box sx={{ maxHeight: 468, overflowY: 'auto' }} key="Conference Event Survey Form">
@@ -57,16 +55,12 @@ export default function SurveyFormSetting({ formData, isEdit, handlePrevStep, ha
                     <Button
                         onClick={onPrev}
                         sx={{ mt: 1, mr: 1 }}
-                    >
-                        Back
-                    </Button>
+                    >{tr("Back")}</Button>
                     <Button
                         variant="contained"
                         onClick={onNext}
                         sx={{ mt: 1, mr: 1 }}
-                    >
-                        Next
-                    </Button>
+                    >{tr("Next")}</Button>
                 </div>
             </Stack>
         </Card>

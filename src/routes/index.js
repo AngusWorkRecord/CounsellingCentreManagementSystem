@@ -1,4 +1,6 @@
-import { Navigate, useRoutes } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { Navigate, useRoutes, useLocation } from 'react-router-dom';
+import LanguagePopover from '../layouts/dashboard/header/LanguagePopover';
 // auth
 import AuthGuard from '../auth/AuthGuard';
 import GuestGuard from '../auth/GuestGuard';
@@ -152,7 +154,8 @@ import {
 // ----------------------------------------------------------------------
 
 export default function Router() {
-  return useRoutes([
+  const location = useLocation();
+  const routes = useRoutes([
     // // Auth
     {
       path: '',
@@ -441,4 +444,5 @@ export default function Router() {
     },
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
+  return <>{!location.pathname.startsWith('/dashboard') && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
 }

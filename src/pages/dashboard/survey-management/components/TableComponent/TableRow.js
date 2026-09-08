@@ -14,6 +14,7 @@ import {
 	Divider,
 	Link,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Label from '../../../../../components/label'
 import Iconify from '../../../../../components/iconify'
@@ -33,6 +34,7 @@ SurveyTableRow.propTypes = {
 };
 
 export default function SurveyTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRow }) {
+  useUiLanguage();
 	const {
 		FormID,
 		FormTitle,
@@ -86,23 +88,19 @@ export default function SurveyTableRow({ row, selected, onEditRow, onSelectRow, 
 		if (locationType === "Physical & Virtual")
 			return (
 				<Box>
-					<b>Physical</b>: {physical}
+					<b>{tr("Physical")}</b>: {physical}
 					<br />
-					<b>Virtual</b>:
-					<Button variant="text" size="small" target="_blank" rel="noopener" href={virtual}>
-						Virtual Location Link
-					</Button>
+					<b>{tr("Virtual")}</b>:
+					<Button variant="text" size="small" target="_blank" rel="noopener" href={virtual}>{tr("Virtual Location Link")}</Button>
 				</Box>
 			)
 		if (locationType === "Physical")
-			return <Box><b>Physical</b>: {physical}</Box>
+			return <Box><b>{tr("Physical")}</b>: {physical}</Box>
 		if (locationType === "Virtual")
 			return (
 				<Box>
-					<b>Virtual</b>:
-					<Button variant="text" size="small" target="_blank" rel="noopener" href={virtual}>
-						Virtual Location Link
-					</Button>
+					<b>{tr("Virtual")}</b>:
+					<Button variant="text" size="small" target="_blank" rel="noopener" href={virtual}>{tr("Virtual Location Link")}</Button>
 				</Box>
 			)
 		return <></>
@@ -170,9 +168,7 @@ export default function SurveyTableRow({ row, selected, onEditRow, onSelectRow, 
 						handleClosePopover();
 					}}
 				>
-					<Iconify icon="eva:info-outline" />
-					Info
-				</MenuItem>
+					<Iconify icon="eva:info-outline" />{tr("Info")}</MenuItem>
 
 				<MenuItem
 					onClick={() => {
@@ -180,9 +176,7 @@ export default function SurveyTableRow({ row, selected, onEditRow, onSelectRow, 
 						handleClosePopover();
 					}}
 				>
-					<Iconify icon="eva:edit-fill" />
-					Edit
-				</MenuItem>
+					<Iconify icon="eva:edit-fill" />{tr("Edit")}</MenuItem>
 
 				<MenuItem
 					onClick={() => {
@@ -191,21 +185,17 @@ export default function SurveyTableRow({ row, selected, onEditRow, onSelectRow, 
 					}}
 					sx={{ color: 'error.main' }}
 				>
-					<Iconify icon="eva:trash-2-outline" />
-					Delete
-				</MenuItem>
+					<Iconify icon="eva:trash-2-outline" />{tr("Delete")}</MenuItem>
 
 			</MenuPopover>
 
 			<ConfirmDialog
 				open={openConfirm}
 				onClose={handleCloseConfirm}
-				title="Delete"
+				title={tr("Delete")}
 				content="Are you sure want to delete?"
 				action={
-					<Button variant="contained" color="error" onClick={onDeleteRow}>
-						Delete
-					</Button>
+					<Button variant="contained" color="error" onClick={onDeleteRow}>{tr("Delete")}</Button>
 				}
 			/>
 			<SurveyInfoDialog

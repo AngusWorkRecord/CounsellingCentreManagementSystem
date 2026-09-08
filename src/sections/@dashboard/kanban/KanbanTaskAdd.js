@@ -11,6 +11,7 @@ import {
   InputBase,
   ClickAwayListener,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import uuidv4 from '../../../utils/uuidv4';
 // components
@@ -35,6 +36,7 @@ KanbanTaskAdd.propTypes = {
 };
 
 export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
+  useUiLanguage();
   const [name, setName] = useState('');
 
   const [completed, setCompleted] = useState(false);
@@ -101,7 +103,7 @@ export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
           <InputBase
             multiline
             fullWidth
-            placeholder="Task name"
+            placeholder={tr("Task name")}
             value={name}
             onChange={(event) => setName(event.target.value)}
             onKeyUp={handleKeyUpAddTask}
@@ -109,7 +111,7 @@ export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
           />
 
           <Stack direction="row" justifyContent="space-between" sx={{ pl: 1, pr: 1.5, pb: 2 }}>
-            <Tooltip title="Mark complete">
+            <Tooltip title={tr("Mark complete")}>
               <Checkbox
                 disableRipple
                 checked={completed}
@@ -120,7 +122,7 @@ export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
             </Tooltip>
 
             <Stack direction="row" spacing={1.5} alignItems="center">
-              <Tooltip title="Assign" onClick={handleOpenContacts}>
+              <Tooltip title={tr("Assign")} onClick={handleOpenContacts}>
                 <IconButton size="small">
                   <Iconify icon="eva:people-fill" />
                 </IconButton>
@@ -138,7 +140,7 @@ export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
                   {shortLabel}
                 </Box>
               ) : (
-                <Tooltip title="Due date">
+                <Tooltip title={tr("Due date")}>
                   <IconButton size="small" onClick={onOpenPicker}>
                     <Iconify icon="eva:calendar-fill" />
                   </IconButton>
@@ -152,7 +154,7 @@ export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
 
         <DateRangePicker
           variant="calendar"
-          title="Choose due date"
+          title={tr("Choose due date")}
           startDate={startDate}
           endDate={endDate}
           onChangeStartDate={onChangeStartDate}

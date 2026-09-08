@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { Link, Typography, Box } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 
 // ----------------------------------------------------------------------
 
@@ -10,11 +11,10 @@ MenuHotProducts.propTypes = {
 };
 
 export default function MenuHotProducts({ tags, ...other }) {
+  useUiLanguage();
   return (
     <Box {...other}>
-      <Typography variant="caption" fontWeight="fontWeightBold">
-        Hot Products:
-      </Typography>
+      <Typography variant="caption" fontWeight="fontWeightBold">{tr("Hot Products:")}</Typography>
       &nbsp;
       {tags.map((tag, index) => (
         <Link

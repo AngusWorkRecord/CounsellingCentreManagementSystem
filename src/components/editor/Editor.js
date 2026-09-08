@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import '../../utils/highlight';
 import ReactQuill from 'react-quill';
+import { tr, useUiLanguage } from '../../locales/translate';
 //
 import { StyledEditor } from './styles';
 import EditorToolbar, { formats } from './EditorToolbar';
@@ -27,6 +28,7 @@ export default function Editor({
   sx,
   ...other
 }) {
+  useUiLanguage();
   const modules = {
     toolbar: {
       container: `#${id}`,
@@ -59,7 +61,7 @@ export default function Editor({
           onChange={onChange}
           modules={modules}
           formats={formats}
-          placeholder="Write something awesome..."
+          placeholder={tr("Write something awesome...")}
           {...other}
         />
       </StyledEditor>

@@ -1,5 +1,6 @@
-// @mui
 import { Divider, IconButton, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
+// @mui
 // auth
 import { useAuthContext } from '../../auth/useAuthContext';
 // components
@@ -8,6 +9,7 @@ import Iconify from '../../components/iconify';
 // ----------------------------------------------------------------------
 
 export default function AuthWithSocial() {
+  useUiLanguage();
   const { loginWithGoogle, loginWithGithub, loginWithTwitter } = useAuthContext();
 
   const handleGoogleLogin = async () => {
@@ -55,9 +57,7 @@ export default function AuthWithSocial() {
             borderColor: 'grey.800',
           },
         }}
-      >
-        OR
-      </Divider>
+      >{tr("OR")}</Divider>
 
       <Stack direction="row" justifyContent="center" spacing={2}>
         <IconButton onClick={handleGoogleLogin}>

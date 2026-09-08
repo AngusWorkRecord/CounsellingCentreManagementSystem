@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useUiLanguage } from '../../../../../locales/translate';
 import {
   deleteCounsellingSession,
   getCounsellingSessions,
@@ -20,6 +21,7 @@ import {
 } from './utils';
 
 export default function useCounsellingCaseList() {
+  const language = useUiLanguage();
   const [sessions, setSessions] = useState([]);
   const [filterMode, setFilterMode] = useState('month');
   const [selectedMonth, setSelectedMonth] = useState(getCurrentMonth);
@@ -87,7 +89,7 @@ export default function useCounsellingCaseList() {
     () => periodSessions.filter((session) => matchesCaseFilters(session, filters)),
     [filters, periodSessions]
   );
-  const cases = useMemo(() => filteredSessions.map(mapSessionToCase), [filteredSessions]);
+  const cases = useMemo(() => filteredSessions.map((session, index) => mapSessionToCase(session, index, language)), [filteredSessions, language]);
   const pendingCases = useMemo(
     () => cases.filter((item) =>
       item.workflowStatus === WORKFLOW_STATUS.DETAILED_PENDING && item.reminderStage

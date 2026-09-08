@@ -11,6 +11,7 @@ import {
   Typography,
   CardContent,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -21,6 +22,7 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 // ----------------------------------------------------------------------
 
 export default function DemoEditorPage() {
+  useUiLanguage();
   const [quillSimple, setQuillSimple] = useState('');
 
   const [quillFull, setQuillFull] = useState('');
@@ -28,7 +30,7 @@ export default function DemoEditorPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Editor | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Editor | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -40,13 +42,13 @@ export default function DemoEditorPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Editor"
+            heading={tr("Editor")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Editor' },
+              { name: tr("Editor") },
             ]}
             moreLink={['https://github.com/zenoamaro/react-quill']}
           />
@@ -57,7 +59,7 @@ export default function DemoEditorPage() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <Card>
-              <CardHeader title="Editor Simple" />
+              <CardHeader title={tr("Editor Simple")} />
               <CardContent>
                 <Editor
                   simple
@@ -72,13 +74,13 @@ export default function DemoEditorPage() {
           <Grid item xs={12} md={4}>
             <Stack spacing={3} sx={{ height: 1 }}>
               <Card sx={{ height: 1, boxShadow: 0, bgcolor: 'background.neutral' }}>
-                <CardHeader title="Preview Plain Text" />
+                <CardHeader title={tr("Preview Plain Text")} />
                 <Box sx={{ p: 3 }}>
                   <Markdown children={quillSimple} />
                 </Box>
               </Card>
               <Card sx={{ height: 1, boxShadow: 0, bgcolor: 'background.neutral' }}>
-                <CardHeader title="Preview Html" />
+                <CardHeader title={tr("Preview Html")} />
                 <Typography sx={{ p: 3 }}>{quillSimple}</Typography>
               </Card>
             </Stack>
@@ -88,7 +90,7 @@ export default function DemoEditorPage() {
         <Grid container sx={{ mt: 3 }}>
           <Grid item xs={12} md={8}>
             <Card>
-              <CardHeader title="Editor Full" />
+              <CardHeader title={tr("Editor Full")} />
               <CardContent>
                 <Editor
                   id="full-editor"

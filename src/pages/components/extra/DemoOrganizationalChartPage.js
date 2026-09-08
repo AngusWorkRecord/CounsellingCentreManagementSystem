@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Container } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
@@ -15,12 +16,13 @@ import { Block } from '../../../sections/_examples/Block';
 // ----------------------------------------------------------------------
 
 export default function DemoOrganizationalChartPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   return (
     <>
       <Helmet>
-        <title> Extra Components: Organizational Chart | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Organizational Chart | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -32,10 +34,10 @@ export default function DemoOrganizationalChartPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Organizational Chart"
+            heading={tr("Organizational Chart")}
             links={[
-              { name: 'Components', href: PATH_PAGE.components },
-              { name: 'Organizational Chart' },
+              { name: tr("Components"), href: PATH_PAGE.components },
+              { name: tr("Organizational Chart") },
             ]}
             moreLink={[
               'https://www.npmjs.com/package/react-organizational-chart',
@@ -47,15 +49,15 @@ export default function DemoOrganizationalChartPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
-          <Block title="Simple">
+          <Block title={tr("Simple")}>
             <OrganizationalChart data={SIMPLE_DATA} lineColor={theme.palette.primary.light} />
           </Block>
 
-          <Block title="Standard" sx={{ overflow: 'auto' }}>
+          <Block title={tr("Standard")} sx={{ overflow: 'auto' }}>
             <OrganizationalChart data={SIMPLE_DATA} variant="standard" lineHeight="40px" />
           </Block>
 
-          <Block title="By Group" sx={{ overflow: 'auto' }}>
+          <Block title={tr("By Group")} sx={{ overflow: 'auto' }}>
             <OrganizationalChart data={DATA} variant="group" lineHeight="64px" />
           </Block>
         </Stack>

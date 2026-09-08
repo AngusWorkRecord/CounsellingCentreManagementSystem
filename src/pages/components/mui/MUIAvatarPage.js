@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTheme } from '@mui/material/styles';
 import { Box, Container, Tooltip } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
@@ -28,12 +29,13 @@ const STATUS = ['online', 'away', 'busy', 'invisible'];
 // ----------------------------------------------------------------------
 
 export default function MUIAvatarPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   return (
     <>
       <Helmet>
-        <title> MUI Components: Avatar | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Avatar | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -45,13 +47,13 @@ export default function MUIAvatarPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Avatar"
+            heading={tr("Avatar")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Avatar' },
+              { name: tr("Avatar") },
             ]}
             moreLink={['https://mui.com/components/avatars']}
           />
@@ -61,7 +63,7 @@ export default function MUIAvatarPage() {
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
           <Block
-            title="Image avatars"
+            title={tr("Image avatars")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -75,7 +77,7 @@ export default function MUIAvatarPage() {
           </Block>
 
           <Block
-            title="Letter avatars"
+            title={tr("Letter avatars")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -91,7 +93,7 @@ export default function MUIAvatarPage() {
           </Block>
 
           <Block
-            title="Icon avatars"
+            title={tr("Icon avatars")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -107,7 +109,7 @@ export default function MUIAvatarPage() {
           </Block>
 
           <Block
-            title="Variant"
+            title={tr("Variant")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -123,7 +125,7 @@ export default function MUIAvatarPage() {
           </Block>
 
           <Block
-            title="Grouped"
+            title={tr("Grouped")}
             sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -145,7 +147,7 @@ export default function MUIAvatarPage() {
               </Tooltip>
             ))}
 
-            <Tooltip title="compact">
+            <Tooltip title={tr("compact")}>
               <CustomAvatarGroup compact sx={{ width: 48, height: 48 }}>
                 {COLORS.slice(0, 2).map((color, index) => (
                   <CustomAvatar key={color} alt="Remy Sharp" src={_mock.image.avatar(index + 1)} />
@@ -155,7 +157,7 @@ export default function MUIAvatarPage() {
           </Block>
 
           <Block
-            title="With badge"
+            title={tr("With badge")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -194,7 +196,7 @@ export default function MUIAvatarPage() {
           </Block>
 
           <Block
-            title="Sizes"
+            title={tr("Sizes")}
             sx={{
               display: 'flex',
               alignItems: 'center',

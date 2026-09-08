@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Container, Typography, Stack, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import { useSettingsContext } from '../../components/settings';
 import SvgColor from '../../components/svg-color';
@@ -25,22 +26,19 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeDarkMode() {
+  useUiLanguage();
   const { themeMode, onToggleMode } = useSettingsContext();
 
   return (
     <StyledRoot>
       <Container component={MotionViewport}>
         <m.div variants={varFade().inUp}>
-          <Typography component="div" variant="overline" sx={{ color: 'primary.main' }}>
-            Easy switch between styles.
-          </Typography>
+          <Typography component="div" variant="overline" sx={{ color: 'primary.main' }}>{tr("Easy switch between styles.")}</Typography>
         </m.div>
 
         <m.div variants={varFade().inUp}>
           <Stack spacing={2} direction="row" alignItems="center" display="inline-flex">
-            <Typography variant="h2" sx={{ my: 3, color: 'common.white' }}>
-              Dark mode
-            </Typography>
+            <Typography variant="h2" sx={{ my: 3, color: 'common.white' }}>{tr("Dark mode")}</Typography>
 
             <IconButton color={themeMode === 'dark' ? 'warning' : 'default'} onClick={onToggleMode}>
               <SvgColor
@@ -51,14 +49,12 @@ export default function HomeDarkMode() {
         </m.div>
 
         <m.div variants={varFade().inUp}>
-          <Typography sx={{ color: 'grey.500' }}>
-            A dark theme that feels easier on the eyes.
-          </Typography>
+          <Typography sx={{ color: 'grey.500' }}>{tr("A dark theme that feels easier on the eyes.")}</Typography>
         </m.div>
 
         <m.div variants={varFade().inUp}>
           <Image
-            alt="darkmode"
+            alt={tr("darkmode")}
             src="/assets/images/home/darkmode.jpg"
             sx={{
               borderRadius: 2,

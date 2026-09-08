@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { Switch, Divider, Typography, Stack, Box } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Label from '../../components/label';
 import Iconify from '../../components/iconify';
@@ -13,6 +14,7 @@ PaymentSummary.propTypes = {
 };
 
 export default function PaymentSummary({ sx, ...other }) {
+  useUiLanguage();
   return (
     <Box
       sx={{
@@ -23,23 +25,17 @@ export default function PaymentSummary({ sx, ...other }) {
       }}
       {...other}
     >
-      <Typography variant="h6" sx={{ mb: 5 }}>
-        Summary
-      </Typography>
+      <Typography variant="h6" sx={{ mb: 5 }}>{tr("Summary")}</Typography>
 
       <Stack spacing={2.5}>
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Subscription
-          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Subscription")}</Typography>
 
-          <Label color="error">PREMIUM</Label>
+          <Label color="error">{tr("PREMIUM")}</Label>
         </Stack>
 
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Billed Monthly
-          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Billed Monthly")}</Typography>
           <Switch defaultChecked />
         </Stack>
 
@@ -56,7 +52,7 @@ export default function PaymentSummary({ sx, ...other }) {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography variant="h6">Total Billed</Typography>
+          <Typography variant="h6">{tr("Total Billed")}</Typography>
 
           <Typography variant="h6">$9.99*</Typography>
         </Stack>
@@ -64,23 +60,17 @@ export default function PaymentSummary({ sx, ...other }) {
         <Divider sx={{ borderStyle: 'dashed' }} />
       </Stack>
 
-      <Typography component="div" variant="caption" sx={{ color: 'text.secondary', mt: 1 }}>
-        * Plus applicable taxes
-      </Typography>
+      <Typography component="div" variant="caption" sx={{ color: 'text.secondary', mt: 1 }}>{tr("* Plus applicable taxes")}</Typography>
 
-      <LoadingButton fullWidth size="large" type="submit" variant="contained" sx={{ mt: 5, mb: 3 }}>
-        Upgrade My Plan
-      </LoadingButton>
+      <LoadingButton fullWidth size="large" type="submit" variant="contained" sx={{ mt: 5, mb: 3 }}>{tr("Upgrade My Plan")}</LoadingButton>
 
       <Stack alignItems="center" spacing={1}>
         <Stack direction="row" alignItems="center" spacing={1}>
           <Iconify icon="eva:shield-fill" sx={{ color: 'primary.main' }} />
-          <Typography variant="subtitle2">Secure credit card payment</Typography>
+          <Typography variant="subtitle2">{tr("Secure credit card payment")}</Typography>
         </Stack>
 
-        <Typography variant="caption" sx={{ color: 'text.secondary', textAlign: 'center' }}>
-          This is a secure 128-bit SSL encrypted payment
-        </Typography>
+        <Typography variant="caption" sx={{ color: 'text.secondary', textAlign: 'center' }}>{tr("This is a secure 128-bit SSL encrypted payment")}</Typography>
       </Stack>
     </Box>
   );

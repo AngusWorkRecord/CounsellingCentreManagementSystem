@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogContentText,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import { DialogAnimate } from '../../../../../components/animate';
 //
@@ -23,6 +24,7 @@ ContainerView.propTypes = {
 };
 
 export default function ContainerView({ isOpen, onOpen, onClose, selectVariant, ...other }) {
+  useUiLanguage();
   return (
     <Paper
       sx={{
@@ -34,22 +36,15 @@ export default function ContainerView({ isOpen, onOpen, onClose, selectVariant, 
       }}
       {...other}
     >
-      <Button variant="contained" onClick={onOpen}>
-        Click Me!
-      </Button>
+      <Button variant="contained" onClick={onOpen}>{tr("Click Me!")}</Button>
       <DialogAnimate open={isOpen} onClose={onClose} variants={getVariant(selectVariant)}>
-        <DialogTitle id="alert-dialog-title">{`Use Google's location service?`}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{tr("Use Google's location service?")}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
-          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">{tr("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.")}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Disagree</Button>
-          <Button variant="contained" onClick={onClose} autoFocus>
-            Agree
-          </Button>
+          <Button onClick={onClose}>{tr("Disagree")}</Button>
+          <Button variant="contained" onClick={onClose} autoFocus>{tr("Agree")}</Button>
         </DialogActions>
       </DialogAnimate>
     </Paper>

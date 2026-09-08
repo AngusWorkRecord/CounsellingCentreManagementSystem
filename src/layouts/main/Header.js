@@ -3,6 +3,7 @@ import { useRef } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box, Button, AppBar, Toolbar, Container, Link } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
 import useResponsive from '../../hooks/useResponsive';
@@ -23,6 +24,7 @@ import NavDesktop from './nav/desktop';
 // ----------------------------------------------------------------------
 
 export default function Header() {
+  useUiLanguage();
   const carouselRef = useRef(null);
 
   const theme = useTheme();
@@ -69,9 +71,7 @@ export default function Header() {
 
           {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
 
-          <Button variant="contained" target="_blank" rel="noopener" href={PATH_MINIMAL_ON_STORE}>
-            Purchase Now
-          </Button>
+          <Button variant="contained" target="_blank" rel="noopener" href={PATH_MINIMAL_ON_STORE}>{tr("Purchase Now")}</Button>
 
           {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
         </Container>
@@ -89,6 +89,7 @@ Shadow.propTypes = {
 };
 
 function Shadow({ sx, ...other }) {
+  useUiLanguage();
   return (
     <Box
       sx={{

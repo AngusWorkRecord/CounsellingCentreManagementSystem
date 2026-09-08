@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Card, Stack, Container, AppBar, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 import { NAV } from '../../../config-global';
@@ -19,10 +20,11 @@ import {
 // ----------------------------------------------------------------------
 
 export default function DemoMegaMenuPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Mega Menu | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Mega Menu | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -34,13 +36,13 @@ export default function DemoMegaMenuPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Mega Menu"
+            heading={tr("Mega Menu")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Mega Menu' },
+              { name: tr("Mega Menu") },
             ]}
           />
         </Container>
@@ -54,9 +56,7 @@ export default function DemoMegaMenuPage() {
         }}
       >
         <Container sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Menu Horizon
-          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{tr("Menu Horizon")}</Typography>
 
           <MegaMenuDesktopHorizon data={data} />
         </Container>
@@ -68,14 +68,13 @@ export default function DemoMegaMenuPage() {
         <Stack direction="row" spacing={3} mt={5}>
           <Card sx={{ width: NAV.W_BASE, flexShrink: 0, overflow: 'unset', zIndex: 9 }}>
             <Typography variant="h6" sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
-              <Iconify icon="eva:list-fill" width={24} sx={{ mr: 1 }} /> Menu Vertical
-            </Typography>
+              <Iconify icon="eva:list-fill" width={24} sx={{ mr: 1 }} />{tr("Menu Vertical")}</Typography>
 
             <MegaMenuDesktopVertical data={data} />
           </Card>
 
           <Image
-            alt="any photo"
+            alt={tr("any photo")}
             src={_mock.image.cover(18)}
             ratio="21/9"
             sx={{ borderRadius: 1 }}
@@ -110,143 +109,143 @@ const TAGS = [
 
 const data = [
   {
-    title: 'Parent 1',
+    get title() { return tr("Parent 1"); },
     path: '#',
     icon: <Iconify icon="eva:file-fill" {...ICON_SIZE} />,
-    more: { title: 'More Categories', path: '#' },
+    more: { get title() { return tr("More Categories"); }, path: '#' },
     products: _products,
     tags: TAGS,
     children: [
       {
-        subheader: 'Agriculture Machinery',
+        get subheader() { return tr("Agriculture Machinery"); },
         items: [
-          { title: 'Agriculture Machinery', path: '#' },
-          { title: 'Livestock MachineryFeed', path: '#' },
-          { title: 'Feed Processing Machinery', path: '#' },
-          { title: 'Tiller', path: '#' },
-          { title: 'Harvesting Machine', path: '#' },
+          { get title() { return tr("Agriculture Machinery"); }, path: '#' },
+          { get title() { return tr("Livestock MachineryFeed"); }, path: '#' },
+          { get title() { return tr("Feed Processing Machinery"); }, path: '#' },
+          { get title() { return tr("Tiller"); }, path: '#' },
+          { get title() { return tr("Harvesting Machine"); }, path: '#' },
         ],
       },
       {
-        subheader: 'Machine Tools',
+        get subheader() { return tr("Machine Tools"); },
         items: [
-          { title: 'CNC Machine Tools', path: '#' },
-          { title: 'Lathe', path: '#' },
-          { title: 'Grinding Machine ', path: '#' },
-          { title: 'Drilling Machine ', path: '#' },
-          { title: 'Milling Machine ', path: '#' },
+          { get title() { return tr("CNC Machine Tools"); }, path: '#' },
+          { get title() { return tr("Lathe"); }, path: '#' },
+          { get title() { return tr("Grinding Machine "); }, path: '#' },
+          { get title() { return tr("Drilling Machine "); }, path: '#' },
+          { get title() { return tr("Milling Machine "); }, path: '#' },
         ],
       },
       {
-        subheader: 'Other Machinery & Parts',
+        get subheader() { return tr("Other Machinery & Parts"); },
         items: [
-          { title: 'Metallic Processing Machinery', path: '#' },
-          { title: 'Machinery for Food, Beverage & Cereal', path: '#' },
-          { title: 'Laser Equipment', path: '#' },
-          { title: 'Mould', path: '#' },
-          { title: 'Textile Machinery & Parts', path: '#' },
-          { title: 'Cutting & Fold-bend Machine', path: '#' },
-          { title: 'Paper Machinery', path: '#' },
-          { title: 'Rubber Machinery', path: '#' },
-          { title: 'Chemical Equipment & Machinery', path: '#' },
-          { title: 'Mixing Equipment', path: '#' },
-          { title: 'Machinery for Garment, Shoes & Accessories', path: '#' },
-          { title: 'Crushing & Culling Machine', path: '#' },
+          { get title() { return tr("Metallic Processing Machinery"); }, path: '#' },
+          { get title() { return tr("Machinery for Food, Beverage & Cereal"); }, path: '#' },
+          { get title() { return tr("Laser Equipment"); }, path: '#' },
+          { get title() { return tr("Mould"); }, path: '#' },
+          { get title() { return tr("Textile Machinery & Parts"); }, path: '#' },
+          { get title() { return tr("Cutting & Fold-bend Machine"); }, path: '#' },
+          { get title() { return tr("Paper Machinery"); }, path: '#' },
+          { get title() { return tr("Rubber Machinery"); }, path: '#' },
+          { get title() { return tr("Chemical Equipment & Machinery"); }, path: '#' },
+          { get title() { return tr("Mixing Equipment"); }, path: '#' },
+          { get title() { return tr("Machinery for Garment, Shoes & Accessories"); }, path: '#' },
+          { get title() { return tr("Crushing & Culling Machine"); }, path: '#' },
         ],
       },
       {
-        subheader: 'Plastic & Woodworking Machinery',
+        get subheader() { return tr("Plastic & Woodworking Machinery"); },
         items: [
-          { title: 'Plastic Machinery', path: '#' },
-          { title: 'Woodworking Machinery', path: '#' },
-          { title: 'Blow Molding Machine', path: '#' },
-          { title: 'Plastic Recycling Machine', path: '#' },
-          { title: 'Injection Molding Machine', path: '#' },
+          { get title() { return tr("Plastic Machinery"); }, path: '#' },
+          { get title() { return tr("Woodworking Machinery"); }, path: '#' },
+          { get title() { return tr("Blow Molding Machine"); }, path: '#' },
+          { get title() { return tr("Plastic Recycling Machine"); }, path: '#' },
+          { get title() { return tr("Injection Molding Machine"); }, path: '#' },
         ],
       },
       {
-        subheader: 'Construction Machinery',
+        get subheader() { return tr("Construction Machinery"); },
         items: [
-          { title: 'Building Material Making Machinery', path: '#' },
-          { title: 'Lifting Equipment', path: '#' },
-          { title: 'Excavator', path: '#' },
-          { title: 'Concrete Machinery', path: '#' },
-          { title: 'Stone Processing Machinery', path: '#' },
+          { get title() { return tr("Building Material Making Machinery"); }, path: '#' },
+          { get title() { return tr("Lifting Equipment"); }, path: '#' },
+          { get title() { return tr("Excavator"); }, path: '#' },
+          { get title() { return tr("Concrete Machinery"); }, path: '#' },
+          { get title() { return tr("Stone Processing Machinery"); }, path: '#' },
         ],
       },
     ],
   },
   {
-    title: 'Parent 2',
+    get title() { return tr("Parent 2"); },
     path: '#',
     icon: <Iconify icon="eva:file-fill" {...ICON_SIZE} />,
-    more: { title: 'More Categories', path: '#' },
+    more: { get title() { return tr("More Categories"); }, path: '#' },
     products: _products,
     tags: TAGS,
     children: [
       {
-        subheader: 'Cellphone & Accessories',
+        get subheader() { return tr("Cellphone & Accessories"); },
         items: [
-          { title: 'Mobile Phone Charger', path: '#' },
-          { title: 'Power Bank', path: '#' },
-          { title: 'Mobile Phone LCD', path: '#' },
-          { title: 'Bluetooth Headset', path: '#' },
-          { title: 'Mobile Phone', path: '#' },
+          { get title() { return tr("Mobile Phone Charger"); }, path: '#' },
+          { get title() { return tr("Power Bank"); }, path: '#' },
+          { get title() { return tr("Mobile Phone LCD"); }, path: '#' },
+          { get title() { return tr("Bluetooth Headset"); }, path: '#' },
+          { get title() { return tr("Mobile Phone"); }, path: '#' },
         ],
       },
       {
-        subheader: 'Audio & Video',
+        get subheader() { return tr("Audio & Video"); },
         items: [
-          { title: 'Display & Accessories', path: '#' },
-          { title: 'Audio & Sets', path: '#' },
-          { title: 'Professional Audio', path: '#' },
-          { title: 'LCD Display', path: '#' },
-          { title: 'LCD Module', path: '#' },
-          { title: 'Video', path: '#' },
-          { title: 'TV & Parts', path: '#' },
-          { title: 'Amplifier', path: '#' },
-          { title: 'Portable Audio Appliance', path: '#' },
-          { title: 'Home Theatre System', path: '#' },
-          { title: 'HDMI Cable', path: '#' },
-          { title: 'Radio', path: '#' },
+          { get title() { return tr("Display & Accessories"); }, path: '#' },
+          { get title() { return tr("Audio & Sets"); }, path: '#' },
+          { get title() { return tr("Professional Audio"); }, path: '#' },
+          { get title() { return tr("LCD Display"); }, path: '#' },
+          { get title() { return tr("LCD Module"); }, path: '#' },
+          { get title() { return tr("Video"); }, path: '#' },
+          { get title() { return tr("TV & Parts"); }, path: '#' },
+          { get title() { return tr("Amplifier"); }, path: '#' },
+          { get title() { return tr("Portable Audio Appliance"); }, path: '#' },
+          { get title() { return tr("Home Theatre System"); }, path: '#' },
+          { get title() { return tr("HDMI Cable"); }, path: '#' },
+          { get title() { return tr("Radio"); }, path: '#' },
         ],
       },
       {
-        subheader: 'Household Appliances',
+        get subheader() { return tr("Household Appliances"); },
         items: [
-          { title: 'Air Conditioner, Purifier & Humidifier', path: '#' },
-          { title: 'Refrigerator, Freezer & Parts', path: '#' },
-          { title: 'Water Heater & Components', path: '#' },
-          { title: 'Electrical Fan & Exhaust Fan', path: '#' },
-          { title: 'Household Water Treatment Equipment', path: '#' },
-          { title: 'Solar Water Heater', path: '#' },
-          { title: 'Photographic Apparatus', path: '#' },
-          { title: 'Gas Burner & Gas Stove', path: '#' },
-          { title: 'Entertainment Electronics', path: '#' },
-          { title: 'Electrical Kettle', path: '#' },
-          { title: 'Food Blender', path: '#' },
-          { title: 'Dehumidifier', path: '#' },
+          { get title() { return tr("Air Conditioner, Purifier & Humidifier"); }, path: '#' },
+          { get title() { return tr("Refrigerator, Freezer & Parts"); }, path: '#' },
+          { get title() { return tr("Water Heater & Components"); }, path: '#' },
+          { get title() { return tr("Electrical Fan & Exhaust Fan"); }, path: '#' },
+          { get title() { return tr("Household Water Treatment Equipment"); }, path: '#' },
+          { get title() { return tr("Solar Water Heater"); }, path: '#' },
+          { get title() { return tr("Photographic Apparatus"); }, path: '#' },
+          { get title() { return tr("Gas Burner & Gas Stove"); }, path: '#' },
+          { get title() { return tr("Entertainment Electronics"); }, path: '#' },
+          { get title() { return tr("Electrical Kettle"); }, path: '#' },
+          { get title() { return tr("Food Blender"); }, path: '#' },
+          { get title() { return tr("Dehumidifier"); }, path: '#' },
         ],
       },
       {
-        subheader: 'Digital Devices',
+        get subheader() { return tr("Digital Devices"); },
         items: [
-          { title: 'Battery & Charger', path: '#' },
-          { title: 'Wearable Devices', path: '#' },
-          { title: 'Digital Photo Frame', path: '#' },
-          { title: 'Digital Camera', path: '#' },
-          { title: 'Smart Glasses', path: '#' },
+          { get title() { return tr("Battery & Charger"); }, path: '#' },
+          { get title() { return tr("Wearable Devices"); }, path: '#' },
+          { get title() { return tr("Digital Photo Frame"); }, path: '#' },
+          { get title() { return tr("Digital Camera"); }, path: '#' },
+          { get title() { return tr("Smart Glasses"); }, path: '#' },
         ],
       },
     ],
   },
   {
-    title: 'Parent 3',
+    get title() { return tr("Parent 3"); },
     path: '#',
     icon: <Iconify icon="eva:file-fill" {...ICON_SIZE} />,
   },
   {
-    title: 'Parent 4',
+    get title() { return tr("Parent 4"); },
     path: '#',
     icon: <Iconify icon="eva:file-fill" {...ICON_SIZE} />,
   },

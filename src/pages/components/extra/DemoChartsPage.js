@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Card, Grid, Container, CardHeader, CardContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -24,10 +25,11 @@ import {
 // ----------------------------------------------------------------------
 
 export default function DemoChartsPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Charts | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Charts | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -39,13 +41,13 @@ export default function DemoChartsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Charts"
+            heading={tr("Charts")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Charts' },
+              { name: tr("Charts") },
             ]}
             moreLink={['https://apexcharts.com']}
           />
@@ -56,7 +58,7 @@ export default function DemoChartsPage() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Area" />
+              <CardHeader title={tr("Area")} />
               <CardContent>
                 <ChartArea />
               </CardContent>
@@ -65,7 +67,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Line" />
+              <CardHeader title={tr("Line")} />
               <CardContent>
                 <ChartLine />
               </CardContent>
@@ -74,7 +76,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Column Single" />
+              <CardHeader title={tr("Column Single")} />
               <CardContent>
                 <ChartColumnSingle />
               </CardContent>
@@ -83,7 +85,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Column Multiple" />
+              <CardHeader title={tr("Column Multiple")} />
               <CardContent>
                 <ChartColumnMultiple />
               </CardContent>
@@ -92,7 +94,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Column Stacked" />
+              <CardHeader title={tr("Column Stacked")} />
               <CardContent>
                 <ChartColumnStacked />
               </CardContent>
@@ -101,7 +103,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Column Negative" />
+              <CardHeader title={tr("Column Negative")} />
               <CardContent>
                 <ChartColumnNegative />
               </CardContent>
@@ -110,7 +112,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Bar" />
+              <CardHeader title={tr("Bar")} />
               <CardContent>
                 <ChartBar />
               </CardContent>
@@ -119,7 +121,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Mixed" />
+              <CardHeader title={tr("Mixed")} />
               <CardContent>
                 <ChartMixed />
               </CardContent>
@@ -128,7 +130,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Pie" />
+              <CardHeader title={tr("Pie")} />
               <CardContent
                 sx={{
                   height: 420,
@@ -144,7 +146,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Donut" />
+              <CardHeader title={tr("Donut")} />
               <CardContent
                 sx={{
                   height: 420,
@@ -160,7 +162,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Radial Bar" />
+              <CardHeader title={tr("Radial Bar")} />
               <CardContent
                 sx={{
                   height: 420,
@@ -176,7 +178,7 @@ export default function DemoChartsPage() {
 
           <Grid item xs={12} md={6}>
             <Card dir="ltr">
-              <CardHeader title="Radar" />
+              <CardHeader title={tr("Radar")} />
               <CardContent
                 sx={{
                   height: 420,

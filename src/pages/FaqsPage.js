@@ -1,16 +1,18 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../locales/translate';
 // sections
 import { FaqsHero, FaqsCategory, FaqsList, FaqsForm } from '../sections/faqs';
 
 // ----------------------------------------------------------------------
 
 export default function FaqsPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Faqs | Counselling Centre Management System</title>
+        <title> {tr("Faqs | Counselling Centre Management System")}</title>
       </Helmet>
 
       <FaqsHero />
@@ -18,9 +20,7 @@ export default function FaqsPage() {
       <Container sx={{ pt: 15, pb: 10, position: 'relative' }}>
         <FaqsCategory />
 
-        <Typography variant="h3" sx={{ mb: 5 }}>
-          Frequently asked questions
-        </Typography>
+        <Typography variant="h3" sx={{ mb: 5 }}>{tr("Frequently asked questions")}</Typography>
 
         <Box
           gap={10}

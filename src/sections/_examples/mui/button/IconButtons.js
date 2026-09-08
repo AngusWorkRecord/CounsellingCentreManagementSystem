@@ -1,6 +1,7 @@
 // @mui
 import { IconButton } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 import { IconButtonAnimate } from '../../../../components/animate';
@@ -31,9 +32,10 @@ const style = {
 };
 
 export default function IconButtons() {
+  useUiLanguage();
   return (
     <Masonry columns={2} spacing={3}>
-      <Block title="Base" sx={style}>
+      <Block title={tr("Base")} sx={style}>
         <IconButton color="inherit">
           <Iconify icon="ic:round-access-alarm" />
         </IconButton>
@@ -51,7 +53,7 @@ export default function IconButtons() {
         </IconButton>
       </Block>
 
-      <Block title="Colors" sx={style}>
+      <Block title={tr("Colors")} sx={style}>
         {COLORS.map((color) => (
           <IconButton key={color} color={color}>
             <Iconify icon="ic:round-access-alarm" />
@@ -59,7 +61,7 @@ export default function IconButtons() {
         ))}
       </Block>
 
-      <Block title="Size" sx={style}>
+      <Block title={tr("Size")} sx={style}>
         {SIZES.map((size) => (
           <IconButton key={size} size={size} color="info">
             <Iconify fontSize="inherit" icon="ic:round-access-alarm" />
@@ -67,7 +69,7 @@ export default function IconButtons() {
         ))}
       </Block>
 
-      <Block title="With Animate" sx={style}>
+      <Block title={tr("With Animate")} sx={style}>
         {SIZES.map((size) => (
           <IconButtonAnimate key={size} size={size} color="error">
             <Iconify fontSize="inherit" icon="ic:round-access-alarm" />

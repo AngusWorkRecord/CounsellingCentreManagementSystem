@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone';
 // @mui
 import { Typography } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
+import { tr, useUiLanguage } from '../../locales/translate';
 //
 import Iconify from '../iconify';
 //
@@ -54,6 +55,7 @@ UploadAvatar.propTypes = {
 };
 
 export default function UploadAvatar({ error, file, disabled, helperText, sx, ...other }) {
+  useUiLanguage();
   const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({
     multiple: false,
     disabled,
@@ -116,7 +118,7 @@ export default function UploadAvatar({ error, file, disabled, helperText, sx, ..
         >
           <Iconify icon="ic:round-add-a-photo" width={24} sx={{ mb: 1 }} />
 
-          <Typography variant="caption">{file ? 'Update photo' : 'Upload photo'}</Typography>
+          <Typography variant="caption">{file ? tr("Update photo") : tr("Upload photo")}</Typography>
         </StyledPlaceholder>
       </StyledDropZone>
 

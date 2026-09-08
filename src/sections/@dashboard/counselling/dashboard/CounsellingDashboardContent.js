@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import { formatCurrency, formatDuration } from '../utils';
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 import CaseCategoryDistributionChart from './CaseCategoryDistributionChart';
@@ -15,6 +16,7 @@ import SessionDurationChart from './SessionDurationChart';
 import SessionModeDistributionChart from './SessionModeDistributionChart';
 
 export default function CounsellingDashboardContent({ dateRange, metrics, sessions }) {
+  useUiLanguage();
   const theme = useTheme();
   const navigate = useNavigate();
   const [selection, setSelection] = useState({ title: '', sessions: [] });
@@ -30,10 +32,10 @@ export default function CounsellingDashboardContent({ dateRange, metrics, sessio
   const handleClose = () => setSelection({ title: '', sessions: [] });
   const metricCards = [
     // 中文原文：总个案数、总辅导时长、平均辅导时长、收到款项
-    { title: 'Total Cases', value: metrics.totalCases, icon: 'solar:folder-with-files-bold-duotone', color: theme.palette.primary.main },
-    { title: 'Total Counselling Duration', value: formatDuration(metrics.totalMinutes), icon: 'solar:clock-circle-bold-duotone', color: theme.palette.info.main },
-    { title: 'Average Counselling Duration', value: formatDuration(metrics.averageMinutes), icon: 'solar:stopwatch-bold-duotone', color: theme.palette.secondary.main },
-    { title: 'Payments Received', value: formatCurrency(metrics.totalCollection), icon: 'solar:wallet-money-bold-duotone', color: theme.palette.primary.main },
+    { title: tr("Total Cases"), value: metrics.totalCases, icon: 'solar:folder-with-files-bold-duotone', color: theme.palette.primary.main },
+    { title: tr("Total Counselling Duration"), value: formatDuration(metrics.totalMinutes), icon: 'solar:clock-circle-bold-duotone', color: theme.palette.info.main },
+    { title: tr("Average Counselling Duration"), value: formatDuration(metrics.averageMinutes), icon: 'solar:stopwatch-bold-duotone', color: theme.palette.secondary.main },
+    { title: tr("Payments Received"), value: formatCurrency(metrics.totalCollection), icon: 'solar:wallet-money-bold-duotone', color: theme.palette.primary.main },
   ];
 
   return (

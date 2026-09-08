@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { tr, useUiLanguage } from '../../locales/translate';
 // sections
 import Login from '../../sections/auth/Login';
 // import Login from '../../sections/auth/LoginAuth0';
@@ -6,11 +7,11 @@ import Login from '../../sections/auth/Login';
 // ----------------------------------------------------------------------
 
 export default function LoginPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Login | CounsellingCentreManagementSystem
-</title>
+        <title>{tr("Login | CounsellingCentreManagementSystem")}</title>
       </Helmet>
 
       <Login />

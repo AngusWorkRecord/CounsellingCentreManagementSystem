@@ -1,43 +1,40 @@
 import { m } from 'framer-motion';
 // @mui
 import { Button, Typography, TextField, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
 export default function ContactForm() {
+  useUiLanguage();
   return (
     <Stack component={MotionViewport} spacing={5}>
       <m.div variants={varFade().inUp}>
-        <Typography variant="h3">
-          Feel free to contact us. <br />
-          We&apos;ll be glad to hear from you, buddy.
-        </Typography>
+        <Typography variant="h3">{tr("Feel free to contact us.")}<br />{tr("We'll be glad to hear from you, buddy.")}</Typography>
       </m.div>
 
       <Stack spacing={3}>
         <m.div variants={varFade().inUp}>
-          <TextField fullWidth label="Name" />
+          <TextField fullWidth label={tr("Name")} />
         </m.div>
 
         <m.div variants={varFade().inUp}>
-          <TextField fullWidth label="Email" />
+          <TextField fullWidth label={tr("Email")} />
         </m.div>
 
         <m.div variants={varFade().inUp}>
-          <TextField fullWidth label="Subject" />
+          <TextField fullWidth label={tr("Subject")} />
         </m.div>
 
         <m.div variants={varFade().inUp}>
-          <TextField fullWidth label="Enter your message here." multiline rows={4} />
+          <TextField fullWidth label={tr("Enter your message here.")} multiline rows={4} />
         </m.div>
       </Stack>
 
       <m.div variants={varFade().inUp}>
-        <Button size="large" variant="contained">
-          Submit Now
-        </Button>
+        <Button size="large" variant="contained">{tr("Submit Now")}</Button>
       </m.div>
     </Stack>
   );

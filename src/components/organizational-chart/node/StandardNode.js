@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 // @mui
 import { Typography, IconButton, MenuItem, Card, Avatar } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 //
 import Iconify from '../../iconify';
 import MenuPopover from '../../menu-popover';
@@ -16,6 +17,7 @@ StandardNode.propTypes = {
 };
 
 export default function StandardNode({ node, onEdit, onDelete, sx }) {
+  useUiLanguage();
   const [openPopover, setOpenPopover] = useState(null);
 
   const handleOpenPopover = (event) => {
@@ -80,9 +82,7 @@ export default function StandardNode({ node, onEdit, onDelete, sx }) {
             }}
             sx={{ color: 'error.main' }}
           >
-            <Iconify icon="eva:trash-2-outline" />
-            Delete
-          </MenuItem>
+            <Iconify icon="eva:trash-2-outline" />{tr("Delete")}</MenuItem>
         )}
 
         {onEdit && (
@@ -92,9 +92,7 @@ export default function StandardNode({ node, onEdit, onDelete, sx }) {
               onEdit();
             }}
           >
-            <Iconify icon="eva:edit-fill" />
-            Edit
-          </MenuItem>
+            <Iconify icon="eva:edit-fill" />{tr("Edit")}</MenuItem>
         )}
       </MenuPopover>
     </>

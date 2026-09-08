@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 // components
 import { Box, Card, Stack, Typography, TextField, Grid, Button, Tooltip, Checkbox, FormControlLabel, Divider, IconButton, Paper } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import { isArrayNotEmpty, isStringNullOrEmpty } from '../../../../utils/Helpers';
 import Iconify from '../../../../components/iconify';
 
@@ -24,6 +25,7 @@ TrackerSettingForm.propTypes = {
 }
 
 export default function TrackerSettingForm({ formData, isEdit, handlePrevStep, handleNextStep }) {
+  useUiLanguage();
     // data setting
     const [trackerForms, setTrackerForms] = useState([])
 
@@ -71,18 +73,13 @@ export default function TrackerSettingForm({ formData, isEdit, handlePrevStep, h
     return (
         <Card sx={{ p: 2, }} elevation={1}>
             <Box sx={{ py: 2 }}>
-                <Typography variant='subtitle2' sx={{ fontStyle: 'italic' }}>
-                    **Disclaimer: Please use Google Sheets/Google Docs to create the Trackers.
-                    The feature is representing the label for the Google Sheets URL for updates and tracking purposes.
-                </Typography>
+                <Typography variant='subtitle2' sx={{ fontStyle: 'italic' }}>{tr("**Disclaimer: Please use Google Sheets/Google Docs to create the Trackers. The feature is representing the label for the Google Sheets URL for updates and tracking purposes.")}</Typography>
             </Box>
 
             <Divider />
             {
                 !isArrayNotEmpty(trackerForms) &&
-                <Button onClick={handleAddTrackerForm} sx={{ my: 2 }} fullWidth variant="outlined">
-                    The list is empty. Click to create Tracker
-                </Button>
+                <Button onClick={handleAddTrackerForm} sx={{ my: 2 }} fullWidth variant="outlined">{tr("The list is empty. Click to create Tracker")}</Button>
             }
             {
                 isArrayNotEmpty(trackerForms) &&
@@ -96,11 +93,11 @@ export default function TrackerSettingForm({ formData, isEdit, handlePrevStep, h
                                             fullWidth
                                             size="small"
                                             name="trackerLabel"
-                                            label="Tracker Label"
+                                            label={tr("Tracker Label")}
                                             value={el.name}
                                             onChange={(event) => handleTrackerChange('name', idx, event.target.value)}
                                             error={isStringNullOrEmpty(el.name)}
-                                            helperText={isStringNullOrEmpty(el.name) ? "Label is required" : ""}
+                                            helperText={isStringNullOrEmpty(el.name) ? tr("Label is required") : ""}
                                         />
                                     </Grid>
                                     <Grid item xs={12} md={5}>
@@ -108,27 +105,24 @@ export default function TrackerSettingForm({ formData, isEdit, handlePrevStep, h
                                             fullWidth
                                             size="small"
                                             name="trackerURL"
-                                            label="URL (Google Sheet or any other)"
+                                            label={tr("URL (Google Sheet or any other)")}
                                             value={el.url}
                                             onChange={(event) => handleTrackerChange('url', idx, event.target.value)}
                                             error={isStringNullOrEmpty(el.name)}
-                                            helperText={isStringNullOrEmpty(el.name) ? "Url is required" : ""}
+                                            helperText={isStringNullOrEmpty(el.name) ? tr("Url is required") : ""}
                                         />
                                     </Grid>
 
                                     <Grid item xs={12} md={2} sx={{ display: 'flex' }}>
                                         <Button variant="contained" color="error" onClick={() => handleRemoveTracker(idx)} sx={{ m: 'auto' }} fullWidth>
-                                            <Iconify icon="tabler:trash" /> Delete
-                                        </Button>
+                                            <Iconify icon="tabler:trash" />{tr("Delete")}</Button>
                                     </Grid>
                                 </Grid>
                             </Paper>
                         ))
                     }
 
-                    <Button onClick={handleAddTrackerForm} sx={{ my: 2 }} variant="outlined">
-                        Create Tracker/Drive for this Event/Conference
-                    </Button>
+                    <Button onClick={handleAddTrackerForm} sx={{ my: 2 }} variant="outlined">{tr("Create Tracker/Drive for this Event/Conference")}</Button>
                 </Stack>
 
 
@@ -141,16 +135,12 @@ export default function TrackerSettingForm({ formData, isEdit, handlePrevStep, h
                     <Button
                         onClick={onPrev}
                         sx={{ mt: 1, mr: 1 }}
-                    >
-                        Back
-                    </Button>
+                    >{tr("Back")}</Button>
                     <Button
                         variant="contained"
                         onClick={onNext}
                         sx={{ mt: 1, mr: 1 }}
-                    >
-                        Submit
-                    </Button>
+                    >{tr("Submit")}</Button>
 
                 </div>
             </Stack>

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Card, CardHeader, Container, Stack, CardContent, Divider } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -119,10 +120,11 @@ ReactDOM.render(
 `;
 
 export default function DemoMarkdownPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Markdown | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Markdown | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -134,8 +136,8 @@ export default function DemoMarkdownPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Markdown"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Markdown' }]}
+            heading={tr("Markdown")}
+            links={[{ name: tr("Components"), href: PATH_PAGE.components }, { name: tr("Markdown") }]}
             moreLink={['https://www.npmjs.com/package/react-markdown']}
           />
         </Container>
@@ -144,7 +146,7 @@ export default function DemoMarkdownPage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={3} direction={{ xs: 'column', md: 'row' }}>
           <Card>
-            <CardHeader title="Html content" sx={{ pb: 3 }} />
+            <CardHeader title={tr("Html content")} sx={{ pb: 3 }} />
             <Divider sx={{ borderStyle: 'dashed' }} />
             <CardContent>
               <Markdown children={htmlContent} />
@@ -152,7 +154,7 @@ export default function DemoMarkdownPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Mardown content" sx={{ pb: 3 }} />
+            <CardHeader title={tr("Mardown content")} sx={{ pb: 3 }} />
             <Divider sx={{ borderStyle: 'dashed' }} />
             <CardContent>
               <Markdown children={mardownContent} />

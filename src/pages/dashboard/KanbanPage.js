@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 // @mui
 import { Container, Stack } from '@mui/material';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
+import { tr, useUiLanguage } from '../../locales/translate';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { getBoard, persistColumn, persistCard } from '../../redux/slices/kanban';
@@ -19,6 +20,7 @@ import { KanbanColumn, KanbanColumnAdd } from '../../sections/@dashboard/kanban'
 // ----------------------------------------------------------------------
 
 export default function KanbanPage() {
+  useUiLanguage();
   const dispatch = useDispatch();
 
   const { board } = useSelector((state) => state.kanban);
@@ -100,18 +102,18 @@ export default function KanbanPage() {
   return (
     <>
       <Helmet>
-        <title> Kanban | Counselling Centre Management System</title>
+        <title> {tr("Kanban | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Container maxWidth={false} sx={{ height: 1 }}>
         <CustomBreadcrumbs
-          heading="Kanban"
+          heading={tr("Kanban")}
           links={[
             {
-              name: 'Dashboard',
+              name: tr("Dashboard"),
               href: PATH_DASHBOARD.root,
             },
-            { name: 'Kanban' },
+            { name: tr("Kanban") },
           ]}
         />
         <DragDropContext onDragEnd={onDragEnd}>

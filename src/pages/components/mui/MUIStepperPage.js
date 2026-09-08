@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Paper, Container, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -15,10 +16,11 @@ import HorizontalLinearStepper from '../../../sections/_examples/mui/stepper/Hor
 // ----------------------------------------------------------------------
 
 export default function MUIStepperPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Stepper | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Stepper | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -30,13 +32,13 @@ export default function MUIStepperPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Stepper"
+            heading={tr("Stepper")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Stepper' },
+              { name: tr("Stepper") },
             ]}
             moreLink={['https://mui.com/components/steppers']}
           />
@@ -45,7 +47,7 @@ export default function MUIStepperPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={3}>
-          <Block title="Horizontal Linear Stepper">
+          <Block title={tr("Horizontal Linear Stepper")}>
             <Paper
               sx={{
                 p: 3,
@@ -57,7 +59,7 @@ export default function MUIStepperPage() {
             </Paper>
           </Block>
 
-          <Block title="Linear Alternative Label">
+          <Block title={tr("Linear Alternative Label")}>
             <Paper
               sx={{
                 p: 3,
@@ -69,7 +71,7 @@ export default function MUIStepperPage() {
             </Paper>
           </Block>
 
-          <Block title="Vertical Linear Stepper">
+          <Block title={tr("Vertical Linear Stepper")}>
             <Paper
               sx={{
                 p: 3,
@@ -81,7 +83,7 @@ export default function MUIStepperPage() {
             </Paper>
           </Block>
 
-          <Block title="Customized Stepper">
+          <Block title={tr("Customized Stepper")}>
             <Paper
               sx={{
                 p: 3,

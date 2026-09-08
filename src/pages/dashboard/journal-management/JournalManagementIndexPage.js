@@ -4,6 +4,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 // auth
 import { useAuthContext } from '../../../auth/useAuthContext';
@@ -18,6 +19,7 @@ import { PATH_CONFERENCE_MANAGEMENT } from '../../../routes/paths';
 // ----------------------------------------------------------------------
 
 export default function JournalManagementIndexPage() {
+  useUiLanguage();
     const theme = useTheme();
     const { themeStretch } = useSettingsContext();
     const navigate = useNavigate();
@@ -25,7 +27,7 @@ export default function JournalManagementIndexPage() {
     return (
         <>
             <Helmet>
-                <title> Dashboard | Journal Management </title>
+                <title> {tr("Dashboard | Journal Management")} </title>
             </Helmet>
 
             <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -35,10 +37,10 @@ export default function JournalManagementIndexPage() {
                         <Grid container>
                             <Grid item xs={12} md={12}>
                                 <CustomBreadcrumbs
-                                    heading="Journal Management"
+                                    heading={tr("Journal Management")}
                                     links={[
-                                        { name: 'Dashboard', href: PATH_CONFERENCE_MANAGEMENT.root },
-                                        { name: 'Journal Management', href: PATH_CONFERENCE_MANAGEMENT.journal.root },
+                                        { name: tr("Dashboard"), href: PATH_CONFERENCE_MANAGEMENT.root },
+                                        { name: tr("Journal Management"), href: PATH_CONFERENCE_MANAGEMENT.journal.root },
 
                                     ]}
                                     action={

@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Box, Container, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Image from '../../components/image';
 import { MotionViewport, varFade } from '../../components/animate';
@@ -18,6 +19,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeCleanInterfaces() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionViewport}>
@@ -31,6 +33,7 @@ export default function HomeCleanInterfaces() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   return (
     <Stack
       spacing={3}
@@ -43,9 +46,7 @@ function Description() {
       }}
     >
       <m.div variants={varFade().inUp}>
-        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          clean & clear
-        </Typography>
+        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>{tr("clean & clear")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
@@ -57,9 +58,7 @@ function Description() {
                 ? 'unset'
                 : `4px 4px 16px ${alpha(theme.palette.grey[800], 0.48)}`,
           }}
-        >
-          Beautiful, modern and clean user interfaces
-        </Typography>
+        >{tr("Beautiful, modern and clean user interfaces")}</Typography>
       </m.div>
     </Stack>
   );
@@ -68,6 +67,7 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   return (
     <Box sx={{ position: 'relative' }}>
       {[...Array(10)].map((_, index) => (

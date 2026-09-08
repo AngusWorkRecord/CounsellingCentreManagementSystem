@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone';
 // @mui
 import { Box, Stack, Button, IconButton, Typography } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
+import { tr, useUiLanguage } from '../../locales/translate';
 // assets
 import { UploadIllustration } from '../../assets/illustrations';
 //
@@ -63,6 +64,7 @@ export default function Upload({
   sx,
   ...other
 }) {
+  useUiLanguage();
   const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({
     multiple,
     disabled,
@@ -142,15 +144,11 @@ export default function Upload({
 
           <Stack direction="row" justifyContent="flex-end" spacing={1.5}>
             {onRemoveAll && (
-              <Button color="inherit" variant="outlined" size="small" onClick={onRemoveAll}>
-                Remove all
-              </Button>
+              <Button color="inherit" variant="outlined" size="small" onClick={onRemoveAll}>{tr("Remove all")}</Button>
             )}
 
             {onUpload && (
-              <Button size="small" variant="contained" onClick={onUpload}>
-                Upload files
-              </Button>
+              <Button size="small" variant="contained" onClick={onUpload}>{tr("Upload files")}</Button>
             )}
           </Stack>
         </>
@@ -166,6 +164,7 @@ Placeholder.propTypes = {
 };
 
 function Placeholder({ sx, ...other }) {
+  useUiLanguage();
   return (
     <Stack
       spacing={5}
@@ -188,13 +187,9 @@ function Placeholder({ sx, ...other }) {
       <UploadIllustration sx={{ width: 220 }} />
 
       <div>
-        <Typography gutterBottom variant="h5">
-          Drop or Select file
-        </Typography>
+        <Typography gutterBottom variant="h5">{tr("Drop or Select file")}</Typography>
 
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Drop files here or click
-          <Typography
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Drop files here or click")}<Typography
             variant="body2"
             component="span"
             sx={{
@@ -202,11 +197,7 @@ function Placeholder({ sx, ...other }) {
               color: 'primary.main',
               textDecoration: 'underline',
             }}
-          >
-            browse
-          </Typography>
-          thorough your machine
-        </Typography>
+          >{tr("browse")}</Typography>{tr("thorough your machine")}</Typography>
       </div>
     </Stack>
   );

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { List, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // locales
 import { useLocales } from '../../../locales';
 //
@@ -15,6 +16,7 @@ NavSectionVertical.propTypes = {
 };
 
 export default function NavSectionVertical({ data, sx, ...other }) {
+  useUiLanguage();
   const { translate } = useLocales();
 
   return (
@@ -25,7 +27,7 @@ export default function NavSectionVertical({ data, sx, ...other }) {
         return (
           <List key={key} disablePadding sx={{ px: 2 }}>
             {group.subheader && (
-              <StyledSubheader disableSticky>{`${translate(group.subheader)}`}</StyledSubheader>
+              <StyledSubheader disableSticky>{tr("{{p0}}", { p0: translate(group.subheader) })}</StyledSubheader>
             )}
 
             {group.items.map((list) => (

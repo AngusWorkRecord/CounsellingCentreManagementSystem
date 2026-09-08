@@ -1,3 +1,4 @@
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Chart, { useChart } from '../../../../components/chart';
 
@@ -22,6 +23,7 @@ const series = [
 ];
 
 export default function ChartMixed() {
+  useUiLanguage();
   const chartOptions = useChart({
     stroke: {
       width: [0, 2, 3],
@@ -49,7 +51,7 @@ export default function ChartMixed() {
       type: 'datetime',
     },
     yaxis: {
-      title: { text: 'Points' },
+      title: { text: tr("Points") },
       min: 0,
     },
     tooltip: {

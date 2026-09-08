@@ -12,6 +12,7 @@ import {
   Typography,
   IconButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 import useCopyToClipboard from '../../../hooks/useCopyToClipboard';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
@@ -31,6 +32,7 @@ const GREY = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
 // ----------------------------------------------------------------------
 
 export default function FoundationColorsPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   const { enqueueSnackbar } = useSnackbar();
@@ -39,7 +41,7 @@ export default function FoundationColorsPage() {
 
   const onCopy = (color) => {
     if (color) {
-      enqueueSnackbar(`Copied! ${color}`);
+      enqueueSnackbar(tr("Copied! {{p0}}", { p0: color }));
       copy(color);
     }
   };
@@ -47,7 +49,7 @@ export default function FoundationColorsPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Colors | Counselling Centre Management System</title>
+        <title> {tr("Foundations: Colors | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -59,13 +61,13 @@ export default function FoundationColorsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Color"
+            heading={tr("Color")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Color' },
+              { name: tr("Color") },
             ]}
             moreLink={['https://mui.com/customization/color', 'https://colors.eva.design']}
           />
@@ -77,7 +79,7 @@ export default function FoundationColorsPage() {
           {PALETTE.map((color) => (
             <Box key={color}>
               <Typography variant="h5" sx={{ textTransform: 'capitalize', mb: 3 }}>
-                {color}
+                {tr(color)}
               </Typography>
 
               <Grid>
@@ -94,9 +96,7 @@ export default function FoundationColorsPage() {
           ))}
 
           <div>
-            <Typography variant="h5" sx={{ textTransform: 'capitalize', mb: 3 }}>
-              Grey
-            </Typography>
+            <Typography variant="h5" sx={{ textTransform: 'capitalize', mb: 3 }}>{tr("Grey")}</Typography>
 
             <Grid>
               {GREY.map((variation) => (
@@ -124,6 +124,7 @@ ColorCard.propTypes = {
 };
 
 function ColorCard({ hexColor, variation, onCopy }) {
+  useUiLanguage();
   return (
     <Paper
       variant="outlined"
@@ -133,7 +134,7 @@ function ColorCard({ hexColor, variation, onCopy }) {
         borderColor: (theme) => alpha(theme.palette.grey[500], 0.16),
       }}
     >
-      <Tooltip title="Copy">
+      <Tooltip title={tr("Copy")}>
         <IconButton
           onClick={onCopy}
           sx={{
@@ -155,9 +156,7 @@ function ColorCard({ hexColor, variation, onCopy }) {
         </Typography>
 
         <Stack direction="row" alignItems="center">
-          <Typography variant="overline" sx={{ width: 56, color: 'text.disabled' }}>
-            Hex
-          </Typography>
+          <Typography variant="overline" sx={{ width: 56, color: 'text.disabled' }}>{tr("Hex")}</Typography>
 
           <Typography variant="body2">{hexColor}</Typography>
         </Stack>
@@ -183,6 +182,7 @@ Grid.propTypes = {
 };
 
 function Grid({ children }) {
+  useUiLanguage();
   return (
     <Box
       gap={2.5}

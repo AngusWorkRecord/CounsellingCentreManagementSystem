@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { alpha } from '@mui/material/styles';
 import { Box, Alert, Button, Container, AlertTitle, Stack } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -17,10 +18,11 @@ const COLORS = ['info', 'success', 'warning', 'error'];
 // ----------------------------------------------------------------------
 
 export default function MUIAlertPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Alert | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Alert | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -32,13 +34,13 @@ export default function MUIAlertPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Alert"
+            heading={tr("Alert")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Alert' },
+              { name: tr("Alert") },
             ]}
             moreLink={['https://mui.com/components/alert']}
           />
@@ -47,59 +49,48 @@ export default function MUIAlertPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={2} spacing={3}>
-          <Block title="Standard">
+          <Block title={tr("Standard")}>
+            <Stack spacing={2}>
+              {COLORS.map((color) => (
+                <Alert key={color} severity={color} onClose={() => {}}>{tr("This is an")}{tr(color)}{tr("alert — check it out!")}</Alert>
+              ))}
+            </Stack>
+          </Block>
+
+          <Block title={tr("Filled")}>
+            <Stack spacing={2}>
+              {COLORS.map((color) => (
+                <Alert key={color} severity={color} variant="filled" onClose={() => {}}>{tr("This is an")}{tr(color)}{tr("alert — check it out!")}</Alert>
+              ))}
+            </Stack>
+          </Block>
+
+          <Block title={tr("Outlined")}>
+            <Stack spacing={2}>
+              {COLORS.map((color) => (
+                <Alert key={color} severity={color} variant="outlined" onClose={() => {}}>{tr("This is an")}{tr(color)}{tr("alert — check it out!")}</Alert>
+              ))}
+            </Stack>
+          </Block>
+
+          <Block title={tr("Description")}>
             <Stack spacing={2}>
               {COLORS.map((color) => (
                 <Alert key={color} severity={color} onClose={() => {}}>
-                  This is an {color} alert — check it out!
+                  <AlertTitle sx={{ textTransform: 'capitalize' }}> {tr(color)} </AlertTitle>{tr("This is an")}{tr(color)} {tr("alert —")} <strong>{tr("check it out!")}</strong>
                 </Alert>
               ))}
             </Stack>
           </Block>
 
-          <Block title="Filled">
-            <Stack spacing={2}>
-              {COLORS.map((color) => (
-                <Alert key={color} severity={color} variant="filled" onClose={() => {}}>
-                  This is an {color} alert — check it out!
-                </Alert>
-              ))}
-            </Stack>
-          </Block>
-
-          <Block title="Outlined">
-            <Stack spacing={2}>
-              {COLORS.map((color) => (
-                <Alert key={color} severity={color} variant="outlined" onClose={() => {}}>
-                  This is an {color} alert — check it out!
-                </Alert>
-              ))}
-            </Stack>
-          </Block>
-
-          <Block title="Description">
-            <Stack spacing={2}>
-              {COLORS.map((color) => (
-                <Alert key={color} severity={color} onClose={() => {}}>
-                  <AlertTitle sx={{ textTransform: 'capitalize' }}> {color} </AlertTitle>
-                  This is an {color} alert — <strong>check it out!</strong>
-                </Alert>
-              ))}
-            </Stack>
-          </Block>
-
-          <Block title="Actions">
+          <Block title={tr("Actions")}>
             <Stack spacing={2}>
               <Alert
                 severity="info"
                 action={
-                  <Button color="info" size="small" variant="soft">
-                    Action
-                  </Button>
+                  <Button color="info" size="small" variant="soft">{tr("Action")}</Button>
                 }
-              >
-                This is an info alert — check it out!
-              </Alert>
+              >{tr("This is an info alert — check it out!")}</Alert>
 
               <Alert
                 severity="info"
@@ -114,9 +105,7 @@ export default function MUIAlertPage() {
                         mr: 1,
                         border: (theme) => `1px solid ${alpha(theme.palette.common.white, 0.48)}`,
                       }}
-                    >
-                      Undo
-                    </Button>
+                    >{tr("Undo")}</Button>
 
                     <Button
                       size="small"
@@ -125,14 +114,10 @@ export default function MUIAlertPage() {
                       sx={{
                         bgcolor: 'common.white',
                       }}
-                    >
-                      Action
-                    </Button>
+                    >{tr("Action")}</Button>
                   </>
                 }
-              >
-                This is an info alert — check it out!
-              </Alert>
+              >{tr("This is an info alert — check it out!")}</Alert>
 
               <Alert
                 severity="info"
@@ -146,18 +131,12 @@ export default function MUIAlertPage() {
                       sx={{
                         mr: 1,
                       }}
-                    >
-                      Undo
-                    </Button>
+                    >{tr("Undo")}</Button>
 
-                    <Button color="info" size="small" variant="contained">
-                      Action
-                    </Button>
+                    <Button color="info" size="small" variant="contained">{tr("Action")}</Button>
                   </>
                 }
-              >
-                This is an info alert — check it out!
-              </Alert>
+              >{tr("This is an info alert — check it out!")}</Alert>
             </Stack>
           </Block>
         </Masonry>

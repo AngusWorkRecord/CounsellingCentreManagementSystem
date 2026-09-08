@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Container } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 import {
   CounsellingDashboardContent,
   CounsellingDashboardFeedback,
@@ -8,12 +9,13 @@ import {
 } from '../../sections/@dashboard/counselling';
 
 export default function CounsellingDashboardPage() {
+  useUiLanguage();
   const dashboard = useCounsellingDashboard();
 
   return (
     <>
       {/* 中文原文：辅导个案管理 | Dashboard */}
-      <Helmet><title>Counselling Case Management | Dashboard</title></Helmet>
+      <Helmet><title>{tr("Counselling Case Management | Dashboard")}</title></Helmet>
       <Container maxWidth={false}>
         <CounsellingDashboardHeader
           filteredCount={dashboard.filteredCount}

@@ -16,6 +16,7 @@ import {
   IconButton,
   TableContainer,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
 // components
@@ -35,6 +36,7 @@ AppNewInvoice.propTypes = {
 };
 
 export default function AppNewInvoice({ title, subheader, tableData, tableLabels, ...other }) {
+  useUiLanguage();
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} sx={{ mb: 3 }} />
@@ -60,9 +62,7 @@ export default function AppNewInvoice({ title, subheader, tableData, tableLabels
           size="small"
           color="inherit"
           endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
-        >
-          View All
-        </Button>
+        >{tr("View All")}</Button>
       </Box>
     </Card>
   );
@@ -80,6 +80,7 @@ AppNewInvoiceRow.propTypes = {
 };
 
 function AppNewInvoiceRow({ row }) {
+  useUiLanguage();
   const [openPopover, setOpenPopover] = useState(null);
 
   const handleOpenPopover = (event) => {
@@ -146,26 +147,18 @@ function AppNewInvoiceRow({ row }) {
         sx={{ width: 160 }}
       >
         <MenuItem onClick={handleDownload}>
-          <Iconify icon="eva:download-fill" />
-          Download
-        </MenuItem>
+          <Iconify icon="eva:download-fill" />{tr("Download")}</MenuItem>
 
         <MenuItem onClick={handlePrint}>
-          <Iconify icon="eva:printer-fill" />
-          Print
-        </MenuItem>
+          <Iconify icon="eva:printer-fill" />{tr("Print")}</MenuItem>
 
         <MenuItem onClick={handleShare}>
-          <Iconify icon="eva:share-fill" />
-          Share
-        </MenuItem>
+          <Iconify icon="eva:share-fill" />{tr("Share")}</MenuItem>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
-          <Iconify icon="eva:trash-2-outline" />
-          Delete
-        </MenuItem>
+          <Iconify icon="eva:trash-2-outline" />{tr("Delete")}</MenuItem>
       </MenuPopover>
     </>
   );

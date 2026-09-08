@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { Stack, Typography, Link, Checkbox, FormControlLabel } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // layouts
 import LoginLayout from '../../layouts/login';
 // routes
@@ -13,6 +14,7 @@ import AuthRegisterForm from './AuthRegisterForm';
 // ----------------------------------------------------------------------
 
 export default function Register() {
+  useUiLanguage();
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleCheckboxChange = (event) => {
@@ -33,19 +35,17 @@ export default function Register() {
           textAlign: 'center', // Center text alignment
         }}
       >
-        <Typography variant="h4">Get started absolutely free.</Typography>
+        <Typography variant="h4">{tr("Get started absolutely free.")}</Typography>
 
         <Stack direction="row" spacing={0.5} justifyContent="center">
-          <Typography variant="body2">Already have an account?</Typography>
+          <Typography variant="body2">{tr("Already have an account?")}</Typography>
 
           <Link 
             component={RouterLink} 
             to={PATH_AUTH.login} 
             variant="subtitle2" 
             sx={{ color: 'grey.800', fontWeight: 'bold' }} 
-          >
-            Sign in
-          </Link>
+          >{tr("Sign in")}</Link>
         </Stack>
       </Stack>
 
@@ -83,14 +83,10 @@ export default function Register() {
             component="div"
             sx={{ color: 'grey.800', typography: 'caption', textAlign: 'center' }}
           >
-            {'By signing up, I agree to '}
-            <Link underline="always" color="text.primary" fontWeight='bold'>
-              Terms of Service
-            </Link>
-            {' and '}
-            <Link underline="always" color="text.primary" fontWeight='bold'>
-              Privacy Policy
-            </Link>
+            {tr("By signing up, I agree to ")}
+            <Link underline="always" color="text.primary" fontWeight='bold'>{tr("Terms of Service")}</Link>
+            {tr(" and ")}
+            <Link underline="always" color="text.primary" fontWeight='bold'>{tr("Privacy Policy")}</Link>
             .
           </Typography>
         }

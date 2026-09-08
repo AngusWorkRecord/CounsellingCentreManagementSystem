@@ -3,6 +3,7 @@ import { m } from 'framer-motion';
 // @mui
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box, Grid, Button, Container, Typography, LinearProgress } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
@@ -28,6 +29,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function AboutWhat() {
+  useUiLanguage();
   const theme = useTheme();
 
   const isDesktop = useResponsive('up', 'md');
@@ -49,7 +51,7 @@ export default function AboutWhat() {
                 <Grid item xs={6}>
                   <m.div variants={varFade().inUp}>
                     <Image
-                      alt="our office 1"
+                      alt={tr("our office 1")}
                       src="/assets/images/about/what_1.jpg"
                       ratio="3/4"
                       sx={{
@@ -62,7 +64,7 @@ export default function AboutWhat() {
                 <Grid item xs={6}>
                   <m.div variants={varFade().inUp}>
                     <Image
-                      alt="our office 2"
+                      alt={tr("our office 2")}
                       src="/assets/images/about/what_2.jpg"
                       ratio="1/1"
                       sx={{ borderRadius: 2 }}
@@ -75,9 +77,7 @@ export default function AboutWhat() {
 
           <Grid item xs={12} md={6} lg={5}>
             <m.div variants={varFade().inRight}>
-              <Typography variant="h2" sx={{ mb: 3 }}>
-                What is minimal?
-              </Typography>
+              <Typography variant="h2" sx={{ mb: 3 }}>{tr("What is minimal?")}</Typography>
             </m.div>
 
             <m.div variants={varFade().inRight}>
@@ -85,12 +85,7 @@ export default function AboutWhat() {
                 sx={{
                   color: theme.palette.mode === 'light' ? 'text.secondary' : 'common.white',
                 }}
-              >
-                Our theme is the most advanced and user-friendly theme you will find on the market,
-                we have documentation and video to help set your site really easily, pre-installed
-                demos you can import in one click and everything from the theme options to page
-                content can be edited from the front-end. This is the theme you are looking for.
-              </Typography>
+              >{tr("Our theme is the most advanced and user-friendly theme you will find on the market, we have documentation and video to help set your site really easily, pre-installed demos you can import in one click and everything from the theme options to page content can be edited from the front-end. This is the theme you are looking for.")}</Typography>
             </m.div>
 
             <Box sx={{ my: 5 }}>
@@ -107,9 +102,7 @@ export default function AboutWhat() {
                 color="inherit"
                 size="large"
                 endIcon={<Iconify icon="ic:round-arrow-right-alt" width={24} />}
-              >
-                Check out our work
-              </Button>
+              >{tr("Check out our work")}</Button>
             </m.div>
           </Grid>
         </Grid>
@@ -128,6 +121,7 @@ ProgressItem.propTypes = {
 };
 
 function ProgressItem({ progress }) {
+  useUiLanguage();
   const { label, value } = progress;
 
   return (

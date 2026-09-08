@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { Link, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // components
@@ -15,22 +16,18 @@ import { PasswordIcon } from '../../assets/icons';
 
 
 export default function ResetPasswordPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Reset Password | Counselling Centre Management System</title>
+        <title> {tr("Reset Password | Counselling Centre Management System")}</title>
       </Helmet>
 
       <PasswordIcon sx={{ mb: 5, height: 96 }} />
 
-      <Typography variant="h3" paragraph>
-        Forgot your password?
-      </Typography>
+      <Typography variant="h3" paragraph>{tr("Forgot your password?")}</Typography>
 
-      <Typography sx={{ color: 'text.secondary', mb: 5 }}>
-        Please enter the email address associated with your account and We will email you a link to
-        reset your password.
-      </Typography>
+      <Typography sx={{ color: 'text.secondary', mb: 5 }}>{tr("Please enter the email address associated with your account and We will email you a link to reset your password.")}</Typography>
 
       <AuthResetPasswordForm />
 
@@ -46,9 +43,7 @@ export default function ResetPasswordPage() {
           display: 'inline-flex',
         }}
       >
-        <Iconify icon="eva:chevron-left-fill" width={16} />
-        Return to sign in
-      </Link>
+        <Iconify icon="eva:chevron-left-fill" width={16} />{tr("Return to sign in")}</Link>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Dialog, Button, DialogTitle, DialogActions, DialogContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 
 // ----------------------------------------------------------------------
 
@@ -13,6 +14,7 @@ ConfirmDialog.propTypes = {
 };
 
 export default function ConfirmDialog({ title, content, action, open, onClose, ...other }) {
+  useUiLanguage();
   return (
     <Dialog fullWidth maxWidth="xs" open={open} onClose={onClose} {...other}>
       <DialogTitle sx={{ pb: 2 }}>{title}</DialogTitle>
@@ -22,9 +24,7 @@ export default function ConfirmDialog({ title, content, action, open, onClose, .
       <DialogActions>
         {action}
 
-        <Button variant="outlined" color="inherit" onClick={onClose}>
-          Cancel
-        </Button>
+        <Button variant="outlined" color="inherit" onClick={onClose}>{tr("Cancel")}</Button>
       </DialogActions>
     </Dialog>
   );

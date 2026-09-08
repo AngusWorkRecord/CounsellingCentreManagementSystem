@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { AppBar, Toolbar, Box, Link } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // config
 import { HEADER } from '../../config-global';
 // utils
@@ -19,6 +20,7 @@ Header.propTypes = {
 };
 
 export default function Header({ isOffset }) {
+  useUiLanguage();
   const theme = useTheme();
 
   return (
@@ -44,9 +46,7 @@ export default function Header({ isOffset }) {
       >
         <Logo />
 
-        <Link component={RouterLink} to={PATH_PAGE.faqs} variant="subtitle2" color="inherit">
-          Need Help?
-        </Link>
+        <Link component={RouterLink} to={PATH_PAGE.faqs} variant="subtitle2" color="inherit">{tr("Need Help?")}</Link>
       </Toolbar>
 
       {isOffset && <Shadow />}
@@ -61,6 +61,7 @@ Shadow.propTypes = {
 };
 
 function Shadow({ sx, ...other }) {
+  useUiLanguage();
   return (
     <Box
       sx={{

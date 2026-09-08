@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -15,6 +16,7 @@ import { Block } from '../../../sections/_examples/Block';
 // ----------------------------------------------------------------------
 
 export default function MUIProgressPage() {
+  useUiLanguage();
   const [progress, setProgress] = useState(0);
 
   const [buffer, setBuffer] = useState(10);
@@ -64,7 +66,7 @@ export default function MUIProgressPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Progress | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Progress | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -76,13 +78,13 @@ export default function MUIProgressPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Progress"
+            heading={tr("Progress")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Progress' },
+              { name: tr("Progress") },
             ]}
             moreLink={['https://mui.com/components/progress']}
           />
@@ -90,11 +92,11 @@ export default function MUIProgressPage() {
       </Box>
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
-          <Block title="Circular">
+          <Block title={tr("Circular")}>
             <ProgressCircular progress={progress} />
           </Block>
 
-          <Block title="Linear">
+          <Block title={tr("Linear")}>
             <ProgressLinear progress={progress} buffer={buffer} />
           </Block>
         </Stack>

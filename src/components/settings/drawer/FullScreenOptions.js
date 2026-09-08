@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { tr, useUiLanguage } from '../../../locales/translate';
 //
 import SvgColor from '../../svg-color';
 import { StyledCard } from '../styles';
@@ -6,6 +7,7 @@ import { StyledCard } from '../styles';
 // ----------------------------------------------------------------------
 
 export default function FullScreenOptions() {
+  useUiLanguage();
   const [fullscreen, setFullscreen] = useState(false);
 
   const onToggleFullScreen = () => {
@@ -32,7 +34,7 @@ export default function FullScreenOptions() {
         },
       }}
     >
-      {fullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+      {fullscreen ? tr("Exit Fullscreen") : tr("Fullscreen")}
 
       <SvgColor
         src={`/assets/icons/setting/${fullscreen ? 'ic_exit_full_screen' : 'ic_full_screen'}.svg`}

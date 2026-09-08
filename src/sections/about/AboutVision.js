@@ -1,6 +1,7 @@
 import { m } from 'framer-motion';
 // @mui
 import { Box, Container, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Image from '../../components/image';
 import { MotionViewport, varFade } from '../../components/animate';
@@ -8,6 +9,7 @@ import { MotionViewport, varFade } from '../../components/animate';
 // ----------------------------------------------------------------------
 
 export default function AboutVision() {
+  useUiLanguage();
   return (
     <Container component={MotionViewport} sx={{ mt: 10 }}>
       <Box
@@ -48,9 +50,7 @@ export default function AboutVision() {
       </Box>
 
       <m.div variants={varFade().inUp}>
-        <Typography variant="h3" sx={{ textAlign: 'center', maxWidth: 800, mx: 'auto' }}>
-          Our vision offering the best product nulla vehicula tortor scelerisque ultrices malesuada.
-        </Typography>
+        <Typography variant="h3" sx={{ textAlign: 'center', maxWidth: 800, mx: 'auto' }}>{tr("Our vision offering the best product nulla vehicula tortor scelerisque ultrices malesuada.")}</Typography>
       </m.div>
     </Container>
   );

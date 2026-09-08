@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 // components
 import { Box, Stack, Typography, TextField, Grid, Button, Divider, IconButton, Paper, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import Iconify from '../../../../components/iconify';
 
 // utils
@@ -25,6 +26,7 @@ LocationSettingForm.propTypes = {
 }
 
 export default function LocationSettingForm({ locationData, setLocationData, isEdit, ...others }) {
+  useUiLanguage();
     // data setting
 
     const handleAddLocation = () => {
@@ -72,17 +74,13 @@ export default function LocationSettingForm({ locationData, setLocationData, isE
     return (
         <Box sx={{ py: 2, }}>
             <Box sx={{ py: 2 }}>
-                <Typography variant="subtitle1" sx={{ color: 'rgba(11, 11, 11, .7)' }}>
-                    Location Settings
-                </Typography>
+                <Typography variant="subtitle1" sx={{ color: 'rgba(11, 11, 11, .7)' }}>{tr("Location Settings")}</Typography>
             </Box>
 
             <Divider />
             {
                 !isArrayNotEmpty(locationData) &&
-                <Button onClick={handleAddLocation} sx={{ my: 2 }} fullWidth variant="outlined">
-                    The list is empty. Click to create Location
-                </Button>
+                <Button onClick={handleAddLocation} sx={{ my: 2 }} fullWidth variant="outlined">{tr("The list is empty. Click to create Location")}</Button>
             }
             {
                 isArrayNotEmpty(locationData) &&
@@ -97,29 +95,25 @@ export default function LocationSettingForm({ locationData, setLocationData, isE
                                             value={el.type}
                                             exclusive
                                             onChange={(event) => handleLocationChange('type', idx, event.target.value)}
-                                            aria-label="Type"
+                                            aria-label={tr("Type")}
                                             size="small"
                                             fullWidth
                                         >
-                                            <ToggleButton value="Physical">
-                                                Physical
-                                            </ToggleButton>
-                                            <ToggleButton value="Virtual">
-                                                Virtual
-                                            </ToggleButton>
+                                            <ToggleButton value="Physical">{tr("Physical")}</ToggleButton>
+                                            <ToggleButton value="Virtual">{tr("Virtual")}</ToggleButton>
                                         </ToggleButtonGroup>
                                     </Grid>
                                     <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
                                         <TextField
                                             fullWidth
                                             size="small"
-                                            label="Location Label"
-                                            placeholder="eg: UCSI Hotel"
+                                            label={tr("Location Label")}
+                                            placeholder={tr("eg: UCSI Hotel")}
                                             value={el.label}
                                             sx={{ my: 'auto' }}
                                             onChange={(event) => handleLocationChange('label', idx, event.target.value)}
                                             error={el.isDirty && isStringNullOrEmpty(el.label)}
-                                            helperText={el.isDirty && isStringNullOrEmpty(el.label) ? "Label is required" : ""}
+                                            helperText={el.isDirty && isStringNullOrEmpty(el.label) ? tr("Label is required") : ""}
                                             required
                                         />
                                     </Grid>
@@ -127,8 +121,8 @@ export default function LocationSettingForm({ locationData, setLocationData, isE
                                         <TextField
                                             fullWidth
                                             size="small"
-                                            label="Info"
-                                            placeholder="eg: 1st floor, Meeting Room Rafflesia"
+                                            label={tr("Info")}
+                                            placeholder={tr("eg: 1st floor, Meeting Room Rafflesia")}
                                             sx={{ my: 'auto' }}
                                             value={el.info}
                                             onChange={(event) => handleLocationChange('info', idx, event.target.value)}
@@ -145,9 +139,7 @@ export default function LocationSettingForm({ locationData, setLocationData, isE
                         ))
                     }
 
-                    <Button onClick={handleAddLocation} sx={{ my: 2 }} variant="outlined">
-                        Insert Location
-                    </Button>
+                    <Button onClick={handleAddLocation} sx={{ my: 2 }} variant="outlined">{tr("Insert Location")}</Button>
                 </Stack>
 
             }

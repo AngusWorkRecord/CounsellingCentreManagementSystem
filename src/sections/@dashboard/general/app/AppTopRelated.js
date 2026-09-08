@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Box, Card, Rating, CardHeader, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
 // components
@@ -17,6 +18,7 @@ AppTopRelated.propTypes = {
 };
 
 export default function AppTopRelated({ title, subheader, list, ...other }) {
+  useUiLanguage();
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -46,6 +48,7 @@ ApplicationItem.propTypes = {
 };
 
 function ApplicationItem({ app }) {
+  useUiLanguage();
   const { shortcut, system, price, rating, review, name } = app;
 
   return (
@@ -78,7 +81,7 @@ function ApplicationItem({ app }) {
           </Typography>
 
           <Label variant="soft" color={price === 0 ? 'success' : 'error'}>
-            {price === 0 ? 'Free' : fCurrency(price)}
+            {price === 0 ? tr("Free") : fCurrency(price)}
           </Label>
         </Stack>
       </Box>
@@ -86,8 +89,7 @@ function ApplicationItem({ app }) {
       <Stack alignItems="flex-end" sx={{ pr: 3 }}>
         <Rating readOnly size="small" precision={0.5} name="reviews" value={rating} />
         <Typography variant="caption" sx={{ mt: 0.5, color: 'text.secondary' }}>
-          {fShortenNumber(review)} reviews
-        </Typography>
+          {fShortenNumber(review)}{tr("reviews")}</Typography>
       </Stack>
     </Stack>
   );

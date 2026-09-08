@@ -13,6 +13,7 @@ import {
   ClickAwayListener,
   Autocomplete,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 import flattenArray from '../../../utils/flattenArray';
@@ -88,6 +89,7 @@ const StyledPopper = styled((props) => <Popper {...props} />)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 function Searchbar() {
+  useUiLanguage();
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
@@ -168,7 +170,7 @@ function Searchbar() {
                   inputProps={params.inputProps}
                   fullWidth
                   autoFocus
-                  placeholder="Search..."
+                  placeholder={tr("Search...")}
                   onKeyUp={handleKeyUp}
                   startAdornment={
                     <InputAdornment position="start">

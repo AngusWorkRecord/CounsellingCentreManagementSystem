@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import Iconify from '../../../../components/iconify';
 
 ChartEmptyState.propTypes = {
@@ -7,6 +8,7 @@ ChartEmptyState.propTypes = {
 };
 
 export default function ChartEmptyState({ height = 300 }) {
+  useUiLanguage();
   return (
     <Box
       sx={{
@@ -19,7 +21,7 @@ export default function ChartEmptyState({ height = 300 }) {
       }}
     >
       <Iconify icon="eva:bar-chart-2-outline" width={40} sx={{ mb: 1 }} />
-      {/* 中文原文：该月份暂无数据 */}<Typography variant="body2">No data available for this month</Typography>
+      {/* 中文原文：该月份暂无数据 */}<Typography variant="body2">{tr("No data available for this month")}</Typography>
     </Box>
   );
 }

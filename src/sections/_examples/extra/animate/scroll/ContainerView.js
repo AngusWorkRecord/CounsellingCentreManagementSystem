@@ -3,6 +3,7 @@ import { m } from 'framer-motion';
 import { useRef } from 'react';
 // @mui
 import { Box, Paper, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Scrollbar from '../../../../../components/scrollbar';
 import { MotionViewport, varContainer } from '../../../../../components/animate';
@@ -16,6 +17,7 @@ ContainerView.propTypes = {
 };
 
 export default function ContainerView({ selectVariant, ...other }) {
+  useUiLanguage();
   const scrollRef = useRef(null);
 
   return (
@@ -49,7 +51,7 @@ export default function ContainerView({ selectVariant, ...other }) {
               boxShadow: (theme) => theme.customShadows.z8,
             }}
           >
-            <Typography variant="body2">Item {index + 1}</Typography>
+            <Typography variant="body2">{tr("Item")} {index + 1}</Typography>
           </Box>
         ))}
       </Scrollbar>

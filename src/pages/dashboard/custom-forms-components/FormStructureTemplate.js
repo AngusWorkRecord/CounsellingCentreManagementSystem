@@ -1,11 +1,12 @@
+import { tr } from '../../../locales/translate';
 import { isArrayNotEmpty, isStringNullOrEmpty } from "../../../utils/Helpers"
 
 export const QUESTION_TYPE = {
-    short_answer: { label: 'Short Answer', value: 'short-answer' },
-    long_answer: { label: 'Long Answer', value: 'long-answer' },
-    mulitiple_choice: { label: 'Multiple Choice', value: 'multiple-choice' },
-    mulitiple_selection: { label: 'Checkbox', value: 'multiple-selection' },
-    range: { label: 'Range', value: 'range' },
+    short_answer: { get label() { return tr("Short Answer"); }, value: 'short-answer' },
+    long_answer: { get label() { return tr("Long Answer"); }, value: 'long-answer' },
+    mulitiple_choice: { get label() { return tr("Multiple Choice"); }, value: 'multiple-choice' },
+    mulitiple_selection: { get label() { return tr("Checkbox"); }, value: 'multiple-selection' },
+    range: { get label() { return tr("Range"); }, value: 'range' },
 }
 
 export const FormStructureTemplate = {

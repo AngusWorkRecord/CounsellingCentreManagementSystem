@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Button, Container } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -23,10 +24,11 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function DemoSnackbarPage() {
+  useUiLanguage();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const onSnackbarAction = (color, anchor) => {
-    enqueueSnackbar(`This is an ${color}`, {
+    enqueueSnackbar(tr("This is an {{p0}}", { p0: color }), {
       variant: color,
       anchorOrigin: anchor,
       action: (key) => (
@@ -37,13 +39,9 @@ export default function DemoSnackbarPage() {
             onClick={() => {
               console.log(`I belong to snackbar with key ${key}`);
             }}
-          >
-            Alert
-          </Button>
+          >{tr("Alert")}</Button>
 
-          <Button size="small" color="inherit" onClick={() => closeSnackbar(key)}>
-            Dismiss
-          </Button>
+          <Button size="small" color="inherit" onClick={() => closeSnackbar(key)}>{tr("Dismiss")}</Button>
         </>
       ),
     });
@@ -52,7 +50,7 @@ export default function DemoSnackbarPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Snackbar | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Snackbar | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -64,13 +62,13 @@ export default function DemoSnackbarPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Snackbar"
+            heading={tr("Snackbar")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Snackbar' },
+              { name: tr("Snackbar") },
             ]}
             moreLink={[
               'https://mui.com/components/snackbars',
@@ -82,122 +80,92 @@ export default function DemoSnackbarPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Simple" sx={style}>
+          <Block title={tr("Simple")} sx={style}>
             <Button
               variant="contained"
               color="inherit"
-              onClick={() => enqueueSnackbar('This is an default', { variant: 'default' })}
-            >
-              Default
-            </Button>
+              onClick={() => enqueueSnackbar(tr("This is an default"), { variant: 'default' })}
+            >{tr("Default")}</Button>
             <Button
               variant="contained"
               color="info"
-              onClick={() => enqueueSnackbar('This is an info', { variant: 'info' })}
-            >
-              Info
-            </Button>
+              onClick={() => enqueueSnackbar(tr("This is an info"), { variant: 'info' })}
+            >{tr("Info")}</Button>
             <Button
               variant="contained"
               color="success"
-              onClick={() => enqueueSnackbar('This is an success', {})}
-            >
-              Success
-            </Button>
+              onClick={() => enqueueSnackbar(tr("This is an success"), {})}
+            >{tr("Success")}</Button>
             <Button
               variant="contained"
               color="warning"
               onClick={() =>
-                enqueueSnackbar('This is an warning', {
+                enqueueSnackbar(tr("This is an warning"), {
                   variant: 'warning',
                 })
               }
-            >
-              Warning
-            </Button>
+            >{tr("Warning")}</Button>
             <Button
               variant="contained"
               color="error"
-              onClick={() => enqueueSnackbar('This is an error', { variant: 'error' })}
-            >
-              Error
-            </Button>
+              onClick={() => enqueueSnackbar(tr("This is an error"), { variant: 'error' })}
+            >{tr("Error")}</Button>
           </Block>
 
-          <Block title="With Close" sx={style}>
+          <Block title={tr("With Close")} sx={style}>
             <Button
               variant="contained"
               color="inherit"
               onClick={() =>
-                enqueueSnackbar('This is an default', {
+                enqueueSnackbar(tr("This is an default"), {
                   variant: 'default',
                 })
               }
-            >
-              Default
-            </Button>
+            >{tr("Default")}</Button>
             <Button
               variant="contained"
               color="info"
               onClick={() =>
-                enqueueSnackbar('This is an info', {
+                enqueueSnackbar(tr("This is an info"), {
                   variant: 'info',
                 })
               }
-            >
-              Info
-            </Button>
+            >{tr("Info")}</Button>
             <Button
               variant="contained"
               color="success"
               onClick={() =>
-                enqueueSnackbar('This is an success', {
+                enqueueSnackbar(tr("This is an success"), {
                   variant: 'success',
                 })
               }
-            >
-              Success
-            </Button>
+            >{tr("Success")}</Button>
             <Button
               variant="contained"
               color="warning"
               onClick={() =>
-                enqueueSnackbar('This is an warning', {
+                enqueueSnackbar(tr("This is an warning"), {
                   variant: 'warning',
                 })
               }
-            >
-              Warning
-            </Button>
+            >{tr("Warning")}</Button>
             <Button
               variant="contained"
               color="error"
               onClick={() =>
-                enqueueSnackbar('This is an error', {
+                enqueueSnackbar(tr("This is an error"), {
                   variant: 'error',
                 })
               }
-            >
-              Error
-            </Button>
+            >{tr("Error")}</Button>
           </Block>
 
-          <Block title="With Action" sx={style}>
-            <Button variant="contained" color="inherit" onClick={() => onSnackbarAction('default')}>
-              Default
-            </Button>
-            <Button variant="contained" color="info" onClick={() => onSnackbarAction('info')}>
-              Info
-            </Button>
-            <Button variant="contained" color="success" onClick={() => onSnackbarAction('success')}>
-              Success
-            </Button>
-            <Button variant="contained" color="warning" onClick={() => onSnackbarAction('warning')}>
-              Warning
-            </Button>
-            <Button variant="contained" color="error" onClick={() => onSnackbarAction('error')}>
-              Error
-            </Button>
+          <Block title={tr("With Action")} sx={style}>
+            <Button variant="contained" color="inherit" onClick={() => onSnackbarAction('default')}>{tr("Default")}</Button>
+            <Button variant="contained" color="info" onClick={() => onSnackbarAction('info')}>{tr("Info")}</Button>
+            <Button variant="contained" color="success" onClick={() => onSnackbarAction('success')}>{tr("Success")}</Button>
+            <Button variant="contained" color="warning" onClick={() => onSnackbarAction('warning')}>{tr("Warning")}</Button>
+            <Button variant="contained" color="error" onClick={() => onSnackbarAction('error')}>{tr("Error")}</Button>
           </Block>
 
           <Block title="anchorOrigin" sx={style}>
@@ -210,9 +178,7 @@ export default function DemoSnackbarPage() {
                   horizontal: 'left',
                 })
               }
-            >
-              Top Left
-            </Button>
+            >{tr("Top Left")}</Button>
             <Button
               variant="text"
               color="inherit"
@@ -222,12 +188,8 @@ export default function DemoSnackbarPage() {
                   horizontal: 'center',
                 })
               }
-            >
-              Top Center
-            </Button>
-            <Button variant="text" color="inherit" onClick={() => onSnackbarAction('default')}>
-              Top Right
-            </Button>
+            >{tr("Top Center")}</Button>
+            <Button variant="text" color="inherit" onClick={() => onSnackbarAction('default')}>{tr("Top Right")}</Button>
             <Button
               variant="text"
               color="inherit"
@@ -237,9 +199,7 @@ export default function DemoSnackbarPage() {
                   horizontal: 'left',
                 })
               }
-            >
-              Bottom Left
-            </Button>
+            >{tr("Bottom Left")}</Button>
             <Button
               variant="text"
               color="inherit"
@@ -249,9 +209,7 @@ export default function DemoSnackbarPage() {
                   horizontal: 'center',
                 })
               }
-            >
-              Bottom Center
-            </Button>
+            >{tr("Bottom Center")}</Button>
             <Button
               variant="text"
               color="inherit"
@@ -261,9 +219,7 @@ export default function DemoSnackbarPage() {
                   horizontal: 'right',
                 })
               }
-            >
-              Bottom Right
-            </Button>
+            >{tr("Bottom Right")}</Button>
           </Block>
         </Masonry>
       </Container>

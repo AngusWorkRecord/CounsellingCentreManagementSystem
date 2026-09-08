@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Stack, Card, Container, CardHeader, CardContent } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
@@ -31,10 +32,11 @@ const _carouselsExample = [...Array(5)].map((_, index) => ({
 // ----------------------------------------------------------------------
 
 export default function DemoCarouselsPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Carousels | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Carousels | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -46,13 +48,13 @@ export default function DemoCarouselsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Carousel"
+            heading={tr("Carousel")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Carousel' },
+              { name: tr("Carousel") },
             ]}
             moreLink={['https://react-slick.neostack.com']}
           />
@@ -62,28 +64,28 @@ export default function DemoCarouselsPage() {
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
           <Card>
-            <CardHeader title="Carousel Basic 1" />
+            <CardHeader title={tr("Carousel Basic 1")} />
             <CardContent>
               <CarouselBasic1 data={_carouselsExample} />
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Carousel Basic 2" />
+            <CardHeader title={tr("Carousel Basic 2")} />
             <CardContent>
               <CarouselBasic2 data={_carouselsExample} />
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Carousel Basic 3" />
+            <CardHeader title={tr("Carousel Basic 3")} />
             <CardContent>
               <CarouselBasic3 data={_carouselsExample} />
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Carousel Basic 4" />
+            <CardHeader title={tr("Carousel Basic 4")} />
             <CardContent>
               <CarouselBasic4 data={_carouselsExample} />
             </CardContent>
@@ -92,21 +94,21 @@ export default function DemoCarouselsPage() {
 
         <Stack spacing={3}>
           <Card>
-            <CardHeader title="Carousel Thumbnail" />
+            <CardHeader title={tr("Carousel Thumbnail")} />
             <CardContent>
               <CarouselThumbnail data={_carouselsExample} />
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Carousel Center Mode" subheader="Customs shape & icon button" />
+            <CardHeader title={tr("Carousel Center Mode")} subheader={tr("Customs shape & icon button")} />
             <CardContent>
               <CarouselCenterMode data={_carouselsExample} />
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Carousel Animation" />
+            <CardHeader title={tr("Carousel Animation")} />
             <CardContent>
               <CarouselAnimation data={_carouselsExample} />
             </CardContent>

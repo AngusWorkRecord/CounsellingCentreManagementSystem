@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Card, Button, Typography, Box, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Label from '../../components/label';
 import Iconify from '../../components/iconify';
@@ -16,6 +17,7 @@ PricingPlanCard.propTypes = {
 };
 
 export default function PricingPlanCard({ card, index, sx, ...other }) {
+  useUiLanguage();
   const { subscription, price, caption, lists, labelAction } = card;
 
   return (
@@ -33,9 +35,7 @@ export default function PricingPlanCard({ card, index, sx, ...other }) {
       {...other}
     >
       {index === 1 && (
-        <Label color="info" sx={{ top: 16, right: 16, position: 'absolute' }}>
-          POPULAR
-        </Label>
+        <Label color="info" sx={{ top: 16, right: 16, position: 'absolute' }}>{tr("POPULAR")}</Label>
       )}
 
       <Typography variant="overline" sx={{ color: 'text.secondary' }}>
@@ -45,7 +45,7 @@ export default function PricingPlanCard({ card, index, sx, ...other }) {
       <Stack spacing={1} direction="row" sx={{ my: 2 }}>
         {(index === 1 || index === 2) && <Typography variant="h5">$</Typography>}
 
-        <Typography variant="h2">{price === 0 ? 'Free' : price}</Typography>
+        <Typography variant="h2">{price === 0 ? tr("Free") : price}</Typography>
 
         {(index === 1 || index === 2) && (
           <Typography component="span" sx={{ alignSelf: 'center', color: 'text.secondary' }}>

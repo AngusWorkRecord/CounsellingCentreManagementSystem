@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Masonry } from '@mui/lab';
 import { Box, Fab, Zoom, Fade, Button, Tooltip, Container, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -30,10 +31,11 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUITooltipPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Tooltip | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Tooltip | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -45,13 +47,13 @@ export default function MUITooltipPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Tooltip"
+            heading={tr("Tooltip")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Tooltip' },
+              { name: tr("Tooltip") },
             ]}
             moreLink={['https://mui.com/components/tooltips']}
           />
@@ -60,121 +62,119 @@ export default function MUITooltipPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Simple" sx={style}>
-            <Tooltip title="Delete">
+          <Block title={tr("Simple")} sx={style}>
+            <Tooltip title={tr("Delete")}>
               <IconButton>
                 <Iconify icon="eva:trash-2-outline" width={24} />
               </IconButton>
             </Tooltip>
 
-            <Tooltip title="Add">
+            <Tooltip title={tr("Add")}>
               <Fab>
                 <Iconify icon="eva:plus-fill" width={24} />
               </Fab>
             </Tooltip>
 
-            <Tooltip title="Delete">
+            <Tooltip title={tr("Delete")}>
               <IconButton color="info">
                 <Iconify icon="eva:trash-2-outline" width={24} />
               </IconButton>
             </Tooltip>
 
-            <Tooltip title="Add">
+            <Tooltip title={tr("Add")}>
               <FabButtonAnimate color="info">
                 <Iconify icon="eva:plus-fill" width={24} />
               </FabButtonAnimate>
             </Tooltip>
 
-            <Tooltip title="Add">
-              <Button variant="outlined" color="info">
-                Button
-              </Button>
+            <Tooltip title={tr("Add")}>
+              <Button variant="outlined" color="info">{tr("Button")}</Button>
             </Tooltip>
           </Block>
 
-          <Block title="Arrow" sx={style}>
-            <Tooltip title="Add" arrow>
+          <Block title={tr("Arrow")} sx={style}>
+            <Tooltip title={tr("Add")} arrow>
               <Fab>
                 <Iconify icon="eva:plus-fill" width={24} />
               </Fab>
             </Tooltip>
           </Block>
 
-          <Block title="Variable Width" sx={style}>
+          <Block title={tr("Variable Width")} sx={style}>
             <Tooltip title={LONG_TEXT}>
-              <Button color="inherit">Default Width [300px]</Button>
+              <Button color="inherit">{tr("Default Width [300px]")}</Button>
             </Tooltip>
 
             <Tooltip title={LONG_TEXT} sx={{ maxWidth: 500 }}>
-              <Button color="inherit">Custom Width [500px]</Button>
+              <Button color="inherit">{tr("Custom Width [500px]")}</Button>
             </Tooltip>
 
             <Tooltip title={LONG_TEXT} sx={{ maxWidth: 'none' }}>
-              <Button color="inherit">No wrapping</Button>
+              <Button color="inherit">{tr("No wrapping")}</Button>
             </Tooltip>
           </Block>
 
-          <Block title="Transitions" sx={style}>
-            <Tooltip title="Add">
-              <Button color="inherit">Grow</Button>
+          <Block title={tr("Transitions")} sx={style}>
+            <Tooltip title={tr("Add")}>
+              <Button color="inherit">{tr("Grow")}</Button>
             </Tooltip>
 
-            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Add">
-              <Button color="inherit">Fade</Button>
+            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title={tr("Add")}>
+              <Button color="inherit">{tr("Fade")}</Button>
             </Tooltip>
 
-            <Tooltip TransitionComponent={Zoom} title="Add">
-              <Button color="inherit">Zoom</Button>
+            <Tooltip TransitionComponent={Zoom} title={tr("Add")}>
+              <Button color="inherit">{tr("Zoom")}</Button>
             </Tooltip>
           </Block>
 
-          <Block title="Positioned" sx={style}>
-            <Tooltip title="Add" placement="top-start">
-              <Button color="inherit">top-start</Button>
+          <Block title={tr("Positioned")} sx={style}>
+            <Tooltip title={tr("Add")} placement="top-start">
+              <Button color="inherit">{tr("top-start")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="top">
-              <Button color="inherit">top</Button>
+            <Tooltip title={tr("Add")} placement="top">
+              <Button color="inherit">{tr("top")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="top-end">
-              <Button color="inherit">top-end</Button>
+            <Tooltip title={tr("Add")} placement="top-end">
+              <Button color="inherit">{tr("top-end")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="left-start">
-              <Button color="inherit">left-start</Button>
+            <Tooltip title={tr("Add")} placement="left-start">
+              <Button color="inherit">{tr("left-start")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="left">
-              <Button color="inherit">left</Button>
+            <Tooltip title={tr("Add")} placement="left">
+              <Button color="inherit">{tr("left")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="left-end">
-              <Button color="inherit">left-end</Button>
+            <Tooltip title={tr("Add")} placement="left-end">
+              <Button color="inherit">{tr("left-end")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="right-start">
-              <Button color="inherit">right-start</Button>
+            <Tooltip title={tr("Add")} placement="right-start">
+              <Button color="inherit">{tr("right-start")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="right">
-              <Button color="inherit">right</Button>
+            <Tooltip title={tr("Add")} placement="right">
+              <Button color="inherit">{tr("right")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="right-end">
-              <Button color="inherit">right-end</Button>
+            <Tooltip title={tr("Add")} placement="right-end">
+              <Button color="inherit">{tr("right-end")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="bottom-start">
-              <Button color="inherit">bottom-start</Button>
+            <Tooltip title={tr("Add")} placement="bottom-start">
+              <Button color="inherit">{tr("bottom-start")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="bottom">
-              <Button color="inherit">bottom</Button>
+            <Tooltip title={tr("Add")} placement="bottom">
+              <Button color="inherit">{tr("bottom")}</Button>
             </Tooltip>
 
-            <Tooltip title="Add" placement="bottom-end">
-              <Button color="inherit">bottom-end</Button>
+            <Tooltip title={tr("Add")} placement="bottom-end">
+              <Button color="inherit">{tr("bottom-end")}</Button>
             </Tooltip>
           </Block>
         </Masonry>

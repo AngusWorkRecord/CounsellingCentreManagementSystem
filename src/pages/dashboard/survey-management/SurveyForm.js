@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 // @mui
 import { Box, Button, Card, Container, Stack } from "@mui/material";
+import { tr, useUiLanguage } from '../../../locales/translate';
 import Iconify from '../../../components/iconify';
 
 // path
@@ -34,6 +35,7 @@ const defaultQuestion = [
 ]
 
 export default function SurveyForm({ question }) {
+  useUiLanguage();
     const themeStretch = useSettingsContext()
 
     function handleOnCreate() {
@@ -43,7 +45,7 @@ export default function SurveyForm({ question }) {
     return (
         <>
             <Helmet>
-                <title> Conference Management | Create Conference </title>
+                <title> {tr("Conference Management | Create Conference")} </title>
             </Helmet>
 
             <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -65,13 +67,9 @@ export default function SurveyForm({ question }) {
                         }}
                         component={RouterLink}
                         to={PATH_CONFERENCE_MANAGEMENT.survey.root}
-                    >
-                        Back
-                    </Button>
+                    >{tr("Back")}</Button>
 
-                    <Button sx={{ m: 1 }} variant="contained">
-                        Create
-                    </Button>
+                    <Button sx={{ m: 1 }} variant="contained">{tr("Create")}</Button>
                 </Stack>
 
                 <Box sx={{ my: 3 }}>

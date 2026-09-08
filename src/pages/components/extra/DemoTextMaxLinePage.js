@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import Masonry from '@mui/lab/Masonry';
 import { Box, Card, CardHeader, Container, CardContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -11,10 +12,11 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 // ----------------------------------------------------------------------
 
 export default function DemoTextMaxLinePage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Text Max Line | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Text Max Line | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -26,13 +28,13 @@ export default function DemoTextMaxLinePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="TextMaxLine"
+            heading={tr("TextMaxLine")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'TextMaxLine' },
+              { name: tr("TextMaxLine") },
             ]}
           />
         </Container>
@@ -41,71 +43,44 @@ export default function DemoTextMaxLinePage() {
       <Container sx={{ my: 10 }}>
         <Masonry columns={3} spacing={3}>
           <Card>
-            <CardHeader title="1 Line" />
+            <CardHeader title={tr("1 Line")} />
             <CardContent>
-              <TextMaxLine line={1}>
-                Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna.
-                Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc
-                et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id
-                tortor.
-              </TextMaxLine>
+              <TextMaxLine line={1}>{tr("Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.")}</TextMaxLine>
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="2 Line" />
+            <CardHeader title={tr("2 Line")} />
             <CardContent>
-              <TextMaxLine>
-                Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna.
-                Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc
-                et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id
-                tortor.
-              </TextMaxLine>
+              <TextMaxLine>{tr("Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.")}</TextMaxLine>
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="3 Line" />
+            <CardHeader title={tr("3 Line")} />
             <CardContent>
-              <TextMaxLine line={3}>
-                Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna.
-                Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc
-                et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id
-                tortor.
-              </TextMaxLine>
+              <TextMaxLine line={3}>{tr("Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.")}</TextMaxLine>
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="4 Line" />
+            <CardHeader title={tr("4 Line")} />
             <CardContent>
-              <TextMaxLine line={4}>
-                Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna.
-                Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc
-                et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id
-                tortor.
-              </TextMaxLine>
+              <TextMaxLine line={4}>{tr("Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.")}</TextMaxLine>
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="As Link" />
+            <CardHeader title={tr("As Link")} />
             <CardContent>
-              <TextMaxLine asLink line={3} href="#" color="primary" sx={{ maxWidth: 300 }}>
-                Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna.
-                Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc
-                et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id
-                tortor.
-              </TextMaxLine>
+              <TextMaxLine asLink line={3} href="#" color="primary" sx={{ maxWidth: 300 }}>{tr("Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.")}</TextMaxLine>
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Persistent" />
+            <CardHeader title={tr("Persistent")} />
             <CardContent>
-              <TextMaxLine persistent line={3} href="#" sx={{ bgcolor: 'background.neutral' }}>
-                Donec posuere vulputate arcu.
-              </TextMaxLine>
+              <TextMaxLine persistent line={3} href="#" sx={{ bgcolor: 'background.neutral' }}>{tr("Donec posuere vulputate arcu.")}</TextMaxLine>
             </CardContent>
           </Card>
         </Masonry>

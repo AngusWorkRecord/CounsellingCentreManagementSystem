@@ -1,5 +1,6 @@
-// @mui
 import { Table, TableRow, TableBody, TableCell, TableContainer } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
+// @mui
 // components
 import Scrollbar from '../../../../components/scrollbar';
 import { TableHeadCustom } from '../../../../components/table';
@@ -19,16 +20,17 @@ const TABLE_DATA = [
 ];
 
 const TABLE_HEAD = [
-  { id: 'dessert', label: 'Dessert (100g serving)' },
-  { id: 'calories', label: 'Calories', align: 'right' },
-  { id: 'fat', label: 'Fat (g)', align: 'right' },
-  { id: 'carbs', label: 'Carbs (g)', align: 'right' },
-  { id: 'protein', label: 'Protein (g)', align: 'right' },
+  { id: 'dessert', get label() { return tr("Dessert (100g serving)"); } },
+  { id: 'calories', get label() { return tr("Calories"); }, align: 'right' },
+  { id: 'fat', get label() { return tr("Fat (g)"); }, align: 'right' },
+  { id: 'carbs', get label() { return tr("Carbs (g)"); }, align: 'right' },
+  { id: 'protein', get label() { return tr("Protein (g)"); }, align: 'right' },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function BasicTable() {
+  useUiLanguage();
   return (
     <TableContainer sx={{ mt: 3, overflow: 'unset' }}>
       <Scrollbar>

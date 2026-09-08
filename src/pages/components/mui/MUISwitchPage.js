@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Switch, Container, FormGroup, FormControl, FormControlLabel } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -26,10 +27,11 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUISwitchPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Switch | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Switch | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -41,13 +43,13 @@ export default function MUISwitchPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Switch"
+            heading={tr("Switch")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Switch' },
+              { name: tr("Switch") },
             ]}
             moreLink={['https://mui.com/components/switches']}
           />
@@ -56,7 +58,7 @@ export default function MUISwitchPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Basic" sx={style}>
+          <Block title={tr("Basic")} sx={style}>
             <Switch defaultChecked />
             <Switch />
             <Switch disabled />
@@ -64,14 +66,14 @@ export default function MUISwitchPage() {
             <Switch defaultChecked color="default" />
           </Block>
 
-          <Block title="Sizes" sx={style}>
+          <Block title={tr("Sizes")} sx={style}>
             <FormGroup row>
-              <FormControlLabel control={<Switch size="small" />} label="Small" />
-              <FormControlLabel control={<Switch />} label="Normal" />
+              <FormControlLabel control={<Switch size="small" />} label={tr("Small")} />
+              <FormControlLabel control={<Switch />} label={tr("Normal")} />
             </FormGroup>
           </Block>
 
-          <Block title="Placement" sx={style}>
+          <Block title={tr("Placement")} sx={style}>
             <FormGroup row>
               {PLACEMENTS.map((placement) => (
                 <FormControlLabel
@@ -86,7 +88,7 @@ export default function MUISwitchPage() {
             </FormGroup>
           </Block>
 
-          <Block title="Colors">
+          <Block title={tr("Colors")}>
             <FormControl component="fieldset">
               <FormGroup>
                 {COLORS.map((color) => (
@@ -98,7 +100,7 @@ export default function MUISwitchPage() {
                   />
                 ))}
 
-                <FormControlLabel disabled control={<Switch color="error" />} label="Disabled" />
+                <FormControlLabel disabled control={<Switch color="error" />} label={tr("Disabled")} />
               </FormGroup>
             </FormControl>
           </Block>

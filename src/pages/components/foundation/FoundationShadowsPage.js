@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Stack, Box, Paper, Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -23,6 +24,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function FoundationShadowsPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   const systemShadows = theme.shadows.slice(1, theme.shadows.length);
@@ -45,7 +47,7 @@ export default function FoundationShadowsPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Shadows | Counselling Centre Management System</title>
+        <title> {tr("Foundations: Shadows | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -57,13 +59,13 @@ export default function FoundationShadowsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Shadows"
+            heading={tr("Shadows")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Shadows' },
+              { name: tr("Shadows") },
             ]}
           />
         </Container>
@@ -71,19 +73,19 @@ export default function FoundationShadowsPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
-          <Block title="System" sx={style}>
+          <Block title={tr("System")} sx={style}>
             {systemShadows.map((shadow, index) => (
               <ShadowCard key={shadow} title={`z${index + 1}`} sx={{ boxShadow: shadow }} />
             ))}
           </Block>
 
-          <Block title="Customs" sx={style}>
+          <Block title={tr("Customs")} sx={style}>
             {customShadows.map((shadow) => (
               <ShadowCard key={shadow[0]} title={shadow[0]} sx={{ boxShadow: shadow[1] }} />
             ))}
           </Block>
 
-          <Block title="Colors" sx={style}>
+          <Block title={tr("Colors")} sx={style}>
             {colorShadows.map((color) => (
               <ShadowCard
                 key={color}
@@ -110,6 +112,7 @@ ShadowCard.propTypes = {
 };
 
 function ShadowCard({ sx, title }) {
+  useUiLanguage();
   return (
     <Paper
       sx={{

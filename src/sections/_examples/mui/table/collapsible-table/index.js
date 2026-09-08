@@ -1,5 +1,6 @@
-// @mui
 import { Table, TableRow, TableHead, TableBody, TableCell, TableContainer } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
+// @mui
 // components
 import Scrollbar from '../../../../../components/scrollbar';
 //
@@ -39,6 +40,7 @@ const TABLE_DATA = [
 ];
 
 export default function CollapsibleTable() {
+  useUiLanguage();
   return (
     <TableContainer sx={{ mt: 3, overflow: 'unset' }}>
       <Scrollbar>
@@ -46,11 +48,11 @@ export default function CollapsibleTable() {
           <TableHead>
             <TableRow>
               <TableCell />
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell>{tr("Dessert (100g serving)")}</TableCell>
+              <TableCell align="right">{tr("Calories")}</TableCell>
+              <TableCell align="right">{tr("Fat (g)")}</TableCell>
+              <TableCell align="right">{tr("Carbs (g)")}</TableCell>
+              <TableCell align="right">{tr("Protein (g)")}</TableCell>
             </TableRow>
           </TableHead>
 

@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Stack, Button, TextField, Typography, FormControl, FormControlLabel, RadioGroup, Radio, IconButton, Checkbox, } from "@mui/material";
 import { isNumber } from 'lodash';
+import { tr, useUiLanguage } from '../../../locales/translate';
 import { isArrayNotEmpty, isStringNullOrEmpty } from '../../../utils/Helpers';
 import { CloseIcon } from '../../../theme/overrides/CustomIcons';
 
@@ -27,6 +28,7 @@ export default function RangeComponent({
     onRangeLabelChange,
     ...others
 }) {
+  useUiLanguage();
     const [isDirty, setIsDirty] = useState(false)
 
     function handleChange(event) {
@@ -48,7 +50,7 @@ export default function RangeComponent({
                     fullWidth
                     onChange={() => handleChange}
                     error={isDirty && isStringNullOrEmpty(QuestionLabel)}
-                    helperText={isDirty && isStringNullOrEmpty(QuestionLabel) ? "Question Label is required." : ""}
+                    helperText={isDirty && isStringNullOrEmpty(QuestionLabel) ? tr("Question Label is required.") : ""}
                     {...others}
                 />
             </Stack>
@@ -80,20 +82,20 @@ export default function RangeComponent({
             <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2} sx={{ width: '100%', mt: 5 }}>
                 <TextField
                     value={MinRangeLabel}
-                    placeholder="Label for Min. Range"
+                    placeholder={tr("Label for Min. Range")}
                     fullWidth
                     onChange={(event) => handleLabelChange("min", event.target.value)}
                     error={isDirty && isStringNullOrEmpty(MinRangeLabel)}
-                    helperText={isDirty && isStringNullOrEmpty(MinRangeLabel) ? "Min. Range Label is required." : ""}
+                    helperText={isDirty && isStringNullOrEmpty(MinRangeLabel) ? tr("Min. Range Label is required.") : ""}
                     size="small"
                 />
                 <TextField
                     value={MaxRangeLabel}
-                    placeholder="Label for Max. Range"
+                    placeholder={tr("Label for Max. Range")}
                     fullWidth
                     onChange={(event) => handleLabelChange("max", event.target.value)}
                     error={isDirty && isStringNullOrEmpty(MaxRangeLabel)}
-                    helperText={isDirty && isStringNullOrEmpty(MaxRangeLabel) ? "Max. Range Label is required." : ""}
+                    helperText={isDirty && isStringNullOrEmpty(MaxRangeLabel) ? tr("Max. Range Label is required.") : ""}
                     size="small"
                 />
             </Stack>

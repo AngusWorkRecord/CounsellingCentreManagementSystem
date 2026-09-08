@@ -10,6 +10,7 @@ import {
   Typography,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -20,6 +21,7 @@ import { ReactHookForm } from '../../../sections/_examples/extra/form';
 // ----------------------------------------------------------------------
 
 export default function DemoFormValidationPage() {
+  useUiLanguage();
   const [debug, setDebug] = useState(true);
 
   const handleChangeDebug = (event) => {
@@ -29,7 +31,7 @@ export default function DemoFormValidationPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Form Validation | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Form Validation | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -41,10 +43,10 @@ export default function DemoFormValidationPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Form Validation"
+            heading={tr("Form Validation")}
             links={[
-              { name: 'Components', href: PATH_PAGE.components },
-              { name: 'Form Validation' },
+              { name: tr("Components"), href: PATH_PAGE.components },
+              { name: tr("Form Validation") },
             ]}
             moreLink={['https://react-hook-form.com/', 'https://github.com/jquense/yup']}
           />
@@ -56,7 +58,7 @@ export default function DemoFormValidationPage() {
           <Typography variant="h4"> React Hook Form + Yup </Typography>
           <FormControlLabel
             control={<Switch checked={debug} onChange={handleChangeDebug} />}
-            label="Show Debug"
+            label={tr("Show Debug")}
             labelPlacement="start"
           />
         </Stack>

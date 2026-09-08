@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // mui
 import { Box, Button, Grid, IconButton, MenuItem, Stack, TextField, Paper, Typography, Switch, FormControlLabel, Divider, FormLabel } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 // import library
 import { isArrayNotEmpty, isStringNullOrEmpty } from '../../../utils/Helpers'
@@ -26,6 +27,7 @@ MainFormComponent.propTypes = {
 }
 
 export default function MainFormComponent({ questions, title, description, isEdit, isPresent, ...other }) {
+  useUiLanguage();
     const question = useMemo(
         () => (questions)
         , [questions]
@@ -200,7 +202,7 @@ export default function MainFormComponent({ questions, title, description, isEdi
         try {
             setCurrentFormLayout((prevState) => {
                 if (prevState[index].QuestionOptions.length < 10)
-                    prevState[index].QuestionOptions.push({ label: 'New Option', value: 'New Option' })
+                    prevState[index].QuestionOptions.push({ label: tr("New Option"), value: 'New Option' })
                 return [...prevState]
             })
         }
@@ -301,10 +303,10 @@ export default function MainFormComponent({ questions, title, description, isEdi
                                             <Box sx={{ display: 'flex', alignItems: 'center', width: 'fit-content', }}>
                                                 <FormControlLabel
                                                     control={<Switch sx={{ m: 1 }} defaultChecked={q.isRequired} />}
-                                                    label="Required"
+                                                    label={tr("Required")}
                                                 />
                                                 <Divider orientation="vertical" variant="middle" flexItem />
-                                                <IconButton aria-label="delete" size="medium" sx={{ m: 1 }} onClick={() => { deleteSurveyQuestion(index) }}>
+                                                <IconButton aria-label={tr("delete")} size="medium" sx={{ m: 1 }} onClick={() => { deleteSurveyQuestion(index) }}>
                                                     <DeleteIcon fontSize="inherit" />
                                                 </IconButton>
                                             </Box>
@@ -315,9 +317,7 @@ export default function MainFormComponent({ questions, title, description, isEdi
                         )
                         )
                     }
-                    <Button variant="text" onClick={handleAddQuestion} sx={{ mt: 2 }}>
-                        Add Question
-                    </Button>
+                    <Button variant="text" onClick={handleAddQuestion} sx={{ mt: 2 }}>{tr("Add Question")}</Button>
 
                 </Stack>
             </Scrollbar>
@@ -331,6 +331,7 @@ FormComponentOptions.propTypes = {
 }
 
 function FormComponentOptions({ onChange, questionType, ...others }) {
+  useUiLanguage();
     const value = useMemo(() => (
         questionType
     ), [questionType])
@@ -340,7 +341,7 @@ function FormComponentOptions({ onChange, questionType, ...others }) {
             select
             value={value}
             onChange={(e) => { onChange(e.target.value) }}
-            label="Type"
+            label={tr("Type")}
             fullWidth
             {...others}
         >

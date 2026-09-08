@@ -3,6 +3,7 @@ import { useState } from 'react';
 // @mui
 import { MenuItem, TextField, IconButton, InputAdornment } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // components
 import Iconify from '../../../components/iconify';
 //
@@ -28,6 +29,7 @@ Textfields.propTypes = {
 };
 
 export default function Textfields({ variant }) {
+  useUiLanguage();
   const [currency, setCurrency] = useState('EUR');
 
   const [values, setValues] = useState({
@@ -56,14 +58,14 @@ export default function Textfields({ variant }) {
 
   return (
     <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-      <Block title="General" sx={style}>
-        <TextField variant={variant} fullWidth label="Inactive" />
+      <Block title={tr("General")} sx={style}>
+        <TextField variant={variant} fullWidth label={tr("Inactive")} />
 
         <TextField
           variant={variant}
           required
           fullWidth
-          label="Activated"
+          label={tr("Activated")}
           defaultValue="Hello Minimal"
         />
 
@@ -71,7 +73,7 @@ export default function Textfields({ variant }) {
           variant={variant}
           fullWidth
           type="password"
-          label="Password"
+          label={tr("Password")}
           autoComplete="current-password"
         />
 
@@ -79,16 +81,16 @@ export default function Textfields({ variant }) {
           variant={variant}
           disabled
           fullWidth
-          label="Disabled"
+          label={tr("Disabled")}
           defaultValue="Hello Minimal"
         />
       </Block>
 
-      <Block title="With Icon & Adornments" sx={style}>
+      <Block title={tr("With Icon & Adornments")} sx={style}>
         <TextField
           variant={variant}
           fullWidth
-          label="Filled"
+          label={tr("Filled")}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -102,7 +104,7 @@ export default function Textfields({ variant }) {
           variant={variant}
           disabled
           fullWidth
-          label="Disabled"
+          label={tr("Disabled")}
           defaultValue="Hello Minimal"
           InputProps={{
             startAdornment: (
@@ -116,7 +118,7 @@ export default function Textfields({ variant }) {
         <TextField
           variant={variant}
           fullWidth
-          label="With normal TextField"
+          label={tr("With normal TextField")}
           InputProps={{
             startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
           }}
@@ -127,7 +129,7 @@ export default function Textfields({ variant }) {
           fullWidth
           value={values.weight}
           onChange={handleChange('weight')}
-          helperText="Weight"
+          helperText={tr("Weight")}
           InputProps={{
             endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
           }}
@@ -139,7 +141,7 @@ export default function Textfields({ variant }) {
           type={values.showPassword ? 'text' : 'password'}
           value={values.password}
           onChange={handleChange('password')}
-          label="Password"
+          label={tr("Password")}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -165,31 +167,31 @@ export default function Textfields({ variant }) {
         />
       </Block>
 
-      <Block title="With Caption" sx={style}>
+      <Block title={tr("With Caption")} sx={style}>
         <TextField
           variant={variant}
           fullWidth
-          label="Error"
+          label={tr("Error")}
           defaultValue="Hello Minimal"
-          helperText="Incorrect entry."
+          helperText={tr("Incorrect entry.")}
         />
 
         <TextField
           variant={variant}
           error
           fullWidth
-          label="Error"
+          label={tr("Error")}
           defaultValue="Hello Minimal"
-          helperText="Incorrect entry."
+          helperText={tr("Incorrect entry.")}
         />
       </Block>
 
-      <Block title="Type" sx={style}>
+      <Block title={tr("Type")} sx={style}>
         <TextField
           variant={variant}
           fullWidth
           type="password"
-          label="Password"
+          label={tr("Password")}
           autoComplete="current-password"
         />
 
@@ -197,29 +199,29 @@ export default function Textfields({ variant }) {
           variant={variant}
           fullWidth
           type="number"
-          label="Number"
+          label={tr("Number")}
           defaultValue={0}
           InputLabelProps={{ shrink: true }}
         />
 
-        <TextField variant={variant} fullWidth label="Search" type="search" />
+        <TextField variant={variant} fullWidth label={tr("Search")} type="search" />
       </Block>
 
-      <Block title="Size" sx={style}>
-        <TextField variant={variant} fullWidth label="Size" size="small" defaultValue="Small" />
+      <Block title={tr("Size")} sx={style}>
+        <TextField variant={variant} fullWidth label={tr("Size")} size="small" defaultValue="Small" />
 
-        <TextField variant={variant} fullWidth label="Size" defaultValue="Normal" />
+        <TextField variant={variant} fullWidth label={tr("Size")} defaultValue="Normal" />
       </Block>
 
-      <Block title="Select" sx={style}>
+      <Block title={tr("Select")} sx={style}>
         <TextField
           variant={variant}
           select
           fullWidth
-          label="Select"
+          label={tr("Select")}
           value={currency}
           onChange={handleChangeCurrency}
-          helperText="Please select your currency"
+          helperText={tr("Please select your currency")}
         >
           {CURRENCIES.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -234,10 +236,10 @@ export default function Textfields({ variant }) {
           fullWidth
           size="small"
           value={currency}
-          label="Native select"
+          label={tr("Native select")}
           SelectProps={{ native: true }}
           onChange={handleChangeCurrency}
-          helperText="Please select your currency"
+          helperText={tr("Please select your currency")}
         >
           {CURRENCIES.map((option) => (
             <option key={option.value} value={option.value}>
@@ -247,11 +249,11 @@ export default function Textfields({ variant }) {
         </TextField>
       </Block>
 
-      <Block title="Multiline" sx={style}>
+      <Block title={tr("Multiline")} sx={style}>
         <TextField
           variant={variant}
           fullWidth
-          label="Multiline"
+          label={tr("Multiline")}
           multiline
           maxRows={4}
           value="Controlled"
@@ -261,8 +263,8 @@ export default function Textfields({ variant }) {
           variant={variant}
           fullWidth
           multiline
-          placeholder="Placeholder"
-          label="Multiline Placeholder"
+          placeholder={tr("Placeholder")}
+          label={tr("Multiline Placeholder")}
         />
 
         <TextField
@@ -270,7 +272,7 @@ export default function Textfields({ variant }) {
           rows={4}
           fullWidth
           multiline
-          label="Multiline"
+          label={tr("Multiline")}
           defaultValue="Default Value"
         />
       </Block>

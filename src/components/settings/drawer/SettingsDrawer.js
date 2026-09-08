@@ -2,6 +2,7 @@ import { useState } from 'react';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Divider, Drawer, Stack, Typography, Tooltip, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // config
@@ -28,6 +29,7 @@ import ColorPresetsOptions from './ColorPresetsOptions';
 const SPACING = 2.5;
 
 export default function SettingsDrawer() {
+  useUiLanguage();
   const {
     themeMode,
     themeLayout,
@@ -84,11 +86,9 @@ export default function SettingsDrawer() {
           justifyContent="space-between"
           sx={{ py: 2, pr: 1, pl: SPACING }}
         >
-          <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
-            Settings
-          </Typography>
+          <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>{tr("Settings")}</Typography>
 
-          <Tooltip title="Reset">
+          <Tooltip title={tr("Reset")}>
             <Box sx={{ position: 'relative' }}>
               {notDefault && <BadgeDot />}
               <IconButton onClick={onResetSetting}>
@@ -105,27 +105,27 @@ export default function SettingsDrawer() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Scrollbar sx={{ p: SPACING, pb: 0 }}>
-          <Block title="Mode">
+          <Block title={tr("Mode")}>
             <ModeOptions />
           </Block>
 
-          <Block title="Contrast">
+          <Block title={tr("Contrast")}>
             <ContrastOptions />
           </Block>
 
-          <Block title="Direction">
+          <Block title={tr("Direction")}>
             <DirectionOptions />
           </Block>
 
-          <Block title="Layout">
+          <Block title={tr("Layout")}>
             <LayoutOptions />
           </Block>
 
-          <Block title="Stretch" tooltip="Only available at large resolutions > 1600px (xl)">
+          <Block title={tr("Stretch")} tooltip={tr("Only available at large resolutions > 1600px (xl)")}>
             <StretchOptions />
           </Block>
 
-          <Block title="Presets">
+          <Block title={tr("Presets")}>
             <ColorPresetsOptions />
           </Block>
         </Scrollbar>

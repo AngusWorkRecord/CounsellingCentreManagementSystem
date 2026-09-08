@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useRef, useState, useEffect } from 'react';
 // @mui
 import { Stack, MenuItem, IconButton, Button, Box } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 import MenuPopover from '../../../../components/menu-popover';
@@ -18,6 +19,7 @@ KanbanColumnToolBar.propTypes = {
 };
 
 export default function KanbanColumnToolBar({ columnName, onDelete, onUpdate }) {
+  useUiLanguage();
   const renameRef = useRef(null);
 
   const [value, setValue] = useState(columnName);
@@ -78,7 +80,7 @@ export default function KanbanColumnToolBar({ columnName, onDelete, onUpdate }) 
       >
         <KanbanInputName
           inputRef={renameRef}
-          placeholder="Section name"
+          placeholder={tr("Section name")}
           value={value}
           onChange={handleChangeColumnName}
           onKeyUp={handleUpdateColumn}
@@ -101,26 +103,19 @@ export default function KanbanColumnToolBar({ columnName, onDelete, onUpdate }) 
           }}
           sx={{ color: 'error.main' }}
         >
-          <Iconify icon="eva:trash-2-outline" />
-          Delete section
-        </MenuItem>
+          <Iconify icon="eva:trash-2-outline" />{tr("Delete section")}</MenuItem>
 
         <MenuItem onClick={handleClickRename}>
-          <Iconify icon="eva:edit-fill" />
-          Rename section
-        </MenuItem>
+          <Iconify icon="eva:edit-fill" />{tr("Rename section")}</MenuItem>
       </MenuPopover>
 
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Delete"
+        title={tr("Delete")}
         content={
-          <>
-            Are you sure want to delete column?
-            <Box sx={{ typography: 'caption', color: 'error.main', mt: 2 }}>
-              <strong> NOTE: </strong> All tasks related to this category will also be deleted.
-            </Box>
+          <>{tr("Are you sure want to delete column?")}<Box sx={{ typography: 'caption', color: 'error.main', mt: 2 }}>
+              <strong> {tr("NOTE:")} </strong>{tr("All tasks related to this category will also be deleted.")}</Box>
           </>
         }
         action={
@@ -131,9 +126,7 @@ export default function KanbanColumnToolBar({ columnName, onDelete, onUpdate }) 
               onDelete();
               handleCloseConfirm();
             }}
-          >
-            Delete
-          </Button>
+          >{tr("Delete")}</Button>
         }
       />
     </>

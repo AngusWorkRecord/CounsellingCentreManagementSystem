@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { TableRow, TableCell } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 //
 import EmptyContent from '../empty-content';
 
@@ -11,12 +12,13 @@ TableNoData.propTypes = {
 };
 
 export default function TableNoData({ isNotFound }) {
+  useUiLanguage();
   return (
     <TableRow>
       {isNotFound ? (
         <TableCell colSpan={12}>
           <EmptyContent
-            title="No Data"
+            title={tr("No Data")}
             sx={{
               '& span.MuiBox-root': { height: 160 },
             }}

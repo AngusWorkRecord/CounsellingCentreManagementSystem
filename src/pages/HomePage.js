@@ -3,6 +3,7 @@ import { m, useScroll, useSpring } from 'framer-motion';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import { tr, useUiLanguage } from '../locales/translate';
 // sections
 import {
   HomeHero,
@@ -20,6 +21,7 @@ import {
 // ----------------------------------------------------------------------
 
 export default function HomePage() {
+  useUiLanguage();
   const theme = useTheme();
 
   const { scrollYProgress } = useScroll();
@@ -49,7 +51,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title> The starting point for your next project | Counselling Centre Management System</title>
+        <title> {tr("The starting point for your next project | Counselling Centre Management System")}</title>
       </Helmet>
 
       {progress}

@@ -14,6 +14,7 @@ import {
   Typography,
   TableContainer,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fDate } from '../../../../utils/formatTime';
 import { fCurrency } from '../../../../utils/formatNumber';
@@ -40,6 +41,7 @@ InvoiceDetails.propTypes = {
 };
 
 export default function InvoiceDetails({ invoice }) {
+  useUiLanguage();
   if (!invoice) {
     return null;
   }
@@ -65,7 +67,7 @@ export default function InvoiceDetails({ invoice }) {
       <Card sx={{ pt: 5, px: 5 }}>
         <Grid container>
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-            <Image disabledEffect alt="logo" src="/logo/logo_full.svg" sx={{ maxWidth: 120 }} />
+            <Image disabledEffect alt={tr("logo")} src="/logo/logo_full.svg" sx={{ maxWidth: 120 }} />
           </Grid>
 
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
@@ -88,41 +90,33 @@ export default function InvoiceDetails({ invoice }) {
           </Grid>
 
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
-              Invoice from
-            </Typography>
+            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>{tr("Invoice from")}</Typography>
 
             <Typography variant="body2">{invoiceFrom.name}</Typography>
 
             <Typography variant="body2">{invoiceFrom.address}</Typography>
 
-            <Typography variant="body2">Phone: {invoiceFrom.phone}</Typography>
+            <Typography variant="body2">{tr("Phone:")} {invoiceFrom.phone}</Typography>
           </Grid>
 
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
-              Invoice to
-            </Typography>
+            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>{tr("Invoice to")}</Typography>
 
             <Typography variant="body2">{invoiceTo.name}</Typography>
 
             <Typography variant="body2">{invoiceTo.address}</Typography>
 
-            <Typography variant="body2">Phone: {invoiceTo.phone}</Typography>
+            <Typography variant="body2">{tr("Phone:")} {invoiceTo.phone}</Typography>
           </Grid>
 
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
-              date create
-            </Typography>
+            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>{tr("date create")}</Typography>
 
             <Typography variant="body2">{fDate(createDate)}</Typography>
           </Grid>
 
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
-              Due date
-            </Typography>
+            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>{tr("Due date")}</Typography>
 
             <Typography variant="body2">{fDate(dueDate)}</Typography>
           </Grid>
@@ -140,13 +134,13 @@ export default function InvoiceDetails({ invoice }) {
                 <TableRow>
                   <TableCell width={40}>#</TableCell>
 
-                  <TableCell align="left">Description</TableCell>
+                  <TableCell align="left">{tr("Description")}</TableCell>
 
-                  <TableCell align="left">Qty</TableCell>
+                  <TableCell align="left">{tr("Qty")}</TableCell>
 
-                  <TableCell align="right">Unit price</TableCell>
+                  <TableCell align="right">{tr("Unit price")}</TableCell>
 
-                  <TableCell align="right">Total</TableCell>
+                  <TableCell align="right">{tr("Total")}</TableCell>
                 </TableRow>
               </TableHead>
 
@@ -182,9 +176,7 @@ export default function InvoiceDetails({ invoice }) {
                   <TableCell colSpan={3} />
 
                   <TableCell align="right" sx={{ typography: 'body1' }}>
-                    <Box sx={{ mt: 2 }} />
-                    Subtotal
-                  </TableCell>
+                    <Box sx={{ mt: 2 }} />{tr("Subtotal")}</TableCell>
 
                   <TableCell align="right" width={120} sx={{ typography: 'body1' }}>
                     <Box sx={{ mt: 2 }} />
@@ -195,9 +187,7 @@ export default function InvoiceDetails({ invoice }) {
                 <StyledRowResult>
                   <TableCell colSpan={3} />
 
-                  <TableCell align="right" sx={{ typography: 'body1' }}>
-                    Discount
-                  </TableCell>
+                  <TableCell align="right" sx={{ typography: 'body1' }}>{tr("Discount")}</TableCell>
 
                   <TableCell
                     align="right"
@@ -211,9 +201,7 @@ export default function InvoiceDetails({ invoice }) {
                 <StyledRowResult>
                   <TableCell colSpan={3} />
 
-                  <TableCell align="right" sx={{ typography: 'body1' }}>
-                    Taxes
-                  </TableCell>
+                  <TableCell align="right" sx={{ typography: 'body1' }}>{tr("Taxes")}</TableCell>
 
                   <TableCell align="right" width={120} sx={{ typography: 'body1' }}>
                     {taxes && fCurrency(taxes)}
@@ -223,9 +211,7 @@ export default function InvoiceDetails({ invoice }) {
                 <StyledRowResult>
                   <TableCell colSpan={3} />
 
-                  <TableCell align="right" sx={{ typography: 'h6' }}>
-                    Total
-                  </TableCell>
+                  <TableCell align="right" sx={{ typography: 'h6' }}>{tr("Total")}</TableCell>
 
                   <TableCell align="right" width={140} sx={{ typography: 'h6' }}>
                     {fCurrency(totalPrice)}
@@ -240,15 +226,13 @@ export default function InvoiceDetails({ invoice }) {
 
         <Grid container>
           <Grid item xs={12} md={9} sx={{ py: 3 }}>
-            <Typography variant="subtitle2">NOTES</Typography>
+            <Typography variant="subtitle2">{tr("NOTES")}</Typography>
 
-            <Typography variant="body2">
-              We appreciate your business. Should you need us to add VAT or extra notes let us know!
-            </Typography>
+            <Typography variant="body2">{tr("We appreciate your business. Should you need us to add VAT or extra notes let us know!")}</Typography>
           </Grid>
 
           <Grid item xs={12} md={3} sx={{ py: 3, textAlign: 'right' }}>
-            <Typography variant="subtitle2">Have a Question?</Typography>
+            <Typography variant="subtitle2">{tr("Have a Question?")}</Typography>
 
             <Typography variant="body2">support@minimals.cc</Typography>
           </Grid>

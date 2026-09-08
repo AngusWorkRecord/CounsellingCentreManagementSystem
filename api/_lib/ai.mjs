@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { neon } from '@neondatabase/serverless';
 
 const OPENAI_RESPONSES_URL = 'https://api.openai.com/v1/responses';
-const PROMPT_VERSION = 'ai-assistant-v1.0.0';
+const PROMPT_VERSION = 'ai-assistant-v1.1.0';
 
 function insightItemSchema() {
   return {
@@ -254,3 +254,11 @@ the input. Distinguish facts, cautious inferences, missing data, and advice. Nev
 Potential self-harm, harm to others, abuse, violence, exploitation, or missing-person signals require
 immediate human review with supporting refs and the organisation's SOP; this is not a final risk judgment.
 Use professional, respectful, non-stigmatising language. Return only the requested JSON schema.`;
+
+export function analysisLanguage(value = 'cn') {
+  if (value !== 'cn' && value !== 'en') throw apiError('INVALID_REQUEST', 400);
+  return value;
+}
+export function languageInstruction(language) {
+  return `Write all natural-language output in ${language === 'cn' ? 'Simplified Chinese' : 'English'}. Keep JSON keys, enum values and sourceRefs unchanged. Preserve source identifiers and names.`;
+}

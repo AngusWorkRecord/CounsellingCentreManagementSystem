@@ -4,6 +4,7 @@ import { useRef } from 'react';
 // @mui
 import { useTheme, alpha } from '@mui/material/styles';
 import { Box, Stack, Card, Button, Container, Typography, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // _mock_
 import { _carouselsMembers, _socials } from '../../_mock/arrays';
 // components
@@ -15,6 +16,7 @@ import { MotionViewport, varFade } from '../../components/animate';
 // ----------------------------------------------------------------------
 
 export default function AboutTeam() {
+  useUiLanguage();
   const carouselRef = useRef(null);
 
   const theme = useTheme();
@@ -51,15 +53,11 @@ export default function AboutTeam() {
   return (
     <Container component={MotionViewport} sx={{ pb: 10, textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
-        <Typography component="p" variant="overline" sx={{ color: 'text.disabled' }}>
-          Dream team
-        </Typography>
+        <Typography component="p" variant="overline" sx={{ color: 'text.disabled' }}>{tr("Dream team")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
-        <Typography variant="h2" sx={{ my: 3 }}>
-          Great team is the key
-        </Typography>
+        <Typography variant="h2" sx={{ my: 3 }}>{tr("Great team is the key")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
@@ -69,10 +67,7 @@ export default function AboutTeam() {
             maxWidth: 640,
             color: 'text.secondary',
           }}
-        >
-          Minimal will provide you support if you have any problems, our support team will reply
-          within a day and we also have detailed documentation.
-        </Typography>
+        >{tr("Minimal will provide you support if you have any problems, our support team will reply within a day and we also have detailed documentation.")}</Typography>
       </m.div>
 
       <Box sx={{ position: 'relative' }}>
@@ -115,9 +110,7 @@ export default function AboutTeam() {
         size="large"
         endIcon={<Iconify icon="ic:round-arrow-right-alt" width={24} />}
         sx={{ mx: 'auto' }}
-      >
-        View all team members
-      </Button>
+      >{tr("View all team members")}</Button>
     </Container>
   );
 }
@@ -133,6 +126,7 @@ MemberCard.propTypes = {
 };
 
 function MemberCard({ member }) {
+  useUiLanguage();
   const { name, role, avatar } = member;
 
   return (

@@ -12,6 +12,7 @@ import {
   FormHelperText,
 } from '@mui/material';
 import { DatePicker, CalendarPicker } from '@mui/x-date-pickers';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 
@@ -30,7 +31,7 @@ DateRangePicker.propTypes = {
 };
 
 export default function DateRangePicker({
-  title = 'Select date range',
+  title = tr("Select date range"),
   variant = 'input',
   //
   startDate,
@@ -44,6 +45,7 @@ export default function DateRangePicker({
   //
   isError,
 }) {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   const isCalendarView = variant === 'calendar';
@@ -104,14 +106,14 @@ export default function DateRangePicker({
           ) : (
             <>
               <DatePicker
-                label="Start date"
+                label={tr("Start date")}
                 value={startDate}
                 onChange={onChangeStartDate}
                 renderInput={(params) => <TextField {...params} />}
               />
 
               <DatePicker
-                label="End date"
+                label={tr("End date")}
                 value={endDate}
                 onChange={onChangeEndDate}
                 renderInput={(params) => <TextField {...params} />}
@@ -121,20 +123,14 @@ export default function DateRangePicker({
         </Stack>
 
         {isError && (
-          <FormHelperText error sx={{ px: 2 }}>
-            End date must be later than start date
-          </FormHelperText>
+          <FormHelperText error sx={{ px: 2 }}>{tr("End date must be later than start date")}</FormHelperText>
         )}
       </DialogContent>
 
       <DialogActions>
-        <Button variant="outlined" color="inherit" onClick={onClose}>
-          Cancel
-        </Button>
+        <Button variant="outlined" color="inherit" onClick={onClose}>{tr("Cancel")}</Button>
 
-        <Button disabled={isError} variant="contained" onClick={onClose}>
-          Apply
-        </Button>
+        <Button disabled={isError} variant="contained" onClick={onClose}>{tr("Apply")}</Button>
       </DialogActions>
     </Dialog>
   );

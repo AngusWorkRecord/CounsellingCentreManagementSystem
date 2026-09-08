@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -27,10 +28,11 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUIDialogPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Dialog | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Dialog | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -42,13 +44,13 @@ export default function MUIDialogPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Dialog"
+            heading={tr("Dialog")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Dialog' },
+              { name: tr("Dialog") },
             ]}
             moreLink={['https://mui.com/components/dialogs']}
           />
@@ -57,31 +59,31 @@ export default function MUIDialogPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 3 }} spacing={3}>
-          <Block title="Simple" sx={style}>
+          <Block title={tr("Simple")} sx={style}>
             <SimpleDialogs />
           </Block>
 
-          <Block title="Alerts" sx={style}>
+          <Block title={tr("Alerts")} sx={style}>
             <AlertDialog />
           </Block>
 
-          <Block title="Transitions" sx={style}>
+          <Block title={tr("Transitions")} sx={style}>
             <TransitionsDialogs />
           </Block>
 
-          <Block title="Form" sx={style}>
+          <Block title={tr("Form")} sx={style}>
             <FormDialogs />
           </Block>
 
-          <Block title="Full Screen" sx={style}>
+          <Block title={tr("Full Screen")} sx={style}>
             <FullScreenDialogs />
           </Block>
 
-          <Block title="Max Width Dialog" sx={style}>
+          <Block title={tr("Max Width Dialog")} sx={style}>
             <MaxWidthDialog />
           </Block>
 
-          <Block title="Scrolling Content Dialogs" sx={style}>
+          <Block title={tr("Scrolling Content Dialogs")} sx={style}>
             <ScrollDialog />
           </Block>
         </Masonry>

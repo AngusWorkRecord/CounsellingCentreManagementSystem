@@ -15,6 +15,7 @@ import {
   TablePagination,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // locales
@@ -26,6 +27,7 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 // ----------------------------------------------------------------------
 
 export default function DemoMultiLanguagePage() {
+  useUiLanguage();
   const { allLangs, currentLang, translate, onChangeLang } = useLocales();
 
   const [page, setPage] = useState(2);
@@ -44,7 +46,7 @@ export default function DemoMultiLanguagePage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Multi Language | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Multi Language | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -56,13 +58,13 @@ export default function DemoMultiLanguagePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Multi Language"
+            heading={tr("Multi Language")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Multi Language' },
+              { name: tr("Multi Language") },
             ]}
             moreLink={[
               'https://react.i18next.com',
@@ -75,7 +77,7 @@ export default function DemoMultiLanguagePage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
           <Card>
-            <CardHeader title="Flexible" />
+            <CardHeader title={tr("Flexible")} />
 
             <Box sx={{ p: 3 }}>
               <RadioGroup
@@ -101,16 +103,16 @@ export default function DemoMultiLanguagePage() {
                     src={currentLang.icon}
                     sx={{ mr: 1 }}
                   />
-                  {`${translate('demo.title')}`}
+                  {tr("{{p0}}", { p0: translate('demo.title') })}
                 </Stack>
               </Tooltip>
 
-              <Typography>{`${translate('demo.introduction')}`}</Typography>
+              <Typography>{tr("{{p0}}", { p0: translate('demo.introduction') })}</Typography>
             </Box>
           </Card>
 
           <Card>
-            <CardHeader title="System" sx={{ pb: 2 }} />
+            <CardHeader title={tr("System")} sx={{ pb: 2 }} />
 
             <TablePagination
               component="div"

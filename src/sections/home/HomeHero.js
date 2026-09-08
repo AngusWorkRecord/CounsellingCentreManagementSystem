@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled, alpha, useTheme } from '@mui/material/styles';
 import { Button, Box, Link, Container, Typography, Stack, Grid } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_DASHBOARD, PATH_FIGMA_PREVIEW, PATH_FREE_VERSION } from '../../routes/paths';
 // hooks
@@ -90,6 +91,7 @@ const StyledEllipseBottom = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeHero() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   const { scrollYProgress } = useScroll();
@@ -142,13 +144,11 @@ export default function HomeHero() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   return (
     <StyledDescription>
       <m.div variants={varFade().in}>
-        <Typography variant="h2" sx={{ textAlign: 'center' }}>
-          Start a <br />
-          new project with
-        </Typography>
+        <Typography variant="h2" sx={{ textAlign: 'center' }}>{tr("Start a")}<br />{tr("new project with")}</Typography>
       </m.div>
 
       <m.div variants={varFade().in}>
@@ -166,10 +166,7 @@ function Description() {
       </m.div>
 
       <m.div variants={varFade().in}>
-        <Typography variant="body2" sx={{ textAlign: 'center' }}>
-          The starting point for your next project is based on MUI.Easy customization Helps you
-          build apps faster and better.
-        </Typography>
+        <Typography variant="body2" sx={{ textAlign: 'center' }}>{tr("The starting point for your next project is based on MUI.Easy customization Helps you build apps faster and better.")}</Typography>
       </m.div>
 
       <m.div variants={varFade().in}>
@@ -189,9 +186,7 @@ function Description() {
                   bgcolor: 'text.primary',
                 },
               }}
-            >
-              Live Preview
-            </Button>
+            >{tr("Live Preview")}</Button>
 
             <Link
               color="inherit"
@@ -201,9 +196,7 @@ function Description() {
               href={PATH_FREE_VERSION}
               sx={{ textDecoration: 'underline', display: 'inline-flex', alignItems: 'center' }}
             >
-              <Iconify icon="eva:external-link-fill" width={16} sx={{ mr: 0.5 }} />
-              Get Free Version
-            </Link>
+              <Iconify icon="eva:external-link-fill" width={16} sx={{ mr: 0.5 }} />{tr("Get Free Version")}</Link>
           </Stack>
 
           <Button
@@ -215,15 +208,13 @@ function Description() {
             rel="noopener"
             href={PATH_FIGMA_PREVIEW}
             sx={{ borderColor: 'text.primary' }}
-          >
-            Design Preview
-          </Button>
+          >{tr("Design Preview")}</Button>
         </Stack>
       </m.div>
 
       <Stack spacing={3} sx={{ textAlign: 'center', opacity: 0.4 }}>
         <m.div variants={varFade().in}>
-          <Typography variant="overline">Available For</Typography>
+          <Typography variant="overline">{tr("Available For")}</Typography>
         </m.div>
 
         <Stack spacing={2} direction="row" justifyContent="center">
@@ -241,6 +232,7 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   const theme = useTheme();
 
   const isLight = theme.palette.mode === 'light';

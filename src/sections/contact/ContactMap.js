@@ -4,6 +4,7 @@ import { useState } from 'react';
 // @mui
 import { useTheme, styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // config
 import { MAP_API } from '../../config-global';
 // components
@@ -30,6 +31,7 @@ ContactMap.propTypes = {
 };
 
 export default function ContactMap({ contacts }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const isLight = theme.palette.mode === 'light';
@@ -72,9 +74,7 @@ export default function ContactMap({ contacts }) {
               '&.mapboxgl-popup-anchor-top .mapboxgl-popup-tip': { borderBottomColor: '#FFF' },
             }}
           >
-            <Typography variant="subtitle2" sx={{ mb: 0.5 }}>
-              Address
-            </Typography>
+            <Typography variant="subtitle2" sx={{ mb: 0.5 }}>{tr("Address")}</Typography>
 
             <Typography component="div" variant="caption">
               {popupInfo.address}

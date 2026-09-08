@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Stack, Slider, Container, Typography, alpha } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -58,6 +59,7 @@ function valueLabelFormat(value) {
 // ----------------------------------------------------------------------
 
 export default function MUISliderPage() {
+  useUiLanguage();
   const [value, setValue] = useState(30);
 
   const [price, setPrice] = useState([20, 37]);
@@ -73,7 +75,7 @@ export default function MUISliderPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Slider | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Slider | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -85,13 +87,13 @@ export default function MUISliderPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Slider"
+            heading={tr("Slider")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Slider' },
+              { name: tr("Slider") },
             ]}
             moreLink={['https://mui.com/components/slider']}
           />
@@ -100,7 +102,7 @@ export default function MUISliderPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 3 }} spacing={3}>
-          <Block title="Volume" sx={style}>
+          <Block title={tr("Volume")} sx={style}>
             <Stack direction="row" alignItems="center" spacing={1} width={1}>
               <Iconify icon="eva:volume-mute-fill" width={24} />
               <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
@@ -108,11 +110,11 @@ export default function MUISliderPage() {
             </Stack>
           </Block>
 
-          <Block title="Disabled" sx={style}>
+          <Block title={tr("Disabled")} sx={style}>
             <Slider disabled defaultValue={30} />
           </Block>
 
-          <Block title="Temperature" sx={style}>
+          <Block title={tr("Temperature")} sx={style}>
             <Slider
               defaultValue={30}
               getAriaValueText={valuetext}
@@ -124,7 +126,7 @@ export default function MUISliderPage() {
             />
           </Block>
 
-          <Block title="Size" sx={style}>
+          <Block title={tr("Size")} sx={style}>
             <Slider
               size="medium"
               marks
@@ -147,7 +149,7 @@ export default function MUISliderPage() {
             />
           </Block>
 
-          <Block title="Small steps" sx={style}>
+          <Block title={tr("Small steps")} sx={style}>
             <Slider
               defaultValue={0.00000005}
               getAriaValueText={valuetext}
@@ -159,7 +161,7 @@ export default function MUISliderPage() {
             />
           </Block>
 
-          <Block title="Custom marks" sx={style}>
+          <Block title={tr("Custom marks")} sx={style}>
             <Slider
               defaultValue={20}
               getAriaValueText={valuetext}
@@ -169,7 +171,7 @@ export default function MUISliderPage() {
             />
           </Block>
 
-          <Block title="Restricted values" sx={style}>
+          <Block title={tr("Restricted values")} sx={style}>
             <Slider
               defaultValue={20}
               valueLabelFormat={valueLabelFormat}
@@ -180,7 +182,7 @@ export default function MUISliderPage() {
             />
           </Block>
 
-          <Block title="Range" sx={style}>
+          <Block title={tr("Range")} sx={style}>
             <Box sx={{ width: '100%' }}>
               <Slider
                 scale={(x) => x * 10}
@@ -201,10 +203,9 @@ export default function MUISliderPage() {
                 bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
               }}
             >
-              <Typography variant="subtitle2" gutterBottom>
-                Min: {valuePrice(price[0])}
+              <Typography variant="subtitle2" gutterBottom>{tr("Min:")}{valuePrice(price[0])}
               </Typography>
-              <Typography variant="subtitle2">Max: {valuePrice(price[1])}</Typography>
+              <Typography variant="subtitle2">{tr("Max:")} {valuePrice(price[1])}</Typography>
             </Box>
           </Block>
         </Masonry>

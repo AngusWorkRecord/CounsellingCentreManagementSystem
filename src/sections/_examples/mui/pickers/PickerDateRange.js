@@ -1,5 +1,6 @@
-// @mui
 import { Box, Button, Stack, Link } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
+// @mui
 import DateRangePicker, { useDateRangePicker } from '../../../../components/date-range-picker';
 // utils
 import { fDate } from '../../../../utils/formatTime';
@@ -9,6 +10,7 @@ import { Block } from '../../Block';
 // ----------------------------------------------------------------------
 
 export default function PickerDateRange() {
+  useUiLanguage();
   const pickerInput = useDateRangePicker(new Date(), new Date());
 
   const pickerCalendar = useDateRangePicker(new Date(), null);
@@ -16,8 +18,8 @@ export default function PickerDateRange() {
   return (
     <>
       <Stack sx={{ typography: 'body2', mb: 3, color: 'text.secondary' }}>
-        <div>This is the custom component from minimal.</div>
-        <div>You can use more advanced components by MUI.</div>
+        <div>{tr("This is the custom component from minimal.")}</div>
+        <div>{tr("You can use more advanced components by MUI.")}</div>
 
         <Link href="https://mui.com/x/react-date-pickers/date-range-picker/">
           https://mui.com/x/react-date-pickers/date-range-picker/{' '}
@@ -32,17 +34,15 @@ export default function PickerDateRange() {
           md: 'repeat(2, 1fr)',
         }}
       >
-        <Block title="Input">
-          <Button variant="contained" onClick={pickerInput.onOpen}>
-            Click me!
-          </Button>
+        <Block title={tr("Input")}>
+          <Button variant="contained" onClick={pickerInput.onOpen}>{tr("Click me!")}</Button>
 
           <Stack sx={{ typography: 'body2', mt: 3 }}>
             <div>
-              <strong>Start:</strong> {fDate(pickerInput.startDate)}
+              <strong>{tr("Start:")}</strong> {fDate(pickerInput.startDate)}
             </div>
             <div>
-              <strong>End:</strong> {fDate(pickerInput.endDate)}
+              <strong>{tr("End:")}</strong> {fDate(pickerInput.endDate)}
             </div>
           </Stack>
 
@@ -57,17 +57,15 @@ export default function PickerDateRange() {
           />
         </Block>
 
-        <Block title="Calendar">
-          <Button variant="contained" onClick={pickerCalendar.onOpen}>
-            Click me!
-          </Button>
+        <Block title={tr("Calendar")}>
+          <Button variant="contained" onClick={pickerCalendar.onOpen}>{tr("Click me!")}</Button>
 
           <Stack sx={{ typography: 'body2', mt: 3 }}>
             <div>
-              <strong>Start:</strong> {fDate(pickerCalendar.startDate)}
+              <strong>{tr("Start:")}</strong> {fDate(pickerCalendar.startDate)}
             </div>
             <div>
-              <strong>End:</strong> {fDate(pickerCalendar.endDate)}
+              <strong>{tr("End:")}</strong> {fDate(pickerCalendar.endDate)}
             </div>
           </Stack>
 

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { FormHelperText } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 //
 import Editor from '../editor';
 
@@ -45,7 +46,7 @@ export default function RHFEditor({ name, helperText, ...other }) {
           helperText={
             (!!error || helperText) && (
               <FormHelperText error={!!error} sx={{ px: 2 }}>
-                {error ? error?.message : helperText}
+                {error ? uiMessage(error?.message) : helperText}
               </FormHelperText>
             )
           }

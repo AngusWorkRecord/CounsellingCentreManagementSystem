@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // @mui
 import { Paper, Button, ClickAwayListener, TextField } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // redux
 import { useDispatch } from '../../../../redux/store';
 import { createColumn } from '../../../../redux/slices/kanban';
@@ -10,6 +11,7 @@ import Iconify from '../../../../components/iconify';
 // ----------------------------------------------------------------------
 
 export default function KanbanColumnAdd() {
+  useUiLanguage();
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -53,7 +55,7 @@ export default function KanbanColumnAdd() {
           <TextField
             autoFocus
             fullWidth
-            placeholder="New section"
+            placeholder={tr("New section")}
             value={name}
             onChange={handleChangeName}
             onKeyUp={handleKeyUp}
@@ -70,9 +72,7 @@ export default function KanbanColumnAdd() {
           variant="outlined"
           startIcon={<Iconify icon="eva:plus-fill" />}
           onClick={handleOpen}
-        >
-          Add section
-        </Button>
+        >{tr("Add section")}</Button>
       )}
     </Paper>
   );

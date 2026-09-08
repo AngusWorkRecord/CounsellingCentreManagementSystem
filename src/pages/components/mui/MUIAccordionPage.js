@@ -11,6 +11,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock_
@@ -26,7 +27,7 @@ import { Block } from '../../../sections/_examples/Block';
 const _accordions = [...Array(4)].map((_, index) => ({
   id: _mock.id(index),
   value: `panel${index + 1}`,
-  heading: `Accordion ${index + 1}`,
+  heading: tr("Accordion {{p0}}", { p0: index + 1 }),
   subHeading: _mock.text.title(index),
   detail: _mock.text.description(index),
 }));
@@ -34,6 +35,7 @@ const _accordions = [...Array(4)].map((_, index) => ({
 // ----------------------------------------------------------------------
 
 export default function MUIAccordionPage() {
+  useUiLanguage();
   const [controlled, setControlled] = useState(false);
 
   const handleChangeControlled = (panel) => (event, isExpanded) => {
@@ -43,7 +45,7 @@ export default function MUIAccordionPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Accordion | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Accordion | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -55,13 +57,13 @@ export default function MUIAccordionPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Accordion"
+            heading={tr("Accordion")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Accordion' },
+              { name: tr("Accordion") },
             ]}
             moreLink={['https://mui.com/components/accordion']}
           />
@@ -70,7 +72,7 @@ export default function MUIAccordionPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
-          <Block title="Simple">
+          <Block title={tr("Simple")}>
             {_accordions.map((accordion, index) => (
               <Accordion key={accordion.value} disabled={index === 3}>
                 <AccordionSummary expandIcon={<Iconify icon="eva:arrow-ios-downward-fill" />}>
@@ -83,7 +85,7 @@ export default function MUIAccordionPage() {
             ))}
           </Block>
 
-          <Block title="Controlled">
+          <Block title={tr("Controlled")}>
             {_accordions.map((item, index) => (
               <Accordion
                 key={item.value}

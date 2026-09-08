@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box, Link } from '@mui/material';
+import { tr } from '../../locales/translate';
 
 // ----------------------------------------------------------------------
 
@@ -84,7 +85,7 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
       sx={{ display: 'flex', justifyContent: 'center', width: 1 }}
     >
       {/* {logo} */}
-      <img src="/logo/BodhiCounsellingLogo.png" alt="Home" style={{ width: '100px' }} />
+      <img src="/logo/BodhiCounsellingLogo.png" alt={tr("Home")} style={{ width: '100px' }} />
     </Link>
   );
 });

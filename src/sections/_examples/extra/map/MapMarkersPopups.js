@@ -3,6 +3,7 @@ import { useState, memo } from 'react';
 import Map from 'react-map-gl';
 // @mui
 import { Box, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Image from '../../../../components/image';
 import { MapPopup, MapMarker, MapControl } from '../../../../components/map';
@@ -14,6 +15,7 @@ MapMarkersPopups.propTypes = {
 };
 
 function MapMarkersPopups({ data, ...other }) {
+  useUiLanguage();
   const [popupInfo, setPopupInfo] = useState(null);
 
   return (
@@ -66,16 +68,13 @@ function MapMarkersPopups({ data, ...other }) {
               <Typography variant="subtitle2">{popupInfo.name}</Typography>
             </Box>
 
-            <Typography component="div" variant="caption">
-              Timezones: {popupInfo.timezones}
+            <Typography component="div" variant="caption">{tr("Timezones:")}{popupInfo.timezones}
             </Typography>
 
-            <Typography component="div" variant="caption">
-              Lat: {popupInfo.latlng[0]}
+            <Typography component="div" variant="caption">{tr("Lat:")}{popupInfo.latlng[0]}
             </Typography>
 
-            <Typography component="div" variant="caption">
-              Long: {popupInfo.latlng[1]}
+            <Typography component="div" variant="caption">{tr("Long:")}{popupInfo.latlng[1]}
             </Typography>
 
             <Image

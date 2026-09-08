@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Card, Container, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Image from '../../components/image';
 import { MotionViewport, varFade } from '../../components/animate';
@@ -11,19 +12,18 @@ import { MotionViewport, varFade } from '../../components/animate';
 const CARDS = [
   {
     icon: ' /assets/icons/home/ic_make_brand.svg',
-    title: 'Branding',
-    description: 'Consistent design makes it easy to brand your own.',
+    get title() { return tr("Branding"); },
+    get description() { return tr("Consistent design makes it easy to brand your own."); },
   },
   {
     icon: ' /assets/icons/home/ic_design.svg',
-    title: 'UI & UX Design',
-    description:
-      'The kit is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.',
+    get title() { return tr("UI & UX Design"); },
+    get description() { return tr("The kit is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects."); },
   },
   {
     icon: ' /assets/icons/home/ic_development.svg',
-    title: 'Development',
-    description: 'Easy to customize and extend, saving you time and money.',
+    get title() { return tr("Development"); },
+    get description() { return tr("Easy to customize and extend, saving you time and money."); },
   },
 ];
 
@@ -46,6 +46,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeMinimal() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionViewport}>
@@ -57,15 +58,11 @@ export default function HomeMinimal() {
           }}
         >
           <m.div variants={varFade().inUp}>
-            <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-              Counselling Centre Management System
-            </Typography>
+            <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>{tr("Counselling Centre Management System")}</Typography>
           </m.div>
 
           <m.div variants={varFade().inDown}>
-            <Typography variant="h2">
-              What minimal <br /> helps you?
-            </Typography>
+            <Typography variant="h2">{tr("What minimal")}<br />{tr("helps you?")}</Typography>
           </m.div>
         </Stack>
 

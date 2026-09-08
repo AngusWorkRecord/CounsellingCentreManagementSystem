@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Tab, Tabs } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -18,22 +19,23 @@ import {
 // ----------------------------------------------------------------------
 
 const TABS = [
-  { value: 'inview', label: 'In View', component: <Inview /> },
-  { value: 'scroll', label: 'Scroll', component: <ScrollView /> },
-  { value: 'dialog', label: 'Dialog', component: <DialogView /> },
-  { value: 'background', label: 'Background', component: <BackgroundView /> },
-  { value: 'other', label: 'Other', component: <OtherView /> },
+  { value: 'inview', get label() { return tr("In View"); }, component: <Inview /> },
+  { value: 'scroll', get label() { return tr("Scroll"); }, component: <ScrollView /> },
+  { value: 'dialog', get label() { return tr("Dialog"); }, component: <DialogView /> },
+  { value: 'background', get label() { return tr("Background"); }, component: <BackgroundView /> },
+  { value: 'other', get label() { return tr("Other"); }, component: <OtherView /> },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function DemoAnimatePage() {
+  useUiLanguage();
   const [currentTab, setCurrentTab] = useState('inview');
 
   return (
     <>
       <Helmet>
-        <title> Extra Components: Animate | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Animate | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -45,13 +47,13 @@ export default function DemoAnimatePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Animate"
+            heading={tr("Animate")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Animate' },
+              { name: tr("Animate") },
             ]}
             moreLink={['https://www.framer.com/api/motion']}
           />

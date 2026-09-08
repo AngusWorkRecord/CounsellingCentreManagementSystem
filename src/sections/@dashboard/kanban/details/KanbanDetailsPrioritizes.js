@@ -2,15 +2,16 @@ import PropTypes from 'prop-types';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Stack, Radio, RadioGroup, FormControlLabel } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
 // ----------------------------------------------------------------------
 
 const PRIORITIZES_OPTIONS = [
-  { value: 'low', label: 'Low', color: 'info' },
-  { value: 'medium', label: 'Medium', color: 'warning' },
-  { value: 'hight', label: 'Hight', color: 'error' },
+  { value: 'low', get label() { return tr("Low"); }, color: 'info' },
+  { value: 'medium', get label() { return tr("Medium"); }, color: 'warning' },
+  { value: 'hight', get label() { return tr("Hight"); }, color: 'error' },
 ];
 
 KanbanDetailsPrioritizes.propTypes = {
@@ -19,6 +20,7 @@ KanbanDetailsPrioritizes.propTypes = {
 };
 
 export default function KanbanDetailsPrioritizes({ prioritize, onChangePrioritize }) {
+  useUiLanguage();
   return (
     <RadioGroup row value={prioritize} onChange={onChangePrioritize}>
       {PRIORITIZES_OPTIONS.map((option) => {

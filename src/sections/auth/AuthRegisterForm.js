@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import { Stack, IconButton, InputAdornment, Alert } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { tr, useUiLanguage } from '../../locales/translate';
 // auth
 import { useAuthContext } from '../../auth/useAuthContext';
 // components
@@ -20,15 +21,16 @@ AuthRegisterForm.propTypes = {
 };
 
 export default function AuthRegisterForm({ termsAccepted }) {
+  useUiLanguage();
   const { register } = useAuthContext();
 
   const [showPassword, setShowPassword] = useState(false);
 
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string().required('First name required'),
-    lastName: Yup.string().required('Last name required'),
-    email: Yup.string().required('Email is required').email('Email must be a valid email address'),
-    password: Yup.string().required('Password is required'),
+    firstName: Yup.string().required(tr("First name required")),
+    lastName: Yup.string().required(tr("Last name required")),
+    email: Yup.string().required(tr("Email is required")).email(tr("Email must be a valid email address")),
+    password: Yup.string().required(tr("Password is required")),
   });
 
   const defaultValues = {
@@ -52,7 +54,7 @@ export default function AuthRegisterForm({ termsAccepted }) {
 
   const onSubmit = async (data) => {
     if (!termsAccepted) {
-      setError('terms', { message: 'You must accept the terms and conditions' });
+      setError('terms', { message: tr("You must accept the terms and conditions") });
       return;
     }
 
@@ -79,7 +81,7 @@ export default function AuthRegisterForm({ termsAccepted }) {
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
           <RHFTextField
             name="firstName"
-            label="First name"
+            label={tr("First name")}
             variant="standard"
             fullWidth
             InputProps={{
@@ -106,7 +108,7 @@ export default function AuthRegisterForm({ termsAccepted }) {
           />
           <RHFTextField
             name="lastName"
-            label="Last name"
+            label={tr("Last name")}
             variant="standard"
             fullWidth
             InputProps={{
@@ -135,7 +137,7 @@ export default function AuthRegisterForm({ termsAccepted }) {
 
         <RHFTextField
           name="email"
-          label="Email address"
+          label={tr("Email address")}
           variant="standard"
           fullWidth
           InputProps={{
@@ -163,7 +165,7 @@ export default function AuthRegisterForm({ termsAccepted }) {
 
         <RHFTextField
           name="password"
-          label="Password"
+          label={tr("Password")}
           type={showPassword ? 'text' : 'password'}
           variant="standard"
           fullWidth
@@ -213,9 +215,7 @@ export default function AuthRegisterForm({ termsAccepted }) {
               color: (theme) => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
             },
           }}
-        >
-          Create account
-        </LoadingButton>
+        >{tr("Create account")}</LoadingButton>
       </Stack>
     </FormProvider>
   );

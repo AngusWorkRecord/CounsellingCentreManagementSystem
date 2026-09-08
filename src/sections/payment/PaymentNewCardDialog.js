@@ -12,6 +12,7 @@ import {
   DialogContent,
   InputAdornment,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Iconify from '../../components/iconify';
 import MenuPopover from '../../components/menu-popover';
@@ -23,6 +24,7 @@ PaymentNewCardDialog.propTypes = {
 };
 
 export default function PaymentNewCardDialog({ onClose, ...other }) {
+  useUiLanguage();
   const [openPopover, setOpenPopover] = useState(null);
 
   const handleOpenPopover = (event) => {
@@ -36,13 +38,13 @@ export default function PaymentNewCardDialog({ onClose, ...other }) {
   return (
     <>
       <Dialog maxWidth="xs" onClose={onClose} {...other}>
-        <DialogTitle> Add new card </DialogTitle>
+        <DialogTitle> {tr("Add new card")} </DialogTitle>
 
         <DialogContent sx={{ overflow: 'unset' }}>
           <Stack spacing={3}>
-            <TextField fullWidth label="Name on card" />
+            <TextField fullWidth label={tr("Name on card")} />
 
-            <TextField fullWidth label="Card number" />
+            <TextField fullWidth label={tr("Card number")} />
 
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
               <TextField label="MM/YY" />
@@ -64,13 +66,9 @@ export default function PaymentNewCardDialog({ onClose, ...other }) {
         </DialogContent>
 
         <DialogActions>
-          <Button color="inherit" variant="outlined" onClick={onClose}>
-            Cancel
-          </Button>
+          <Button color="inherit" variant="outlined" onClick={onClose}>{tr("Cancel")}</Button>
 
-          <Button variant="contained" onClick={onClose}>
-            Add
-          </Button>
+          <Button variant="contained" onClick={onClose}>{tr("Add")}</Button>
         </DialogActions>
       </Dialog>
 
@@ -79,9 +77,7 @@ export default function PaymentNewCardDialog({ onClose, ...other }) {
         onClose={handleClosePopover}
         arrow="bottom-center"
         sx={{ maxWidth: 200, typography: 'body2', textAlign: 'center' }}
-      >
-        Three-digit number on the back of your VISA card
-      </MenuPopover>
+      >{tr("Three-digit number on the back of your VISA card")}</MenuPopover>
     </>
   );
 }

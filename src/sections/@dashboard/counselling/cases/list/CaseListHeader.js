@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 import Iconify from '../../../../../components/iconify';
 import { CounsellingPeriodFilter } from '../..';
 
 export default function CaseListHeader({ filteredCount, onCreateCase, periodFilter, periodLabel }) {
+  useUiLanguage();
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -14,10 +16,9 @@ export default function CaseListHeader({ filteredCount, onCreateCase, periodFilt
     >
       <Box>
         {/* 中文原文：个案列表 */}
-        <Typography variant="h3" gutterBottom>Case List</Typography>
+        <Typography variant="h3" gutterBottom>{tr("Case List")}</Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* 中文原文：样本期间、数据笔数 */}
-          Period: {periodLabel} | Records: {filteredCount}
+          {/* 中文原文：样本期间、数据笔数 */}{tr("Period:")}{periodLabel} {tr("| Records:")} {filteredCount}
         </Typography>
       </Box>
 
@@ -29,8 +30,7 @@ export default function CaseListHeader({ filteredCount, onCreateCase, periodFilt
           startIcon={<Iconify icon="eva:plus-circle-outline" />}
           onClick={onCreateCase}
         >
-          {/* 中文原文：新增个案 */}Create Case
-        </Button>
+          {/* 中文原文：新增个案 */}{tr("Create Case")}</Button>
       </Stack>
     </Stack>
   );

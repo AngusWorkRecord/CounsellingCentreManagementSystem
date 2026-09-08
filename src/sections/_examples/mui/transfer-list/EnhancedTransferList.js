@@ -12,6 +12,7 @@ import {
   ListItemIcon,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -30,6 +31,7 @@ function union(a, b) {
 }
 
 export default function EnhancedTransferList() {
+  useUiLanguage();
   const [checked, setChecked] = useState([]);
 
   const [left, setLeft] = useState([0, 1, 2, 3]);
@@ -85,11 +87,11 @@ export default function EnhancedTransferList() {
             checked={numberOfChecked(items) === items.length && items.length !== 0}
             indeterminate={numberOfChecked(items) !== items.length && numberOfChecked(items) !== 0}
             disabled={items.length === 0}
-            inputProps={{ 'aria-label': 'all items selected' }}
+            inputProps={{ 'aria-label': tr("all items selected") }}
           />
         }
         title={title}
-        subheader={`${numberOfChecked(items)}/${items.length} selected`}
+        subheader={tr("{{p0}}/{{p1}} selected", { p0: numberOfChecked(items), p1: items.length })}
         sx={{ p: 2 }}
       />
 
@@ -137,7 +139,7 @@ export default function EnhancedTransferList() {
             size="small"
             onClick={handleCheckedRight}
             disabled={leftChecked.length === 0}
-            aria-label="move selected right"
+            aria-label={tr("move selected right")}
             sx={{ my: 1 }}
           >
             <Iconify icon="eva:arrow-ios-forward-fill" width={18} />
@@ -149,7 +151,7 @@ export default function EnhancedTransferList() {
             size="small"
             onClick={handleCheckedLeft}
             disabled={rightChecked.length === 0}
-            aria-label="move selected left"
+            aria-label={tr("move selected left")}
             sx={{ my: 1 }}
           >
             <Iconify icon="eva:arrow-ios-back-fill" width={18} />

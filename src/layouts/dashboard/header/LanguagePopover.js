@@ -1,68 +1,15 @@
-import { useState } from 'react';
-// @mui
-import { MenuItem, Stack } from '@mui/material';
-// locales
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useLocales } from '../../../locales';
-// components
-import Image from '../../../components/image';
-import MenuPopover from '../../../components/menu-popover';
-import { IconButtonAnimate } from '../../../components/animate';
-
-// ----------------------------------------------------------------------
 
 export default function LanguagePopover() {
-  const { allLangs, currentLang, onChangeLang } = useLocales();
-
-  const [openPopover, setOpenPopover] = useState(null);
-
-  const handleOpenPopover = (event) => {
-    setOpenPopover(event.currentTarget);
-  };
-
-  const handleClosePopover = () => {
-    setOpenPopover(null);
-  };
-
-  const handleChangeLang = (newLang) => {
-    onChangeLang(newLang);
-    handleClosePopover();
-  };
-
+  const { currentLang, onChangeLang } = useLocales();
   return (
-    <>
-      <IconButtonAnimate
-        onClick={handleOpenPopover}
-        sx={{
-          width: 40,
-          height: 40,
-          ...(openPopover && {
-            bgcolor: 'action.selected',
-          }),
-        }}
-      >
-        <Image disabledEffect src={currentLang.icon} alt={currentLang.label} />
-      </IconButtonAnimate>
-
-      <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 180 }}>
-        <Stack spacing={0.75}>
-          {allLangs.map((option) => (
-            <MenuItem
-              key={option.value}
-              selected={option.value === currentLang.value}
-              onClick={() => handleChangeLang(option.value)}
-            >
-              <Image
-                disabledEffect
-                alt={option.label}
-                src={option.icon}
-                sx={{ width: 28, mr: 2 }}
-              />
-
-              {option.label}
-            </MenuItem>
-          ))}
-        </Stack>
-      </MenuPopover>
-    </>
+    <ToggleButtonGroup size="small" exclusive value={currentLang.value}
+      aria-label="华文 / English"
+      onChange={(_, language) => { if (language) onChangeLang(language); }}
+      sx={{ flexShrink: 0, bgcolor: 'background.paper', '& .MuiToggleButton-root': { px: 1, textTransform: 'none', whiteSpace: 'nowrap' } }}>
+      <ToggleButton value="cn" lang="zh-CN">华文</ToggleButton>
+      <ToggleButton value="en" lang="en">English</ToggleButton>
+    </ToggleButtonGroup>
   );
 }

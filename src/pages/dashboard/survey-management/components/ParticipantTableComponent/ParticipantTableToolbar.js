@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Stack, InputAdornment, TextField, MenuItem, Button } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Iconify from '../../../../../components/iconify';
 
@@ -19,6 +20,7 @@ export default function ParticipantTableToolbar({
   onFilterName,
   onResetFilter,
 }) {
+  useUiLanguage();
   return (
     <Stack
       spacing={2}
@@ -69,7 +71,7 @@ export default function ParticipantTableToolbar({
         fullWidth
         value={filterName}
         onChange={onFilterName}
-        placeholder="Search..."
+        placeholder={tr("Search...")}
         size="small"
         InputProps={{
           startAdornment: (
@@ -86,9 +88,7 @@ export default function ParticipantTableToolbar({
           sx={{ flexShrink: 0 }}
           onClick={onResetFilter}
           startIcon={<Iconify icon="eva:trash-2-outline" />}
-        >
-          Clear
-        </Button>
+        >{tr("Clear")}</Button>
       )}
     </Stack>
   );

@@ -14,6 +14,7 @@ import {
   RadioGroup,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -35,6 +36,7 @@ const StyledBlockContainer = styled(Paper)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function FoundationGridPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   const [spacing, setSpacing] = useState(2);
@@ -52,7 +54,7 @@ export default function FoundationGridPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Grid | Counselling Centre Management System</title>
+        <title> {tr("Foundations: Grid | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -64,13 +66,13 @@ export default function FoundationGridPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Grid"
+            heading={tr("Grid")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Grid' },
+              { name: tr("Grid") },
             ]}
           />
         </Container>
@@ -78,10 +80,9 @@ export default function FoundationGridPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
-          <Block title="Spacing">
+          <Block title={tr("Spacing")}>
             <StyledBlockContainer variant="outlined">
-              <Typography variant="body2" sx={{ mb: 3, textAlign: 'center' }}>
-                Spacing: <strong>{theme.spacing(Number(spacing))}</strong>
+              <Typography variant="body2" sx={{ mb: 3, textAlign: 'center' }}>{tr("Spacing:")}<strong>{theme.spacing(Number(spacing))}</strong>
               </Typography>
 
               <Grid container spacing={spacing}>
@@ -120,7 +121,7 @@ export default function FoundationGridPage() {
             </StyledBlockContainer>
           </Block>
 
-          <Block title="Column">
+          <Block title={tr("Column")}>
             <StyledBlockContainer variant="outlined">
               <Grid container spacing={3}>
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((value) => (

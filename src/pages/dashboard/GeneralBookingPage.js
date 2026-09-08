@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography, Stack, Card, CardHeader, CardContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // services
@@ -49,26 +50,27 @@ import rightIcon from '../../sections/@dashboard/general/booking/images/right.pn
 // ----------------------------------------------------------------------
 
 const CardDetails = [
-  { title: "40.6%", desc: "Total Score", icon: "https://img.icons8.com/ios/100/null/test-failed.png", alt: "hotel" },
-  { title: "#67", desc: "Overall Rank", icon: "https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/null/external-rank-seo-xnimrodx-lineal-xnimrodx.png", alt: 'overall' },
-  { title: "#21", desc: "Country Rank", icon: "https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/null/external-rank-seo-xnimrodx-lineal-xnimrodx.png", alt: 'country' },
-  { title: "#2", desc: "Region Rank", icon: "https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/null/external-rank-seo-xnimrodx-lineal-xnimrodx.png", alt: 'region' },
+  { title: "40.6%", desc: "Total Score", icon: "https://img.icons8.com/ios/100/null/test-failed.png", get alt() { return tr("hotel"); } },
+  { title: "#67", desc: "Overall Rank", icon: "https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/null/external-rank-seo-xnimrodx-lineal-xnimrodx.png", get alt() { return tr("overall"); } },
+  { title: "#21", desc: "Country Rank", icon: "https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/null/external-rank-seo-xnimrodx-lineal-xnimrodx.png", get alt() { return tr("country"); } },
+  { title: "#2", desc: "Region Rank", icon: "https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/null/external-rank-seo-xnimrodx-lineal-xnimrodx.png", get alt() { return tr("region"); } },
 ];
 
 const goalsView = [
-  { id: 1, title: 'Destination Awareness', icon: "https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-brand-awareness-traditional-marketing-flaticons-lineal-color-flat-icons.png", symbol: upIcon, color: "#f57c00" },
-  { id: 2, title: 'Government Commitment', icon: "https://img.icons8.com/external-fauzidea-detailed-outline-fauzidea/64/null/external-government-building-fauzidea-detailed-outline-fauzidea.png", symbol: rightIcon, color: "#d32f2f" },
-  { id: 3, title: 'Sarawak Business Event(BE) Brand', icon: "https://img.icons8.com/external-vectorslab-outline-color-vectorslab/53/null/external-feedback-shopping-and-ecommerce-vectorslab-outline-color-vectorslab.png", symbol: upRightIcon, color: "#d32f2f" },
-  { id: 4, title: 'Inter-organizational Collaboration', icon: "https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/null/external-setting-advertising-xnimrodx-lineal-gradient-xnimrodx-2.png", symbol: upRightIcon, color: "#fcc30b" },
-  { id: 5, title: 'Service Quality and Standards', icon: "https://img.icons8.com/external-filled-outline-geotatah/64/null/external-customer-customer-satisfaction-filled-outline-filled-outline-geotatah-2.png", symbol: upRightIcon, color: "#d32f2f" },
-  { id: 6, title: 'Business Events(BE) Sector Advancement', icon: "https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/null/external-analytic-bitcoin-icongeek26-outline-gradient-icongeek26.png", symbol: rightIcon, color: "#f57c00" },
-  { id: 7, title: 'Organization and HR Development', icon: "https://img.icons8.com/external-filled-outline-geotatah/64/null/external-champion-managerial-psychology-color-filled-outline-geotatah.png", symbol: upRightIcon, color: "#d32f2f" },
-  { id: 8, title: 'Social Legacy', icon: "https://img.icons8.com/external-smashingstocks-detailed-outline-smashing-stocks/66/null/external-social-banking-and-finance-smashingstocks-detailed-outline-smashing-stocks.png", symbol: upIcon, color: "#f57c00" },
-  { id: 9, title: 'Environment Conservation', icon: "https://img.icons8.com/external-bearicons-flat-bearicons/64/null/external-Lightbulb-happiness-bearicons-flat-bearicons.png", symbol: upRightIcon, color: "#fcc30b" },
-  { id: 10, title: 'Community Buy-in', icon: "https://img.icons8.com/external-flat-geotatah/64/null/external-community-work-life-balance-flat-flat-geotatah.png", symbol: rightIcon, color: "#d32f2f" },
+  { id: 1, get title() { return tr("Destination Awareness"); }, icon: "https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-brand-awareness-traditional-marketing-flaticons-lineal-color-flat-icons.png", symbol: upIcon, color: "#f57c00" },
+  { id: 2, get title() { return tr("Government Commitment"); }, icon: "https://img.icons8.com/external-fauzidea-detailed-outline-fauzidea/64/null/external-government-building-fauzidea-detailed-outline-fauzidea.png", symbol: rightIcon, color: "#d32f2f" },
+  { id: 3, get title() { return tr("Sarawak Business Event(BE) Brand"); }, icon: "https://img.icons8.com/external-vectorslab-outline-color-vectorslab/53/null/external-feedback-shopping-and-ecommerce-vectorslab-outline-color-vectorslab.png", symbol: upRightIcon, color: "#d32f2f" },
+  { id: 4, get title() { return tr("Inter-organizational Collaboration"); }, icon: "https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/null/external-setting-advertising-xnimrodx-lineal-gradient-xnimrodx-2.png", symbol: upRightIcon, color: "#fcc30b" },
+  { id: 5, get title() { return tr("Service Quality and Standards"); }, icon: "https://img.icons8.com/external-filled-outline-geotatah/64/null/external-customer-customer-satisfaction-filled-outline-filled-outline-geotatah-2.png", symbol: upRightIcon, color: "#d32f2f" },
+  { id: 6, get title() { return tr("Business Events(BE) Sector Advancement"); }, icon: "https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/null/external-analytic-bitcoin-icongeek26-outline-gradient-icongeek26.png", symbol: rightIcon, color: "#f57c00" },
+  { id: 7, get title() { return tr("Organization and HR Development"); }, icon: "https://img.icons8.com/external-filled-outline-geotatah/64/null/external-champion-managerial-psychology-color-filled-outline-geotatah.png", symbol: upRightIcon, color: "#d32f2f" },
+  { id: 8, get title() { return tr("Social Legacy"); }, icon: "https://img.icons8.com/external-smashingstocks-detailed-outline-smashing-stocks/66/null/external-social-banking-and-finance-smashingstocks-detailed-outline-smashing-stocks.png", symbol: upIcon, color: "#f57c00" },
+  { id: 9, get title() { return tr("Environment Conservation"); }, icon: "https://img.icons8.com/external-bearicons-flat-bearicons/64/null/external-Lightbulb-happiness-bearicons-flat-bearicons.png", symbol: upRightIcon, color: "#fcc30b" },
+  { id: 10, get title() { return tr("Community Buy-in"); }, icon: "https://img.icons8.com/external-flat-geotatah/64/null/external-community-work-life-balance-flat-flat-geotatah.png", symbol: rightIcon, color: "#d32f2f" },
 ]
 
 export default function GeneralBookingPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   const navigate = useNavigate();
@@ -114,7 +116,7 @@ export default function GeneralBookingPage() {
   return (
     <>
       <Helmet>
-        <title> Counselling | Dashboard </title>
+        <title> {tr("Counselling | Dashboard")} </title>
       </Helmet>
 
       <Container maxWidth={false}>
@@ -175,7 +177,7 @@ export default function GeneralBookingPage() {
               </Grid>
 
               <Grid item xs={12} md={2}>
-                <BookingBookedRoom title="Legacy Impact Performance" subheader={2023} data={_bookingsOverview} />
+                <BookingBookedRoom title={tr("Legacy Impact Performance")} subheader={2023} data={_bookingsOverview} />
               </Grid>
 
               <Grid item xs={12} md={2}>
@@ -183,18 +185,18 @@ export default function GeneralBookingPage() {
                   chart={{
                     colors: [theme.palette.warning.main],
                     series: [
-                      { label: 'Foreign delegates', percent: 64.20, total: 38566 },
-                      { label: 'Local delegates', percent: 35.80, total: 21509 },
+                      { label: tr("Foreign delegates"), percent: 64.20, total: 38566 },
+                      { label: tr("Local delegates"), percent: 35.80, total: 21509 },
                     ],
                   }}
                 />
               </Grid>
               <Grid item xs={12} md={2}>
                 <BookingRoomAvailable
-                  title="Overall Legacy Impact Score"
+                  title={tr("Overall Legacy Impact Score")}
                   chart={{
                     series: [
-                      { label: 'Archieved Score', value: 120 },
+                      { label: tr("Archieved Score"), value: 120 },
                       { label: ' ', value: 66 },
                     ],
                   }}
@@ -292,7 +294,7 @@ export default function GeneralBookingPage() {
 
           <Grid item xs={12} md={7}>
             <EcommerceYearlySales
-              title="Evolution by Year"
+              title={tr("Evolution by Year")}
               // subheader="(+43%) than last year"
               chart={{
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -374,7 +376,7 @@ export default function GeneralBookingPage() {
             </Grid> */}
 
             <Card>
-              <CardHeader title="SARAWAK BE CITIES" />
+              <CardHeader title={tr("SARAWAK BE CITIES")} />
 
               <CardContent>
                 <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
@@ -382,16 +384,16 @@ export default function GeneralBookingPage() {
                 </Stack>
                 <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
                   <Grid item xs={12} md={4}>
-                    <Typography variant='h6' sx={{ pb: 1 }}>Overall Performance</Typography>
+                    <Typography variant='h6' sx={{ pb: 1 }}>{tr("Overall Performance")}</Typography>
                   </Grid>
                   <Grid item xs={12} md={8} sx={{ display: "flex", flexDirection: "row", justifyContent: "end" }}>
-                    <Typography variant='caption' >Trends:</Typography>
+                    <Typography variant='caption' >{tr("Trends:")}</Typography>
                     <img src={upIcon} alt="" width={20} height={20} />
-                    <Typography variant='caption' >On track or maintaining SDG achievement</Typography>
+                    <Typography variant='caption' >{tr("On track or maintaining SDG achievement")}</Typography>
                     <img src={upRightIcon} alt="" width={20} height={20} />
-                    <Typography variant='caption' >Moderately improving</Typography>
+                    <Typography variant='caption' >{tr("Moderately improving")}</Typography>
                     <img src={rightIcon} alt="" width={20} height={20} />
-                    <Typography variant='caption' >Stagnating</Typography>
+                    <Typography variant='caption' >{tr("Stagnating")}</Typography>
                   </Grid>
                 </Stack>
                 <Grid container spacing={3}>
@@ -428,7 +430,7 @@ export default function GeneralBookingPage() {
           <Grid item xs={12} md={5}>
             <Stack spacing={2}>
               <CalendarPage />
-              <EcommerceSalesOverview title="Upcoming Events" data={_ecommerceSalesOverview} />
+              <EcommerceSalesOverview title={tr("Upcoming Events")} data={_ecommerceSalesOverview} />
             </Stack>
           </Grid>
         </Grid>

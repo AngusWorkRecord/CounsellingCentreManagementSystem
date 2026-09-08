@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Tab, Tabs } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -19,31 +20,32 @@ import FloatingActionButton from '../../../sections/_examples/mui/button/Floatin
 const TABS = [
   {
     value: 'contained',
-    label: 'Contained Buttons',
+    get label() { return tr("Contained Buttons"); },
     component: <ButtonVariants variant="contained" />,
   },
   {
     value: 'outlined',
-    label: 'Outlined Buttons',
+    get label() { return tr("Outlined Buttons"); },
     component: <ButtonVariants variant="outlined" />,
   },
-  { value: 'text', label: 'Text Buttons', component: <ButtonVariants /> },
-  { value: 'soft', label: 'Soft Buttons', component: <ButtonVariants variant="soft" /> },
-  { value: 'icon', label: 'Icon Buttons', component: <IconButtons /> },
-  { value: 'fab', label: 'Floating Action Button', component: <FloatingActionButton /> },
-  { value: 'groups', label: 'Button Groups', component: <ButtonGroups /> },
-  { value: 'toggle', label: 'Toggle Buttons', component: <ToggleButtons /> },
+  { value: 'text', get label() { return tr("Text Buttons"); }, component: <ButtonVariants /> },
+  { value: 'soft', get label() { return tr("Soft Buttons"); }, component: <ButtonVariants variant="soft" /> },
+  { value: 'icon', get label() { return tr("Icon Buttons"); }, component: <IconButtons /> },
+  { value: 'fab', get label() { return tr("Floating Action Button"); }, component: <FloatingActionButton /> },
+  { value: 'groups', get label() { return tr("Button Groups"); }, component: <ButtonGroups /> },
+  { value: 'toggle', get label() { return tr("Toggle Buttons"); }, component: <ToggleButtons /> },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function MUIButtonsPage() {
+  useUiLanguage();
   const [currentTab, setCurrentTab] = useState('contained');
 
   return (
     <>
       <Helmet>
-        <title> MUI Components: Buttons | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Buttons | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -55,13 +57,13 @@ export default function MUIButtonsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Buttons"
+            heading={tr("Buttons")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Buttons' },
+              { name: tr("Buttons") },
             ]}
             moreLink={[
               'https://mui.com/components/buttons',

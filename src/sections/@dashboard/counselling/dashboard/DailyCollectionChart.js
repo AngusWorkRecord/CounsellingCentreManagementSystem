@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Card, CardHeader } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import Chart, { useChart } from '../../../../components/chart';
 import ChartEmptyState from './ChartEmptyState';
 import { formatCurrency, getSessionDateKey, toNumber } from '../utils';
@@ -10,6 +11,7 @@ DailyCollectionChart.propTypes = {
 };
 
 export default function DailyCollectionChart({ onSelect, sessions }) {
+  useUiLanguage();
   const datedSessions = sessions
     .map((session) => ({ session, date: getSessionDateKey(session.counselling_date) }))
     .filter((item) => item.date);
@@ -32,7 +34,7 @@ export default function DailyCollectionChart({ onSelect, sessions }) {
           if (selected) {
             onSelect({
               // 中文原文：收款个案
-              title: `${selected.key} Payment Cases`,
+              title: () => tr("{{p0}} Payment Cases", { p0: selected.key }),
               sessions: datedSessions
                 .filter((item) => groupByMonth
                   ? item.date.startsWith(selected.key)
@@ -62,8 +64,8 @@ export default function DailyCollectionChart({ onSelect, sessions }) {
   return (
     <Card sx={{ height: 1 }}>
       <CardHeader
-        title={`F. ${groupByMonth ? 'Monthly' : 'Daily'} Payments Received`}
-        subheader="（RM）"
+        title={tr("F. {{p0}} Payments Received", { p0: groupByMonth ? 'Monthly' : 'Daily' })}
+        subheader={tr("（RM）")}
       />
       <Box
         sx={{

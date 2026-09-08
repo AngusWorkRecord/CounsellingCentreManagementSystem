@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Tab, Tabs } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -13,20 +14,21 @@ import Textfields from '../../../sections/_examples/mui/Textfields';
 // ----------------------------------------------------------------------
 
 const TABS = [
-  { value: 'outlined', label: 'Outlined', component: <Textfields variant="outlined" /> },
-  { value: 'filled', label: 'Filled', component: <Textfields variant="filled" /> },
-  { value: 'standard', label: 'Standard', component: <Textfields variant="standard" /> },
+  { value: 'outlined', get label() { return tr("Outlined"); }, component: <Textfields variant="outlined" /> },
+  { value: 'filled', get label() { return tr("Filled"); }, component: <Textfields variant="filled" /> },
+  { value: 'standard', get label() { return tr("Standard"); }, component: <Textfields variant="standard" /> },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function MUITextFieldPage() {
+  useUiLanguage();
   const [currentTab, setCurrentTab] = useState('outlined');
 
   return (
     <>
       <Helmet>
-        <title> MUI Components: Textfield | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Textfield | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -38,13 +40,13 @@ export default function MUITextFieldPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Textfield"
+            heading={tr("Textfield")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Textfield' },
+              { name: tr("Textfield") },
             ]}
             moreLink={['https://mui.com/components/text-fields']}
           />

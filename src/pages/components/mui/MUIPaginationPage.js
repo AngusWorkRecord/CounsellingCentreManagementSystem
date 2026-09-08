@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Pagination, TablePagination } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -28,6 +29,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUIPaginationPage() {
+  useUiLanguage();
   const [page, setPage] = useState(2);
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -44,7 +46,7 @@ export default function MUIPaginationPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Pagination | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Pagination | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -56,13 +58,13 @@ export default function MUIPaginationPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Pagination"
+            heading={tr("Pagination")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Pagination' },
+              { name: tr("Pagination") },
             ]}
             moreLink={['https://mui.com/components/pagination']}
           />
@@ -71,7 +73,7 @@ export default function MUIPaginationPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Circular" sx={style}>
+          <Block title={tr("Circular")} sx={style}>
             <Pagination shape="circular" count={10} />
             <Pagination shape="circular" count={10} disabled />
             <Pagination shape="circular" count={10} variant="outlined" />
@@ -80,7 +82,7 @@ export default function MUIPaginationPage() {
             <Pagination shape="circular" count={10} variant="soft" disabled />
           </Block>
 
-          <Block title="Rounded" sx={style}>
+          <Block title={tr("Rounded")} sx={style}>
             <Pagination shape="rounded" count={10} />
             <Pagination shape="rounded" count={10} disabled />
             <Pagination shape="rounded" count={10} variant="outlined" />
@@ -89,7 +91,7 @@ export default function MUIPaginationPage() {
             <Pagination shape="rounded" count={10} variant="soft" disabled />
           </Block>
 
-          <Block title="Colors" sx={style}>
+          <Block title={tr("Colors")} sx={style}>
             {COLORS.map((color) => (
               <Pagination key={color} color={color} count={10} />
             ))}
@@ -103,25 +105,25 @@ export default function MUIPaginationPage() {
             ))}
           </Block>
 
-          <Block title="Size" sx={style}>
+          <Block title={tr("Size")} sx={style}>
             {SIZES.map((size) => (
               <Pagination count={10} key={size} size={size} />
             ))}
           </Block>
 
-          <Block title="Buttons" sx={style}>
+          <Block title={tr("Buttons")} sx={style}>
             <Pagination count={10} showFirstButton showLastButton />
             <Pagination count={10} hidePrevButton hideNextButton />
           </Block>
 
-          <Block title="Ranges" sx={style}>
+          <Block title={tr("Ranges")} sx={style}>
             <Pagination count={11} defaultPage={6} siblingCount={0} />
             <Pagination count={11} defaultPage={6} />
             <Pagination count={11} defaultPage={6} siblingCount={0} boundaryCount={2} />
             <Pagination count={11} defaultPage={6} boundaryCount={2} />
           </Block>
 
-          <Block title="Table" sx={style}>
+          <Block title={tr("Table")} sx={style}>
             <TablePagination
               component="div"
               count={100}

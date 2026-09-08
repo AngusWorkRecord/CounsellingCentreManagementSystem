@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Avatar, Chip, Stack, Paper } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // _mock
 import _mock from '../../../_mock';
 // components
@@ -26,6 +27,7 @@ Chips.propTypes = {
 };
 
 export default function Chips({ variant = 'filled' }) {
+  useUiLanguage();
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
@@ -35,16 +37,16 @@ export default function Chips({ variant = 'filled' }) {
       <Paper variant="outlined" sx={style}>
         <Chip
           variant={variant}
-          label="Default deletable"
+          label={tr("Default deletable")}
           avatar={<Avatar>M</Avatar>}
           onDelete={handleDelete}
         />
 
-        <Chip variant={variant} clickable label="Default clickable" avatar={<Avatar>M</Avatar>} />
+        <Chip variant={variant} clickable label={tr("Default clickable")} avatar={<Avatar>M</Avatar>} />
 
         <Chip
           variant={variant}
-          label="Primary deletable"
+          label={tr("Primary deletable")}
           avatar={<Avatar alt="Natacha" src={_mock.image.avatar(1)} />}
           color="primary"
           onDelete={handleDelete}
@@ -53,7 +55,7 @@ export default function Chips({ variant = 'filled' }) {
         <Chip
           variant={variant}
           clickable
-          label="Primary clickable"
+          label={tr("Primary clickable")}
           avatar={<Avatar alt="Natacha" src={_mock.image.avatar(1)} />}
           color="primary"
         />
@@ -61,7 +63,7 @@ export default function Chips({ variant = 'filled' }) {
         <Chip
           variant={variant}
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Secondary deletable"
+          label={tr("Secondary deletable")}
           onDelete={handleDelete}
           color="secondary"
         />
@@ -70,14 +72,14 @@ export default function Chips({ variant = 'filled' }) {
           variant={variant}
           clickable
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Secondary clickable"
+          label={tr("Secondary clickable")}
           color="secondary"
         />
 
         <Chip
           variant={variant}
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Info deletable"
+          label={tr("Info deletable")}
           onDelete={handleDelete}
           color="info"
         />
@@ -86,14 +88,14 @@ export default function Chips({ variant = 'filled' }) {
           variant={variant}
           clickable
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Info clickable"
+          label={tr("Info clickable")}
           color="info"
         />
 
         <Chip
           variant={variant}
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Success deletable"
+          label={tr("Success deletable")}
           onDelete={handleDelete}
           color="success"
         />
@@ -102,14 +104,14 @@ export default function Chips({ variant = 'filled' }) {
           variant={variant}
           clickable
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Success clickable"
+          label={tr("Success clickable")}
           color="success"
         />
 
         <Chip
           variant={variant}
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Warning deletable"
+          label={tr("Warning deletable")}
           onDelete={handleDelete}
           color="warning"
         />
@@ -118,14 +120,14 @@ export default function Chips({ variant = 'filled' }) {
           variant={variant}
           clickable
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Warning clickable"
+          label={tr("Warning clickable")}
           color="warning"
         />
 
         <Chip
           variant={variant}
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Error deletable"
+          label={tr("Error deletable")}
           onDelete={handleDelete}
           color="error"
         />
@@ -134,19 +136,19 @@ export default function Chips({ variant = 'filled' }) {
           clickable
           variant={variant}
           icon={<Iconify width={24} icon="eva:smiling-face-fill" />}
-          label="Error clickable"
+          label={tr("Error clickable")}
           color="error"
         />
       </Paper>
 
       <div>
-        <Label title="Custom icon" />
+        <Label title={tr("Custom icon")} />
 
         <Paper variant="outlined" sx={style}>
           <Chip
             variant={variant}
             avatar={<Avatar>M</Avatar>}
-            label="Custom icon"
+            label={tr("Custom icon")}
             onDelete={handleDelete}
             deleteIcon={<Iconify width={24} icon="eva:checkmark-fill" />}
           />
@@ -154,7 +156,7 @@ export default function Chips({ variant = 'filled' }) {
           <Chip
             variant={variant}
             avatar={<Avatar>M</Avatar>}
-            label="Custom icon"
+            label={tr("Custom icon")}
             onDelete={handleDelete}
             deleteIcon={<Iconify width={24} icon="eva:checkmark-fill" />}
             color="info"
@@ -163,14 +165,14 @@ export default function Chips({ variant = 'filled' }) {
       </div>
 
       <div>
-        <Label title="Disabled" />
+        <Label title={tr("Disabled")} />
 
         <Paper variant="outlined" sx={style}>
           <Chip
             disabled
             variant={variant}
             avatar={<Avatar>M</Avatar>}
-            label="Disabled"
+            label={tr("Disabled")}
             onDelete={handleDelete}
           />
 
@@ -178,7 +180,7 @@ export default function Chips({ variant = 'filled' }) {
             disabled
             variant={variant}
             avatar={<Avatar>M</Avatar>}
-            label="Disabled"
+            label={tr("Disabled")}
             onDelete={handleDelete}
             color="info"
           />
@@ -186,13 +188,13 @@ export default function Chips({ variant = 'filled' }) {
       </div>
 
       <div>
-        <Label title="Size" />
+        <Label title={tr("Size")} />
 
         <Paper variant="outlined" sx={style}>
           <Chip
             variant={variant}
             avatar={<Avatar>M</Avatar>}
-            label="Normal"
+            label={tr("Normal")}
             onDelete={handleDelete}
             color="info"
           />
@@ -201,7 +203,7 @@ export default function Chips({ variant = 'filled' }) {
             variant={variant}
             size="small"
             avatar={<Avatar>M</Avatar>}
-            label="Small"
+            label={tr("Small")}
             onDelete={handleDelete}
             color="info"
           />

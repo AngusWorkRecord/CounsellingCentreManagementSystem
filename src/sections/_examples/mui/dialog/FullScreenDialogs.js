@@ -13,6 +13,7 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -21,6 +22,7 @@ import Iconify from '../../../../components/iconify';
 const Transition = forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
 export default function FullScreenDialogs() {
+  useUiLanguage();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -33,9 +35,7 @@ export default function FullScreenDialogs() {
 
   return (
     <>
-      <Button variant="outlined" color="error" onClick={handleClickOpen}>
-        Full Screen Dialogs
-      </Button>
+      <Button variant="outlined" color="error" onClick={handleClickOpen}>{tr("Full Screen Dialogs")}</Button>
 
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar position="relative">
@@ -43,12 +43,8 @@ export default function FullScreenDialogs() {
             <IconButton color="inherit" edge="start" onClick={handleClose}>
               <Iconify icon="eva:close-fill" />
             </IconButton>
-            <Typography variant="h6" sx={{ flex: 1, ml: 2 }}>
-              Sound
-            </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              Save
-            </Button>
+            <Typography variant="h6" sx={{ flex: 1, ml: 2 }}>{tr("Sound")}</Typography>
+            <Button autoFocus color="inherit" onClick={handleClose}>{tr("Save")}</Button>
           </Toolbar>
         </AppBar>
         <List>

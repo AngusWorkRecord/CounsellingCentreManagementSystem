@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, Card, Stack, Container, CardHeader, CardContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // config
@@ -53,10 +54,11 @@ const StyledMapContainer = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function DemoMapPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Map | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Map | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -68,13 +70,13 @@ export default function DemoMapPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Map"
+            heading={tr("Map")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Map' },
+              { name: tr("Map") },
             ]}
             moreLink={[
               'http://visgl.github.io/react-map-gl',
@@ -87,7 +89,7 @@ export default function DemoMapPage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
           <Card>
-            <CardHeader title="Change Theme" />
+            <CardHeader title={tr("Change Theme")} />
             <CardContent>
               <StyledMapContainer>
                 <MapChangeTheme {...baseSettings} themes={THEMES} />
@@ -96,7 +98,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Markers & Popups" />
+            <CardHeader title={tr("Markers & Popups")} />
             <CardContent>
               <StyledMapContainer>
                 <MapMarkersPopups {...baseSettings} data={COUNTRIES} mapStyle={THEMES.light} />
@@ -105,7 +107,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Draggable Markers" />
+            <CardHeader title={tr("Draggable Markers")} />
             <CardContent>
               <StyledMapContainer>
                 <MapDraggableMarkers {...baseSettings} mapStyle={THEMES.light} />
@@ -114,7 +116,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Geojson Animation" />
+            <CardHeader title={tr("Geojson Animation")} />
             <CardContent>
               <StyledMapContainer>
                 <MapGeoJSONAnimation {...baseSettings} mapStyle={THEMES.satelliteStreets} />
@@ -123,7 +125,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Clusters" />
+            <CardHeader title={tr("Clusters")} />
             <CardContent>
               <StyledMapContainer>
                 <MapClusters {...baseSettings} mapStyle={THEMES.light} />
@@ -132,7 +134,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Interaction" />
+            <CardHeader title={tr("Interaction")} />
             <CardContent>
               <StyledMapContainer>
                 <MapInteraction {...baseSettings} mapStyle={THEMES.light} />
@@ -141,7 +143,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Viewport Animation" />
+            <CardHeader title={tr("Viewport Animation")} />
             <CardContent>
               <StyledMapContainer>
                 <MapViewportAnimation
@@ -154,7 +156,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Highlight By Filter" />
+            <CardHeader title={tr("Highlight By Filter")} />
             <CardContent>
               <StyledMapContainer>
                 <MapHighlightByFilter {...baseSettings} mapStyle={THEMES.light} />
@@ -163,7 +165,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Heatmap" />
+            <CardHeader title={tr("Heatmap")} />
             <CardContent>
               <StyledMapContainer>
                 <MapHeatmap {...baseSettings} mapStyle={THEMES.light} />
@@ -172,7 +174,7 @@ export default function DemoMapPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Side By Side" />
+            <CardHeader title={tr("Side By Side")} />
             <CardContent>
               <StyledMapContainer>
                 <MapSideBySide {...baseSettings} />

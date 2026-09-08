@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Box, Paper, FormControlLabel, Switch, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Iconify from '../../../../../components/iconify';
 
@@ -22,6 +23,7 @@ export default function Toolbar({
   onRefresh,
   ...other
 }) {
+  useUiLanguage();
   return (
     <Paper
       sx={{
@@ -33,7 +35,7 @@ export default function Toolbar({
     >
       <FormControlLabel
         control={<Switch checked={isText} onChange={onChangeText} />}
-        label="Text Object"
+        label={tr("Text Object")}
       />
 
       <Box sx={{ flexGrow: 1 }} />
@@ -41,7 +43,7 @@ export default function Toolbar({
       {!isText && (
         <FormControlLabel
           control={<Switch checked={isMulti} onChange={onChangeMulti} />}
-          label="Multi Item"
+          label={tr("Multi Item")}
         />
       )}
 

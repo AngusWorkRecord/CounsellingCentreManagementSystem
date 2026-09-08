@@ -1,3 +1,5 @@
+import { tr } from '../../../../locales/translate';
+
 export const WORKFLOW_STATUS = {
   // 中文原文：接案未完成、待简要报告、待详细报告、全部完成
   INTAKE_PENDING: 'Intake Incomplete',
@@ -47,7 +49,7 @@ export function getReminderDetails(sessionEndedAt, now = new Date()) {
   const days = Math.floor(elapsedHours / 24);
   const hours = Math.floor(elapsedHours % 24);
   // 中文原文：天、小时
-  const elapsedLabel = days ? `${days} day${days === 1 ? '' : 's'}${hours ? ` ${hours} hr` : ''}` : `${Math.floor(elapsedHours)} hr`;
+  const elapsedLabel = tr("{{p0}} days {{p1}} hr", { p0: days, p1: hours });
 
   return { stage, elapsedHours, elapsedLabel };
 }

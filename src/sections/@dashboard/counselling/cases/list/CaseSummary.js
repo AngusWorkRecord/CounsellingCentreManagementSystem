@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import { alpha } from '@mui/material/styles';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 import Iconify from '../../../../../components/iconify';
 
 const items = [
   // 中文原文：总个案、待简要报告、待详细报告、全部完成
-  { key: 'total', label: 'Total Cases', icon: 'eva:folder-outline', color: 'primary' },
-  { key: 'briefPending', label: 'Brief Report Pending', icon: 'eva:file-text-outline', color: 'warning' },
-  { key: 'detailedPending', label: 'Detailed Report Pending', icon: 'eva:clock-outline', color: 'error' },
-  { key: 'completed', label: 'Completed', icon: 'eva:checkmark-circle-2-outline', color: 'success' },
+  { key: 'total', get label() { return tr("Total Cases"); }, icon: 'eva:folder-outline', color: 'primary' },
+  { key: 'briefPending', get label() { return tr("Brief Report Pending"); }, icon: 'eva:file-text-outline', color: 'warning' },
+  { key: 'detailedPending', get label() { return tr("Detailed Report Pending"); }, icon: 'eva:clock-outline', color: 'error' },
+  { key: 'completed', get label() { return tr("Completed"); }, icon: 'eva:checkmark-circle-2-outline', color: 'success' },
 ];
 
 export default function CaseSummary({ total, briefPending, detailedPending, completed }) {
+  useUiLanguage();
   const values = { total, briefPending, detailedPending, completed };
 
   return (

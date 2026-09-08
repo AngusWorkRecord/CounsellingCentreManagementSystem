@@ -2,6 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { Stack, Typography, Link } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material'; 
+import { tr, useUiLanguage } from '../../locales/translate';
 // auth
 import { useAuthContext } from '../../auth/useAuthContext';
 // routes
@@ -12,22 +13,18 @@ import LoginLayout from '../../layouts/login';
 import AuthLoginForm from './AuthLoginForm';
 
 export default function Login() {
+  useUiLanguage();
   const { method } = useAuthContext();
 
   return (
     <LoginLayout padding={4}  paddingTop={12}>
       <Stack spacing={2} sx={{ mb: 5, position: 'relative', textAlign: 'center' }}>
         {/* Optional title */}
-        <Typography variant="h4" sx={{ color: 'grey.800' }}>
-          Sign in to CounsellingCentreManagementSystem
-
-        </Typography>
+        <Typography variant="h4" sx={{ color: 'grey.800' }}>{tr("Sign in to CounsellingCentreManagementSystem")}</Typography>
 
         <Stack direction="row" spacing={0.5} sx={{ justifyContent: 'center' }}>
-          <Typography variant="body2" sx={{ color: 'grey.800' }}>New user?</Typography>
-          <Link component={RouterLink} to={PATH_AUTH.register} variant="subtitle2" sx={{ color: 'grey.800', fontWeight: 'bold' }}>
-            Create an account
-          </Link>
+          <Typography variant="body2" sx={{ color: 'grey.800' }}>{tr("New user?")}</Typography>
+          <Link component={RouterLink} to={PATH_AUTH.register} variant="subtitle2" sx={{ color: 'grey.800', fontWeight: 'bold' }}>{tr("Create an account")}</Link>
         </Stack>
       </Stack>
 

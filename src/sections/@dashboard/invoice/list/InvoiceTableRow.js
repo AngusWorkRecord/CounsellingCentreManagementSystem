@@ -13,6 +13,7 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fDate } from '../../../../utils/formatTime';
 import { fCurrency } from '../../../../utils/formatNumber';
@@ -42,6 +43,7 @@ export default function InvoiceTableRow({
   onEditRow,
   onDeleteRow,
 }) {
+  useUiLanguage();
   const { no, event, type, delegrate2, status } = row;
 
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -137,9 +139,7 @@ export default function InvoiceTableRow({
             handleClosePopover();
           }}
         >
-          <Iconify icon="eva:eye-fill" />
-          View
-        </MenuItem>
+          <Iconify icon="eva:eye-fill" />{tr("View")}</MenuItem>
 
         <MenuItem
           onClick={() => {
@@ -147,9 +147,7 @@ export default function InvoiceTableRow({
             handleClosePopover();
           }}
         >
-          <Iconify icon="eva:edit-fill" />
-          Edit
-        </MenuItem>
+          <Iconify icon="eva:edit-fill" />{tr("Edit")}</MenuItem>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
@@ -160,20 +158,16 @@ export default function InvoiceTableRow({
           }}
           sx={{ color: 'error.main' }}
         >
-          <Iconify icon="eva:trash-2-outline" />
-          Delete
-        </MenuItem>
+          <Iconify icon="eva:trash-2-outline" />{tr("Delete")}</MenuItem>
       </MenuPopover>
 
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Delete"
+        title={tr("Delete")}
         content="Are you sure want to delete?"
         action={
-          <Button variant="contained" color="error" onClick={onDeleteRow}>
-            Delete
-          </Button>
+          <Button variant="contained" color="error" onClick={onDeleteRow}>{tr("Delete")}</Button>
         }
       />
     </>

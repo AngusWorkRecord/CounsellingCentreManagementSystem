@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Rating, Container } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -30,23 +31,23 @@ const labels = {
 const customIcons = {
   1: {
     icon: <Iconify icon="ic:round-sentiment-very-dissatisfied" />,
-    label: 'Very Dissatisfied',
+    get label() { return tr("Very Dissatisfied"); },
   },
   2: {
     icon: <Iconify icon="ic:round-sentiment-dissatisfied" />,
-    label: 'Dissatisfied',
+    get label() { return tr("Dissatisfied"); },
   },
   3: {
     icon: <Iconify icon="ic:round-sentiment-neutral" />,
-    label: 'Neutral',
+    get label() { return tr("Neutral"); },
   },
   4: {
     icon: <Iconify icon="ic:round-sentiment-satisfied" />,
-    label: 'Satisfied',
+    get label() { return tr("Satisfied"); },
   },
   5: {
     icon: <Iconify icon="ic:round-sentiment-very-satisfied" />,
-    label: 'Very Satisfied',
+    get label() { return tr("Very Satisfied"); },
   },
 };
 
@@ -61,6 +62,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUIRatingPage() {
+  useUiLanguage();
   const [value, setValue] = useState(2);
 
   const [hover, setHover] = useState(-1);
@@ -68,7 +70,7 @@ export default function MUIRatingPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Rating | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Rating | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -80,13 +82,13 @@ export default function MUIRatingPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Rating"
+            heading={tr("Rating")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Rating' },
+              { name: tr("Rating") },
             ]}
             moreLink={['https://mui.com/components/rating']}
           />
@@ -95,7 +97,7 @@ export default function MUIRatingPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={3}>
-          <Block title="Controlled" sx={style}>
+          <Block title={tr("Controlled")} sx={style}>
             <Rating
               name="simple-controlled"
               value={value}
@@ -105,23 +107,23 @@ export default function MUIRatingPage() {
             />
           </Block>
 
-          <Block title="Read only" sx={style}>
+          <Block title={tr("Read only")} sx={style}>
             <Rating name="read-only" value={value} readOnly />
           </Block>
 
-          <Block title="Disabled" sx={style}>
+          <Block title={tr("Disabled")} sx={style}>
             <Rating name="disabled" value={value} disabled />
           </Block>
 
-          <Block title="Pristine" sx={style}>
+          <Block title={tr("Pristine")} sx={style}>
             <Rating name="pristine" value={null} />
           </Block>
 
-          <Block title="Custom empty icon" sx={style}>
+          <Block title={tr("Custom empty icon")} sx={style}>
             <Rating name="customized-empty" defaultValue={2} precision={0.5} />
           </Block>
 
-          <Block title="Custom icon and color" sx={style}>
+          <Block title={tr("Custom icon and color")} sx={style}>
             <Rating
               name="customized-color"
               defaultValue={2}
@@ -136,10 +138,10 @@ export default function MUIRatingPage() {
             />
           </Block>
 
-          <Block title="10 stars" sx={style}>
+          <Block title={tr("10 stars")} sx={style}>
             <Rating name="customized-10" defaultValue={2} max={10} />
           </Block>
-          <Block title="Custom icon set" sx={style}>
+          <Block title={tr("Custom icon set")} sx={style}>
             <Rating
               name="customized-icons"
               defaultValue={2}
@@ -147,7 +149,7 @@ export default function MUIRatingPage() {
               IconContainerComponent={IconContainer}
             />
           </Block>
-          <Block title="Hover feedback" sx={style}>
+          <Block title={tr("Hover feedback")} sx={style}>
             <Rating
               name="hover-feedback"
               value={value}
@@ -162,13 +164,13 @@ export default function MUIRatingPage() {
             {value !== null && <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>}
           </Block>
 
-          <Block title="Half ratings" sx={style}>
+          <Block title={tr("Half ratings")} sx={style}>
             <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
             <br />
             <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
           </Block>
 
-          <Block title="Sizes" sx={style}>
+          <Block title={tr("Sizes")} sx={style}>
             <Rating name="size-small" defaultValue={2} size="small" />
             <br />
             <Rating name="size-medium" defaultValue={2} />
@@ -188,6 +190,7 @@ IconContainer.propTypes = {
 };
 
 function IconContainer(props) {
+  useUiLanguage();
   const { value, ...other } = props;
 
   return <span {...other}>{customIcons[value].icon}</span>;

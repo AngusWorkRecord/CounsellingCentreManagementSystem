@@ -12,6 +12,7 @@ import {
   Typography,
   InputAdornment,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // hooks
 import useCopyToClipboard from '../../../hooks/useCopyToClipboard';
 // routes
@@ -26,6 +27,7 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 // ----------------------------------------------------------------------
 
 export default function DemoCopyToClipboardPage() {
+  useUiLanguage();
   const { enqueueSnackbar } = useSnackbar();
 
   const { copy } = useCopyToClipboard();
@@ -42,7 +44,7 @@ export default function DemoCopyToClipboardPage() {
 
   const onCopy = (text) => {
     if (text) {
-      enqueueSnackbar('Copied!');
+      enqueueSnackbar(tr("Copied!"));
       copy(text);
     }
   };
@@ -58,7 +60,7 @@ export default function DemoCopyToClipboardPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Copy To Clipboard | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Copy To Clipboard | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -70,10 +72,10 @@ export default function DemoCopyToClipboardPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Copy To Clipboard"
+            heading={tr("Copy To Clipboard")}
             links={[
-              { name: 'Components', href: PATH_PAGE.components },
-              { name: 'Copy To Clipboard' },
+              { name: tr("Components"), href: PATH_PAGE.components },
+              { name: tr("Copy To Clipboard") },
             ]}
           />
         </Container>
@@ -87,9 +89,7 @@ export default function DemoCopyToClipboardPage() {
             gap={5}
           >
             <Stack spacing={2}>
-              <Typography variant="overline" sx={{ color: 'text.secondary' }}>
-                on Change
-              </Typography>
+              <Typography variant="overline" sx={{ color: 'text.secondary' }}>{tr("on Change")}</Typography>
 
               <TextField
                 fullWidth
@@ -98,7 +98,7 @@ export default function DemoCopyToClipboardPage() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Tooltip title="Copy">
+                      <Tooltip title={tr("Copy")}>
                         <IconButton onClick={() => onCopy(value)}>
                           <Iconify icon="eva:copy-fill" width={24} />
                         </IconButton>
@@ -110,9 +110,7 @@ export default function DemoCopyToClipboardPage() {
             </Stack>
 
             <Stack spacing={2}>
-              <Typography variant="overline" sx={{ color: 'text.secondary' }}>
-                on Double Click
-              </Typography>
+              <Typography variant="overline" sx={{ color: 'text.secondary' }}>{tr("on Double Click")}</Typography>
 
               <Typography onClick={handleClick}>{textOnClick}</Typography>
             </Stack>

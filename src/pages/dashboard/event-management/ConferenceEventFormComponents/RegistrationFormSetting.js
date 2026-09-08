@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // components
 import { Card, Stack, Button, Divider, Box } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import MainFormComponent from '../../custom-forms-components/MainFormComponent';
 
 // ----------------------------------------------------------------------
@@ -13,6 +14,7 @@ RegistrationFormSetting.propTypes = {
 };
 
 export default function RegistrationFormSetting({ formData, isEdit, handlePrevStep, handleNextStep }) {
+  useUiLanguage();
     const questionTitle = "Form Template"
     const questionDescription = "Form Template Descrtiption"
     const defaultQuestions = [
@@ -82,7 +84,7 @@ export default function RegistrationFormSetting({ formData, isEdit, handlePrevSt
             QuestionType: 'multiple-choice',
             QuestionLabel: 'Do you need the certifacte for this conference meeting?',
             QuestionPlaceholder: '',
-            QuestionOptions: [{ label: 'Yes', value: 'Yes' }, { label: 'No', value: 'No' },],
+            QuestionOptions: [{ label: tr("Yes"), value: 'Yes' }, { label: tr("No"), value: 'No' },],
             Range: 0,
             MinRangeLabel: '',
             MaxRangeLabel: '',
@@ -113,12 +115,8 @@ export default function RegistrationFormSetting({ formData, isEdit, handlePrevSt
     return (
         <Card sx={{ p: 2, }} elevation={1}>
             <Stack direction="row-reverse" sx={{ py: 1, mb: 2 }} spacing={1}>
-                <Button variant="contained">
-                    Submit Layout
-                </Button>
-                <Button variant="outlined">
-                    Use a Template
-                </Button>
+                <Button variant="contained">{tr("Submit Layout")}</Button>
+                <Button variant="outlined">{tr("Use a Template")}</Button>
             </Stack>
 
             <Box sx={{ maxHeight: 468, overflowY: 'auto' }} key="Registration Form" >
@@ -131,16 +129,12 @@ export default function RegistrationFormSetting({ formData, isEdit, handlePrevSt
                     <Button
                         onClick={onPrev}
                         sx={{ mt: 1, mr: 1 }}
-                    >
-                        Back
-                    </Button>
+                    >{tr("Back")}</Button>
                     <Button
                         variant="contained"
                         onClick={onNext}
                         sx={{ mt: 1, mr: 1 }}
-                    >
-                        Next
-                    </Button>
+                    >{tr("Next")}</Button>
                 </div>
             </Stack>
         </Card>

@@ -19,6 +19,7 @@ import {
   TableContainer,
   DeleteIcon,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // utils
@@ -58,16 +59,17 @@ const SERVICE_OPTIONS = [
 
 const TABLE_HEAD = [
   // { id: 'no', label: 'No', align: 'left' },
-  { id: 'event', label: 'CONVENTION', align: 'left' },
-  { id: 'delegrate2', label: 'DELEGATES', align: 'left' },
-  { id: 'type', label: 'CONVENTION TYPE', align: 'left' },
-  { id: 'status', label: 'STATUS', align: 'left' },
+  { id: 'event', get label() { return tr("CONVENTION"); }, align: 'left' },
+  { id: 'delegrate2', get label() { return tr("DELEGATES"); }, align: 'left' },
+  { id: 'type', get label() { return tr("CONVENTION TYPE"); }, align: 'left' },
+  { id: 'status', get label() { return tr("STATUS"); }, align: 'left' },
   { id: '' },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function EventListPage() {
+  useUiLanguage();
   const theme = useTheme();
 
   const { themeStretch } = useSettingsContext();
@@ -673,9 +675,9 @@ export default function EventListPage() {
   
 
   const TABS = [
-    { value: 'All', label: 'All', color: 'info', count: tableData.length },
-    { value: 'Upcoming Event', label: 'Upcoming Event', color: 'success', count: getLengthByStatus('Upcoming Event') },
-    { value: 'Track Record', label: 'Track Record', color: 'warning', count: getLengthByStatus('Track Record') },
+    { value: 'All', label: tr("All"), color: 'info', count: tableData.length },
+    { value: 'Upcoming Event', label: tr("Upcoming Event"), color: 'success', count: getLengthByStatus('Upcoming Event') },
+    { value: 'Track Record', label: tr("Track Record"), color: 'warning', count: getLengthByStatus('Track Record') },
   ];
 
   const handleOpenConfirm = () => {
@@ -749,19 +751,19 @@ export default function EventListPage() {
   return (
     <>
       <Helmet>
-        <title> Invoice: List | Counselling Centre Management System</title>
+        <title> {tr("Invoice: List | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Container maxWidth={false}>
         <CustomBreadcrumbs
-          heading="Event List"
+          heading={tr("Event List")}
           links={[
             {
-              name: 'Dashboard',
+              name: tr("Dashboard"),
               href: PATH_DASHBOARD.root,
             },
             {
-              name: 'Events'
+              name: tr("Events")
             },
           ]}
           action={
@@ -770,9 +772,7 @@ export default function EventListPage() {
               to={PATH_DASHBOARD.invoice.new}
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
-            >
-              New Event
-            </Button>
+            >{tr("New Event")}</Button>
           }
           
         />
@@ -785,7 +785,7 @@ export default function EventListPage() {
               sx={{ py: 2 }}
             >
               <InvoiceAnalytic
-                title="Total"
+                title={tr("Total")}
                 total={tableData.length}
                 percent={100}
                 price={sumBy(tableData, 'delegrate')}
@@ -794,7 +794,7 @@ export default function EventListPage() {
               />
 
               <InvoiceAnalytic
-                title="International Convention"
+                title={tr("International Convention")}
                 total={getLengthByType('International Convention')}
                 percent={(getPercentByType('International Convention'))}
                 price={getTotalPriceByType('International Convention')}
@@ -803,7 +803,7 @@ export default function EventListPage() {
               />
 
               <InvoiceAnalytic
-                title="Regional Convention"
+                title={tr("Regional Convention")}
                 total={getLengthByType('Regional Convention')}
                 percent={getPercentByType('Regional Convention')}
                 price={getTotalPriceByType('Regional Convention')}
@@ -812,7 +812,7 @@ export default function EventListPage() {
               />
 
               <InvoiceAnalytic
-                title="National Convention"
+                title={tr("National Convention")}
                 total={getLengthByType('National Convention')}
                 percent={getPercentByType('National Convention')}
                 price={getTotalPriceByType('National Convention')}
@@ -821,7 +821,7 @@ export default function EventListPage() {
               />
 
               <InvoiceAnalytic
-                title="Upcoming Event"
+                title={tr("Upcoming Event")}
                 total={getLengthByStatus('Upcoming Event')}
                 percent={getPercentByStatus('Upcoming Event')}
                 price={getTotalPriceByStatus('Upcoming Event')}
@@ -888,25 +888,25 @@ export default function EventListPage() {
               }
               action={
                 <Stack direction="row">
-                  <Tooltip title="Sent">
+                  <Tooltip title={tr("Sent")}>
                     <IconButton color="primary">
                       <Iconify icon="ic:round-send" />
                     </IconButton>
                   </Tooltip>
 
-                  <Tooltip title="Download">
+                  <Tooltip title={tr("Download")}>
                     <IconButton color="primary">
                       <Iconify icon="eva:download-outline" />
                     </IconButton>
                   </Tooltip>
 
-                  <Tooltip title="Print">
+                  <Tooltip title={tr("Print")}>
                     <IconButton color="primary">
                       <Iconify icon="eva:printer-fill" />
                     </IconButton>
                   </Tooltip>
 
-                  <Tooltip title="Delete">
+                  <Tooltip title={tr("Delete")}>
                     <IconButton color="primary" onClick={handleOpenConfirm}>
                       <Iconify icon="eva:trash-2-outline" />
                     </IconButton>
@@ -968,11 +968,9 @@ export default function EventListPage() {
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Delete"
+        title={tr("Delete")}
         content={
-          <>
-            Are you sure want to delete <strong> {selected.length} </strong> items?
-          </>
+          <>{tr("Are you sure want to delete")}<strong> {selected.length} </strong>{tr("items?")}</>
         }
         action={
           <Button
@@ -982,9 +980,7 @@ export default function EventListPage() {
               handleDeleteRows(selected);
               handleCloseConfirm();
             }}
-          >
-            Delete
-          </Button>
+          >{tr("Delete")}</Button>
         }
       />
     </>

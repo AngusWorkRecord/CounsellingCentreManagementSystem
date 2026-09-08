@@ -13,6 +13,7 @@ import {
   CardContent,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // utils
@@ -25,6 +26,7 @@ import { UploadAvatar, Upload, UploadBox } from '../../../components/upload';
 // ----------------------------------------------------------------------
 
 export default function DemoUploadPage() {
+  useUiLanguage();
   const [preview, setPreview] = useState(false);
 
   const [files, setFiles] = useState([]);
@@ -81,7 +83,7 @@ export default function DemoUploadPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Upload | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Upload | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -93,13 +95,13 @@ export default function DemoUploadPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Upload"
+            heading={tr("Upload")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Upload' },
+              { name: tr("Upload") },
             ]}
             moreLink={['https://react-dropzone.js.org/#section-basic-example']}
           />
@@ -110,7 +112,7 @@ export default function DemoUploadPage() {
         <Stack spacing={5}>
           <Card>
             <CardHeader
-              title="Upload Multi File"
+              title={tr("Upload Multi File")}
               action={
                 <FormControlLabel
                   control={
@@ -119,7 +121,7 @@ export default function DemoUploadPage() {
                       onChange={(event) => setPreview(event.target.checked)}
                     />
                   }
-                  label="Show Thumbnail"
+                  label={tr("Show Thumbnail")}
                 />
               }
             />
@@ -137,14 +139,14 @@ export default function DemoUploadPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Upload Single File" />
+            <CardHeader title={tr("Upload Single File")} />
             <CardContent>
               <Upload file={file} onDrop={handleDropSingleFile} onDelete={() => setFile(null)} />
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader title="Upload Avatar" />
+            <CardHeader title={tr("Upload Avatar")} />
             <CardContent>
               <UploadAvatar
                 file={avatarUrl}
@@ -159,9 +161,7 @@ export default function DemoUploadPage() {
                       textAlign: 'center',
                       color: 'text.secondary',
                     }}
-                  >
-                    Allowed *.jpeg, *.jpg, *.png, *.gif
-                    <br /> max size of {fData(3145728)}
+                  >{tr("Allowed *.jpeg, *.jpg, *.png, *.gif")}<br /> {tr("max size of")} {fData(3145728)}
                   </Typography>
                 }
               />
@@ -169,7 +169,7 @@ export default function DemoUploadPage() {
           </Card>
 
           <Card>
-            <CardHeader title="Upload Box" />
+            <CardHeader title={tr("Upload Box")} />
             <CardContent>
               <Stack direction="row" spacing={2}>
                 <UploadBox />
@@ -178,7 +178,7 @@ export default function DemoUploadPage() {
                   placeholder={
                     <Stack spacing={0.5} alignItems="center">
                       <Iconify icon="eva:cloud-upload-fill" width={40} />
-                      <Typography variant="body2">Upload file</Typography>
+                      <Typography variant="body2">{tr("Upload file")}</Typography>
                     </Stack>
                   }
                   sx={{ flexGrow: 1, height: 'auto', py: 2.5, mb: 3 }}

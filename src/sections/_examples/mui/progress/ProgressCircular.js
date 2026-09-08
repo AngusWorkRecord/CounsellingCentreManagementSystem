@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { Paper, CircularProgress } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 //
 import { Label } from '../../Block';
 
@@ -25,10 +26,11 @@ ProgressCircular.propTypes = {
 };
 
 export default function ProgressCircular({ progress }) {
+  useUiLanguage();
   return (
     <Masonry columns={{ xs: 1, md: 3 }} spacing={3}>
       <div>
-        <Label title="Circular Indeterminate" />
+        <Label title={tr("Circular Indeterminate")} />
         <Paper variant="outlined" sx={style}>
           {COLORS.map((color) => (
             <CircularProgress key={color} color={color} />
@@ -37,7 +39,7 @@ export default function ProgressCircular({ progress }) {
       </div>
 
       <div>
-        <Label title="Circular determinate" />
+        <Label title={tr("Circular determinate")} />
         <Paper variant="outlined" sx={style}>
           <CircularProgress color="info" />
           <CircularProgress color="info" variant="determinate" value={25} />
@@ -49,7 +51,7 @@ export default function ProgressCircular({ progress }) {
       </div>
 
       <div>
-        <Label title="Circular Size" />
+        <Label title={tr("Circular Size")} />
         <Paper variant="outlined" sx={style}>
           <CircularProgress size={48} color="info" />
           <CircularProgress color="info" />

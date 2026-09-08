@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Stack, InputAdornment, TextField, MenuItem, Button } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -25,6 +26,7 @@ export default function UserTableToolbar({
   onFilterRole,
   onResetFilter,
 }) {
+  useUiLanguage();
   return (
     <Stack
       spacing={2}
@@ -38,7 +40,7 @@ export default function UserTableToolbar({
       <TextField
         fullWidth
         select
-        label="Role"
+        label={tr("Role")}
         value={filterRole}
         onChange={onFilterRole}
         SelectProps={{
@@ -75,7 +77,7 @@ export default function UserTableToolbar({
         fullWidth
         value={filterName}
         onChange={onFilterName}
-        placeholder="Search..."
+        placeholder={tr("Search...")}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -91,9 +93,7 @@ export default function UserTableToolbar({
           sx={{ flexShrink: 0 }}
           onClick={onResetFilter}
           startIcon={<Iconify icon="eva:trash-2-outline" />}
-        >
-          Clear
-        </Button>
+        >{tr("Clear")}</Button>
       )}
     </Stack>
   );

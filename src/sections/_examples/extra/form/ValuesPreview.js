@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Stack, Typography, Portal, Divider } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { bgBlur } from '../../../../utils/cssStyles';
 // hooks
@@ -13,6 +14,7 @@ import { fileData } from '../../../../components/file-thumbnail';
 // ----------------------------------------------------------------------
 
 export default function ValuesPreview() {
+  useUiLanguage();
   const theme = useTheme();
 
   const isDesktop = useResponsive('up', 'md');
@@ -44,9 +46,7 @@ export default function ValuesPreview() {
           ...bgBlur({ color: theme.palette.grey[900] }),
         }}
       >
-        <Typography variant="overline" sx={{ mb: 2, color: 'success.light' }}>
-          Values
-        </Typography>
+        <Typography variant="overline" sx={{ mb: 2, color: 'success.light' }}>{tr("Values")}</Typography>
 
         {Object.keys(values).map((value) => (
           <Stack key={value} sx={{ typography: 'caption', mt: 0.5 }}>
@@ -60,9 +60,7 @@ export default function ValuesPreview() {
 
         <Divider sx={{ my: 2 }} />
 
-        <Typography variant="overline" sx={{ mb: 2, color: 'error.light' }}>
-          Errors
-        </Typography>
+        <Typography variant="overline" sx={{ mb: 2, color: 'error.light' }}>{tr("Errors")}</Typography>
 
         <Typography variant="caption" sx={{ color: 'error.light' }}>
           {JSON.stringify(Object.keys(errors), null, 2)}

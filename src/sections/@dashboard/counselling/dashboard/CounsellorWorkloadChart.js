@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Card, CardHeader } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import Chart, { useChart } from '../../../../components/chart';
 import ChartEmptyState from './ChartEmptyState';
 import { groupCount } from '../utils';
@@ -10,6 +11,7 @@ CounsellorWorkloadChart.propTypes = {
 };
 
 export default function CounsellorWorkloadChart({ onSelect, sessions }) {
+  useUiLanguage();
   const data = groupCount(sessions, 'counsellor').sort((a, b) => b.value - a.value);
   const chartHeight = Math.max(300, data.length * 44);
   const options = useChart({
@@ -21,7 +23,7 @@ export default function CounsellorWorkloadChart({ onSelect, sessions }) {
           if (selected) {
             onSelect({
               // 中文原文：负责的个案
-              title: `Cases Assigned to ${selected.label}`,
+              title: () => tr("Cases Assigned to {{p0}}", { p0: selected.label }),
               sessions: sessions.filter((session) => session.counsellor === selected.label),
             });
           }
@@ -31,13 +33,13 @@ export default function CounsellorWorkloadChart({ onSelect, sessions }) {
     xaxis: { categories: data.map((item) => item.label), min: 0, tickAmount: 4 },
     dataLabels: { enabled: true },
     legend: { show: false },
-    tooltip: { y: { formatter: (value) => `${value} cases` } },
+    tooltip: { y: { formatter: (value) => tr("{{p0}} cases", { p0: value }) } },
     plotOptions: { bar: { horizontal: true, barHeight: '45%' } },
   });
 
   return (
     <Card sx={{ height: 1 }}>
-      {/* 中文原文：每位辅导员处理个案数 */}<CardHeader title="C. Cases per Counsellor" />
+      {/* 中文原文：每位辅导员处理个案数 */}<CardHeader title={tr("C. Cases per Counsellor")} />
       <Box
         sx={{
           px: 2,

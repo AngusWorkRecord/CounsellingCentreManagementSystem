@@ -5,6 +5,8 @@ import {
   Alert, Box, Button, Card, CardContent, Chip, CircularProgress, Divider, Grid, Stack,
   ToggleButton, ToggleButtonGroup, Typography,
 } from '@mui/material';
+import { useUiLanguage, tr, currentLocale } from '../../../../locales/translate';
+import { domainLabel } from '../../../../locales/domainLabels';
 import Iconify from '../../../../components/iconify';
 import { generateManagementInsights, getManagementInsights } from '../../../../services/aiAnalysisService';
 import useAiAnalysis from '../useAiAnalysis';
@@ -12,8 +14,8 @@ import { groupCount, toNumber } from '../utils';
 
 const STATUS_META = {
   // 中文原文：稳定、需要关注、优先处理、资料不足
-  stable: { label: 'Stable', color: 'success' }, attention: { label: 'Needs Attention', color: 'warning' },
-  urgent: { label: 'Priority Action', color: 'error' }, insufficient: { label: 'Insufficient Data', color: 'default' },
+  stable: { get label() { return tr("Stable"); }, color: 'success' }, attention: { get label() { return tr("Needs Attention"); }, color: 'warning' },
+  urgent: { get label() { return tr("Priority Action"); }, color: 'error' }, insufficient: { get label() { return tr("Insufficient Data"); }, color: 'default' },
 };
 const OBSERVATION_META = {
   success: { color: 'success.main', icon: 'eva:checkmark-circle-2-fill' },
@@ -47,38 +49,38 @@ function buildManagementInsights(sessions, metrics) {
   const concentration = topCounsellor ? topCounsellor.value / Math.max(total / counsellors.length, 1) : 0;
   const summaries = [
     // 中文原文：当前范围记录、详细报告完成率、尚未发送通知、类别及辅导人员统计
-    `${total} counselling records are in scope, totalling ${Math.round(metrics.totalMinutes)} minutes.`,
-    `The detailed report completion rate is ${reportRate}% (${completedReports}/${total}).`,
-    `${pendingRate}% of records have pending notifications (${pendingNotifications}/${total}).`,
-    `The records cover ${categories.length} categories and ${counsellors.length} counsellors.`,
+    tr("{{p0}} counselling records are in scope, totalling {{p1}} minutes.", { p0: total, p1: Math.round(metrics.totalMinutes) }),
+    tr("The detailed report completion rate is {{p0}}% ({{p1}}/{{p2}}).", { p0: reportRate, p1: completedReports, p2: total }),
+    tr("{{p0}}% of records have pending notifications ({{p1}}/{{p2}}).", { p0: pendingRate, p1: pendingNotifications, p2: total }),
+    tr("The records cover {{p0}} categories and {{p1}} counsellors.", { p0: categories.length, p1: counsellors.length }),
   ];
   const observations = [];
   const actions = [];
   const warnings = [];
   if (pendingNotifications) {
-    observations.push({ severity: pendingRate >= 30 ? 'warning' : 'info', text: `${pendingNotifications} records have pending notifications.` });
-    actions.push('Prioritise records with pending notifications and have the person responsible confirm the follow-up action.');
-  } else observations.push({ severity: 'success', text: 'All notifications within the current scope have been sent.' });
+    observations.push({ severity: pendingRate >= 30 ? 'warning' : 'info', text: tr("{{p0}} records have pending notifications.", { p0: pendingNotifications }) });
+    actions.push(tr("Prioritise records with pending notifications and have the person responsible confirm the follow-up action."));
+  } else observations.push({ severity: 'success', text: tr("All notifications within the current scope have been sent.") });
   if (completedReports < total) {
-    observations.push({ severity: reportRate < 70 ? 'warning' : 'info', text: `${total - completedReports} detailed reports remain incomplete.` });
-    actions.push('Complete outstanding detailed reports and verify their links and completion status.');
-  } else observations.push({ severity: 'success', text: 'All detailed reports within the current scope are complete.' });
+    observations.push({ severity: reportRate < 70 ? 'warning' : 'info', text: tr("{{p0}} detailed reports remain incomplete.", { p0: total - completedReports }) });
+    actions.push(tr("Complete outstanding detailed reports and verify their links and completion status."));
+  } else observations.push({ severity: 'success', text: tr("All detailed reports within the current scope are complete.") });
   if (zeroCollection) {
-    observations.push({ severity: zeroRate >= 50 ? 'warning' : 'info', text: `${zeroCollection} records show RM0 payments (${zeroRate}%).` });
-    actions.push('Manually verify whether RM0 records represent free services, fee waivers, or pending payments.');
+    observations.push({ severity: zeroRate >= 50 ? 'warning' : 'info', text: tr("{{p0}} records show RM0 payments ({{p1}}%).", { p0: zeroCollection, p1: zeroRate }) });
+    actions.push(tr("Manually verify whether RM0 records represent free services, fee waivers, or pending payments."));
   }
   if (topCategory && percentage(topCategory.value, total) >= 40 && total >= 5) {
-    observations.push({ severity: 'info', text: `“${topCategory.label}” is the leading category at ${percentage(topCategory.value, total)}%.` });
-    actions.push(`Assess whether staffing and service resources for “${topCategory.label}” are sufficient.`);
+    observations.push({ severity: 'info', text: tr("“{{p0}}” is the leading category at {{p1}}%.", { p0: domainLabel(topCategory.label), p1: percentage(topCategory.value, total) }) });
+    actions.push(tr("Assess whether staffing and service resources for “{{p0}}” are sufficient.", { p0: domainLabel(topCategory.label) }));
   }
-  if (topMode) observations.push({ severity: 'info', text: `“${topMode.label}” is the most used mode, with ${topMode.value} cases.` });
+  if (topMode) observations.push({ severity: 'info', text: tr("“{{p0}}” is the most used mode, with {{p1}} cases.", { p0: domainLabel(topMode.label), p1: topMode.value }) });
   if (concentration >= 1.5 && total >= 5) {
-    observations.push({ severity: 'warning', text: `Workload is concentrated on ${topCounsellor.label} (${topCounsellor.value} cases).` });
-    actions.push('Have management review workload distribution among counsellors.');
+    observations.push({ severity: 'warning', text: tr("Workload is concentrated on {{p0}} ({{p1}} cases).", { p0: topCounsellor.label, p1: topCounsellor.value }) });
+    actions.push(tr("Have management review workload distribution among counsellors."));
   }
-  if (invalidDuration) warnings.push(`${invalidDuration} records do not have a valid counselling duration.`);
-  if (total < 5) warnings.push('The sample contains fewer than five cases, so no detailed trend conclusion is shown.');
-  if (!actions.length) actions.push('Maintain the current process and continue monitoring reports, notifications, and workload indicators.');
+  if (invalidDuration) warnings.push(tr("{{p0}} records do not have a valid counselling duration.", { p0: invalidDuration }));
+  if (total < 5) warnings.push(tr("The sample contains fewer than five cases, so no detailed trend conclusion is shown."));
+  if (!actions.length) actions.push(tr("Maintain the current process and continue monitoring reports, notifications, and workload indicators."));
   let status = 'stable';
   if (pendingNotifications || completedReports < total || concentration >= 1.5) status = 'attention';
   if (pendingRate >= 50 || reportRate < 50) status = 'urgent';
@@ -86,6 +88,7 @@ function buildManagementInsights(sessions, metrics) {
 }
 
 function InsightItems({ items, emptyText }) {
+  const uiLanguage = useUiLanguage();
   if (!items?.length) return <Typography variant="body2" color="text.secondary">{emptyText}</Typography>;
   return (
     <Stack spacing={1.5}>
@@ -108,10 +111,12 @@ function InsightItems({ items, emptyText }) {
 InsightItems.propTypes = { items: PropTypes.array, emptyText: PropTypes.string.isRequired };
 
 export default function CounsellingAiInsights({ dateRange, metrics, sessions }) {
+  const uiLanguage = useUiLanguage();
   const theme = useTheme();
-  const general = useMemo(() => buildManagementInsights(sessions, metrics), [metrics, sessions]);
-  const requestPayload = useMemo(() => ({ dateFrom: dateRange.dateFrom, dateTo: dateRange.dateTo }), [dateRange.dateFrom, dateRange.dateTo]);
-  const scopeKey = `${dateRange.dateFrom}:${dateRange.dateTo}`;
+  const language = useUiLanguage();
+  const general = useMemo(() => buildManagementInsights(sessions, metrics, uiLanguage), [metrics, sessions, uiLanguage]);
+  const requestPayload = useMemo(() => ({ dateFrom: dateRange.dateFrom, dateTo: dateRange.dateTo, language }), [dateRange.dateFrom, dateRange.dateTo, language]);
+  const scopeKey = `${dateRange.dateFrom}:${dateRange.dateTo}:${language}`;
   const loadLatest = useCallback((options) => getManagementInsights(requestPayload, options), [requestPayload]);
   const generate = useCallback((options) => generateManagementInsights(requestPayload, options), [requestPayload]);
   const ai = useAiAnalysis({ generate, loadLatest, scopeKey });
@@ -126,20 +131,20 @@ export default function CounsellingAiInsights({ dateRange, metrics, sessions }) 
             <Box sx={{ p: 1, borderRadius: '50%', color: 'primary.main', bgcolor: alpha(theme.palette.primary.main, 0.12), display: 'flex' }}>
               <Iconify icon="mdi:robot-outline" width={26} />
             </Box>
-            <Box><Typography variant="h6">G. Operations and Management Recommendations</Typography><Chip label={status.label} color={status.color} size="small" sx={{ mt: 0.5 }} /></Box>
+            <Box><Typography variant="h6">{tr("G. Operations and Management Recommendations")}</Typography><Chip label={status.label} color={status.color} size="small" sx={{ mt: 0.5 }} /></Box>
           </Stack>
           <ToggleButtonGroup exclusive size="small" value={ai.mode} onChange={(_, value) => value && ai.setMode(value)}>
-            <ToggleButton value="general">General</ToggleButton><ToggleButton value="ai">AI</ToggleButton>
+            <ToggleButton value="general">{tr("General")}</ToggleButton><ToggleButton value="ai">{tr("AI")}</ToggleButton>
           </ToggleButtonGroup>
         </Stack>
 
         {ai.mode === 'ai' && (
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mb: 2 }}>
-            <Typography variant="caption" color="text.secondary">Anonymised aggregate range: {dateRange.dateFrom} to {dateRange.dateTo}</Typography>
+            <Typography variant="caption" color="text.secondary">{tr("Anonymised aggregate range:")} {dateRange.dateFrom} {tr("to")} {dateRange.dateTo}</Typography>
             <Stack direction="row" spacing={1}>
-              {ai.loading ? <Button size="small" color="inherit" onClick={ai.cancel}>Cancel</Button> : null}
+              {ai.loading ? <Button size="small" color="inherit" onClick={ai.cancel}>{tr("Cancel")}</Button> : null}
               <Button size="small" variant="contained" disabled={ai.loading || !sessions.length} onClick={ai.run} startIcon={ai.loading ? <CircularProgress size={16} color="inherit" /> : <Iconify icon="eva:flash-fill" />}>
-                {result && !ai.stale ? 'Regenerate' : 'Generate AI Recommendations'}
+                {result && !ai.stale ? tr("Regenerate") : tr("Generate AI Recommendations")}
               </Button>
             </Stack>
           </Stack>
@@ -150,27 +155,27 @@ export default function CounsellingAiInsights({ dateRange, metrics, sessions }) 
             <>
               {general.warnings.map((warning) => <Alert key={warning} severity="warning" sx={{ mb: 2 }}>{warning}</Alert>)}
               <Grid container spacing={2}>
-                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2">Key Metrics Summary</Typography><Divider sx={{ my: 1.5 }} /><Stack spacing={1}>{general.summaries.map((text) => <Typography key={text} variant="body2">• {text}</Typography>)}</Stack></Box></Grid>
-                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>Key Observations</Typography><InsightItems items={general.observations.map((item) => ({ ...item, title: 'Observation', detail: item.text }))} emptyText="There is not enough data to form an observation." /></Box></Grid>
-                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>Recommended Next Steps</Typography><Stack spacing={1}>{general.actions.map((text, index) => <Typography key={text} variant="body2">{index + 1}. {text}</Typography>)}</Stack></Box></Grid>
+                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2">{tr("Key Metrics Summary")}</Typography><Divider sx={{ my: 1.5 }} /><Stack spacing={1}>{general.summaries.map((text) => <Typography key={text} variant="body2">• {text}</Typography>)}</Stack></Box></Grid>
+                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>{tr("Key Observations")}</Typography><InsightItems items={general.observations.map((item) => ({ ...item, title: tr("Observation"), detail: item.text }))} emptyText={tr("There is not enough data to form an observation.")} /></Box></Grid>
+                <Grid item xs={12} md={4}><Box sx={{ p: 2, borderRadius: 1.5, bgcolor: 'background.neutral', height: 1 }}><Typography variant="subtitle2" sx={{ mb: 1.5 }}>{tr("Recommended Next Steps")}</Typography><Stack spacing={1}>{general.actions.map((text, index) => <Typography key={text} variant="body2">{index + 1}. {text}</Typography>)}</Stack></Box></Grid>
               </Grid>
             </>
           ) : (
             <>
-              {ai.stale && <Alert severity="warning" sx={{ mb: 2 }}>The filter range has changed. The current result is outdated; please regenerate it.</Alert>}
+              {ai.stale && <Alert severity="warning" sx={{ mb: 2 }}>{tr("The filter range has changed. The current result is outdated; please regenerate it.")}</Alert>}
               {ai.error && <Alert severity="error" sx={{ mb: 2 }}>{ai.error}</Alert>}
-              {!result && !ai.loading && <Alert severity="info">AI does not run automatically. Confirm the scope, then select “Generate AI Recommendations”.</Alert>}
+              {!result && !ai.loading && <Alert severity="info">{tr("AI does not run automatically. Confirm the scope, then select “Generate AI Recommendations”.")}</Alert>}
               {result && (
                 <Grid container spacing={2}>
-                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>Overall Summary</Typography>{result.overview.map((text) => <Typography key={text} variant="body2" sx={{ mb: 0.75 }}>• {text}</Typography>)}<Typography variant="caption" color="text.secondary">Generated: {new Date(ai.analysis.generatedAt).toLocaleString()}</Typography></Box></Grid>
-                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>Trends and Pending Items</Typography><InsightItems items={[...result.trends, ...result.pendingItems]} emptyText="No priority items were identified." /></Box></Grid>
-                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>Resource Recommendations</Typography><InsightItems items={result.resourceRecommendations} emptyText="No resource recommendations are available." />{result.limitations.map((text) => <Alert key={text} severity="warning" sx={{ mt: 1 }}>{text}</Alert>)}</Box></Grid>
+                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>{tr("Overall Summary")}</Typography>{result.overview.map((text) => <Typography key={text} variant="body2" sx={{ mb: 0.75 }}>• {text}</Typography>)}<Typography variant="caption" color="text.secondary">{tr("Generated:")} {new Date(ai.analysis.generatedAt).toLocaleString(currentLocale())}</Typography></Box></Grid>
+                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>{tr("Trends and Pending Items")}</Typography><InsightItems items={[...result.trends, ...result.pendingItems]} emptyText={tr("No priority items were identified.")} /></Box></Grid>
+                  <Grid item xs={12} md={4}><Box sx={{ p: 2, bgcolor: 'background.neutral', borderRadius: 1.5 }}><Typography variant="subtitle2" sx={{ mb: 1 }}>{tr("Resource Recommendations")}</Typography><InsightItems items={result.resourceRecommendations} emptyText={tr("No resource recommendations are available.")} />{result.limitations.map((text) => <Alert key={text} severity="warning" sx={{ mt: 1 }}>{text}</Alert>)}</Box></Grid>
                 </Grid>
               )}
             </>
           )}
         </Box>
-        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>* {ai.mode === 'ai' ? 'AI-generated, authorised manager review required.' : 'General uses local rule-based analysis.'} No case records are modified automatically.</Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>* {ai.mode === 'ai' ? tr("AI-generated, authorised manager review required.") : tr("General uses local rule-based analysis.")} {tr("No case records are modified automatically.")}</Typography>
       </CardContent>
     </Card>
   );

@@ -1,0 +1,6662 @@
+{
+  "Counselling Case Management": {
+    "en": "Counselling Case Management",
+    "cn": "辅导个案管理"
+  },
+  "Counselling Centre Management System": {
+    "en": "Counselling Centre Management System",
+    "cn": "辅导中心管理系统"
+  },
+  "Data Overview": {
+    "en": "Data Overview",
+    "cn": "数据概览"
+  },
+  "Case Management": {
+    "en": "Case Management",
+    "cn": "个案管理"
+  },
+  "Counselling Case Management Dashboard": {
+    "en": "Counselling Case Management Dashboard",
+    "cn": "辅导个案管理数据概览"
+  },
+  "Counselling Case Management | Dashboard": {
+    "en": "Counselling Case Management | Dashboard",
+    "cn": "辅导个案管理 | 数据概览"
+  },
+  "Case Details | Counselling Centre": {
+    "en": "Case Details | Counselling Centre",
+    "cn": "个案详情 | 辅导中心"
+  },
+  "Case List | Counselling Centre": {
+    "en": "Case List | Counselling Centre",
+    "cn": "个案列表 | 辅导中心"
+  },
+  "Create Case | Counselling Centre": {
+    "en": "Create Case | Counselling Centre",
+    "cn": "新增个案 | 辅导中心"
+  },
+  "Edit Case | Counselling Centre": {
+    "en": "Edit Case | Counselling Centre",
+    "cn": "编辑个案 | 辅导中心"
+  },
+  "Case Details": {
+    "en": "Case Details",
+    "cn": "个案详情"
+  },
+  "Case List": {
+    "en": "Case List",
+    "cn": "个案列表"
+  },
+  "Create Case": {
+    "en": "Create Case",
+    "cn": "新增个案"
+  },
+  "Edit Case": {
+    "en": "Edit Case",
+    "cn": "编辑个案"
+  },
+  "Update Case": {
+    "en": "Update Case",
+    "cn": "更新个案"
+  },
+  "Delete Case": {
+    "en": "Delete Case",
+    "cn": "删除个案"
+  },
+  "Save Case": {
+    "en": "Save Case",
+    "cn": "保存个案"
+  },
+  "Back to Case List": {
+    "en": "Back to Case List",
+    "cn": "返回个案列表"
+  },
+  "Back to List": {
+    "en": "Back to List",
+    "cn": "返回列表"
+  },
+  "Case #{{p0}}": {
+    "en": "Case #{{p0}}",
+    "cn": "个案 #{{p0}}"
+  },
+  "Case Appointment": {
+    "en": "Case Appointment",
+    "cn": "个案预约"
+  },
+  "Case Category *": {
+    "en": "Case Category *",
+    "cn": "个案类别 *"
+  },
+  "Case Number *": {
+    "en": "Case Number *",
+    "cn": "个案编号 *"
+  },
+  "Case Record": {
+    "en": "Case Record",
+    "cn": "个案记录"
+  },
+  "Case Status": {
+    "en": "Case Status",
+    "cn": "个案状态"
+  },
+  "Case Summary": {
+    "en": "Case Summary",
+    "cn": "个案摘要"
+  },
+  "Case Support Recommendations": {
+    "en": "Case Support Recommendations",
+    "cn": "个案支持建议"
+  },
+  "Case created successfully": {
+    "en": "Case created successfully",
+    "cn": "个案新增成功"
+  },
+  "Case updated successfully": {
+    "en": "Case updated successfully",
+    "cn": "个案更新成功"
+  },
+  "Cases Assigned to {{p0}}": {
+    "en": "Cases Assigned to {{p0}}",
+    "cn": "分配给 {{p0}} 的个案"
+  },
+  "Client Initials *": {
+    "en": "Client Initials *",
+    "cn": "案主简称 *"
+  },
+  "Client Initials:": {
+    "en": "Client Initials:",
+    "cn": "案主简称："
+  },
+  "Client Statement Summary (Optional)": {
+    "en": "Client Statement Summary (Optional)",
+    "cn": "案主自述摘要（可选）"
+  },
+  "Client Statement Summary": {
+    "en": "Client Statement Summary",
+    "cn": "案主自述摘要"
+  },
+  "Contact Number (Optional)": {
+    "en": "Contact Number (Optional)",
+    "cn": "联系电话（可选）"
+  },
+  "Counselling Completed": {
+    "en": "Counselling Completed",
+    "cn": "辅导已完成"
+  },
+  "Counselling Date *": {
+    "en": "Counselling Date *",
+    "cn": "辅导日期 *"
+  },
+  "Counselling Information": {
+    "en": "Counselling Information",
+    "cn": "辅导资料"
+  },
+  "Counselling case with ID “": {
+    "en": "Counselling case with ID “",
+    "cn": "找不到编号为“"
+  },
+  "” was not found.": {
+    "en": "” was not found.",
+    "cn": "”的辅导个案。"
+  },
+  "Counsellor *": {
+    "en": "Counsellor *",
+    "cn": "辅导员 *"
+  },
+  "Counsellor": {
+    "en": "Counsellor",
+    "cn": "辅导员"
+  },
+  "Session Mode *": {
+    "en": "Session Mode *",
+    "cn": "辅导类型 *"
+  },
+  "Session Duration": {
+    "en": "Session Duration",
+    "cn": "辅导时长"
+  },
+  "Session Ended": {
+    "en": "Session Ended",
+    "cn": "辅导结束时间"
+  },
+  "Start Time *": {
+    "en": "Start Time *",
+    "cn": "开始时间 *"
+  },
+  "End Time *": {
+    "en": "End Time *",
+    "cn": "结束时间 *"
+  },
+  "Submission ID *": {
+    "en": "Submission ID *",
+    "cn": "提交编号 *"
+  },
+  "Submission ID already exists": {
+    "en": "Submission ID already exists",
+    "cn": "提交编号已存在"
+  },
+  "Respondent ID (Optional)": {
+    "en": "Respondent ID (Optional)",
+    "cn": "填写者编号（可选）"
+  },
+  "Payment Amount (RM)": {
+    "en": "Payment Amount (RM)",
+    "cn": "收款金额（RM）"
+  },
+  "Paid RM{{p0}}": {
+    "en": "Paid RM{{p0}}",
+    "cn": "已收款 RM{{p0}}"
+  },
+  "Payments Received": {
+    "en": "Payments Received",
+    "cn": "收款金额"
+  },
+  "Volunteer Actions (Optional)": {
+    "en": "Volunteer Actions (Optional)",
+    "cn": "志工处理步骤（可选）"
+  },
+  "Volunteer Actions": {
+    "en": "Volunteer Actions",
+    "cn": "志工处理步骤"
+  },
+  "Detailed Report Link (Optional)": {
+    "en": "Detailed Report Link (Optional)",
+    "cn": "详细报告链接（可选）"
+  },
+  "Detailed Report Link": {
+    "en": "Detailed Report Link",
+    "cn": "详细报告链接"
+  },
+  "Detailed Report": {
+    "en": "Detailed Report",
+    "cn": "详细报告"
+  },
+  "Detailed Report Pending": {
+    "en": "Detailed Report Pending",
+    "cn": "详细报告待完成"
+  },
+  "Detailed Report Submitted": {
+    "en": "Detailed Report Submitted",
+    "cn": "详细报告已提交"
+  },
+  "Detailed Report Follow-up Reminders": {
+    "en": "Detailed Report Follow-up Reminders",
+    "cn": "详细报告跟进提醒"
+  },
+  "Brief Report Pending": {
+    "en": "Brief Report Pending",
+    "cn": "简要报告待完成"
+  },
+  "Brief Report Submitted": {
+    "en": "Brief Report Submitted",
+    "cn": "简要报告已提交"
+  },
+  "View Detailed Report": {
+    "en": "View Detailed Report",
+    "cn": "查看详细报告"
+  },
+  "View Case Details": {
+    "en": "View Case Details",
+    "cn": "查看个案详情"
+  },
+  "Edit Case Data": {
+    "en": "Edit Case Data",
+    "cn": "编辑个案资料"
+  },
+  "Send Follow-up Notification": {
+    "en": "Send Follow-up Notification",
+    "cn": "发送跟进通知"
+  },
+  "Send Reminder": {
+    "en": "Send Reminder",
+    "cn": "发送提醒"
+  },
+  "Reminder Level": {
+    "en": "Reminder Level",
+    "cn": "提醒级别"
+  },
+  "Reminder Status": {
+    "en": "Reminder Status",
+    "cn": "提醒状态"
+  },
+  "Overdue By": {
+    "en": "Overdue By",
+    "cn": "逾期时长"
+  },
+  "No detailed reports have reached the reminder threshold": {
+    "en": "No detailed reports have reached the reminder threshold",
+    "cn": "尚无详细报告达到提醒时限"
+  },
+  "No cases match the selected filters": {
+    "en": "No cases match the selected filters",
+    "cn": "没有符合筛选条件的个案"
+  },
+  "No data available for this month": {
+    "en": "No data available for this month",
+    "cn": "本月暂无数据"
+  },
+  "Search case number / client initials / counsellor": {
+    "en": "Search case number / client initials / counsellor",
+    "cn": "搜索个案编号／案主简称／辅导员"
+  },
+  "Loading case data…": {
+    "en": "Loading case data…",
+    "cn": "正在加载个案资料…"
+  },
+  "Loading counselling case data…": {
+    "en": "Loading counselling case data…",
+    "cn": "正在加载辅导个案资料…"
+  },
+  "Invalid case ID.": {
+    "en": "Invalid case ID.",
+    "cn": "个案编号无效。"
+  },
+  "Are you sure you want to delete this case? It will no longer appear in the system.": {
+    "en": "Are you sure you want to delete this case? It will no longer appear in the system.",
+    "cn": "确定要删除此个案吗？删除后将不再显示在系统中。"
+  },
+  "Deleting…": {
+    "en": "Deleting…",
+    "cn": "正在删除…"
+  },
+  "The counselling sessions API returned an invalid response": {
+    "en": "The counselling sessions API returned an invalid response",
+    "cn": "辅导记录接口返回了无效响应"
+  },
+  "The counselling sessions API returned invalid data": {
+    "en": "The counselling sessions API returned invalid data",
+    "cn": "辅导记录接口返回了无效资料"
+  },
+  "A. Session Mode Distribution": {
+    "en": "A. Session Mode Distribution",
+    "cn": "A. 辅导类型分布"
+  },
+  "B. Case Category Distribution": {
+    "en": "B. Case Category Distribution",
+    "cn": "B. 个案类别分布"
+  },
+  "C. Cases per Counsellor": {
+    "en": "C. Cases per Counsellor",
+    "cn": "C. 各辅导员个案数量"
+  },
+  "D. Case Counselling Duration (Minutes)": {
+    "en": "D. Case Counselling Duration (Minutes)",
+    "cn": "D. 个案辅导时长（分钟）"
+  },
+  "F. {{p0}} Payments Received": {
+    "en": "F. {{p0}} Payments Received",
+    "cn": "F. {{p0}} 收款金额"
+  },
+  "G. Operations and Management Recommendations": {
+    "en": "G. Operations and Management Recommendations",
+    "cn": "G. 运营与管理建议"
+  },
+  "Average Counselling Duration": {
+    "en": "Average Counselling Duration",
+    "cn": "平均辅导时长"
+  },
+  "Total Counselling Duration": {
+    "en": "Total Counselling Duration",
+    "cn": "辅导总时长"
+  },
+  "Total Cases": {
+    "en": "Total Cases",
+    "cn": "个案总数"
+  },
+  "{{p0}} Case Overview": {
+    "en": "{{p0}} Case Overview",
+    "cn": "{{p0}} 个案概览"
+  },
+  "{{p0}} Counselling Overview": {
+    "en": "{{p0}} Counselling Overview",
+    "cn": "{{p0}} 辅导概览"
+  },
+  "{{p0}} Payment Cases": {
+    "en": "{{p0}} Payment Cases",
+    "cn": "{{p0}} 收款个案"
+  },
+  "Minutes": {
+    "en": "Minutes",
+    "cn": "分钟"
+  },
+  "Uncategorised": {
+    "en": "Uncategorised",
+    "cn": "未分类"
+  },
+  "Key Metrics Summary": {
+    "en": "Key Metrics Summary",
+    "cn": "关键指标摘要"
+  },
+  "Key Observations": {
+    "en": "Key Observations",
+    "cn": "关键观察"
+  },
+  "Overall Summary": {
+    "en": "Overall Summary",
+    "cn": "整体摘要"
+  },
+  "Current Status": {
+    "en": "Current Status",
+    "cn": "当前状态"
+  },
+  "Observation": {
+    "en": "Observation",
+    "cn": "观察"
+  },
+  "Resource Recommendations": {
+    "en": "Resource Recommendations",
+    "cn": "资源建议"
+  },
+  "Trends and Pending Items": {
+    "en": "Trends and Pending Items",
+    "cn": "趋势与待办事项"
+  },
+  "Anonymised aggregate range:": {
+    "en": "Anonymised aggregate range:",
+    "cn": "匿名汇总范围："
+  },
+  "Analyses: client statement summary and volunteer actions": {
+    "en": "Analyses: client statement summary and volunteer actions",
+    "cn": "分析范围：案主自述摘要及志工处理步骤"
+  },
+  "Stable": {
+    "en": "Stable",
+    "cn": "稳定"
+  },
+  "Needs Attention": {
+    "en": "Needs Attention",
+    "cn": "需要关注"
+  },
+  "Priority Action": {
+    "en": "Priority Action",
+    "cn": "优先处理"
+  },
+  "Insufficient Data": {
+    "en": "Insufficient Data",
+    "cn": "资料不足"
+  },
+  "General": {
+    "en": "General",
+    "cn": "一般"
+  },
+  "General uses a local rule check.": {
+    "en": "General uses a local rule check.",
+    "cn": "一般模式使用本地规则检查。"
+  },
+  "General uses local rule-based analysis.": {
+    "en": "General uses local rule-based analysis.",
+    "cn": "一般模式使用本地规则分析。"
+  },
+  "Local rule check; data is not sent to an external service.": {
+    "en": "Local rule check; data is not sent to an external service.",
+    "cn": "本地规则检查；资料不会发送至外部服务。"
+  },
+  "AI": {
+    "en": "AI",
+    "cn": "AI"
+  },
+  "AI-generated, authorised manager review required.": {
+    "en": "AI-generated, authorised manager review required.",
+    "cn": "由 AI 生成，须由获授权的管理人员复核。"
+  },
+  "AI-generated, counsellor review required.": {
+    "en": "AI-generated, counsellor review required.",
+    "cn": "由 AI 生成，须由辅导员复核。"
+  },
+  "Generate AI Recommendations": {
+    "en": "Generate AI Recommendations",
+    "cn": "生成 AI 建议"
+  },
+  "Regenerate": {
+    "en": "Regenerate",
+    "cn": "重新生成"
+  },
+  "Generated:": {
+    "en": "Generated:",
+    "cn": "生成时间："
+  },
+  "Sources:": {
+    "en": "Sources:",
+    "cn": "来源："
+  },
+  "· Follow-up:": {
+    "en": "· Follow-up:",
+    "cn": "· 跟进优先级："
+  },
+  "Both analysis fields are empty, so AI recommendations cannot be generated.": {
+    "en": "Both analysis fields are empty, so AI recommendations cannot be generated.",
+    "cn": "两个分析字段均为空，无法生成 AI 建议。"
+  },
+  "AI does not run automatically. Confirm the data scope, then select “Generate AI Recommendations”.": {
+    "en": "AI does not run automatically. Confirm the data scope, then select “Generate AI Recommendations”.",
+    "cn": "AI 不会自动运行。请确认资料范围后，点击“生成 AI 建议”。"
+  },
+  "AI does not run automatically. Confirm the scope, then select “Generate AI Recommendations”.": {
+    "en": "AI does not run automatically. Confirm the scope, then select “Generate AI Recommendations”.",
+    "cn": "AI 不会自动运行。请确认范围后，点击“生成 AI 建议”。"
+  },
+  "The case record has changed. The current result is outdated; please regenerate it.": {
+    "en": "The case record has changed. The current result is outdated; please regenerate it.",
+    "cn": "个案资料或语言已更改，当前结果已过期，请重新生成。"
+  },
+  "The filter range has changed. The current result is outdated; please regenerate it.": {
+    "en": "The filter range has changed. The current result is outdated; please regenerate it.",
+    "cn": "筛选范围或语言已更改，当前结果已过期，请重新生成。"
+  },
+  "No case records are modified automatically.": {
+    "en": "No case records are modified automatically.",
+    "cn": "系统不会自动修改任何个案记录。"
+  },
+  "This is not a diagnosis or final risk assessment and does not automatically modify records or contact third parties.": {
+    "en": "This is not a diagnosis or final risk assessment and does not automatically modify records or contact third parties.",
+    "cn": "此内容并非诊断或最终风险评估，系统不会自动修改记录或联系第三方。"
+  },
+  ". This is not a final risk assessment.": {
+    "en": ". This is not a final risk assessment.",
+    "cn": "。这并非最终风险评估。"
+  },
+  "Risk Indicators": {
+    "en": "Risk Indicators",
+    "cn": "风险线索"
+  },
+  "Data Gaps": {
+    "en": "Data Gaps",
+    "cn": "资料缺口"
+  },
+  "Recommended Next Steps": {
+    "en": "Recommended Next Steps",
+    "cn": "建议后续步骤"
+  },
+  "Self-harm or Suicide Risk Indicator": {
+    "en": "Self-harm or Suicide Risk Indicator",
+    "cn": "自伤或自杀风险线索"
+  },
+  "Risk Indicator for Harm to Others": {
+    "en": "Risk Indicator for Harm to Others",
+    "cn": "伤害他人风险线索"
+  },
+  "Abuse or Violence Risk Indicator": {
+    "en": "Abuse or Violence Risk Indicator",
+    "cn": "虐待或暴力风险线索"
+  },
+  "Missing or Unreachable Person Risk Indicator": {
+    "en": "Missing or Unreachable Person Risk Indicator",
+    "cn": "失联或失踪风险线索"
+  },
+  "Immediate Human Review Required": {
+    "en": "Immediate Human Review Required",
+    "cn": "需要立即人工复核"
+  },
+  "Additional Information or Review Required": {
+    "en": "Additional Information or Review Required",
+    "cn": "需要补充资料或复核"
+  },
+  "Routine Review": {
+    "en": "Routine Review",
+    "cn": "一般复核"
+  },
+  "No Immediate Indicator Found": {
+    "en": "No Immediate Indicator Found",
+    "cn": "未见即时风险线索"
+  },
+  "Review Required": {
+    "en": "Review Required",
+    "cn": "需要复核"
+  },
+  "The record contains text that may indicate": {
+    "en": "The record contains text that may indicate",
+    "cn": "记录中包含可能涉及以下风险的文字："
+  },
+  "Potential indicators requiring immediate human review were found. Review the original record and follow the organisation’s crisis SOP; this is not a final risk assessment.": {
+    "en": "Potential indicators requiring immediate human review were found. Review the original record and follow the organisation’s crisis SOP; this is not a final risk assessment.",
+    "cn": "发现可能需要立即人工复核的线索。请复核原始记录并依照机构的危机处理程序跟进；这并非最终风险评估。"
+  },
+  "The client statement summary has not been completed, so the primary concerns cannot be assessed.": {
+    "en": "The client statement summary has not been completed, so the primary concerns cannot be assessed.",
+    "cn": "尚未填写案主自述摘要，无法评估主要关注事项。"
+  },
+  "The client statement summary is brief. Confirm the main concern, its impact, and the assistance expected.": {
+    "en": "The client statement summary is brief. Confirm the main concern, its impact, and the assistance expected.",
+    "cn": "案主自述摘要较简短，请确认主要困扰、影响及期望获得的协助。"
+  },
+  "Volunteer actions have not been recorded, so completed actions cannot be confirmed.": {
+    "en": "Volunteer actions have not been recorded, so completed actions cannot be confirmed.",
+    "cn": "尚未记录志工处理步骤，无法确认已采取的行动。"
+  },
+  "The actions do not clearly state whether follow-up is required.": {
+    "en": "The actions do not clearly state whether follow-up is required.",
+    "cn": "处理步骤未明确说明是否需要跟进。"
+  },
+  "The actions do not include a clear time or completion deadline.": {
+    "en": "The actions do not include a clear time or completion deadline.",
+    "cn": "处理步骤缺少明确时间或完成期限。"
+  },
+  "The person responsible for the follow-up action is not specified.": {
+    "en": "The person responsible for the follow-up action is not specified.",
+    "cn": "尚未说明跟进行动的负责人。"
+  },
+  "Have an authorised counsellor immediately review the original record and use the organisation’s crisis SOP to determine whether escalation is required.": {
+    "en": "Have an authorised counsellor immediately review the original record and use the organisation’s crisis SOP to determine whether escalation is required.",
+    "cn": "请获授权的辅导员立即复核原始记录，并依据机构的危机处理程序判断是否需要升级处理。"
+  },
+  "Manually confirm how current and specific the indicators are, along with protective factors and actions already taken.": {
+    "en": "Manually confirm how current and specific the indicators are, along with protective factors and actions already taken.",
+    "cn": "请人工确认风险线索的时效性与具体程度，以及保护因素和已采取的行动。"
+  },
+  "Check whether the recorded actions address the main concerns in the summary and document any outstanding items.": {
+    "en": "Check whether the recorded actions address the main concerns in the summary and document any outstanding items.",
+    "cn": "请检查已记录的行动是否回应摘要中的主要关注事项，并记录未完成的事项。"
+  },
+  "Have the counsellor decide whether follow-up is required and record the owner, method, and timing.": {
+    "en": "Have the counsellor decide whether follow-up is required and record the owner, method, and timing.",
+    "cn": "请辅导员判断是否需要跟进，并记录负责人、方式及时间。"
+  },
+  "Manually confirm whether referral or escalation arrangements were completed and record the outcome.": {
+    "en": "Manually confirm whether referral or escalation arrangements were completed and record the outcome.",
+    "cn": "请人工确认转介或升级处理安排是否完成，并记录结果。"
+  },
+  "Have the counsellor review consistency between the summary and actions and confirm whether further follow-up is required.": {
+    "en": "Have the counsellor review consistency between the summary and actions and confirm whether further follow-up is required.",
+    "cn": "请辅导员复核摘要与处理步骤是否一致，并确认是否需要进一步跟进。"
+  },
+  "No basic record-structure gaps were found.": {
+    "en": "No basic record-structure gaps were found.",
+    "cn": "未发现基本记录结构缺口。"
+  },
+  "No priority items were identified.": {
+    "en": "No priority items were identified.",
+    "cn": "未发现需要优先处理的事项。"
+  },
+  "No resource recommendations are available.": {
+    "en": "No resource recommendations are available.",
+    "cn": "暂无资源建议。"
+  },
+  "There is not enough data to form an observation.": {
+    "en": "There is not enough data to form an observation.",
+    "cn": "资料不足，无法形成观察结论。"
+  },
+  "The sample contains fewer than five cases, so no detailed trend conclusion is shown.": {
+    "en": "The sample contains fewer than five cases, so no detailed trend conclusion is shown.",
+    "cn": "样本少于五个个案，因此不显示详细趋势结论。"
+  },
+  "All detailed reports within the current scope are complete.": {
+    "en": "All detailed reports within the current scope are complete.",
+    "cn": "当前范围内的详细报告均已完成。"
+  },
+  "All notifications within the current scope have been sent.": {
+    "en": "All notifications within the current scope have been sent.",
+    "cn": "当前范围内的通知均已发送。"
+  },
+  "Prioritise records with pending notifications and have the person responsible confirm the follow-up action.": {
+    "en": "Prioritise records with pending notifications and have the person responsible confirm the follow-up action.",
+    "cn": "优先处理待发送通知的记录，并由负责人确认跟进行动。"
+  },
+  "Complete outstanding detailed reports and verify their links and completion status.": {
+    "en": "Complete outstanding detailed reports and verify their links and completion status.",
+    "cn": "请完成尚未提交的详细报告，并核对报告链接及完成状态。"
+  },
+  "Manually verify whether RM0 records represent free services, fee waivers, or pending payments.": {
+    "en": "Manually verify whether RM0 records represent free services, fee waivers, or pending payments.",
+    "cn": "请人工核实 RM0 记录属于免费服务、费用减免或待收款。"
+  },
+  "Assess whether staffing and service resources for “{{p0}}” are sufficient.": {
+    "en": "Assess whether staffing and service resources for “{{p0}}” are sufficient.",
+    "cn": "请评估“{{p0}}”类别的人员及服务资源是否充足。"
+  },
+  "Have management review workload distribution among counsellors.": {
+    "en": "Have management review workload distribution among counsellors.",
+    "cn": "请管理人员复核辅导员之间的工作量分配。"
+  },
+  "Maintain the current process and continue monitoring reports, notifications, and workload indicators.": {
+    "en": "Maintain the current process and continue monitoring reports, notifications, and workload indicators.",
+    "cn": "维持当前流程，并持续关注报告、通知及工作量指标。"
+  },
+  "{{p0}} detailed reports remain incomplete.": {
+    "en": "{{p0}} detailed reports remain incomplete.",
+    "cn": "仍有 {{p0}} 份详细报告未完成。"
+  },
+  "{{p0}} records do not have a valid counselling duration.": {
+    "en": "{{p0}} records do not have a valid counselling duration.",
+    "cn": "有 {{p0}} 条记录缺少有效的辅导时长。"
+  },
+  "{{p0}} records have pending notifications.": {
+    "en": "{{p0}} records have pending notifications.",
+    "cn": "有 {{p0}} 条记录尚未发送通知。"
+  },
+  "{{p0}} records show RM0 payments ({{p1}}%).": {
+    "en": "{{p0}} records show RM0 payments ({{p1}}%).",
+    "cn": "有 {{p0}} 条记录的收款为 RM0（{{p1}}%）。"
+  },
+  "Workload is concentrated on {{p0}} ({{p1}} cases).": {
+    "en": "Workload is concentrated on {{p0}} ({{p1}} cases).",
+    "cn": "工作量集中在 {{p0}}（{{p1}} 个个案）。"
+  },
+  "“{{p0}}” is the leading category at {{p1}}%.": {
+    "en": "“{{p0}}” is the leading category at {{p1}}%.",
+    "cn": "“{{p0}}”为主要类别，占 {{p1}}%。"
+  },
+  "“{{p0}}” is the most used mode, with {{p1}} cases.": {
+    "en": "“{{p0}}” is the most used mode, with {{p1}} cases.",
+    "cn": "“{{p0}}”为最常用的辅导类型，共 {{p1}} 个个案。"
+  },
+  "Period filter mode": {
+    "en": "Period filter mode",
+    "cn": "期间筛选方式"
+  },
+  "Period:": {
+    "en": "Period:",
+    "cn": "期间："
+  },
+  "| Records:": {
+    "en": "| Records:",
+    "cn": "| 记录数："
+  },
+  "Select Month": {
+    "en": "Select Month",
+    "cn": "选择月份"
+  },
+  "Select Year": {
+    "en": "Select Year",
+    "cn": "选择年份"
+  },
+  "Start Date": {
+    "en": "Start Date",
+    "cn": "开始日期"
+  },
+  "End Date": {
+    "en": "End Date",
+    "cn": "结束日期"
+  },
+  "End date cannot be earlier than start date": {
+    "en": "End date cannot be earlier than start date",
+    "cn": "结束日期不能早于开始日期"
+  },
+  "Month": {
+    "en": "Month",
+    "cn": "月"
+  },
+  "Year": {
+    "en": "Year",
+    "cn": "年"
+  },
+  "Date": {
+    "en": "Date",
+    "cn": "日期"
+  },
+  "Time": {
+    "en": "Time",
+    "cn": "时间"
+  },
+  "Duration": {
+    "en": "Duration",
+    "cn": "时长"
+  },
+  "to": {
+    "en": "to",
+    "cn": "至"
+  },
+  "case": {
+    "en": "case",
+    "cn": "个案"
+  },
+  "s": {
+    "en": "s",
+    "cn": ""
+  },
+  "All": {
+    "en": "All",
+    "cn": "全部"
+  },
+  "Basic Information": {
+    "en": "Basic Information",
+    "cn": "基本资料"
+  },
+  "Back": {
+    "en": "Back",
+    "cn": "返回"
+  },
+  "Cancel": {
+    "en": "Cancel",
+    "cn": "取消"
+  },
+  "Delete": {
+    "en": "Delete",
+    "cn": "删除"
+  },
+  "Edit": {
+    "en": "Edit",
+    "cn": "编辑"
+  },
+  "Save": {
+    "en": "Save",
+    "cn": "保存"
+  },
+  "Reset": {
+    "en": "Reset",
+    "cn": "重置"
+  },
+  "Reload": {
+    "en": "Reload",
+    "cn": "重新加载"
+  },
+  "Filter": {
+    "en": "Filter",
+    "cn": "筛选"
+  },
+  "Complete Now": {
+    "en": "Complete Now",
+    "cn": "立即完成"
+  },
+  "Completed": {
+    "en": "Completed",
+    "cn": "已完成"
+  },
+  "In Progress": {
+    "en": "In Progress",
+    "cn": "进行中"
+  },
+  "Sent": {
+    "en": "Sent",
+    "cn": "已发送"
+  },
+  "Quick Actions": {
+    "en": "Quick Actions",
+    "cn": "快捷操作"
+  },
+  "View Details": {
+    "en": "View Details",
+    "cn": "查看详情"
+  },
+  "RM": {
+    "en": "RM",
+    "cn": "RM"
+  },
+  "（RM）": {
+    "en": "（RM）",
+    "cn": "（RM）"
+  },
+  "{{p0}}": {
+    "en": "{{p0}}",
+    "cn": "{{p0}}"
+  },
+  "{{p1}}": {
+    "en": "{{p1}}",
+    "cn": "{{p1}}"
+  },
+  "AI_NOT_AVAILABLE": {
+    "en": "AI is currently unavailable.",
+    "cn": "AI 功能目前未开放。"
+  },
+  "AI_NOT_CONFIGURED": {
+    "en": "AI service is not configured.",
+    "cn": "AI 服务尚未完成配置。"
+  },
+  "DATABASE_NOT_CONFIGURED": {
+    "en": "Database is not configured.",
+    "cn": "数据库尚未完成配置。"
+  },
+  "INVALID_REQUEST": {
+    "en": "Invalid request.",
+    "cn": "请求资料无效。"
+  },
+  "ANALYSIS_NOT_FOUND": {
+    "en": "No analysis was found.",
+    "cn": "找不到可用的 AI 分析。"
+  },
+  "AI_TIMEOUT": {
+    "en": "AI analysis timed out. Please try again.",
+    "cn": "AI 分析超时，请稍后重试。"
+  },
+  "AI_REFUSED": {
+    "en": "AI could not complete this analysis.",
+    "cn": "AI 无法完成这次分析。"
+  },
+  "AI_INVALID_OUTPUT": {
+    "en": "AI returned an unverifiable result.",
+    "cn": "AI 返回了无法验证的结果。"
+  },
+  "AI_UPSTREAM_ERROR": {
+    "en": "AI service is temporarily unavailable.",
+    "cn": "AI 服务暂时无法使用。"
+  },
+  "AI_REQUEST_FAILED": {
+    "en": "Unable to complete AI analysis. Please try again.",
+    "cn": "无法完成 AI 分析，请稍后重试。"
+  },
+  "INTERNAL_ERROR": {
+    "en": "Unable to complete the request. Please try again.",
+    "cn": "无法完成请求，请稍后重试。"
+  },
+  "About us": {
+    "en": "About us",
+    "cn": "关于我们"
+  },
+  "About": {
+    "en": "About",
+    "cn": "关于"
+  },
+  "Action": {
+    "en": "Action",
+    "cn": "操作"
+  },
+  "Actions": {
+    "en": "Actions",
+    "cn": "操作"
+  },
+  "Activated": {
+    "en": "Activated",
+    "cn": "已启用"
+  },
+  "Add Event": {
+    "en": "Add Event",
+    "cn": "新增活动"
+  },
+  "Add Question": {
+    "en": "Add Question",
+    "cn": "新增问题"
+  },
+  "Add Task": {
+    "en": "Add Task",
+    "cn": "新增任务"
+  },
+  "Add To Cart": {
+    "en": "Add To Cart",
+    "cn": "加入购物车"
+  },
+  "Add assignee": {
+    "en": "Add assignee",
+    "cn": "添加负责人"
+  },
+  "Add due date": {
+    "en": "Add due date",
+    "cn": "添加截止日期"
+  },
+  "Add new card": {
+    "en": "Add new card",
+    "cn": "新增卡片"
+  },
+  "Add new option": {
+    "en": "Add new option",
+    "cn": "新增选项"
+  },
+  "Add photo": {
+    "en": "Add photo",
+    "cn": "添加照片"
+  },
+  "Add section": {
+    "en": "Add section",
+    "cn": "新增分区"
+  },
+  "Add": {
+    "en": "Add",
+    "cn": "添加"
+  },
+  "Address": {
+    "en": "Address",
+    "cn": "地址"
+  },
+  "Age": {
+    "en": "Age",
+    "cn": "年龄"
+  },
+  "Agenda": {
+    "en": "Agenda",
+    "cn": "议程"
+  },
+  "Agree": {
+    "en": "Agree",
+    "cn": "同意"
+  },
+  "Agriculture Machinery": {
+    "en": "Agriculture Machinery",
+    "cn": "农业机械"
+  },
+  "Air Conditioner, Purifier & Humidifier": {
+    "en": "Air Conditioner, Purifier & Humidifier",
+    "cn": "空调、净化器与加湿器"
+  },
+  "Alert": {
+    "en": "Alert",
+    "cn": "提示"
+  },
+  "Alerts": {
+    "en": "Alerts",
+    "cn": "提示"
+  },
+  "All Days": {
+    "en": "All Days",
+    "cn": "所有日期"
+  },
+  "All day": {
+    "en": "All day",
+    "cn": "全天"
+  },
+  "All steps completed - you're finished": {
+    "en": "All steps completed - you're finished",
+    "cn": "所有步骤已完成"
+  },
+  "All tasks related to this category will also be deleted.": {
+    "en": "All tasks related to this category will also be deleted.",
+    "cn": "此类别下的所有任务也将被删除。"
+  },
+  "Allowed *.jpeg, *.jpg, *.png, *.gif": {
+    "en": "Allowed *.jpeg, *.jpg, *.png, *.gif",
+    "cn": "支持 *.jpeg、*.jpg、*.png、*.gif"
+  },
+  "Already have an account?": {
+    "en": "Already have an account?",
+    "cn": "已有账号？"
+  },
+  "Alternating": {
+    "en": "Alternating",
+    "cn": "交替排列"
+  },
+  "Amount": {
+    "en": "Amount",
+    "cn": "金额"
+  },
+  "Amplifier": {
+    "en": "Amplifier",
+    "cn": "扩音器"
+  },
+  "An ad group contains one or more ads which target a shared set of keywords.": {
+    "en": "An ad group contains one or more ads which target a shared set of keywords.",
+    "cn": "广告组包含一个或多个针对相同关键词的广告。"
+  },
+  "Applications": {
+    "en": "Applications",
+    "cn": "应用"
+  },
+  "Apply": {
+    "en": "Apply",
+    "cn": "应用"
+  },
+  "Archieved Score": {
+    "en": "Archieved Score",
+    "cn": "已达成分数"
+  },
+  "Archive": {
+    "en": "Archive",
+    "cn": "归档"
+  },
+  "Archived": {
+    "en": "Archived",
+    "cn": "已归档"
+  },
+  "Are you sure want to delete column?": {
+    "en": "Are you sure want to delete column?",
+    "cn": "确定要删除此列吗？"
+  },
+  "Are you sure want to delete": {
+    "en": "Are you sure want to delete",
+    "cn": "确定要删除"
+  },
+  "Area Installed": {
+    "en": "Area Installed",
+    "cn": "安装地区"
+  },
+  "Area": {
+    "en": "Area",
+    "cn": "面积图"
+  },
+  "Arrow": {
+    "en": "Arrow",
+    "cn": "箭头"
+  },
+  "As Link": {
+    "en": "As Link",
+    "cn": "作为链接"
+  },
+  "Assign": {
+    "en": "Assign",
+    "cn": "分配"
+  },
+  "Assignee": {
+    "en": "Assignee",
+    "cn": "负责人"
+  },
+  "Attachment": {
+    "en": "Attachment",
+    "cn": "附件"
+  },
+  "Attachments": {
+    "en": "Attachments",
+    "cn": "附件"
+  },
+  "AttendanceType": {
+    "en": "AttendanceType",
+    "cn": "出席类型"
+  },
+  "Audio & Sets": {
+    "en": "Audio & Sets",
+    "cn": "音响与套装"
+  },
+  "Audio & Video": {
+    "en": "Audio & Video",
+    "cn": "音频与视频"
+  },
+  "Authentication": {
+    "en": "Authentication",
+    "cn": "身份验证"
+  },
+  "Autocomplete": {
+    "en": "Autocomplete",
+    "cn": "自动补全"
+  },
+  "Available For": {
+    "en": "Available For",
+    "cn": "适用于"
+  },
+  "Avatar": {
+    "en": "Avatar",
+    "cn": "头像"
+  },
+  "Background": {
+    "en": "Background",
+    "cn": "背景"
+  },
+  "Badge overlap": {
+    "en": "Badge overlap",
+    "cn": "徽标重叠"
+  },
+  "Bar": {
+    "en": "Bar",
+    "cn": "条形图"
+  },
+  "Base": {
+    "en": "Base",
+    "cn": "基础"
+  },
+  "Basic Info": {
+    "en": "Basic Info",
+    "cn": "基本资料"
+  },
+  "Basic Table": {
+    "en": "Basic Table",
+    "cn": "基础表格"
+  },
+  "Basic": {
+    "en": "Basic",
+    "cn": "基础"
+  },
+  "Battery & Charger": {
+    "en": "Battery & Charger",
+    "cn": "电池与充电器"
+  },
+  "Beautiful, modern and clean user interfaces": {
+    "en": "Beautiful, modern and clean user interfaces",
+    "cn": "美观、现代且简洁的用户界面"
+  },
+  "Before that": {
+    "en": "Before that",
+    "cn": "在此之前"
+  },
+  "Billed Monthly": {
+    "en": "Billed Monthly",
+    "cn": "按月计费"
+  },
+  "Billing Address": {
+    "en": "Billing Address",
+    "cn": "账单地址"
+  },
+  "Blank": {
+    "en": "Blank",
+    "cn": "空白页"
+  },
+  "Blog Post": {
+    "en": "Blog Post",
+    "cn": "博客文章"
+  },
+  "Blog Posts": {
+    "en": "Blog Posts",
+    "cn": "博客文章"
+  },
+  "Blog": {
+    "en": "Blog",
+    "cn": "博客"
+  },
+  "Blow Molding Machine": {
+    "en": "Blow Molding Machine",
+    "cn": "吹塑机"
+  },
+  "Bluetooth Headset": {
+    "en": "Bluetooth Headset",
+    "cn": "蓝牙耳机"
+  },
+  "Bottom Center": {
+    "en": "Bottom Center",
+    "cn": "底部居中"
+  },
+  "Bottom Left": {
+    "en": "Bottom Left",
+    "cn": "左下方"
+  },
+  "Bottom Right": {
+    "en": "Bottom Right",
+    "cn": "右下方"
+  },
+  "Bottom": {
+    "en": "Bottom",
+    "cn": "底部"
+  },
+  "Branding": {
+    "en": "Branding",
+    "cn": "品牌设计"
+  },
+  "Breadcrumb": {
+    "en": "Breadcrumb",
+    "cn": "面包屑导航"
+  },
+  "Building Material Making Machinery": {
+    "en": "Building Material Making Machinery",
+    "cn": "建材生产机械"
+  },
+  "Business Events(BE) Sector Advancement": {
+    "en": "Business Events(BE) Sector Advancement",
+    "cn": "商务活动行业发展"
+  },
+  "Button Click": {
+    "en": "Button Click",
+    "cn": "点击按钮"
+  },
+  "Button Groups": {
+    "en": "Button Groups",
+    "cn": "按钮组"
+  },
+  "Button": {
+    "en": "Button",
+    "cn": "按钮"
+  },
+  "Buttons": {
+    "en": "Buttons",
+    "cn": "按钮"
+  },
+  "By Group": {
+    "en": "By Group",
+    "cn": "按组"
+  },
+  "By signing up, I agree to ": {
+    "en": "By signing up, I agree to ",
+    "cn": "注册即表示我同意"
+  },
+  "CNC Machine Tools": {
+    "en": "CNC Machine Tools",
+    "cn": "数控机床"
+  },
+  "CONVENTION TYPE": {
+    "en": "CONVENTION TYPE",
+    "cn": "会议类型"
+  },
+  "CONVENTION": {
+    "en": "CONVENTION",
+    "cn": "会议"
+  },
+  "Calendar": {
+    "en": "Calendar",
+    "cn": "日历"
+  },
+  "Calories": {
+    "en": "Calories",
+    "cn": "热量"
+  },
+  "Carbs (g)": {
+    "en": "Carbs (g)",
+    "cn": "碳水化合物（克）"
+  },
+  "Carbs (g)": {
+    "en": "Carbs (g)",
+    "cn": "碳水化合物（克）"
+  },
+  "Card number": {
+    "en": "Card number",
+    "cn": "卡号"
+  },
+  "Card {{p0}}": {
+    "en": "Card {{p0}}",
+    "cn": "卡片 {{p0}}"
+  },
+  "Card": {
+    "en": "Card",
+    "cn": "卡片"
+  },
+  "Carousel Animation": {
+    "en": "Carousel Animation",
+    "cn": "轮播动画"
+  },
+  "Carousel Basic 1": {
+    "en": "Carousel Basic 1",
+    "cn": "基础轮播 1"
+  },
+  "Carousel Basic 2": {
+    "en": "Carousel Basic 2",
+    "cn": "基础轮播 2"
+  },
+  "Carousel Basic 3": {
+    "en": "Carousel Basic 3",
+    "cn": "基础轮播 3"
+  },
+  "Carousel Basic 4": {
+    "en": "Carousel Basic 4",
+    "cn": "基础轮播 4"
+  },
+  "Carousel Center Mode": {
+    "en": "Carousel Center Mode",
+    "cn": "居中轮播"
+  },
+  "Carousel Thumbnail": {
+    "en": "Carousel Thumbnail",
+    "cn": "缩略图轮播"
+  },
+  "Case Studies": {
+    "en": "Case Studies",
+    "cn": "案例研究"
+  },
+  "Case Study": {
+    "en": "Case Study",
+    "cn": "案例研究"
+  },
+  "Categories": {
+    "en": "Categories",
+    "cn": "类别"
+  },
+  "Category": {
+    "en": "Category",
+    "cn": "类别"
+  },
+  "Cellphone & Accessories": {
+    "en": "Cellphone & Accessories",
+    "cn": "手机与配件"
+  },
+  "Change Theme": {
+    "en": "Change Theme",
+    "cn": "切换主题"
+  },
+  "Change password success!": {
+    "en": "Change password success!",
+    "cn": "密码修改成功！"
+  },
+  "Check out our work": {
+    "en": "Check out our work",
+    "cn": "查看我们的作品"
+  },
+  "Checkbox 1": {
+    "en": "Checkbox 1",
+    "cn": "复选框 1"
+  },
+  "Checkbox 2": {
+    "en": "Checkbox 2",
+    "cn": "复选框 2"
+  },
+  "Checkbox 3": {
+    "en": "Checkbox 3",
+    "cn": "复选框 3"
+  },
+  "Checkbox": {
+    "en": "Checkbox",
+    "cn": "复选框"
+  },
+  "Checkboxes": {
+    "en": "Checkboxes",
+    "cn": "复选框"
+  },
+  "Checkout Complete": {
+    "en": "Checkout Complete",
+    "cn": "结账完成"
+  },
+  "Checkout": {
+    "en": "Checkout",
+    "cn": "结账"
+  },
+  "Chemical Equipment & Machinery": {
+    "en": "Chemical Equipment & Machinery",
+    "cn": "化工设备与机械"
+  },
+  "Child 1": {
+    "en": "Child 1",
+    "cn": "子项 1"
+  },
+  "Child 2": {
+    "en": "Child 2",
+    "cn": "子项 2"
+  },
+  "Child 3": {
+    "en": "Child 3",
+    "cn": "子项 3"
+  },
+  "Chip": {
+    "en": "Chip",
+    "cn": "标签块"
+  },
+  "Choose a country": {
+    "en": "Choose a country",
+    "cn": "选择国家"
+  },
+  "Choose due date": {
+    "en": "Choose due date",
+    "cn": "选择截止日期"
+  },
+  "Choose the perfect plan for your needs. Always flexible to grow": {
+    "en": "Choose the perfect plan for your needs. Always flexible to grow",
+    "cn": "选择适合需求的方案，随时灵活升级"
+  },
+  "Choose your plan and make modern online conversation magic": {
+    "en": "Choose your plan and make modern online conversation magic",
+    "cn": "选择方案，开启便捷的在线交流"
+  },
+  "Circular Indeterminate": {
+    "en": "Circular Indeterminate",
+    "cn": "不定进度圆环"
+  },
+  "Circular Size": {
+    "en": "Circular Size",
+    "cn": "圆环尺寸"
+  },
+  "Circular determinate": {
+    "en": "Circular determinate",
+    "cn": "确定进度圆环"
+  },
+  "Circular": {
+    "en": "Circular",
+    "cn": "圆形"
+  },
+  "Clear": {
+    "en": "Clear",
+    "cn": "清除"
+  },
+  "Click Me!": {
+    "en": "Click Me!",
+    "cn": "点击我！"
+  },
+  "Click me!": {
+    "en": "Click me!",
+    "cn": "点击我！"
+  },
+  "Click to copy": {
+    "en": "Click to copy",
+    "cn": "点击复制"
+  },
+  "Click": {
+    "en": "Click",
+    "cn": "点击"
+  },
+  "Close": {
+    "en": "Close",
+    "cn": "关闭"
+  },
+  "Clusters": {
+    "en": "Clusters",
+    "cn": "聚合点"
+  },
+  "Code is required": {
+    "en": "Code is required",
+    "cn": "请输入验证码"
+  },
+  "Collapsible Table": {
+    "en": "Collapsible Table",
+    "cn": "可折叠表格"
+  },
+  "Color presets": {
+    "en": "Color presets",
+    "cn": "预设颜色"
+  },
+  "Colors Text": {
+    "en": "Colors Text",
+    "cn": "文字颜色"
+  },
+  "Colors, Typography, Shadows…": {
+    "en": "Colors, Typography, Shadows…",
+    "cn": "颜色、字体排版、阴影…"
+  },
+  "Colors": {
+    "en": "Colors",
+    "cn": "颜色"
+  },
+  "Column Multiple": {
+    "en": "Column Multiple",
+    "cn": "多系列柱状图"
+  },
+  "Column Negative": {
+    "en": "Column Negative",
+    "cn": "正负柱状图"
+  },
+  "Column Single": {
+    "en": "Column Single",
+    "cn": "单系列柱状图"
+  },
+  "Column Stacked": {
+    "en": "Column Stacked",
+    "cn": "堆叠柱状图"
+  },
+  "Column": {
+    "en": "Column",
+    "cn": "列"
+  },
+  "Combo box": {
+    "en": "Combo box",
+    "cn": "组合框"
+  },
+  "Coming Soon!": {
+    "en": "Coming Soon!",
+    "cn": "即将推出！"
+  },
+  "Coming Soon": {
+    "en": "Coming Soon",
+    "cn": "即将推出"
+  },
+  "Comment": {
+    "en": "Comment",
+    "cn": "评论"
+  },
+  "Community Buy-in": {
+    "en": "Community Buy-in",
+    "cn": "社区支持"
+  },
+  "Company": {
+    "en": "Company",
+    "cn": "公司"
+  },
+  "Components from": {
+    "en": "Components from",
+    "cn": "组件来源"
+  },
+  "Components": {
+    "en": "Components",
+    "cn": "组件"
+  },
+  "Concrete Machinery": {
+    "en": "Concrete Machinery",
+    "cn": "混凝土机械"
+  },
+  "Conference Event Name": {
+    "en": "Conference Event Name",
+    "cn": "会议活动名称"
+  },
+  "Conference Event": {
+    "en": "Conference Event",
+    "cn": "会议活动"
+  },
+  "Confirm New Password": {
+    "en": "Confirm New Password",
+    "cn": "确认新密码"
+  },
+  "Confirm Password": {
+    "en": "Confirm Password",
+    "cn": "确认密码"
+  },
+  "Confirm password is required": {
+    "en": "Confirm password is required",
+    "cn": "请确认密码"
+  },
+  "Confirm to Achieve": {
+    "en": "Confirm to Achieve",
+    "cn": "确认达成"
+  },
+  "Confirm": {
+    "en": "Confirm",
+    "cn": "确认"
+  },
+  "Consistent design makes it easy to brand your own.": {
+    "en": "Consistent design makes it easy to brand your own.",
+    "cn": "统一的设计让品牌定制更简单。"
+  },
+  "Construction Machinery": {
+    "en": "Construction Machinery",
+    "cn": "工程机械"
+  },
+  "Contact us": {
+    "en": "Contact us",
+    "cn": "联系我们"
+  },
+  "Contact": {
+    "en": "Contact",
+    "cn": "联系"
+  },
+  "Contacts": {
+    "en": "Contacts",
+    "cn": "联系人"
+  },
+  "Contained Buttons": {
+    "en": "Contained Buttons",
+    "cn": "实心按钮"
+  },
+  "Contained": {
+    "en": "Contained",
+    "cn": "实心"
+  },
+  "Continue": {
+    "en": "Continue",
+    "cn": "继续"
+  },
+  "Contrast": {
+    "en": "Contrast",
+    "cn": "对比度"
+  },
+  "Controllable": {
+    "en": "Controllable",
+    "cn": "可控制"
+  },
+  "Controlled": {
+    "en": "Controlled",
+    "cn": "受控"
+  },
+  "Controls": {
+    "en": "Controls",
+    "cn": "控制项"
+  },
+  "Conversion": {
+    "en": "Conversion",
+    "cn": "转化"
+  },
+  "Copied! {{p0}}": {
+    "en": "Copied! {{p0}}",
+    "cn": "已复制！{{p0}}"
+  },
+  "Copied!": {
+    "en": "Copied!",
+    "cn": "已复制！"
+  },
+  "Copy": {
+    "en": "Copy",
+    "cn": "复制"
+  },
+  "Core": {
+    "en": "Core",
+    "cn": "核心"
+  },
+  "Counselling | BE Legacy Indicators": {
+    "en": "Counselling | BE Legacy Indicators",
+    "cn": "辅导系统 | 商务活动影响指标"
+  },
+  "Counselling | Dashboard": {
+    "en": "Counselling | Dashboard",
+    "cn": "辅导系统 | 数据概览"
+  },
+  "Country Select": {
+    "en": "Country Select",
+    "cn": "国家选择"
+  },
+  "Country": {
+    "en": "Country",
+    "cn": "国家"
+  },
+  "Create Conference": {
+    "en": "Create Conference",
+    "cn": "新增会议"
+  },
+  "Create Survey": {
+    "en": "Create Survey",
+    "cn": "新增问卷"
+  },
+  "Create Tracker/Drive for this Event/Conference": {
+    "en": "Create Tracker/Drive for this Event/Conference",
+    "cn": "为此活动／会议创建跟踪表或云端文档"
+  },
+  "Create account": {
+    "en": "Create account",
+    "cn": "创建账号"
+  },
+  "Create an account": {
+    "en": "Create an account",
+    "cn": "创建账号"
+  },
+  "Create an ad group": {
+    "en": "Create an ad group",
+    "cn": "创建广告组"
+  },
+  "Create an ad": {
+    "en": "Create an ad",
+    "cn": "创建广告"
+  },
+  "Create success!": {
+    "en": "Create success!",
+    "cn": "创建成功！"
+  },
+  "Create": {
+    "en": "Create",
+    "cn": "创建"
+  },
+  "Credit / Debit Card": {
+    "en": "Credit / Debit Card",
+    "cn": "信用卡／借记卡"
+  },
+  "Crushing & Culling Machine": {
+    "en": "Crushing & Culling Machine",
+    "cn": "破碎与筛选机械"
+  },
+  "Current Download": {
+    "en": "Current Download",
+    "cn": "当前下载量"
+  },
+  "Custom Width [500px]": {
+    "en": "Custom Width [500px]",
+    "cn": "自定义宽度 [500px]"
+  },
+  "Custom empty icon": {
+    "en": "Custom empty icon",
+    "cn": "自定义空状态图标"
+  },
+  "Custom icon and color": {
+    "en": "Custom icon and color",
+    "cn": "自定义图标与颜色"
+  },
+  "Custom icon set": {
+    "en": "Custom icon set",
+    "cn": "自定义图标集"
+  },
+  "Custom icon": {
+    "en": "Custom icon",
+    "cn": "自定义图标"
+  },
+  "Custom marks": {
+    "en": "Custom marks",
+    "cn": "自定义刻度"
+  },
+  "Custom": {
+    "en": "Custom",
+    "cn": "自定义"
+  },
+  "Customer": {
+    "en": "Customer",
+    "cn": "客户"
+  },
+  "Customization": {
+    "en": "Customization",
+    "cn": "定制"
+  },
+  "Customized Stepper": {
+    "en": "Customized Stepper",
+    "cn": "自定义步骤条"
+  },
+  "Customized": {
+    "en": "Customized",
+    "cn": "自定义"
+  },
+  "Customs shape & icon button": {
+    "en": "Customs shape & icon button",
+    "cn": "自定义形状与图标按钮"
+  },
+  "Customs": {
+    "en": "Customs",
+    "cn": "自定义"
+  },
+  "Cutting & Fold-bend Machine": {
+    "en": "Cutting & Fold-bend Machine",
+    "cn": "切割与折弯机械"
+  },
+  "DELEGATES": {
+    "en": "DELEGATES",
+    "cn": "代表人数"
+  },
+  "Dark mode": {
+    "en": "Dark mode",
+    "cn": "深色模式"
+  },
+  "Dashboard | Conference Management": {
+    "en": "Dashboard | Conference Management",
+    "cn": "控制台 | 会议管理"
+  },
+  "Dashboard | Journal Management": {
+    "en": "Dashboard | Journal Management",
+    "cn": "控制台 | 期刊管理"
+  },
+  "Dashboard | Survey Management": {
+    "en": "Dashboard | Survey Management",
+    "cn": "控制台 | 问卷管理"
+  },
+  "Dashboard": {
+    "en": "Dashboard",
+    "cn": "控制台"
+  },
+  "Date create": {
+    "en": "Date create",
+    "cn": "创建日期"
+  },
+  "DateTime": {
+    "en": "DateTime",
+    "cn": "日期与时间"
+  },
+  "DateTimePicker": {
+    "en": "DateTimePicker",
+    "cn": "日期时间选择器"
+  },
+  "Day": {
+    "en": "Day",
+    "cn": "日"
+  },
+  "Days": {
+    "en": "Days",
+    "cn": "天"
+  },
+  "Default Text": {
+    "en": "Default Text",
+    "cn": "默认文字"
+  },
+  "Default Width [300px]": {
+    "en": "Default Width [300px]",
+    "cn": "默认宽度 [300px]"
+  },
+  "Default clickable": {
+    "en": "Default clickable",
+    "cn": "默认可点击"
+  },
+  "Default deletable": {
+    "en": "Default deletable",
+    "cn": "默认可删除"
+  },
+  "Default": {
+    "en": "Default",
+    "cn": "默认"
+  },
+  "Dehumidifier": {
+    "en": "Dehumidifier",
+    "cn": "除湿机"
+  },
+  "Delete Event": {
+    "en": "Delete Event",
+    "cn": "删除活动"
+  },
+  "Delete section": {
+    "en": "Delete section",
+    "cn": "删除分区"
+  },
+  "Delete success!": {
+    "en": "Delete success!",
+    "cn": "删除成功！"
+  },
+  "Delete task": {
+    "en": "Delete task",
+    "cn": "删除任务"
+  },
+  "Delivery": {
+    "en": "Delivery",
+    "cn": "配送"
+  },
+  "Density": {
+    "en": "Density",
+    "cn": "密度"
+  },
+  "Description & Brochures": {
+    "en": "Description & Brochures",
+    "cn": "说明与宣传册"
+  },
+  "Description": {
+    "en": "Description",
+    "cn": "说明"
+  },
+  "Design Preview": {
+    "en": "Design Preview",
+    "cn": "设计预览"
+  },
+  "Dessert (100g serving)": {
+    "en": "Dessert (100g serving)",
+    "cn": "甜点（每份 100 克）"
+  },
+  "Dessert (100g serving)": {
+    "en": "Dessert (100g serving)",
+    "cn": "甜点（每份 100 克）"
+  },
+  "Destination Awareness": {
+    "en": "Destination Awareness",
+    "cn": "目的地知名度"
+  },
+  "Details": {
+    "en": "Details",
+    "cn": "详情"
+  },
+  "Development": {
+    "en": "Development",
+    "cn": "开发"
+  },
+  "Device settings": {
+    "en": "Device settings",
+    "cn": "设备设置"
+  },
+  "Dialog": {
+    "en": "Dialog",
+    "cn": "对话框"
+  },
+  "Digital Camera": {
+    "en": "Digital Camera",
+    "cn": "数码相机"
+  },
+  "Digital Devices": {
+    "en": "Digital Devices",
+    "cn": "数码设备"
+  },
+  "Digital Photo Frame": {
+    "en": "Digital Photo Frame",
+    "cn": "数码相框"
+  },
+  "Direction": {
+    "en": "Direction",
+    "cn": "方向"
+  },
+  "Disabled Captions": {
+    "en": "Disabled Captions",
+    "cn": "禁用说明文字"
+  },
+  "Disabled Fullscreen": {
+    "en": "Disabled Fullscreen",
+    "cn": "禁用全屏"
+  },
+  "Disabled Slideshow": {
+    "en": "Disabled Slideshow",
+    "cn": "禁用自动播放"
+  },
+  "Disabled Thumbnails": {
+    "en": "Disabled Thumbnails",
+    "cn": "禁用缩略图"
+  },
+  "Disabled Total": {
+    "en": "Disabled Total",
+    "cn": "禁用总数"
+  },
+  "Disabled Video": {
+    "en": "Disabled Video",
+    "cn": "禁用视频"
+  },
+  "Disabled Zoom": {
+    "en": "Disabled Zoom",
+    "cn": "禁用缩放"
+  },
+  "Disabled": {
+    "en": "Disabled",
+    "cn": "已禁用"
+  },
+  "Disagree": {
+    "en": "Disagree",
+    "cn": "不同意"
+  },
+  "Discount": {
+    "en": "Discount",
+    "cn": "折扣"
+  },
+  "Dismiss": {
+    "en": "Dismiss",
+    "cn": "关闭"
+  },
+  "Display & Accessories": {
+    "en": "Display & Accessories",
+    "cn": "显示器与配件"
+  },
+  "Dissatisfied": {
+    "en": "Dissatisfied",
+    "cn": "不满意"
+  },
+  "Documentation": {
+    "en": "Documentation",
+    "cn": "文档"
+  },
+  "Documents": {
+    "en": "Documents",
+    "cn": "文档"
+  },
+  "Donut": {
+    "en": "Donut",
+    "cn": "环形图"
+  },
+  "Don’t have a code?": {
+    "en": "Don’t have a code?",
+    "cn": "没有收到验证码？"
+  },
+  "Dot badge": {
+    "en": "Dot badge",
+    "cn": "圆点徽标"
+  },
+  "Download": {
+    "en": "Download",
+    "cn": "下载"
+  },
+  "Draggable Markers": {
+    "en": "Draggable Markers",
+    "cn": "可拖动标记"
+  },
+  "Dream team": {
+    "en": "Dream team",
+    "cn": "理想团队"
+  },
+  "Drilling Machine ": {
+    "en": "Drilling Machine ",
+    "cn": "钻床"
+  },
+  "Drop files here or click": {
+    "en": "Drop files here or click",
+    "cn": "将文件拖至此处，或点击"
+  },
+  "Drop or Select file": {
+    "en": "Drop or Select file",
+    "cn": "拖放或选择文件"
+  },
+  "Due date": {
+    "en": "Due date",
+    "cn": "截止日期"
+  },
+  "Each Day:": {
+    "en": "Each Day:",
+    "cn": "每天："
+  },
+  "Easy switch between styles.": {
+    "en": "Easy switch between styles.",
+    "cn": "轻松切换样式。"
+  },
+  "Easy to customize and extend, saving you time and money.": {
+    "en": "Easy to customize and extend, saving you time and money.",
+    "cn": "易于定制与扩展，节省时间和成本。"
+  },
+  "Edit Event": {
+    "en": "Edit Event",
+    "cn": "编辑活动"
+  },
+  "Editor Full": {
+    "en": "Editor Full",
+    "cn": "完整编辑器"
+  },
+  "Editor Simple": {
+    "en": "Editor Simple",
+    "cn": "简易编辑器"
+  },
+  "Electrical Fan & Exhaust Fan": {
+    "en": "Electrical Fan & Exhaust Fan",
+    "cn": "电风扇与排气扇"
+  },
+  "Electrical Kettle": {
+    "en": "Electrical Kettle",
+    "cn": "电热水壶"
+  },
+  "Email Address": {
+    "en": "Email Address",
+    "cn": "电子邮箱"
+  },
+  "Email address": {
+    "en": "Email address",
+    "cn": "电子邮箱"
+  },
+  "Email is required": {
+    "en": "Email is required",
+    "cn": "请输入电子邮箱"
+  },
+  "Email must be a valid email address": {
+    "en": "Email must be a valid email address",
+    "cn": "请输入有效的电子邮箱地址"
+  },
+  "Email": {
+    "en": "Email",
+    "cn": "电子邮箱"
+  },
+  "End Icon": {
+    "en": "End Icon",
+    "cn": "末尾图标"
+  },
+  "End date must be later than start date": {
+    "en": "End date must be later than start date",
+    "cn": "结束日期必须晚于开始日期"
+  },
+  "End date": {
+    "en": "End date",
+    "cn": "结束日期"
+  },
+  "End time:": {
+    "en": "End time:",
+    "cn": "结束时间："
+  },
+  "End": {
+    "en": "End",
+    "cn": "结束"
+  },
+  "End:": {
+    "en": "End:",
+    "cn": "结束："
+  },
+  "Enhanced": {
+    "en": "Enhanced",
+    "cn": "增强"
+  },
+  "Enter your email": {
+    "en": "Enter your email",
+    "cn": "请输入电子邮箱"
+  },
+  "Enter your message here.": {
+    "en": "Enter your message here.",
+    "cn": "在此输入留言。"
+  },
+  "Entertainment Electronics": {
+    "en": "Entertainment Electronics",
+    "cn": "娱乐电子产品"
+  },
+  "Entrace Fee": {
+    "en": "Entrace Fee",
+    "cn": "入场费"
+  },
+  "Environment Conservation": {
+    "en": "Environment Conservation",
+    "cn": "环境保护"
+  },
+  "Error clickable": {
+    "en": "Error clickable",
+    "cn": "错误样式可点击"
+  },
+  "Error deletable": {
+    "en": "Error deletable",
+    "cn": "错误样式可删除"
+  },
+  "Error": {
+    "en": "Error",
+    "cn": "错误"
+  },
+  "Errors": {
+    "en": "Errors",
+    "cn": "错误"
+  },
+  "Event Contents & Description": {
+    "en": "Event Contents & Description",
+    "cn": "活动内容与说明"
+  },
+  "Event/Conference": {
+    "en": "Event/Conference",
+    "cn": "活动／会议"
+  },
+  "Events (": {
+    "en": "Events (",
+    "cn": "活动（"
+  },
+  "Events": {
+    "en": "Events",
+    "cn": "活动"
+  },
+  "Evolution by Year": {
+    "en": "Evolution by Year",
+    "cn": "年度变化"
+  },
+  "Excavator": {
+    "en": "Excavator",
+    "cn": "挖掘机"
+  },
+  "Exclusive selection": {
+    "en": "Exclusive selection",
+    "cn": "单项选择"
+  },
+  "Exit Fullscreen": {
+    "en": "Exit Fullscreen",
+    "cn": "退出全屏"
+  },
+  "Express your own style with just one click": {
+    "en": "Express your own style with just one click",
+    "cn": "一键展现个人风格"
+  },
+  "Extra Components": {
+    "en": "Extra Components",
+    "cn": "扩展组件"
+  },
+  "FAQs": {
+    "en": "FAQs",
+    "cn": "常见问题"
+  },
+  "Fade": {
+    "en": "Fade",
+    "cn": "淡入淡出"
+  },
+  "Fat (g)": {
+    "en": "Fat (g)",
+    "cn": "脂肪（克）"
+  },
+  "Fat (g)": {
+    "en": "Fat (g)",
+    "cn": "脂肪（克）"
+  },
+  "Favorites": {
+    "en": "Favorites",
+    "cn": "收藏"
+  },
+  "Featured App": {
+    "en": "Featured App",
+    "cn": "精选应用"
+  },
+  "Feed Processing Machinery": {
+    "en": "Feed Processing Machinery",
+    "cn": "饲料加工机械"
+  },
+  "Feel free to contact us.": {
+    "en": "Feel free to contact us.",
+    "cn": "欢迎联系我们。"
+  },
+  "Fetch data": {
+    "en": "Fetch data",
+    "cn": "获取数据"
+  },
+  "Filled": {
+    "en": "Filled",
+    "cn": "填充样式"
+  },
+  "Filter list": {
+    "en": "Filter list",
+    "cn": "筛选列表"
+  },
+  "Filter value": {
+    "en": "Filter value",
+    "cn": "筛选值"
+  },
+  "Filters": {
+    "en": "Filters",
+    "cn": "筛选条件"
+  },
+  "Finish At": {
+    "en": "Finish At",
+    "cn": "结束于"
+  },
+  "Finish": {
+    "en": "Finish",
+    "cn": "完成"
+  },
+  "First name required": {
+    "en": "First name required",
+    "cn": "请输入名字"
+  },
+  "First name": {
+    "en": "First name",
+    "cn": "名字"
+  },
+  "Flexible plans for your": {
+    "en": "Flexible plans for your",
+    "cn": "灵活的方案，满足您的"
+  },
+  "Flexible": {
+    "en": "Flexible",
+    "cn": "灵活"
+  },
+  "Floating Action Button": {
+    "en": "Floating Action Button",
+    "cn": "悬浮操作按钮"
+  },
+  "Folder": {
+    "en": "Folder",
+    "cn": "文件夹"
+  },
+  "Food Blender": {
+    "en": "Food Blender",
+    "cn": "食品搅拌机"
+  },
+  "For Designer": {
+    "en": "For Designer",
+    "cn": "适用于设计师"
+  },
+  "For desktop": {
+    "en": "For desktop",
+    "cn": "桌面版"
+  },
+  "For mobile": {
+    "en": "For mobile",
+    "cn": "手机版"
+  },
+  "Foreign delegates": {
+    "en": "Foreign delegates",
+    "cn": "海外代表"
+  },
+  "Forgot password?": {
+    "en": "Forgot password?",
+    "cn": "忘记密码？"
+  },
+  "Forgot your password?": {
+    "en": "Forgot your password?",
+    "cn": "忘记密码？"
+  },
+  "Form Dialogs": {
+    "en": "Form Dialogs",
+    "cn": "表单对话框"
+  },
+  "Form": {
+    "en": "Form",
+    "cn": "表单"
+  },
+  "Foundation": {
+    "en": "Foundation",
+    "cn": "基础"
+  },
+  "Free solo": {
+    "en": "Free solo",
+    "cn": "自由输入"
+  },
+  "Free": {
+    "en": "Free",
+    "cn": "免费"
+  },
+  "Frequently asked questions": {
+    "en": "Frequently asked questions",
+    "cn": "常见问题"
+  },
+  "From:": {
+    "en": "From:",
+    "cn": "来自："
+  },
+  "Full Name": {
+    "en": "Full Name",
+    "cn": "姓名"
+  },
+  "Full Screen Dialogs": {
+    "en": "Full Screen Dialogs",
+    "cn": "全屏对话框"
+  },
+  "Full Screen": {
+    "en": "Full Screen",
+    "cn": "全屏"
+  },
+  "Full name": {
+    "en": "Full name",
+    "cn": "姓名"
+  },
+  "Full width": {
+    "en": "Full width",
+    "cn": "全宽"
+  },
+  "Fullscreen": {
+    "en": "Fullscreen",
+    "cn": "全屏"
+  },
+  "Gas Burner & Gas Stove": {
+    "en": "Gas Burner & Gas Stove",
+    "cn": "燃气燃烧器与燃气灶"
+  },
+  "Geojson Animation": {
+    "en": "Geojson Animation",
+    "cn": "GeoJSON 动画"
+  },
+  "Get Free Version": {
+    "en": "Get Free Version",
+    "cn": "获取免费版"
+  },
+  "Get started absolutely free.": {
+    "en": "Get started absolutely free.",
+    "cn": "免费开始使用。"
+  },
+  "Get started with": {
+    "en": "Get started with",
+    "cn": "开始使用"
+  },
+  "Go Now": {
+    "en": "Go Now",
+    "cn": "立即前往"
+  },
+  "Go to Figma Workspace": {
+    "en": "Go to Figma Workspace",
+    "cn": "前往 Figma 工作区"
+  },
+  "Go to Home": {
+    "en": "Go to Home",
+    "cn": "返回首页"
+  },
+  "Goals Details": {
+    "en": "Goals Details",
+    "cn": "目标详情"
+  },
+  "Government Commitment": {
+    "en": "Government Commitment",
+    "cn": "政府承诺"
+  },
+  "Great team is the key": {
+    "en": "Great team is the key",
+    "cn": "优秀团队是成功的关键"
+  },
+  "Grey": {
+    "en": "Grey",
+    "cn": "灰色"
+  },
+  "Grinding Machine ": {
+    "en": "Grinding Machine ",
+    "cn": "磨床"
+  },
+  "Grouped": {
+    "en": "Grouped",
+    "cn": "分组"
+  },
+  "Grouping & FixedHeader": {
+    "en": "Grouping & FixedHeader",
+    "cn": "分组与固定表头"
+  },
+  "Grow": {
+    "en": "Grow",
+    "cn": "展开"
+  },
+  "Guarantees and assurances": {
+    "en": "Guarantees and assurances",
+    "cn": "保障与承诺"
+  },
+  "Half ratings": {
+    "en": "Half ratings",
+    "cn": "半星评分"
+  },
+  "Happening Today": {
+    "en": "Happening Today",
+    "cn": "今日活动"
+  },
+  "Harvesting Machine": {
+    "en": "Harvesting Machine",
+    "cn": "收割机"
+  },
+  "Have a Question?": {
+    "en": "Have a Question?",
+    "cn": "有疑问？"
+  },
+  "Haven't found the right help?": {
+    "en": "Haven't found the right help?",
+    "cn": "还没找到需要的帮助？"
+  },
+  "Heatmap": {
+    "en": "Heatmap",
+    "cn": "热力图"
+  },
+  "Hello": {
+    "en": "Hello",
+    "cn": "您好"
+  },
+  "Hex": {
+    "en": "Hex",
+    "cn": "十六进制"
+  },
+  "Highlight By Filter": {
+    "en": "Highlight By Filter",
+    "cn": "按筛选条件高亮"
+  },
+  "Hight": {
+    "en": "Hight",
+    "cn": "高"
+  },
+  "History": {
+    "en": "History",
+    "cn": "历史记录"
+  },
+  "Home Theatre System": {
+    "en": "Home Theatre System",
+    "cn": "家庭影院系统"
+  },
+  "Home": {
+    "en": "Home",
+    "cn": "首页"
+  },
+  "Horizontal Linear Stepper": {
+    "en": "Horizontal Linear Stepper",
+    "cn": "水平线性步骤条"
+  },
+  "Horizontal": {
+    "en": "Horizontal",
+    "cn": "水平"
+  },
+  "Hot Products:": {
+    "en": "Hot Products:",
+    "cn": "热门产品："
+  },
+  "Hours": {
+    "en": "Hours",
+    "cn": "小时"
+  },
+  "Household Appliances": {
+    "en": "Household Appliances",
+    "cn": "家用电器"
+  },
+  "Household Water Treatment Equipment": {
+    "en": "Household Water Treatment Equipment",
+    "cn": "家用水处理设备"
+  },
+  "Hover feedback": {
+    "en": "Hover feedback",
+    "cn": "悬停反馈"
+  },
+  "Hover with a Popover.": {
+    "en": "Hover with a Popover.",
+    "cn": "悬停显示浮层。"
+  },
+  "Hover": {
+    "en": "Hover",
+    "cn": "悬停"
+  },
+  "How": {
+    "en": "How",
+    "cn": "如何"
+  },
+  "Html content": {
+    "en": "Html content",
+    "cn": "HTML 内容"
+  },
+  "Huge pack": {
+    "en": "Huge pack",
+    "cn": "丰富资源包"
+  },
+  "Icon Buttons": {
+    "en": "Icon Buttons",
+    "cn": "图标按钮"
+  },
+  "Icon Left": {
+    "en": "Icon Left",
+    "cn": "左侧图标"
+  },
+  "Icon Right": {
+    "en": "Icon Right",
+    "cn": "右侧图标"
+  },
+  "Icon avatars": {
+    "en": "Icon avatars",
+    "cn": "图标头像"
+  },
+  "Icon": {
+    "en": "Icon",
+    "cn": "图标"
+  },
+  "Iconify Icons": {
+    "en": "Iconify Icons",
+    "cn": "Iconify 图标"
+  },
+  "Image Aspect Ratio": {
+    "en": "Image Aspect Ratio",
+    "cn": "图片宽高比"
+  },
+  "Image avatars": {
+    "en": "Image avatars",
+    "cn": "图片头像"
+  },
+  "In View": {
+    "en": "In View",
+    "cn": "进入视野"
+  },
+  "Inactive": {
+    "en": "Inactive",
+    "cn": "未启用"
+  },
+  "Incoming": {
+    "en": "Incoming",
+    "cn": "收到"
+  },
+  "Incorrect entry.": {
+    "en": "Incorrect entry.",
+    "cn": "输入有误。"
+  },
+  "Indeterminate": {
+    "en": "Indeterminate",
+    "cn": "不确定状态"
+  },
+  "Info clickable": {
+    "en": "Info clickable",
+    "cn": "信息样式可点击"
+  },
+  "Info deletable": {
+    "en": "Info deletable",
+    "cn": "信息样式可删除"
+  },
+  "Info": {
+    "en": "Info",
+    "cn": "信息"
+  },
+  "Injection Molding Machine": {
+    "en": "Injection Molding Machine",
+    "cn": "注塑机"
+  },
+  "Input": {
+    "en": "Input",
+    "cn": "输入框"
+  },
+  "Insert Location": {
+    "en": "Insert Location",
+    "cn": "填写地点"
+  },
+  "Inter-organizational Collaboration": {
+    "en": "Inter-organizational Collaboration",
+    "cn": "机构间合作"
+  },
+  "Interaction": {
+    "en": "Interaction",
+    "cn": "交互"
+  },
+  "Interface Starter Kit": {
+    "en": "Interface Starter Kit",
+    "cn": "界面入门套件"
+  },
+  "International Convention": {
+    "en": "International Convention",
+    "cn": "国际会议"
+  },
+  "Invalid username or password.": {
+    "en": "Invalid username or password.",
+    "cn": "用户名或密码无效。"
+  },
+  "Invert the order of views": {
+    "en": "Invert the order of views",
+    "cn": "反转视图顺序"
+  },
+  "Invoice Details": {
+    "en": "Invoice Details",
+    "cn": "账单详情"
+  },
+  "Invoice ID": {
+    "en": "Invoice ID",
+    "cn": "账单编号"
+  },
+  "Invoice from": {
+    "en": "Invoice from",
+    "cn": "开票方"
+  },
+  "Invoice to": {
+    "en": "Invoice to",
+    "cn": "收票方"
+  },
+  "Item Five": {
+    "en": "Item Five",
+    "cn": "第五项"
+  },
+  "Item Four": {
+    "en": "Item Four",
+    "cn": "第四项"
+  },
+  "Item One": {
+    "en": "Item One",
+    "cn": "第一项"
+  },
+  "Item Seven": {
+    "en": "Item Seven",
+    "cn": "第七项"
+  },
+  "Item Six": {
+    "en": "Item Six",
+    "cn": "第六项"
+  },
+  "Item Three": {
+    "en": "Item Three",
+    "cn": "第三项"
+  },
+  "Item Two": {
+    "en": "Item Two",
+    "cn": "第二项"
+  },
+  "Item": {
+    "en": "Item",
+    "cn": "项目"
+  },
+  "Just date": {
+    "en": "Just date",
+    "cn": "仅日期"
+  },
+  "Label for Max. Range": {
+    "en": "Label for Max. Range",
+    "cn": "最大范围标签"
+  },
+  "Label for Min. Range": {
+    "en": "Label for Min. Range",
+    "cn": "最小范围标签"
+  },
+  "Label is required": {
+    "en": "Label is required",
+    "cn": "请输入标签"
+  },
+  "Label": {
+    "en": "Label",
+    "cn": "标签"
+  },
+  "Landing Page Template?": {
+    "en": "Landing Page Template?",
+    "cn": "落地页模板？"
+  },
+  "Landing": {
+    "en": "Landing",
+    "cn": "落地页"
+  },
+  "Laser Equipment": {
+    "en": "Laser Equipment",
+    "cn": "激光设备"
+  },
+  "Last login": {
+    "en": "Last login",
+    "cn": "上次登录"
+  },
+  "Last name required": {
+    "en": "Last name required",
+    "cn": "请输入姓氏"
+  },
+  "Last name": {
+    "en": "Last name",
+    "cn": "姓氏"
+  },
+  "Last step": {
+    "en": "Last step",
+    "cn": "最后一步"
+  },
+  "Lat:": {
+    "en": "Lat:",
+    "cn": "纬度："
+  },
+  "Lathe": {
+    "en": "Lathe",
+    "cn": "车床"
+  },
+  "Layout": {
+    "en": "Layout",
+    "cn": "布局"
+  },
+  "Learn more": {
+    "en": "Learn more",
+    "cn": "了解更多"
+  },
+  "Legacy Impact Performance": {
+    "en": "Legacy Impact Performance",
+    "cn": "持续影响表现"
+  },
+  "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.": {
+    "en": "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.",
+    "cn": "允许 Google 协助应用确定位置。这表示即使没有应用运行，也会向 Google 发送匿名位置资料。"
+  },
+  "Let's finish powering you up!": {
+    "en": "Let's finish powering you up!",
+    "cn": "完成最后的设置！"
+  },
+  "Let's work together and": {
+    "en": "Let's work together and",
+    "cn": "让我们携手"
+  },
+  "Letter avatars": {
+    "en": "Letter avatars",
+    "cn": "字母头像"
+  },
+  "Level 1": {
+    "en": "Level 1",
+    "cn": "第 1 层"
+  },
+  "Level 2.1": {
+    "en": "Level 2.1",
+    "cn": "第 2.1 层"
+  },
+  "Level 2.2": {
+    "en": "Level 2.2",
+    "cn": "第 2.2 层"
+  },
+  "Level 2.3": {
+    "en": "Level 2.3",
+    "cn": "第 2.3 层"
+  },
+  "Level 3.1": {
+    "en": "Level 3.1",
+    "cn": "第 3.1 层"
+  },
+  "Level 3.2": {
+    "en": "Level 3.2",
+    "cn": "第 3.2 层"
+  },
+  "License": {
+    "en": "License",
+    "cn": "许可"
+  },
+  "Lifting Equipment": {
+    "en": "Lifting Equipment",
+    "cn": "起重设备"
+  },
+  "Like this": {
+    "en": "Like this",
+    "cn": "喜欢此内容"
+  },
+  "Line": {
+    "en": "Line",
+    "cn": "折线图"
+  },
+  "Linear Alternative Label": {
+    "en": "Linear Alternative Label",
+    "cn": "标签置底的线性步骤条"
+  },
+  "Linear": {
+    "en": "Linear",
+    "cn": "线性"
+  },
+  "Linears Buffer": {
+    "en": "Linears Buffer",
+    "cn": "缓冲进度条"
+  },
+  "Linears Determinate": {
+    "en": "Linears Determinate",
+    "cn": "确定进度条"
+  },
+  "Linears Indeterminate": {
+    "en": "Linears Indeterminate",
+    "cn": "不定进度条"
+  },
+  "Linears Query": {
+    "en": "Linears Query",
+    "cn": "查询进度条"
+  },
+  "Link": {
+    "en": "Link",
+    "cn": "链接"
+  },
+  "Live Preview": {
+    "en": "Live Preview",
+    "cn": "实时预览"
+  },
+  "Livestock MachineryFeed": {
+    "en": "Livestock MachineryFeed",
+    "cn": "畜牧饲料机械"
+  },
+  "Local Icons": {
+    "en": "Local Icons",
+    "cn": "本地图标"
+  },
+  "Local delegates": {
+    "en": "Local delegates",
+    "cn": "本地代表"
+  },
+  "Location Label": {
+    "en": "Location Label",
+    "cn": "地点标签"
+  },
+  "Location Settings": {
+    "en": "Location Settings",
+    "cn": "地点设置"
+  },
+  "Location": {
+    "en": "Location",
+    "cn": "地点"
+  },
+  "Login": {
+    "en": "Login",
+    "cn": "登录"
+  },
+  "Logout": {
+    "en": "Logout",
+    "cn": "退出登录"
+  },
+  "Long Answer": {
+    "en": "Long Answer",
+    "cn": "长文本回答"
+  },
+  "Long:": {
+    "en": "Long:",
+    "cn": "经度："
+  },
+  "Looking For a": {
+    "en": "Looking For a",
+    "cn": "正在寻找"
+  },
+  "Low": {
+    "en": "Low",
+    "cn": "低"
+  },
+  "MONTHLY": {
+    "en": "MONTHLY",
+    "cn": "每月"
+  },
+  "Machine Tools": {
+    "en": "Machine Tools",
+    "cn": "机床"
+  },
+  "Machinery for Food, Beverage & Cereal": {
+    "en": "Machinery for Food, Beverage & Cereal",
+    "cn": "食品、饮料与谷物机械"
+  },
+  "Machinery for Garment, Shoes & Accessories": {
+    "en": "Machinery for Garment, Shoes & Accessories",
+    "cn": "服装、鞋类与配件机械"
+  },
+  "Main": {
+    "en": "Main",
+    "cn": "主要"
+  },
+  "Maintenance": {
+    "en": "Maintenance",
+    "cn": "维护中"
+  },
+  "Managing your account": {
+    "en": "Managing your account",
+    "cn": "管理您的账号"
+  },
+  "Mardown content": {
+    "en": "Mardown content",
+    "cn": "Markdown 内容"
+  },
+  "Mark Complete": {
+    "en": "Mark Complete",
+    "cn": "标记完成"
+  },
+  "Mark as Paid": {
+    "en": "Mark as Paid",
+    "cn": "标记为已付款"
+  },
+  "Mark complete": {
+    "en": "Mark complete",
+    "cn": "标记完成"
+  },
+  "Markers & Popups": {
+    "en": "Markers & Popups",
+    "cn": "标记与弹窗"
+  },
+  "Marketing": {
+    "en": "Marketing",
+    "cn": "营销"
+  },
+  "Material Icons": {
+    "en": "Material Icons",
+    "cn": "Material 图标"
+  },
+  "Max Width Dialog": {
+    "en": "Max Width Dialog",
+    "cn": "最大宽度对话框"
+  },
+  "Max height": {
+    "en": "Max height",
+    "cn": "最大高度"
+  },
+  "Max. Range Label is required.": {
+    "en": "Max. Range Label is required.",
+    "cn": "请输入最大范围标签。"
+  },
+  "Max:": {
+    "en": "Max:",
+    "cn": "最大值："
+  },
+  "Maximum value": {
+    "en": "Maximum value",
+    "cn": "最大值"
+  },
+  "Medium": {
+    "en": "Medium",
+    "cn": "中"
+  },
+  "Menu Horizon": {
+    "en": "Menu Horizon",
+    "cn": "水平菜单"
+  },
+  "Menu Mobile": {
+    "en": "Menu Mobile",
+    "cn": "移动端菜单"
+  },
+  "Menu Vertical": {
+    "en": "Menu Vertical",
+    "cn": "垂直菜单"
+  },
+  "Menu": {
+    "en": "Menu",
+    "cn": "菜单"
+  },
+  "Metallic Processing Machinery": {
+    "en": "Metallic Processing Machinery",
+    "cn": "金属加工机械"
+  },
+  "Milling Machine ": {
+    "en": "Milling Machine ",
+    "cn": "铣床"
+  },
+  "Min. Range Label is required.": {
+    "en": "Min. Range Label is required.",
+    "cn": "请输入最小范围标签。"
+  },
+  "Min:": {
+    "en": "Min:",
+    "cn": "最小值："
+  },
+  "Minimal will provide you support if you have any problems, our support team will reply within a day and we also have detailed documentation.": {
+    "en": "Minimal will provide you support if you have any problems, our support team will reply within a day and we also have detailed documentation.",
+    "cn": "如遇问题，Minimal 支持团队将在一天内回复，我们也提供详细文档。"
+  },
+  "Mixed": {
+    "en": "Mixed",
+    "cn": "混合图"
+  },
+  "Mixing Equipment": {
+    "en": "Mixing Equipment",
+    "cn": "混合设备"
+  },
+  "Mobile Phone Charger": {
+    "en": "Mobile Phone Charger",
+    "cn": "手机充电器"
+  },
+  "Mobile Phone LCD": {
+    "en": "Mobile Phone LCD",
+    "cn": "手机液晶屏"
+  },
+  "Mobile Phone": {
+    "en": "Mobile Phone",
+    "cn": "手机"
+  },
+  "Mode": {
+    "en": "Mode",
+    "cn": "模式"
+  },
+  "Moderately improving": {
+    "en": "Moderately improving",
+    "cn": "适度改善"
+  },
+  "More Categories": {
+    "en": "More Categories",
+    "cn": "更多类别"
+  },
+  "Mould": {
+    "en": "Mould",
+    "cn": "模具"
+  },
+  "Multi Item": {
+    "en": "Multi Item",
+    "cn": "多项目"
+  },
+  "Multi Select": {
+    "en": "Multi Select",
+    "cn": "多选"
+  },
+  "Multi select": {
+    "en": "Multi select",
+    "cn": "多选"
+  },
+  "Multiline Placeholder": {
+    "en": "Multiline Placeholder",
+    "cn": "多行输入提示"
+  },
+  "Multiline": {
+    "en": "Multiline",
+    "cn": "多行"
+  },
+  "Multiple Choice": {
+    "en": "Multiple Choice",
+    "cn": "多项选择"
+  },
+  "Multiple Values": {
+    "en": "Multiple Values",
+    "cn": "多个值"
+  },
+  "Multiple selection": {
+    "en": "Multiple selection",
+    "cn": "多选"
+  },
+  "NOTE:": {
+    "en": "NOTE:",
+    "cn": "备注："
+  },
+  "NOTES": {
+    "en": "NOTES",
+    "cn": "备注"
+  },
+  "Name for the conference event is required.": {
+    "en": "Name for the conference event is required.",
+    "cn": "请输入会议活动名称。"
+  },
+  "Name on card": {
+    "en": "Name on card",
+    "cn": "持卡人姓名"
+  },
+  "Name": {
+    "en": "Name",
+    "cn": "名称"
+  },
+  "National Convention": {
+    "en": "National Convention",
+    "cn": "全国会议"
+  },
+  "Native select": {
+    "en": "Native select",
+    "cn": "原生选择框"
+  },
+  "Nav Horizontal": {
+    "en": "Nav Horizontal",
+    "cn": "水平导航"
+  },
+  "Nav Mini": {
+    "en": "Nav Mini",
+    "cn": "精简导航"
+  },
+  "Nav Vertical": {
+    "en": "Nav Vertical",
+    "cn": "垂直导航"
+  },
+  "Need Help?": {
+    "en": "Need Help?",
+    "cn": "需要帮助？"
+  },
+  "Nested List Items": {
+    "en": "Nested List Items",
+    "cn": "嵌套列表项"
+  },
+  "Nested": {
+    "en": "Nested",
+    "cn": "嵌套"
+  },
+  "Neutral": {
+    "en": "Neutral",
+    "cn": "一般"
+  },
+  "New Event": {
+    "en": "New Event",
+    "cn": "新增活动"
+  },
+  "New Invoice": {
+    "en": "New Invoice",
+    "cn": "新增账单"
+  },
+  "New Option": {
+    "en": "New Option",
+    "cn": "新增选项"
+  },
+  "New Product": {
+    "en": "New Product",
+    "cn": "新增产品"
+  },
+  "New User": {
+    "en": "New User",
+    "cn": "新增用户"
+  },
+  "New section": {
+    "en": "New section",
+    "cn": "新增分区"
+  },
+  "New user?": {
+    "en": "New user?",
+    "cn": "新用户？"
+  },
+  "New": {
+    "en": "New",
+    "cn": "新增"
+  },
+  "Next": {
+    "en": "Next",
+    "cn": "下一步"
+  },
+  "No Data": {
+    "en": "No Data",
+    "cn": "暂无资料"
+  },
+  "No permission": {
+    "en": "No permission",
+    "cn": "没有权限"
+  },
+  "No results found for": {
+    "en": "No results found for",
+    "cn": "未找到相关结果："
+  },
+  "No wrapping": {
+    "en": "No wrapping",
+    "cn": "不换行"
+  },
+  "No": {
+    "en": "No",
+    "cn": "否"
+  },
+  "None": {
+    "en": "None",
+    "cn": "无"
+  },
+  "Normal": {
+    "en": "Normal",
+    "cn": "普通"
+  },
+  "Not found": {
+    "en": "Not found",
+    "cn": "未找到"
+  },
+  "Notifications": {
+    "en": "Notifications",
+    "cn": "通知"
+  },
+  "Notify Me": {
+    "en": "Notify Me",
+    "cn": "通知我"
+  },
+  "Number": {
+    "en": "Number",
+    "cn": "数字"
+  },
+  "OR": {
+    "en": "OR",
+    "cn": "或"
+  },
+  "On track or maintaining SDG achievement": {
+    "en": "On track or maintaining SDG achievement",
+    "cn": "进展正常或维持可持续发展目标成果"
+  },
+  "One": {
+    "en": "One",
+    "cn": "一"
+  },
+  "Only available at large resolutions > 1600px (xl)": {
+    "en": "Only available at large resolutions > 1600px (xl)",
+    "cn": "仅适用于大于 1600px 的分辨率（xl）"
+  },
+  "Open Customized": {
+    "en": "Open Customized",
+    "cn": "打开自定义示例"
+  },
+  "Open Menu": {
+    "en": "Open Menu",
+    "cn": "打开菜单"
+  },
+  "Open Popover": {
+    "en": "Open Popover",
+    "cn": "打开浮层"
+  },
+  "Open alert dialog": {
+    "en": "Open alert dialog",
+    "cn": "打开提示对话框"
+  },
+  "Open simple dialog": {
+    "en": "Open simple dialog",
+    "cn": "打开简易对话框"
+  },
+  "Opposite content": {
+    "en": "Opposite content",
+    "cn": "对侧内容"
+  },
+  "Option 1": {
+    "en": "Option 1",
+    "cn": "选项 1"
+  },
+  "Option 2": {
+    "en": "Option 2",
+    "cn": "选项 2"
+  },
+  "Option 3": {
+    "en": "Option 3",
+    "cn": "选项 3"
+  },
+  "Option 4": {
+    "en": "Option 4",
+    "cn": "选项 4"
+  },
+  "Option 5": {
+    "en": "Option 5",
+    "cn": "选项 5"
+  },
+  "Option 6": {
+    "en": "Option 6",
+    "cn": "选项 6"
+  },
+  "Option 7": {
+    "en": "Option 7",
+    "cn": "选项 7"
+  },
+  "Option 8": {
+    "en": "Option 8",
+    "cn": "选项 8"
+  },
+  "Optional sizes": {
+    "en": "Optional sizes",
+    "cn": "可选尺寸"
+  },
+  "Optional": {
+    "en": "Optional",
+    "cn": "可选"
+  },
+  "Organization and HR Development": {
+    "en": "Organization and HR Development",
+    "cn": "组织与人力资源发展"
+  },
+  "Orientation": {
+    "en": "Orientation",
+    "cn": "方向"
+  },
+  "Other Machinery & Parts": {
+    "en": "Other Machinery & Parts",
+    "cn": "其他机械与零件"
+  },
+  "Other": {
+    "en": "Other",
+    "cn": "其他"
+  },
+  "Our goal is to create a product and service that you’re satisfied with and use it every day. This is why we’re constantly working on our services to make it better every day and really listen to what our users has to say.": {
+    "en": "Our goal is to create a product and service that you’re satisfied with and use it every day. This is why we’re constantly working on our services to make it better every day and really listen to what our users has to say.",
+    "cn": "我们的目标是提供让您满意并愿意每天使用的产品与服务。因此，我们持续改进服务，并认真听取用户意见。"
+  },
+  "Our theme is the most advanced and user-friendly theme you will find on the market, we have documentation and video to help set your site really easily, pre-installed demos you can import in one click and everything from the theme options to page content can be edited from the front-end. This is the theme you are looking for.": {
+    "en": "Our theme is the most advanced and user-friendly theme you will find on the market, we have documentation and video to help set your site really easily, pre-installed demos you can import in one click and everything from the theme options to page content can be edited from the front-end. This is the theme you are looking for.",
+    "cn": "本主题功能完善且易于使用，提供文档与视频帮助您设置网站。预设示例可一键导入，主题选项及页面内容均可在前端编辑。"
+  },
+  "Our vision offering the best product nulla vehicula tortor scelerisque ultrices malesuada.": {
+    "en": "Our vision offering the best product nulla vehicula tortor scelerisque ultrices malesuada.",
+    "cn": "我们的愿景是提供优质产品与出色体验。"
+  },
+  "Outlined Buttons": {
+    "en": "Outlined Buttons",
+    "cn": "描边按钮"
+  },
+  "Outlined": {
+    "en": "Outlined",
+    "cn": "描边"
+  },
+  "Overall Legacy Impact Score": {
+    "en": "Overall Legacy Impact Score",
+    "cn": "整体持续影响分数"
+  },
+  "Overall Performance": {
+    "en": "Overall Performance",
+    "cn": "整体表现"
+  },
+  "Overall Score": {
+    "en": "Overall Score",
+    "cn": "总分"
+  },
+  "POPULAR": {
+    "en": "POPULAR",
+    "cn": "热门"
+  },
+  "PREMIUM": {
+    "en": "PREMIUM",
+    "cn": "高级版"
+  },
+  "Page 403": {
+    "en": "Page 403",
+    "cn": "403 页面"
+  },
+  "Page 404": {
+    "en": "Page 404",
+    "cn": "404 页面"
+  },
+  "Page 500": {
+    "en": "Page 500",
+    "cn": "500 页面"
+  },
+  "Page URL": {
+    "en": "Page URL",
+    "cn": "页面网址"
+  },
+  "Pages": {
+    "en": "Pages",
+    "cn": "页面"
+  },
+  "Paid version will have more features. Please read more": {
+    "en": "Paid version will have more features. Please read more",
+    "cn": "付费版提供更多功能，请进一步了解"
+  },
+  "Paid": {
+    "en": "Paid",
+    "cn": "已付款"
+  },
+  "Paper Machinery": {
+    "en": "Paper Machinery",
+    "cn": "造纸机械"
+  },
+  "Parent 1": {
+    "en": "Parent 1",
+    "cn": "父项 1"
+  },
+  "Parent 2": {
+    "en": "Parent 2",
+    "cn": "父项 2"
+  },
+  "Parent 3": {
+    "en": "Parent 3",
+    "cn": "父项 3"
+  },
+  "Parent 4": {
+    "en": "Parent 4",
+    "cn": "父项 4"
+  },
+  "Parent": {
+    "en": "Parent",
+    "cn": "父项"
+  },
+  "Participant": {
+    "en": "Participant",
+    "cn": "参与者"
+  },
+  "Participants": {
+    "en": "Participants",
+    "cn": "参与者"
+  },
+  "Password is required": {
+    "en": "Password is required",
+    "cn": "请输入密码"
+  },
+  "Password must be at least 6 characters": {
+    "en": "Password must be at least 6 characters",
+    "cn": "密码至少需要 6 个字符"
+  },
+  "Password": {
+    "en": "Password",
+    "cn": "密码"
+  },
+  "Passwords must match": {
+    "en": "Passwords must match",
+    "cn": "两次输入的密码必须一致"
+  },
+  "Path": {
+    "en": "Path",
+    "cn": "路径"
+  },
+  "Payment Method": {
+    "en": "Payment Method",
+    "cn": "付款方式"
+  },
+  "Payment": {
+    "en": "Payment",
+    "cn": "付款"
+  },
+  "Performance based on Area": {
+    "en": "Performance based on Area",
+    "cn": "各领域表现"
+  },
+  "Performance on SDG": {
+    "en": "Performance on SDG",
+    "cn": "可持续发展目标表现"
+  },
+  "Performance": {
+    "en": "Performance",
+    "cn": "表现"
+  },
+  "Permission Denied": {
+    "en": "Permission Denied",
+    "cn": "访问被拒绝"
+  },
+  "Persistent": {
+    "en": "Persistent",
+    "cn": "持续显示"
+  },
+  "Person name": {
+    "en": "Person name",
+    "cn": "姓名"
+  },
+  "Phone number": {
+    "en": "Phone number",
+    "cn": "电话号码"
+  },
+  "Phone:": {
+    "en": "Phone:",
+    "cn": "电话："
+  },
+  "Photographic Apparatus": {
+    "en": "Photographic Apparatus",
+    "cn": "摄影器材"
+  },
+  "Physical": {
+    "en": "Physical",
+    "cn": "实体"
+  },
+  "Physical:": {
+    "en": "Physical:",
+    "cn": "实体："
+  },
+  "Pie": {
+    "en": "Pie",
+    "cn": "饼图"
+  },
+  "Placeholder": {
+    "en": "Placeholder",
+    "cn": "输入提示"
+  },
+  "Placement": {
+    "en": "Placement",
+    "cn": "位置"
+  },
+  "Plastic & Woodworking Machinery": {
+    "en": "Plastic & Woodworking Machinery",
+    "cn": "塑料与木工机械"
+  },
+  "Plastic Machinery": {
+    "en": "Plastic Machinery",
+    "cn": "塑料机械"
+  },
+  "Plastic Recycling Machine": {
+    "en": "Plastic Recycling Machine",
+    "cn": "塑料回收机"
+  },
+  "Please check your email!": {
+    "en": "Please check your email!",
+    "cn": "请检查您的邮箱！"
+  },
+  "Please describe your case to receive the most accurate advice.": {
+    "en": "Please describe your case to receive the most accurate advice.",
+    "cn": "请说明您的情况，以获得更准确的建议。"
+  },
+  "Please enter keywords": {
+    "en": "Please enter keywords",
+    "cn": "请输入关键词"
+  },
+  "Please enter the code in below box to verify your email.": {
+    "en": "Please enter the code in below box to verify your email.",
+    "cn": "请在下方输入验证码以验证邮箱。"
+  },
+  "Please enter the email address associated with your account and We will email you a link to reset your password.": {
+    "en": "Please enter the email address associated with your account and We will email you a link to reset your password.",
+    "cn": "请输入账号绑定的邮箱，我们将向您发送密码重置链接。"
+  },
+  "Please refer to your system administrator": {
+    "en": "Please refer to your system administrator",
+    "cn": "请联系系统管理员"
+  },
+  "Please select your currency": {
+    "en": "Please select your currency",
+    "cn": "请选择币种"
+  },
+  "Points": {
+    "en": "Points",
+    "cn": "分数"
+  },
+  "Population": {
+    "en": "Population",
+    "cn": "人口"
+  },
+  "Portable Audio Appliance": {
+    "en": "Portable Audio Appliance",
+    "cn": "便携音频设备"
+  },
+  "Positioned": {
+    "en": "Positioned",
+    "cn": "指定位置"
+  },
+  "Power Bank": {
+    "en": "Power Bank",
+    "cn": "充电宝"
+  },
+  "Presets": {
+    "en": "Presets",
+    "cn": "预设"
+  },
+  "Preview Html": {
+    "en": "Preview Html",
+    "cn": "预览 HTML"
+  },
+  "Preview Plain Text": {
+    "en": "Preview Plain Text",
+    "cn": "预览纯文本"
+  },
+  "Price": {
+    "en": "Price",
+    "cn": "价格"
+  },
+  "Pricing": {
+    "en": "Pricing",
+    "cn": "价格方案"
+  },
+  "Primary clickable": {
+    "en": "Primary clickable",
+    "cn": "主色可点击"
+  },
+  "Primary deletable": {
+    "en": "Primary deletable",
+    "cn": "主色可删除"
+  },
+  "Primary": {
+    "en": "Primary",
+    "cn": "主要"
+  },
+  "Print": {
+    "en": "Print",
+    "cn": "打印"
+  },
+  "Prioritize": {
+    "en": "Prioritize",
+    "cn": "设为优先"
+  },
+  "Pristine": {
+    "en": "Pristine",
+    "cn": "未修改"
+  },
+  "Privacy Policy": {
+    "en": "Privacy Policy",
+    "cn": "隐私政策"
+  },
+  "Problem with the Product": {
+    "en": "Problem with the Product",
+    "cn": "产品问题"
+  },
+  "Professional Audio": {
+    "en": "Professional Audio",
+    "cn": "专业音响"
+  },
+  "Professional Kit": {
+    "en": "Professional Kit",
+    "cn": "专业套件"
+  },
+  "Professional plan is right for you.": {
+    "en": "Professional plan is right for you.",
+    "cn": "专业方案适合您。"
+  },
+  "Profile": {
+    "en": "Profile",
+    "cn": "个人资料"
+  },
+  "Protein (g)": {
+    "en": "Protein (g)",
+    "cn": "蛋白质（克）"
+  },
+  "Protein (g)": {
+    "en": "Protein (g)",
+    "cn": "蛋白质（克）"
+  },
+  "Purchase Now": {
+    "en": "Purchase Now",
+    "cn": "立即购买"
+  },
+  "Qty": {
+    "en": "Qty",
+    "cn": "数量"
+  },
+  "Question Label is required.": {
+    "en": "Question Label is required.",
+    "cn": "请输入问题标题。"
+  },
+  "Radar": {
+    "en": "Radar",
+    "cn": "雷达图"
+  },
+  "Radial Bar": {
+    "en": "Radial Bar",
+    "cn": "径向条形图"
+  },
+  "Radio 1": {
+    "en": "Radio 1",
+    "cn": "单选项 1"
+  },
+  "Radio 2": {
+    "en": "Radio 2",
+    "cn": "单选项 2"
+  },
+  "Radio 3": {
+    "en": "Radio 3",
+    "cn": "单选项 3"
+  },
+  "Radio Button": {
+    "en": "Radio Button",
+    "cn": "单选按钮"
+  },
+  "Radio": {
+    "en": "Radio",
+    "cn": "单选"
+  },
+  "Range": {
+    "en": "Range",
+    "cn": "范围"
+  },
+  "Ranges": {
+    "en": "Ranges",
+    "cn": "范围"
+  },
+  "Rank": {
+    "en": "Rank",
+    "cn": "排名"
+  },
+  "Rank:": {
+    "en": "Rank:",
+    "cn": "排名："
+  },
+  "Rating": {
+    "en": "Rating",
+    "cn": "评分"
+  },
+  "Read more testimonials": {
+    "en": "Read more testimonials",
+    "cn": "阅读更多评价"
+  },
+  "Read only": {
+    "en": "Read only",
+    "cn": "只读"
+  },
+  "Refrigerator, Freezer & Parts": {
+    "en": "Refrigerator, Freezer & Parts",
+    "cn": "冰箱、冷柜与零件"
+  },
+  "Regional Convention": {
+    "en": "Regional Convention",
+    "cn": "区域会议"
+  },
+  "Register": {
+    "en": "Register",
+    "cn": "注册"
+  },
+  "Registration Form": {
+    "en": "Registration Form",
+    "cn": "报名表"
+  },
+  "Remove all": {
+    "en": "Remove all",
+    "cn": "全部移除"
+  },
+  "Rename section": {
+    "en": "Rename section",
+    "cn": "重命名分区"
+  },
+  "Request sent successfully!": {
+    "en": "Request sent successfully!",
+    "cn": "请求发送成功！"
+  },
+  "Required": {
+    "en": "Required",
+    "cn": "必填"
+  },
+  "Resend Survey Questionnaire": {
+    "en": "Resend Survey Questionnaire",
+    "cn": "重新发送问卷"
+  },
+  "Resend Survey": {
+    "en": "Resend Survey",
+    "cn": "重新发送问卷"
+  },
+  "Resend code": {
+    "en": "Resend code",
+    "cn": "重新发送验证码"
+  },
+  "Reset password": {
+    "en": "Reset password",
+    "cn": "重置密码"
+  },
+  "Responsiveness": {
+    "en": "Responsiveness",
+    "cn": "响应性"
+  },
+  "Restricted values": {
+    "en": "Restricted values",
+    "cn": "限定值"
+  },
+  "Return & Refund": {
+    "en": "Return & Refund",
+    "cn": "退货与退款"
+  },
+  "Return to sign in": {
+    "en": "Return to sign in",
+    "cn": "返回登录"
+  },
+  "Right": {
+    "en": "Right",
+    "cn": "右侧"
+  },
+  "Role": {
+    "en": "Role",
+    "cn": "角色"
+  },
+  "Rooms": {
+    "en": "Rooms",
+    "cn": "房间"
+  },
+  "Rounded": {
+    "en": "Rounded",
+    "cn": "圆角"
+  },
+  "Rubber Machinery": {
+    "en": "Rubber Machinery",
+    "cn": "橡胶机械"
+  },
+  "SARAWAK BE CITIES": {
+    "en": "SARAWAK BE CITIES",
+    "cn": "砂拉越商务活动城市"
+  },
+  "STATUS": {
+    "en": "STATUS",
+    "cn": "状态"
+  },
+  "Sarawak Business Event(BE) Brand": {
+    "en": "Sarawak Business Event(BE) Brand",
+    "cn": "砂拉越商务活动品牌"
+  },
+  "Sarawak": {
+    "en": "Sarawak",
+    "cn": "砂拉越"
+  },
+  "Satisfied": {
+    "en": "Satisfied",
+    "cn": "满意"
+  },
+  "Schedule": {
+    "en": "Schedule",
+    "cn": "日程"
+  },
+  "Score 2023 VS Score 2022": {
+    "en": "Score 2023 VS Score 2022",
+    "cn": "2023 年与 2022 年分数对比"
+  },
+  "Score": {
+    "en": "Score",
+    "cn": "分数"
+  },
+  "Score:": {
+    "en": "Score:",
+    "cn": "分数："
+  },
+  "Scroll": {
+    "en": "Scroll",
+    "cn": "滚动"
+  },
+  "Scrollable": {
+    "en": "Scrollable",
+    "cn": "可滚动"
+  },
+  "Scrolling Content Dialogs": {
+    "en": "Scrolling Content Dialogs",
+    "cn": "内容滚动对话框"
+  },
+  "Search client or invoice number...": {
+    "en": "Search client or invoice number...",
+    "cn": "搜索客户或账单编号…"
+  },
+  "Search input": {
+    "en": "Search input",
+    "cn": "搜索输入框"
+  },
+  "Search support...": {
+    "en": "Search support...",
+    "cn": "搜索帮助…"
+  },
+  "Search": {
+    "en": "Search",
+    "cn": "搜索"
+  },
+  "Search...": {
+    "en": "Search...",
+    "cn": "搜索…"
+  },
+  "Secondary clickable": {
+    "en": "Secondary clickable",
+    "cn": "辅助色可点击"
+  },
+  "Secondary deletable": {
+    "en": "Secondary deletable",
+    "cn": "辅助色可删除"
+  },
+  "Secondary": {
+    "en": "Secondary",
+    "cn": "辅助"
+  },
+  "Seconds": {
+    "en": "Seconds",
+    "cn": "秒"
+  },
+  "Section name": {
+    "en": "Section name",
+    "cn": "分区名称"
+  },
+  "Secure credit card payment": {
+    "en": "Secure credit card payment",
+    "cn": "安全信用卡付款"
+  },
+  "Select Theme:": {
+    "en": "Select Theme:",
+    "cn": "选择主题："
+  },
+  "Select campaign settings": {
+    "en": "Select campaign settings",
+    "cn": "选择广告活动设置"
+  },
+  "Select": {
+    "en": "Select",
+    "cn": "选择"
+  },
+  "Selected": {
+    "en": "Selected",
+    "cn": "已选"
+  },
+  "Selected:": {
+    "en": "Selected:",
+    "cn": "已选："
+  },
+  "Send Again": {
+    "en": "Send Again",
+    "cn": "重新发送"
+  },
+  "Send Request": {
+    "en": "Send Request",
+    "cn": "发送请求"
+  },
+  "Send Survey Form": {
+    "en": "Send Survey Form",
+    "cn": "发送问卷表单"
+  },
+  "Send": {
+    "en": "Send",
+    "cn": "发送"
+  },
+  "Service Quality and Standards": {
+    "en": "Service Quality and Standards",
+    "cn": "服务质量与标准"
+  },
+  "Service type": {
+    "en": "Service type",
+    "cn": "服务类型"
+  },
+  "Services": {
+    "en": "Services",
+    "cn": "服务"
+  },
+  "Set backup account": {
+    "en": "Set backup account",
+    "cn": "设置备用账号"
+  },
+  "Settings": {
+    "en": "Settings",
+    "cn": "设置"
+  },
+  "Share": {
+    "en": "Share",
+    "cn": "分享"
+  },
+  "Short Answer": {
+    "en": "Short Answer",
+    "cn": "简短回答"
+  },
+  "Show Debug": {
+    "en": "Show Debug",
+    "cn": "显示调试信息"
+  },
+  "Show Thumbnail": {
+    "en": "Show Thumbnail",
+    "cn": "显示缩略图"
+  },
+  "Side By Side": {
+    "en": "Side By Side",
+    "cn": "并排显示"
+  },
+  "Side by side": {
+    "en": "Side by side",
+    "cn": "并排显示"
+  },
+  "Sign in to CounsellingCentreManagementSystem": {
+    "en": "Sign in to CounsellingCentreManagementSystem",
+    "cn": "登录辅导中心管理系统"
+  },
+  "Sign in": {
+    "en": "Sign in",
+    "cn": "登录"
+  },
+  "Simple": {
+    "en": "Simple",
+    "cn": "简易"
+  },
+  "Single select": {
+    "en": "Single select",
+    "cn": "单选"
+  },
+  "Size & Custom Icon": {
+    "en": "Size & Custom Icon",
+    "cn": "尺寸与自定义图标"
+  },
+  "Size Medium": {
+    "en": "Size Medium",
+    "cn": "中尺寸"
+  },
+  "Size small": {
+    "en": "Size small",
+    "cn": "小尺寸"
+  },
+  "Size": {
+    "en": "Size",
+    "cn": "尺寸"
+  },
+  "Sizes": {
+    "en": "Sizes",
+    "cn": "尺寸"
+  },
+  "Size (km²)": {
+    "en": "Size (km²)",
+    "cn": "面积（平方公里）"
+  },
+  "Skip": {
+    "en": "Skip",
+    "cn": "跳过"
+  },
+  "Small steps": {
+    "en": "Small steps",
+    "cn": "小步进"
+  },
+  "Small": {
+    "en": "Small",
+    "cn": "小"
+  },
+  "Smart Glasses": {
+    "en": "Smart Glasses",
+    "cn": "智能眼镜"
+  },
+  "Social Legacy": {
+    "en": "Social Legacy",
+    "cn": "社会持续影响"
+  },
+  "Soft Buttons": {
+    "en": "Soft Buttons",
+    "cn": "柔和按钮"
+  },
+  "Soft": {
+    "en": "Soft",
+    "cn": "柔和"
+  },
+  "Solar Water Heater": {
+    "en": "Solar Water Heater",
+    "cn": "太阳能热水器"
+  },
+  "Some advanced components from MUI X will not be included. So you need to purchase a separate": {
+    "en": "Some advanced components from MUI X will not be included. So you need to purchase a separate",
+    "cn": "不包含部分 MUI X 高级组件，需另行购买"
+  },
+  "Some custom components / use 3rd party dependencies (chart, map, editor…).": {
+    "en": "Some custom components / use 3rd party dependencies (chart, map, editor…).",
+    "cn": "部分自定义组件使用第三方依赖（图表、地图、编辑器等）。"
+  },
+  "Something something": {
+    "en": "Something something",
+    "cn": "示例内容"
+  },
+  "Sorry, page not found!": {
+    "en": "Sorry, page not found!",
+    "cn": "抱歉，找不到此页面！"
+  },
+  "Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your spelling.": {
+    "en": "Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your spelling.",
+    "cn": "抱歉，找不到您要访问的页面。网址可能有误，请检查后重试。"
+  },
+  "Sorting & Selecting": {
+    "en": "Sorting & Selecting",
+    "cn": "排序与选择"
+  },
+  "Sound": {
+    "en": "Sound",
+    "cn": "声音"
+  },
+  "Spacing": {
+    "en": "Spacing",
+    "cn": "间距"
+  },
+  "Spacing:": {
+    "en": "Spacing:",
+    "cn": "间距："
+  },
+  "Split screen": {
+    "en": "Split screen",
+    "cn": "分屏"
+  },
+  "Stagnating": {
+    "en": "Stagnating",
+    "cn": "停滞"
+  },
+  "Standard": {
+    "en": "Standard",
+    "cn": "标准"
+  },
+  "Start At": {
+    "en": "Start At",
+    "cn": "开始于"
+  },
+  "Start Icon": {
+    "en": "Start Icon",
+    "cn": "起始图标"
+  },
+  "Start a": {
+    "en": "Start a",
+    "cn": "开始一个"
+  },
+  "Start date": {
+    "en": "Start date",
+    "cn": "开始日期"
+  },
+  "Start time:": {
+    "en": "Start time:",
+    "cn": "开始时间："
+  },
+  "Start": {
+    "en": "Start",
+    "cn": "开始"
+  },
+  "Start:": {
+    "en": "Start:",
+    "cn": "开始："
+  },
+  "Static mode": {
+    "en": "Static mode",
+    "cn": "静态模式"
+  },
+  "Status": {
+    "en": "Status",
+    "cn": "状态"
+  },
+  "Step": {
+    "en": "Step",
+    "cn": "步骤"
+  },
+  "Still have questions?": {
+    "en": "Still have questions?",
+    "cn": "还有疑问？"
+  },
+  "Stone Processing Machinery": {
+    "en": "Stone Processing Machinery",
+    "cn": "石材加工机械"
+  },
+  "Stretch": {
+    "en": "Stretch",
+    "cn": "拉伸"
+  },
+  "Sub-subtree with children": {
+    "en": "Sub-subtree with children",
+    "cn": "包含子项的次级子树"
+  },
+  "Subject": {
+    "en": "Subject",
+    "cn": "主题"
+  },
+  "Submit Layout": {
+    "en": "Submit Layout",
+    "cn": "提交布局"
+  },
+  "Submit Now": {
+    "en": "Submit Now",
+    "cn": "立即提交"
+  },
+  "Submit to check": {
+    "en": "Submit to check",
+    "cn": "提交检查"
+  },
+  "Submit": {
+    "en": "Submit",
+    "cn": "提交"
+  },
+  "Subscribe": {
+    "en": "Subscribe",
+    "cn": "订阅"
+  },
+  "Subscription": {
+    "en": "Subscription",
+    "cn": "订阅"
+  },
+  "Subtotal": {
+    "en": "Subtotal",
+    "cn": "小计"
+  },
+  "Subtree with children": {
+    "en": "Subtree with children",
+    "cn": "包含子项的子树"
+  },
+  "Success clickable": {
+    "en": "Success clickable",
+    "cn": "成功样式可点击"
+  },
+  "Success deletable": {
+    "en": "Success deletable",
+    "cn": "成功样式可删除"
+  },
+  "Success": {
+    "en": "Success",
+    "cn": "成功"
+  },
+  "Summary": {
+    "en": "Summary",
+    "cn": "摘要"
+  },
+  "Survey Form": {
+    "en": "Survey Form",
+    "cn": "问卷表单"
+  },
+  "Switch": {
+    "en": "Switch",
+    "cn": "开关"
+  },
+  "System": {
+    "en": "System",
+    "cn": "系统"
+  },
+  "TV & Parts": {
+    "en": "TV & Parts",
+    "cn": "电视与零件"
+  },
+  "Table": {
+    "en": "Table",
+    "cn": "表格"
+  },
+  "Task name": {
+    "en": "Task name",
+    "cn": "任务名称"
+  },
+  "Taxes": {
+    "en": "Taxes",
+    "cn": "税费"
+  },
+  "Temperature": {
+    "en": "Temperature",
+    "cn": "温度"
+  },
+  "Terms of Service": {
+    "en": "Terms of Service",
+    "cn": "服务条款"
+  },
+  "Testimonials": {
+    "en": "Testimonials",
+    "cn": "用户评价"
+  },
+  "Text Buttons": {
+    "en": "Text Buttons",
+    "cn": "文字按钮"
+  },
+  "Text Field": {
+    "en": "Text Field",
+    "cn": "文本框"
+  },
+  "Text Object": {
+    "en": "Text Object",
+    "cn": "文本对象"
+  },
+  "Text": {
+    "en": "Text",
+    "cn": "文字"
+  },
+  "Textarea": {
+    "en": "Textarea",
+    "cn": "多行文本框"
+  },
+  "Textile Machinery & Parts": {
+    "en": "Textile Machinery & Parts",
+    "cn": "纺织机械与零件"
+  },
+  "The Finish Time is required": {
+    "en": "The Finish Time is required",
+    "cn": "请选择结束时间"
+  },
+  "The Start Time is required": {
+    "en": "The Start Time is required",
+    "cn": "请选择开始时间"
+  },
+  "The kit is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.": {
+    "en": "The kit is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.",
+    "cn": "本套件遵循原子设计原则，帮助您快速创建项目，并轻松定制所需组件。"
+  },
+  "The list is empty. Click to create Location": {
+    "en": "The list is empty. Click to create Location",
+    "cn": "列表为空，点击新增地点"
+  },
+  "The list is empty. Click to create Tracker": {
+    "en": "The list is empty. Click to create Tracker",
+    "cn": "列表为空，点击新增跟踪表"
+  },
+  "The option label is required.": {
+    "en": "The option label is required.",
+    "cn": "请输入选项标签。"
+  },
+  "The page you're trying access has restricted access.": {
+    "en": "The page you're trying access has restricted access.",
+    "cn": "您尝试访问的页面受权限限制。"
+  },
+  "The right plan for": {
+    "en": "The right plan for",
+    "cn": "适合以下需求的方案："
+  },
+  "The starting point for your next project is based on MUI.Easy customization Helps you build apps faster and better.": {
+    "en": "The starting point for your next project is based on MUI.Easy customization Helps you build apps faster and better.",
+    "cn": "基于 MUI 的项目起点，易于定制，帮助您更快构建优质应用。"
+  },
+  "The starting point for your next project with Counselling Centre Management System Kit, built on the newest version of Material-UI ©, ready to be customized to your style.": {
+    "en": "The starting point for your next project with Counselling Centre Management System Kit, built on the newest version of Material-UI ©, ready to be customized to your style.",
+    "cn": "使用辅导中心管理系统套件开启新项目。套件基于 Material-UI 构建，可按您的风格定制。"
+  },
+  "There was an error, please try again later.": {
+    "en": "There was an error, please try again later.",
+    "cn": "发生错误，请稍后重试。"
+  },
+  "This Month": {
+    "en": "This Month",
+    "cn": "本月"
+  },
+  "This column has a value getter and is not sortable.": {
+    "en": "This column has a value getter and is not sortable.",
+    "cn": "此列使用值获取函数，不支持排序。"
+  },
+  "This component includes 2": {
+    "en": "This component includes 2",
+    "cn": "此组件包含两种"
+  },
+  "This is a secure 128-bit SSL encrypted payment": {
+    "en": "This is a secure 128-bit SSL encrypted payment",
+    "cn": "此付款使用安全的 128 位 SSL 加密"
+  },
+  "This is a success alert —": {
+    "en": "This is a success alert —",
+    "cn": "这是一条成功提示 —"
+  },
+  "This is an default": {
+    "en": "This is an default",
+    "cn": "这是一条默认提示"
+  },
+  "This is an error": {
+    "en": "This is an error",
+    "cn": "这是一条错误提示"
+  },
+  "This is an info alert — check it out!": {
+    "en": "This is an info alert — check it out!",
+    "cn": "这是一条信息提示，请查看！"
+  },
+  "This is an info": {
+    "en": "This is an info",
+    "cn": "这是一条信息提示"
+  },
+  "This is an success": {
+    "en": "This is an success",
+    "cn": "这是一条成功提示"
+  },
+  "This is an warning": {
+    "en": "This is an warning",
+    "cn": "这是一条警告提示"
+  },
+  "This is an {{p0}}": {
+    "en": "This is an {{p0}}",
+    "cn": "这是一条 {{p0}} 提示"
+  },
+  "This is an": {
+    "en": "This is an",
+    "cn": "这是一条"
+  },
+  "This is the custom component from minimal.": {
+    "en": "This is the custom component from minimal.",
+    "cn": "这是 Minimal 提供的自定义组件。"
+  },
+  "Three": {
+    "en": "Three",
+    "cn": "三"
+  },
+  "Three-digit number on the back of your VISA card": {
+    "en": "Three-digit number on the back of your VISA card",
+    "cn": "VISA 卡背面的三位数字"
+  },
+  "Till:": {
+    "en": "Till:",
+    "cn": "截至："
+  },
+  "Tiller": {
+    "en": "Tiller",
+    "cn": "耕耘机"
+  },
+  "Timezones:": {
+    "en": "Timezones:",
+    "cn": "时区："
+  },
+  "Title is required": {
+    "en": "Title is required",
+    "cn": "请输入标题"
+  },
+  "Title": {
+    "en": "Title",
+    "cn": "标题"
+  },
+  "To subscribe to this website, please enter your email address here. We will send updates occasionally.": {
+    "en": "To subscribe to this website, please enter your email address here. We will send updates occasionally.",
+    "cn": "请输入电子邮箱以订阅本网站，我们将不定期发送更新。"
+  },
+  "Toggle Buttons": {
+    "en": "Toggle Buttons",
+    "cn": "切换按钮"
+  },
+  "Token expired": {
+    "en": "Token expired",
+    "cn": "验证凭证已过期"
+  },
+  "Top Authors": {
+    "en": "Top Authors",
+    "cn": "热门作者"
+  },
+  "Top Center": {
+    "en": "Top Center",
+    "cn": "顶部居中"
+  },
+  "Top Installed Countries": {
+    "en": "Top Installed Countries",
+    "cn": "安装量最多的国家"
+  },
+  "Top Left": {
+    "en": "Top Left",
+    "cn": "左上方"
+  },
+  "Top Related Applications": {
+    "en": "Top Related Applications",
+    "cn": "热门相关应用"
+  },
+  "Top Right": {
+    "en": "Top Right",
+    "cn": "右上方"
+  },
+  "Top": {
+    "en": "Top",
+    "cn": "顶部"
+  },
+  "Total Active Users": {
+    "en": "Total Active Users",
+    "cn": "活跃用户总数"
+  },
+  "Total Billed": {
+    "en": "Total Billed",
+    "cn": "账单总额"
+  },
+  "Total Downloads": {
+    "en": "Total Downloads",
+    "cn": "下载总数"
+  },
+  "Total Impact Index": {
+    "en": "Total Impact Index",
+    "cn": "总影响指数"
+  },
+  "Total Installed": {
+    "en": "Total Installed",
+    "cn": "安装总数"
+  },
+  "Total price ($)": {
+    "en": "Total price ($)",
+    "cn": "总价（$）"
+  },
+  "Total": {
+    "en": "Total",
+    "cn": "总计"
+  },
+  "Tour": {
+    "en": "Tour",
+    "cn": "导览"
+  },
+  "Tours": {
+    "en": "Tours",
+    "cn": "导览"
+  },
+  "Tracing Forms": {
+    "en": "Tracing Forms",
+    "cn": "跟踪表单"
+  },
+  "Track Record": {
+    "en": "Track Record",
+    "cn": "历史记录"
+  },
+  "Tracker Label": {
+    "en": "Tracker Label",
+    "cn": "跟踪表标签"
+  },
+  "Transitions Dialogs": {
+    "en": "Transitions Dialogs",
+    "cn": "过渡动画对话框"
+  },
+  "Transitions": {
+    "en": "Transitions",
+    "cn": "过渡动画"
+  },
+  "Travel": {
+    "en": "Travel",
+    "cn": "旅行"
+  },
+  "Trends:": {
+    "en": "Trends:",
+    "cn": "趋势："
+  },
+  "Try checking for typos or using complete words.": {
+    "en": "Try checking for typos or using complete words.",
+    "cn": "请检查是否有错别字，或使用完整词语搜索。"
+  },
+  "Two": {
+    "en": "Two",
+    "cn": "二"
+  },
+  "Type a message": {
+    "en": "Type a message",
+    "cn": "输入消息"
+  },
+  "Type": {
+    "en": "Type",
+    "cn": "类型"
+  },
+  "Typography": {
+    "en": "Typography",
+    "cn": "字体排版"
+  },
+  "UI & UX Design": {
+    "en": "UI & UX Design",
+    "cn": "界面与用户体验设计"
+  },
+  "URL (Google Sheet or any other)": {
+    "en": "URL (Google Sheet or any other)",
+    "cn": "网址（Google 表格或其他链接）"
+  },
+  "Unable to logout!": {
+    "en": "Unable to logout!",
+    "cn": "无法退出登录！"
+  },
+  "Undo": {
+    "en": "Undo",
+    "cn": "撤销"
+  },
+  "Unit price": {
+    "en": "Unit price",
+    "cn": "单价"
+  },
+  "Untitled Answer": {
+    "en": "Untitled Answer",
+    "cn": "未命名回答"
+  },
+  "Upcoming Event": {
+    "en": "Upcoming Event",
+    "cn": "即将举行的活动"
+  },
+  "Upcoming Events": {
+    "en": "Upcoming Events",
+    "cn": "即将举行的活动"
+  },
+  "Update Password": {
+    "en": "Update Password",
+    "cn": "更新密码"
+  },
+  "Update photo": {
+    "en": "Update photo",
+    "cn": "更新照片"
+  },
+  "Update success!": {
+    "en": "Update success!",
+    "cn": "更新成功！"
+  },
+  "Update": {
+    "en": "Update",
+    "cn": "更新"
+  },
+  "Upgrade My Plan": {
+    "en": "Upgrade My Plan",
+    "cn": "升级方案"
+  },
+  "Upload Avatar": {
+    "en": "Upload Avatar",
+    "cn": "上传头像"
+  },
+  "Upload Box": {
+    "en": "Upload Box",
+    "cn": "上传区域"
+  },
+  "Upload Brochures": {
+    "en": "Upload Brochures",
+    "cn": "上传宣传册"
+  },
+  "Upload Multi File": {
+    "en": "Upload Multi File",
+    "cn": "上传多个文件"
+  },
+  "Upload Single File": {
+    "en": "Upload Single File",
+    "cn": "上传单个文件"
+  },
+  "Upload file": {
+    "en": "Upload file",
+    "cn": "上传文件"
+  },
+  "Upload files": {
+    "en": "Upload files",
+    "cn": "上传文件"
+  },
+  "Upload photo": {
+    "en": "Upload photo",
+    "cn": "上传照片"
+  },
+  "Upload": {
+    "en": "Upload",
+    "cn": "上传"
+  },
+  "Url is required": {
+    "en": "Url is required",
+    "cn": "请输入网址"
+  },
+  "Use Google's location service?": {
+    "en": "Use Google's location service?",
+    "cn": "使用 Google 定位服务？"
+  },
+  "Use a Template": {
+    "en": "Use a Template",
+    "cn": "使用模板"
+  },
+  "Values": {
+    "en": "Values",
+    "cn": "值"
+  },
+  "Variable Width": {
+    "en": "Variable Width",
+    "cn": "可变宽度"
+  },
+  "Variant": {
+    "en": "Variant",
+    "cn": "样式变体"
+  },
+  "Verified": {
+    "en": "Verified",
+    "cn": "已验证"
+  },
+  "Verify code": {
+    "en": "Verify code",
+    "cn": "验证验证码"
+  },
+  "Verify success!": {
+    "en": "Verify success!",
+    "cn": "验证成功！"
+  },
+  "Verify": {
+    "en": "Verify",
+    "cn": "验证"
+  },
+  "Vertical & Standalone buttons": {
+    "en": "Vertical & Standalone buttons",
+    "cn": "垂直排列与独立按钮"
+  },
+  "Vertical Linear Stepper": {
+    "en": "Vertical Linear Stepper",
+    "cn": "垂直线性步骤条"
+  },
+  "Vertical": {
+    "en": "Vertical",
+    "cn": "垂直"
+  },
+  "Very Dissatisfied": {
+    "en": "Very Dissatisfied",
+    "cn": "非常不满意"
+  },
+  "Very Satisfied": {
+    "en": "Very Satisfied",
+    "cn": "非常满意"
+  },
+  "Video": {
+    "en": "Video",
+    "cn": "视频"
+  },
+  "View All Components": {
+    "en": "View All Components",
+    "cn": "查看所有组件"
+  },
+  "View All": {
+    "en": "View All",
+    "cn": "查看全部"
+  },
+  "View More": {
+    "en": "View More",
+    "cn": "查看更多"
+  },
+  "View all team members": {
+    "en": "View all team members",
+    "cn": "查看所有团队成员"
+  },
+  "View": {
+    "en": "View",
+    "cn": "查看"
+  },
+  "Viewport Animation": {
+    "en": "Viewport Animation",
+    "cn": "视口动画"
+  },
+  "Views playground": {
+    "en": "Views playground",
+    "cn": "视图演示"
+  },
+  "Virtual Location Link": {
+    "en": "Virtual Location Link",
+    "cn": "线上地点链接"
+  },
+  "Virtual": {
+    "en": "Virtual",
+    "cn": "线上"
+  },
+  "Virtual:": {
+    "en": "Virtual:",
+    "cn": "线上："
+  },
+  "Visit Zone Landing Page": {
+    "en": "Visit Zone Landing Page",
+    "cn": "访问 Zone 落地页"
+  },
+  "Volume": {
+    "en": "Volume",
+    "cn": "音量"
+  },
+  "Warning clickable": {
+    "en": "Warning clickable",
+    "cn": "警告样式可点击"
+  },
+  "Warning deletable": {
+    "en": "Warning deletable",
+    "cn": "警告样式可删除"
+  },
+  "Warning": {
+    "en": "Warning",
+    "cn": "警告"
+  },
+  "Water Heater & Components": {
+    "en": "Water Heater & Components",
+    "cn": "热水器与配件"
+  },
+  "We appreciate your business. Should you need us to add VAT or extra notes let us know!": {
+    "en": "We appreciate your business. Should you need us to add VAT or extra notes let us know!",
+    "cn": "感谢您的惠顾。如需添加增值税资料或其他备注，请告诉我们！"
+  },
+  "We are currently working hard on this page!": {
+    "en": "We are currently working hard on this page!",
+    "cn": "我们正在努力建设此页面！"
+  },
+  "We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just dive in!": {
+    "en": "We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just dive in!",
+    "cn": "这里汇集了常用的菜单、滑块、按钮、输入框等组件，欢迎探索！"
+  },
+  "We have emailed a 6-digit confirmation code to acb@domain, please enter the code in below box to verify your email.": {
+    "en": "We have emailed a 6-digit confirmation code to acb@domain, please enter the code in below box to verify your email.",
+    "cn": "我们已向 acb@domain 发送六位验证码，请在下方输入以验证邮箱。"
+  },
+  "We'll be glad to hear from you, buddy.": {
+    "en": "We'll be glad to hear from you, buddy.",
+    "cn": "欢迎与我们联系。"
+  },
+  "We've sent a 6-digit confirmation email to your email.": {
+    "en": "We've sent a 6-digit confirmation email to your email.",
+    "cn": "我们已向您的邮箱发送六位验证码。"
+  },
+  "Wearable Devices": {
+    "en": "Wearable Devices",
+    "cn": "穿戴设备"
+  },
+  "Website currently under maintenance": {
+    "en": "Website currently under maintenance",
+    "cn": "网站正在维护中"
+  },
+  "Week": {
+    "en": "Week",
+    "cn": "周"
+  },
+  "Weight": {
+    "en": "Weight",
+    "cn": "权重"
+  },
+  "What is minimal?": {
+    "en": "What is minimal?",
+    "cn": "什么是 Minimal？"
+  },
+  "What minimal": {
+    "en": "What minimal",
+    "cn": "Minimal 有哪些"
+  },
+  "Where": {
+    "en": "Where",
+    "cn": "在哪里"
+  },
+  "Who love": {
+    "en": "Who love",
+    "cn": "喜爱我们的用户"
+  },
+  "Who": {
+    "en": "Who",
+    "cn": "谁"
+  },
+  "Window": {
+    "en": "Window",
+    "cn": "窗口"
+  },
+  "With Action": {
+    "en": "With Action",
+    "cn": "带操作"
+  },
+  "With Animate": {
+    "en": "With Animate",
+    "cn": "带动画"
+  },
+  "With Caption": {
+    "en": "With Caption",
+    "cn": "带说明文字"
+  },
+  "With Close": {
+    "en": "With Close",
+    "cn": "带关闭按钮"
+  },
+  "With Icon & Adornments": {
+    "en": "With Icon & Adornments",
+    "cn": "带图标与装饰"
+  },
+  "With Icon & Loading": {
+    "en": "With Icon & Loading",
+    "cn": "带图标与加载状态"
+  },
+  "With Icon": {
+    "en": "With Icon",
+    "cn": "带图标"
+  },
+  "With badge": {
+    "en": "With badge",
+    "cn": "带徽标"
+  },
+  "With huge resource pack making deployment": {
+    "en": "With huge resource pack making deployment",
+    "cn": "丰富的资源包，让部署"
+  },
+  "With normal TextField": {
+    "en": "With normal TextField",
+    "cn": "使用普通文本框"
+  },
+  "Woodworking Machinery": {
+    "en": "Woodworking Machinery",
+    "cn": "木工机械"
+  },
+  "World": {
+    "en": "World",
+    "cn": "世界"
+  },
+  "Write something awesome...": {
+    "en": "Write something awesome...",
+    "cn": "写下精彩内容…"
+  },
+  "YEARLY (save 10%)": {
+    "en": "YEARLY (save 10%)",
+    "cn": "每年（节省 10%）"
+  },
+  "Year and Month": {
+    "en": "Year and Month",
+    "cn": "年与月"
+  },
+  "Year only": {
+    "en": "Year only",
+    "cn": "仅年份"
+  },
+  "Year, month and date": {
+    "en": "Year, month and date",
+    "cn": "年、月、日"
+  },
+  "Yes": {
+    "en": "Yes",
+    "cn": "是"
+  },
+  "You are finish the form": {
+    "en": "You are finish the form",
+    "cn": "您已完成表单"
+  },
+  "You can set my maximum width and whether to adapt or not.": {
+    "en": "You can set my maximum width and whether to adapt or not.",
+    "cn": "您可以设置最大宽度，以及是否自适应。"
+  },
+  "You can use more advanced components by MUI.": {
+    "en": "You can use more advanced components by MUI.",
+    "cn": "您可以使用 MUI 提供的更多高级组件。"
+  },
+  "You do not have permission to access this page": {
+    "en": "You do not have permission to access this page",
+    "cn": "您没有权限访问此页面"
+  },
+  "You have": {
+    "en": "You have",
+    "cn": "您有"
+  },
+  "You must accept the terms and conditions": {
+    "en": "You must accept the terms and conditions",
+    "cn": "您必须接受条款与条件"
+  },
+  "Zoom": {
+    "en": "Zoom",
+    "cn": "缩放"
+  },
+  "Controllable states": {
+    "en": "Controllable states",
+    "cn": "可控制状态"
+  },
+  "Estimated Delegates": {
+    "en": "Estimated Delegates",
+    "cn": "预计代表人数"
+  },
+  "Mark all as read": {
+    "en": "Mark all as read",
+    "cn": "全部标为已读"
+  },
+  "and": {
+    "en": "and",
+    "cn": "及"
+  },
+  "than last week": {
+    "en": "than last week",
+    "cn": "较上周"
+  },
+  "(+43%) than last year": {
+    "en": "(+43%) than last year",
+    "cn": "较去年增长 43%"
+  },
+  "(Prefer: {{p0}})": {
+    "en": "(Prefer: {{p0}})",
+    "cn": "（建议：{{p0}}）"
+  },
+  "* Plus applicable taxes": {
+    "en": "* Plus applicable taxes",
+    "cn": "* 另加适用税费"
+  },
+  "**Disclaimer: Please use Google Sheets/Google Docs to create the Trackers. The feature is representing the label for the Google Sheets URL for updates and tracking purposes.": {
+    "en": "**Disclaimer: Please use Google Sheets/Google Docs to create the Trackers. The feature is representing the label for the Google Sheets URL for updates and tracking purposes.",
+    "cn": "**说明：请使用 Google 表格或 Google 文档创建跟踪表。此功能用于设置文档链接标签，以便更新和跟踪。"
+  },
+  "1 Line": {
+    "en": "1 Line",
+    "cn": "1 行"
+  },
+  "2 Line": {
+    "en": "2 Line",
+    "cn": "2 行"
+  },
+  "3 Line": {
+    "en": "3 Line",
+    "cn": "3 行"
+  },
+  "4 Line": {
+    "en": "4 Line",
+    "cn": "4 行"
+  },
+  "10 stars": {
+    "en": "10 stars",
+    "cn": "10 星"
+  },
+  "12 hours": {
+    "en": "12 hours",
+    "cn": "12 小时"
+  },
+  "24 hours": {
+    "en": "24 hours",
+    "cn": "24 小时"
+  },
+  "A dark theme that feels easier on the eyes.": {
+    "en": "A dark theme that feels easier on the eyes.",
+    "cn": "更舒适护眼的深色主题。"
+  },
+  "California, United States": {
+    "en": "California, United States",
+    "cn": "美国加利福尼亚州"
+  },
+  "Flamingo": {
+    "en": "Flamingo",
+    "cn": "火烈鸟"
+  },
+  "HDMI Cable": {
+    "en": "HDMI Cable",
+    "cn": "HDMI 线缆"
+  },
+  "ISO Code": {
+    "en": "ISO Code",
+    "cn": "ISO 代码"
+  },
+  "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.": {
+    "en": "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.",
+    "cn": "使用示例文字时，请先确认内容符合需求。"
+  },
+  "Kuching": {
+    "en": "Kuching",
+    "cn": "古晋"
+  },
+  "LCD Display": {
+    "en": "LCD Display",
+    "cn": "液晶显示器"
+  },
+  "LCD Module": {
+    "en": "LCD Module",
+    "cn": "液晶模块"
+  },
+  "Miri": {
+    "en": "Miri",
+    "cn": "美里"
+  },
+  "Sibu": {
+    "en": "Sibu",
+    "cn": "诗巫"
+  },
+  "admin role": {
+    "en": "admin role",
+    "cn": "管理员角色"
+  },
+  "user role": {
+    "en": "user role",
+    "cn": "用户角色"
+  },
+  "alert — check it out!": {
+    "en": "alert — check it out!",
+    "cn": "提示 — 请查看！"
+  },
+  "alert —": {
+    "en": "alert —",
+    "cn": "提示 —"
+  },
+  "all items selected": {
+    "en": "all items selected",
+    "cn": "已选择全部项目"
+  },
+  "any photo": {
+    "en": "any photo",
+    "cn": "任意照片"
+  },
+  "are?": {
+    "en": "are?",
+    "cn": "是什么？"
+  },
+  "assigned": {
+    "en": "assigned",
+    "cn": "已分配"
+  },
+  "bottom-end": {
+    "en": "bottom-end",
+    "cn": "底部末端"
+  },
+  "bottom-start": {
+    "en": "bottom-start",
+    "cn": "底部起始端"
+  },
+  "browse": {
+    "en": "browse",
+    "cn": "浏览"
+  },
+  "can": {
+    "en": "can",
+    "cn": "可以"
+  },
+  "caption text": {
+    "en": "caption text",
+    "cn": "说明文字"
+  },
+  "check it out!": {
+    "en": "check it out!",
+    "cn": "请查看！"
+  },
+  "choose your style": {
+    "en": "choose your style",
+    "cn": "选择您的风格"
+  },
+  "clean & clear": {
+    "en": "clean & clear",
+    "cn": "简洁清晰"
+  },
+  "community's size and needs": {
+    "en": "community's size and needs",
+    "cn": "社区规模与需求"
+  },
+  "compact": {
+    "en": "compact",
+    "cn": "紧凑"
+  },
+  "cover": {
+    "en": "cover",
+    "cn": "封面"
+  },
+  "darkmode": {
+    "en": "darkmode",
+    "cn": "深色模式"
+  },
+  "easy and expanding more effectively": {
+    "en": "easy and expanding more effectively",
+    "cn": "更简单，扩展更高效"
+  },
+  "eg: 1st floor, Meeting Room Rafflesia": {
+    "en": "eg: 1st floor, Meeting Room Rafflesia",
+    "cn": "例如：一楼，Rafflesia 会议室"
+  },
+  "eg: UCSI Hotel": {
+    "en": "eg: UCSI Hotel",
+    "cn": "例如：UCSI 酒店"
+  },
+  "empty content": {
+    "en": "empty content",
+    "cn": "暂无内容"
+  },
+  "file preview": {
+    "en": "file preview",
+    "cn": "文件预览"
+  },
+  "find": {
+    "en": "find",
+    "cn": "查找"
+  },
+  "h1. Heading": {
+    "en": "h1. Heading",
+    "cn": "h1. 一级标题"
+  },
+  "h2. Heading": {
+    "en": "h2. Heading",
+    "cn": "h2. 二级标题"
+  },
+  "h3. Heading": {
+    "en": "h3. Heading",
+    "cn": "h3. 三级标题"
+  },
+  "h4. Heading": {
+    "en": "h4. Heading",
+    "cn": "h4. 四级标题"
+  },
+  "h5. Heading": {
+    "en": "h5. Heading",
+    "cn": "h5. 五级标题"
+  },
+  "h6. Heading": {
+    "en": "h6. Heading",
+    "cn": "h6. 六级标题"
+  },
+  "help": {
+    "en": "help",
+    "cn": "帮助"
+  },
+  "helps you?": {
+    "en": "helps you?",
+    "cn": "如何帮助您？"
+  },
+  "here": {
+    "en": "here",
+    "cn": "此处"
+  },
+  "hero": {
+    "en": "hero",
+    "cn": "主视觉"
+  },
+  "hotel": {
+    "en": "hotel",
+    "cn": "酒店"
+  },
+  "items?": {
+    "en": "items?",
+    "cn": "个项目吗？"
+  },
+  "left": {
+    "en": "left",
+    "cn": "左侧"
+  },
+  "left-end": {
+    "en": "left-end",
+    "cn": "左侧末端"
+  },
+  "left-start": {
+    "en": "left-start",
+    "cn": "左侧起始端"
+  },
+  "legacy Score 2023": {
+    "en": "legacy Score 2023",
+    "cn": "2023 年持续影响分数"
+  },
+  "logo": {
+    "en": "logo",
+    "cn": "标志"
+  },
+  "made by": {
+    "en": "made by",
+    "cn": "制作者："
+  },
+  "main mailbox folders": {
+    "en": "main mailbox folders",
+    "cn": "主要邮箱文件夹"
+  },
+  "make awesome site easily": {
+    "en": "make awesome site easily",
+    "cn": "轻松创建出色网站"
+  },
+  "max size of": {
+    "en": "max size of",
+    "cn": "文件大小上限为"
+  },
+  "minimal kit today": {
+    "en": "minimal kit today",
+    "cn": "立即使用 Minimal 套件"
+  },
+  "more": {
+    "en": "more",
+    "cn": "更多"
+  },
+  "move all left": {
+    "en": "move all left",
+    "cn": "全部移至左侧"
+  },
+  "move all right": {
+    "en": "move all right",
+    "cn": "全部移至右侧"
+  },
+  "move selected left": {
+    "en": "move selected left",
+    "cn": "将所选项移至左侧"
+  },
+  "move selected right": {
+    "en": "move selected right",
+    "cn": "将所选项移至右侧"
+  },
+  "my work": {
+    "en": "my work",
+    "cn": "我的作品"
+  },
+  "new project with": {
+    "en": "new project with",
+    "cn": "使用以下套件创建新项目："
+  },
+  "of elements": {
+    "en": "of elements",
+    "cn": "种元素"
+  },
+  "on Change": {
+    "en": "on Change",
+    "cn": "更改时"
+  },
+  "on Double Click": {
+    "en": "on Double Click",
+    "cn": "双击时"
+  },
+  "our office 1": {
+    "en": "our office 1",
+    "cn": "我们的办公室 1"
+  },
+  "our office 2": {
+    "en": "our office 2",
+    "cn": "我们的办公室 2"
+  },
+  "overall": {
+    "en": "overall",
+    "cn": "整体"
+  },
+  "overline text": {
+    "en": "overline text",
+    "cn": "上方说明文字"
+  },
+  "position": {
+    "en": "position",
+    "cn": "位置"
+  },
+  "pricing plans": {
+    "en": "pricing plans",
+    "cn": "价格方案"
+  },
+  "purchases": {
+    "en": "purchases",
+    "cn": "购买记录"
+  },
+  "region": {
+    "en": "region",
+    "cn": "地区"
+  },
+  "remove_option": {
+    "en": "remove_option",
+    "cn": "移除选项"
+  },
+  "reviews": {
+    "en": "reviews",
+    "cn": "评价"
+  },
+  "right-end": {
+    "en": "right-end",
+    "cn": "右侧末端"
+  },
+  "right-start": {
+    "en": "right-start",
+    "cn": "右侧起始端"
+  },
+  "rocket": {
+    "en": "rocket",
+    "cn": "火箭"
+  },
+  "screen": {
+    "en": "screen",
+    "cn": "屏幕"
+  },
+  "secondary mailbox folder": {
+    "en": "secondary mailbox folder",
+    "cn": "辅助邮箱文件夹"
+  },
+  "secondary mailbox folders": {
+    "en": "secondary mailbox folders",
+    "cn": "辅助邮箱文件夹"
+  },
+  "sidebar": {
+    "en": "sidebar",
+    "cn": "侧边栏"
+  },
+  "size:": {
+    "en": "size:",
+    "cn": "尺寸："
+  },
+  "sorted ascending": {
+    "en": "sorted ascending",
+    "cn": "已按升序排列"
+  },
+  "sorted descending": {
+    "en": "sorted descending",
+    "cn": "已按降序排列"
+  },
+  "text alignment": {
+    "en": "text alignment",
+    "cn": "文字对齐"
+  },
+  "than last month": {
+    "en": "than last month",
+    "cn": "较上月"
+  },
+  "thorough your machine": {
+    "en": "thorough your machine",
+    "cn": "通过您的设备"
+  },
+  "top-end": {
+    "en": "top-end",
+    "cn": "顶部末端"
+  },
+  "top-start": {
+    "en": "top-start",
+    "cn": "顶部起始端"
+  },
+  "unread messages": {
+    "en": "unread messages",
+    "cn": "条未读消息"
+  },
+  "us?": {
+    "en": "us?",
+    "cn": "我们？"
+  },
+  "value: {{p0}}": {
+    "en": "value: {{p0}}",
+    "cn": "值：{{p0}}"
+  },
+  "versions from MUI.": {
+    "en": "versions from MUI.",
+    "cn": "种 MUI 版本。"
+  },
+  "we": {
+    "en": "we",
+    "cn": "我们"
+  },
+  "when device is locked": {
+    "en": "when device is locked",
+    "cn": "设备锁定时"
+  },
+  "you?": {
+    "en": "you?",
+    "cn": "您？"
+  },
+  "your business": {
+    "en": "your business",
+    "cn": "您的业务"
+  },
+  "{{p0}} aligned": {
+    "en": "{{p0}} aligned",
+    "cn": "{{p0}} 对齐"
+  },
+  "{{p0}}/{{p1}} selected": {
+    "en": "{{p0}}/{{p1}} selected",
+    "cn": "已选 {{p0}}/{{p1}}"
+  },
+  "© 2021. All rights reserved": {
+    "en": "© 2021. All rights reserved",
+    "cn": "© 2021 版权所有"
+  },
+  "© All rights reserved": {
+    "en": "© All rights reserved",
+    "cn": "© 版权所有"
+  },
+  "Age is required": {
+    "en": "Age is required",
+    "cn": "请输入年龄"
+  },
+  "Autocomplete is required": {
+    "en": "Autocomplete is required",
+    "cn": "请选择自动补全选项"
+  },
+  "Checkbox is required": {
+    "en": "Checkbox is required",
+    "cn": "请勾选此项"
+  },
+  "Choose at least one option": {
+    "en": "Choose at least one option",
+    "cn": "请至少选择一个选项"
+  },
+  "Editor is required": {
+    "en": "Editor is required",
+    "cn": "请输入编辑器内容"
+  },
+  "End date is required": {
+    "en": "End date is required",
+    "cn": "请选择结束日期"
+  },
+  "End time must be later than start time": {
+    "en": "End time must be later than start time",
+    "cn": "结束时间必须晚于开始时间"
+  },
+  "Full name is required": {
+    "en": "Full name is required",
+    "cn": "请输入姓名"
+  },
+  "Maximum 32 characters": {
+    "en": "Maximum 32 characters",
+    "cn": "最多 32 个字符"
+  },
+  "Mininum 6 characters": {
+    "en": "Mininum 6 characters",
+    "cn": "至少 6 个字符"
+  },
+  "Mininum value is >= 10": {
+    "en": "Mininum value is >= 10",
+    "cn": "最小值为 10"
+  },
+  "Must have at least 2 items": {
+    "en": "Must have at least 2 items",
+    "cn": "至少需要 2 项"
+  },
+  "Password should be of minimum 6 characters length": {
+    "en": "Password should be of minimum 6 characters length",
+    "cn": "密码至少需要 6 个字符"
+  },
+  "Password's not match": {
+    "en": "Password's not match",
+    "cn": "两次输入的密码不一致"
+  },
+  "Payment amount cannot be less than 0": {
+    "en": "Payment amount cannot be less than 0",
+    "cn": "收款金额不能小于 0"
+  },
+  "Payment amount must be a number": {
+    "en": "Payment amount must be a number",
+    "cn": "收款金额必须是数字"
+  },
+  "Please enter the Submission ID": {
+    "en": "Please enter the Submission ID",
+    "cn": "请输入提交编号"
+  },
+  "Please enter the case number": {
+    "en": "Please enter the case number",
+    "cn": "请输入个案编号"
+  },
+  "Please enter the client initials": {
+    "en": "Please enter the client initials",
+    "cn": "请输入案主简称"
+  },
+  "Please enter the payment amount": {
+    "en": "Please enter the payment amount",
+    "cn": "请输入收款金额"
+  },
+  "Please select a case category": {
+    "en": "Please select a case category",
+    "cn": "请选择个案类别"
+  },
+  "Please select a counsellor": {
+    "en": "Please select a counsellor",
+    "cn": "请选择辅导员"
+  },
+  "Please select a session mode": {
+    "en": "Please select a session mode",
+    "cn": "请选择辅导类型"
+  },
+  "Please select the counselling date": {
+    "en": "Please select the counselling date",
+    "cn": "请选择辅导日期"
+  },
+  "Please select the end time": {
+    "en": "Please select the end time",
+    "cn": "请选择结束时间"
+  },
+  "Please select the start time": {
+    "en": "Please select the start time",
+    "cn": "请选择开始时间"
+  },
+  "The detailed report completion rate is {{p0}}% ({{p1}}/{{p2}}).": {
+    "en": "The detailed report completion rate is {{p0}}% ({{p1}}/{{p2}}).",
+    "cn": "详细报告完成率为 {{p0}}%（{{p1}}/{{p2}}）。"
+  },
+  "The records cover {{p0}} categories and {{p1}} counsellors.": {
+    "en": "The records cover {{p0}} categories and {{p1}} counsellors.",
+    "cn": "记录涵盖 {{p0}} 个类别及 {{p1}} 位辅导员。"
+  },
+  "Unable to create the case. Please try again later.": {
+    "en": "Unable to create the case. Please try again later.",
+    "cn": "无法新增个案，请稍后重试。"
+  },
+  "{{p0}} counselling records are in scope, totalling {{p1}} minutes.": {
+    "en": "{{p0}} counselling records are in scope, totalling {{p1}} minutes.",
+    "cn": "当前范围共有 {{p0}} 条辅导记录，总计 {{p1}} 分钟。"
+  },
+  "{{p0}}% of records have pending notifications ({{p1}}/{{p2}}).": {
+    "en": "{{p0}}% of records have pending notifications ({{p1}}/{{p2}}).",
+    "cn": "{{p0}}% 的记录尚未发送通知（{{p1}}/{{p2}}）。"
+  },
+  "Intake Incomplete": {
+    "en": "Intake Incomplete",
+    "cn": "接案未完成"
+  },
+  "Session Mode": {
+    "en": "Session Mode",
+    "cn": "辅导类型"
+  },
+  "Case Category": {
+    "en": "Case Category",
+    "cn": "个案类别"
+  },
+  "First Reminder": {
+    "en": "First Reminder",
+    "cn": "首次提醒"
+  },
+  "Second Reminder": {
+    "en": "Second Reminder",
+    "cn": "第二次提醒"
+  },
+  "Final Reminder": {
+    "en": "Final Reminder",
+    "cn": "最后提醒"
+  },
+  "Dense": {
+    "en": "Dense",
+    "cn": "紧凑显示"
+  },
+  "No counselling records are available for analysis in the selected period.": {
+    "en": "No counselling records are available for analysis in the selected period.",
+    "cn": "当前筛选期间没有可供分析的辅导记录。"
+  },
+  "Adjust the date range or return after counselling records have been added.": {
+    "en": "Adjust the date range or return after counselling records have been added.",
+    "cn": "请调整日期范围，或录入辅导记录后重新查看。"
+  },
+  "No operational conclusions were generated because no data is available.": {
+    "en": "No operational conclusions were generated because no data is available.",
+    "cn": "资料为空，因此没有生成运营结论。"
+  },
+  "{{p0}} cases": {
+    "en": "{{p0}} cases",
+    "cn": "{{p0}} 个个案"
+  },
+  "{{p0}} min": {
+    "en": "{{p0}} min",
+    "cn": "{{p0}} 分钟"
+  },
+  "{{p0}} hr": {
+    "en": "{{p0}} hr",
+    "cn": "{{p0}} 小时"
+  },
+  "{{p0}} hr {{p1}} min": {
+    "en": "{{p0}} hr {{p1}} min",
+    "cn": "{{p0}} 小时 {{p1}} 分钟"
+  },
+  "{{p0}} days {{p1}} hr": {
+    "en": "{{p0}} days {{p1}} hr",
+    "cn": "{{p0}} 天 {{p1}} 小时"
+  },
+  "{{p0}} to {{p1}}": {
+    "en": "{{p0}} to {{p1}}",
+    "cn": "{{p0}} 至 {{p1}}"
+  },
+  "routine": {
+    "en": "routine",
+    "cn": "一般"
+  },
+  "medium": {
+    "en": "medium",
+    "cn": "中"
+  },
+  "high": {
+    "en": "high",
+    "cn": "高"
+  },
+  "immediate_human_review": {
+    "en": "immediate_human_review",
+    "cn": "需要立即人工复核"
+  },
+  "unknown": {
+    "en": "unknown",
+    "cn": "未知"
+  },
+  "Photo is required": {
+    "en": "Photo is required",
+    "cn": "请上传照片"
+  },
+  "Radio is required": {
+    "en": "Radio is required",
+    "cn": "请选择一项"
+  },
+  "Select is required": {
+    "en": "Select is required",
+    "cn": "请选择一项"
+  },
+  "Start date is required": {
+    "en": "Start date is required",
+    "cn": "请选择开始日期"
+  },
+  "Switch is required": {
+    "en": "Switch is required",
+    "cn": "请启用开关"
+  },
+  "Upload is required": {
+    "en": "Upload is required",
+    "cn": "请上传文件"
+  },
+  "Please enter your name": {
+    "en": "Please enter your name",
+    "cn": "请输入姓名"
+  },
+  "Please enter your email": {
+    "en": "Please enter your email",
+    "cn": "请输入电子邮箱"
+  },
+  "Case Number": {
+    "en": "Case Number",
+    "cn": "个案编号"
+  },
+  "Client Initials": {
+    "en": "Client Initials",
+    "cn": "案主简称"
+  },
+  "Brief Report": {
+    "en": "Brief Report",
+    "cn": "简要报告"
+  },
+  "Database ID": {
+    "en": "Database ID",
+    "cn": "数据库编号"
+  },
+  "Respondent ID": {
+    "en": "Respondent ID",
+    "cn": "填写者编号"
+  },
+  "Submission ID": {
+    "en": "Submission ID",
+    "cn": "提交编号"
+  },
+  "Report Status": {
+    "en": "Report Status",
+    "cn": "报告状态"
+  },
+  "Notification Status": {
+    "en": "Notification Status",
+    "cn": "通知状态"
+  },
+  "Payment Received": {
+    "en": "Payment Received",
+    "cn": "收到款项"
+  },
+  "Incomplete": {
+    "en": "Incomplete",
+    "cn": "未完成"
+  },
+  "Not Sent": {
+    "en": "Not Sent",
+    "cn": "未发送"
+  },
+  "Face-to-face": {
+    "en": "Face-to-face",
+    "cn": "面谈"
+  },
+  "Telephone Counselling": {
+    "en": "Telephone Counselling",
+    "cn": "电话辅导"
+  },
+  "Online Counselling": {
+    "en": "Online Counselling",
+    "cn": "线上辅导"
+  },
+  "Mental Health": {
+    "en": "Mental Health",
+    "cn": "精神"
+  },
+  "Relationships and Marriage": {
+    "en": "Relationships and Marriage",
+    "cn": "情感与婚姻"
+  },
+  "Family": {
+    "en": "Family",
+    "cn": "家庭"
+  },
+  "Parenting": {
+    "en": "Parenting",
+    "cn": "亲子教养"
+  },
+  "Addiction": {
+    "en": "Addiction",
+    "cn": "成瘾"
+  },
+  "Interpersonal Relationships": {
+    "en": "Interpersonal Relationships",
+    "cn": "人际关系"
+  },
+  "Career": {
+    "en": "Career",
+    "cn": "职业生涯"
+  },
+  "Education": {
+    "en": "Education",
+    "cn": "学业"
+  },
+  "Physical Health": {
+    "en": "Physical Health",
+    "cn": "身体健康"
+  },
+  "Consultation": {
+    "en": "Consultation",
+    "cn": "咨询"
+  },
+  "Unable to delete the case. Please try again later.": {
+    "en": "Unable to delete the case. Please try again later.",
+    "cn": "无法删除个案，请稍后重试。"
+  },
+  "Unable to retrieve counselling case data": {
+    "en": "Unable to retrieve counselling case data",
+    "cn": "无法读取辅导个案资料"
+  },
+  "Single select is required": {
+    "en": "Single select is required",
+    "cn": "请选择一项"
+  },
+  "Single upload is required": {
+    "en": "Single upload is required",
+    "cn": "请上传一个文件"
+  },
+  "Slider is required": {
+    "en": "Slider is required",
+    "cn": "请选择滑块数值"
+  },
+  "Slider range is is required": {
+    "en": "Slider range is is required",
+    "cn": "请选择滑块范围"
+  },
+  "Range must be between 20 and 80": {
+    "en": "Range must be between 20 and 80",
+    "cn": "范围必须介于 20 与 80 之间"
+  },
+  "Select date range": {
+    "en": "Select date range",
+    "cn": "选择日期范围"
+  },
+  "Contact Number": {
+    "en": "Contact Number",
+    "cn": "联系电话"
+  },
+  "Failed to retrieve counselling sessions": {
+    "en": "Failed to retrieve counselling sessions",
+    "cn": "无法读取辅导记录"
+  },
+  "Unable to retrieve case data": {
+    "en": "Unable to retrieve case data",
+    "cn": "无法读取个案资料"
+  },
+  "Unable to create case": {
+    "en": "Unable to create case",
+    "cn": "无法新增个案"
+  },
+  "Unable to update case": {
+    "en": "Unable to update case",
+    "cn": "无法更新个案"
+  },
+  "Unable to delete case": {
+    "en": "Unable to delete case",
+    "cn": "无法删除个案"
+  },
+  "Method not allowed": {
+    "en": "Method not allowed",
+    "cn": "不支持此请求方式"
+  },
+  "DATABASE_URL is not configured": {
+    "en": "DATABASE_URL is not configured",
+    "cn": "数据库尚未完成配置"
+  },
+  "A valid counselling session ID is required": {
+    "en": "A valid counselling session ID is required",
+    "cn": "请输入有效的辅导记录编号"
+  },
+  "Counselling session not found": {
+    "en": "Counselling session not found",
+    "cn": "找不到此辅导记录"
+  },
+  "amountReceivedRm must be a non-negative number": {
+    "en": "amountReceivedRm must be a non-negative number",
+    "cn": "收款金额必须是非负数"
+  },
+  "Invalid counselling session data": {
+    "en": "Invalid counselling session data",
+    "cn": "辅导记录资料无效"
+  },
+  "Failed to process counselling session": {
+    "en": "Failed to process counselling session",
+    "cn": "无法处理辅导记录"
+  },
+  "Failed to fetch": {
+    "en": "Failed to fetch",
+    "cn": "网络连接失败，请重试"
+  },
+  "Network Error": {
+    "en": "Network Error",
+    "cn": "网络连接失败，请重试"
+  },
+  "Heading 1": {
+    "en": "Heading 1",
+    "cn": "一级标题"
+  },
+  "Heading 2": {
+    "en": "Heading 2",
+    "cn": "二级标题"
+  },
+  "Heading 3": {
+    "en": "Heading 3",
+    "cn": "三级标题"
+  },
+  "Heading 4": {
+    "en": "Heading 4",
+    "cn": "四级标题"
+  },
+  "Heading 5": {
+    "en": "Heading 5",
+    "cn": "五级标题"
+  },
+  "Heading 6": {
+    "en": "Heading 6",
+    "cn": "六级标题"
+  },
+  "primary": {
+    "en": "primary",
+    "cn": "主要"
+  },
+  "secondary": {
+    "en": "secondary",
+    "cn": "辅助"
+  },
+  "info": {
+    "en": "info",
+    "cn": "信息"
+  },
+  "success": {
+    "en": "success",
+    "cn": "成功"
+  },
+  "warning": {
+    "en": "warning",
+    "cn": "警告"
+  },
+  "error": {
+    "en": "error",
+    "cn": "错误"
+  },
+  "My account": {
+    "en": "My account",
+    "cn": "我的账号"
+  },
+  "Show some love to Material-UI": {
+    "en": "Show some love to Material-UI",
+    "cn": "支持 Material-UI"
+  },
+  "Show all notification content": {
+    "en": "Show all notification content",
+    "cn": "显示全部通知内容"
+  },
+  "Hide sensitive notification content": {
+    "en": "Hide sensitive notification content",
+    "cn": "隐藏敏感通知内容"
+  },
+  "Hide all notification content": {
+    "en": "Hide all notification content",
+    "cn": "隐藏全部通知内容"
+  },
+  "Atria": {
+    "en": "Atria",
+    "cn": "Atria"
+  },
+  "Callisto": {
+    "en": "Callisto",
+    "cn": "Callisto"
+  },
+  "Dione": {
+    "en": "Dione",
+    "cn": "Dione"
+  },
+  "Ganymede": {
+    "en": "Ganymede",
+    "cn": "Ganymede"
+  },
+  "Hangouts Call": {
+    "en": "Hangouts Call",
+    "cn": "Hangouts 通话"
+  },
+  "Luna": {
+    "en": "Luna",
+    "cn": "Luna"
+  },
+  "Oberon": {
+    "en": "Oberon",
+    "cn": "Oberon"
+  },
+  "Phobos": {
+    "en": "Phobos",
+    "cn": "Phobos"
+  },
+  "Pyxis": {
+    "en": "Pyxis",
+    "cn": "Pyxis"
+  },
+  "Sedna": {
+    "en": "Sedna",
+    "cn": "Sedna"
+  },
+  "Titania": {
+    "en": "Titania",
+    "cn": "Titania"
+  },
+  "Triton": {
+    "en": "Triton",
+    "cn": "Triton"
+  },
+  "Umbriel": {
+    "en": "Umbriel",
+    "cn": "Umbriel"
+  },
+  "onDragStart": {
+    "en": "onDragStart",
+    "cn": "onDragStart"
+  },
+  "onDrag": {
+    "en": "onDrag",
+    "cn": "onDrag"
+  },
+  "onDragEnd": {
+    "en": "onDragEnd",
+    "cn": "onDragEnd"
+  },
+  "small": {
+    "en": "small",
+    "cn": "小"
+  },
+  "large": {
+    "en": "large",
+    "cn": "大"
+  },
+  "inherit": {
+    "en": "inherit",
+    "cn": "继承"
+  },
+  "Case": {
+    "en": "Case",
+    "cn": "个案"
+  },
+  "Accordion {{p0}}": {
+    "en": "Accordion {{p0}}",
+    "cn": "折叠面板 {{p0}}"
+  },
+  "Carousel": {
+    "en": "Carousel",
+    "cn": "轮播"
+  },
+  "Color": {
+    "en": "Color",
+    "cn": "颜色"
+  },
+  "Date / Time pickers": {
+    "en": "Date / Time pickers",
+    "cn": "日期／时间选择器"
+  },
+  "Event List": {
+    "en": "Event List",
+    "cn": "活动列表"
+  },
+  "General Setting": {
+    "en": "General Setting",
+    "cn": "常规设置"
+  },
+  "General Settings": {
+    "en": "General Settings",
+    "cn": "常规设置"
+  },
+  "Goal Details || Overall Performance": {
+    "en": "Goal Details || Overall Performance",
+    "cn": "目标详情 || 整体表现"
+  },
+  "Heading": {
+    "en": "Heading",
+    "cn": "标题"
+  },
+  "Journal Management": {
+    "en": "Journal Management",
+    "cn": "期刊管理"
+  },
+  "Link1": {
+    "en": "Link1",
+    "cn": "链接 1"
+  },
+  "Link2": {
+    "en": "Link2",
+    "cn": "链接 2"
+  },
+  "Link3": {
+    "en": "Link3",
+    "cn": "链接 3"
+  },
+  "Link4": {
+    "en": "Link4",
+    "cn": "链接 4"
+  },
+  "Link5": {
+    "en": "Link5",
+    "cn": "链接 5"
+  },
+  "List": {
+    "en": "List",
+    "cn": "列表"
+  },
+  "Lists": {
+    "en": "Lists",
+    "cn": "列表"
+  },
+  "Markdown": {
+    "en": "Markdown",
+    "cn": "Markdown"
+  },
+  "Performance - {{p0}}": {
+    "en": "Performance - {{p0}}",
+    "cn": "表现 - {{p0}}"
+  },
+  "Survey Management": {
+    "en": "Survey Management",
+    "cn": "问卷管理"
+  },
+  "TextMaxLine": {
+    "en": "TextMaxLine",
+    "cn": "文本行数限制"
+  },
+  "User List": {
+    "en": "User List",
+    "cn": "用户列表"
+  },
+  "User": {
+    "en": "User",
+    "cn": "用户"
+  },
+  "Pending": {
+    "en": "Pending",
+    "cn": "待完成"
+  },
+  "Foundations": {
+    "en": "Foundations",
+    "cn": "基础"
+  },
+  "MUI Components": {
+    "en": "MUI Components",
+    "cn": "MUI 组件"
+  },
+  "Accordion": {
+    "en": "Accordion",
+    "cn": "折叠面板"
+  },
+  "Badge": {
+    "en": "Badge",
+    "cn": "徽标"
+  },
+  "Breadcrumbs": {
+    "en": "Breadcrumbs",
+    "cn": "面包屑导航"
+  },
+  "DataGrid": {
+    "en": "DataGrid",
+    "cn": "数据表格"
+  },
+  "Pagination": {
+    "en": "Pagination",
+    "cn": "分页"
+  },
+  "Pickers": {
+    "en": "Pickers",
+    "cn": "选择器"
+  },
+  "Popover": {
+    "en": "Popover",
+    "cn": "浮层"
+  },
+  "Progress": {
+    "en": "Progress",
+    "cn": "进度"
+  },
+  "Radio Buttons": {
+    "en": "Radio Buttons",
+    "cn": "单选按钮"
+  },
+  "Slider": {
+    "en": "Slider",
+    "cn": "滑块"
+  },
+  "Stepper": {
+    "en": "Stepper",
+    "cn": "步骤条"
+  },
+  "Tabs": {
+    "en": "Tabs",
+    "cn": "选项卡"
+  },
+  "Textfield": {
+    "en": "Textfield",
+    "cn": "文本框"
+  },
+  "Timeline": {
+    "en": "Timeline",
+    "cn": "时间线"
+  },
+  "Tooltip": {
+    "en": "Tooltip",
+    "cn": "工具提示"
+  },
+  "Transfer List": {
+    "en": "Transfer List",
+    "cn": "穿梭列表"
+  },
+  "Tree View": {
+    "en": "Tree View",
+    "cn": "树形视图"
+  },
+  "Grid": {
+    "en": "Grid",
+    "cn": "网格"
+  },
+  "Icons": {
+    "en": "Icons",
+    "cn": "图标"
+  },
+  "Shadows": {
+    "en": "Shadows",
+    "cn": "阴影"
+  },
+  "Animate": {
+    "en": "Animate",
+    "cn": "动画"
+  },
+  "Carousels": {
+    "en": "Carousels",
+    "cn": "轮播"
+  },
+  "Charts": {
+    "en": "Charts",
+    "cn": "图表"
+  },
+  "Copy To Clipboard": {
+    "en": "Copy To Clipboard",
+    "cn": "复制到剪贴板"
+  },
+  "Editor": {
+    "en": "Editor",
+    "cn": "编辑器"
+  },
+  "Form Validation": {
+    "en": "Form Validation",
+    "cn": "表单验证"
+  },
+  "Image": {
+    "en": "Image",
+    "cn": "图片"
+  },
+  "Lightbox": {
+    "en": "Lightbox",
+    "cn": "图片查看器"
+  },
+  "Map": {
+    "en": "Map",
+    "cn": "地图"
+  },
+  "Mega Menu": {
+    "en": "Mega Menu",
+    "cn": "大型菜单"
+  },
+  "Multi Language": {
+    "en": "Multi Language",
+    "cn": "多语言"
+  },
+  "Navigation Bar": {
+    "en": "Navigation Bar",
+    "cn": "导航栏"
+  },
+  "Organizational Chart": {
+    "en": "Organizational Chart",
+    "cn": "组织结构图"
+  },
+  "Scrollbar": {
+    "en": "Scrollbar",
+    "cn": "滚动条"
+  },
+  "Snackbar": {
+    "en": "Snackbar",
+    "cn": "消息提示"
+  },
+  "Text Max Line": {
+    "en": "Text Max Line",
+    "cn": "文本最大行数"
+  },
+  "Blank Page": {
+    "en": "Blank Page",
+    "cn": "空白页"
+  },
+  "Components Overview": {
+    "en": "Components Overview",
+    "cn": "组件概览"
+  },
+  "General: App": {
+    "en": "General: App",
+    "cn": "常规：应用"
+  },
+  "Invoice: List": {
+    "en": "Invoice: List",
+    "cn": "账单：列表"
+  },
+  "User: List": {
+    "en": "User: List",
+    "cn": "用户：列表"
+  },
+  "Reset Password": {
+    "en": "Reset Password",
+    "cn": "重置密码"
+  },
+  "New Password": {
+    "en": "New Password",
+    "cn": "新密码"
+  },
+  "Verify Code": {
+    "en": "Verify Code",
+    "cn": "验证码"
+  },
+  "Faqs": {
+    "en": "Faqs",
+    "cn": "常见问题"
+  },
+  "Other Cases: Permission Denied": {
+    "en": "Other Cases: Permission Denied",
+    "cn": "其他页面：访问被拒绝"
+  },
+  "403 Forbidden": {
+    "en": "403 Forbidden",
+    "cn": "403 禁止访问"
+  },
+  "404 Page Not Found": {
+    "en": "404 Page Not Found",
+    "cn": "404 找不到页面"
+  },
+  "500 Internal Server Error": {
+    "en": "500 Internal Server Error",
+    "cn": "500 服务器内部错误"
+  },
+  "CounsellingCentreManagementSystem": {
+    "en": "CounsellingCentreManagementSystem",
+    "cn": "辅导中心管理系统"
+  },
+  "The starting point for your next project": {
+    "en": "The starting point for your next project",
+    "cn": "新项目的起点"
+  },
+  "Conference Management": {
+    "en": "Conference Management",
+    "cn": "会议管理"
+  },
+  "Kanban": {
+    "en": "Kanban",
+    "cn": "看板"
+  },
+  " Controllable states": {
+    "en": " Controllable states",
+    "cn": "可控制状态"
+  },
+  " Delegates": {
+    "en": " Delegates",
+    "cn": "代表人数"
+  },
+  " Estimated Delegates": {
+    "en": " Estimated Delegates",
+    "cn": "预计代表人数"
+  },
+  " Mark all as read": {
+    "en": " Mark all as read",
+    "cn": "全部标为已读"
+  },
+  " and ": {
+    "en": " and ",
+    "cn": "及"
+  },
+  " than last week": {
+    "en": " than last week",
+    "cn": "较上周"
+  },
+  "403 Forbidden | Counselling Centre Management System": {
+    "en": "403 Forbidden | Counselling Centre Management System",
+    "cn": "403 禁止访问 | 辅导中心管理系统"
+  },
+  "404 Page Not Found | Counselling Centre Management System": {
+    "en": "404 Page Not Found | Counselling Centre Management System",
+    "cn": "404 找不到页面 | 辅导中心管理系统"
+  },
+  "500 Internal Server Error | Counselling Centre Management System": {
+    "en": "500 Internal Server Error | Counselling Centre Management System",
+    "cn": "500 服务器内部错误 | 辅导中心管理系统"
+  },
+  "About us | Counselling Centre Management System": {
+    "en": "About us | Counselling Centre Management System",
+    "cn": "关于我们 | 辅导中心管理系统"
+  },
+  "Blank Page | Counselling Centre Management System": {
+    "en": "Blank Page | Counselling Centre Management System",
+    "cn": "空白页 | 辅导中心管理系统"
+  },
+  "Coming Soon | Counselling Centre Management System": {
+    "en": "Coming Soon | Counselling Centre Management System",
+    "cn": "即将推出 | 辅导中心管理系统"
+  },
+  "Components Overview | Counselling Centre Management System": {
+    "en": "Components Overview | Counselling Centre Management System",
+    "cn": "组件概览 | 辅导中心管理系统"
+  },
+  "Conference Management | Create Conference": {
+    "en": "Conference Management | Create Conference",
+    "cn": "会议管理 | 新增会议"
+  },
+  "Contact us | Counselling Centre Management System": {
+    "en": "Contact us | Counselling Centre Management System",
+    "cn": "联系我们 | 辅导中心管理系统"
+  },
+  "Extra Components: Animate | Counselling Centre Management System": {
+    "en": "Extra Components: Animate | Counselling Centre Management System",
+    "cn": "扩展组件: 动画 | 辅导中心管理系统"
+  },
+  "Extra Components: Carousels | Counselling Centre Management System": {
+    "en": "Extra Components: Carousels | Counselling Centre Management System",
+    "cn": "扩展组件: 轮播 | 辅导中心管理系统"
+  },
+  "Extra Components: Charts | Counselling Centre Management System": {
+    "en": "Extra Components: Charts | Counselling Centre Management System",
+    "cn": "扩展组件: 图表 | 辅导中心管理系统"
+  },
+  "Extra Components: Copy To Clipboard | Counselling Centre Management System": {
+    "en": "Extra Components: Copy To Clipboard | Counselling Centre Management System",
+    "cn": "扩展组件: 复制到剪贴板 | 辅导中心管理系统"
+  },
+  "Extra Components: Editor | Counselling Centre Management System": {
+    "en": "Extra Components: Editor | Counselling Centre Management System",
+    "cn": "扩展组件: 编辑器 | 辅导中心管理系统"
+  },
+  "Extra Components: Form Validation | Counselling Centre Management System": {
+    "en": "Extra Components: Form Validation | Counselling Centre Management System",
+    "cn": "扩展组件: 表单验证 | 辅导中心管理系统"
+  },
+  "Extra Components: Image | Counselling Centre Management System": {
+    "en": "Extra Components: Image | Counselling Centre Management System",
+    "cn": "扩展组件: 图片 | 辅导中心管理系统"
+  },
+  "Extra Components: Label | Counselling Centre Management System": {
+    "en": "Extra Components: Label | Counselling Centre Management System",
+    "cn": "扩展组件: 标签 | 辅导中心管理系统"
+  },
+  "Extra Components: Lightbox | Counselling Centre Management System": {
+    "en": "Extra Components: Lightbox | Counselling Centre Management System",
+    "cn": "扩展组件: 图片查看器 | 辅导中心管理系统"
+  },
+  "Extra Components: Map | Counselling Centre Management System": {
+    "en": "Extra Components: Map | Counselling Centre Management System",
+    "cn": "扩展组件: 地图 | 辅导中心管理系统"
+  },
+  "Extra Components: Markdown | Counselling Centre Management System": {
+    "en": "Extra Components: Markdown | Counselling Centre Management System",
+    "cn": "扩展组件: Markdown | 辅导中心管理系统"
+  },
+  "Extra Components: Mega Menu | Counselling Centre Management System": {
+    "en": "Extra Components: Mega Menu | Counselling Centre Management System",
+    "cn": "扩展组件: 大型菜单 | 辅导中心管理系统"
+  },
+  "Extra Components: Multi Language | Counselling Centre Management System": {
+    "en": "Extra Components: Multi Language | Counselling Centre Management System",
+    "cn": "扩展组件: 多语言 | 辅导中心管理系统"
+  },
+  "Extra Components: Navigation Bar | Counselling Centre Management System": {
+    "en": "Extra Components: Navigation Bar | Counselling Centre Management System",
+    "cn": "扩展组件: 导航栏 | 辅导中心管理系统"
+  },
+  "Extra Components: Organizational Chart | Counselling Centre Management System": {
+    "en": "Extra Components: Organizational Chart | Counselling Centre Management System",
+    "cn": "扩展组件: 组织结构图 | 辅导中心管理系统"
+  },
+  "Extra Components: Scrollbar | Counselling Centre Management System": {
+    "en": "Extra Components: Scrollbar | Counselling Centre Management System",
+    "cn": "扩展组件: 滚动条 | 辅导中心管理系统"
+  },
+  "Extra Components: Snackbar | Counselling Centre Management System": {
+    "en": "Extra Components: Snackbar | Counselling Centre Management System",
+    "cn": "扩展组件: 消息提示 | 辅导中心管理系统"
+  },
+  "Extra Components: Text Max Line | Counselling Centre Management System": {
+    "en": "Extra Components: Text Max Line | Counselling Centre Management System",
+    "cn": "扩展组件: 文本最大行数 | 辅导中心管理系统"
+  },
+  "Extra Components: Upload | Counselling Centre Management System": {
+    "en": "Extra Components: Upload | Counselling Centre Management System",
+    "cn": "扩展组件: 上传 | 辅导中心管理系统"
+  },
+  "Faqs | Counselling Centre Management System": {
+    "en": "Faqs | Counselling Centre Management System",
+    "cn": "常见问题 | 辅导中心管理系统"
+  },
+  "Foundations: Colors | Counselling Centre Management System": {
+    "en": "Foundations: Colors | Counselling Centre Management System",
+    "cn": "基础: 颜色 | 辅导中心管理系统"
+  },
+  "Foundations: Grid | Counselling Centre Management System": {
+    "en": "Foundations: Grid | Counselling Centre Management System",
+    "cn": "基础: 网格 | 辅导中心管理系统"
+  },
+  "Foundations: Icons | Counselling Centre Management System": {
+    "en": "Foundations: Icons | Counselling Centre Management System",
+    "cn": "基础: 图标 | 辅导中心管理系统"
+  },
+  "Foundations: Shadows | Counselling Centre Management System": {
+    "en": "Foundations: Shadows | Counselling Centre Management System",
+    "cn": "基础: 阴影 | 辅导中心管理系统"
+  },
+  "Foundations: Typography | Counselling Centre Management System": {
+    "en": "Foundations: Typography | Counselling Centre Management System",
+    "cn": "基础: 字体排版 | 辅导中心管理系统"
+  },
+  "General: App | Counselling Centre Management System": {
+    "en": "General: App | Counselling Centre Management System",
+    "cn": "一般: App | 辅导中心管理系统"
+  },
+  "Invoice: List | Counselling Centre Management System": {
+    "en": "Invoice: List | Counselling Centre Management System",
+    "cn": "Invoice: 列表 | 辅导中心管理系统"
+  },
+  "Kanban | Counselling Centre Management System": {
+    "en": "Kanban | Counselling Centre Management System",
+    "cn": "看板 | 辅导中心管理系统"
+  },
+  "Login | CounsellingCentreManagementSystem": {
+    "en": "Login | CounsellingCentreManagementSystem",
+    "cn": "登录 | 辅导中心管理系统"
+  },
+  "MUI Components: Accordion | Counselling Centre Management System": {
+    "en": "MUI Components: Accordion | Counselling Centre Management System",
+    "cn": "MUI 组件: 折叠面板 | 辅导中心管理系统"
+  },
+  "MUI Components: Alert | Counselling Centre Management System": {
+    "en": "MUI Components: Alert | Counselling Centre Management System",
+    "cn": "MUI 组件: 提示 | 辅导中心管理系统"
+  },
+  "MUI Components: Autocomplete | Counselling Centre Management System": {
+    "en": "MUI Components: Autocomplete | Counselling Centre Management System",
+    "cn": "MUI 组件: 自动补全 | 辅导中心管理系统"
+  },
+  "MUI Components: Avatar | Counselling Centre Management System": {
+    "en": "MUI Components: Avatar | Counselling Centre Management System",
+    "cn": "MUI 组件: 头像 | 辅导中心管理系统"
+  },
+  "MUI Components: Badge | Counselling Centre Management System": {
+    "en": "MUI Components: Badge | Counselling Centre Management System",
+    "cn": "MUI 组件: 徽标 | 辅导中心管理系统"
+  },
+  "MUI Components: Breadcrumbs | Counselling Centre Management System": {
+    "en": "MUI Components: Breadcrumbs | Counselling Centre Management System",
+    "cn": "MUI 组件: 面包屑导航 | 辅导中心管理系统"
+  },
+  "MUI Components: Buttons | Counselling Centre Management System": {
+    "en": "MUI Components: Buttons | Counselling Centre Management System",
+    "cn": "MUI 组件: 按钮 | 辅导中心管理系统"
+  },
+  "MUI Components: Checkbox | Counselling Centre Management System": {
+    "en": "MUI Components: Checkbox | Counselling Centre Management System",
+    "cn": "MUI 组件: 复选框 | 辅导中心管理系统"
+  },
+  "MUI Components: Chip | Counselling Centre Management System": {
+    "en": "MUI Components: Chip | Counselling Centre Management System",
+    "cn": "MUI 组件: 标签块 | 辅导中心管理系统"
+  },
+  "MUI Components: DataGrid | Counselling Centre Management System": {
+    "en": "MUI Components: DataGrid | Counselling Centre Management System",
+    "cn": "MUI 组件: 数据表格 | 辅导中心管理系统"
+  },
+  "MUI Components: Dialog | Counselling Centre Management System": {
+    "en": "MUI Components: Dialog | Counselling Centre Management System",
+    "cn": "MUI 组件: 对话框 | 辅导中心管理系统"
+  },
+  "MUI Components: List | Counselling Centre Management System": {
+    "en": "MUI Components: List | Counselling Centre Management System",
+    "cn": "MUI 组件: 列表 | 辅导中心管理系统"
+  },
+  "MUI Components: Menu | Counselling Centre Management System": {
+    "en": "MUI Components: Menu | Counselling Centre Management System",
+    "cn": "MUI 组件: 菜单 | 辅导中心管理系统"
+  },
+  "MUI Components: Pagination | Counselling Centre Management System": {
+    "en": "MUI Components: Pagination | Counselling Centre Management System",
+    "cn": "MUI 组件: 分页 | 辅导中心管理系统"
+  },
+  "MUI Components: Pickers | Counselling Centre Management System": {
+    "en": "MUI Components: Pickers | Counselling Centre Management System",
+    "cn": "MUI 组件: 选择器 | 辅导中心管理系统"
+  },
+  "MUI Components: Popover | Counselling Centre Management System": {
+    "en": "MUI Components: Popover | Counselling Centre Management System",
+    "cn": "MUI 组件: 浮层 | 辅导中心管理系统"
+  },
+  "MUI Components: Progress | Counselling Centre Management System": {
+    "en": "MUI Components: Progress | Counselling Centre Management System",
+    "cn": "MUI 组件: 进度 | 辅导中心管理系统"
+  },
+  "MUI Components: Radio Buttons | Counselling Centre Management System": {
+    "en": "MUI Components: Radio Buttons | Counselling Centre Management System",
+    "cn": "MUI 组件: 单选按钮 | 辅导中心管理系统"
+  },
+  "MUI Components: Rating | Counselling Centre Management System": {
+    "en": "MUI Components: Rating | Counselling Centre Management System",
+    "cn": "MUI 组件: 评分 | 辅导中心管理系统"
+  },
+  "MUI Components: Slider | Counselling Centre Management System": {
+    "en": "MUI Components: Slider | Counselling Centre Management System",
+    "cn": "MUI 组件: 滑块 | 辅导中心管理系统"
+  },
+  "MUI Components: Stepper | Counselling Centre Management System": {
+    "en": "MUI Components: Stepper | Counselling Centre Management System",
+    "cn": "MUI 组件: 步骤条 | 辅导中心管理系统"
+  },
+  "MUI Components: Switch | Counselling Centre Management System": {
+    "en": "MUI Components: Switch | Counselling Centre Management System",
+    "cn": "MUI 组件: 开关 | 辅导中心管理系统"
+  },
+  "MUI Components: Table | Counselling Centre Management System": {
+    "en": "MUI Components: Table | Counselling Centre Management System",
+    "cn": "MUI 组件: 表格 | 辅导中心管理系统"
+  },
+  "MUI Components: Tabs | Counselling Centre Management System": {
+    "en": "MUI Components: Tabs | Counselling Centre Management System",
+    "cn": "MUI 组件: 选项卡 | 辅导中心管理系统"
+  },
+  "MUI Components: Textfield | Counselling Centre Management System": {
+    "en": "MUI Components: Textfield | Counselling Centre Management System",
+    "cn": "MUI 组件: 文本框 | 辅导中心管理系统"
+  },
+  "MUI Components: Timeline | Counselling Centre Management System": {
+    "en": "MUI Components: Timeline | Counselling Centre Management System",
+    "cn": "MUI 组件: 时间线 | 辅导中心管理系统"
+  },
+  "MUI Components: Tooltip | Counselling Centre Management System": {
+    "en": "MUI Components: Tooltip | Counselling Centre Management System",
+    "cn": "MUI 组件: 工具提示 | 辅导中心管理系统"
+  },
+  "MUI Components: Transfer List | Counselling Centre Management System": {
+    "en": "MUI Components: Transfer List | Counselling Centre Management System",
+    "cn": "MUI 组件: 穿梭列表 | 辅导中心管理系统"
+  },
+  "MUI Components: Tree View | Counselling Centre Management System": {
+    "en": "MUI Components: Tree View | Counselling Centre Management System",
+    "cn": "MUI 组件: 树形视图 | 辅导中心管理系统"
+  },
+  "Maintenance | Counselling Centre Management System": {
+    "en": "Maintenance | Counselling Centre Management System",
+    "cn": "维护中 | 辅导中心管理系统"
+  },
+  "New Password | Counselling Centre Management System": {
+    "en": "New Password | Counselling Centre Management System",
+    "cn": "新密码 | 辅导中心管理系统"
+  },
+  "Other Cases: Permission Denied | Counselling Centre Management System": {
+    "en": "Other Cases: Permission Denied | Counselling Centre Management System",
+    "cn": "Other Cases: 访问被拒绝 | 辅导中心管理系统"
+  },
+  "Payment | Counselling Centre Management System": {
+    "en": "Payment | Counselling Centre Management System",
+    "cn": "付款 | 辅导中心管理系统"
+  },
+  "Pricing | Counselling Centre Management System": {
+    "en": "Pricing | Counselling Centre Management System",
+    "cn": "价格方案 | 辅导中心管理系统"
+  },
+  "Register | Counselling Centre Management System": {
+    "en": "Register | Counselling Centre Management System",
+    "cn": "注册 | 辅导中心管理系统"
+  },
+  "Reset Password | Counselling Centre Management System": {
+    "en": "Reset Password | Counselling Centre Management System",
+    "cn": "重置密码 | 辅导中心管理系统"
+  },
+  "The starting point for your next project | Counselling Centre Management System": {
+    "en": "The starting point for your next project | Counselling Centre Management System",
+    "cn": "新项目的起点 | 辅导中心管理系统"
+  },
+  "User: List | Counselling Centre Management System": {
+    "en": "User: List | Counselling Centre Management System",
+    "cn": "用户: 列表 | 辅导中心管理系统"
+  },
+  "Verify Code | Counselling Centre Management System": {
+    "en": "Verify Code | Counselling Centre Management System",
+    "cn": "验证码 | 辅导中心管理系统"
+  },
+  "assign": {
+    "en": "assign",
+    "cn": "分配"
+  },
+  "avatar": {
+    "en": "avatar",
+    "cn": "头像"
+  },
+  "bottom": {
+    "en": "bottom",
+    "cn": "底部"
+  },
+  "country": {
+    "en": "country",
+    "cn": "国家"
+  },
+  "date create": {
+    "en": "date create",
+    "cn": "创建日期"
+  },
+  "default": {
+    "en": "default",
+    "cn": "默认"
+  },
+  "delete": {
+    "en": "delete",
+    "cn": "删除"
+  },
+  "disabled": {
+    "en": "disabled",
+    "cn": "已禁用"
+  },
+  "general": {
+    "en": "general",
+    "cn": "一般"
+  },
+  "grid": {
+    "en": "grid",
+    "cn": "网格"
+  },
+  "learn More": {
+    "en": "learn More",
+    "cn": "了解更多"
+  },
+  "legacy impact performance": {
+    "en": "legacy impact performance",
+    "cn": "持续影响表现"
+  },
+  "license": {
+    "en": "license",
+    "cn": "许可"
+  },
+  "right": {
+    "en": "right",
+    "cn": "右侧"
+  },
+  "selected": {
+    "en": "selected",
+    "cn": "已选"
+  },
+  "text": {
+    "en": "text",
+    "cn": "文字"
+  },
+  "top": {
+    "en": "top",
+    "cn": "顶部"
+  },
+  "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Vestibulum fringilla pede sit amet augue.": {
+    "en": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Vestibulum fringilla pede sit amet augue.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Cras ultricies mi eu turpis hendrerit fringilla. Fusce vel dui. Pellentesque auctor neque nec urna. Sed cursus turpis vitae tortor. Curabitur suscipit suscipit tellus.": {
+    "en": "Cras ultricies mi eu turpis hendrerit fringilla. Fusce vel dui. Pellentesque auctor neque nec urna. Sed cursus turpis vitae tortor. Curabitur suscipit suscipit tellus.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Quisque ut nisi. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Vestibulum eu odio. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Cras ultricies mi eu turpis hendrerit fringilla. Phasellus consectetuer vestibulum elit. Phasellus magna. Nullam tincidunt adipiscing enim. Vestibulum volutpat pretium libero. Nullam quis ante. Morbi mollis tellus ac sapien. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ac felis sit amet ligula pharetra condimentum. Morbi mattis ullamcorper velit. Vivamus consectetuer hendrerit lacus. Nullam quis ante. Praesent turpis. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Quisque ut nisi. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Vestibulum eu odio. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Cras ultricies mi eu turpis hendrerit fringilla. Phasellus consectetuer vestibulum elit. Phasellus magna. Nullam tincidunt adipiscing enim. Vestibulum volutpat pretium libero. Nullam quis ante. Morbi mollis tellus ac sapien. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ac felis sit amet ligula pharetra condimentum. Morbi mattis ullamcorper velit. Vivamus consectetuer hendrerit lacus. Nullam quis ante. Praesent turpis. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum.": {
+    "en": "Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Quisque ut nisi. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Vestibulum eu odio. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Cras ultricies mi eu turpis hendrerit fringilla. Phasellus consectetuer vestibulum elit. Phasellus magna. Nullam tincidunt adipiscing enim. Vestibulum volutpat pretium libero. Nullam quis ante. Morbi mollis tellus ac sapien. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ac felis sit amet ligula pharetra condimentum. Morbi mattis ullamcorper velit. Vivamus consectetuer hendrerit lacus. Nullam quis ante. Praesent turpis. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Quisque ut nisi. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Vestibulum eu odio. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Cras ultricies mi eu turpis hendrerit fringilla. Phasellus consectetuer vestibulum elit. Phasellus magna. Nullam tincidunt adipiscing enim. Vestibulum volutpat pretium libero. Nullam quis ante. Morbi mollis tellus ac sapien. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ac felis sit amet ligula pharetra condimentum. Morbi mattis ullamcorper velit. Vivamus consectetuer hendrerit lacus. Nullam quis ante. Praesent turpis. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.": {
+    "en": "Donec posuere vulputate arcu. Fusce vulputate eleifend sapien. Phasellus magna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Donec posuere vulputate arcu.": {
+    "en": "Donec posuere vulputate arcu.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Etiam feugiat lorem non metus": {
+    "en": "Etiam feugiat lorem non metus",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "For each ad campaign that you create, you can control how much\n              you're willing to spend on clicks and conversions, which networks\n              and geographical locations you want your ads to show on, and more.": {
+    "en": "For each ad campaign that you create, you can control how much\n              you're willing to spend on clicks and conversions, which networks\n              and geographical locations you want your ads to show on, and more.",
+    "cn": "您可以为每个广告活动设置点击与转化预算、投放网络及地区等。"
+  },
+  "Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.": {
+    "en": "Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Phasellus dolor. Fusce egestas elit eget lorem. Quisque id odio.": {
+    "en": "Phasellus dolor. Fusce egestas elit eget lorem. Quisque id odio.",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Proin viverra ligula": {
+    "en": "Proin viverra ligula",
+    "cn": "这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "Try out different ad text to see what brings in the most customers,\n              and learn how to enhance your ads using features like ad extensions.\n              If you run into any problems with your ads, find out how to tell if\n              they're running and how to resolve approval issues.": {
+    "en": "Try out different ad text to see what brings in the most customers,\n              and learn how to enhance your ads using features like ad extensions.\n              If you run into any problems with your ads, find out how to tell if\n              they're running and how to resolve approval issues.",
+    "cn": "尝试不同的广告文案，了解哪些内容最能吸引客户，并通过广告扩展等功能改善效果。如遇问题，请检查投放状态及审核结果。"
+  },
+  "Welcome back! \n {{p0}}": {
+    "en": "Welcome back! \n {{p0}}",
+    "cn": "欢迎回来！\n{{p0}}"
+  },
+  "body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.": {
+    "en": "body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.",
+    "cn": "body1.这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.": {
+    "en": "body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.",
+    "cn": "body2.这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur": {
+    "en": "subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur",
+    "cn": "subtitle1.这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur": {
+    "en": "subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur",
+    "cn": "subtitle2.这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  }
+}

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { Button } from '@mui/material';
 import { LoadingButton, Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 //
@@ -28,54 +29,41 @@ ButtonVariant.propTypes = {
 };
 
 export default function ButtonVariant({ variant = 'text' }) {
+  useUiLanguage();
   return (
     <Masonry columns={2} spacing={3}>
-      <Block title="Base" sx={style}>
-        <Button variant={variant} color="inherit">
-          Default
-        </Button>
+      <Block title={tr("Base")} sx={style}>
+        <Button variant={variant} color="inherit">{tr("Default")}</Button>
 
-        <Button variant={variant}>Primary</Button>
+        <Button variant={variant}>{tr("Primary")}</Button>
 
-        <Button variant={variant} color="secondary">
-          Secondary
-        </Button>
+        <Button variant={variant} color="secondary">{tr("Secondary")}</Button>
 
-        <Button variant={variant} disabled>
-          Disabled
-        </Button>
+        <Button variant={variant} disabled>{tr("Disabled")}</Button>
 
-        <Button variant={variant}>Link</Button>
+        <Button variant={variant}>{tr("Link")}</Button>
       </Block>
 
-      <Block title="Colors" sx={style}>
+      <Block title={tr("Colors")} sx={style}>
         {COLORS.map((color) => (
           <Button key={color} variant={variant} color={color}>
-            {color === 'inherit' ? 'default' : color}
+            {color === 'inherit' ? tr("default") : color}
           </Button>
         ))}
       </Block>
 
-      <Block title="With Icon & Loading" sx={style}>
+      <Block title={tr("With Icon & Loading")} sx={style}>
         <Button
           variant={variant}
           color="error"
           startIcon={<Iconify icon="ic:round-access-alarm" />}
-        >
-          Icon Left
-        </Button>
+        >{tr("Icon Left")}</Button>
 
-        <Button variant={variant} color="error" endIcon={<Iconify icon="ic:round-access-alarm" />}>
-          Icon Right
-        </Button>
+        <Button variant={variant} color="error" endIcon={<Iconify icon="ic:round-access-alarm" />}>{tr("Icon Right")}</Button>
 
-        <LoadingButton loading variant={variant}>
-          Submit
-        </LoadingButton>
+        <LoadingButton loading variant={variant}>{tr("Submit")}</LoadingButton>
 
-        <LoadingButton loading loadingIndicator="Loading..." variant={variant}>
-          Fetch data
-        </LoadingButton>
+        <LoadingButton loading loadingIndicator="Loading..." variant={variant}>{tr("Fetch data")}</LoadingButton>
 
         <LoadingButton
           loading
@@ -83,9 +71,7 @@ export default function ButtonVariant({ variant = 'text' }) {
           loadingPosition="start"
           startIcon={<Iconify icon="ic:round-access-alarm" />}
           variant={variant}
-        >
-          Start
-        </LoadingButton>
+        >{tr("Start")}</LoadingButton>
 
         <LoadingButton
           loading
@@ -93,15 +79,13 @@ export default function ButtonVariant({ variant = 'text' }) {
           loadingPosition="end"
           endIcon={<Iconify icon="ic:round-access-alarm" />}
           variant={variant}
-        >
-          End
-        </LoadingButton>
+        >{tr("End")}</LoadingButton>
       </Block>
 
-      <Block title="Size" sx={style}>
+      <Block title={tr("Size")} sx={style}>
         {SIZES.map((size) => (
           <Button key={size} variant={variant} color="info" size={size}>
-            {size}
+            {tr(size)}
           </Button>
         ))}
       </Block>

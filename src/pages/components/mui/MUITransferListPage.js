@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -22,10 +23,11 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUITransferListPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Transfer List | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Transfer List | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -37,13 +39,13 @@ export default function MUITransferListPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Transfer List"
+            heading={tr("Transfer List")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Transfer List' },
+              { name: tr("Transfer List") },
             ]}
             moreLink={['https://mui.com/components/transfer-list']}
           />
@@ -52,11 +54,11 @@ export default function MUITransferListPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={3}>
-          <Block title="Simple" sx={style}>
+          <Block title={tr("Simple")} sx={style}>
             <SimpleTransferList />
           </Block>
 
-          <Block title="Enhanced" sx={style}>
+          <Block title={tr("Enhanced")} sx={style}>
             <EnhancedTransferList />
           </Block>
         </Stack>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Droppable, Draggable } from '@hello-pangea/dnd';
 // @mui
 import { Paper, Stack, Button } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // redux
 import { useDispatch } from '../../../../redux/store';
 import { deleteColumn, updateColumn, addTask, deleteTask } from '../../../../redux/slices/kanban';
@@ -23,6 +24,7 @@ KanbanColumn.propTypes = {
 };
 
 export default function KanbanColumn({ column, index, cards }) {
+  useUiLanguage();
   const dispatch = useDispatch();
 
   const { enqueueSnackbar } = useSnackbar();
@@ -44,7 +46,7 @@ export default function KanbanColumn({ column, index, cards }) {
         columnId: column.id,
       })
     );
-    enqueueSnackbar('Delete success!');
+    enqueueSnackbar(tr("Delete success!"));
   };
 
   const handleUpdateColumn = async (newName) => {
@@ -56,7 +58,7 @@ export default function KanbanColumn({ column, index, cards }) {
             name: newName,
           })
         );
-        enqueueSnackbar('Update success!');
+        enqueueSnackbar(tr("Update success!"));
       }
     } catch (error) {
       console.error(error);
@@ -66,7 +68,7 @@ export default function KanbanColumn({ column, index, cards }) {
   const handleDeleteColumn = async () => {
     try {
       dispatch(deleteColumn(column.id));
-      enqueueSnackbar('Delete success!');
+      enqueueSnackbar(tr("Delete success!"));
     } catch (error) {
       console.error(error);
     }
@@ -137,9 +139,7 @@ export default function KanbanColumn({ column, index, cards }) {
                 startIcon={<Iconify icon="eva:plus-fill" />}
                 onClick={handleToggleAddTask}
                 sx={{ fontSize: 14 }}
-              >
-                Add Task
-              </Button>
+              >{tr("Add Task")}</Button>
             </Stack>
           </Stack>
         </Paper>

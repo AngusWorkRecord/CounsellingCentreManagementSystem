@@ -1,3 +1,4 @@
+import { tr } from '../../../locales/translate';
 // routes
 import { PATH_DASHBOARD, PATH_CONFERENCE_MANAGEMENT } from '../../../routes/paths';
 // components
@@ -43,7 +44,7 @@ const navConfig = [
   // GENERAL
   // ----------------------------------------------------------------------
   {
-    subheader: 'general',
+    get subheader() { return tr("general"); },
     items: [
       // { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
       // { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
@@ -53,12 +54,12 @@ const navConfig = [
       // { title: 'Dashboard', path: PATH_DASHBOARD.general.booking, icon: ICONS.dashboard },
       {
         // 中文原文：辅导个案管理、数据概览、个案管理
-        title: 'Counselling Case Management',
+        get title() { return tr("Counselling Case Management"); },
         path: PATH_DASHBOARD.general.counselling,
         icon: ICONS.analytics,
         children: [
-          { title: 'Data Overview', path: PATH_DASHBOARD.general.counselling },
-          { title: 'Case Management', path: PATH_DASHBOARD.general.counsellingCases },
+          { get title() { return tr("Data Overview"); }, path: PATH_DASHBOARD.general.counselling },
+          { get title() { return tr("Case Management"); }, path: PATH_DASHBOARD.general.counsellingCases },
         ],
       },
       // { title: 'Convention', path: PATH_DASHBOARD.general.events, icon: ICONS.booking },

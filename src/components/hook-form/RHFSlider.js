@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { Slider, FormHelperText } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +24,7 @@ export default function RHFSlider({ name, helperText, ...other }) {
           <Slider {...field} valueLabelDisplay="auto" {...other} />
 
           {(!!error || helperText) && (
-            <FormHelperText error={!!error}>{error ? error?.message : helperText}</FormHelperText>
+            <FormHelperText error={!!error}>{error ? uiMessage(error?.message) : helperText}</FormHelperText>
           )}
         </div>
       )}

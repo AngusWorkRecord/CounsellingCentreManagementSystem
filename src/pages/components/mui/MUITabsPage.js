@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Tab, Tabs, Container, Stack } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -26,45 +27,46 @@ const TABS = [
   {
     value: 'one',
     icon: <Iconify icon="eva:phone-call-fill" width={24} />,
-    label: 'Item One',
+    get label() { return tr("Item One"); },
   },
   {
     value: 'two',
     icon: <Iconify icon="eva:heart-fill" width={24} />,
-    label: 'Item Two',
+    get label() { return tr("Item Two"); },
   },
   {
     value: 'three',
     icon: <Iconify icon="eva:headphones-fill" width={24} />,
-    label: 'Item Three',
+    get label() { return tr("Item Three"); },
     disabled: true,
   },
   {
     value: 'four',
     icon: <Iconify icon="eva:headphones-fill" width={24} />,
-    label: 'Item Four',
+    get label() { return tr("Item Four"); },
   },
   {
     value: 'five',
     icon: <Iconify icon="eva:headphones-fill" width={24} />,
-    label: 'Item Five',
+    get label() { return tr("Item Five"); },
     disabled: true,
   },
   {
     value: 'six',
     icon: <Iconify icon="eva:headphones-fill" width={24} />,
-    label: 'Item Six',
+    get label() { return tr("Item Six"); },
   },
   {
     value: 'seven',
     icon: <Iconify icon="eva:headphones-fill" width={24} />,
-    label: 'Item Seven',
+    get label() { return tr("Item Seven"); },
   },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function MUITabsPage() {
+  useUiLanguage();
   const [currentTab, setCurrentTab] = useState('one');
 
   const [scrollable, setScrollable] = useState('one');
@@ -72,7 +74,7 @@ export default function MUITabsPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Tabs | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Tabs | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -84,13 +86,13 @@ export default function MUITabsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Tabs"
+            heading={tr("Tabs")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Tabs' },
+              { name: tr("Tabs") },
             ]}
             moreLink={['https://mui.com/components/tabs']}
           />
@@ -99,7 +101,7 @@ export default function MUITabsPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Text" sx={style}>
+          <Block title={tr("Text")} sx={style}>
             <Stack spacing={2} sx={{ width: 1 }}>
               <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
                 {TABS.slice(0, 3).map((tab) => (
@@ -121,7 +123,7 @@ export default function MUITabsPage() {
             </Stack>
           </Block>
 
-          <Block title="Icon" sx={style}>
+          <Block title={tr("Icon")} sx={style}>
             <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
               {TABS.slice(0, 3).map((tab) => (
                 <Tab key={tab.value} icon={tab.icon} value={tab.value} />
@@ -129,7 +131,7 @@ export default function MUITabsPage() {
             </Tabs>
           </Block>
 
-          <Block title="Top" sx={style}>
+          <Block title={tr("Top")} sx={style}>
             <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
               {TABS.slice(0, 3).map((tab) => (
                 <Tab
@@ -144,7 +146,7 @@ export default function MUITabsPage() {
             </Tabs>
           </Block>
 
-          <Block title="Bottom" sx={style}>
+          <Block title={tr("Bottom")} sx={style}>
             <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
               {TABS.slice(0, 3).map((tab) => (
                 <Tab
@@ -159,7 +161,7 @@ export default function MUITabsPage() {
             </Tabs>
           </Block>
 
-          <Block title="Start" sx={style}>
+          <Block title={tr("Start")} sx={style}>
             <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
               {TABS.slice(0, 3).map((tab) => (
                 <Tab
@@ -173,7 +175,7 @@ export default function MUITabsPage() {
             </Tabs>
           </Block>
 
-          <Block title="End" sx={style}>
+          <Block title={tr("End")} sx={style}>
             <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
               {TABS.slice(0, 3).map((tab) => (
                 <Tab
@@ -188,7 +190,7 @@ export default function MUITabsPage() {
             </Tabs>
           </Block>
 
-          <Block title="Scrollable" sx={style}>
+          <Block title={tr("Scrollable")} sx={style}>
             <Box
               sx={{
                 flexGrow: 1,
