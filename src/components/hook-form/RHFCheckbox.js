@@ -10,6 +10,7 @@ import {
   FormHelperText,
   FormControlLabel,
 } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 
 // ----------------------------------------------------------------------
 
@@ -30,7 +31,7 @@ export function RHFCheckbox({ name, helperText, ...other }) {
           <FormControlLabel control={<Checkbox {...field} checked={field.value} />} {...other} />
 
           {(!!error || helperText) && (
-            <FormHelperText error={!!error}>{error ? error?.message : helperText}</FormHelperText>
+            <FormHelperText error={!!error}>{error ? uiMessage(error?.message) : helperText}</FormHelperText>
           )}
         </div>
       )}
@@ -104,7 +105,7 @@ export function RHFMultiCheckbox({ row, name, label, options, spacing, helperTex
 
           {(!!error || helperText) && (
             <FormHelperText error={!!error} sx={{ mx: 0 }}>
-              {error ? error?.message : helperText}
+              {error ? uiMessage(error?.message) : helperText}
             </FormHelperText>
           )}
         </FormControl>

@@ -14,6 +14,7 @@ import {
   FormControl,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -33,6 +34,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUIPopoverPage() {
+  useUiLanguage();
   const [click, setCLick] = useState(null);
 
   const [hover, setHover] = useState(null);
@@ -67,7 +69,7 @@ export default function MUIPopoverPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Popover | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Popover | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -79,13 +81,13 @@ export default function MUIPopoverPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Popover"
+            heading={tr("Popover")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Popover' },
+              { name: tr("Popover") },
             ]}
             moreLink={['https://mui.com/components/popover']}
           />
@@ -102,10 +104,8 @@ export default function MUIPopoverPage() {
           }}
           sx={{ mb: 3 }}
         >
-          <Block title="Click" sx={style}>
-            <Button variant="contained" onClick={handleClick}>
-              Open Popover
-            </Button>
+          <Block title={tr("Click")} sx={style}>
+            <Button variant="contained" onClick={handleClick}>{tr("Open Popover")}</Button>
             <Popover
               open={Boolean(click)}
               anchorEl={click}
@@ -120,25 +120,19 @@ export default function MUIPopoverPage() {
               }}
             >
               <Box sx={{ p: 2, maxWidth: 280 }}>
-                <Typography variant="subtitle1" gutterBottom>
-                  Etiam feugiat lorem non metus
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.
-                </Typography>
+                <Typography variant="subtitle1" gutterBottom>{tr("Etiam feugiat lorem non metus")}</Typography>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.")}</Typography>
               </Box>
             </Popover>
           </Block>
 
-          <Block title="Hover" sx={style}>
+          <Block title={tr("Hover")} sx={style}>
             <Typography
               aria-owns={hover ? 'mouse-over-popover' : undefined}
               aria-haspopup="true"
               onMouseEnter={handleHoverOpen}
               onMouseLeave={handleHoverClose}
-            >
-              Hover with a Popover.
-            </Typography>
+            >{tr("Hover with a Popover.")}</Typography>
             <Popover
               id="mouse-over-popover"
               open={Boolean(hover)}
@@ -158,24 +152,18 @@ export default function MUIPopoverPage() {
               }}
             >
               <Box sx={{ p: 2, maxWidth: 280 }}>
-                <Typography variant="subtitle1" gutterBottom>
-                  Etiam feugiat lorem non metus
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.
-                </Typography>
+                <Typography variant="subtitle1" gutterBottom>{tr("Etiam feugiat lorem non metus")}</Typography>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.")}</Typography>
               </Box>
             </Popover>
           </Block>
         </Box>
 
-        <Block title="Customized" sx={style}>
-          <Button variant="contained" onClick={handleOpenCustomized} sx={{ mr: 5 }}>
-            Open Customized
-          </Button>
+        <Block title={tr("Customized")} sx={style}>
+          <Button variant="contained" onClick={handleOpenCustomized} sx={{ mr: 5 }}>{tr("Open Customized")}</Button>
 
           <FormControl>
-            <FormLabel sx={{ typography: 'body2' }}>Arrow</FormLabel>
+            <FormLabel sx={{ typography: 'body2' }}>{tr("Arrow")}</FormLabel>
             <RadioGroup value={arrow} onChange={(event) => setArrow(event.target.value)}>
               {[
                 'top-left',
@@ -203,12 +191,8 @@ export default function MUIPopoverPage() {
 
           <MenuPopover open={customized} onClose={handleCloseCustomized} arrow={arrow}>
             <Box sx={{ p: 2, maxWidth: 280 }}>
-              <Typography variant="subtitle1" gutterBottom>
-                Etiam feugiat lorem non metus
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.
-              </Typography>
+              <Typography variant="subtitle1" gutterBottom>{tr("Etiam feugiat lorem non metus")}</Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.")}</Typography>
             </Box>
           </MenuPopover>
         </Block>

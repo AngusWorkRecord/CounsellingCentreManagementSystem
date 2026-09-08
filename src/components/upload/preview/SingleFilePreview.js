@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { tr, useUiLanguage } from '../../../locales/translate';
 //
 import Image from '../../image';
 
@@ -9,6 +10,7 @@ SingleFilePreview.propTypes = {
 };
 
 export default function SingleFilePreview({ file }) {
+  useUiLanguage();
   if (!file) {
     return null;
   }
@@ -17,7 +19,7 @@ export default function SingleFilePreview({ file }) {
 
   return (
     <Image
-      alt="file preview"
+      alt={tr("file preview")}
       src={imgUrl}
       sx={{
         top: 8,

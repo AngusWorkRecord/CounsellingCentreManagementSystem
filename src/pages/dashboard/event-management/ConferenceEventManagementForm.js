@@ -6,6 +6,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Button, Stepper, Step, StepLabel, StepContent, Box, Typography, Card, StepButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 // components
 import CustomBreadcrumbs from '../../../components/custom-breadcrumbs/CustomBreadcrumbs';
@@ -31,6 +32,7 @@ ConferenceEventManagementForm.propTypes = {
     event: PropTypes.object,
   };
 export default function ConferenceEventManagementForm({ event }) {
+  useUiLanguage();
     const { user } = useAuthContext();
     const theme = useTheme();
     const themeStretch = useSettingsContext()
@@ -63,29 +65,29 @@ export default function ConferenceEventManagementForm({ event }) {
     };
 
     const handleFinsih = () => {
-        alert("You are finish the form")
+        alert(tr("You are finish the form"))
     };
     // stepper functions
 
     const formSteps = [
         {
-            label: 'Basic Info',
+            label: tr("Basic Info"),
             content: <BasicInfoForm handleNextStep={handleNext} isEdit={false} />,
         },
         {
-            label: 'Description & Brochures',
+            label: tr("Description & Brochures"),
             content: <DescriptionForm handleNextStep={handleNext} handlePrevStep={handleBack} isEdit={false} />,
         },
         {
-            label: 'Registration Form',
+            label: tr("Registration Form"),
             content: <RegistrationFormSetting handleNextStep={handleNext} handlePrevStep={handleBack} isEdit={false} />,
         },
         {
-            label: 'Survey Form',
+            label: tr("Survey Form"),
             content: <SurveyFormSetting handleNextStep={handleNext} handlePrevStep={handleBack} isEdit={false} />,
         },
         {
-            label: 'Tracing Forms',
+            label: tr("Tracing Forms"),
             content: <TrackerSettingForm handleNextStep={handleFinsih} handlePrevStep={handleBack} isEdit={false} />,
         },
     ];
@@ -93,7 +95,7 @@ export default function ConferenceEventManagementForm({ event }) {
     return (
         <>
             <Helmet>
-                <title> Conference Management | Create Conference </title>
+                <title> {tr("Conference Management | Create Conference")} </title>
             </Helmet>
 
             <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -105,9 +107,7 @@ export default function ConferenceEventManagementForm({ event }) {
                         }}
                         component={RouterLink}
                         to={PATH_CONFERENCE_MANAGEMENT.conference.root}
-                    >
-                        Back
-                    </Button>
+                    >{tr("Back")}</Button>
                 </Box>
                 <Box>
                     <Stepper activeStep={activeStep} orientation="vertical" nonLinear>

@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import { Link, Stack, Alert, IconButton, InputAdornment } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // auth
@@ -18,12 +19,13 @@ import FormProvider, { RHFTextField } from '../../components/hook-form';
 // ----------------------------------------------------------------------
 
 export default function AuthLoginForm() {
+  useUiLanguage();
   const { login } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required('Email is required').email('Email must be a valid email address'),
-    password: Yup.string().required('Password is required'),
+    email: Yup.string().required(tr("Email is required")).email(tr("Email must be a valid email address")),
+    password: Yup.string().required(tr("Password is required")),
   });
 
   const defaultValues = {
@@ -48,7 +50,7 @@ export default function AuthLoginForm() {
       const resp = await login(data.email, 1, data.password);
       if (!resp) {
         setError('afterSubmit', {
-          message: 'Invalid username or password.',
+          message: tr("Invalid username or password."),
         });
       }
     } catch (error) {
@@ -68,7 +70,7 @@ export default function AuthLoginForm() {
 
         <RHFTextField
           name="email"
-          label="Email address"
+          label={tr("Email address")}
           variant="standard"
           fullWidth
           InputProps={{
@@ -96,7 +98,7 @@ export default function AuthLoginForm() {
 
         <RHFTextField
           name="password"
-          label="Password"
+          label={tr("Password")}
           type={showPassword ? 'text' : 'password'}
           variant="standard"
           fullWidth
@@ -138,9 +140,7 @@ export default function AuthLoginForm() {
           variant="body2"
           color="inherit"
           underline="always"
-        >
-          Forgot password?
-        </Link>
+        >{tr("Forgot password?")}</Link>
       </Stack>
 
       <LoadingButton
@@ -157,9 +157,7 @@ export default function AuthLoginForm() {
             bgcolor: 'grey.900', // Slightly lighter dark color on hover
           },
         }}
-      >
-        Login
-      </LoadingButton>
+      >{tr("Login")}</LoadingButton>
     </FormProvider>
   );
 }

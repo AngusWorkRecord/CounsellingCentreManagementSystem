@@ -2,12 +2,14 @@ import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Step, Paper, Button, Stepper, StepLabel, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
 
 export default function HorizontalLinearStepper() {
+  useUiLanguage();
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -56,14 +58,14 @@ export default function HorizontalLinearStepper() {
           const stepProps = {};
           const labelProps = {};
           if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
+            labelProps.optional = <Typography variant="caption">{tr("Optional")}</Typography>;
           }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
           }
           return (
             <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
+              <StepLabel {...labelProps}>{tr(label)}</StepLabel>
             </Step>
           );
         })}
@@ -78,12 +80,12 @@ export default function HorizontalLinearStepper() {
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
             }}
           >
-            <Typography sx={{ my: 1 }}>All steps completed - you&apos;re finished</Typography>
+            <Typography sx={{ my: 1 }}>{tr("All steps completed - you're finished")}</Typography>
           </Paper>
 
           <Box sx={{ display: 'flex' }}>
             <Box sx={{ flexGrow: 1 }} />
-            <Button onClick={handleReset}>Reset</Button>
+            <Button onClick={handleReset}>{tr("Reset")}</Button>
           </Box>
         </>
       ) : (
@@ -96,20 +98,16 @@ export default function HorizontalLinearStepper() {
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
             }}
           >
-            <Typography sx={{ my: 1 }}> Step {activeStep + 1}</Typography>
+            <Typography sx={{ my: 1 }}> {tr("Step")} {activeStep + 1}</Typography>
           </Paper>
           <Box sx={{ display: 'flex' }}>
-            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-              Back
-            </Button>
+            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>{tr("Back")}</Button>
             <Box sx={{ flexGrow: 1 }} />
             {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
+              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>{tr("Skip")}</Button>
             )}
             <Button variant="contained" onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === steps.length - 1 ? tr("Finish") : tr("Next")}
             </Button>
           </Box>
         </>

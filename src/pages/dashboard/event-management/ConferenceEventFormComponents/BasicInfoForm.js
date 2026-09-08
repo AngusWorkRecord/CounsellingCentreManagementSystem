@@ -11,6 +11,7 @@ import { Box, Card, Stack, Typography, TextField, Grid, Button, Tooltip, InputAd
 import { DesktopDateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // helpers / functions/
 import { isArrayNotEmpty } from '../../../../utils/Helpers';
@@ -32,6 +33,7 @@ BasicInfoForm.propTypes = {
 }
 
 export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handleNextStep }) {
+  useUiLanguage();
     const [eventName, setEventName] = useState("")
     const [startDateTime, setStartDateTime] = useState(new Date());
     const [finishDateTime, setFinishDateTime] = useState(new Date());
@@ -41,7 +43,7 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
     const { copy } = useCopyToClipboard();
     const onCopy = (text) => {
         if (text) {
-            enqueueSnackbar('Copied!');
+            enqueueSnackbar(tr("Copied!"));
             copy(text);
         }
     };
@@ -49,9 +51,9 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
 
     // form setting
     const BasicInfoSchema = Yup.object().shape({
-        eventName: Yup.string().required(`Name for the conference event is required.`),
-        startDate: Yup.string().required(`The Start Time is required`),
-        finishDate: Yup.string().required(`The Finish Time is required`),
+        eventName: Yup.string().required(tr("Name for the conference event is required.")),
+        startDate: Yup.string().required(tr("The Start Time is required")),
+        finishDate: Yup.string().required(tr("The Finish Time is required")),
         price: Yup.number().moreThan(0, 'Price should not be RM 0.00'),
     });
 
@@ -96,19 +98,15 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
                 <Stack spacing={2}>
 
                     <Stack spacing={1}>
-                        <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                            Conference Event Name
-                        </Typography>
-                        <RHFTextField size="small" name="eventName" label="Conference Event" />
+                        <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>{tr("Conference Event Name")}</Typography>
+                        <RHFTextField size="small" name="eventName" label={tr("Conference Event")} />
                     </Stack>
 
                     {
                         isEdit &&
                         <Stack direction="row" spacing={1}>
-                            <Typography variant="subtitle2" sx={{ color: 'text.secondary', my: 'auto' }}>
-                                Page URL
-                            </Typography>
-                            <Tooltip title="Click to copy">
+                            <Typography variant="subtitle2" sx={{ color: 'text.secondary', my: 'auto' }}>{tr("Page URL")}</Typography>
+                            <Tooltip title={tr("Click to copy")}>
                                 <Button
                                     variant="text"
                                     sx={{ textTransform: "lowercase" }}
@@ -125,9 +123,7 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
                     <Grid container>
                         <Grid item xs={12} md={6} >
                             <Stack spacing={1}>
-                                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                                    Start At
-                                </Typography>
+                                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>{tr("Start At")}</Typography>
                                 <Controller
                                     name="startDate"
                                     control={control}
@@ -148,9 +144,7 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
 
                         <Grid item xs={12} md={6}>
                             <Stack spacing={1} >
-                                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                                    Finish At
-                                </Typography>
+                                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>{tr("Finish At")}</Typography>
                                 <Controller
                                     name="finishDate"
                                     control={control}
@@ -172,12 +166,10 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
                     </Grid>
 
                     <Stack spacing={1}>
-                        <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                            Entrace Fee
-                        </Typography>
+                        <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>{tr("Entrace Fee")}</Typography>
                         <RHFTextField
                             name="price"
-                            label="Entrace Fee"
+                            label={tr("Entrace Fee")}
                             placeholder="0.00"
                             onChange={(event) => setValue('price', Number(event.target.value), { shouldValidate: true })}
                             InputLabelProps={{ shrink: true }}
@@ -185,9 +177,7 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
-                                        <Box component="span" sx={{ color: 'text.disabled' }}>
-                                            RM
-                                        </Box>
+                                        <Box component="span" sx={{ color: 'text.disabled' }}>{tr("RM")}</Box>
                                     </InputAdornment>
                                 ),
                                 type: 'number',
@@ -210,9 +200,7 @@ export default function BasicInfoForm({ formData, isEdit, handlePrevStep, handle
                             type="submit"
                             variant="contained"
                             sx={{ mt: 1, mr: 1 }}
-                        >
-                            Next
-                        </Button>
+                        >{tr("Next")}</Button>
                         {/* <Button
                         onClick={handlePrevStep}
                         sx={{ mt: 1, mr: 1 }}

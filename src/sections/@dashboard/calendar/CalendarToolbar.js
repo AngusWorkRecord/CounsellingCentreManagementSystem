@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Stack, Button, Tooltip, Typography, IconButton, ToggleButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import { fDate } from '../../../utils/formatTime';
 // hooks
@@ -11,10 +12,10 @@ import Iconify from '../../../components/iconify';
 // ----------------------------------------------------------------------
 
 const VIEW_OPTIONS = [
-  { value: 'dayGridMonth', label: 'Month', icon: 'ic:round-view-module' },
-  { value: 'timeGridWeek', label: 'Week', icon: 'ic:round-view-week' },
-  { value: 'timeGridDay', label: 'Day', icon: 'ic:round-view-day' },
-  { value: 'listWeek', label: 'Agenda', icon: 'ic:round-view-agenda' },
+  { value: 'dayGridMonth', get label() { return tr("Month"); }, icon: 'ic:round-view-module' },
+  { value: 'timeGridWeek', get label() { return tr("Week"); }, icon: 'ic:round-view-week' },
+  { value: 'timeGridDay', get label() { return tr("Day"); }, icon: 'ic:round-view-day' },
+  { value: 'listWeek', get label() { return tr("Agenda"); }, icon: 'ic:round-view-agenda' },
 ];
 
 // ----------------------------------------------------------------------
@@ -38,6 +39,7 @@ export default function CalendarToolbar({
   onChangeView,
   onOpenFilter,
 }) {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'sm');
 
   return (

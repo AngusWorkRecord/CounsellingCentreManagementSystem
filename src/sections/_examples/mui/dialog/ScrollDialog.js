@@ -8,10 +8,12 @@ import {
   DialogActions,
   DialogContentText,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 export default function ScrollDialog() {
+  useUiLanguage();
   const [open, setOpen] = useState(false);
 
   const [scroll, setScroll] = useState('paper');
@@ -47,7 +49,7 @@ export default function ScrollDialog() {
       </Button>
 
       <Dialog open={open} onClose={handleClose} scroll={scroll}>
-        <DialogTitle sx={{ pb: 2 }}>Subscribe</DialogTitle>
+        <DialogTitle sx={{ pb: 2 }}>{tr("Subscribe")}</DialogTitle>
 
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
@@ -67,11 +69,9 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>{tr("Cancel")}</Button>
 
-          <Button variant="contained" onClick={handleClose}>
-            Subscribe
-          </Button>
+          <Button variant="contained" onClick={handleClose}>{tr("Subscribe")}</Button>
         </DialogActions>
       </Dialog>
     </div>

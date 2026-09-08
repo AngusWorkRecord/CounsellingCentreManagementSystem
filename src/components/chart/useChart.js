@@ -1,15 +1,17 @@
 import merge from 'lodash/merge';
 // @mui
 import { useTheme, alpha } from '@mui/material/styles';
+import { tr, useUiLanguage } from '../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 export default function useChart(options) {
+  useUiLanguage();
   const theme = useTheme();
 
   const LABEL_TOTAL = {
     show: true,
-    label: 'Total',
+    label: tr("Total"),
     color: theme.palette.text.secondary,
     fontSize: theme.typography.subtitle2.fontSize,
     fontWeight: theme.typography.subtitle2.fontWeight,

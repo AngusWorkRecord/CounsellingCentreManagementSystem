@@ -13,6 +13,7 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -56,6 +57,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUIMenuPage() {
+  useUiLanguage();
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const [isOpen, setOpen] = useState(null);
@@ -92,7 +94,7 @@ export default function MUIMenuPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Menu | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Menu | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -104,13 +106,13 @@ export default function MUIMenuPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Menu"
+            heading={tr("Menu")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Menu' },
+              { name: tr("Menu") },
             ]}
             moreLink={['https://mui.com/components/menus']}
           />
@@ -126,10 +128,8 @@ export default function MUIMenuPage() {
             md: 'repeat(3, 1fr)',
           }}
         >
-          <Block title="Simple" sx={style}>
-            <Button variant="outlined" onClick={handleOpen}>
-              Open Menu
-            </Button>
+          <Block title={tr("Simple")} sx={style}>
+            <Button variant="outlined" onClick={handleOpen}>{tr("Open Menu")}</Button>
             <Menu
               keepMounted
               id="simple-menu"
@@ -139,18 +139,18 @@ export default function MUIMenuPage() {
             >
               {['Profile', 'My account', 'Logout'].map((option) => (
                 <MenuItem key={option} onClick={handleClose}>
-                  {option}
+                  {tr(option)}
                 </MenuItem>
               ))}
             </Menu>
           </Block>
 
-          <Block title="Selected" sx={style}>
-            <List component="nav" aria-label="Device settings">
+          <Block title={tr("Selected")} sx={style}>
+            <List component="nav" aria-label={tr("Device settings")}>
               <ListItemButton
                 aria-haspopup="true"
                 aria-controls="lock-menu"
-                aria-label="when device is locked"
+                aria-label={tr("when device is locked")}
                 onClick={handleClickListItem}
               >
                 <ListItemText primary="When device is locked" secondary={OPTIONS[selectedIndex]} />
@@ -171,15 +171,15 @@ export default function MUIMenuPage() {
                   selected={index === selectedIndex}
                   onClick={(event) => handleMenuItemClick(event, index)}
                 >
-                  {option}
+                  {tr(option)}
                 </MenuItem>
               ))}
             </Menu>
           </Block>
 
-          <Block title="Max height" sx={style}>
+          <Block title={tr("Max height")} sx={style}>
             <IconButton
-              aria-label="more"
+              aria-label={tr("more")}
               aria-controls="long-menu"
               aria-haspopup="true"
               onClick={handleClick}
@@ -202,7 +202,7 @@ export default function MUIMenuPage() {
             >
               {OPTIONS_MAXHEIGHT.map((option) => (
                 <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleMaxHeightClose}>
-                  {option}
+                  {tr(option)}
                 </MenuItem>
               ))}
             </Menu>

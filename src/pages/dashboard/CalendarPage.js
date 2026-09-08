@@ -9,6 +9,8 @@ import { Helmet } from 'react-helmet-async';
 import { useState, useRef, useEffect } from 'react';
 // @mui
 import { Card, Button, Container, DialogTitle, Dialog } from '@mui/material';
+import zhCalendar from '../../locales/calendarLocale';
+import { tr, useUiLanguage } from '../../locales/translate';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import {
@@ -54,6 +56,7 @@ const COLOR_OPTIONS = [
 ];
 
 export default function CalendarPage() {
+  const uiLanguage = useUiLanguage();
   const { enqueueSnackbar } = useSnackbar();
 
   const { themeStretch } = useSettingsContext();
@@ -201,10 +204,10 @@ export default function CalendarPage() {
   const handleCreateUpdateEvent = (newEvent) => {
     if (selectedEventId) {
       dispatch(updateEvent(selectedEventId, newEvent));
-      enqueueSnackbar('Update success!');
+      enqueueSnackbar(tr("Update success!"));
     } else {
       dispatch(createEvent(newEvent));
-      enqueueSnackbar('Create success!');
+      enqueueSnackbar(tr("Create success!"));
     }
   };
 
@@ -213,7 +216,7 @@ export default function CalendarPage() {
       if (selectedEventId) {
         dispatch(deleteEvent(selectedEventId));
         handleCloseModal();
-        enqueueSnackbar('Delete success!');
+        enqueueSnackbar(tr("Delete success!"));
       }
     } catch (error) {
       console.error(error);
@@ -278,7 +281,7 @@ export default function CalendarPage() {
               // onChangeView={handleChangeView}
               // onOpenFilter={handleOpenFilter}
             />
-            <FullCalendar
+            <FullCalendar locale={uiLanguage === 'cn' ? zhCalendar : 'en'}
               weekends
               editable
               droppable
@@ -311,7 +314,7 @@ export default function CalendarPage() {
       </Container>
 
       <Dialog fullWidth maxWidth="xs" open={openModal} onClose={handleCloseModal}>
-        <DialogTitle>{selectedEvent ? 'Edit Event' : 'Add Event'}</DialogTitle>
+        <DialogTitle>{selectedEvent ? tr("Edit Event") : tr("Add Event")}</DialogTitle>
 
         <CalendarForm
           event={selectedEvent}

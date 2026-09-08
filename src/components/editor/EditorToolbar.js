@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { tr, useUiLanguage } from '../../locales/translate';
 //
 import { StyledEditorToolbar } from './styles';
 
@@ -38,6 +39,7 @@ EditorToolbar.propTypes = {
 };
 
 export default function EditorToolbar({ id, isSimple, ...other }) {
+  useUiLanguage();
   return (
     <StyledEditorToolbar {...other}>
       <div id={id}>
@@ -45,10 +47,10 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
           <select className="ql-header" defaultValue="">
             {HEADINGS.map((heading, index) => (
               <option key={heading} value={index + 1}>
-                {heading}
+                {tr(heading)}
               </option>
             ))}
-            <option value="">Normal</option>
+            <option value="">{tr("Normal")}</option>
           </select>
         </div>
 

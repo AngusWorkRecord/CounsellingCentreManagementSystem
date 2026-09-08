@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Link, Stack, Button, Container, Typography, Breadcrumbs } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -12,10 +13,11 @@ import { Block } from '../../../sections/_examples/Block';
 // ----------------------------------------------------------------------
 
 export default function MUIBreadcrumbsPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Breadcrumbs | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Breadcrumbs | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -27,13 +29,13 @@ export default function MUIBreadcrumbsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Breadcrumbs"
+            heading={tr("Breadcrumbs")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Breadcrumbs' },
+              { name: tr("Breadcrumbs") },
             ]}
             moreLink={['https://mui.com/components/custom-breadcrumbs']}
           />
@@ -43,22 +45,20 @@ export default function MUIBreadcrumbsPage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={3}>
           <Block
-            title="Text"
+            title={tr("Text")}
             sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <Breadcrumbs>
               <Link color="inherit" href="#">
                 Material-UI
               </Link>
-              <Link color="inherit" href="#">
-                Core
-              </Link>
-              <Typography sx={{ color: 'text.primary' }}>Breadcrumb</Typography>
+              <Link color="inherit" href="#">{tr("Core")}</Link>
+              <Typography sx={{ color: 'text.primary' }}>{tr("Breadcrumb")}</Typography>
             </Breadcrumbs>
           </Block>
 
           <Block
-            title="With Icon"
+            title={tr("With Icon")}
             sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <Breadcrumbs>
@@ -67,9 +67,7 @@ export default function MUIBreadcrumbsPage() {
                 Material-UI
               </Link>
               <Link color="inherit" href="#" sx={{ display: 'flex', alignItems: 'center' }}>
-                <Iconify icon="eva:camera-fill" sx={{ mr: 0.5 }} />
-                Core
-              </Link>
+                <Iconify icon="eva:camera-fill" sx={{ mr: 0.5 }} />{tr("Core")}</Link>
               <Typography
                 sx={{
                   display: 'flex',
@@ -77,46 +75,42 @@ export default function MUIBreadcrumbsPage() {
                   color: 'text.primary',
                 }}
               >
-                <Iconify icon="eva:bell-fill" sx={{ mr: 0.5 }} />
-                Breadcrumb
-              </Typography>
+                <Iconify icon="eva:bell-fill" sx={{ mr: 0.5 }} />{tr("Breadcrumb")}</Typography>
             </Breadcrumbs>
           </Block>
 
-          <Block title="Customized">
+          <Block title={tr("Customized")}>
             <CustomBreadcrumbs
               links={[
                 {
-                  name: 'Home',
+                  name: tr("Home"),
                   href: '#',
                   icon: <Iconify icon="eva:home-fill" />,
                 },
-                { name: 'Link1', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link2', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link3', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link4', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link5', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link1"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link2"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link3"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link4"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link5"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
               ]}
             />
 
             <CustomBreadcrumbs
-              heading="Heading"
+              heading={tr("Heading")}
               links={[
                 {
-                  name: 'Home',
+                  name: tr("Home"),
                   href: '#',
                   icon: <Iconify icon="eva:home-fill" />,
                 },
-                { name: 'Link1', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link2', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link3', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link4', href: '#', icon: <Iconify icon="eva:cube-outline" /> },
-                { name: 'Link5', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link1"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link2"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link3"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link4"), href: '#', icon: <Iconify icon="eva:cube-outline" /> },
+                { name: tr("Link5"), icon: <Iconify icon="eva:cube-outline" /> },
               ]}
               action={
-                <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-                  New Product
-                </Button>
+                <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>{tr("New Product")}</Button>
               }
             />
           </Block>

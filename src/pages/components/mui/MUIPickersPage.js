@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Tab, Tabs } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -16,21 +17,22 @@ import PickerDateRange from '../../../sections/_examples/mui/pickers/PickerDateR
 // ----------------------------------------------------------------------
 
 const TABS = [
-  { value: 'date', label: 'Date', component: <PickerDate /> },
-  { value: 'datetime', label: 'DateTime', component: <PickerDateTime /> },
-  { value: 'time', label: 'Time', component: <PickerTime /> },
-  { value: 'range', label: 'Range', component: <PickerDateRange /> },
+  { value: 'date', get label() { return tr("Date"); }, component: <PickerDate /> },
+  { value: 'datetime', get label() { return tr("DateTime"); }, component: <PickerDateTime /> },
+  { value: 'time', get label() { return tr("Time"); }, component: <PickerTime /> },
+  { value: 'range', get label() { return tr("Range"); }, component: <PickerDateRange /> },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function MUIPickersPage() {
+  useUiLanguage();
   const [currentTab, setCurrentTab] = useState('date');
 
   return (
     <>
       <Helmet>
-        <title> MUI Components: Pickers | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Pickers | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -42,10 +44,10 @@ export default function MUIPickersPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Date / Time pickers"
+            heading={tr("Date / Time pickers")}
             links={[
-              { name: 'Components', href: PATH_PAGE.components },
-              { name: 'Date / Time pickers' },
+              { name: tr("Components"), href: PATH_PAGE.components },
+              { name: tr("Date / Time pickers") },
             ]}
             moreLink={[
               'https://mui.com/components/pickers',

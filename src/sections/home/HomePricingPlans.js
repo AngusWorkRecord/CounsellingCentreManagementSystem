@@ -4,6 +4,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, Tab, Tabs, Stack, Button, Divider, Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // routes
@@ -28,6 +29,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomePricingPlans() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionViewport}>
@@ -41,24 +43,19 @@ export default function HomePricingPlans() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   return (
     <Stack spacing={3} sx={{ mb: 10, textAlign: 'center' }}>
       <m.div variants={varFade().inUp}>
-        <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-          pricing plans
-        </Typography>
+        <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>{tr("pricing plans")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography variant="h2">
-          The right plan for <br /> your business
-        </Typography>
+        <Typography variant="h2">{tr("The right plan for")}<br />{tr("your business")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography sx={{ color: 'text.secondary' }}>
-          Choose the perfect plan for your needs. Always flexible to grow
-        </Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{tr("Choose the perfect plan for your needs. Always flexible to grow")}</Typography>
       </m.div>
     </Stack>
   );
@@ -67,6 +64,7 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   const [currentTab, setCurrentTab] = useState('Standard');
@@ -130,13 +128,11 @@ function Content() {
           }}
         >
           <m.div variants={varFade().inDown}>
-            <Typography variant="h4">Still have questions?</Typography>
+            <Typography variant="h4">{tr("Still have questions?")}</Typography>
           </m.div>
 
           <m.div variants={varFade().inDown}>
-            <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>
-              Please describe your case to receive the most accurate advice.
-            </Typography>
+            <Typography sx={{ mt: 2, mb: 5, color: 'text.secondary' }}>{tr("Please describe your case to receive the most accurate advice.")}</Typography>
           </m.div>
 
           <m.div variants={varFade().inUp}>
@@ -152,9 +148,7 @@ function Content() {
                   bgcolor: 'text.primary',
                 },
               }}
-            >
-              Contact us
-            </Button>
+            >{tr("Contact us")}</Button>
           </m.div>
         </Box>
       </m.div>
@@ -175,6 +169,7 @@ PlanCard.propTypes = {
 };
 
 function PlanCard({ plan, sx, ...other }) {
+  useUiLanguage();
   const { license, commons, options, icons } = plan;
 
   const standard = license === 'Standard';
@@ -196,9 +191,7 @@ function PlanCard({ plan, sx, ...other }) {
       {...other}
     >
       <Stack spacing={2}>
-        <Typography variant="overline" component="div" sx={{ color: 'text.disabled' }}>
-          License
-        </Typography>
+        <Typography variant="overline" component="div" sx={{ color: 'text.disabled' }}>{tr("License")}</Typography>
 
         <Box sx={{ position: 'relative' }}>
           <Typography variant="h4">{license}</Typography>
@@ -270,9 +263,7 @@ function PlanCard({ plan, sx, ...other }) {
           rel="noopener"
           href={PATH_MINIMAL_ON_STORE}
           endIcon={<Iconify icon="eva:chevron-right-fill" />}
-        >
-          Learn more
-        </Button>
+        >{tr("Learn more")}</Button>
       </Stack>
     </Stack>
   );

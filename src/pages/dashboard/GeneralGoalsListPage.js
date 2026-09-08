@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 // @mui
 import { Container } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // _mock_
@@ -15,6 +16,7 @@ import InvoiceDetails from '../../sections/@dashboard/invoice/details';
 // ----------------------------------------------------------------------
 
 export default function GeneralGoalsListPage() {
+  useUiLanguage();
   const { themeStretch } = useSettingsContext();
 
   const { selectedID } = useParams();
@@ -24,14 +26,14 @@ export default function GeneralGoalsListPage() {
   return (
     <>
       <Helmet>
-        <title> Goals Details </title>
+        <title> {tr("Goals Details")} </title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <CustomBreadcrumbs
-          heading="Goal Details || Overall Performance"
+          heading={tr("Goal Details || Overall Performance")}
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: tr("Dashboard"), href: PATH_DASHBOARD.root },
             // {
             //   name: 'Goals',
             //   href: PATH_DASHBOARD.general.goals,

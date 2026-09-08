@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 import { PATH_DASHBOARD } from '../../routes/paths';
 import {
   CaseListContent,
@@ -10,13 +11,14 @@ import {
 } from '../../sections/@dashboard/counselling/cases';
 
 export default function CounsellingCaseListPage() {
+  useUiLanguage();
   const navigate = useNavigate();
   const caseList = useCounsellingCaseList();
 
   return (
     <>
       {/* 中文原文：个案列表 | 辅导中心 */}
-      <Helmet><title>Case List | Counselling Centre</title></Helmet>
+      <Helmet><title>{tr("Case List | Counselling Centre")}</title></Helmet>
       <Container maxWidth={false}>
         <CaseListHeader
           filteredCount={caseList.filteredCount}

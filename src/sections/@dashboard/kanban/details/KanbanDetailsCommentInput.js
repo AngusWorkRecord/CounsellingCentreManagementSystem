@@ -1,5 +1,6 @@
-// @mui
 import { Stack, Paper, Button, Tooltip, IconButton, InputBase } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
+// @mui
 // auth
 import { useAuthContext } from '../../../../auth/useAuthContext';
 // components
@@ -9,6 +10,7 @@ import { CustomAvatar } from '../../../../components/custom-avatar';
 // ----------------------------------------------------------------------
 
 export default function KanbanDetailsCommentInput() {
+  useUiLanguage();
   const { user } = useAuthContext();
 
   return (
@@ -16,11 +18,11 @@ export default function KanbanDetailsCommentInput() {
       <CustomAvatar src={user?.photoURL} alt={user?.UserFirstName} name={user?.UserFirstName} />
 
       <Paper variant="outlined" sx={{ p: 1, flexGrow: 1 }}>
-        <InputBase fullWidth multiline rows={2} placeholder="Type a message" sx={{ px: 1 }} />
+        <InputBase fullWidth multiline rows={2} placeholder={tr("Type a message")} sx={{ px: 1 }} />
 
         <Stack direction="row" alignItems="center">
           <Stack direction="row" flexGrow={1}>
-            <Tooltip title="Add photo">
+            <Tooltip title={tr("Add photo")}>
               <IconButton size="small">
                 <Iconify icon="ic:round-add-photo-alternate" />
               </IconButton>
@@ -31,7 +33,7 @@ export default function KanbanDetailsCommentInput() {
             </IconButton>
           </Stack>
 
-          <Button variant="contained">Comment</Button>
+          <Button variant="contained">{tr("Comment")}</Button>
         </Stack>
       </Paper>
     </Stack>

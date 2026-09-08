@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 export default function useAiAnalysis({ generate, loadLatest, scopeKey }) {
+  const language = useUiLanguage();
   const [mode, setMode] = useState('general');
   const [analysis, setAnalysis] = useState(null);
   const [analysisScopeKey, setAnalysisScopeKey] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const controllerRef = useRef(null);
-  const stale = Boolean(analysis && analysisScopeKey !== scopeKey);
+  const stale = Boolean(analysis && (analysis.legacy || analysisScopeKey !== scopeKey));
 
   useEffect(() => {
     if (mode !== 'ai') return undefined;
@@ -18,14 +20,14 @@ export default function useAiAnalysis({ generate, loadLatest, scopeKey }) {
     setError('');
     loadLatest({ signal: controller.signal })
       .then((data) => {
-        if (data) {
+        if (!controller.signal.aborted && data) {
           setAnalysis(data);
           setAnalysisScopeKey(scopeKey);
         }
       })
       .catch((requestError) => {
         // 中文原文：无法读取 AI 分析
-        if (requestError.name !== 'AbortError') setError(requestError.message || 'Unable to retrieve AI analysis');
+        if (!controller.signal.aborted && requestError.name !== 'AbortError') setError(requestError.code || 'AI_REQUEST_FAILED');
       })
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
@@ -41,15 +43,19 @@ export default function useAiAnalysis({ generate, loadLatest, scopeKey }) {
     setError('');
     try {
       const data = await generate({ signal: controller.signal });
-      setAnalysis(data);
-      setAnalysisScopeKey(scopeKey);
+      if (!controller.signal.aborted) {
+        setAnalysis(data);
+        setAnalysisScopeKey(scopeKey);
+      }
     } catch (requestError) {
       // 中文原文：无法生成 AI 分析
-      if (requestError.name !== 'AbortError') setError(requestError.message || 'Unable to generate AI analysis');
+      if (!controller.signal.aborted && requestError.name !== 'AbortError') setError(requestError.code || 'AI_REQUEST_FAILED');
     } finally {
       if (!controller.signal.aborted) setLoading(false);
     }
   }, [generate, scopeKey]);
+
+  useEffect(() => () => controllerRef.current?.abort(), [scopeKey]);
 
   const cancel = useCallback(() => {
     controllerRef.current?.abort();
@@ -61,9 +67,9 @@ export default function useAiAnalysis({ generate, loadLatest, scopeKey }) {
     setMode,
     analysis,
     loading,
-    error,
+    error: error ? tr(error, { lng: language }) : '',
     stale,
     run,
     cancel,
-  }), [analysis, cancel, error, loading, mode, run, stale]);
+  }), [analysis, cancel, error, loading, mode, run, stale, language]);
 }

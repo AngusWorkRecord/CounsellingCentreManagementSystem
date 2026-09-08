@@ -14,6 +14,7 @@ import {
   OutlinedInput,
   FormHelperText,
 } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 
 // ----------------------------------------------------------------------
 
@@ -58,7 +59,7 @@ export function RHFSelect({ name, native, children, helperText, maxHeight = 220,
             sx: { textTransform: 'capitalize' },
           }}
           error={!!error}
-          helperText={error ? error?.message : helperText}
+          helperText={error ? uiMessage(error?.message) : helperText}
           {...other}
         >
           {children}
@@ -184,7 +185,7 @@ export function RHFMultiSelect({
           </Select>
 
           {(!!error || helperText) && (
-            <FormHelperText error={!!error}>{error ? error?.message : helperText}</FormHelperText>
+            <FormHelperText error={!!error}>{error ? uiMessage(error?.message) : helperText}</FormHelperText>
           )}
         </FormControl>
       )}

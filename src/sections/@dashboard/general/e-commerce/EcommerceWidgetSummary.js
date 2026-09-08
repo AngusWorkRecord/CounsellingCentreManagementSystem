@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Card, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fNumber, fPercent } from '../../../../utils/formatNumber';
 // components
@@ -19,6 +20,7 @@ EcommerceWidgetSummary.propTypes = {
 };
 
 export default function EcommerceWidgetSummary({ title, percent, total, chart, sx, ...other }) {
+  useUiLanguage();
   const { colors, series, options } = chart;
 
   const chartOptions = useChart({
@@ -83,6 +85,7 @@ TrendingInfo.propTypes = {
 };
 
 function TrendingInfo({ percent }) {
+  useUiLanguage();
   return (
     <Stack direction="row" alignItems="center" sx={{ mt: 2, mb: 1 }}>
       <Iconify
@@ -108,7 +111,7 @@ function TrendingInfo({ percent }) {
         {fPercent(percent)}
 
         <Box component="span" sx={{ color: 'text.secondary', typography: 'body2' }}>
-          {' than last week'}
+          {tr(" than last week")}
         </Box>
       </Typography>
     </Stack>

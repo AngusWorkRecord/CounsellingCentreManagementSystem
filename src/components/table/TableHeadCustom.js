@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Box, Checkbox, TableRow, TableCell, TableHead, TableSortLabel } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 
 // ----------------------------------------------------------------------
 
@@ -39,6 +40,7 @@ export default function TableHeadCustom({
   onSelectAllRows,
   sx,
 }) {
+  useUiLanguage();
   return (
     <TableHead sx={sx}>
       <TableRow>
@@ -71,7 +73,7 @@ export default function TableHeadCustom({
 
                 {orderBy === headCell.id ? (
                   <Box sx={{ ...visuallyHidden }}>
-                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                    {order === 'desc' ? tr("sorted descending") : tr("sorted ascending")}
                   </Box>
                 ) : null}
               </TableSortLabel>

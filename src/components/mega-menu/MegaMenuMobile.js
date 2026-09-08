@@ -16,6 +16,7 @@ import {
   ListItemIcon,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // config
 import { NAV, ICON } from '../../config-global';
 //
@@ -30,6 +31,7 @@ MegaMenuMobile.propTypes = {
 };
 
 export default function MegaMenuMobile({ data }) {
+  useUiLanguage();
   const { pathname } = useLocation();
 
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -55,9 +57,7 @@ export default function MegaMenuMobile({ data }) {
         variant="contained"
         onClick={handleOpenDrawer}
         startIcon={<Iconify icon="eva:menu-2-fill" />}
-      >
-        Menu Mobile
-      </Button>
+      >{tr("Menu Mobile")}</Button>
 
       <Drawer
         open={openDrawer}
@@ -69,8 +69,7 @@ export default function MegaMenuMobile({ data }) {
           <Logo sx={{ mx: 2.5, my: 3 }} />
 
           <Typography variant="h6" sx={{ px: 2, mb: 2, display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="eva:list-fill" sx={{ mr: 1 }} /> Categories
-          </Typography>
+            <Iconify icon="eva:list-fill" sx={{ mr: 1 }} />{tr("Categories")}</Typography>
 
           {data.map((parent) => (
             <SubMenu key={parent.title} parent={parent} pathname={pathname} />
@@ -110,6 +109,7 @@ SubMenu.propTypes = {
 };
 
 function SubMenu({ parent, pathname }) {
+  useUiLanguage();
   const { title, icon, path, children } = parent;
 
   const [openDrawer, setOpenDrawer] = useState(false);

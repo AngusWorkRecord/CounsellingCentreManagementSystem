@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Stack, Button, TextField, Typography, FormControl, FormControlLabel, RadioGroup, Radio, IconButton, Checkbox, } from "@mui/material";
+import { tr, useUiLanguage } from '../../../locales/translate';
 import { isArrayNotEmpty, isStringNullOrEmpty } from '../../../utils/Helpers';
 import { CloseIcon } from '../../../theme/overrides/CustomIcons';
 
@@ -26,6 +27,7 @@ export default function MultiChoiceComponent({
     onChangeOptionLabel,
     ...others
 }) {
+  useUiLanguage();
     const [isDirty, setIsDirty] = useState(false)
 
     const handleChange = (event) => {
@@ -51,7 +53,7 @@ export default function MultiChoiceComponent({
                     fullWidth
                     onChange={handleChange}
                     error={isDirty && isStringNullOrEmpty(QuestionLabel)}
-                    helperText={isDirty && isStringNullOrEmpty(QuestionLabel) ? "Question Label is required." : ""}
+                    helperText={isDirty && isStringNullOrEmpty(QuestionLabel) ? tr("Question Label is required.") : ""}
                     {...others}
                 />
             </Stack>
@@ -65,17 +67,17 @@ export default function MultiChoiceComponent({
                                     <FormControlLabel value={option.value} control={<Radio />} />
                                     <TextField
                                         value={isStringNullOrEmpty(option.label) ? "" : option.label}
-                                        placeholder="Untitled Answer"
+                                        placeholder={tr("Untitled Answer")}
                                         onChange={(e) => { handleUpdateOptionLabel(optionIndex, e.target.value) }}
                                         variant="standard"
                                         fullWidth
                                         required
                                         error={option.isDirty && (isStringNullOrEmpty(option.label))}
-                                        helperText={option.isDirty && isStringNullOrEmpty(option.label) ? "The option label is required." : ""}
+                                        helperText={option.isDirty && isStringNullOrEmpty(option.label) ? tr("The option label is required.") : ""}
                                     />
                                     {
                                         optionIndex > 0 &&
-                                        <IconButton aria-label="remove_option" size="medium" onClick={() => { onRemoveOption(optionIndex) }}>
+                                        <IconButton aria-label={tr("remove_option")} size="medium" onClick={() => { onRemoveOption(optionIndex) }}>
                                             <CloseIcon fontSize="inherit" />
                                         </IconButton>
                                     }
@@ -87,7 +89,7 @@ export default function MultiChoiceComponent({
                         isArrayNotEmpty(QuestionOptions) && QuestionOptions.length < 10 &&
                         <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1} sx={{ width: '100%', cursor: "pointer" }} onClick={onAddOption}>
                             <FormControlLabel value='' control={<Radio />} disabled />
-                            <Typography sx={{ cursor: 'pointer' }}>Add new option</Typography>
+                            <Typography sx={{ cursor: 'pointer' }}>{tr("Add new option")}</Typography>
                         </Stack>
                     }
 

@@ -1,48 +1,49 @@
 import * as Yup from 'yup';
+import { tr } from '../../../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 export const FormSchema = Yup.object().shape({
   fullName: Yup.string()
-    .required('Full name is required')
-    .min(6, 'Mininum 6 characters')
-    .max(32, 'Maximum 32 characters'),
-  email: Yup.string().required('Email is required').email('Email must be a valid email address'),
+    .required(() => tr("Full name is required"))
+    .min(6, () => tr("Mininum 6 characters"))
+    .max(32, () => tr("Maximum 32 characters")),
+  email: Yup.string().required(() => tr("Email is required")).email(() => tr("Email must be a valid email address")),
   age: Yup.number()
-    .required('Age is required')
+    .required(() => tr("Age is required"))
     .moreThan(18, 'Age must be between 18 and 100')
     .lessThan(100, 'Age must be between 18 and 100'),
   //
-  startDate: Yup.date().nullable().required('Start date is required'),
+  startDate: Yup.date().nullable().required(() => tr("Start date is required")),
   endDate: Yup.date()
-    .required('End date is required')
+    .required(() => tr("End date is required"))
     .nullable()
-    .min(Yup.ref('startDate'), 'End date must be later than start date'),
+    .min(Yup.ref('startDate'), () => tr("End date must be later than start date")),
   //
   password: Yup.string()
-    .required('Password is required')
-    .min(6, 'Password should be of minimum 6 characters length'),
+    .required(() => tr("Password is required"))
+    .min(6, () => tr("Password should be of minimum 6 characters length")),
   confirmPassword: Yup.string()
-    .required('Confirm password is required')
-    .oneOf([Yup.ref('password')], "Password's not match"),
+    .required(() => tr("Confirm password is required"))
+    .oneOf([Yup.ref('password')], () => tr("Password's not match")),
   //
-  slider: Yup.number().required('Slider is required').min(10, 'Mininum value is >= 10'),
+  slider: Yup.number().required(() => tr("Slider is required")).min(10, () => tr("Mininum value is >= 10")),
   sliderRange: Yup.mixed()
-    .required('Slider range is is required')
-    .test('min', 'Range must be between 20 and 80', (value) => value[0] >= 20)
-    .test('max', 'Range must be between 20 and 80', (value) => value[1] <= 80),
+    .required(() => tr("Slider range is is required"))
+    .test('min', () => tr("Range must be between 20 and 80"), (value) => value[0] >= 20)
+    .test('max', () => tr("Range must be between 20 and 80"), (value) => value[1] <= 80),
   //
-  singleUpload: Yup.mixed().required('Single upload is required').nullable(true),
-  multiUpload: Yup.array().min(2, 'Must have at least 2 items'),
+  singleUpload: Yup.mixed().required(() => tr("Single upload is required")).nullable(true),
+  multiUpload: Yup.array().min(2, () => tr("Must have at least 2 items")),
   //
-  checkbox: Yup.boolean().oneOf([true], 'Checkbox is required'),
-  multiCheckbox: Yup.array().min(1, 'Choose at least one option'),
+  checkbox: Yup.boolean().oneOf([true], () => tr("Checkbox is required")),
+  multiCheckbox: Yup.array().min(1, () => tr("Choose at least one option")),
   //
-  singleSelect: Yup.string().required('Single select is required'),
-  multiSelect: Yup.array().min(2, 'Must have at least 2 items'),
+  singleSelect: Yup.string().required(() => tr("Single select is required")),
+  multiSelect: Yup.array().min(2, () => tr("Must have at least 2 items")),
   //
-  switch: Yup.boolean().oneOf([true], 'Switch is required'),
-  radioGroup: Yup.string().required('Choose at least one option'),
-  editor: Yup.string().required('Editor is required'),
-  autocomplete: Yup.mixed().required('Autocomplete is required').nullable(true),
+  switch: Yup.boolean().oneOf([true], () => tr("Switch is required")),
+  radioGroup: Yup.string().required(() => tr("Choose at least one option")),
+  editor: Yup.string().required(() => tr("Editor is required")),
+  autocomplete: Yup.mixed().required(() => tr("Autocomplete is required")).nullable(true),
 });

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Card, Container, Typography, CardHeader } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
@@ -19,10 +20,11 @@ const IMAGES = RATIO.map((value, index) => ({
 }));
 
 export default function DemoImagePage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Image | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Image | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -34,13 +36,13 @@ export default function DemoImagePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Image"
+            heading={tr("Image")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Image' },
+              { name: tr("Image") },
             ]}
           />
         </Container>
@@ -48,7 +50,7 @@ export default function DemoImagePage() {
 
       <Container sx={{ my: 10 }}>
         <Card>
-          <CardHeader title="Image Aspect Ratio" />
+          <CardHeader title={tr("Image Aspect Ratio")} />
           <Box
             gap={3}
             display="grid"

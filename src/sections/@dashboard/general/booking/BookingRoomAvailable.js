@@ -3,6 +3,7 @@ import sumBy from 'lodash/sumBy';
 // @mui
 import { useTheme, alpha } from '@mui/material/styles';
 import { Card, CardHeader, Stack, Box, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
 // components
@@ -17,6 +18,7 @@ BookingRoomAvailable.propTypes = {
 };
 
 export default function BookingRoomAvailable({ title, subheader, chart, ...other }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const { colors, series, options } = chart;
@@ -50,7 +52,7 @@ export default function BookingRoomAvailable({ title, subheader, chart, ...other
           name: { offsetY: -16 },
           value: { offsetY: 8 },
           total: {
-            label: 'legacy Score 2023',
+            label: tr("legacy Score 2023"),
             formatter: () => '7.4',
           },
         },
@@ -84,6 +86,7 @@ Legend.propTypes = {
 };
 
 function Legend({ item }) {
+  useUiLanguage();
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between">
       <Stack direction="row" alignItems="center" spacing={1}>
@@ -104,7 +107,7 @@ function Legend({ item }) {
         </Typography>
 
       </Stack>
-      <Typography variant="subtitle1"> {item.value} Rooms</Typography>
+      <Typography variant="subtitle1"> {item.value} {tr("Rooms")}</Typography>
     </Stack>
   );
 }

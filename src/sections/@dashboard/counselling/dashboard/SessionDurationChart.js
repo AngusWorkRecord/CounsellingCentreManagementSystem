@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Card, CardHeader } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import Chart, { useChart } from '../../../../components/chart';
 import ChartEmptyState from './ChartEmptyState';
 import { toNumber } from '../utils';
@@ -26,6 +27,7 @@ function buildLabels(sessions) {
 }
 
 export default function SessionDurationChart({ onSelect, sessions }) {
+  useUiLanguage();
   const sortedSessions = [...sessions].sort(
     (a, b) => toNumber(b.duration_minutes) - toNumber(a.duration_minutes)
   );
@@ -39,7 +41,7 @@ export default function SessionDurationChart({ onSelect, sessions }) {
           if (session) {
             onSelect({
               // 中文原文：个案、辅导概览
-              title: `${session.client_initials || 'Case'} Counselling Overview`,
+              title: () => tr("{{p0}} Counselling Overview", { p0: session.client_initials || 'Case' }),
               sessions: [session],
             });
           }
@@ -55,18 +57,18 @@ export default function SessionDurationChart({ onSelect, sessions }) {
         trim: false,
       },
     },
-    yaxis: { min: 0, title: { text: 'Minutes' } },
+    yaxis: { min: 0, title: { text: tr("Minutes") } },
     colors: ['#10A7B5'],
     dataLabels: { enabled: showDataLabels },
     grid: { padding: { bottom: 12 } },
     legend: { show: false },
-    tooltip: { y: { formatter: (value) => `${value} minutes` } },
+    tooltip: { y: { formatter: (value) => tr("{{p0}} min", { p0: value }) } },
     plotOptions: { bar: { columnWidth: '45%' } },
   });
 
   return (
     <Card sx={{ height: 1 }}>
-      {/* 中文原文：个案辅导时长（分钟） */}<CardHeader title="D. Case Counselling Duration (Minutes)" />
+      {/* 中文原文：个案辅导时长（分钟） */}<CardHeader title={tr("D. Case Counselling Duration (Minutes)")} />
       <Box
         sx={{
           px: 2,

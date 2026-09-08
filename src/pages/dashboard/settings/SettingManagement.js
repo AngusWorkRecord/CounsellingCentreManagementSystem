@@ -4,6 +4,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 // components
 import { useSettingsContext } from '../../../components/settings';
@@ -18,6 +19,7 @@ import { useAuthContext } from '../../../auth/useAuthContext';
 // ----------------------------------------------------------------------
 
 export default function SettingManagement() {
+  useUiLanguage();
     const theme = useTheme();
     const { themeStretch } = useSettingsContext();
     const navigate = useNavigate();
@@ -25,7 +27,7 @@ export default function SettingManagement() {
     return (
         <>
             <Helmet>
-                <title> Dashboard | Journal Management </title>
+                <title> {tr("Dashboard | Journal Management")} </title>
             </Helmet>
 
             <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -35,10 +37,10 @@ export default function SettingManagement() {
                         <Grid container>
                             <Grid item xs={12} md={12}>
                                 <CustomBreadcrumbs
-                                    heading="General Settings"
+                                    heading={tr("General Settings")}
                                     links={[
-                                        { name: 'Dashboard', href: PATH_CONFERENCE_MANAGEMENT.root },
-                                        { name: 'General Setting', href: PATH_CONFERENCE_MANAGEMENT.setting.root },
+                                        { name: tr("Dashboard"), href: PATH_CONFERENCE_MANAGEMENT.root },
+                                        { name: tr("General Setting"), href: PATH_CONFERENCE_MANAGEMENT.setting.root },
 
                                     ]}
                                     action={

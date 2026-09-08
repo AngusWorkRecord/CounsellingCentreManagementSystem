@@ -5,6 +5,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Button, Card, Tabs, Tab, Divider, Table, TableContainer, TableBody, Tooltip, IconButton, } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 // components
 import { useSettingsContext } from '../../../components/settings';
@@ -36,10 +37,10 @@ import { useAuthContext } from '../../../auth/useAuthContext';
 const TABLE_TABS = ['active', 'archived'];
 
 const TABLE_HEAD = [
-    { id: 'FormTitle', label: 'Title', align: 'left' },
-    { id: 'FormType', label: 'Type', align: 'left' },
+    { id: 'FormTitle', get label() { return tr("Title"); }, align: 'left' },
+    { id: 'FormType', get label() { return tr("Type"); }, align: 'left' },
     // { id: 'Respondent', label: 'Respondent', align: 'center' },
-    { id: 'isArchived', label: 'Status', align: 'left' },
+    { id: 'isArchived', get label() { return tr("Status"); }, align: 'left' },
     { id: '' },
 ];
 
@@ -59,6 +60,7 @@ const LOCATION_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function SurveyManagementIndexPage() {
+  useUiLanguage();
     const { user } = useAuthContext();
     const {
         dense,
@@ -202,7 +204,7 @@ export default function SurveyManagementIndexPage() {
     return (
         <>
             <Helmet>
-                <title> Dashboard | Survey Management </title>
+                <title> {tr("Dashboard | Survey Management")} </title>
             </Helmet>
 
             <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -212,10 +214,10 @@ export default function SurveyManagementIndexPage() {
                         <Grid container>
                             <Grid item xs={12} md={12}>
                                 <CustomBreadcrumbs
-                                    heading="Survey Management"
+                                    heading={tr("Survey Management")}
                                     links={[
-                                        { name: 'Dashboard', href: PATH_CONFERENCE_MANAGEMENT.root },
-                                        { name: 'Survey Management', href: PATH_CONFERENCE_MANAGEMENT.survey.root },
+                                        { name: tr("Dashboard"), href: PATH_CONFERENCE_MANAGEMENT.root },
+                                        { name: tr("Survey Management"), href: PATH_CONFERENCE_MANAGEMENT.survey.root },
 
                                     ]}
                                     action={
@@ -224,9 +226,7 @@ export default function SurveyManagementIndexPage() {
                                             to={PATH_CONFERENCE_MANAGEMENT.survey.form}
                                             variant="contained"
                                             startIcon={<Iconify icon="eva:plus-fill" />}
-                                        >
-                                            Create Survey
-                                        </Button>
+                                        >{tr("Create Survey")}</Button>
                                     }
                                 />
                             </Grid>
@@ -272,7 +272,7 @@ export default function SurveyManagementIndexPage() {
                                 )
                             }
                             action={
-                                <Tooltip title="Archive">
+                                <Tooltip title={tr("Archive")}>
                                     <IconButton color="primary" onClick={handleOpenConfirm}>
                                         <Iconify icon="eva:trash-2-outline" />
                                     </IconButton>
@@ -339,12 +339,10 @@ export default function SurveyManagementIndexPage() {
             <ConfirmDialog
                 open={openConfirm}
                 onClose={handleCloseConfirm}
-                title="Confirm to Achieve"
+                title={tr("Confirm to Achieve")}
                 content="Are you sure want to archive it?"
                 action={
-                    <Button variant="contained" color="primary" onClick={handleDeleteRows}>
-                        Confirm
-                    </Button>
+                    <Button variant="contained" color="primary" onClick={handleDeleteRows}>{tr("Confirm")}</Button>
                 }
             />
         </>

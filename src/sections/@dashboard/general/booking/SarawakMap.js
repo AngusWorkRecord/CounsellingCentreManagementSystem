@@ -2,11 +2,13 @@ import React, { useState } from "react";
 // import "./Dashboard.css";
 import "./SarawakMap.css";
 import { useNavigate } from 'react-router-dom';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 import { isArrayNotEmpty, isStringNullOrEmpty } from '../../../../utils/Helpers';
 
 export const SarawakMap = (props) => {
+  useUiLanguage();
   const navigate = useNavigate();
   const onElementClick = (selectedPlaceID) => {
     navigate(PATH_DASHBOARD.general.place(selectedPlaceID));
@@ -1136,7 +1138,7 @@ export const SarawakMap = (props) => {
             fontFamily="Liberation Sans, Arial, sans-serif"
             style={{ fontSize: "42.6667px" }}
           >
-            <tspan id="tspan4285-4">Kuching</tspan>
+            <tspan id="tspan4285-4">{tr("Kuching")}</tspan>
           </text>
           {/* <text
           style={{ fontSize: "42.6667px", enableBackground: "new" }}
@@ -1158,7 +1160,7 @@ export const SarawakMap = (props) => {
             x={518.22882}
             y={500.44745}
           >
-            <tspan id="tspan4285-4-0">Sibu</tspan>
+            <tspan id="tspan4285-4-0">{tr("Sibu")}</tspan>
           </text>
           <text
             style={{ fontSize: "42.6667px", enableBackground: "new" }}
@@ -1169,7 +1171,7 @@ export const SarawakMap = (props) => {
             x={875.90869}
             y={295.25671}
           >
-            <tspan id="tspan4285-4-8">Miri</tspan>
+            <tspan id="tspan4285-4-8">{tr("Miri")}</tspan>
           </text>
           {/* <text
           style={{ fontSize: "42.6667px", enableBackground: "new" }}

@@ -1,5 +1,7 @@
 import {
   analysisDto,
+  analysisLanguage,
+  languageInstruction,
   apiError,
   assertAiAvailable,
   caseAdviceSchema,
@@ -33,6 +35,7 @@ export function createCaseAdviceHandler(overrides = {}) {
   try {
     dependencies.assertAiAvailable();
     const body = request.body || {};
+    const language = analysisLanguage(body.language);
     const sessionId = String(body.sessionId || '');
     const action = body.action === 'latest' ? 'latest' : body.action === 'generate' ? 'generate' : null;
     if (!/^[1-9]\d*$/.test(sessionId) || !action) throw apiError('INVALID_REQUEST', 400);
@@ -57,19 +60,20 @@ export function createCaseAdviceHandler(overrides = {}) {
         { sourceRef: 'field:volunteer_actions', type: 'volunteer_actions', content: actions || '[missing]' },
       ],
     };
-    const scopeKey = createScopeKey('case_advice', { sessionId, updatedAt: row.updated_at });
+    const scopeKey = createScopeKey('case_advice', { sessionId, updatedAt: row.updated_at, language });
 
     if (action === 'latest') {
       const latest = await dependencies.getLatestAnalysis(sql, 'case_advice', scopeKey);
-      return response.status(200).json({ success: true, data: latest ? analysisDto(latest) : null });
+      const legacy = latest ? null : await dependencies.getLatestAnalysis(sql, 'case_advice', createScopeKey('case_advice', { sessionId, updatedAt: row.updated_at }));
+      return response.status(200).json({ success: true, data: latest ? analysisDto(latest) : legacy ? { ...analysisDto(legacy), legacy: true } : null });
     }
 
     analysis = await dependencies.startAnalysis(sql, {
       analysisType: 'case_advice', sessionId, scopeKey,
-      filterSnapshot: { sessionId }, sourceManifest: sourceRefs,
+      filterSnapshot: { sessionId, language }, sourceManifest: sourceRefs,
     });
     const result = await dependencies.requestStructuredAnalysis({
-      instructions: `${commonSafetyPrompt}\nAnalyse the single case record only. Identify documented signals, gaps, and practical counsellor next steps. The risk level is workflow triage, not diagnosis.`,
+      instructions: `${commonSafetyPrompt}\n${languageInstruction(language)}\nAnalyse the single case record only. Identify documented signals, gaps, and practical counsellor next steps. The risk level is workflow triage, not diagnosis.`,
       input,
       schema: caseAdviceSchema,
       schemaName: 'case_advice',

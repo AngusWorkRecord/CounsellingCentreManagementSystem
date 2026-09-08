@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Grid, Typography, Stack, Paper } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -11,44 +12,41 @@ import { useTypography } from '../../../components/text-max-line';
 // ----------------------------------------------------------------------
 
 const TYPOGRAPHYS = [
-  { label: 'h1. Heading', variant: 'h1' },
-  { label: 'h2. Heading', variant: 'h2' },
-  { label: 'h3. Heading', variant: 'h3' },
-  { label: 'h4. Heading', variant: 'h4' },
-  { label: 'h5. Heading', variant: 'h5' },
-  { label: 'h6. Heading', variant: 'h6' },
+  { get label() { return tr("h1. Heading"); }, variant: 'h1' },
+  { get label() { return tr("h2. Heading"); }, variant: 'h2' },
+  { get label() { return tr("h3. Heading"); }, variant: 'h3' },
+  { get label() { return tr("h4. Heading"); }, variant: 'h4' },
+  { get label() { return tr("h5. Heading"); }, variant: 'h5' },
+  { get label() { return tr("h6. Heading"); }, variant: 'h6' },
   {
-    label:
-      'subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur',
+    get label() { return tr("subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur"); },
     variant: 'subtitle1',
   },
   {
-    label:
-      'subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur',
+    get label() { return tr("subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur"); },
     variant: 'subtitle2',
   },
   {
-    label:
-      'body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.',
+    get label() { return tr("body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam."); },
     variant: 'body1',
   },
   {
-    label:
-      'body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.',
+    get label() { return tr("body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam."); },
     variant: 'body2',
   },
-  { label: 'caption text', variant: 'caption' },
-  { label: 'overline text', variant: 'overline' },
-  { label: 'Button', variant: 'button' },
+  { get label() { return tr("caption text"); }, variant: 'caption' },
+  { get label() { return tr("overline text"); }, variant: 'overline' },
+  { get label() { return tr("Button"); }, variant: 'button' },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function FoundationTypographyPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Foundations: Typography | Counselling Centre Management System</title>
+        <title> {tr("Foundations: Typography | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -60,13 +58,13 @@ export default function FoundationTypographyPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Typography"
+            heading={tr("Typography")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Typography' },
+              { name: tr("Typography") },
             ]}
             moreLink={['https://mui.com/components/typography']}
           />
@@ -76,9 +74,7 @@ export default function FoundationTypographyPage() {
       <Container sx={{ my: 10 }}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={3}>
-            <Typography variant="h6" paragraph>
-              Default Text
-            </Typography>
+            <Typography variant="h6" paragraph>{tr("Default Text")}</Typography>
           </Grid>
 
           <Grid item xs={12} md={9}>
@@ -94,38 +90,27 @@ export default function FoundationTypographyPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} md={3}>
-            <Typography variant="h6" paragraph>
-              Colors Text
-            </Typography>
+            <Typography variant="h6" paragraph>{tr("Colors Text")}</Typography>
           </Grid>
 
           <Grid item xs={12} md={9}>
             <Stack spacing={3}>
               {['primary', 'secondary', 'disabled'].map((color) => (
                 <Paper key={color} variant="outlined" sx={{ p: 3, borderRadius: 1 }}>
-                  <Typography gutterBottom variant="subtitle1" sx={{ color: `text.${color}` }}>
-                    text {color}
+                  <Typography gutterBottom variant="subtitle1" sx={{ color: `text.${color}` }}>{tr("text")}{tr(color)}
                   </Typography>
 
-                  <Typography gutterBottom variant="body2" sx={{ color: `text.${color}` }}>
-                    Cras ultricies mi eu turpis hendrerit fringilla. Fusce vel dui. Pellentesque
-                    auctor neque nec urna. Sed cursus turpis vitae tortor. Curabitur suscipit
-                    suscipit tellus.
-                  </Typography>
+                  <Typography gutterBottom variant="body2" sx={{ color: `text.${color}` }}>{tr("Cras ultricies mi eu turpis hendrerit fringilla. Fusce vel dui. Pellentesque auctor neque nec urna. Sed cursus turpis vitae tortor. Curabitur suscipit suscipit tellus.")}</Typography>
                 </Paper>
               ))}
 
               {['primary', 'secondary', 'info', 'warning', 'error'].map((color) => (
                 <Paper key={color} variant="outlined" sx={{ p: 3, borderRadius: 1 }}>
                   <Typography gutterBottom variant="subtitle1" sx={{ color: `${color}.main` }}>
-                    {color}
+                    {tr(color)}
                   </Typography>
 
-                  <Typography gutterBottom variant="body2" sx={{ color: `${color}.main` }}>
-                    Cras ultricies mi eu turpis hendrerit fringilla. Fusce vel dui. Pellentesque
-                    auctor neque nec urna. Sed cursus turpis vitae tortor. Curabitur suscipit
-                    suscipit tellus.
-                  </Typography>
+                  <Typography gutterBottom variant="body2" sx={{ color: `${color}.main` }}>{tr("Cras ultricies mi eu turpis hendrerit fringilla. Fusce vel dui. Pellentesque auctor neque nec urna. Sed cursus turpis vitae tortor. Curabitur suscipit suscipit tellus.")}</Typography>
                 </Paper>
               ))}
             </Stack>
@@ -146,6 +131,7 @@ BlockVariant.propTypes = {
 };
 
 function BlockVariant({ font }) {
+  useUiLanguage();
   const { variant, label } = font;
 
   const { fontSize, lineHeight, fontWeight, letterSpacing = 0 } = useTypography(variant);
@@ -156,8 +142,7 @@ function BlockVariant({ font }) {
         {label}
       </Typography>
 
-      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-        size: {fontSize} / l-height: {lineHeight} / weight:
+      <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("size:")}{fontSize} / l-height: {lineHeight} / weight:
         {fontWeight} / letterSpacing: {letterSpacing}
       </Typography>
     </Paper>

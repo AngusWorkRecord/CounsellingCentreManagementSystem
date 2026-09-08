@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
 // @mui
 import { Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../locales/translate';
 // components
 import { MotionContainer, varBounce } from '../components/animate';
 // assets
@@ -18,6 +19,7 @@ RoleBasedGuard.propTypes = {
 };
 
 export default function RoleBasedGuard({ hasContent, roles, children }) {
+  useUiLanguage();
   // Logic here to get current user role
   const { user } = useAuthContext();
 
@@ -28,15 +30,11 @@ export default function RoleBasedGuard({ hasContent, roles, children }) {
     return hasContent ? (
       <Container component={MotionContainer} sx={{ textAlign: 'center' }}>
         <m.div variants={varBounce().in}>
-          <Typography variant="h3" paragraph>
-            Permission Denied
-          </Typography>
+          <Typography variant="h3" paragraph>{tr("Permission Denied")}</Typography>
         </m.div>
 
         <m.div variants={varBounce().in}>
-          <Typography sx={{ color: 'text.secondary' }}>
-            You do not have permission to access this page
-          </Typography>
+          <Typography sx={{ color: 'text.secondary' }}>{tr("You do not have permission to access this page")}</Typography>
         </m.div>
 
         <m.div variants={varBounce().in}>

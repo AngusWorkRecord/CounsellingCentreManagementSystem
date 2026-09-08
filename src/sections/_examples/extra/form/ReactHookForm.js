@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { DatePicker } from '@mui/x-date-pickers';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 import FormProvider, {
@@ -40,14 +41,14 @@ import ValuesPreview from './ValuesPreview';
 // ----------------------------------------------------------------------
 
 const OPTIONS = [
-  { value: 'option 1', label: 'Option 1' },
-  { value: 'option 2', label: 'Option 2' },
-  { value: 'option 3', label: 'Option 3' },
-  { value: 'option 4', label: 'Option 4' },
-  { value: 'option 5', label: 'Option 5' },
-  { value: 'option 6', label: 'Option 6' },
-  { value: 'option 7', label: 'Option 7' },
-  { value: 'option 8', label: 'Option 8' },
+  { value: 'option 1', get label() { return tr("Option 1"); } },
+  { value: 'option 2', get label() { return tr("Option 2"); } },
+  { value: 'option 3', get label() { return tr("Option 3"); } },
+  { value: 'option 4', get label() { return tr("Option 4"); } },
+  { value: 'option 5', get label() { return tr("Option 5"); } },
+  { value: 'option 6', get label() { return tr("Option 6"); } },
+  { value: 'option 7', get label() { return tr("Option 7"); } },
+  { value: 'option 8', get label() { return tr("Option 8"); } },
 ];
 
 export const defaultValues = {
@@ -84,6 +85,7 @@ ReactHookForm.propTypes = {
 };
 
 export default function ReactHookForm({ debug }) {
+  useUiLanguage();
   const [showPassword, setShowPassword] = useState(false);
 
   const methods = useForm({
@@ -151,17 +153,17 @@ export default function ReactHookForm({ debug }) {
           <Grid item xs={12} md={6}>
             <Stack spacing={2}>
               <Block>
-                <RHFTextField name="fullName" label="Full Name" />
+                <RHFTextField name="fullName" label={tr("Full Name")} />
               </Block>
 
               <Block>
-                <RHFTextField name="email" label="Email address" />
+                <RHFTextField name="email" label={tr("Email address")} />
               </Block>
 
               <Block>
                 <RHFTextField
                   name="age"
-                  label="Age"
+                  label={tr("Age")}
                   onChange={(event) =>
                     setValue('age', Number(event.target.value), { shouldValidate: true })
                   }
@@ -178,7 +180,7 @@ export default function ReactHookForm({ debug }) {
                   render={({ field, fieldState: { error } }) => (
                     <DatePicker
                       {...field}
-                      label="Start date"
+                      label={tr("Start date")}
                       inputFormat="dd/MM/yyyy"
                       renderInput={(params) => (
                         <TextField
@@ -198,7 +200,7 @@ export default function ReactHookForm({ debug }) {
                   render={({ field, fieldState: { error } }) => (
                     <DatePicker
                       {...field}
-                      label="End date"
+                      label={tr("End date")}
                       inputFormat="dd/MM/yyyy"
                       renderInput={(params) => (
                         <TextField
@@ -217,7 +219,7 @@ export default function ReactHookForm({ debug }) {
                 <Block>
                   <RHFTextField
                     name="password"
-                    label="Password"
+                    label={tr("Password")}
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
@@ -234,7 +236,7 @@ export default function ReactHookForm({ debug }) {
                 <Block>
                   <RHFTextField
                     name="confirmPassword"
-                    label="Confirm Password"
+                    label={tr("Confirm Password")}
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
@@ -252,7 +254,7 @@ export default function ReactHookForm({ debug }) {
               <Block label="RHFAutocomplete">
                 <RHFAutocomplete
                   name="autocomplete"
-                  label="Autocomplete"
+                  label={tr("Autocomplete")}
                   options={OPTIONS}
                   getOptionLabel={(option) => option.label}
                   isOptionEqualToValue={(option, value) => option.value === value.value}
@@ -260,8 +262,8 @@ export default function ReactHookForm({ debug }) {
               </Block>
 
               <Block label="RHFSelect">
-                <RHFSelect name="singleSelect" label="Single select">
-                  <MenuItem value="">None</MenuItem>
+                <RHFSelect name="singleSelect" label={tr("Single select")}>
+                  <MenuItem value="">{tr("None")}</MenuItem>
                   <Divider sx={{ borderStyle: 'dashed' }} />
                   {OPTIONS.map((option) => (
                     <MenuItem key={option.value} value={option.label}>
@@ -276,7 +278,7 @@ export default function ReactHookForm({ debug }) {
                   chip
                   checkbox
                   name="multiSelect"
-                  label="Multi select"
+                  label={tr("Multi select")}
                   options={OPTIONS}
                 />
               </Block>
@@ -328,9 +330,9 @@ export default function ReactHookForm({ debug }) {
                 label="RHFRadioGroup"
                 spacing={4}
                 options={[
-                  { value: 'option 1', label: 'Radio 1' },
-                  { value: 'option 2', label: 'Radio 2' },
-                  { value: 'option 3', label: 'Radio 3' },
+                  { value: 'option 1', label: tr("Radio 1") },
+                  { value: 'option 2', label: tr("Radio 2") },
+                  { value: 'option 3', label: tr("Radio 3") },
                 ]}
               />
 
@@ -340,9 +342,9 @@ export default function ReactHookForm({ debug }) {
                 label="RHFMultiCheckbox"
                 spacing={4}
                 options={[
-                  { value: 'option 1', label: 'Checkbox 1' },
-                  { value: 'option 2', label: 'Checkbox 2' },
-                  { value: 'option 3', label: 'Checkbox 3' },
+                  { value: 'option 1', label: tr("Checkbox 1") },
+                  { value: 'option 2', label: tr("Checkbox 2") },
+                  { value: 'option 3', label: tr("Checkbox 3") },
                 ]}
               />
 
@@ -361,9 +363,7 @@ export default function ReactHookForm({ debug }) {
                 type="submit"
                 variant="contained"
                 loading={isSubmitting}
-              >
-                Submit to check
-              </LoadingButton>
+              >{tr("Submit to check")}</LoadingButton>
             </Stack>
           </Grid>
         </Grid>
@@ -383,6 +383,7 @@ Block.propTypes = {
 };
 
 function Block({ label = 'RHFTextField', sx, children }) {
+  useUiLanguage();
   return (
     <Stack spacing={1} sx={{ width: 1, ...sx }}>
       <Typography

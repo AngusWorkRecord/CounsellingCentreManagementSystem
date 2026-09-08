@@ -3,6 +3,7 @@ import { m } from 'framer-motion';
 // @mui
 import { alpha, styled, useTheme } from '@mui/material/styles';
 import { Box, Grid, Link, Paper, Rating, Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
@@ -71,6 +72,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function AboutTestimonials() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -90,24 +92,15 @@ export default function AboutTestimonials() {
                   component="p"
                   variant="overline"
                   sx={{ mb: 2, color: 'text.secondary' }}
-                >
-                  Testimonials
-                </Typography>
+                >{tr("Testimonials")}</Typography>
               </m.div>
 
               <m.div variants={varFade().inUp}>
-                <Typography variant="h2" sx={{ mb: 3, color: 'common.white' }}>
-                  Who love <br />
-                  my work
-                </Typography>
+                <Typography variant="h2" sx={{ mb: 3, color: 'common.white' }}>{tr("Who love")}<br />{tr("my work")}</Typography>
               </m.div>
 
               <m.div variants={varFade().inUp}>
-                <Typography sx={{ color: 'common.white' }}>
-                  Our goal is to create a product and service that you’re satisfied with and use it
-                  every day. This is why we’re constantly working on our services to make it better
-                  every day and really listen to what our users has to say.
-                </Typography>
+                <Typography sx={{ color: 'common.white' }}>{tr("Our goal is to create a product and service that you’re satisfied with and use it every day. This is why we’re constantly working on our services to make it better every day and really listen to what our users has to say.")}</Typography>
               </m.div>
 
               {!isDesktop && (
@@ -174,6 +167,7 @@ TestimonialCard.propTypes = {
 };
 
 function TestimonialCard({ testimonial }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const { name, rating, dateCreate, content } = testimonial;
@@ -210,10 +204,9 @@ function TestimonialCard({ testimonial }) {
 // ----------------------------------------------------------------------
 
 function TestimonialLink() {
+  useUiLanguage();
   return (
-    <Link href="#" variant="subtitle2" sx={{ display: 'flex', alignItems: 'center' }}>
-      Read more testimonials
-      <Iconify icon="ic:round-arrow-right-alt" sx={{ ml: 1 }} />
+    <Link href="#" variant="subtitle2" sx={{ display: 'flex', alignItems: 'center' }}>{tr("Read more testimonials")}<Iconify icon="ic:round-arrow-right-alt" sx={{ ml: 1 }} />
     </Link>
   );
 }

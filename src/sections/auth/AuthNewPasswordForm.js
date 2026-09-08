@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import { Stack, IconButton, InputAdornment, FormHelperText } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
@@ -17,6 +18,7 @@ import FormProvider, { RHFTextField, RHFCodes } from '../../components/hook-form
 // ----------------------------------------------------------------------
 
 export default function AuthNewPasswordForm() {
+  useUiLanguage();
   const navigate = useNavigate();
 
   const { enqueueSnackbar } = useSnackbar();
@@ -27,19 +29,19 @@ export default function AuthNewPasswordForm() {
     typeof window !== 'undefined' ? sessionStorage.getItem('email-recovery') : '';
 
   const VerifyCodeSchema = Yup.object().shape({
-    code1: Yup.string().required('Code is required'),
-    code2: Yup.string().required('Code is required'),
-    code3: Yup.string().required('Code is required'),
-    code4: Yup.string().required('Code is required'),
-    code5: Yup.string().required('Code is required'),
-    code6: Yup.string().required('Code is required'),
-    email: Yup.string().required('Email is required').email('Email must be a valid email address'),
+    code1: Yup.string().required(tr("Code is required")),
+    code2: Yup.string().required(tr("Code is required")),
+    code3: Yup.string().required(tr("Code is required")),
+    code4: Yup.string().required(tr("Code is required")),
+    code5: Yup.string().required(tr("Code is required")),
+    code6: Yup.string().required(tr("Code is required")),
+    email: Yup.string().required(tr("Email is required")).email(tr("Email must be a valid email address")),
     password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
-      .required('Password is required'),
+      .min(6, tr("Password must be at least 6 characters"))
+      .required(tr("Password is required")),
     confirmPassword: Yup.string()
-      .required('Confirm password is required')
-      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+      .required(tr("Confirm password is required"))
+      .oneOf([Yup.ref('password'), null], tr("Passwords must match")),
   });
 
   const defaultValues = {
@@ -74,7 +76,7 @@ export default function AuthNewPasswordForm() {
         password: data.password,
       });
       sessionStorage.removeItem('email-recovery');
-      enqueueSnackbar('Change password success!');
+      enqueueSnackbar(tr("Change password success!"));
       navigate(PATH_DASHBOARD.root);
     } catch (error) {
       console.error(error);
@@ -86,7 +88,7 @@ export default function AuthNewPasswordForm() {
       <Stack spacing={3}>
         <RHFTextField
           name="email"
-          label="Email"
+          label={tr("Email")}
           disabled={!!emailRecovery}
           InputLabelProps={{ shrink: true }}
         />
@@ -99,14 +101,12 @@ export default function AuthNewPasswordForm() {
           !!errors.code4 ||
           !!errors.code5 ||
           !!errors.code6) && (
-          <FormHelperText error sx={{ px: 2 }}>
-            Code is required
-          </FormHelperText>
+          <FormHelperText error sx={{ px: 2 }}>{tr("Code is required")}</FormHelperText>
         )}
 
         <RHFTextField
           name="password"
-          label="Password"
+          label={tr("Password")}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -121,7 +121,7 @@ export default function AuthNewPasswordForm() {
 
         <RHFTextField
           name="confirmPassword"
-          label="Confirm New Password"
+          label={tr("Confirm New Password")}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -141,9 +141,7 @@ export default function AuthNewPasswordForm() {
           variant="contained"
           loading={isSubmitting}
           sx={{ mt: 3 }}
-        >
-          Update Password
-        </LoadingButton>
+        >{tr("Update Password")}</LoadingButton>
       </Stack>
     </FormProvider>
   );

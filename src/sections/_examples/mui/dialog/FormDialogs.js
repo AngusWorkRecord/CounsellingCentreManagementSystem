@@ -9,10 +9,12 @@ import {
   DialogActions,
   DialogContentText,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 export default function FormDialogs() {
+  useUiLanguage();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -25,33 +27,24 @@ export default function FormDialogs() {
 
   return (
     <div>
-      <Button variant="outlined" color="warning" onClick={handleClickOpen}>
-        Form Dialogs
-      </Button>
+      <Button variant="outlined" color="warning" onClick={handleClickOpen}>{tr("Form Dialogs")}</Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>{tr("Subscribe")}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
-          </DialogContentText>
+          <DialogContentText>{tr("To subscribe to this website, please enter your email address here. We will send updates occasionally.")}</DialogContentText>
           <TextField
             autoFocus
             fullWidth
             type="email"
             margin="dense"
             variant="outlined"
-            label="Email Address"
+            label={tr("Email Address")}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="inherit">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} variant="contained">
-            Subscribe
-          </Button>
+          <Button onClick={handleClose} color="inherit">{tr("Cancel")}</Button>
+          <Button onClick={handleClose} variant="contained">{tr("Subscribe")}</Button>
         </DialogActions>
       </Dialog>
     </div>

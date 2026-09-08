@@ -1,24 +1,26 @@
 import PropTypes from 'prop-types';
 import { Box, Card, Stack, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 import Iconify from '../../../../../components/iconify';
 import { formatDate, formatTime } from './utils';
 
 export default function CaseStatusCard({ session }) {
+  useUiLanguage();
   const steps = [
     // 中文原文：个案预约、辅导已完成、简要报告已提交、详细报告已提交
-    { label: 'Case Appointment', complete: true, detail: `${formatDate(session.counselling_date)} ${formatTime(session.session_start)}` },
+    { label: tr("Case Appointment"), complete: true, detail: `${formatDate(session.counselling_date)} ${formatTime(session.session_start)}` },
     {
-      label: 'Counselling Completed',
+      label: tr("Counselling Completed"),
       complete: Boolean(String(session.session_end || '').trim()),
       detail: session.session_end ? `${formatDate(session.counselling_date)} ${formatTime(session.session_end)}` : '',
     },
-    { label: 'Brief Report Submitted', complete: Boolean(String(session.volunteer_actions || '').trim()), detail: '' },
-    { label: 'Detailed Report Submitted', complete: Boolean(String(session.report_url || '').trim()), detail: '' },
+    { label: tr("Brief Report Submitted"), complete: Boolean(String(session.volunteer_actions || '').trim()), detail: '' },
+    { label: tr("Detailed Report Submitted"), complete: Boolean(String(session.report_url || '').trim()), detail: '' },
   ];
 
   return (
     <Card sx={{ p: 3 }}>
-      {/* 中文原文：个案状态 */}<Typography variant="h6" sx={{ mb: 2.5 }}>Case Status</Typography>
+      {/* 中文原文：个案状态 */}<Typography variant="h6" sx={{ mb: 2.5 }}>{tr("Case Status")}</Typography>
       <Stack>
         {steps.map((step, index) => (
           <Stack key={step.label} direction="row" spacing={1.5} sx={{ minHeight: 70 }}>

@@ -15,6 +15,7 @@ import {
   DialogTitle,
   DialogContent,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // _mock_
 import { _contacts } from '../../../_mock/arrays';
 // components
@@ -33,6 +34,7 @@ KanbanContactsDialog.propTypes = {
 };
 
 export default function KanbanContactsDialog({ assignee = [], open, onClose }) {
+  useUiLanguage();
   const [searchContacts, setSearchContacts] = useState('');
 
   const handleSearchContacts = (event) => {
@@ -48,8 +50,7 @@ export default function KanbanContactsDialog({ assignee = [], open, onClose }) {
 
   return (
     <Dialog fullWidth maxWidth="xs" open={open} onClose={onClose}>
-      <DialogTitle sx={{ pb: 0 }}>
-        Contacts <Typography component="span">({_contacts.length})</Typography>
+      <DialogTitle sx={{ pb: 0 }}>{tr("Contacts")}<Typography component="span">({_contacts.length})</Typography>
       </DialogTitle>
 
       <Box sx={{ px: 3, py: 2.5 }}>
@@ -57,7 +58,7 @@ export default function KanbanContactsDialog({ assignee = [], open, onClose }) {
           fullWidth
           value={searchContacts}
           onChange={handleSearchContacts}
-          placeholder="Search..."
+          placeholder={tr("Search...")}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -93,7 +94,7 @@ export default function KanbanContactsDialog({ assignee = [], open, onClose }) {
                         <Iconify icon={checked ? 'eva:checkmark-fill' : 'eva:plus-fill'} />
                       }
                     >
-                      {checked ? 'assigned' : 'assign'}
+                      {checked ? tr("assigned") : tr("assign")}
                     </Button>
                   }
                   sx={{ height: ITEM_HEIGHT }}

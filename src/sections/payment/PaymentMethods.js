@@ -12,6 +12,7 @@ import {
   RadioGroup,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Iconify from '../../components/iconify';
 //
@@ -27,7 +28,7 @@ const PAYMENT_OPTIONS = [
   },
   {
     value: 'credit_card',
-    title: 'Credit / Debit Card',
+    get title() { return tr("Credit / Debit Card"); },
     icons: ['/assets/icons/payments/ic_mastercard.svg', '/assets/icons/payments/ic_visa.svg'],
   },
 ];
@@ -49,6 +50,7 @@ const CARD_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function PaymentMethods() {
+  useUiLanguage();
   const [method, setMethod] = useState('paypal');
 
   const [open, setOpen] = useState(false);
@@ -68,7 +70,7 @@ export default function PaymentMethods() {
   return (
     <>
       <Stack spacing={5}>
-        <Typography variant="h6">Payment Method</Typography>
+        <Typography variant="h6">{tr("Payment Method")}</Typography>
 
         <RadioGroup value={method} onChange={handleChangeMethod}>
           <Stack spacing={3}>
@@ -102,6 +104,7 @@ PaymentOption.propTypes = {
 };
 
 function PaymentOption({ option, hasChild, isSelected, isCreditMethod, onOpen }) {
+  useUiLanguage();
   const { value, title, icons } = option;
 
   return (
@@ -149,7 +152,7 @@ function PaymentOption({ option, hasChild, isSelected, isCreditMethod, onOpen })
           <TextField
             select
             fullWidth
-            label="Card"
+            label={tr("Card")}
             SelectProps={{
               native: true,
             }}
@@ -166,9 +169,7 @@ function PaymentOption({ option, hasChild, isSelected, isCreditMethod, onOpen })
             startIcon={<Iconify icon="eva:plus-fill" />}
             onClick={onOpen}
             sx={{ my: 3 }}
-          >
-            Add new card
-          </Button>
+          >{tr("Add new card")}</Button>
         </Stack>
       )}
     </Paper>

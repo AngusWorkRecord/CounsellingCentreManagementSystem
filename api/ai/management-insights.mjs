@@ -1,5 +1,7 @@
 import {
   analysisDto,
+  analysisLanguage,
+  languageInstruction,
   assertAiAvailable,
   commonSafetyPrompt,
   completeAnalysis,
@@ -97,6 +99,7 @@ export function createManagementInsightsHandler(overrides = {}) {
   try {
     dependencies.assertAiAvailable();
     const body = request.body || {};
+    const language = analysisLanguage(body.language);
     const filters = normalizeFilters(body);
     const action = body.action === 'latest' ? 'latest' : body.action === 'generate' ? 'generate' : null;
     if (!action) throw apiError('INVALID_REQUEST', 400);
@@ -109,19 +112,20 @@ export function createManagementInsightsHandler(overrides = {}) {
         AND deleted_at IS NULL
     `;
     const aggregate = buildAggregate(rows, filters);
-    const scopeKey = createScopeKey('management_insights', { filters, aggregate: aggregate.payload });
+    const scopeKey = createScopeKey('management_insights', { filters, aggregate: aggregate.payload, language });
 
     if (action === 'latest') {
       const latest = await dependencies.getLatestAnalysis(sql, 'management_insights', scopeKey);
-      return response.status(200).json({ success: true, data: latest ? analysisDto(latest) : null });
+      const legacy = latest ? null : await dependencies.getLatestAnalysis(sql, 'management_insights', createScopeKey('management_insights', { filters, aggregate: aggregate.payload }));
+      return response.status(200).json({ success: true, data: latest ? analysisDto(latest) : legacy ? { ...analysisDto(legacy), legacy: true } : null });
     }
 
     analysis = await dependencies.startAnalysis(sql, {
-      analysisType: 'management_insights', scopeKey, filterSnapshot: filters,
+      analysisType: 'management_insights', scopeKey, filterSnapshot: { ...filters, language },
       sourceManifest: aggregate.sourceRefs,
     });
     const result = await dependencies.requestStructuredAnalysis({
-      instructions: `${commonSafetyPrompt}\nAnalyse only de-identified operational aggregates. Never infer an individual or reconstruct omitted groups.`,
+      instructions: `${commonSafetyPrompt}\n${languageInstruction(language)}\nAnalyse only de-identified operational aggregates. Never infer an individual or reconstruct omitted groups.`,
       input: aggregate.payload,
       schema: managementSchema,
       schemaName: 'management_insights',

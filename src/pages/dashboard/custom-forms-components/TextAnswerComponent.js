@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Stack, Button, TextField, Typography, FormControl, FormControlLabel, } from "@mui/material";
+import { tr, useUiLanguage } from '../../../locales/translate';
 import { isStringNullOrEmpty } from '../../../utils/Helpers';
 
 TextAnswerComponent.propTypes = {
@@ -11,6 +12,7 @@ TextAnswerComponent.propTypes = {
 }
 
 export default function TextAnswerComponent({ QuestionLabel, QuestionPlaceholder, onChange, ...others }) {
+  useUiLanguage();
     const [isDirty, setIsDirty] = useState(false)
 
     const handleChange = (event) => {
@@ -32,7 +34,7 @@ export default function TextAnswerComponent({ QuestionLabel, QuestionPlaceholder
                 required
                 onChange={handleChange}
                 error={isDirty && isStringNullOrEmpty(QuestionLabel)}
-                helperText={isDirty && isStringNullOrEmpty(QuestionLabel) ? "Question Label is required." : ""}
+                helperText={isDirty && isStringNullOrEmpty(QuestionLabel) ? tr("Question Label is required.") : ""}
                 {...others}
             />
         </Stack>

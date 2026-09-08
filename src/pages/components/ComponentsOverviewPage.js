@@ -3,6 +3,7 @@ import orderBy from 'lodash/orderBy';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Container, Typography, Stack, Link, Box, Divider } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // sections
 import { ComponentHero, ComponentCard } from '../../sections/_examples';
 import { foundation, mui, extra } from '../../sections/_examples/config-navigation';
@@ -10,10 +11,11 @@ import { foundation, mui, extra } from '../../sections/_examples/config-navigati
 // ----------------------------------------------------------------------
 
 export default function ComponentsOverviewPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Components Overview | Counselling Centre Management System</title>
+        <title> {tr("Components Overview | Counselling Centre Management System")}</title>
       </Helmet>
 
       <ComponentHero />
@@ -21,11 +23,9 @@ export default function ComponentsOverviewPage() {
       <Container sx={{ pt: 10, pb: 15 }}>
         <Stack spacing={3}>
           <Stack spacing={1}>
-            <Typography variant="h5">Foundation</Typography>
+            <Typography variant="h5">{tr("Foundation")}</Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Colors, Typography, Shadows…
-            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Colors, Typography, Shadows…")}</Typography>
           </Stack>
 
           <Grid>
@@ -41,8 +41,7 @@ export default function ComponentsOverviewPage() {
           <Stack spacing={1}>
             <Typography variant="h5">MUI</Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Components from{' '}
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Components from")}{' '}
               <Link href="https://mui.com/components/" target="_blank" rel="noopener">
                 MUI
               </Link>
@@ -50,17 +49,12 @@ export default function ComponentsOverviewPage() {
             </Typography>
 
             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-              <i>
-                Some advanced components from MUI X will not be included. So you need to purchase a
-                separate
-                <Link
+              <i>{tr("Some advanced components from MUI X will not be included. So you need to purchase a separate")}<Link
                   href="https://mui.com/pricing/"
                   target="_blank"
                   rel="noopener"
                   sx={{ ml: 0.5 }}
-                >
-                  license
-                </Link>
+                >{tr("license")}</Link>
                 .
               </i>
             </Typography>
@@ -77,11 +71,9 @@ export default function ComponentsOverviewPage() {
 
         <Stack spacing={3}>
           <Stack spacing={1}>
-            <Typography variant="h5">Extra Components</Typography>
+            <Typography variant="h5">{tr("Extra Components")}</Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Some custom components / use 3rd party dependencies (chart, map, editor…).
-            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("Some custom components / use 3rd party dependencies (chart, map, editor…).")}</Typography>
           </Stack>
 
           <Grid>
@@ -102,6 +94,7 @@ Grid.propTypes = {
 };
 
 function Grid({ children }) {
+  useUiLanguage();
   return (
     <Box
       display="grid"

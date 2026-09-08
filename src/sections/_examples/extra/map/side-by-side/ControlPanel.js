@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { memo } from 'react';
 // @mui
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import { StyledControlPanel } from '../../../../../components/map';
 
@@ -13,12 +14,13 @@ ControlPanel.propTypes = {
 };
 
 function ControlPanel({ mode, onModeChange }) {
+  useUiLanguage();
   return (
     <StyledControlPanel>
       <ToggleButtonGroup color="primary" value={mode} exclusive onChange={onModeChange}>
-        <ToggleButton value="side-by-side">Side by side</ToggleButton>
+        <ToggleButton value="side-by-side">{tr("Side by side")}</ToggleButton>
 
-        <ToggleButton value="split-screen">Split screen</ToggleButton>
+        <ToggleButton value="split-screen">{tr("Split screen")}</ToggleButton>
       </ToggleButtonGroup>
     </StyledControlPanel>
   );

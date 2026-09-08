@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Container, Stack, Paper, CardHeader, Tooltip } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -17,10 +18,11 @@ const COLORS = ['default', 'primary', 'secondary', 'info', 'success', 'warning',
 // ----------------------------------------------------------------------
 
 export default function DemoLabelPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Label | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Label | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -32,13 +34,13 @@ export default function DemoLabelPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Label"
+            heading={tr("Label")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Label' },
+              { name: tr("Label") },
             ]}
           />
         </Container>
@@ -46,56 +48,44 @@ export default function DemoLabelPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={3}>
-          <Block title="Filled">
+          <Block title={tr("Filled")}>
             {COLORS.map((color) => (
               <Tooltip key={color} title={color}>
                 <Label color={color} variant="filled">
-                  {color}
+                  {tr(color)}
                 </Label>
               </Tooltip>
             ))}
           </Block>
 
-          <Block title="Outlined">
+          <Block title={tr("Outlined")}>
             {COLORS.map((color) => (
               <Label key={color} color={color} variant="outlined">
-                {color}
+                {tr(color)}
               </Label>
             ))}
           </Block>
 
-          <Block title="Soft">
+          <Block title={tr("Soft")}>
             {COLORS.map((color) => (
               <Label key={color} color={color} variant="soft">
-                {color}
+                {tr(color)}
               </Label>
             ))}
           </Block>
 
-          <Block title="With Icon">
-            <Label variant="filled" color="primary" startIcon={<Iconify icon="eva:email-fill" />}>
-              Start Icon
-            </Label>
+          <Block title={tr("With Icon")}>
+            <Label variant="filled" color="primary" startIcon={<Iconify icon="eva:email-fill" />}>{tr("Start Icon")}</Label>
 
-            <Label variant="filled" color="primary" endIcon={<Iconify icon="eva:email-fill" />}>
-              End Icon
-            </Label>
+            <Label variant="filled" color="primary" endIcon={<Iconify icon="eva:email-fill" />}>{tr("End Icon")}</Label>
 
-            <Label variant="outlined" color="primary" startIcon={<Iconify icon="eva:email-fill" />}>
-              Start Icon
-            </Label>
+            <Label variant="outlined" color="primary" startIcon={<Iconify icon="eva:email-fill" />}>{tr("Start Icon")}</Label>
 
-            <Label variant="outlined" color="primary" endIcon={<Iconify icon="eva:email-fill" />}>
-              End Icon
-            </Label>
+            <Label variant="outlined" color="primary" endIcon={<Iconify icon="eva:email-fill" />}>{tr("End Icon")}</Label>
 
-            <Label color="primary" startIcon={<Iconify icon="eva:email-fill" />}>
-              Start Icon
-            </Label>
+            <Label color="primary" startIcon={<Iconify icon="eva:email-fill" />}>{tr("Start Icon")}</Label>
 
-            <Label color="primary" endIcon={<Iconify icon="eva:email-fill" />}>
-              End Icon
-            </Label>
+            <Label color="primary" endIcon={<Iconify icon="eva:email-fill" />}>{tr("End Icon")}</Label>
           </Block>
         </Stack>
       </Container>
@@ -111,6 +101,7 @@ Block.propTypes = {
 };
 
 export function Block({ title, children }) {
+  useUiLanguage();
   return (
     <Paper
       variant="outlined"

@@ -1,3 +1,4 @@
+import { tr } from '../locales/translate';
 // routes
 import { PATH_AUTH } from '../routes/paths';
 // utils
@@ -48,7 +49,7 @@ export const tokenExpired = (exp) => {
   clearTimeout(expiredTimer);
 
   expiredTimer = setTimeout(() => {
-    alert('Token expired');
+    alert(tr("Token expired"));
 
     localStorage.removeItem('accessToken');
 

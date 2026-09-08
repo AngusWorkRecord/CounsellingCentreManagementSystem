@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Stack, Card, CardHeader, Typography, Link } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock_
@@ -30,10 +31,11 @@ export const _dataGrid = [...Array(36)].map((_, index) => ({
 // ----------------------------------------------------------------------
 
 export default function MUIDataGridPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: DataGrid | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: DataGrid | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -45,26 +47,20 @@ export default function MUIDataGridPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="DataGrid"
+            heading={tr("DataGrid")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'DataGrid' },
+              { name: tr("DataGrid") },
             ]}
             moreLink={['https://mui.com/x/react-data-grid/']}
             sx={{ mb: 0 }}
           />
 
-          <Typography variant="body2" sx={{ my: 3 }}>
-            This component includes 2 <strong>Free</strong> and <strong>Paid</strong> versions from
-            MUI.
-            <br />
-            Paid version will have more features. Please read more{' '}
-            <Link href="https://mui.com/x/react-data-grid/" target="_blank" rel="noopener">
-              here
-            </Link>
+          <Typography variant="body2" sx={{ my: 3 }}>{tr("This component includes 2")}<strong>{tr("Free")}</strong> {tr("and")} <strong>{tr("Paid")}</strong>{tr("versions from MUI.")}<br />{tr("Paid version will have more features. Please read more")}{' '}
+            <Link href="https://mui.com/x/react-data-grid/" target="_blank" rel="noopener">{tr("here")}</Link>
           </Typography>
         </Container>
       </Box>
@@ -72,14 +68,14 @@ export default function MUIDataGridPage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={5}>
           <Card>
-            <CardHeader title="Basic" sx={{ mb: 2 }} />
+            <CardHeader title={tr("Basic")} sx={{ mb: 2 }} />
             <Box sx={{ height: 390 }}>
               <DataGridBasic data={_dataGrid} />
             </Box>
           </Card>
 
           <Card>
-            <CardHeader title="Custom" sx={{ mb: 2 }} />
+            <CardHeader title={tr("Custom")} sx={{ mb: 2 }} />
             <Box sx={{ height: 720 }}>
               <DataGridCustom data={_dataGrid} />
             </Box>

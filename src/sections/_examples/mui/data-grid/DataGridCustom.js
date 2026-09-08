@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Stack, Typography, Box, Rating, LinearProgress, IconButton } from '@mui/material';
 import { DataGrid, GridToolbar, getGridNumericOperators } from '@mui/x-data-grid';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fPercent } from '../../../../utils/formatNumber';
 // components
@@ -37,7 +38,7 @@ const columns = [
   },
   {
     field: 'avatar',
-    headerName: 'Avatar',
+    get headerName() { return tr("Avatar"); },
     align: 'center',
     headerAlign: 'center',
     width: 64,
@@ -48,13 +49,13 @@ const columns = [
   },
   {
     field: 'name',
-    headerName: 'Name',
+    get headerName() { return tr("Name"); },
     flex: 1,
     editable: true,
   },
   {
     field: 'email',
-    headerName: 'Email',
+    get headerName() { return tr("Email"); },
     flex: 1,
     editable: true,
     renderCell: (params) => (
@@ -66,7 +67,7 @@ const columns = [
   {
     field: 'lastLogin',
     type: 'dateTime',
-    headerName: 'Last login',
+    get headerName() { return tr("Last login"); },
     align: 'right',
     headerAlign: 'right',
     width: 200,
@@ -74,7 +75,7 @@ const columns = [
   {
     field: 'rating',
     type: 'number',
-    headerName: 'Rating',
+    get headerName() { return tr("Rating"); },
     width: 160,
     disableColumnMenu: true,
     renderCell: (params) => (
@@ -84,7 +85,7 @@ const columns = [
   {
     field: 'status',
     type: 'singleSelect',
-    headerName: 'Status',
+    get headerName() { return tr("Status"); },
     valueOptions: ['online', 'away', 'busy'],
     align: 'center',
     headerAlign: 'center',
@@ -108,7 +109,7 @@ const columns = [
   {
     field: 'performance',
     type: 'number',
-    headerName: 'Performance',
+    get headerName() { return tr("Performance"); },
     align: 'center',
     headerAlign: 'center',
     width: 160,
@@ -153,6 +154,7 @@ DataGridCustom.propTypes = {
 };
 
 export default function DataGridCustom({ data }) {
+  useUiLanguage();
   const [selectionModel, setSelectionModel] = useState([]);
 
   if (columns.length > 0) {
@@ -193,6 +195,7 @@ export default function DataGridCustom({ data }) {
 // ----------------------------------------------------------------------
 
 function RenderStatus(getStatus) {
+  useUiLanguage();
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   return (
@@ -214,12 +217,13 @@ RatingInputValue.propTypes = {
 };
 
 function RatingInputValue({ item, applyValue }) {
+  useUiLanguage();
   return (
     <Box sx={{ p: 1, height: 1, alignItems: 'flex-end', display: 'flex' }}>
       <Rating
         size="small"
         precision={0.5}
-        placeholder="Filter value"
+        placeholder={tr("Filter value")}
         value={Number(item.value)}
         onChange={(event, newValue) => {
           applyValue({ ...item, value: newValue });

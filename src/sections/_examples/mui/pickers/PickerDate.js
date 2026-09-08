@@ -9,19 +9,21 @@ import {
   MobileDatePicker,
   DesktopDatePicker,
 } from '@mui/x-date-pickers';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 //
 import { Block } from '../../Block';
 
 // ----------------------------------------------------------------------
 
 export default function PickerDate() {
+  useUiLanguage();
   const [value, setValue] = useState(new Date());
 
   return (
     <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-      <Block title="Basic">
+      <Block title={tr("Basic")}>
         <DesktopDatePicker
-          label="For desktop"
+          label={tr("For desktop")}
           value={value}
           minDate={new Date('2017-01-01')}
           onChange={(newValue) => {
@@ -32,7 +34,7 @@ export default function PickerDate() {
 
         <MobileDatePicker
           orientation="portrait"
-          label="For mobile"
+          label={tr("For mobile")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -41,7 +43,7 @@ export default function PickerDate() {
         />
       </Block>
 
-      <Block title="Static mode">
+      <Block title={tr("Static mode")}>
         <StaticDatePicker
           orientation="landscape"
           openTo="day"
@@ -54,10 +56,10 @@ export default function PickerDate() {
         />
       </Block>
 
-      <Block title="Views playground">
+      <Block title={tr("Views playground")}>
         <DatePicker
           views={['year']}
-          label="Year only"
+          label={tr("Year only")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -68,7 +70,7 @@ export default function PickerDate() {
         />
         <DatePicker
           views={['year', 'month']}
-          label="Year and Month"
+          label={tr("Year and Month")}
           minDate={new Date('2012-03-01')}
           maxDate={new Date('2023-06-01')}
           value={value}
@@ -82,7 +84,7 @@ export default function PickerDate() {
         <DatePicker
           openTo="year"
           views={['year', 'month', 'day']}
-          label="Year, month and date"
+          label={tr("Year, month and date")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -93,7 +95,7 @@ export default function PickerDate() {
         />
         <DatePicker
           views={['day', 'month', 'year']}
-          label="Invert the order of views"
+          label={tr("Invert the order of views")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -104,7 +106,7 @@ export default function PickerDate() {
         />
         <DatePicker
           views={['day']}
-          label="Just date"
+          label={tr("Just date")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);

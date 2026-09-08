@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Stack, InputAdornment, TextField, MenuItem, Button } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Iconify from '../../../../../components/iconify'
 
@@ -25,6 +26,7 @@ export default function EventTableToolbar({
   onFilterLocation,
   onResetFilter,
 }) {
+  useUiLanguage();
   return (
     <Stack
       spacing={2}
@@ -38,7 +40,7 @@ export default function EventTableToolbar({
       <TextField
         fullWidth
         select
-        label="Location"
+        label={tr("Location")}
         value={filterLocation}
         onChange={onFilterLocation}
         size="small"
@@ -76,7 +78,7 @@ export default function EventTableToolbar({
         fullWidth
         value={filterName}
         onChange={onFilterName}
-        placeholder="Search..."
+        placeholder={tr("Search...")}
         size="small"
         InputProps={{
           startAdornment: (
@@ -93,9 +95,7 @@ export default function EventTableToolbar({
           sx={{ flexShrink: 0 }}
           onClick={onResetFilter}
           startIcon={<Iconify icon="eva:trash-2-outline" />}
-        >
-          Clear
-        </Button>
+        >{tr("Clear")}</Button>
       )}
     </Stack>
   );

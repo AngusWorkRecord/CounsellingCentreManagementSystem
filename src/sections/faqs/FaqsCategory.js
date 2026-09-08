@@ -13,6 +13,7 @@ import {
   Divider,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // components
@@ -25,32 +26,32 @@ import { MotionViewport, varFade } from '../../components/animate';
 
 const CATEGORIES = [
   {
-    label: 'Managing your account',
+    get label() { return tr("Managing your account"); },
     icon: '/assets/icons/faqs/ic_account.svg',
     href: '#',
   },
   {
-    label: 'Payment',
+    get label() { return tr("Payment"); },
     icon: '/assets/icons/faqs/ic_payment.svg',
     href: '#',
   },
   {
-    label: 'Delivery',
+    get label() { return tr("Delivery"); },
     icon: '/assets/icons/faqs/ic_delivery.svg',
     href: '#',
   },
   {
-    label: 'Problem with the Product',
+    get label() { return tr("Problem with the Product"); },
     icon: '/assets/icons/faqs/ic_package.svg',
     href: '#',
   },
   {
-    label: 'Return & Refund',
+    get label() { return tr("Return & Refund"); },
     icon: '/assets/icons/faqs/ic_refund.svg',
     href: '#',
   },
   {
-    label: 'Guarantees and assurances',
+    get label() { return tr("Guarantees and assurances"); },
     icon: '/assets/icons/faqs/ic_assurances.svg',
     href: '#',
   },
@@ -59,6 +60,7 @@ const CATEGORIES = [
 // ----------------------------------------------------------------------
 
 export default function FaqsCategory() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   const [open, setOpen] = useState(false);
@@ -80,9 +82,7 @@ export default function FaqsCategory() {
               variant="soft"
               startIcon={<Iconify icon="eva:menu-2-fill" />}
               onClick={handleOpen}
-            >
-              Categories
-            </Button>
+            >{tr("Categories")}</Button>
           </Toolbar>
           <Divider />
         </AppBar>
@@ -128,6 +128,7 @@ CardDesktop.propTypes = {
 };
 
 function CardDesktop({ category }) {
+  useUiLanguage();
   const { label, icon } = category;
 
   return (
@@ -168,6 +169,7 @@ CardMobile.propTypes = {
 };
 
 function CardMobile({ category }) {
+  useUiLanguage();
   const { label, icon } = category;
 
   return (

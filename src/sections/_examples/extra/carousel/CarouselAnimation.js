@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Card, Paper, Button, Typography, CardContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { bgGradient } from '../../../../utils/cssStyles';
 // components
@@ -18,6 +19,7 @@ CarouselAnimation.propTypes = {
 };
 
 export default function CarouselAnimation({ data }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -69,6 +71,7 @@ CarouselItem.propTypes = {
 };
 
 function CarouselItem({ item, isActive }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const { image, title } = item;
@@ -117,9 +120,7 @@ function CarouselItem({ item, isActive }) {
         </m.div>
 
         <m.div variants={varFade().inRight}>
-          <Button variant="contained" sx={{ mt: 3 }}>
-            View More
-          </Button>
+          <Button variant="contained" sx={{ mt: 3 }}>{tr("View More")}</Button>
         </m.div>
       </CardContent>
     </Paper>

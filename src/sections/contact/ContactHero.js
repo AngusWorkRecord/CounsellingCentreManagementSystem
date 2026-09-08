@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Stack, Container, Typography, Grid } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 //
 import { TextAnimate, MotionContainer, varFade } from '../../components/animate';
 
@@ -54,17 +55,18 @@ const StyledContent = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function ContactHero() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionContainer}>
         <StyledContent>
-          <TextAnimate text="Where" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
+          <TextAnimate text={tr("Where")} sx={{ color: 'primary.main' }} variants={varFade().inRight} />
           <br />
 
           <Stack spacing={2} display="inline-flex" direction="row" sx={{ color: 'common.white' }}>
-            <TextAnimate text="to" />
-            <TextAnimate text="find" />
-            <TextAnimate text="us?" />
+            <TextAnimate text={tr("to")} />
+            <TextAnimate text={tr("find")} />
+            <TextAnimate text={tr("us?")} />
           </Stack>
 
           <Grid container spacing={5} sx={{ mt: 5, color: 'common.white' }}>

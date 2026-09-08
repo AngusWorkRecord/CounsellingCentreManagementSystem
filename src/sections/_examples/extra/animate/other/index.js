@@ -2,6 +2,7 @@ import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Grid, Card, CardContent, IconButton, Paper, CardHeader } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Iconify from '../../../../../components/iconify';
 //
@@ -11,6 +12,7 @@ import Button from './Button';
 // ----------------------------------------------------------------------
 
 export default function Other() {
+  useUiLanguage();
   const [count, setCount] = useState(0);
 
   return (
@@ -25,7 +27,7 @@ export default function Other() {
                 bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
               }}
             >
-              <CardHeader title="Button Click" />
+              <CardHeader title={tr("Button Click")} />
               <Box sx={{ p: 5, minHeight: 180, '& > *': { mx: 1 } }}>
                 <Button />
               </Box>
@@ -41,7 +43,7 @@ export default function Other() {
                 bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
               }}
             >
-              <CardHeader title="Path" />
+              <CardHeader title={tr("Path")} />
               <Box sx={{ p: 5, minHeight: 180, '& > *': { mx: 1 } }}>
                 <IconButton
                   onClick={() => setCount(count + 1)}

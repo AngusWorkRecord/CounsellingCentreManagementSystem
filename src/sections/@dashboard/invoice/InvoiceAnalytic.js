@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Stack, Typography, Box, CircularProgress } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import { fShortenNumber, fCurrency } from '../../../utils/formatNumber';
 // components
@@ -19,6 +20,7 @@ InvoiceAnalytic.propTypes = {
 };
 
 export default function InvoiceAnalytic({ title, total, icon, color, percent, price }) {
+  useUiLanguage();
   return (
     <Stack
       direction="row"
@@ -57,13 +59,11 @@ export default function InvoiceAnalytic({ title, total, icon, color, percent, pr
 
         <Typography variant="subtitle2">
           {fShortenNumber(total)}{' '}
-          <Box component="span" sx={{ color: 'text.secondary', typography: 'body2' }}>
-            Events
-          </Box>
+          <Box component="span" sx={{ color: 'text.secondary', typography: 'body2' }}>{tr("Events")}</Box>
         </Typography>
 
         <Typography variant="subtitle2" sx={{ color }}>
-          {fShortenNumber(price)} {title === "Upcoming Event" ? ' Estimated Delegates' : ' Delegates'}
+          {fShortenNumber(price)} {title === "Upcoming Event" ? tr(" Estimated Delegates") : tr(" Delegates")}
         </Typography>
       </Stack>
     </Stack>

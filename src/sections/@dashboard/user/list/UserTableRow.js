@@ -12,6 +12,7 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Label from '../../../../components/label';
 import Iconify from '../../../../components/iconify';
@@ -29,6 +30,7 @@ UserTableRow.propTypes = {
 };
 
 export default function UserTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRow }) {
+  useUiLanguage();
   const { name, avatarUrl, company, role, isVerified, status } = row;
 
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -116,9 +118,7 @@ export default function UserTableRow({ row, selected, onEditRow, onSelectRow, on
           }}
           sx={{ color: 'error.main' }}
         >
-          <Iconify icon="eva:trash-2-outline" />
-          Delete
-        </MenuItem>
+          <Iconify icon="eva:trash-2-outline" />{tr("Delete")}</MenuItem>
 
         <MenuItem
           onClick={() => {
@@ -126,20 +126,16 @@ export default function UserTableRow({ row, selected, onEditRow, onSelectRow, on
             handleClosePopover();
           }}
         >
-          <Iconify icon="eva:edit-fill" />
-          Edit
-        </MenuItem>
+          <Iconify icon="eva:edit-fill" />{tr("Edit")}</MenuItem>
       </MenuPopover>
 
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Delete"
+        title={tr("Delete")}
         content="Are you sure want to delete?"
         action={
-          <Button variant="contained" color="error" onClick={onDeleteRow}>
-            Delete
-          </Button>
+          <Button variant="contained" color="error" onClick={onDeleteRow}>{tr("Delete")}</Button>
         }
       />
     </>

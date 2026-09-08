@@ -12,6 +12,7 @@ import {
   Typography,
   IconButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Iconify from '../../../../../components/iconify';
 
@@ -30,6 +31,7 @@ CollapsibleTableRow.propTypes = {
 };
 
 export default function CollapsibleTableRow({ row }) {
+  useUiLanguage();
   const [open, setOpen] = useState(false);
 
   return (
@@ -71,17 +73,15 @@ export default function CollapsibleTableRow({ row }) {
                 }),
               }}
             >
-              <Typography variant="h6" sx={{ m: 2, mt: 0 }}>
-                History
-              </Typography>
+              <Typography variant="h6" sx={{ m: 2, mt: 0 }}>{tr("History")}</Typography>
 
-              <Table size="small" aria-label="purchases">
+              <Table size="small" aria-label={tr("purchases")}>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>{tr("Date")}</TableCell>
+                    <TableCell>{tr("Customer")}</TableCell>
+                    <TableCell align="right">{tr("Amount")}</TableCell>
+                    <TableCell align="right">{tr("Total price ($)")}</TableCell>
                   </TableRow>
                 </TableHead>
 

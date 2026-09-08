@@ -22,6 +22,7 @@ import {
   ListItemSecondaryAction,
 } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -40,10 +41,12 @@ const StyledListContainer = styled(Paper)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 function ListItemLink(props) {
+  useUiLanguage();
   return <ListItemButton component="a" {...props} />;
 }
 
 export default function MUIListPage() {
+  useUiLanguage();
   const [open, setOpen] = useState(true);
 
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -87,7 +90,7 @@ export default function MUIListPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: List | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: List | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -99,13 +102,13 @@ export default function MUIListPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="List"
+            heading={tr("List")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Lists' },
+              { name: tr("Lists") },
             ]}
             moreLink={['https://mui.com/components/lists']}
           />
@@ -114,9 +117,9 @@ export default function MUIListPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Simple">
+          <Block title={tr("Simple")}>
             <StyledListContainer>
-              <List component="nav" aria-label="main mailbox folders">
+              <List component="nav" aria-label={tr("main mailbox folders")}>
                 <ListItemButton>
                   <ListItemIcon>
                     <Iconify icon="ic:baseline-inbox" width={24} />
@@ -133,7 +136,7 @@ export default function MUIListPage() {
 
               <Divider />
 
-              <List component="nav" aria-label="secondary mailbox folders">
+              <List component="nav" aria-label={tr("secondary mailbox folders")}>
                 <ListItemButton>
                   <ListItemText primary="Trash" />
                 </ListItemButton>
@@ -144,15 +147,13 @@ export default function MUIListPage() {
             </StyledListContainer>
           </Block>
 
-          <Block title="Nested">
+          <Block title={tr("Nested")}>
             <StyledListContainer>
               <List
                 component="nav"
                 aria-labelledby="nested-list-subheader"
                 subheader={
-                  <ListSubheader component="div" id="nested-list-subheader">
-                    Nested List Items
-                  </ListSubheader>
+                  <ListSubheader component="div" id="nested-list-subheader">{tr("Nested List Items")}</ListSubheader>
                 }
               >
                 <ListItemButton>
@@ -192,7 +193,7 @@ export default function MUIListPage() {
             </StyledListContainer>
           </Block>
 
-          <Block title="Folder">
+          <Block title={tr("Folder")}>
             <StyledListContainer>
               <List>
                 <ListItemButton>
@@ -223,9 +224,9 @@ export default function MUIListPage() {
             </StyledListContainer>
           </Block>
 
-          <Block title="Selected">
+          <Block title={tr("Selected")}>
             <StyledListContainer>
-              <List component="nav" aria-label="main mailbox folders">
+              <List component="nav" aria-label={tr("main mailbox folders")}>
                 <ListItemButton
                   selected={selectedIndex === 0}
                   onClick={(event) => handleListItemClick(event, 0)}
@@ -248,7 +249,7 @@ export default function MUIListPage() {
 
               <Divider />
 
-              <List component="nav" aria-label="secondary mailbox folder">
+              <List component="nav" aria-label={tr("secondary mailbox folder")}>
                 <ListItemButton
                   selected={selectedIndex === 2}
                   onClick={(event) => handleListItemClick(event, 2)}
@@ -265,7 +266,7 @@ export default function MUIListPage() {
             </StyledListContainer>
           </Block>
 
-          <Block title="Controls">
+          <Block title={tr("Controls")}>
             <StyledListContainer>
               <List>
                 {[0, 1, 2, 3].map((value) => {
@@ -296,9 +297,9 @@ export default function MUIListPage() {
             </StyledListContainer>
           </Block>
 
-          <Block title="Switch">
+          <Block title={tr("Switch")}>
             <StyledListContainer>
-              <List subheader={<ListSubheader>Settings</ListSubheader>}>
+              <List subheader={<ListSubheader>{tr("Settings")}</ListSubheader>}>
                 <ListItemButton>
                   <ListItemIcon>
                     <Iconify icon="ic:baseline-wifi" width={24} />

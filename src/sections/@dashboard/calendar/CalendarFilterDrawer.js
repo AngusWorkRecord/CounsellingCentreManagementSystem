@@ -14,6 +14,7 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // config
 import { NAV } from '../../../config-global';
 // utils
@@ -48,6 +49,7 @@ export default function CalendarFilterDrawer({
   filterEventColor,
   onFilterEventColor,
 }) {
+  useUiLanguage();
   return (
     <Drawer
       anchor="right"
@@ -66,9 +68,9 @@ export default function CalendarFilterDrawer({
         justifyContent="space-between"
         sx={{ pl: 2, pr: 1, py: 2 }}
       >
-        <Typography variant="subtitle1">Filters</Typography>
+        <Typography variant="subtitle1">{tr("Filters")}</Typography>
 
-        <Tooltip title="Reset">
+        <Tooltip title={tr("Reset")}>
           <IconButton onClick={onResetFilter}>
             <Iconify icon="eva:trash-2-outline" />
           </IconButton>
@@ -84,9 +86,7 @@ export default function CalendarFilterDrawer({
           fontWeight: 'fontWeightMedium',
           p: (theme) => theme.spacing(2, 2, 1, 2),
         }}
-      >
-        Colors
-      </Typography>
+      >{tr("Colors")}</Typography>
 
       <ColorMultiPicker
         colors={colorOptions}
@@ -102,20 +102,18 @@ export default function CalendarFilterDrawer({
           color: 'text.secondary',
           fontWeight: 'fontWeightMedium',
         }}
-      >
-        Range
-      </Typography>
+      >{tr("Range")}</Typography>
 
       <Stack spacing={2} sx={{ px: 2 }}>
         <DatePicker
-          label="Start date"
+          label={tr("Start date")}
           value={picker.startDate}
           onChange={picker.onChangeStartDate}
           renderInput={(params) => <TextField size="small" {...params} />}
         />
 
         <DatePicker
-          label="End date"
+          label={tr("End date")}
           value={picker.endDate}
           onChange={picker.onChangeEndDate}
           renderInput={(params) => <TextField size="small" {...params} />}
@@ -129,8 +127,7 @@ export default function CalendarFilterDrawer({
           color: 'text.secondary',
           fontWeight: 'fontWeightMedium',
         }}
-      >
-        Events ({events.length})
+      >{tr("Events (")}{events.length})
       </Typography>
 
       <Scrollbar sx={{ height: 1 }}>

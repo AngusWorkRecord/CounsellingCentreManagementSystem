@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths';
 // auth
@@ -17,15 +18,15 @@ import { IconButtonAnimate } from '../../../components/animate';
 
 const OPTIONS = [
   {
-    label: 'Home',
+    get label() { return tr("Home"); },
     linkTo: '/',
   },
   {
-    label: 'Profile',
+    get label() { return tr("Profile"); },
     linkTo: PATH_DASHBOARD.user.profile,
   },
   {
-    label: 'Settings',
+    get label() { return tr("Settings"); },
     linkTo: PATH_DASHBOARD.user.account,
   },
 ];
@@ -33,6 +34,7 @@ const OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
+  useUiLanguage();
   const navigate = useNavigate();
 
   const { user, logout } = useAuthContext();
@@ -57,7 +59,7 @@ export default function AccountPopover() {
       handleClosePopover();
     } catch (error) {
       console.error(error);
-      enqueueSnackbar('Unable to logout!', { variant: 'error' });
+      enqueueSnackbar(tr("Unable to logout!"), { variant: 'error' });
     }
   };
 
@@ -111,9 +113,7 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleLogout} sx={{ m: 1 }}>
-          Logout
-        </MenuItem>
+        <MenuItem onClick={handleLogout} sx={{ m: 1 }}>{tr("Logout")}</MenuItem>
       </MenuPopover>
     </>
   );

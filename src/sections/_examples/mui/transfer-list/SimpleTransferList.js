@@ -10,6 +10,7 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -23,6 +24,7 @@ function intersection(a, b) {
   return a.filter((value) => b.indexOf(value) !== -1);
 }
 export default function SimpleTransferList() {
+  useUiLanguage();
   const [checked, setChecked] = useState([]);
   const [left, setLeft] = useState([0, 1, 2, 3]);
   const [right, setRight] = useState([4, 5, 6, 7]);
@@ -103,7 +105,7 @@ export default function SimpleTransferList() {
             size="small"
             onClick={handleAllRight}
             disabled={left.length === 0}
-            aria-label="move all right"
+            aria-label={tr("move all right")}
             sx={{ my: 1 }}
           >
             <Iconify icon="eva:arrowhead-right-fill" width={18} />
@@ -114,7 +116,7 @@ export default function SimpleTransferList() {
             size="small"
             onClick={handleCheckedRight}
             disabled={leftChecked.length === 0}
-            aria-label="move selected right"
+            aria-label={tr("move selected right")}
             sx={{ my: 1 }}
           >
             <Iconify icon="eva:arrow-ios-forward-fill" width={18} />
@@ -125,7 +127,7 @@ export default function SimpleTransferList() {
             size="small"
             onClick={handleCheckedLeft}
             disabled={rightChecked.length === 0}
-            aria-label="move selected left"
+            aria-label={tr("move selected left")}
             sx={{ my: 1 }}
           >
             <Iconify icon="eva:arrow-ios-back-fill" width={18} />
@@ -136,7 +138,7 @@ export default function SimpleTransferList() {
             size="small"
             onClick={handleAllLeft}
             disabled={right.length === 0}
-            aria-label="move all left"
+            aria-label={tr("move all left")}
             sx={{ my: 1 }}
           >
             <Iconify icon="eva:arrowhead-left-fill" width={18} />

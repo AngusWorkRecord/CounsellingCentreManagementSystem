@@ -10,6 +10,7 @@ import {
   FormHelperText,
   FormControlLabel,
 } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 
 // ----------------------------------------------------------------------
 
@@ -71,7 +72,7 @@ export default function RHFRadioGroup({
 
           {(!!error || helperText) && (
             <FormHelperText error={!!error} sx={{ mx: 0 }}>
-              {error ? error?.message : helperText}
+              {error ? uiMessage(error?.message) : helperText}
             </FormHelperText>
           )}
         </FormControl>

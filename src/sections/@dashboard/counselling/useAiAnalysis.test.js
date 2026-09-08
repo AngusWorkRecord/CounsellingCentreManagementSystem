@@ -74,4 +74,39 @@ describe('useAiAnalysis', () => {
     expect(currentHook.stale).toBe(true);
     expect(generate).toHaveBeenCalledTimes(1);
   });
+
+  test('a late response from the previous language cannot replace the current analysis', async () => {
+    let resolveOld;
+    const oldLoad = jest.fn(() => new Promise((resolve) => { resolveOld = resolve; }));
+    const newLoad = jest.fn().mockResolvedValue({ analysisId: 'english', result: {} });
+    const generate = jest.fn();
+    await act(async () => root.render(<Harness generate={generate} loadLatest={oldLoad} scopeKey="case:cn" />));
+    await act(async () => currentHook.setMode('ai'));
+    await act(async () => root.render(<Harness generate={generate} loadLatest={newLoad} scopeKey="case:en" />));
+    await act(async () => resolveOld({ analysisId: 'chinese', result: {} }));
+    expect(currentHook.analysis.analysisId).toBe('english');
+    expect(currentHook.stale).toBe(false);
+    expect(generate).not.toHaveBeenCalled();
+  });
+
+  test('cancelled generation is ignored even if the transport resolves later', async () => {
+    let resolveGeneration;
+    const generate = jest.fn(() => new Promise((resolve) => { resolveGeneration = resolve; }));
+    const loadLatest = jest.fn().mockResolvedValue(null);
+    await act(async () => root.render(<Harness generate={generate} loadLatest={loadLatest} scopeKey="case:cn" />));
+    let pending;
+    act(() => { pending = currentHook.run(); });
+    act(() => currentHook.cancel());
+    await act(async () => { resolveGeneration({ analysisId: 'cancelled', result: {} }); await pending; });
+    expect(currentHook.analysis).toBe(null);
+    expect(currentHook.loading).toBe(false);
+  });
+
+  test('legacy cached results are shown as outdated', async () => {
+    const loadLatest = jest.fn().mockResolvedValue({ analysisId: 'legacy', result: {}, legacy: true });
+    await act(async () => root.render(<Harness generate={jest.fn()} loadLatest={loadLatest} scopeKey="case:cn" />));
+    await act(async () => currentHook.setMode('ai'));
+    expect(currentHook.analysis.analysisId).toBe('legacy');
+    expect(currentHook.stale).toBe(true);
+  });
 });

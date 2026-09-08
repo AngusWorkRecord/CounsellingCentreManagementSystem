@@ -15,6 +15,9 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
+import { uiMessage } from '../../../../../locales/uiMessage';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
+import { domainLabel } from '../../../../../locales/domainLabels';
 import Label from '../../../../../components/label';
 import Iconify from '../../../../../components/iconify';
 import ConfirmDialog from '../../../../../components/confirm-dialog';
@@ -25,6 +28,7 @@ import { TablePaginationCustom, useTable } from '../../../../../components/table
 const columns = ['Case Number', 'Date', 'Client Initials', 'Session Mode', 'Case Category', 'Counsellor', 'Duration', 'Brief Report', 'Detailed Report', 'Payment', 'Actions'];
 
 export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView }) {
+  useUiLanguage();
   const [menuAnchor, setMenuAnchor] = useState(null);
   const [selectedCase, setSelectedCase] = useState(null);
   const [deleteCase, setDeleteCase] = useState(null);
@@ -71,7 +75,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
         <Table size={dense ? 'small' : 'medium'} sx={{ minWidth: 1330 }}>
           <TableHead>
             <TableRow>
-              {columns.map((column) => <TableCell key={column}>{column}</TableCell>)}
+              {columns.map((column) => <TableCell key={column}>{tr(column)}</TableCell>)}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -80,8 +84,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                 <TableCell colSpan={columns.length} align="center" sx={{ py: 8 }}>
                   <Iconify icon="eva:inbox-outline" width={36} sx={{ color: 'text.disabled', mb: 1 }} />
                   <Typography variant="body2" color="text.secondary">
-                    {/* 中文原文：没有符合筛选条件的个案记录 */}No cases match the selected filters
-                  </Typography>
+                    {/* 中文原文：没有符合筛选条件的个案记录 */}{tr("No cases match the selected filters")}</Typography>
                 </TableCell>
               </TableRow>
             )}
@@ -90,15 +93,15 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                 <TableCell sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{item.id}</TableCell>
                 <TableCell>{item.date}</TableCell>
                 <TableCell>{item.initials}</TableCell>
-                <TableCell>{item.sessionMode}</TableCell>
-                <TableCell>{item.category}</TableCell>
+                <TableCell>{domainLabel(item.sessionMode)}</TableCell>
+                <TableCell>{domainLabel(item.category)}</TableCell>
                 <TableCell>{item.counsellor}</TableCell>
                 <TableCell sx={{ whiteSpace: 'nowrap' }}>{item.duration}</TableCell>
                 <TableCell>
                   {item.briefReportCompleted ? (
                     <Label color="success">{item.caseNumber}</Label>
                   ) : (
-                    <Button size="small" variant="outlined">Complete Now</Button>
+                    <Button size="small" variant="outlined">{tr("Complete Now")}</Button>
                   )}
                 </TableCell>
                 <TableCell sx={{ maxWidth: 220 }}>
@@ -115,10 +118,10 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                       {item.reportUrl}
                     </Button>
                   ) : (
-                    <Button size="small" variant="outlined">Complete Now</Button>
+                    <Button size="small" variant="outlined">{tr("Complete Now")}</Button>
                   )}
                 </TableCell>
-                <TableCell sx={{ whiteSpace: 'nowrap' }}>RM{item.amount}</TableCell>
+                <TableCell sx={{ whiteSpace: 'nowrap' }}>{tr("RM")}{item.amount}</TableCell>
                 <TableCell>
                   <Stack direction="row" alignItems="center" sx={{ whiteSpace: 'nowrap' }}>
                     <IconButton
@@ -142,12 +145,10 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
       <MenuPopover open={menuAnchor} onClose={closeMenu} arrow="right-top" sx={{ width: 160 }}>
         <MenuItem onClick={() => handleMenuAction(onView)}>
           <Iconify icon="eva:eye-outline" />
-          {/* 中文原文：查看详情 */}View Details
-        </MenuItem>
+          {/* 中文原文：查看详情 */}{tr("View Details")}</MenuItem>
         <MenuItem onClick={() => handleMenuAction(onEdit)}>
           <Iconify icon="eva:edit-2-outline" />
-          {/* 中文原文：编辑 */}Edit
-        </MenuItem>
+          {/* 中文原文：编辑 */}{tr("Edit")}</MenuItem>
         <MenuItem
           sx={{ color: 'error.main' }}
           onClick={() => {
@@ -157,8 +158,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
           }}
         >
           <Iconify icon="eva:trash-2-outline" />
-          {/* 中文原文：删除 */}Delete
-        </MenuItem>
+          {/* 中文原文：删除 */}{tr("Delete")}</MenuItem>
       </MenuPopover>
 
       <ConfirmDialog
@@ -169,12 +169,10 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
             setDeleteError('');
           }
         }}
-        title="Delete Case"
+        title={tr("Delete Case")}
         content={
           <>
-            {/* 中文原文：确定要删除这个个案吗？删除后将不会显示在系统中。 */}
-            Are you sure you want to delete this case? It will no longer appear in the system.
-            {deleteError && <Alert severity="error" sx={{ mt: 2 }}>{deleteError}</Alert>}
+            {/* 中文原文：确定要删除这个个案吗？删除后将不会显示在系统中。 */}{tr("Are you sure you want to delete this case? It will no longer appear in the system.")}{deleteError && <Alert severity="error" sx={{ mt: 2 }}>{uiMessage(deleteError)}</Alert>}
           </>
         }
         action={
@@ -185,7 +183,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
             onClick={handleConfirmDelete}
           >
             {/* 中文原文：删除中…、删除 */}
-            {deletingId != null ? 'Deleting…' : 'Delete'}
+            {deletingId != null ? tr("Deleting…") : tr("Delete")}
           </Button>
         }
       />

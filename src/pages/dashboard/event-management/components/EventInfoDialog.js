@@ -4,6 +4,7 @@ import { Box, Button, Card, Dialog, DialogContent, DialogTitle, Divider, IconBut
 import { useTheme } from '@mui/material/styles';
 import { paramCase } from 'change-case';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // components 
 import {
@@ -37,15 +38,16 @@ EventInfoDialog.propTypes = {
 const STATUS_OPTIONS = ['all', 'unsent', 'sent'];
 
 const TABLE_HEAD = [
-    { id: 'ParticipantName', label: 'Participant', align: 'left' },
-    { id: 'EmailAddress', label: 'Email', align: 'left' },
+    { id: 'ParticipantName', get label() { return tr("Participant"); }, align: 'left' },
+    { id: 'EmailAddress', get label() { return tr("Email"); }, align: 'left' },
     // { id: 'Institution', label: 'Institution', align: 'left' },
-    { id: 'AttendanceType', label: 'AttendanceType', align: 'left' },
+    { id: 'AttendanceType', get label() { return tr("AttendanceType"); }, align: 'left' },
     // { id: 'isRequiredCertificate', label: 'Certificate?', align: 'center' },
     { id: '', label: '', align: 'left' },
 ];
 
 export default function EventInfoDialog({ open, handleClose, title, event, ...other }) {
+  useUiLanguage();
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -186,9 +188,7 @@ export default function EventInfoDialog({ open, handleClose, title, event, ...ot
         >
             {
                 !isStringNullOrEmpty(title) &&
-                <DialogTitle id="responsive-dialog-title">
-                    Title
-                </DialogTitle>
+                <DialogTitle id="responsive-dialog-title">{tr("Title")}</DialogTitle>
             }
             <DialogContent>
                 <Box sx={{ p: 3 }}>
@@ -221,29 +221,25 @@ export default function EventInfoDialog({ open, handleClose, title, event, ...ot
                             </Label>
                         </Stack>
                         <Box>
-                            <Typography variant="h6" sx={{ textDecoration: 'underline' }}>
-                                Schedule
-                            </Typography>
+                            <Typography variant="h6" sx={{ textDecoration: 'underline' }}>{tr("Schedule")}</Typography>
                             <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '4px', fontWeight: 300 }}>From: </span>
+                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '4px', fontWeight: 300 }}>{tr("From:")} </span>
                                 {EventStartDatetime}
                             </Typography>
                             <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '18px', fontWeight: 300 }}>Till: </span>
+                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '18px', fontWeight: 300 }}>{tr("Till:")} </span>
                                 {EventEndDatetime}
                             </Typography>
                         </Box>
 
                         <Box>
-                            <Typography variant="h6" sx={{ textDecoration: 'underline' }}>
-                                Location
-                            </Typography>
+                            <Typography variant="h6" sx={{ textDecoration: 'underline' }}>{tr("Location")}</Typography>
                             <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '14px', fontWeight: 300 }}>Physical: </span>
+                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '14px', fontWeight: 300 }}>{tr("Physical:")} </span>
                                 {EventPhysicalLocation}
                             </Typography>
                             <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '18px', fontWeight: 300 }}>Virtual: </span>
+                                <span style={{ color: '#777', fontSize: '12pt', marginRight: '18px', fontWeight: 300 }}>{tr("Virtual:")} </span>
                                 <Button variant="text" sx={{ textTransform: 'lowercase' }} target="_blank" rel="noopener" href={EventVirtualLocation}>
                                     {EventVirtualLocation}
                                     <Iconify icon='fluent-mdl2:open-in-new-tab' sx={{ width: 20, height: 20, ml: 1, }} />
@@ -289,7 +285,7 @@ export default function EventInfoDialog({ open, handleClose, title, event, ...ot
                                     )
                                 }
                                 action={
-                                    <Tooltip title="Send Survey Form">
+                                    <Tooltip title={tr("Send Survey Form")}>
                                         <IconButton color="primary" onClick={handleOpenConfirm}>
                                             <Iconify icon="carbon:send-alt-filled" />
                                         </IconButton>

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Card, Container, CardHeader, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -14,10 +15,11 @@ import GroupingFixedHeader from '../../../sections/_examples/mui/table/GroupingF
 // ----------------------------------------------------------------------
 
 export default function MUITablePage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Table | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Table | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -29,13 +31,13 @@ export default function MUITablePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Table"
+            heading={tr("Table")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Table' },
+              { name: tr("Table") },
             ]}
             moreLink={['https://mui.com/components/tables']}
           />
@@ -45,7 +47,7 @@ export default function MUITablePage() {
       <Container sx={{ my: 10 }}>
         <Stack spacing={3}>
           <Card>
-            <CardHeader title="Basic Table" />
+            <CardHeader title={tr("Basic Table")} />
             <BasicTable />
           </Card>
 
@@ -54,12 +56,12 @@ export default function MUITablePage() {
           </Card>
 
           <Card>
-            <CardHeader title="Grouping & FixedHeader" />
+            <CardHeader title={tr("Grouping & FixedHeader")} />
             <GroupingFixedHeader />
           </Card>
 
           <Card>
-            <CardHeader title="Collapsible Table" />
+            <CardHeader title={tr("Collapsible Table")} />
             <CollapsibleTable />
           </Card>
         </Stack>

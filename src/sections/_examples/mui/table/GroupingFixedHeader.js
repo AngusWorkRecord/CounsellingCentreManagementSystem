@@ -1,5 +1,6 @@
-// @mui
 import { Table, TableRow, TableHead, TableBody, TableCell, TableContainer } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
+// @mui
 // components
 import Scrollbar from '../../../../components/scrollbar';
 import { useTable, TablePaginationCustom } from '../../../../components/table';
@@ -30,25 +31,25 @@ const TABLE_DATA = [
 ];
 
 const COLUMNS = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+  { id: 'name', get label() { return tr("Name"); }, minWidth: 170 },
+  { id: 'code', get label() { return tr("ISO Code"); }, minWidth: 100 },
   {
     id: 'population',
-    label: 'Population',
+    get label() { return tr("Population"); },
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
+    get label() { return tr("Size (km²)"); },
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'density',
-    label: 'Density',
+    get label() { return tr("Density"); },
     minWidth: 170,
     align: 'right',
     format: (value) => value.toFixed(2),
@@ -58,6 +59,7 @@ const COLUMNS = [
 // ----------------------------------------------------------------------
 
 export default function GroupingFixedHeader() {
+  useUiLanguage();
   const {
     page,
     rowsPerPage,
@@ -79,16 +81,12 @@ export default function GroupingFixedHeader() {
                   sx={{
                     background: (theme) => theme.palette.background.paper,
                   }}
-                >
-                  Country
-                </TableCell>
+                >{tr("Country")}</TableCell>
                 <TableCell
                   align="center"
                   colSpan={3}
                   sx={{ background: (theme) => theme.palette.background.paper }}
-                >
-                  Details
-                </TableCell>
+                >{tr("Details")}</TableCell>
               </TableRow>
 
               <TableRow>

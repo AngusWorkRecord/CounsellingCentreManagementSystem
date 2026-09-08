@@ -1,6 +1,7 @@
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 // @mui
 import { Box, Grid, Link, Stack, Divider, Container, Typography, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../routes/paths';
 // _mock
@@ -39,6 +40,7 @@ const LINKS = [
 // ----------------------------------------------------------------------
 
 export default function Footer() {
+  useUiLanguage();
   const { pathname } = useLocation();
 
   const isHome = pathname === '/';
@@ -56,10 +58,7 @@ export default function Footer() {
       <Container>
         <Logo sx={{ mb: 1, mx: 'auto' }} />
 
-        <Typography variant="caption" component="div">
-          © All rights reserved
-          <br /> made by &nbsp;
-          <Link href="https://minimals.cc/"> minimals.cc </Link>
+        <Typography variant="caption" component="div">{tr("© All rights reserved")}<br />{tr("made by")}<Link href="https://minimals.cc/"> minimals.cc </Link>
         </Typography>
       </Container>
     </Box>
@@ -94,10 +93,7 @@ export default function Footer() {
           </Grid>
 
           <Grid item xs={8} md={3}>
-            <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with Counselling Centre Management System Kit, built on the newest
-              version of Material-UI ©, ready to be customized to your style.
-            </Typography>
+            <Typography variant="body2" sx={{ pr: { md: 5 } }}>{tr("The starting point for your next project with Counselling Centre Management System Kit, built on the newest version of Material-UI ©, ready to be customized to your style.")}</Typography>
 
             <Stack
               spacing={1}
@@ -157,9 +153,7 @@ export default function Footer() {
             pb: 5,
             textAlign: { xs: 'center', md: 'left' },
           }}
-        >
-          © 2021. All rights reserved
-        </Typography>
+        >{tr("© 2021. All rights reserved")}</Typography>
       </Container>
     </Box>
   );

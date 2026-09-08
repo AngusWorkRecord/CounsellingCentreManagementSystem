@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Container, Box } from '@mui/material';
+import { tr, useUiLanguage } from '../locales/translate';
 // _mock
 import { _mapContact } from '../_mock/arrays';
 // sections
@@ -9,10 +10,11 @@ import { ContactHero, ContactForm, ContactMap } from '../sections/contact';
 // ----------------------------------------------------------------------
 
 export default function ContactPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Contact us | Counselling Centre Management System</title>
+        <title> {tr("Contact us | Counselling Centre Management System")}</title>
       </Helmet>
 
       <ContactHero />

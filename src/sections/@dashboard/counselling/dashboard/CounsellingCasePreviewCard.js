@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box, Button, Card, Chip, Grid, Stack, Typography } from '@mui/material';
+import { domainLabel } from '../../../../locales/domainLabels';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import Iconify from '../../../../components/iconify';
 import { formatDuration } from '../utils';
 
@@ -12,6 +14,7 @@ function formatTime(value) {
 }
 
 function Info({ icon, label, value }) {
+  useUiLanguage();
   return (
     <Stack direction="row" spacing={1} alignItems="center">
       <Iconify icon={icon} width={19} sx={{ color: 'text.secondary' }} />
@@ -30,6 +33,7 @@ Info.propTypes = {
 };
 
 export default function CounsellingCasePreviewCard({ onView, session }) {
+  useUiLanguage();
   const hasId = Boolean(String(session.id || '').trim());
 
   return (
@@ -37,32 +41,32 @@ export default function CounsellingCasePreviewCard({ onView, session }) {
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
           <Typography variant="h6" color="primary.main" sx={{ wordBreak: 'break-word' }}>
-            {/* 中文原文：个案 */}{session.case_number || `Case #${session.id || '-'}`}
+            {/* 中文原文：个案 */}{session.case_number || tr("Case #{{p0}}", { p0: session.id || '-' })}
           </Typography>
           <Typography variant="subtitle1" color="primary.main" sx={{ mt: 1 }}>
-            {/* 中文原文：未分类 */}{session.client_initials || '-'} · {session.case_category || 'Uncategorised'}
+            {/* 中文原文：未分类 */}{session.client_initials || '-'} · {domainLabel(session.case_category)}
           </Typography>
         </Grid>
 
         <Grid item xs={12} md={9}>
           <Grid container spacing={1.5}>
             <Grid item xs={12} sm={6}>
-              <Info icon="eva:person-outline" label="Counsellor" value={session.counsellor} />
+              <Info icon="eva:person-outline" label={tr("Counsellor")} value={session.counsellor} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Info icon="eva:calendar-outline" label="Date" value={formatDate(session.counselling_date)} />
+              <Info icon="eva:calendar-outline" label={tr("Date")} value={formatDate(session.counselling_date)} />
             </Grid>
             <Grid item xs={12} sm={6}>
               <Info
                 icon="eva:clock-outline"
-                label="Time"
+                label={tr("Time")}
                 value={`${formatTime(session.session_start)} – ${formatTime(session.session_end)}`}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <Info
                 icon="eva:pie-chart-outline"
-                label="Duration"
+                label={tr("Duration")}
                 value={formatDuration(session.duration_minutes)}
               />
             </Grid>
@@ -80,7 +84,7 @@ export default function CounsellingCasePreviewCard({ onView, session }) {
         sx={{ mt: 2 }}
       >
         <Box sx={{ mt: 2 }}>
-          {/* 中文原文：个案摘要 */}<Typography variant="subtitle2" sx={{ mb: 0.5 }}>Case Summary</Typography>
+          {/* 中文原文：个案摘要 */}<Typography variant="subtitle2" sx={{ mb: 0.5 }}>{tr("Case Summary")}</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
             {session.client_summary || '-'}
           </Typography>
@@ -92,8 +96,7 @@ export default function CounsellingCasePreviewCard({ onView, session }) {
           onClick={() => onView(session.id)}
           endIcon={<Iconify icon="eva:arrow-forward-outline" />}
         >
-          {/* 中文原文：查看个案详情 */}View Case Details
-        </Button>
+          {/* 中文原文：查看个案详情 */}{tr("View Case Details")}</Button>
       </Stack>
     </Card>
   );

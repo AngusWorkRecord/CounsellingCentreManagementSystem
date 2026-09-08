@@ -1,6 +1,7 @@
 // @mui
 import { Fab } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 import { FabButtonAnimate } from '../../../../components/animate';
@@ -33,9 +34,10 @@ const SIZES = ['small', 'medium', 'large'];
 // ----------------------------------------------------------------------
 
 export default function FloatingActionButton() {
+  useUiLanguage();
   return (
     <Masonry columns={2} spacing={3}>
-      <Block title="Default" sx={style}>
+      <Block title={tr("Default")} sx={style}>
         {COLORS.map((color) => (
           <Fab key={color} color={color}>
             <Iconify icon="ic:round-access-alarm" width={24} />
@@ -45,7 +47,7 @@ export default function FloatingActionButton() {
         {COLORS.map((color) => (
           <Fab key={color} color={color} variant="extended">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {color}
+            {tr(color)}
           </Fab>
         ))}
 
@@ -54,12 +56,10 @@ export default function FloatingActionButton() {
         </Fab>
 
         <Fab color="info" disabled variant="extended">
-          <Iconify icon="ic:round-access-alarm" width={24} />
-          disabled
-        </Fab>
+          <Iconify icon="ic:round-access-alarm" width={24} />{tr("disabled")}</Fab>
       </Block>
 
-      <Block title="Outlined" sx={style}>
+      <Block title={tr("Outlined")} sx={style}>
         {COLORS.map((color) => (
           <Fab key={color} color={color} variant="outlined">
             <Iconify icon="ic:round-access-alarm" width={24} />
@@ -69,7 +69,7 @@ export default function FloatingActionButton() {
         {COLORS.map((color) => (
           <Fab key={color} color={color} variant="outlinedExtended">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {color}
+            {tr(color)}
           </Fab>
         ))}
 
@@ -78,12 +78,10 @@ export default function FloatingActionButton() {
         </Fab>
 
         <Fab color="info" disabled variant="outlinedExtended">
-          <Iconify icon="ic:round-access-alarm" width={24} />
-          disabled
-        </Fab>
+          <Iconify icon="ic:round-access-alarm" width={24} />{tr("disabled")}</Fab>
       </Block>
 
-      <Block title="Soft" sx={style}>
+      <Block title={tr("Soft")} sx={style}>
         {COLORS.map((color) => (
           <Fab key={color} color={color} variant="soft">
             <Iconify icon="ic:round-access-alarm" width={24} />
@@ -93,7 +91,7 @@ export default function FloatingActionButton() {
         {COLORS.map((color) => (
           <Fab key={color} color={color} variant="softExtended">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {color}
+            {tr(color)}
           </Fab>
         ))}
 
@@ -102,12 +100,10 @@ export default function FloatingActionButton() {
         </Fab>
 
         <Fab color="info" disabled variant="softExtended">
-          <Iconify icon="ic:round-access-alarm" width={24} />
-          disabled
-        </Fab>
+          <Iconify icon="ic:round-access-alarm" width={24} />{tr("disabled")}</Fab>
       </Block>
 
-      <Block title="Size" sx={style}>
+      <Block title={tr("Size")} sx={style}>
         {SIZES.map((size) => (
           <Fab key={size} size={size} color="info">
             <Iconify icon="ic:round-access-alarm" width={24} />
@@ -117,7 +113,7 @@ export default function FloatingActionButton() {
         {SIZES.map((size) => (
           <Fab key={size} size={size} color="info" variant="extended">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {size}
+            {tr(size)}
           </Fab>
         ))}
 
@@ -130,7 +126,7 @@ export default function FloatingActionButton() {
         {SIZES.map((size) => (
           <Fab key={size} size={size} color="info" variant="softExtended">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {size}
+            {tr(size)}
           </Fab>
         ))}
 
@@ -143,16 +139,16 @@ export default function FloatingActionButton() {
         {SIZES.map((size) => (
           <Fab key={size} size={size} color="info" variant="outlinedExtended">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {size}
+            {tr(size)}
           </Fab>
         ))}
       </Block>
 
-      <Block title="With Animate" sx={style}>
+      <Block title={tr("With Animate")} sx={style}>
         {SIZES.map((size) => (
           <FabButtonAnimate key={size} variant="extended" size={size} color="info">
             <Iconify icon="ic:round-access-alarm" width={24} />
-            {size}
+            {tr(size)}
           </FabButtonAnimate>
         ))}
       </Block>

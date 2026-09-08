@@ -3,6 +3,7 @@ import { useRef } from 'react';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Paper, Link, CardContent } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { bgGradient } from '../../../../utils/cssStyles';
 // components
@@ -18,6 +19,7 @@ CarouselCenterMode.propTypes = {
 };
 
 export default function CarouselCenterMode({ data }) {
+  useUiLanguage();
   const carouselRef = useRef(null);
 
   const theme = useTheme();
@@ -83,6 +85,7 @@ CarouselItem.propTypes = {
 };
 
 function CarouselItem({ item }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const { image, title } = item;
@@ -125,9 +128,7 @@ function CarouselItem({ item }) {
             transition: theme.transitions.create('opacity'),
             '&:hover': { opacity: 1 },
           }}
-        >
-          learn More
-          <Iconify icon="eva:arrow-forward-fill" width={16} sx={{ ml: 1 }} />
+        >{tr("learn More")}<Iconify icon="eva:arrow-forward-fill" width={16} sx={{ ml: 1 }} />
         </Link>
       </CardContent>
     </Paper>

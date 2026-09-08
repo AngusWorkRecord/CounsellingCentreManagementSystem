@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Checkbox, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ export default function TableSelectedAction({
   sx,
   ...other
 }) {
+  useUiLanguage();
   if (!numSelected) {
     return null;
   }
@@ -64,8 +66,7 @@ export default function TableSelectedAction({
           }),
         }}
       >
-        {numSelected} selected
-      </Typography>
+        {numSelected}{tr("selected")}</Typography>
 
       {action && action}
     </Stack>

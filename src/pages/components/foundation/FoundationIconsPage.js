@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Stack, Container, Link, Tooltip } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -23,10 +24,11 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function FoundationIconsPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Foundations: Icons | Counselling Centre Management System</title>
+        <title> {tr("Foundations: Icons | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -38,13 +40,13 @@ export default function FoundationIconsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Icons"
+            heading={tr("Icons")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Icons' },
+              { name: tr("Icons") },
             ]}
             moreLink={[
               'https://mui.com/components/material-icons',
@@ -56,7 +58,7 @@ export default function FoundationIconsPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={3}>
-          <Block title="Material Icons" sx={style}>
+          <Block title={tr("Material Icons")} sx={style}>
             <Link
               href="https://mui.com/components/icons/#main-content"
               target="_blank"
@@ -66,7 +68,7 @@ export default function FoundationIconsPage() {
             </Link>
           </Block>
 
-          <Block title="Iconify Icons" sx={style}>
+          <Block title={tr("Iconify Icons")} sx={style}>
             <Tooltip title="Iconify">
               <Iconify icon="eva:color-palette-fill" width={24} />
             </Tooltip>
@@ -81,7 +83,7 @@ export default function FoundationIconsPage() {
             <Iconify icon="eva:color-palette-fill" width={24} sx={{ color: 'error.main' }} />
           </Block>
 
-          <Block title="Local Icons" sx={style}>
+          <Block title={tr("Local Icons")} sx={style}>
             <Tooltip title="SvgColor">
               <SvgColor src="/assets/icons/navbar/ic_dashboard.svg" />
             </Tooltip>

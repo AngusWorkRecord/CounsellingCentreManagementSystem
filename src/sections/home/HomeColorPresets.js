@@ -12,6 +12,7 @@ import {
   CardActionArea,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import { useSettingsContext } from '../../components/settings';
 import Image from '../../components/image';
@@ -30,6 +31,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeColorPresets() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionViewport} sx={{ position: 'relative' }}>
@@ -48,22 +50,19 @@ export default function HomeColorPresets() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   return (
     <Stack spacing={3} sx={{ textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
-        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          choose your style
-        </Typography>
+        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>{tr("choose your style")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography variant="h2"> Color presets </Typography>
+        <Typography variant="h2"> {tr("Color presets")} </Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
-        <Typography sx={{ color: 'text.secondary' }}>
-          Express your own style with just one click
-        </Typography>
+        <Typography sx={{ color: 'text.secondary' }}>{tr("Express your own style with just one click")}</Typography>
       </m.div>
     </Stack>
   );
@@ -72,17 +71,18 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   const { themeColorPresets: color } = useSettingsContext();
 
   return (
     <Box sx={{ position: 'relative' }}>
-      <Image disabledEffect alt="grid" src="/assets/images/home/presets_grid.png" />
+      <Image disabledEffect alt={tr("grid")} src="/assets/images/home/presets_grid.png" />
 
       <Box sx={{ position: 'absolute', top: 0 }}>
         <m.div variants={varFade().inUp}>
           <Image
             disabledEffect
-            alt="screen"
+            alt={tr("screen")}
             src={`/assets/images/home/presets_screen_${color}.png`}
           />
         </m.div>
@@ -93,7 +93,7 @@ function Content() {
           <m.div animate={{ y: [0, -15, 0] }} transition={{ duration: 8, repeat: Infinity }}>
             <Image
               disabledEffect
-              alt="sidebar"
+              alt={tr("sidebar")}
               src={`/assets/images/home/presets_block_${color}.png`}
             />
           </m.div>
@@ -105,7 +105,7 @@ function Content() {
           <m.div animate={{ y: [-5, 10, -5] }} transition={{ duration: 8, repeat: Infinity }}>
             <Image
               disabledEffect
-              alt="sidebar"
+              alt={tr("sidebar")}
               src={`/assets/images/home/presets_chart_${color}.png`}
             />
           </m.div>
@@ -117,7 +117,7 @@ function Content() {
           <m.div animate={{ y: [-25, 5, -25] }} transition={{ duration: 10, repeat: Infinity }}>
             <Image
               disabledEffect
-              alt="sidebar"
+              alt={tr("sidebar")}
               src={`/assets/images/home/presets_sidebar_${color}.png`}
             />
           </m.div>
@@ -130,6 +130,7 @@ function Content() {
 // ----------------------------------------------------------------------
 
 function Options() {
+  useUiLanguage();
   const { themeColorPresets, onChangeColorPresets, presetsOption } = useSettingsContext();
 
   return (

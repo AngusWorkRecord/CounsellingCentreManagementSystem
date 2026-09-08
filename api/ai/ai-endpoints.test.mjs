@@ -23,6 +23,58 @@ function caseResult() {
   };
 }
 
+for (const [name, createHandler, body, rows] of [
+  ['case', createCaseAdviceHandler, { sessionId: 7 }, [{ id: 7, client_summary: 'Original record', volunteer_actions: 'Follow up', updated_at: '2026-01-01' }]],
+  ['management', createManagementInsightsHandler, { dateFrom: '2026-01-01', dateTo: '2026-01-31' }, []],
+]) {
+  test(`${name}: language controls instructions, snapshot and cache identity`, async () => {
+    const started = [];
+    const instructions = [];
+    const handler = createHandler({
+      assertAiAvailable() {}, getSql: () => async () => rows,
+      startAnalysis: async (_, data) => { started.push(data); return { id: 'analysis', created_at: '2026-01-01' }; },
+      requestStructuredAnalysis: async (data) => { instructions.push(data.instructions); return caseResult(); },
+      completeAnalysis: async () => {},
+    });
+    for (const language of [undefined, 'cn', 'en']) {
+      const response = responseMock();
+      await handler({ method: 'POST', body: { ...body, action: 'generate', language } }, response);
+      assert.equal(response.statusCode, 201);
+    }
+    assert.equal(started[0].scopeKey, started[1].scopeKey);
+    assert.notEqual(started[1].scopeKey, started[2].scopeKey);
+    assert.equal(started[0].filterSnapshot.language, 'cn');
+    assert.equal(started[2].filterSnapshot.language, 'en');
+    assert.match(instructions[0], /Simplified Chinese/);
+    assert.match(instructions[2], /English/);
+    assert.match(instructions[2], /enum values and sourceRefs unchanged/);
+  });
+
+  test(`${name}: invalid language is rejected before database access`, async () => {
+    const handler = createHandler({ assertAiAvailable() {}, getSql() { throw new Error('must not reach database'); } });
+    for (const language of ['fr', '', null, 1]) {
+      const response = responseMock();
+      await handler({ method: 'POST', body: { ...body, action: 'latest', language } }, response);
+      assert.equal(response.statusCode, 400);
+      assert.equal(response.body.error.code, 'INVALID_REQUEST');
+    }
+  });
+
+  test(`${name}: latest falls back to an explicitly outdated legacy result without generating`, async () => {
+    let reads = 0;
+    const handler = createHandler({
+      assertAiAvailable() {}, getSql: () => async () => rows,
+      getLatestAnalysis: async () => (++reads === 1 ? null : { id: 'legacy', created_at: '2026-01-01', structured_result: caseResult() }),
+      requestStructuredAnalysis: async () => { throw new Error('latest must never generate'); },
+    });
+    const response = responseMock();
+    await handler({ method: 'POST', body: { ...body, action: 'latest', language: 'en' } }, response);
+    assert.equal(response.statusCode, 200);
+    assert.equal(response.body.data.legacy, true);
+    assert.equal(response.body.data.analysisId, 'legacy');
+  });
+}
+
 test('case endpoint rejects empty allowed fields without calling the model', async () => {
   let modelCalls = 0;
   const handler = createCaseAdviceHandler({

@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { Box, Stack, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import CounsellingPeriodFilter from '../CounsellingPeriodFilter';
 
 export default function CounsellingDashboardHeader({ filteredCount, periodFilter, periodLabel }) {
+  useUiLanguage();
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -12,9 +14,9 @@ export default function CounsellingDashboardHeader({ filteredCount, periodFilter
       sx={{ mb: 3 }}
     >
       <Box>
-        {/* 中文原文：辅导个案管理 Dashboard */}<Typography variant="h3" gutterBottom>Counselling Case Management Dashboard</Typography>
+        {/* 中文原文：辅导个案管理 Dashboard */}<Typography variant="h3" gutterBottom>{tr("Counselling Case Management Dashboard")}</Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* 中文原文：样本期间、数据笔数 */}Period: {periodLabel} | Records: {filteredCount}
+          {/* 中文原文：样本期间、数据笔数 */}{tr("Period:")} {periodLabel} {tr("| Records:")} {filteredCount}
         </Typography>
       </Box>
       <CounsellingPeriodFilter {...periodFilter} />

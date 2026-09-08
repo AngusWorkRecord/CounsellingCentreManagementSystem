@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { TreeView, TreeItem, treeItemClasses } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -35,10 +36,11 @@ const StyledTreeItem = styled((props) => <TreeItem {...props} />)(({ theme }) =>
 // ----------------------------------------------------------------------
 
 export default function MUITreesViewPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Tree View | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Tree View | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -50,13 +52,13 @@ export default function MUITreesViewPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Tree View"
+            heading={tr("Tree View")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Tree View' },
+              { name: tr("Tree View") },
             ]}
             moreLink={['https://mui.com/components/tree-view']}
           />
@@ -72,18 +74,18 @@ export default function MUITreesViewPage() {
             md: 'repeat(3, 1fr)',
           }}
         >
-          <Block title="Basic">
+          <Block title={tr("Basic")}>
             <StyledTreeView
               defaultCollapseIcon={<Iconify icon="eva:chevron-down-fill" />}
               defaultExpandIcon={<Iconify icon="eva:chevron-right-fill" />}
               defaultEndIcon={null}
             >
-              <TreeItem nodeId="1" label="Applications">
-                <TreeItem nodeId="2" label="Calendar" />
+              <TreeItem nodeId="1" label={tr("Applications")}>
+                <TreeItem nodeId="2" label={tr("Calendar")} />
                 <TreeItem nodeId="3" label="Chrome" />
                 <TreeItem nodeId="4" label="Webstorm" />
               </TreeItem>
-              <TreeItem nodeId="5" label="Documents">
+              <TreeItem nodeId="5" label={tr("Documents")}>
                 <TreeItem nodeId="10" label="OSS" />
                 <TreeItem nodeId="6" label="Material-UI">
                   <TreeItem nodeId="7" label="src">
@@ -95,19 +97,19 @@ export default function MUITreesViewPage() {
             </StyledTreeView>
           </Block>
 
-          <Block title="Multi Select">
+          <Block title={tr("Multi Select")}>
             <StyledTreeView
               multiSelect
               defaultCollapseIcon={<Iconify icon="eva:chevron-down-fill" />}
               defaultExpandIcon={<Iconify icon="eva:chevron-right-fill" />}
               defaultEndIcon={null}
             >
-              <TreeItem nodeId="1" label="Applications">
-                <TreeItem nodeId="2" label="Calendar" />
+              <TreeItem nodeId="1" label={tr("Applications")}>
+                <TreeItem nodeId="2" label={tr("Calendar")} />
                 <TreeItem nodeId="3" label="Chrome" />
                 <TreeItem nodeId="4" label="Webstorm" />
               </TreeItem>
-              <TreeItem nodeId="5" label="Documents">
+              <TreeItem nodeId="5" label={tr("Documents")}>
                 <TreeItem nodeId="6" label="Material-UI">
                   <TreeItem nodeId="7" label="src">
                     <TreeItem nodeId="8" label="index.js" />
@@ -118,21 +120,21 @@ export default function MUITreesViewPage() {
             </StyledTreeView>
           </Block>
 
-          <Block title="Customization">
+          <Block title={tr("Customization")}>
             <StyledTreeView defaultExpanded={['1']}>
-              <StyledTreeItem nodeId="1" label="Main">
-                <StyledTreeItem nodeId="2" label="Hello" />
-                <StyledTreeItem nodeId="3" label="Subtree with children">
-                  <StyledTreeItem nodeId="6" label="Hello" />
-                  <StyledTreeItem nodeId="7" label="Sub-subtree with children">
-                    <StyledTreeItem nodeId="9" label="Child 1" />
-                    <StyledTreeItem nodeId="10" label="Child 2" />
-                    <StyledTreeItem nodeId="11" label="Child 3" />
+              <StyledTreeItem nodeId="1" label={tr("Main")}>
+                <StyledTreeItem nodeId="2" label={tr("Hello")} />
+                <StyledTreeItem nodeId="3" label={tr("Subtree with children")}>
+                  <StyledTreeItem nodeId="6" label={tr("Hello")} />
+                  <StyledTreeItem nodeId="7" label={tr("Sub-subtree with children")}>
+                    <StyledTreeItem nodeId="9" label={tr("Child 1")} />
+                    <StyledTreeItem nodeId="10" label={tr("Child 2")} />
+                    <StyledTreeItem nodeId="11" label={tr("Child 3")} />
                   </StyledTreeItem>
-                  <StyledTreeItem nodeId="8" label="Hello" />
+                  <StyledTreeItem nodeId="8" label={tr("Hello")} />
                 </StyledTreeItem>
-                <StyledTreeItem nodeId="4" label="World" />
-                <StyledTreeItem nodeId="5" label="Something something" />
+                <StyledTreeItem nodeId="4" label={tr("World")} />
+                <StyledTreeItem nodeId="5" label={tr("Something something")} />
               </StyledTreeItem>
             </StyledTreeView>
           </Block>

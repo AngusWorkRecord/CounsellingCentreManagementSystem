@@ -13,6 +13,7 @@ import {
   StepConnector,
   stepConnectorClasses,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { bgGradient } from '../../../../utils/cssStyles';
 // components
@@ -73,6 +74,7 @@ QontoStepIcon.propTypes = {
 };
 
 function QontoStepIcon(props) {
+  useUiLanguage();
   const { active, completed, className } = props;
 
   return (
@@ -155,6 +157,7 @@ ColorlibStepIcon.propTypes = {
 };
 
 function ColorlibStepIcon(props) {
+  useUiLanguage();
   const { active, completed, className, icon } = props;
 
   const icons = {
@@ -184,6 +187,7 @@ function getStepContent(step) {
 }
 
 export default function CustomizedSteppers() {
+  useUiLanguage();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -203,7 +207,7 @@ export default function CustomizedSteppers() {
       <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
         {STEPS.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
+            <StepLabel StepIconComponent={QontoStepIcon}>{tr(label)}</StepLabel>
           </Step>
         ))}
       </Stepper>
@@ -213,7 +217,7 @@ export default function CustomizedSteppers() {
       <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
         {STEPS.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+            <StepLabel StepIconComponent={ColorlibStepIcon}>{tr(label)}</StepLabel>
           </Step>
         ))}
       </Stepper>
@@ -228,12 +232,10 @@ export default function CustomizedSteppers() {
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
             }}
           >
-            <Typography sx={{ my: 1 }}>All steps completed - you&apos;re finished</Typography>
+            <Typography sx={{ my: 1 }}>{tr("All steps completed - you're finished")}</Typography>
           </Paper>
 
-          <Button color="inherit" onClick={handleReset} sx={{ mr: 1 }}>
-            Reset
-          </Button>
+          <Button color="inherit" onClick={handleReset} sx={{ mr: 1 }}>{tr("Reset")}</Button>
         </>
       ) : (
         <>
@@ -249,11 +251,9 @@ export default function CustomizedSteppers() {
           </Paper>
 
           <Box sx={{ textAlign: 'right' }}>
-            <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
-              Back
-            </Button>
+            <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>{tr("Back")}</Button>
             <Button variant="contained" onClick={handleNext} sx={{ mr: 1 }}>
-              {activeStep === STEPS.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === STEPS.length - 1 ? tr("Finish") : tr("Next")}
             </Button>
           </Box>
         </>

@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Stack, Button } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // auth
 import { useAuthContext } from '../../auth/useAuthContext';
 // _mock_
@@ -33,6 +34,7 @@ import { SeoIllustration } from '../../assets/illustrations';
 // ----------------------------------------------------------------------
 
 export default function GeneralAppPage() {
+  useUiLanguage();
   const { user } = useAuthContext();
 
   const theme = useTheme();
@@ -42,15 +44,15 @@ export default function GeneralAppPage() {
   return (
     <>
       <Helmet>
-        <title> General: App | Counselling Centre Management System</title>
+        <title> {tr("General: App | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <AppWelcome
-              title={`Welcome back! \n ${user?.displayName}`}
-              description="If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything."
+              title={tr("Welcome back! \n {{p0}}", { p0: user?.displayName })}
+              description={tr("If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.")}
               img={
                 <SeoIllustration
                   sx={{
@@ -60,7 +62,7 @@ export default function GeneralAppPage() {
                   }}
                 />
               }
-              action={<Button variant="contained">Go Now</Button>}
+              action={<Button variant="contained">{tr("Go Now")}</Button>}
             />
           </Grid>
 
@@ -70,7 +72,7 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} md={4}>
             <AppWidgetSummary
-              title="Total Active Users"
+              title={tr("Total Active Users")}
               percent={2.6}
               total={18765}
               chart={{
@@ -82,7 +84,7 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} md={4}>
             <AppWidgetSummary
-              title="Total Installed"
+              title={tr("Total Installed")}
               percent={0.2}
               total={4876}
               chart={{
@@ -94,7 +96,7 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} md={4}>
             <AppWidgetSummary
-              title="Total Downloads"
+              title={tr("Total Downloads")}
               percent={-0.1}
               total={678}
               chart={{
@@ -106,7 +108,7 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentDownload
-              title="Current Download"
+              title={tr("Current Download")}
               chart={{
                 colors: [
                   theme.palette.primary.main,
@@ -116,7 +118,7 @@ export default function GeneralAppPage() {
                 ],
                 series: [
                   { label: 'Mac', value: 12244 },
-                  { label: 'Window', value: 53345 },
+                  { label: tr("Window"), value: 53345 },
                   { label: 'iOS', value: 44313 },
                   { label: 'Android', value: 78343 },
                 ],
@@ -126,8 +128,8 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppAreaInstalled
-              title="Area Installed"
-              subheader="(+43%) than last year"
+              title={tr("Area Installed")}
+              subheader={tr("(+43%) than last year")}
               chart={{
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
                 series: [
@@ -152,34 +154,34 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} lg={8}>
             <AppNewInvoice
-              title="New Invoice"
+              title={tr("New Invoice")}
               tableData={_appInvoices}
               tableLabels={[
-                { id: 'id', label: 'Invoice ID' },
-                { id: 'category', label: 'Category' },
-                { id: 'price', label: 'Price' },
-                { id: 'status', label: 'Status' },
+                { id: 'id', label: tr("Invoice ID") },
+                { id: 'category', label: tr("Category") },
+                { id: 'price', label: tr("Price") },
+                { id: 'status', label: tr("Status") },
                 { id: '' },
               ]}
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppTopRelated title="Top Related Applications" list={_appRelated} />
+            <AppTopRelated title={tr("Top Related Applications")} list={_appRelated} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppTopInstalledCountries title="Top Installed Countries" list={_appInstalled} />
+            <AppTopInstalledCountries title={tr("Top Installed Countries")} list={_appInstalled} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppTopAuthors title="Top Authors" list={_appAuthors} />
+            <AppTopAuthors title={tr("Top Authors")} list={_appAuthors} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
             <Stack spacing={3}>
               <AppWidget
-                title="Conversion"
+                title={tr("Conversion")}
                 total={38566}
                 icon="eva:person-fill"
                 chart={{
@@ -188,7 +190,7 @@ export default function GeneralAppPage() {
               />
 
               <AppWidget
-                title="Applications"
+                title={tr("Applications")}
                 total={55566}
                 icon="eva:email-fill"
                 color="info"

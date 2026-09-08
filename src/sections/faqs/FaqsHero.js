@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Container, InputAdornment, Stack, TextField } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import Iconify from '../../components/iconify';
 import { MotionContainer, TextAnimate, varFade } from '../../components/animate';
@@ -32,25 +33,26 @@ const StyledContent = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function FaqsHero() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionContainer}>
         <StyledContent>
           <div>
-            <TextAnimate text="How" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
+            <TextAnimate text={tr("How")} sx={{ color: 'primary.main' }} variants={varFade().inRight} />
             <br />
 
             <Stack spacing={2} display="inline-flex" direction="row" sx={{ color: 'common.white' }}>
-              <TextAnimate text="can" />
-              <TextAnimate text="we" />
-              <TextAnimate text="help" />
-              <TextAnimate text="you?" />
+              <TextAnimate text={tr("can")} />
+              <TextAnimate text={tr("we")} />
+              <TextAnimate text={tr("help")} />
+              <TextAnimate text={tr("you?")} />
             </Stack>
           </div>
 
           <m.div variants={varFade().inUp}>
             <TextField
-              placeholder="Search support..."
+              placeholder={tr("Search support...")}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">

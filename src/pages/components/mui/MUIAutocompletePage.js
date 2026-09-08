@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Checkbox, Container, TextField, Typography, Autocomplete } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -26,6 +27,7 @@ function countryToFlag(isoCode) {
 }
 
 export default function MUIAutocompletePage() {
+  useUiLanguage();
   const [value, setValue] = useState(options[0]);
 
   const [inputValue, setInputValue] = useState('');
@@ -33,7 +35,7 @@ export default function MUIAutocompletePage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Autocomplete | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Autocomplete | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -45,13 +47,13 @@ export default function MUIAutocompletePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Autocomplete"
+            heading={tr("Autocomplete")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Autocomplete' },
+              { name: tr("Autocomplete") },
             ]}
             moreLink={['https://mui.com/components/autocomplete']}
           />
@@ -60,16 +62,16 @@ export default function MUIAutocompletePage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={3}>
-          <Block title="Combo box">
+          <Block title={tr("Combo box")}>
             <Autocomplete
               fullWidth
               options={top100Films}
               getOptionLabel={(option) => option.title}
-              renderInput={(params) => <TextField {...params} label="Combo box" margin="none" />}
+              renderInput={(params) => <TextField {...params} label={tr("Combo box")} margin="none" />}
             />
           </Block>
 
-          <Block title="Country Select">
+          <Block title={tr("Country Select")}>
             <Autocomplete
               fullWidth
               autoHighlight
@@ -86,7 +88,7 @@ export default function MUIAutocompletePage() {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Choose a country"
+                  label={tr("Choose a country")}
                   inputProps={{
                     ...params.inputProps,
                     autoComplete: 'new-password',
@@ -96,7 +98,7 @@ export default function MUIAutocompletePage() {
             />
           </Block>
 
-          <Block title=" Controllable states" sx={{ flexDirection: 'column' }}>
+          <Block title={tr(" Controllable states")} sx={{ flexDirection: 'column' }}>
             <>
               <Autocomplete
                 fullWidth
@@ -109,18 +111,16 @@ export default function MUIAutocompletePage() {
                 onInputChange={(event, newInputValue) => {
                   setInputValue(newInputValue);
                 }}
-                renderInput={(params) => <TextField {...params} label="Controllable" />}
+                renderInput={(params) => <TextField {...params} label={tr("Controllable")} />}
               />
 
-              <Typography variant="body2" sx={{ mt: 2 }}>{`value: ${
-                value !== null ? `'${value}'` : 'null'
-              }`}</Typography>
+              <Typography variant="body2" sx={{ mt: 2 }}>{tr("value: {{p0}}", { p0: value !== null ? `'${value}'` : 'null' })}</Typography>
 
               <Typography variant="body2">{`inputValue: '${inputValue}'`}</Typography>
             </>
           </Block>
 
-          <Block title="Free solo">
+          <Block title={tr("Free solo")}>
             <Autocomplete
               fullWidth
               freeSolo
@@ -137,14 +137,14 @@ export default function MUIAutocompletePage() {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Search input"
+                  label={tr("Search input")}
                   InputProps={{ ...params.InputProps, type: 'search' }}
                 />
               )}
             />
           </Block>
 
-          <Block title="Multiple Values">
+          <Block title={tr("Multiple Values")}>
             <Autocomplete
               multiple
               fullWidth
@@ -153,12 +153,12 @@ export default function MUIAutocompletePage() {
               defaultValue={[top100Films[13]]}
               filterSelectedOptions
               renderInput={(params) => (
-                <TextField {...params} label="filterSelectedOptions" placeholder="Favorites" />
+                <TextField {...params} label="filterSelectedOptions" placeholder={tr("Favorites")} />
               )}
             />
           </Block>
 
-          <Block title="Checkboxes">
+          <Block title={tr("Checkboxes")}>
             <Autocomplete
               fullWidth
               multiple
@@ -172,12 +172,12 @@ export default function MUIAutocompletePage() {
                 </li>
               )}
               renderInput={(params) => (
-                <TextField {...params} label="Checkboxes" placeholder="Favorites" />
+                <TextField {...params} label={tr("Checkboxes")} placeholder={tr("Favorites")} />
               )}
             />
           </Block>
 
-          <Block title="Sizes">
+          <Block title={tr("Sizes")}>
             <>
               <Autocomplete
                 fullWidth
@@ -185,7 +185,7 @@ export default function MUIAutocompletePage() {
                 getOptionLabel={(option) => option.title}
                 defaultValue={top100Films[13]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Size Medium" placeholder="Favorites" />
+                  <TextField {...params} label={tr("Size Medium")} placeholder={tr("Favorites")} />
                 )}
               />
 
@@ -199,7 +199,7 @@ export default function MUIAutocompletePage() {
                 getOptionLabel={(option) => option.title}
                 defaultValue={[top100Films[13]]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Size small" placeholder="Favorites" />
+                  <TextField {...params} label={tr("Size small")} placeholder={tr("Favorites")} />
                 )}
               />
             </>

@@ -11,30 +11,27 @@ import {
   Typography,
   StepContent,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // ----------------------------------------------------------------------
 
 const steps = [
   {
-    label: 'Select campaign settings',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
+    get label() { return tr("Select campaign settings"); },
+    description: tr("For each ad campaign that you create, you can control how much\n              you're willing to spend on clicks and conversions, which networks\n              and geographical locations you want your ads to show on, and more."),
   },
   {
-    label: 'Create an ad group',
-    description: 'An ad group contains one or more ads which target a shared set of keywords.',
+    get label() { return tr("Create an ad group"); },
+    get description() { return tr("An ad group contains one or more ads which target a shared set of keywords."); },
   },
   {
-    label: 'Create an ad',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
+    get label() { return tr("Create an ad"); },
+    description: tr("Try out different ad text to see what brings in the most customers,\n              and learn how to enhance your ads using features like ad extensions.\n              If you run into any problems with your ads, find out how to tell if\n              they're running and how to resolve approval issues."),
   },
 ];
 
 export default function VerticalLinearStepper() {
+  useUiLanguage();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -55,7 +52,7 @@ export default function VerticalLinearStepper() {
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
-              optional={index === 2 ? <Typography variant="caption">Last step</Typography> : null}
+              optional={index === 2 ? <Typography variant="caption">{tr("Last step")}</Typography> : null}
             >
               {step.label}
             </StepLabel>
@@ -63,11 +60,9 @@ export default function VerticalLinearStepper() {
               <Typography>{step.description}</Typography>
               <Box sx={{ mt: 3 }}>
                 <Button variant="contained" onClick={handleNext}>
-                  {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                  {index === steps.length - 1 ? tr("Finish") : tr("Continue")}
                 </Button>
-                <Button disabled={index === 0} onClick={handleBack}>
-                  Back
-                </Button>
+                <Button disabled={index === 0} onClick={handleBack}>{tr("Back")}</Button>
               </Box>
             </StepContent>
           </Step>
@@ -82,8 +77,8 @@ export default function VerticalLinearStepper() {
             bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
           }}
         >
-          <Typography paragraph>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset}>Reset</Button>
+          <Typography paragraph>{tr("All steps completed - you're finished")}</Typography>
+          <Button onClick={handleReset}>{tr("Reset")}</Button>
         </Paper>
       )}
     </>

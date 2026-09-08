@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import PropTypes from 'prop-types';
 import { Page, View, Text, Image, Document } from '@react-pdf/renderer';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // utils
 import { fDate } from '../../../../utils/formatTime';
 import { fCurrency } from '../../../../utils/formatNumber';
@@ -14,6 +15,7 @@ InvoicePDF.propTypes = {
 };
 
 export default function InvoicePDF({ invoice }) {
+  useUiLanguage();
   const {
     items,
     taxes,
@@ -41,14 +43,14 @@ export default function InvoicePDF({ invoice }) {
 
         <View style={[styles.gridContainer, styles.mb40]}>
           <View style={styles.col6}>
-            <Text style={[styles.overline, styles.mb8]}>Invoice from</Text>
+            <Text style={[styles.overline, styles.mb8]}>{tr("Invoice from")}</Text>
             <Text style={styles.body1}>{invoiceFrom.name}</Text>
             <Text style={styles.body1}>{invoiceFrom.address}</Text>
             <Text style={styles.body1}>{invoiceFrom.phone}</Text>
           </View>
 
           <View style={styles.col6}>
-            <Text style={[styles.overline, styles.mb8]}>Invoice to</Text>
+            <Text style={[styles.overline, styles.mb8]}>{tr("Invoice to")}</Text>
             <Text style={styles.body1}>{invoiceTo.name}</Text>
             <Text style={styles.body1}>{invoiceTo.address}</Text>
             <Text style={styles.body1}>{invoiceTo.phone}</Text>
@@ -57,16 +59,16 @@ export default function InvoicePDF({ invoice }) {
 
         <View style={[styles.gridContainer, styles.mb40]}>
           <View style={styles.col6}>
-            <Text style={[styles.overline, styles.mb8]}>Date create</Text>
+            <Text style={[styles.overline, styles.mb8]}>{tr("Date create")}</Text>
             <Text style={styles.body1}>{fDate(createDate)}</Text>
           </View>
           <View style={styles.col6}>
-            <Text style={[styles.overline, styles.mb8]}>Due date</Text>
+            <Text style={[styles.overline, styles.mb8]}>{tr("Due date")}</Text>
             <Text style={styles.body1}>{fDate(dueDate)}</Text>
           </View>
         </View>
 
-        <Text style={[styles.overline, styles.mb8]}>Invoice Details</Text>
+        <Text style={[styles.overline, styles.mb8]}>{tr("Invoice Details")}</Text>
 
         <View style={styles.table}>
           <View style={styles.tableHeader}>
@@ -76,19 +78,19 @@ export default function InvoicePDF({ invoice }) {
               </View>
 
               <View style={styles.tableCell_2}>
-                <Text style={styles.subtitle2}>Description</Text>
+                <Text style={styles.subtitle2}>{tr("Description")}</Text>
               </View>
 
               <View style={styles.tableCell_3}>
-                <Text style={styles.subtitle2}>Qty</Text>
+                <Text style={styles.subtitle2}>{tr("Qty")}</Text>
               </View>
 
               <View style={styles.tableCell_3}>
-                <Text style={styles.subtitle2}>Unit price</Text>
+                <Text style={styles.subtitle2}>{tr("Unit price")}</Text>
               </View>
 
               <View style={[styles.tableCell_3, styles.alignRight]}>
-                <Text style={styles.subtitle2}>Total</Text>
+                <Text style={styles.subtitle2}>{tr("Total")}</Text>
               </View>
             </View>
           </View>
@@ -124,7 +126,7 @@ export default function InvoicePDF({ invoice }) {
               <View style={styles.tableCell_2} />
               <View style={styles.tableCell_3} />
               <View style={styles.tableCell_3}>
-                <Text>Subtotal</Text>
+                <Text>{tr("Subtotal")}</Text>
               </View>
               <View style={[styles.tableCell_3, styles.alignRight]}>
                 <Text>{fCurrency(subTotalPrice)}</Text>
@@ -136,7 +138,7 @@ export default function InvoicePDF({ invoice }) {
               <View style={styles.tableCell_2} />
               <View style={styles.tableCell_3} />
               <View style={styles.tableCell_3}>
-                <Text>Discount</Text>
+                <Text>{tr("Discount")}</Text>
               </View>
               <View style={[styles.tableCell_3, styles.alignRight]}>
                 <Text>{fCurrency(-discount)}</Text>
@@ -148,7 +150,7 @@ export default function InvoicePDF({ invoice }) {
               <View style={styles.tableCell_2} />
               <View style={styles.tableCell_3} />
               <View style={styles.tableCell_3}>
-                <Text>Taxes</Text>
+                <Text>{tr("Taxes")}</Text>
               </View>
               <View style={[styles.tableCell_3, styles.alignRight]}>
                 <Text>{fCurrency(taxes)}</Text>
@@ -160,7 +162,7 @@ export default function InvoicePDF({ invoice }) {
               <View style={styles.tableCell_2} />
               <View style={styles.tableCell_3} />
               <View style={styles.tableCell_3}>
-                <Text style={styles.h4}>Total</Text>
+                <Text style={styles.h4}>{tr("Total")}</Text>
               </View>
               <View style={[styles.tableCell_3, styles.alignRight]}>
                 <Text style={styles.h4}>{fCurrency(totalPrice)}</Text>
@@ -171,13 +173,11 @@ export default function InvoicePDF({ invoice }) {
 
         <View style={[styles.gridContainer, styles.footer]}>
           <View style={styles.col8}>
-            <Text style={styles.subtitle2}>NOTES</Text>
-            <Text>
-              We appreciate your business. Should you need us to add VAT or extra notes let us know!
-            </Text>
+            <Text style={styles.subtitle2}>{tr("NOTES")}</Text>
+            <Text>{tr("We appreciate your business. Should you need us to add VAT or extra notes let us know!")}</Text>
           </View>
           <View style={[styles.col4, styles.alignRight]}>
-            <Text style={styles.subtitle2}>Have a Question?</Text>
+            <Text style={styles.subtitle2}>{tr("Have a Question?")}</Text>
             <Text>support@abcapp.com</Text>
           </View>
         </View>

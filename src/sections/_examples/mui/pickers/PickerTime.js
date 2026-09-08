@@ -8,19 +8,21 @@ import {
   StaticTimePicker,
   DesktopTimePicker,
 } from '@mui/x-date-pickers';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 //
 import { Block } from '../../Block';
 
 // ----------------------------------------------------------------------
 
 export default function PickerTime() {
+  useUiLanguage();
   const [value, setValue] = useState(new Date());
 
   return (
     <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-      <Block title="Basic">
+      <Block title={tr("Basic")}>
         <TimePicker
-          label="12 hours"
+          label={tr("12 hours")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -30,7 +32,7 @@ export default function PickerTime() {
 
         <TimePicker
           ampm={false}
-          label="24 hours"
+          label={tr("24 hours")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -39,10 +41,10 @@ export default function PickerTime() {
         />
       </Block>
 
-      <Block title="Responsiveness">
+      <Block title={tr("Responsiveness")}>
         <MobileTimePicker
           orientation="portrait"
-          label="For mobile"
+          label={tr("For mobile")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -51,7 +53,7 @@ export default function PickerTime() {
         />
 
         <DesktopTimePicker
-          label="For desktop"
+          label={tr("For desktop")}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -66,7 +68,7 @@ export default function PickerTime() {
         />
       </Block>
 
-      <Block title="Static mode">
+      <Block title={tr("Static mode")}>
         <Stack spacing={3}>
           <StaticTimePicker
             orientation="portrait"

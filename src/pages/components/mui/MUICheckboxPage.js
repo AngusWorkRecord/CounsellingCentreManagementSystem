@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Checkbox, FormGroup, Container, FormControl, FormControlLabel } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -29,6 +30,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUICheckboxPage() {
+  useUiLanguage();
   const [checked, setChecked] = useState([true, false]);
 
   const handleChange1 = (event) => {
@@ -46,7 +48,7 @@ export default function MUICheckboxPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Checkbox | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Checkbox | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -58,13 +60,13 @@ export default function MUICheckboxPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Checkboxes"
+            heading={tr("Checkboxes")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Checkboxes' },
+              { name: tr("Checkboxes") },
             ]}
             moreLink={['https://mui.com/components/checkboxes']}
           />
@@ -73,7 +75,7 @@ export default function MUICheckboxPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Basic" sx={style}>
+          <Block title={tr("Basic")} sx={style}>
             <Checkbox />
             <Checkbox defaultChecked />
             <Checkbox defaultChecked indeterminate />
@@ -82,9 +84,9 @@ export default function MUICheckboxPage() {
             <Checkbox disabled indeterminate />
           </Block>
 
-          <Block title="Size & Custom Icon" sx={style}>
-            <FormControlLabel label="Normal" control={<Checkbox defaultChecked />} />
-            <FormControlLabel label="Small" control={<Checkbox defaultChecked size="small" />} />
+          <Block title={tr("Size & Custom Icon")} sx={style}>
+            <FormControlLabel label={tr("Normal")} control={<Checkbox defaultChecked />} />
+            <FormControlLabel label={tr("Small")} control={<Checkbox defaultChecked size="small" />} />
             <FormControlLabel
               control={
                 <Checkbox
@@ -94,7 +96,7 @@ export default function MUICheckboxPage() {
                   checkedIcon={<Iconify icon="eva:heart-fill" />}
                 />
               }
-              label="Custom icon"
+              label={tr("Custom icon")}
             />
 
             <FormControlLabel
@@ -105,13 +107,13 @@ export default function MUICheckboxPage() {
                   checkedIcon={<Iconify icon="eva:award-fill" />}
                 />
               }
-              label="Custom icon"
+              label={tr("Custom icon")}
             />
           </Block>
 
-          <Block title="Placement" sx={style}>
+          <Block title={tr("Placement")} sx={style}>
             <FormControl component="fieldset">
-              <FormGroup aria-label="position" row>
+              <FormGroup aria-label={tr("position")} row>
                 {PLACEMENTS.map((placement) => (
                   <FormControlLabel
                     key={placement}
@@ -126,7 +128,7 @@ export default function MUICheckboxPage() {
             </FormControl>
           </Block>
 
-          <Block title="Colors">
+          <Block title={tr("Colors")}>
             <FormGroup>
               {COLORS.map((color) => (
                 <FormControlLabel
@@ -140,7 +142,7 @@ export default function MUICheckboxPage() {
               <FormControlLabel
                 disabled
                 control={<Checkbox defaultChecked color="error" />}
-                label="Disabled"
+                label={tr("Disabled")}
               />
             </FormGroup>
 
@@ -158,16 +160,16 @@ export default function MUICheckboxPage() {
                 <FormControlLabel
                   disabled
                   control={<Checkbox defaultChecked indeterminate color="error" />}
-                  label="Disabled"
+                  label={tr("Disabled")}
                 />
               </FormGroup>
             </FormControl>
           </Block>
 
-          <Block title="Indeterminate" sx={style}>
+          <Block title={tr("Indeterminate")} sx={style}>
             <div>
               <FormControlLabel
-                label="Parent"
+                label={tr("Parent")}
                 control={
                   <Checkbox
                     checked={checked[0] && checked[1]}
@@ -178,11 +180,11 @@ export default function MUICheckboxPage() {
               />
               <div>
                 <FormControlLabel
-                  label="Child 1"
+                  label={tr("Child 1")}
                   control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 />
                 <FormControlLabel
-                  label="Child 2"
+                  label={tr("Child 2")}
                   control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
                 />
               </div>

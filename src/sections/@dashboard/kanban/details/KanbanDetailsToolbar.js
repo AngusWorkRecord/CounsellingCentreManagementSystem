@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 // @mui
 import { Stack, Button, Tooltip, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // hooks
 import useResponsive from '../../../../hooks/useResponsive';
 // components
@@ -33,6 +34,7 @@ export default function KanbanDetailsToolbar({
   onCompleted,
   onCloseDetails,
 }) {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'sm');
 
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -49,7 +51,7 @@ export default function KanbanDetailsToolbar({
     <>
       <Stack p={2.5} direction="row" alignItems="center">
         {!isDesktop && (
-          <Tooltip title="Back">
+          <Tooltip title={tr("Back")}>
             <IconButton onClick={onCloseDetails} sx={{ mr: 1 }}>
               <Iconify icon="eva:arrow-ios-back-fill" />
             </IconButton>
@@ -63,23 +65,23 @@ export default function KanbanDetailsToolbar({
           startIcon={completed && <Iconify icon="eva:checkmark-fill" width={16} />}
           onClick={onCompleted}
         >
-          {completed ? 'Completed' : 'Mark Complete'}
+          {completed ? tr("Completed") : tr("Mark Complete")}
         </Button>
 
         <Stack direction="row" spacing={1} justifyContent="flex-end" flexGrow={1}>
-          <Tooltip title="Like this">
+          <Tooltip title={tr("Like this")}>
             <IconButton color={liked ? 'default' : 'primary'} size="small" onClick={onLike}>
               <Iconify icon="ic:round-thumb-up" />
             </IconButton>
           </Tooltip>
 
-          <Tooltip title="Attachment">
+          <Tooltip title={tr("Attachment")}>
             <IconButton size="small" onClick={onAttach}>
               <Iconify icon="eva:attach-2-fill" />
             </IconButton>
           </Tooltip>
 
-          <Tooltip title="Delete task">
+          <Tooltip title={tr("Delete task")}>
             <IconButton onClick={handleOpenConfirm} size="small">
               <Iconify icon="eva:trash-2-outline" />
             </IconButton>
@@ -96,16 +98,13 @@ export default function KanbanDetailsToolbar({
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Delete"
+        title={tr("Delete")}
         content={
-          <>
-            Are you sure want to delete <strong> {taskName} </strong>?
+          <>{tr("Are you sure want to delete")}<strong> {taskName} </strong>?
           </>
         }
         action={
-          <Button variant="contained" color="error" onClick={onDelete}>
-            Delete
-          </Button>
+          <Button variant="contained" color="error" onClick={onDelete}>{tr("Delete")}</Button>
         }
       />
     </>

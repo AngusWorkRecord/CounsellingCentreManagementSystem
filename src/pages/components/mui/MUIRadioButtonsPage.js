@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Radio, Container, RadioGroup, FormControl, FormControlLabel } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -28,6 +29,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function MUIRadioButtonsPage() {
+  useUiLanguage();
   const [value, setValue] = useState('a1');
 
   const handleChange = (event) => {
@@ -37,7 +39,7 @@ export default function MUIRadioButtonsPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Radio Buttons | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Radio Buttons | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -49,13 +51,13 @@ export default function MUIRadioButtonsPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Radio Buttons"
+            heading={tr("Radio Buttons")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Radio Buttons' },
+              { name: tr("Radio Buttons") },
             ]}
             moreLink={['https://mui.com/components/radio-buttons']}
           />
@@ -64,7 +66,7 @@ export default function MUIRadioButtonsPage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
-          <Block title="Basic" sx={style}>
+          <Block title={tr("Basic")} sx={style}>
             <FormControl component="fieldset">
               <RadioGroup row defaultValue="nn">
                 <Radio value="nn" />
@@ -74,14 +76,14 @@ export default function MUIRadioButtonsPage() {
             </FormControl>
           </Block>
 
-          <Block title="Size" sx={style}>
+          <Block title={tr("Size")} sx={style}>
             <RadioGroup row defaultValue="g">
-              <FormControlLabel value="g" control={<Radio />} label="Normal" />
-              <FormControlLabel value="p" control={<Radio size="small" />} label="Small" />
+              <FormControlLabel value="g" control={<Radio />} label={tr("Normal")} />
+              <FormControlLabel value="p" control={<Radio size="small" />} label={tr("Small")} />
             </RadioGroup>
           </Block>
 
-          <Block title="Placement" sx={style}>
+          <Block title={tr("Placement")} sx={style}>
             <FormControl component="fieldset">
               <RadioGroup row defaultValue="top">
                 {PLACEMENTS.map((placement) => (
@@ -98,7 +100,7 @@ export default function MUIRadioButtonsPage() {
             </FormControl>
           </Block>
 
-          <Block title="Colors">
+          <Block title={tr("Colors")}>
             <FormControl component="fieldset">
               <RadioGroup value={value} onChange={handleChange}>
                 {COLORS.map((color) => (
@@ -115,7 +117,7 @@ export default function MUIRadioButtonsPage() {
                   disabled
                   value="a8"
                   control={<Radio color="error" />}
-                  label="Disabled"
+                  label={tr("Disabled")}
                 />
               </RadioGroup>
             </FormControl>

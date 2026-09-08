@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box, Button, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { domainLabel } from '../../../../../locales/domainLabels';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 import Iconify from '../../../../../components/iconify';
 
 // 中文原文：全部
@@ -10,6 +12,7 @@ const selectSx = {
 };
 
 export default function CaseFilters({ filters, options, onChange, onReset }) {
+  useUiLanguage();
   const update = (field) => (event) => onChange(field, event.target.value);
   const selects = [
     // 中文原文：值班类别、个案类别、状态、接案未完成、待简要报告、待详细报告、全部完成
@@ -24,24 +27,24 @@ export default function CaseFilters({ filters, options, onChange, onReset }) {
         <TextField
           value={filters.search}
           onChange={update('search')}
-          placeholder="Search case number / client initials / counsellor"
+          placeholder={tr("Search case number / client initials / counsellor")}
           sx={{ minWidth: { lg: 330 }, flexGrow: 1 }}
           InputProps={{ startAdornment: <Iconify icon="eva:search-fill" sx={{ mr: 1, color: 'text.disabled' }} /> }}
         />
 
         {selects.map(([field, label, values]) => (
           <Box key={field} sx={selectSx}>
-            <Typography variant="subtitle2" sx={{ mb: 0.75 }}>{label}</Typography>
+            <Typography variant="subtitle2" sx={{ mb: 0.75 }}>{tr(label)}</Typography>
             <TextField select fullWidth value={filters[field]} onChange={update(field)}>
-              {values.map((value) => <MenuItem key={value} value={value}>{value}</MenuItem>)}
+              {values.map((value) => <MenuItem key={value} value={value}>{domainLabel(value)}</MenuItem>)}
             </TextField>
           </Box>
         ))}
 
         <Stack direction="row" spacing={1.5} sx={{ pb: { lg: 0.1 } }}>
           {/* 中文原文：筛选、重置 */}
-          <Button variant="outlined" startIcon={<Iconify icon="eva:funnel-outline" />}>Filter</Button>
-          <Button color="inherit" variant="outlined" startIcon={<Iconify icon="eva:refresh-fill" />} onClick={onReset}>Reset</Button>
+          <Button variant="outlined" startIcon={<Iconify icon="eva:funnel-outline" />}>{tr("Filter")}</Button>
+          <Button color="inherit" variant="outlined" startIcon={<Iconify icon="eva:refresh-fill" />} onClick={onReset}>{tr("Reset")}</Button>
         </Stack>
       </Stack>
     </Box>

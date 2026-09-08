@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, Button, Container, Typography, Grid, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // routes
@@ -23,6 +24,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeLookingFor() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -56,6 +58,7 @@ export default function HomeLookingFor() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -68,9 +71,7 @@ function Description() {
       }}
     >
       <m.div variants={varFade().inDown}>
-        <Typography variant="overline" component="div" sx={{ color: 'text.disabled' }}>
-          Looking For a
-        </Typography>
+        <Typography variant="overline" component="div" sx={{ color: 'text.disabled' }}>{tr("Looking For a")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
@@ -80,9 +81,7 @@ function Description() {
             mt: 3,
             mb: { md: 5 },
           }}
-        >
-          Landing Page Template?
-        </Typography>
+        >{tr("Landing Page Template?")}</Typography>
       </m.div>
 
       {isDesktop && <m.div variants={varFade().inDown}> {VisitButton} </m.div>}
@@ -93,9 +92,10 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   return (
     <Box component={m.div} variants={varFade().inUp}>
-      <Image disabledEffect alt="rocket" src="/assets/images/home/zone_landing.png" />
+      <Image disabledEffect alt={tr("rocket")} src="/assets/images/home/zone_landing.png" />
     </Box>
   );
 }
@@ -109,7 +109,5 @@ const VisitButton = (
     rel="noopener"
     href={PATH_ZONE_ON_STORE}
     endIcon={<Iconify icon="ic:round-arrow-right-alt" />}
-  >
-    Visit Zone Landing Page
-  </Button>
+  >{tr("Visit Zone Landing Page")}</Button>
 );

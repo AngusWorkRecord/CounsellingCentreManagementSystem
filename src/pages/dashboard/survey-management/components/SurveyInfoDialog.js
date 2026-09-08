@@ -4,6 +4,7 @@ import { Box, Button, Card, Dialog, DialogContent, DialogTitle, Divider, FormCon
 import { useTheme } from '@mui/material/styles';
 import { paramCase } from 'change-case';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 
 // components 
 import { ParticipantTableRow, ParticipantTableToolbar } from './ParticipantTableComponent';
@@ -39,15 +40,16 @@ SurveyInfoDialog.propTypes = {
 const STATUS_OPTIONS = ['all', 'unsent', 'sent'];
 
 const TABLE_HEAD = [
-    { id: 'ParticipantName', label: 'Participant', align: 'left' },
-    { id: 'EmailAddress', label: 'Email', align: 'left' },
+    { id: 'ParticipantName', get label() { return tr("Participant"); }, align: 'left' },
+    { id: 'EmailAddress', get label() { return tr("Email"); }, align: 'left' },
     // { id: 'Institution', label: 'Institution', align: 'left' },
-    { id: 'AttendanceType', label: 'AttendanceType', align: 'left' },
+    { id: 'AttendanceType', get label() { return tr("AttendanceType"); }, align: 'left' },
     // { id: 'isRequiredCertificate', label: 'Certificate?', align: 'center' },
     { id: '', label: '', align: 'left' },
 ];
 
 export default function SurveyInfoDialog({ open, handleClose, title, event, ...other }) {
+  useUiLanguage();
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -183,9 +185,7 @@ export default function SurveyInfoDialog({ open, handleClose, title, event, ...o
         >
             {
                 !isStringNullOrEmpty(title) &&
-                <DialogTitle id="responsive-dialog-title">
-                    Title
-                </DialogTitle>
+                <DialogTitle id="responsive-dialog-title">{tr("Title")}</DialogTitle>
             }
             <DialogContent>
                 <Box sx={{ p: 3 }}>
@@ -209,7 +209,7 @@ export default function SurveyInfoDialog({ open, handleClose, title, event, ...o
                         <Grid item xs={12} md={2}>
                             <Stack direction="row">
                                 <FormControlLabel
-                                    label="Archived"
+                                    label={tr("Archived")}
                                     control={<Switch defaultChecked={isArchived === "active"} />}
                                 />
 
@@ -257,7 +257,7 @@ export default function SurveyInfoDialog({ open, handleClose, title, event, ...o
                                     )
                                 }
                                 action={
-                                    <Tooltip title="Send Survey Form">
+                                    <Tooltip title={tr("Send Survey Form")}>
                                         <IconButton color="primary" onClick={handleOpenConfirm}>
                                             <Iconify icon="carbon:send-alt-filled" />
                                         </IconButton>

@@ -12,6 +12,7 @@ import {
   ListItemAvatar,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -20,6 +21,7 @@ import Iconify from '../../../../components/iconify';
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 export default function SimpleDialog() {
+  useUiLanguage();
   const [open, setOpen] = useState(false);
 
   const [selectedValue, setSelectedValue] = useState(emails[1]);
@@ -35,16 +37,13 @@ export default function SimpleDialog() {
 
   return (
     <Box sx={{ textAlign: 'center' }}>
-      <Typography variant="subtitle1" component="div">
-        Selected: {selectedValue}
+      <Typography variant="subtitle1" component="div">{tr("Selected:")}{selectedValue}
       </Typography>
       <br />
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open simple dialog
-      </Button>
+      <Button variant="outlined" onClick={handleClickOpen}>{tr("Open simple dialog")}</Button>
 
       <Dialog open={open} onClose={() => handleClose(selectedValue)}>
-        <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+        <DialogTitle id="simple-dialog-title">{tr("Set backup account")}</DialogTitle>
         <List>
           {emails.map((email) => (
             <ListItemButton onClick={() => handleClose(email)} key={email}>

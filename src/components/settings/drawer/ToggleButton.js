@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
 import { Tooltip, Box } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 //
@@ -19,6 +20,7 @@ ToggleButton.propTypes = {
 };
 
 export default function ToggleButton({ notDefault, open, onToggle }) {
+  useUiLanguage();
   const theme = useTheme();
 
   return (
@@ -46,7 +48,7 @@ export default function ToggleButton({ notDefault, open, onToggle }) {
         />
       )}
 
-      <Tooltip title="Settings">
+      <Tooltip title={tr("Settings")}>
         <IconButtonAnimate color="primary" onClick={onToggle} sx={{ p: 1.25 }}>
           <SvgColor src="/assets/icons/setting/ic_setting.svg" />
         </IconButtonAnimate>

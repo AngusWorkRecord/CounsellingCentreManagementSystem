@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Button, Card, Tabs, Tab, Divider, Table, TableContainer, TableBody, Tooltip, IconButton, } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 
 // components
 import { useSettingsContext } from '../../../components/settings';
@@ -44,11 +45,11 @@ import { _events } from './components/_mock/_event';
 const TABLE_TABS = ['all', 'ongoing', 'incoming'];
 
 const TABLE_HEAD = [
-    { id: 'EventName', label: 'Name', align: 'left' },
-    { id: 'EventType', label: 'Event/Conference', align: 'left' },
-    { id: 'EventStartDatetime', label: 'Basic Info', align: 'left' },
-    { id: 'Participants', label: 'Participants', align: 'center' },
-    { id: 'Status', label: 'Status', align: 'left' },
+    { id: 'EventName', get label() { return tr("Name"); }, align: 'left' },
+    { id: 'EventType', get label() { return tr("Event/Conference"); }, align: 'left' },
+    { id: 'EventStartDatetime', get label() { return tr("Basic Info"); }, align: 'left' },
+    { id: 'Participants', get label() { return tr("Participants"); }, align: 'center' },
+    { id: 'Status', get label() { return tr("Status"); }, align: 'left' },
     { id: '' },
 ];
 
@@ -62,6 +63,7 @@ const LOCATION_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function ConferenceEventManagementIndexPage() {
+  useUiLanguage();
     const { user } = useAuthContext();
     const {
         dense,
@@ -209,14 +211,14 @@ export default function ConferenceEventManagementIndexPage() {
     return (
         <>
             <Helmet>
-                <title> Dashboard | Conference Management </title>
+                <title> {tr("Dashboard | Conference Management")} </title>
             </Helmet>
 
             <Container maxWidth={themeStretch ? false : 'xl'}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
                         <EcommerceWidgetSummary
-                            title="Happening Today"
+                            title={tr("Happening Today")}
                             percent={0.6}
                             total={4876}
                             chart={{
@@ -229,7 +231,7 @@ export default function ConferenceEventManagementIndexPage() {
 
                     <Grid item xs={12} md={3}>
                         <EcommerceWidgetSummary
-                            title="Incoming"
+                            title={tr("Incoming")}
                             percent={2.6}
                             total={765}
                             chart={{
@@ -241,7 +243,7 @@ export default function ConferenceEventManagementIndexPage() {
 
                     <Grid item xs={12} md={3}>
                         <EcommerceWidgetSummary
-                            title="This Month"
+                            title={tr("This Month")}
                             percent={-0.1}
                             total={18765}
                             chart={{
@@ -255,10 +257,10 @@ export default function ConferenceEventManagementIndexPage() {
                         <Grid container>
                             <Grid item xs={12} md={12}>
                                 <CustomBreadcrumbs
-                                    heading="Conference Management"
+                                    heading={tr("Conference Management")}
                                     links={[
-                                        { name: 'Dashboard', href: PATH_CONFERENCE_MANAGEMENT.root },
-                                        { name: 'Conference Management', href: PATH_CONFERENCE_MANAGEMENT.conference.root },
+                                        { name: tr("Dashboard"), href: PATH_CONFERENCE_MANAGEMENT.root },
+                                        { name: tr("Conference Management"), href: PATH_CONFERENCE_MANAGEMENT.conference.root },
 
                                     ]}
                                     action={
@@ -267,9 +269,7 @@ export default function ConferenceEventManagementIndexPage() {
                                             to={PATH_CONFERENCE_MANAGEMENT.conference.form}
                                             variant="contained"
                                             startIcon={<Iconify icon="eva:plus-fill" />}
-                                        >
-                                            Create Conference
-                                        </Button>
+                                        >{tr("Create Conference")}</Button>
                                     }
                                 />
                             </Grid>
@@ -382,12 +382,10 @@ export default function ConferenceEventManagementIndexPage() {
             <ConfirmDialog
                 open={openConfirm}
                 onClose={handleCloseConfirm}
-                title="Resend Survey"
+                title={tr("Resend Survey")}
                 content="Are you sure want to send again?"
                 action={
-                    <Button variant="contained" color="primary" onClick={handleDeleteRows}>
-                        Archived
-                    </Button>
+                    <Button variant="contained" color="primary" onClick={handleDeleteRows}>{tr("Archived")}</Button>
                 }
             />
         </>

@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Stack, Button, Tooltip, TextField, IconButton, DialogActions } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { MobileDateTimePicker } from '@mui/x-date-pickers';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // components
 import Iconify from '../../../components/iconify';
 import { ColorSinglePicker } from '../../../components/color-utils';
@@ -52,10 +53,11 @@ export default function CalendarForm({
   onDeleteEvent,
   onCancel,
 }) {
+  useUiLanguage();
   const hasEventData = !!event;
 
   const EventSchema = Yup.object().shape({
-    title: Yup.string().max(255).required('Title is required'),
+    title: Yup.string().max(255).required(tr("Title is required")),
     description: Yup.string().max(5000),
   });
 
@@ -100,11 +102,11 @@ export default function CalendarForm({
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3} sx={{ px: 3 }}>
-        <RHFTextField name="title" label="Title" />
+        <RHFTextField name="title" label={tr("Title")} />
 
-        <RHFTextField name="description" label="Description" multiline rows={3} />
+        <RHFTextField name="description" label={tr("Description")} multiline rows={3} />
 
-        <RHFSwitch name="allDay" label="All day" />
+        <RHFSwitch name="allDay" label={tr("All day")} />
 
         <Controller
           name="start"
@@ -113,7 +115,7 @@ export default function CalendarForm({
             <MobileDateTimePicker
               {...field}
               onChange={(newValue) => field.onChange(newValue)}
-              label="Start date"
+              label={tr("Start date")}
               inputFormat="dd/MM/yyyy hh:mm a"
               renderInput={(params) => <TextField {...params} fullWidth />}
             />
@@ -127,14 +129,14 @@ export default function CalendarForm({
             <MobileDateTimePicker
               {...field}
               onChange={(newValue) => field.onChange(newValue)}
-              label="End date"
+              label={tr("End date")}
               inputFormat="dd/MM/yyyy hh:mm a"
               renderInput={(params) => (
                 <TextField
                   {...params}
                   fullWidth
                   error={!!isDateError}
-                  helperText={isDateError && 'End date must be later than start date'}
+                  helperText={isDateError && tr("End date must be later than start date")}
                 />
               )}
             />
@@ -156,7 +158,7 @@ export default function CalendarForm({
 
       <DialogActions>
         {hasEventData && (
-          <Tooltip title="Delete Event">
+          <Tooltip title={tr("Delete Event")}>
             <IconButton onClick={onDeleteEvent}>
               <Iconify icon="eva:trash-2-outline" />
             </IconButton>
@@ -165,12 +167,10 @@ export default function CalendarForm({
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Button variant="outlined" color="inherit" onClick={onCancel}>
-          Cancel
-        </Button>
+        <Button variant="outlined" color="inherit" onClick={onCancel}>{tr("Cancel")}</Button>
 
         <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-          {hasEventData ? 'Update' : 'Add'}
+          {hasEventData ? tr("Update") : tr("Add")}
         </LoadingButton>
       </DialogActions>
     </FormProvider>

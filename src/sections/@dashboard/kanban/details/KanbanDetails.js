@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Stack, Drawer, Avatar, Tooltip, Divider, TextField, Box, IconButton } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 import Scrollbar from '../../../../components/scrollbar';
@@ -35,6 +36,7 @@ KanbanDetails.propTypes = {
 };
 
 export default function KanbanDetails({ task, openDetails, onCloseDetails, onDeleteTask }) {
+  useUiLanguage();
   const fileInputRef = useRef(null);
 
   const [liked, setLiked] = useState(false);
@@ -126,21 +128,21 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
         <Stack spacing={3} sx={{ px: 2.5, pt: 3, pb: 5 }}>
           {/* Task name */}
           <KanbanInputName
-            placeholder="Task name"
+            placeholder={tr("Task name")}
             value={taskName}
             onChange={handleChangeTaskName}
           />
 
           {/* Assignee */}
           <Stack direction="row">
-            <StyledLabel sx={{ height: 40, lineHeight: '40px', my: 0.5 }}>Assignee</StyledLabel>
+            <StyledLabel sx={{ height: 40, lineHeight: '40px', my: 0.5 }}>{tr("Assignee")}</StyledLabel>
 
             <Stack direction="row" flexWrap="wrap" alignItems="center">
               {task.assignee.map((user) => (
                 <Avatar key={user.id} alt={user.name} src={user.avatar} sx={{ m: 0.5 }} />
               ))}
 
-              <Tooltip title="Add assignee">
+              <Tooltip title={tr("Add assignee")}>
                 <IconButton
                   onClick={handleOpenContacts}
                   sx={{
@@ -164,7 +166,7 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
 
           {/* Due date */}
           <Stack direction="row" alignItems="center">
-            <StyledLabel> Due date </StyledLabel>
+            <StyledLabel> {tr("Due date")} </StyledLabel>
             <>
               {isSelectedValuePicker ? (
                 <Box
@@ -178,7 +180,7 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
                   {shortLabel}
                 </Box>
               ) : (
-                <Tooltip title="Add due date">
+                <Tooltip title={tr("Add due date")}>
                   <IconButton
                     onClick={onOpenPicker}
                     sx={{
@@ -195,7 +197,7 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
 
               <DateRangePicker
                 variant="calendar"
-                title="Choose due date"
+                title={tr("Choose due date")}
                 startDate={startDate}
                 endDate={endDate}
                 onChangeStartDate={onChangeStartDate}
@@ -210,7 +212,7 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
 
           {/* Prioritize */}
           <Stack direction="row" alignItems="center">
-            <StyledLabel>Prioritize</StyledLabel>
+            <StyledLabel>{tr("Prioritize")}</StyledLabel>
 
             <KanbanDetailsPrioritizes
               prioritize={prioritize}
@@ -220,7 +222,7 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
 
           {/* Description */}
           <Stack direction="row">
-            <StyledLabel> Description </StyledLabel>
+            <StyledLabel> {tr("Description")} </StyledLabel>
 
             <TextField
               fullWidth
@@ -236,7 +238,7 @@ export default function KanbanDetails({ task, openDetails, onCloseDetails, onDel
 
           {/* Attachments */}
           <Stack direction="row">
-            <StyledLabel sx={{ py: 0.5 }}>Attachments</StyledLabel>
+            <StyledLabel sx={{ py: 0.5 }}>{tr("Attachments")}</StyledLabel>
             <KanbanDetailsAttachments attachments={task.attachments} />
           </Stack>
         </Stack>

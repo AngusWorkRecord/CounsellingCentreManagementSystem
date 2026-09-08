@@ -18,6 +18,7 @@ import {
   ListItemAvatar,
   ListItemButton,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // utils
 import { fToNow } from '../../../utils/formatTime';
 // _mock_
@@ -31,6 +32,7 @@ import { IconButtonAnimate } from '../../../components/animate';
 // ----------------------------------------------------------------------
 
 export default function NotificationsPopover() {
+  useUiLanguage();
   const [openPopover, setOpenPopover] = useState(null);
 
   const [notifications, setNotifications] = useState(_notifications);
@@ -69,15 +71,13 @@ export default function NotificationsPopover() {
       <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 360, p: 0 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="subtitle1">Notifications</Typography>
+            <Typography variant="subtitle1">{tr("Notifications")}</Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              You have {totalUnRead} unread messages
-            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>{tr("You have")}{totalUnRead}{tr("unread messages")}</Typography>
           </Box>
 
           {totalUnRead > 0 && (
-            <Tooltip title=" Mark all as read">
+            <Tooltip title={tr(" Mark all as read")}>
               <IconButton color="primary" onClick={handleMarkAllAsRead}>
                 <Iconify icon="eva:done-all-fill" />
               </IconButton>
@@ -91,9 +91,7 @@ export default function NotificationsPopover() {
           <List
             disablePadding
             subheader={
-              <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>
-                New
-              </ListSubheader>
+              <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>{tr("New")}</ListSubheader>
             }
           >
             {notifications.slice(0, 2).map((notification) => (
@@ -104,9 +102,7 @@ export default function NotificationsPopover() {
           <List
             disablePadding
             subheader={
-              <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>
-                Before that
-              </ListSubheader>
+              <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>{tr("Before that")}</ListSubheader>
             }
           >
             {notifications.slice(2, 5).map((notification) => (
@@ -118,9 +114,7 @@ export default function NotificationsPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Box sx={{ p: 1 }}>
-          <Button fullWidth disableRipple>
-            View All
-          </Button>
+          <Button fullWidth disableRipple>{tr("View All")}</Button>
         </Box>
       </MenuPopover>
     </>
@@ -142,6 +136,7 @@ NotificationItem.propTypes = {
 };
 
 function NotificationItem({ notification }) {
+  useUiLanguage();
   const { avatar, title } = renderContent(notification);
 
   return (

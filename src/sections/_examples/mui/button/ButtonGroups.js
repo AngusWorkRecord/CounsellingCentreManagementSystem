@@ -1,6 +1,7 @@
 // @mui
 import { ButtonGroup, Button } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 //
 import { Block } from '../../Block';
 
@@ -23,95 +24,96 @@ const VARIANTS = ['contained', 'outlined', 'text', 'soft'];
 // ----------------------------------------------------------------------
 
 export default function ButtonGroups() {
+  useUiLanguage();
   return (
     <Masonry columns={2} spacing={3}>
-      <Block title="Contained" sx={style}>
+      <Block title={tr("Contained")} sx={style}>
         {COLORS.map((color) => (
           <ButtonGroup key={color} variant="contained" color={color}>
-            <Button>One</Button>
-            <Button>Two</Button>
-            <Button>Three</Button>
+            <Button>{tr("One")}</Button>
+            <Button>{tr("Two")}</Button>
+            <Button>{tr("Three")}</Button>
           </ButtonGroup>
         ))}
 
         <ButtonGroup disabled variant="contained" color="info">
-          <Button>One</Button>
-          <Button>Two</Button>
-          <Button>Three</Button>
+          <Button>{tr("One")}</Button>
+          <Button>{tr("Two")}</Button>
+          <Button>{tr("Three")}</Button>
         </ButtonGroup>
       </Block>
 
-      <Block title="Outlined" sx={style}>
+      <Block title={tr("Outlined")} sx={style}>
         {COLORS.map((color) => (
           <ButtonGroup key={color} variant="outlined" color={color}>
-            <Button>One</Button>
-            <Button>Two</Button>
-            <Button>Three</Button>
+            <Button>{tr("One")}</Button>
+            <Button>{tr("Two")}</Button>
+            <Button>{tr("Three")}</Button>
           </ButtonGroup>
         ))}
 
         <ButtonGroup disabled variant="outlined" color="info">
-          <Button>One</Button>
-          <Button>Two</Button>
-          <Button>Three</Button>
+          <Button>{tr("One")}</Button>
+          <Button>{tr("Two")}</Button>
+          <Button>{tr("Three")}</Button>
         </ButtonGroup>
       </Block>
 
-      <Block title="Text" sx={style}>
+      <Block title={tr("Text")} sx={style}>
         {COLORS.map((color) => (
           <ButtonGroup key={color} variant="text" color={color}>
-            <Button>One</Button>
-            <Button>Two</Button>
-            <Button>Three</Button>
+            <Button>{tr("One")}</Button>
+            <Button>{tr("Two")}</Button>
+            <Button>{tr("Three")}</Button>
           </ButtonGroup>
         ))}
 
         <ButtonGroup disabled variant="text" color="info">
-          <Button>One</Button>
-          <Button>Two</Button>
-          <Button>Three</Button>
+          <Button>{tr("One")}</Button>
+          <Button>{tr("Two")}</Button>
+          <Button>{tr("Three")}</Button>
         </ButtonGroup>
       </Block>
 
-      <Block title="Soft" sx={style}>
+      <Block title={tr("Soft")} sx={style}>
         {COLORS.map((color) => (
           <ButtonGroup key={color} variant="soft" color={color}>
-            <Button>One</Button>
-            <Button>Two</Button>
-            <Button>Three</Button>
+            <Button>{tr("One")}</Button>
+            <Button>{tr("Two")}</Button>
+            <Button>{tr("Three")}</Button>
           </ButtonGroup>
         ))}
 
         <ButtonGroup disabled variant="soft" color="info">
-          <Button>One</Button>
-          <Button>Two</Button>
-          <Button>Three</Button>
+          <Button>{tr("One")}</Button>
+          <Button>{tr("Two")}</Button>
+          <Button>{tr("Three")}</Button>
         </ButtonGroup>
       </Block>
 
-      <Block title="Size" sx={style}>
+      <Block title={tr("Size")} sx={style}>
         {SIZES.map((size) => (
           <ButtonGroup key={size} size={size} variant="contained">
-            <Button>One</Button>
-            <Button>Two</Button>
-            <Button>Three</Button>
+            <Button>{tr("One")}</Button>
+            <Button>{tr("Two")}</Button>
+            <Button>{tr("Three")}</Button>
           </ButtonGroup>
         ))}
       </Block>
 
-      <Block title="Orientation" sx={style}>
+      <Block title={tr("Orientation")} sx={style}>
         {VARIANTS.map((variant) => (
           <ButtonGroup key={variant} variant={variant} orientation="vertical">
-            <Button>One</Button>
-            <Button>Two</Button>
-            <Button>Three</Button>
+            <Button>{tr("One")}</Button>
+            <Button>{tr("Two")}</Button>
+            <Button>{tr("Three")}</Button>
           </ButtonGroup>
         ))}
 
         <ButtonGroup disabled variant="soft" color="info" orientation="vertical">
-          <Button>One</Button>
-          <Button>Two</Button>
-          <Button>Three</Button>
+          <Button>{tr("One")}</Button>
+          <Button>{tr("Two")}</Button>
+          <Button>{tr("Three")}</Button>
         </ButtonGroup>
       </Block>
     </Masonry>

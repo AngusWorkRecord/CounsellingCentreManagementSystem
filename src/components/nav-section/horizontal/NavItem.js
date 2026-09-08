@@ -3,6 +3,7 @@ import { forwardRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { Box, Tooltip, ListItemText, Link } from '@mui/material';
+import { tr } from '../../../locales/translate';
 // locales
 import { useLocales } from '../../../locales';
 // auth
@@ -40,7 +41,7 @@ const NavItem = forwardRef(({ item, depth, open, active, isExternalLink, ...othe
       )}
 
       {caption && (
-        <Tooltip title={`${translate(caption)}`} arrow>
+        <Tooltip title={tr("{{p0}}", { p0: translate(caption) })} arrow>
           <Box component="span" sx={{ ml: 0.5, lineHeight: 0 }}>
             <Iconify icon="eva:info-outline" width={16} />
           </Box>

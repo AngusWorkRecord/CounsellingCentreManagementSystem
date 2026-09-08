@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 // @mui
 import { Card, CardHeader, Box, Grid, Skeleton, Typography, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Chart, { useChart } from '../../../../components/chart';
 
@@ -14,6 +15,7 @@ PerformanceChart.propTypes = {
 };
 
 export default function PerformanceChart({ title, subheader, chart, ...other }) {
+  useUiLanguage();
   const { colors, series, options, categories, oldSeries } = chart;
 
   const [scoreData, setData] = useState({
@@ -154,11 +156,11 @@ export default function PerformanceChart({ title, subheader, chart, ...other }) 
             {title}
             <Grid sx={{ mx: 2, my: 2, justifyContent:"end" }} container  {...other}>
               <Grid item xs={0.5} md={0.5} lg={0.5} style={{ textAlign: "center", borderRight: "2px solid lightgrey" }}>
-                <div style={{ justifyContent: "center", display: "flex" }}>  <Typography variant='caption'>Rank </Typography></div>
+                <div style={{ justifyContent: "center", display: "flex" }}>  <Typography variant='caption'>{tr("Rank")} </Typography></div>
                 <div style={{ justifyContent: "center", display: "flex" }}>  <Typography variant='h4'>{scoreData.rank} </Typography></div>
               </Grid>
               <Grid item xs={0.5} md={0.5} lg={0.5}>
-                <div style={{ justifyContent: "center", display: "flex" }}>  <Typography variant='caption'>Score </Typography></div>
+                <div style={{ justifyContent: "center", display: "flex" }}>  <Typography variant='caption'>{tr("Score")} </Typography></div>
                 <div style={{ justifyContent: "center", display: "flex" }}>  <Typography variant='h4'>{scoreData.score} </Typography></div>
               </Grid>
             </Grid>
@@ -202,7 +204,7 @@ export default function PerformanceChart({ title, subheader, chart, ...other }) 
             ))
           }
         </Grid>
-        <Typography variant='caption' sx={{ pt: 2, pl: 2, }}>Score 2023 VS Score 2022</Typography>
+        <Typography variant='caption' sx={{ pt: 2, pl: 2, }}>{tr("Score 2023 VS Score 2022")}</Typography>
       </Box>
     </Card>
   );

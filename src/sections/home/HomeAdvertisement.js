@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Button, Box, Container, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // utils
 import { bgGradient } from '../../utils/cssStyles';
 // routes
@@ -14,6 +15,7 @@ import { MotionViewport, varFade } from '../../components/animate';
 // ----------------------------------------------------------------------
 
 export default function HomeAdvertisement() {
+  useUiLanguage();
   const theme = useTheme();
 
   return (
@@ -41,6 +43,7 @@ export default function HomeAdvertisement() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   return (
     <Box
       sx={{
@@ -54,10 +57,7 @@ function Description() {
         component={m.div}
         variants={varFade().inDown}
         sx={{ color: 'common.white', mb: 5, typography: 'h2' }}
-      >
-        Get started with
-        <br /> minimal kit today
-      </Box>
+      >{tr("Get started with")}<br />{tr("minimal kit today")}</Box>
 
       <Stack
         direction={{ xs: 'column', md: 'row' }}
@@ -76,9 +76,7 @@ function Description() {
               color: 'grey.800',
               bgcolor: 'common.white',
             }}
-          >
-            Purchase Now
-          </Button>
+          >{tr("Purchase Now")}</Button>
         </m.div>
 
         <m.div variants={varFade().inRight}>
@@ -91,9 +89,7 @@ function Description() {
             href={PATH_FREE_VERSION}
             endIcon={<Iconify icon="eva:external-link-fill" width={16} sx={{ mr: 0.5 }} />}
             sx={{ color: 'common.white', '&:hover': { borderColor: 'currentColor' } }}
-          >
-            Get Free Version
-          </Button>
+          >{tr("Get Free Version")}</Button>
         </m.div>
       </Stack>
     </Box>
@@ -103,6 +99,7 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   return (
     <Stack component={m.div} variants={varFade().inUp} alignItems="center">
       <m.div
@@ -114,7 +111,7 @@ function Content() {
         <Image
           visibleByDefault
           disabledEffect
-          alt="rocket"
+          alt={tr("rocket")}
           src="/assets/images/home/rocket.png"
           sx={{ maxWidth: 460 }}
         />

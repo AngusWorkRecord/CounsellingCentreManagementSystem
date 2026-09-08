@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Stack, InputAdornment, TextField, MenuItem, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -35,6 +36,7 @@ export default function InvoiceTableToolbar({
   onFilterEndDate,
   onFilterStartDate,
 }) {
+  useUiLanguage();
   return (
     <Stack
       spacing={2}
@@ -48,7 +50,7 @@ export default function InvoiceTableToolbar({
       <TextField
         fullWidth
         select
-        label="Service type"
+        label={tr("Service type")}
         value={filterService}
         onChange={onFilterService}
         SelectProps={{
@@ -80,7 +82,7 @@ export default function InvoiceTableToolbar({
       </TextField>
 
       <DatePicker
-        label="Start date"
+        label={tr("Start date")}
         value={filterStartDate}
         onChange={onFilterStartDate}
         renderInput={(params) => (
@@ -95,7 +97,7 @@ export default function InvoiceTableToolbar({
       />
 
       <DatePicker
-        label="End date"
+        label={tr("End date")}
         value={filterEndDate}
         onChange={onFilterEndDate}
         renderInput={(params) => (
@@ -113,7 +115,7 @@ export default function InvoiceTableToolbar({
         fullWidth
         value={filterName}
         onChange={onFilterName}
-        placeholder="Search client or invoice number..."
+        placeholder={tr("Search client or invoice number...")}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -129,9 +131,7 @@ export default function InvoiceTableToolbar({
           sx={{ flexShrink: 0 }}
           onClick={onResetFilter}
           startIcon={<Iconify icon="eva:trash-2-outline" />}
-        >
-          Clear
-        </Button>
+        >{tr("Clear")}</Button>
       )}
     </Stack>
   );

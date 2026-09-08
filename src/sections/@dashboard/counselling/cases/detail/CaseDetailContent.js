@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Grid, Stack } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 import CaseAiTip from './CaseAiTip';
 import CaseOverviewCard from './CaseOverviewCard';
 import CaseQuickActions from './CaseQuickActions';
@@ -29,6 +30,7 @@ const adviceCardStackSx = {
 };
 
 export default function CaseDetailContent({ session, onBack }) {
+  useUiLanguage();
   return (
     <Stack spacing={2.5}>
       <CaseOverviewCard session={session} />
@@ -36,10 +38,10 @@ export default function CaseDetailContent({ session, onBack }) {
       <Grid container spacing={2.5} alignItems="stretch">
         <Grid item xs={12} md={6}>
           <Stack spacing={2.5} sx={equalCardStackSx}>
-            <CaseTextCard icon="eva:file-text-outline" title="Client Statement Summary">
+            <CaseTextCard icon="eva:file-text-outline" title={tr("Client Statement Summary")}>
               {session.client_summary}
             </CaseTextCard>
-            <CaseTextCard icon="eva:activity-outline" title="Volunteer Actions">
+            <CaseTextCard icon="eva:activity-outline" title={tr("Volunteer Actions")}>
               {session.volunteer_actions}
             </CaseTextCard>
           </Stack>

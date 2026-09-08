@@ -2,6 +2,7 @@ import { useState } from 'react';
 // @mui
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 // components
 import Iconify from '../../../../components/iconify';
 //
@@ -25,6 +26,7 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function ToggleButtons() {
+  useUiLanguage();
   const [alignment, setAlignment] = useState('left');
 
   const [formats, setFormats] = useState(() => ['bold', 'italic']);
@@ -90,19 +92,19 @@ export default function ToggleButtons() {
 
   return (
     <Masonry columns={3} spacing={3}>
-      <Block title="Exclusive selection" sx={style}>
+      <Block title={tr("Exclusive selection")} sx={style}>
         <ToggleButtonGroup value={alignment} exclusive onChange={handleAlignment}>
           {alignContent}
         </ToggleButtonGroup>
       </Block>
 
-      <Block title="Multiple selection" sx={style}>
+      <Block title={tr("Multiple selection")} sx={style}>
         <ToggleButtonGroup value={formats} onChange={handleFormat}>
           {formatContent}
         </ToggleButtonGroup>
       </Block>
 
-      <Block title="Colors" sx={style}>
+      <Block title={tr("Colors")} sx={style}>
         {COLORS.map((color) => (
           <ToggleButtonGroup
             exclusive
@@ -130,7 +132,7 @@ export default function ToggleButtons() {
         ))}
       </Block>
 
-      <Block title="Vertical & Standalone buttons" sx={style}>
+      <Block title={tr("Vertical & Standalone buttons")} sx={style}>
         <ToggleButtonGroup orientation="vertical" value={view} exclusive onChange={handleChange}>
           {viewContent}
         </ToggleButtonGroup>
@@ -146,7 +148,7 @@ export default function ToggleButtons() {
         </ToggleButton>
       </Block>
 
-      <Block title="Size" sx={style}>
+      <Block title={tr("Size")} sx={style}>
         {SIZES.map((size) => (
           <ToggleButton key={size} size={size} value="check">
             <Iconify icon="eva:checkmark-fill" />
@@ -166,7 +168,7 @@ export default function ToggleButtons() {
         ))}
       </Block>
 
-      <Block title="Disabled" sx={style}>
+      <Block title={tr("Disabled")} sx={style}>
         <ToggleButton value="check" disabled>
           <Iconify icon="eva:checkmark-fill" />
         </ToggleButton>

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Grid, Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../locales/translate';
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // sections
@@ -9,12 +10,13 @@ import { PaymentSummary, PaymentMethods, PaymentBillingAddress } from '../sectio
 // ----------------------------------------------------------------------
 
 export default function PaymentPage() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   return (
     <>
       <Helmet>
-        <title> Payment | Counselling Centre Management System</title>
+        <title> {tr("Payment | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Container
@@ -25,12 +27,10 @@ export default function PaymentPage() {
         }}
       >
         <Typography variant="h3" align="center" paragraph>
-          {`Let's finish powering you up!`}
+          {tr("Let's finish powering you up!")}
         </Typography>
 
-        <Typography align="center" sx={{ color: 'text.secondary', mb: 5 }}>
-          Professional plan is right for you.
-        </Typography>
+        <Typography align="center" sx={{ color: 'text.secondary', mb: 5 }}>{tr("Professional plan is right for you.")}</Typography>
 
         <Grid container spacing={isDesktop ? 3 : 5}>
           <Grid item xs={12} md={8}>

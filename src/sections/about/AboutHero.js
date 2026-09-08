@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Stack, Container, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // components
 import { MotionContainer, TextAnimate, varFade } from '../../components/animate';
 
@@ -31,12 +32,13 @@ const StyledContent = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function AboutHero() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <Container component={MotionContainer}>
         <StyledContent>
           <TextAnimate
-            text="Who"
+            text={tr("Who")}
             sx={{
               color: 'primary.main',
             }}
@@ -46,8 +48,8 @@ export default function AboutHero() {
           <br />
 
           <Stack spacing={2} display="inline-flex" direction="row" sx={{ color: 'common.white' }}>
-            <TextAnimate text="we" />
-            <TextAnimate text="are?" />
+            <TextAnimate text={tr("we")} />
+            <TextAnimate text={tr("are?")} />
           </Stack>
 
           <m.div variants={varFade().inRight}>
@@ -58,10 +60,7 @@ export default function AboutHero() {
                 color: 'common.white',
                 fontWeight: 'fontWeightMedium',
               }}
-            >
-              Let&apos;s work together and
-              <br /> make awesome site easily
-            </Typography>
+            >{tr("Let's work together and")}<br />{tr("make awesome site easily")}</Typography>
           </m.div>
         </StyledContent>
       </Container>

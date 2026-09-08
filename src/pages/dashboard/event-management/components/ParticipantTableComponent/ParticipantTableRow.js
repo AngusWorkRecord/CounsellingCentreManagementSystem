@@ -12,6 +12,7 @@ import {
   Typography,
   Link,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Label from '../../../../../components/label';
 import Iconify from '../../../../../components/iconify';
@@ -29,6 +30,7 @@ ParticipantTableRow.propTypes = {
 };
 
 export default function ParticipantTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRow }) {
+  useUiLanguage();
   const {
     ParticipantID,
     ParticipantName,
@@ -75,9 +77,9 @@ export default function ParticipantTableRow({ row, selected, onEditRow, onSelect
         <TableCell>
           <Stack spacing={0}>
             <Typography variant="subtitle1" noWrap>
-              {`${ParticipantName}`}
+              {tr("{{p0}}", { p0: ParticipantName })}
             </Typography>
-            {`(Prefer: ${PreferName})`}
+            {tr("(Prefer: {{p0}})", { p0: PreferName })}
           </Stack>
         </TableCell>
 
@@ -131,20 +133,16 @@ export default function ParticipantTableRow({ row, selected, onEditRow, onSelect
             handleClosePopover();
           }}
         >
-          <Iconify icon="carbon:send-alt-filled" />
-          Send Again
-        </MenuItem>
+          <Iconify icon="carbon:send-alt-filled" />{tr("Send Again")}</MenuItem>
       </MenuPopover>
 
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Resend Survey Questionnaire"
+        title={tr("Resend Survey Questionnaire")}
         content="Are you sure want to send again?"
         action={
-          <Button variant="contained" color="primary" onClick={onEditRow}>
-            Send Again
-          </Button>
+          <Button variant="contained" color="primary" onClick={onEditRow}>{tr("Send Again")}</Button>
         }
       />
     </>

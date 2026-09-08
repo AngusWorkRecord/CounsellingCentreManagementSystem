@@ -13,6 +13,7 @@ import {
   FormControl,
   FormControlLabel,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // _mock
@@ -26,13 +27,14 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 
 const imagesLightbox = [...Array(8)].map((_, index) => ({
   src: _mock.image.cover(index + 1),
-  title: 'Flamingo',
+  title: tr("Flamingo"),
   description: 'Vicko Mozara \n Veliki zali, Dubravica, Croatia',
 }));
 
 // ----------------------------------------------------------------------
 
 export default function DemoLightboxPage() {
+  useUiLanguage();
   const [state, setState] = useState({
     disabledZoom: false,
     disabledVideo: false,
@@ -64,7 +66,7 @@ export default function DemoLightboxPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Lightbox | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Lightbox | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -77,13 +79,13 @@ export default function DemoLightboxPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Lightbox"
+            heading={tr("Lightbox")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Lightbox' },
+              { name: tr("Lightbox") },
             ]}
             moreLink={['https://www.npmjs.com/package/yet-another-react-lightbox']}
           />
@@ -123,9 +125,7 @@ export default function DemoLightboxPage() {
               <Paper sx={{ p: 3, bgcolor: 'background.neutral', borderRadius: 2 }}>
                 <FormControl component="fieldset" variant="standard">
                   <Stack spacing={2}>
-                    <FormLabel component="legend" sx={{ typography: 'body2' }}>
-                      Controls
-                    </FormLabel>
+                    <FormLabel component="legend" sx={{ typography: 'body2' }}>{tr("Controls")}</FormLabel>
 
                     <FormControlLabel
                       control={
@@ -136,7 +136,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Zoom"
+                      label={tr("Disabled Zoom")}
                     />
 
                     <FormControlLabel
@@ -148,7 +148,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Total"
+                      label={tr("Disabled Total")}
                     />
 
                     <FormControlLabel
@@ -160,7 +160,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Video"
+                      label={tr("Disabled Video")}
                     />
 
                     <FormControlLabel
@@ -172,7 +172,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Captions"
+                      label={tr("Disabled Captions")}
                     />
 
                     <FormControlLabel
@@ -184,7 +184,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Slideshow"
+                      label={tr("Disabled Slideshow")}
                     />
 
                     <FormControlLabel
@@ -196,7 +196,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Thumbnails"
+                      label={tr("Disabled Thumbnails")}
                     />
 
                     <FormControlLabel
@@ -208,7 +208,7 @@ export default function DemoLightboxPage() {
                           onChange={handleChange}
                         />
                       }
-                      label="Disabled Fullscreen"
+                      label={tr("Disabled Fullscreen")}
                     />
                   </Stack>
                 </FormControl>

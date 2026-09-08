@@ -16,6 +16,7 @@ import {
   IconButton,
   TableContainer,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // _mock_
@@ -57,17 +58,18 @@ const ROLE_OPTIONS = [
 ];
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', align: 'left' },
-  { id: 'company', label: 'Company', align: 'left' },
-  { id: 'role', label: 'Role', align: 'left' },
-  { id: 'isVerified', label: 'Verified', align: 'center' },
-  { id: 'status', label: 'Status', align: 'left' },
+  { id: 'name', get label() { return tr("Name"); }, align: 'left' },
+  { id: 'company', get label() { return tr("Company"); }, align: 'left' },
+  { id: 'role', get label() { return tr("Role"); }, align: 'left' },
+  { id: 'isVerified', get label() { return tr("Verified"); }, align: 'center' },
+  { id: 'status', get label() { return tr("Status"); }, align: 'left' },
   { id: '' },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function UserListPage() {
+  useUiLanguage();
   const {
     dense,
     page,
@@ -185,16 +187,16 @@ export default function UserListPage() {
   return (
     <>
       <Helmet>
-        <title> User: List | Counselling Centre Management System</title>
+        <title> {tr("User: List | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <CustomBreadcrumbs
-          heading="User List"
+          heading={tr("User List")}
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'List' },
+            { name: tr("Dashboard"), href: PATH_DASHBOARD.root },
+            { name: tr("User"), href: PATH_DASHBOARD.user.root },
+            { name: tr("List") },
           ]}
           action={
             <Button
@@ -202,9 +204,7 @@ export default function UserListPage() {
               to={PATH_DASHBOARD.user.new}
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
-            >
-              New User
-            </Button>
+            >{tr("New User")}</Button>
           }
         />
 
@@ -246,7 +246,7 @@ export default function UserListPage() {
                 )
               }
               action={
-                <Tooltip title="Delete">
+                <Tooltip title={tr("Delete")}>
                   <IconButton color="primary" onClick={handleOpenConfirm}>
                     <Iconify icon="eva:trash-2-outline" />
                   </IconButton>
@@ -312,11 +312,9 @@ export default function UserListPage() {
       <ConfirmDialog
         open={openConfirm}
         onClose={handleCloseConfirm}
-        title="Delete"
+        title={tr("Delete")}
         content={
-          <>
-            Are you sure want to delete <strong> {selected.length} </strong> items?
-          </>
+          <>{tr("Are you sure want to delete")}<strong> {selected.length} </strong>{tr("items?")}</>
         }
         action={
           <Button
@@ -326,9 +324,7 @@ export default function UserListPage() {
               handleDeleteRows(selected);
               handleCloseConfirm();
             }}
-          >
-            Delete
-          </Button>
+          >{tr("Delete")}</Button>
         }
       />
     </>

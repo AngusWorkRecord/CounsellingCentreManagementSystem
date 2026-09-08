@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { memo } from 'react';
 // @mui
 import { Typography } from '@mui/material';
+import { tr } from '../../../../../locales/translate';
 // components
 import { StyledControlPanel } from '../../../../../components/map';
 
@@ -28,7 +29,7 @@ function ControlPanel({ events = {} }) {
         return (
           <div key={event}>
             <Typography variant="subtitle2" sx={{ color: 'common.white' }}>
-              {event}:
+              {tr(event)}:
             </Typography>
 
             {lngLat ? (

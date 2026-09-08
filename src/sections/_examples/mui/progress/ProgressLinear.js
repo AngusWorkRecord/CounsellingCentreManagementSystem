@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 // @mui
 import { Paper, LinearProgress } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 //
 import { Label } from '../../Block';
 
@@ -27,10 +28,11 @@ ProgressLinear.propTypes = {
 };
 
 export default function ProgressLinear({ progress, buffer }) {
+  useUiLanguage();
   return (
     <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
       <div>
-        <Label title="Linears Indeterminate" />
+        <Label title={tr("Linears Indeterminate")} />
         <Paper variant="outlined" sx={style}>
           {COLORS.map((color) => (
             <LinearProgress key={color} color={color} sx={{ mb: 2, width: 1 }} />
@@ -39,7 +41,7 @@ export default function ProgressLinear({ progress, buffer }) {
       </div>
 
       <div>
-        <Label title="Linears Determinate" />
+        <Label title={tr("Linears Determinate")} />
         <Paper variant="outlined" sx={style}>
           {COLORS.map((color) => (
             <LinearProgress
@@ -54,7 +56,7 @@ export default function ProgressLinear({ progress, buffer }) {
       </div>
 
       <div>
-        <Label title="Linears Buffer" />
+        <Label title={tr("Linears Buffer")} />
         <Paper variant="outlined" sx={style}>
           {COLORS.map((color) => (
             <LinearProgress
@@ -70,7 +72,7 @@ export default function ProgressLinear({ progress, buffer }) {
       </div>
 
       <div>
-        <Label title="Linears Query" />
+        <Label title={tr("Linears Query")} />
         <Paper variant="outlined" sx={style}>
           {COLORS.map((color) => (
             <LinearProgress

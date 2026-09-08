@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 // components
 import { Box, Card, Stack, Typography, TextField, Grid, Button, Tooltip, Checkbox, FormControlLabel, Paper, CardContent, CardHeader, Switch } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../locales/translate';
 import { UploadAvatar, Upload, UploadBox } from '../../../../components/upload';
 
 import Editor from '../../../../components/editor';
@@ -23,6 +24,7 @@ DescriptionForm.propTypes = {
 }
 
 export default function DescriptionForm({ formData, isEdit, handlePrevStep, handleNextStep }) {
+  useUiLanguage();
     const [description, setDescription] = useState('');
     const [files, setFiles] = useState([]);
 
@@ -101,12 +103,10 @@ export default function DescriptionForm({ formData, isEdit, handlePrevStep, hand
         <Box sx={{ p: 2, }} >
             <FormProvider methods={methods} onSubmit={handleSubmit(onNext)} >
                 <Card sx={{ mb: 2, boxShadow: 'none' }} elevation={0}>
-                    <CardHeader title="Event Contents & Description" />
+                    <CardHeader title={tr("Event Contents & Description")} />
                     <CardContent>
                         <Paper elevation={0}>
-                            <Typography variant="subtitle1" sx={{ color: 'text.secondary', p: 1 }}>
-                                Description
-                            </Typography>
+                            <Typography variant="subtitle1" sx={{ color: 'text.secondary', p: 1 }}>{tr("Description")}</Typography>
                             <Editor
                                 id="full-editor"
                                 value={description}
@@ -117,7 +117,7 @@ export default function DescriptionForm({ formData, isEdit, handlePrevStep, hand
                 </Card>
 
                 <Card elevation={0} sx={{ boxShadow: 'none' }}>
-                    <CardHeader title="Upload Brochures" />
+                    <CardHeader title={tr("Upload Brochures")} />
                     <CardContent>
                         <Upload
                             multiple
@@ -136,16 +136,12 @@ export default function DescriptionForm({ formData, isEdit, handlePrevStep, hand
                         <Button
                             onClick={onPrev}
                             sx={{ mt: 1, mr: 1 }}
-                        >
-                            Back
-                        </Button>
+                        >{tr("Back")}</Button>
                         <Button
                             type="submit"
                             variant="contained"
                             sx={{ mt: 1, mr: 1 }}
-                        >
-                            Next
-                        </Button>
+                        >{tr("Next")}</Button>
                     </div>
                 </Stack>
             </FormProvider>

@@ -12,6 +12,7 @@ import {
   TimelineConnector,
   TimelineOppositeContent,
 } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -25,14 +26,14 @@ import { Block } from '../../../sections/_examples/Block';
 const TIMELINES = [
   {
     key: 1,
-    title: 'Default',
+    get title() { return tr("Default"); },
     des: 'Morbi mattis ullamcorper',
     time: '09:30 am',
     icon: <Iconify icon="eva:folder-add-fill" width={24} />,
   },
   {
     key: 2,
-    title: 'Primary',
+    get title() { return tr("Primary"); },
     des: 'Morbi mattis ullamcorper',
     time: '10:00 am',
     color: 'primary',
@@ -40,7 +41,7 @@ const TIMELINES = [
   },
   {
     key: 3,
-    title: 'Secondary',
+    get title() { return tr("Secondary"); },
     des: 'Morbi mattis ullamcorper',
     time: '10:00 am',
     color: 'secondary',
@@ -48,7 +49,7 @@ const TIMELINES = [
   },
   {
     key: 4,
-    title: 'Info',
+    get title() { return tr("Info"); },
     des: 'Morbi mattis ullamcorper',
     time: '10:30 am',
     color: 'info',
@@ -56,7 +57,7 @@ const TIMELINES = [
   },
   {
     key: 5,
-    title: 'Success',
+    get title() { return tr("Success"); },
     des: 'Morbi mattis ullamcorper',
     time: '11:00 am',
     color: 'success',
@@ -64,7 +65,7 @@ const TIMELINES = [
   },
   {
     key: 6,
-    title: 'Warning',
+    get title() { return tr("Warning"); },
     des: 'Morbi mattis ullamcorper',
     time: '11:30 am',
     color: 'warning',
@@ -72,7 +73,7 @@ const TIMELINES = [
   },
   {
     key: 7,
-    title: 'Error',
+    get title() { return tr("Error"); },
     des: 'Morbi mattis ullamcorper',
     time: '12:00 am',
     color: 'error',
@@ -83,6 +84,7 @@ const TIMELINES = [
 // ----------------------------------------------------------------------
 
 export default function MUITimelinePage() {
+  useUiLanguage();
   const lastItem = TIMELINES[TIMELINES.length - 1].key;
 
   const reduceTimeLine = TIMELINES.slice(TIMELINES.length - 3);
@@ -90,7 +92,7 @@ export default function MUITimelinePage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Timeline | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Timeline | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -102,13 +104,13 @@ export default function MUITimelinePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Timeline"
+            heading={tr("Timeline")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Timeline' },
+              { name: tr("Timeline") },
             ]}
             moreLink={['https://mui.com/components/timeline']}
           />
@@ -117,7 +119,7 @@ export default function MUITimelinePage() {
 
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 3 }} spacing={3}>
-          <Block title="Default">
+          <Block title={tr("Default")}>
             <Timeline>
               {reduceTimeLine.map((item) => (
                 <TimelineItem key={item.key}>
@@ -131,7 +133,7 @@ export default function MUITimelinePage() {
             </Timeline>
           </Block>
 
-          <Block title="Right">
+          <Block title={tr("Right")}>
             <Timeline position="right">
               {reduceTimeLine.map((item) => (
                 <TimelineItem key={item.key}>
@@ -145,7 +147,7 @@ export default function MUITimelinePage() {
             </Timeline>
           </Block>
 
-          <Block title="Alternating">
+          <Block title={tr("Alternating")}>
             <Timeline position="alternate">
               {reduceTimeLine.map((item) => (
                 <TimelineItem key={item.key}>
@@ -159,7 +161,7 @@ export default function MUITimelinePage() {
             </Timeline>
           </Block>
 
-          <Block title="Filled">
+          <Block title={tr("Filled")}>
             <Timeline position="alternate">
               {TIMELINES.map((item) => (
                 <TimelineItem key={item.key}>
@@ -173,7 +175,7 @@ export default function MUITimelinePage() {
             </Timeline>
           </Block>
 
-          <Block title="Outlined">
+          <Block title={tr("Outlined")}>
             <Timeline position="alternate">
               {TIMELINES.map((item) => (
                 <TimelineItem key={item.key}>
@@ -187,7 +189,7 @@ export default function MUITimelinePage() {
             </Timeline>
           </Block>
 
-          <Block title="Opposite content">
+          <Block title={tr("Opposite content")}>
             <Timeline position="alternate">
               {TIMELINES.map((item) => (
                 <TimelineItem key={item.key}>
@@ -207,7 +209,7 @@ export default function MUITimelinePage() {
           </Block>
         </Masonry>
 
-        <Block title="Customized">
+        <Block title={tr("Customized")}>
           <Timeline position="alternate">
             {TIMELINES.map((item) => (
               <TimelineItem key={item.key}>

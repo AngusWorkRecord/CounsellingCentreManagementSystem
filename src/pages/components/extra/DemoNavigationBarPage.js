@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Stack, AppBar, Toolbar, Typography } from '@mui/material';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // config
@@ -17,10 +18,11 @@ import CustomBreadcrumbs from '../../../components/custom-breadcrumbs';
 // ----------------------------------------------------------------------
 
 export default function DemoNavigationBarPage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> Extra Components: Navigation Bar | Counselling Centre Management System</title>
+        <title> {tr("Extra Components: Navigation Bar | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -32,13 +34,13 @@ export default function DemoNavigationBarPage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Navigation Bar"
+            heading={tr("Navigation Bar")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Navigation Bar' },
+              { name: tr("Navigation Bar") },
             ]}
           />
         </Container>
@@ -46,7 +48,7 @@ export default function DemoNavigationBarPage() {
 
       <Container sx={{ my: 10 }}>
         <Stack spacing={2} sx={{ mb: 10 }}>
-          <Typography variant="h6"> Nav Horizontal </Typography>
+          <Typography variant="h6"> {tr("Nav Horizontal")} </Typography>
           <AppBar
             position="static"
             component="nav"
@@ -64,7 +66,7 @@ export default function DemoNavigationBarPage() {
 
         <Stack direction="row" spacing={5}>
           <Stack spacing={2} sx={{ width: NAV.W_BASE }}>
-            <Typography variant="h6"> Nav Vertical </Typography>
+            <Typography variant="h6"> {tr("Nav Vertical")} </Typography>
 
             <NavSectionVertical
               data={NAV_ITEMS}
@@ -78,7 +80,7 @@ export default function DemoNavigationBarPage() {
           </Stack>
 
           <Stack spacing={2} sx={{ width: NAV.W_DASHBOARD_MINI }}>
-            <Typography variant="h6"> Nav Mini </Typography>
+            <Typography variant="h6"> {tr("Nav Mini")} </Typography>
 
             <NavSectionMini
               data={NAV_ITEMS}
@@ -100,82 +102,82 @@ export default function DemoNavigationBarPage() {
 
 const NAV_ITEMS = [
   {
-    subheader: 'Marketing',
+    get subheader() { return tr("Marketing"); },
     items: [
       {
-        title: 'Landing',
+        get title() { return tr("Landing"); },
         path: '#',
         icon: <Iconify icon="carbon:bat" />,
       },
       {
-        title: 'Services',
+        get title() { return tr("Services"); },
         path: '#',
         icon: <Iconify icon="carbon:cyclist" />,
       },
       {
-        title: 'Case Studies',
+        get title() { return tr("Case Studies"); },
         path: '#',
         icon: <Iconify icon="carbon:3d-cursor-alt" />,
         children: [
-          { title: 'Case Studies', path: '#' },
-          { title: 'Case Study', path: '#' },
+          { get title() { return tr("Case Studies"); }, path: '#' },
+          { get title() { return tr("Case Study"); }, path: '#' },
         ],
       },
       {
-        title: 'Blog',
+        get title() { return tr("Blog"); },
         path: '#',
         icon: <Iconify icon="carbon:3d-mpr-toggle" />,
         children: [
-          { title: 'Blog Posts', path: '#' },
-          { title: 'Blog Post', path: '#' },
+          { get title() { return tr("Blog Posts"); }, path: '#' },
+          { get title() { return tr("Blog Post"); }, path: '#' },
         ],
       },
       {
-        title: 'About',
+        get title() { return tr("About"); },
         path: '#',
         icon: <Iconify icon="carbon:airport-01" />,
       },
       {
-        title: 'Contact',
+        get title() { return tr("Contact"); },
         path: '#',
         icon: <Iconify icon="carbon:battery-full" />,
       },
       {
-        title: 'Tours',
+        get title() { return tr("Tours"); },
         path: '#',
         icon: <Iconify icon="carbon:basketball" />,
         children: [
-          { title: 'Tours', path: '#' },
-          { title: 'Tour', path: '#' },
+          { get title() { return tr("Tours"); }, path: '#' },
+          { get title() { return tr("Tour"); }, path: '#' },
         ],
       },
       {
-        title: 'Checkout',
+        get title() { return tr("Checkout"); },
         path: '#',
         icon: <Iconify icon="carbon:area" />,
         children: [
-          { title: 'Checkout', path: '#' },
-          { title: 'Checkout Complete', path: '#' },
+          { get title() { return tr("Checkout"); }, path: '#' },
+          { get title() { return tr("Checkout Complete"); }, path: '#' },
         ],
       },
     ],
   },
   {
-    subheader: 'Travel',
+    get subheader() { return tr("Travel"); },
     items: [
       {
-        title: 'Level 1',
+        get title() { return tr("Level 1"); },
         path: '#',
         icon: <Iconify icon="carbon:play" />,
         children: [
-          { title: 'Level 2.1', path: '#' },
-          { title: 'Level 2.2', path: '#' },
+          { get title() { return tr("Level 2.1"); }, path: '#' },
+          { get title() { return tr("Level 2.2"); }, path: '#' },
           {
-            title: 'Level 2.3',
+            get title() { return tr("Level 2.3"); },
             path: '#',
             children: [
-              { title: 'Level 3.1', path: '#' },
-              { title: 'Level 3.2', path: '#' },
+              { get title() { return tr("Level 3.1"); }, path: '#' },
+              { get title() { return tr("Level 3.2"); }, path: '#' },
             ],
           },
         ],

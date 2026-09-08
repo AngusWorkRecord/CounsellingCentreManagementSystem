@@ -31,6 +31,7 @@ import {
   FormControlLabel,
   ToggleButtonGroup,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
@@ -102,6 +103,7 @@ const StyledRow = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeHugePackElements() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -130,21 +132,17 @@ export default function HomeHugePackElements() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   const isDesktop = useResponsive('up', 'md');
 
   return (
     <StyledDescription>
       <m.div variants={varFade().inUp}>
-        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          Interface Starter Kit
-        </Typography>
+        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>{tr("Interface Starter Kit")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
-        <Typography variant="h2" sx={{ my: 3 }}>
-          Huge pack <br />
-          of elements
-        </Typography>
+        <Typography variant="h2" sx={{ my: 3 }}>{tr("Huge pack")}<br />{tr("of elements")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
@@ -153,10 +151,7 @@ function Description() {
             mb: 5,
             color: 'text.secondary',
           }}
-        >
-          We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just
-          dive in!
-        </Typography>
+        >{tr("We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just dive in!")}</Typography>
       </m.div>
 
       {isDesktop && ViewAllButton}
@@ -167,6 +162,7 @@ function Description() {
 // ----------------------------------------------------------------------
 
 function Content() {
+  useUiLanguage();
   const isMd = useResponsive('up', 'md');
 
   const isLg = useResponsive('up', 'lg');
@@ -196,15 +192,11 @@ function Content() {
       {/* Row 1 */}
       <StyledRow>
         <m.div variants={varFade().in}>
-          <Button variant="contained" startIcon={<Iconify icon="ic:round-add-shopping-cart" />}>
-            Add To Cart
-          </Button>
+          <Button variant="contained" startIcon={<Iconify icon="ic:round-add-shopping-cart" />}>{tr("Add To Cart")}</Button>
         </m.div>
 
         <m.div variants={varFade().in}>
-          <Button variant="soft" startIcon={<Iconify icon="eva:cloud-upload-fill" />}>
-            Upload
-          </Button>
+          <Button variant="soft" startIcon={<Iconify icon="eva:cloud-upload-fill" />}>{tr("Upload")}</Button>
         </m.div>
 
         <m.div variants={varFade().in}>
@@ -250,10 +242,10 @@ function Content() {
                 setAlignment(newAlignment);
               }
             }}
-            aria-label="text alignment"
+            aria-label={tr("text alignment")}
           >
             {['left', 'center', 'right'].map((align) => (
-              <ToggleButton key={align} value={align} aria-label={`${align} aligned`}>
+              <ToggleButton key={align} value={align} aria-label={tr("{{p0}} aligned", { p0: align })}>
                 <Iconify icon={`carbon:align-horizontal-${align}`} />
               </ToggleButton>
             ))}
@@ -265,7 +257,7 @@ function Content() {
             color="warning"
             onDelete={() => {}}
             avatar={<CustomAvatar src={_mock.image.avatar(2)} />}
-            label="Chip"
+            label={tr("Chip")}
           />
         </m.div>
       </StyledRow>
@@ -299,9 +291,7 @@ function Content() {
         </m.div>
 
         <m.div variants={varFade().in}>
-          <Label variant="filled" color="error" startIcon={<Iconify icon="eva:email-fill" />}>
-            Label
-          </Label>
+          <Label variant="filled" color="error" startIcon={<Iconify icon="eva:email-fill" />}>{tr("Label")}</Label>
         </m.div>
       </StyledRow>
 
@@ -324,8 +314,7 @@ function Content() {
 
         <m.div variants={varFade().in}>
           <Alert severity="success" onClose={() => {}}>
-            <AlertTitle>Success</AlertTitle>
-            This is a success alert — <strong>check it out!</strong>
+            <AlertTitle>{tr("Success")}</AlertTitle>{tr("This is a success alert —")}<strong>{tr("check it out!")}</strong>
           </Alert>
         </m.div>
       </StyledRow>
@@ -343,16 +332,13 @@ function Content() {
               variant="contained"
               onClick={handleOpenPopover}
               startIcon={<Iconify icon="eva:menu-fill" />}
-            >
-              Menu
-            </Button>
+            >{tr("Menu")}</Button>
           </m.div>
 
           <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 160 }}>
             <Scrollbar sx={{ maxHeight: 160 }}>
               {[...Array(8)].map((_, index) => (
-                <MenuItem key={index} onClick={handleClosePopover}>
-                  Item {index + 1}
+                <MenuItem key={index} onClick={handleClosePopover}>{tr("Item")}{index + 1}
                 </MenuItem>
               ))}
             </Scrollbar>
@@ -364,24 +350,24 @@ function Content() {
       {isMd && (
         <StyledRow>
           <m.div variants={varFade().in}>
-            <FormControlLabel control={<Switch defaultChecked />} label="Label" />
+            <FormControlLabel control={<Switch defaultChecked />} label={tr("Label")} />
           </m.div>
 
           <m.div variants={varFade().in}>
             <FormControlLabel
               control={<Radio color="error" defaultChecked />}
-              label="Radio Button"
+              label={tr("Radio Button")}
             />
           </m.div>
 
           <m.div variants={varFade().in}>
-            <FormControlLabel control={<Checkbox color="info" defaultChecked />} label="Checkbox" />
+            <FormControlLabel control={<Checkbox color="info" defaultChecked />} label={tr("Checkbox")} />
           </m.div>
 
           <m.div variants={varFade().in}>
             <FormControlLabel
               control={<Checkbox color="warning" indeterminate />}
-              label="Checkbox"
+              label={tr("Checkbox")}
             />
           </m.div>
         </StyledRow>
@@ -394,14 +380,14 @@ function Content() {
 
           <Stack spacing={3} sx={{ width: 1 }}>
             <m.div variants={varFade().in}>
-              <TextField fullWidth label="Text Field" value="Value" />
+              <TextField fullWidth label={tr("Text Field")} value="Value" />
             </m.div>
 
             <m.div variants={varFade().in}>
               <TextField
                 select
                 fullWidth
-                label="Select"
+                label={tr("Select")}
                 value={select}
                 onChange={(event) => {
                   setSelect(event.target.value);
@@ -418,14 +404,14 @@ function Content() {
                       textTransform: 'capitalize',
                     }}
                   >
-                    {option}
+                    {tr(option)}
                   </MenuItem>
                 ))}
               </TextField>
             </m.div>
 
             <m.div variants={varFade().in}>
-              <TextField fullWidth multiline rows={3} label="Textarea" />
+              <TextField fullWidth multiline rows={3} label={tr("Textarea")} />
             </m.div>
           </Stack>
         </StyledRow>
@@ -446,9 +432,7 @@ const ViewAllButton = (
       rel="noopener"
       href={PATH_PAGE.components}
       endIcon={<Iconify icon="ic:round-arrow-right-alt" />}
-    >
-      View All Components
-    </Button>
+    >{tr("View All Components")}</Button>
   </m.div>
 );
 
@@ -464,7 +448,7 @@ const cardPost = (
   >
     <CardHeader
       title="Jayvion Simon"
-      subheader="California, United States"
+      subheader={tr("California, United States")}
       avatar={
         <CustomAvatar
           src={_mock.image.avatar(0)}
@@ -478,11 +462,9 @@ const cardPost = (
       subheaderTypographyProps={{ typography: 'caption' }}
       sx={{ p: 2 }}
     />
-    <Image alt="cover" src={_mock.image.cover(12)} ratio="16/9" />
+    <Image alt={tr("cover")} src={_mock.image.cover(12)} ratio="16/9" />
 
-    <Typography variant="body2" sx={{ color: 'text.secondary', pt: 2, px: 2 }}>
-      Phasellus dolor. Fusce egestas elit eget lorem. Quisque id odio.
-    </Typography>
+    <Typography variant="body2" sx={{ color: 'text.secondary', pt: 2, px: 2 }}>{tr("Phasellus dolor. Fusce egestas elit eget lorem. Quisque id odio.")}</Typography>
 
     <Stack direction="row" sx={{ px: 2, py: 1 }}>
       <Checkbox

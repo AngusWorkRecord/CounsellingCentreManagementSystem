@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Box, Container, Typography, Badge } from '@mui/material';
 import { Masonry } from '@mui/lab';
+import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // components
@@ -13,10 +14,11 @@ import { Block } from '../../../sections/_examples/Block';
 // ----------------------------------------------------------------------
 
 export default function MUIBadgePage() {
+  useUiLanguage();
   return (
     <>
       <Helmet>
-        <title> MUI Components: Badge | Counselling Centre Management System</title>
+        <title> {tr("MUI Components: Badge | Counselling Centre Management System")}</title>
       </Helmet>
 
       <Box
@@ -28,13 +30,13 @@ export default function MUIBadgePage() {
       >
         <Container>
           <CustomBreadcrumbs
-            heading="Badge"
+            heading={tr("Badge")}
             links={[
               {
-                name: 'Components',
+                name: tr("Components"),
                 href: PATH_PAGE.components,
               },
-              { name: 'Badge' },
+              { name: tr("Badge") },
             ]}
             moreLink={['https://mui.com/components/badges']}
           />
@@ -44,7 +46,7 @@ export default function MUIBadgePage() {
       <Container sx={{ my: 10 }}>
         <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
           <Block
-            title="Basic"
+            title={tr("Basic")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -82,7 +84,7 @@ export default function MUIBadgePage() {
           </Block>
 
           <Block
-            title="Maximum value"
+            title={tr("Maximum value")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -109,7 +111,7 @@ export default function MUIBadgePage() {
           </Block>
 
           <Block
-            title="Dot badge"
+            title={tr("Dot badge")}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -122,12 +124,12 @@ export default function MUIBadgePage() {
             </Badge>
 
             <Badge color="info" variant="dot">
-              <Typography>Typography</Typography>
+              <Typography>{tr("Typography")}</Typography>
             </Badge>
           </Block>
 
           <Block
-            title="Badge overlap"
+            title={tr("Badge overlap")}
             sx={{
               display: 'flex',
               alignItems: 'center',

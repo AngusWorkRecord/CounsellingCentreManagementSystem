@@ -3,6 +3,7 @@ import { m } from 'framer-motion';
 // @mui
 import { styled, useTheme, alpha } from '@mui/material/styles';
 import { Box, Grid, Container, Typography, Button } from '@mui/material';
+import { tr, useUiLanguage } from '../../locales/translate';
 // utils
 import { filterStyles, textGradient, bgGradient } from '../../utils/cssStyles';
 // routes
@@ -71,6 +72,7 @@ const StyledContent = styled(m.img)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeForDesigner() {
+  useUiLanguage();
   return (
     <StyledRoot>
       <StyledWrap>
@@ -97,14 +99,13 @@ export default function HomeForDesigner() {
 // ----------------------------------------------------------------------
 
 function Description() {
+  useUiLanguage();
   const theme = useTheme();
 
   return (
     <StyledDescription>
       <m.div variants={varFade().inUp}>
-        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>
-          Professional Kit
-        </Typography>
+        <Typography component="div" variant="overline" sx={{ color: 'text.disabled' }}>{tr("Professional Kit")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
@@ -117,9 +118,7 @@ function Description() {
               `300deg, ${theme.palette.primary.main} 0%, ${theme.palette.warning.main} 100%`
             ),
           }}
-        >
-          For Designer
-        </Typography>
+        >{tr("For Designer")}</Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
@@ -138,9 +137,7 @@ function Description() {
               bgcolor: 'text.primary',
             },
           }}
-        >
-          Go to Figma Workspace
-        </Button>
+        >{tr("Go to Figma Workspace")}</Button>
       </m.div>
     </StyledDescription>
   );
@@ -153,6 +150,7 @@ TriangleShape.propTypes = {
 };
 
 function TriangleShape({ anchor = 'top', ...other }) {
+  useUiLanguage();
   const theme = useTheme();
 
   const isLight = theme.palette.mode === 'light';

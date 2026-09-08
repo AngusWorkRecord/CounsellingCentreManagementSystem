@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { TextField } from '@mui/material';
+import { uiMessage } from '../../locales/uiMessage';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +25,7 @@ export default function RHFTextField({ name, helperText, ...other }) {
           fullWidth
           value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
           error={!!error}
-          helperText={error ? error?.message : helperText}
+          helperText={error ? uiMessage(error?.message) : helperText}
           {...other}
         />
       )}

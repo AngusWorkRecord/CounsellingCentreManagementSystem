@@ -10,6 +10,7 @@ import {
   IconButton,
   TableContainer,
 } from '@mui/material';
+import { tr, useUiLanguage } from '../../../../../locales/translate';
 // components
 import Iconify from '../../../../../components/iconify';
 import Scrollbar from '../../../../../components/scrollbar';
@@ -47,16 +48,17 @@ const TABLE_DATA = [
 ];
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Dessert (100g serving)', align: 'left' },
-  { id: 'calories', label: 'Calories', align: 'center' },
-  { id: 'fat', label: 'Fat (g)', align: 'center' },
-  { id: 'carbs', label: 'Carbs (g)', align: 'center' },
-  { id: 'protein', label: 'Protein (g)', align: 'center' },
+  { id: 'name', get label() { return tr("Dessert (100g serving)"); }, align: 'left' },
+  { id: 'calories', get label() { return tr("Calories"); }, align: 'center' },
+  { id: 'fat', get label() { return tr("Fat (g)"); }, align: 'center' },
+  { id: 'carbs', get label() { return tr("Carbs (g)"); }, align: 'center' },
+  { id: 'protein', get label() { return tr("Protein (g)"); }, align: 'center' },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function SortingSelecting() {
+  useUiLanguage();
   const {
     dense,
     page,
@@ -105,7 +107,7 @@ export default function SortingSelecting() {
             )
           }
           action={
-            <Tooltip title="Delete">
+            <Tooltip title={tr("Delete")}>
               <IconButton color="primary">
                 <Iconify icon="eva:trash-2-outline" />
               </IconButton>
