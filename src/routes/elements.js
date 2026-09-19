@@ -14,6 +14,7 @@ const Loadable = (Component) => (props) =>
 // ----------------------------------------------------------------------
 
 // AUTH
+export const LoveDesignPage = Loadable(lazy(() => import('../pages/LoveDesignPage')));
 export const LoginPage = Loadable(lazy(() => import('../pages/auth/LoginPage')));
 export const RegisterPage = Loadable(lazy(() => import('../pages/auth/RegisterPage')));
 export const VerifyCodePage = Loadable(lazy(() => import('../pages/auth/VerifyCodePage')));

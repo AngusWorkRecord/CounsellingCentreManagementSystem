@@ -8,6 +8,8 @@ const labels = {
   '职业生涯': 'Career', '学业': 'Education', '身体健康': 'Physical Health', '其他': 'Other', '咨询': 'Consultation',
 };
 const systemValues = new Set([
+  '人生价值', '特质能力', '生活方式', '沟通互动', '外在条件', '身体激情',
+  '支持肯定', '精心时刻', '身体接触', '行动付出', '真心赠礼', '自我', '伴侣',
   ...Object.values(labels), 'All', 'Uncategorised', 'Intake Incomplete', 'Brief Report Pending',
   'Detailed Report Pending', 'Completed', 'First Reminder', 'Second Reminder', 'Final Reminder',
   'routine', 'medium', 'high', 'immediate_human_review', 'unknown',

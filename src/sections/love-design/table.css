@@ -1,0 +1,435 @@
+.love-table {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--ldt-bg);
+  color: var(--ldt-text);
+  position: relative;
+}
+.love-table * {
+  box-sizing: border-box;
+}
+.ldt-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 30px 12px;
+}
+.ldt-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ldt-brand > span {
+  color: var(--ldt-primary);
+  font-size: 36px;
+  line-height: 1;
+}
+.ldt-brand h1 {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.ldt-brand small {
+  display: block;
+  color: var(--ldt-muted);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+}
+.ldt-toolbar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 30px 18px;
+  flex-wrap: wrap;
+}
+.ldt-filters {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ldt-filters .MuiToggleButtonGroup-grouped {
+  border: 1px solid var(--ldt-border) !important;
+  border-radius: 10px !important;
+  margin: 0 !important;
+  padding: 9px 14px;
+  gap: 12px;
+  color: var(--ldt-muted);
+  text-transform: none;
+  font-size: 12px;
+}
+.ldt-filters .MuiToggleButton-root.Mui-selected {
+  background: var(--ldt-tint);
+  color: var(--ldt-primary-text);
+  border-color: var(--ldt-primary) !important;
+}
+.ldt-filter-count {
+  font-size: 10px;
+  opacity: 0.8;
+}
+.ldt-table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ldt-table-actions > .MuiButton-root {
+  font-size: 12px;
+  color: var(--ldt-muted);
+  padding: 9px 14px;
+}
+.ldt-surface {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0 18px 18px;
+  isolation: isolate;
+  border: 1px solid var(--ldt-border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--ldt-table);
+}
+.ldt-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  z-index: 0;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ldt-muted) var(--ldt-table);
+  touch-action: none;
+}
+.ldt-viewport:focus-visible {
+  outline: 3px solid var(--ldt-primary);
+  outline-offset: -3px;
+}
+.ldt-workspace {
+  position: relative;
+  cursor: grab;
+  background: radial-gradient(circle at 1px 1px, var(--ldt-dot) 1px, transparent 0) 0 0/9px 9px,
+    radial-gradient(ellipse at 35% 20%, var(--ldt-paper) 0, transparent 65%);
+}
+.ldt-panning .ldt-workspace {
+  cursor: grabbing;
+}
+.ldt-pile-dock {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 1;
+}
+.ldt-pile {
+  position: relative;
+  width: 150px;
+  height: 207px;
+  padding: 18px;
+  border: 1px solid var(--ldt-primary);
+  border-radius: 14px;
+  color: var(--ldt-primary-text);
+  background: var(--ldt-tint);
+  box-shadow: 3px 4px 0 var(--ldt-paper), 4px 5px 0 var(--ldt-border), 7px 8px 0 var(--ldt-paper),
+    8px 9px 0 var(--ldt-border), 10px 18px 22px var(--ldt-shadow);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font: inherit;
+  transition: box-shadow 0.15s, transform 0.15s;
+  animation: ldt-deal 0.2s ease-out;
+}
+.ldt-pile::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--ldt-border);
+  border-radius: 9px;
+  pointer-events: none;
+}
+.ldt-pile:enabled:hover {
+  transform: translateY(-2px);
+}
+.ldt-pile:disabled {
+  background: var(--ldt-table);
+  border-color: var(--ldt-border);
+  color: var(--ldt-muted);
+  cursor: default;
+  box-shadow: 2px 3px 0 var(--ldt-border);
+}
+.ldt-pile:focus-visible,
+.ldt-card-face:focus-visible {
+  outline: 3px solid var(--ldt-primary);
+  outline-offset: 4px;
+}
+.ldt-pile-type {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.45;
+}
+.ldt-pile-symbol {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.ldt-pile-count {
+  font-size: 12px;
+}
+.ldt-card {
+  position: absolute;
+  width: 220px;
+  height: 320px;
+  padding: 16px 16px 8px;
+  background: var(--ldt-paper);
+  border: 1px solid var(--ldt-border);
+  border-top: 6px solid var(--category);
+  border-radius: 15px;
+  box-shadow: 0 2px 3px var(--ldt-shadow), 0 6px 16px var(--ldt-shadow);
+  display: flex;
+  flex-direction: column;
+  transform: rotate(var(--card-rotation));
+  transform-origin: center;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: box-shadow 0.15s;
+}
+.ldt-card.ldt-dragging {
+  cursor: grabbing;
+  box-shadow: 0 16px 35px var(--ldt-shadow);
+}
+.ldt-card-face {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: inherit;
+  touch-action: none;
+  text-align: start;
+}
+.ldt-card-category {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ldt-muted);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  line-height: 1.45;
+}
+.ldt-card-category i {
+  width: 8px;
+  height: 8px;
+  background: var(--category);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--ldt-border);
+}
+.ldt-card-text {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center;
+}
+.ldt-card-text > span {
+  font-size: 19px;
+  line-height: 1.6;
+  font-weight: 500;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.ldt-card-text.ldt-long-text > span {
+  font-size: 14px;
+  line-height: 1.55;
+}
+.ldt-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border-top: 1px solid var(--ldt-border);
+  min-height: 45px;
+  color: var(--ldt-muted);
+  font-size: 9px;
+  line-height: 1.35;
+}
+.ldt-card-footer .MuiIconButton-root {
+  padding: 8px;
+  color: var(--ldt-muted);
+  touch-action: manipulation;
+}
+.ldt-card-footer .MuiIconButton-root > span {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+}
+.ldt-alert {
+  flex-shrink: 0;
+  margin: 0 20px 12px;
+}
+@keyframes ldt-deal {
+  from {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@media (max-width: 700px) {
+  .ldt-header {
+    padding: 12px 16px 6px;
+  }
+  .ldt-brand {
+    gap: 8px;
+  }
+  .ldt-brand h1 {
+    font-size: 18px;
+  }
+  .ldt-brand > span {
+    font-size: 29px;
+  }
+  .ldt-toolbar {
+    padding: 8px 12px 10px;
+    gap: 6px;
+  }
+  .ldt-filters {
+    display: grid !important;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .ldt-filters .MuiToggleButtonGroup-grouped {
+    padding: 6px 3px;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  .ldt-table-actions {
+    margin-inline-start: auto;
+    gap: 2px;
+  }
+  .ldt-table-actions > .MuiButton-root {
+    padding: 6px 10px;
+  }
+  .ldt-surface {
+    margin: 0 8px 8px;
+    border-radius: 14px;
+  }
+  .ldt-pile-dock {
+    top: 14px;
+    left: 14px;
+  }
+  .ldt-pile {
+    width: 105px;
+    height: 144px;
+    padding: 13px;
+    border-radius: 10px;
+  }
+  .ldt-pile-type,
+  .ldt-pile-count {
+    font-size: 10px;
+  }
+  .ldt-pile-symbol {
+    font-size: 37px;
+  }
+  .ldt-alert {
+    margin: 0 8px 8px;
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .love-table * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.love-table .MuiButton-root,
+.love-table .MuiToggleButton-root {
+  min-height: 44px;
+}
+.love-table .Mui-focusVisible {
+  outline: 3px solid var(--ldt-primary);
+  outline-offset: 2px;
+}
+.ldt-tools {
+  flex-shrink: 0;
+}
+.ldt-tools .MuiToggleButton-root {
+  padding: 8px 14px;
+}
+.ldt-selection-bar {
+  position: absolute;
+  bottom: 32px;
+  inset-inline-start: 32px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  max-width: calc(100% - 100px);
+  padding: 4px 12px;
+  border: 1px solid var(--ldt-border);
+  border-radius: 12px;
+  background: var(--ldt-paper);
+  box-shadow: 0 4px 20px var(--ldt-shadow);
+  font-size: 13px;
+}
+.ldt-marquee {
+  position: absolute;
+  z-index: 10001;
+  border: 2px solid var(--ldt-primary);
+  background: var(--ldt-selection);
+  pointer-events: none;
+}
+.ldt-card.ldt-selected {
+  outline: 3px solid var(--ldt-primary);
+  outline-offset: 3px;
+}
+.ldt-tool-select .ldt-workspace {
+  cursor: crosshair;
+}
+.ldt-tool-pan .ldt-workspace,
+.ldt-tool-pan .ldt-card {
+  cursor: grab;
+}
+.ldt-tool-pan.ldt-interacting .ldt-workspace,
+.ldt-tool-pan.ldt-interacting .ldt-card {
+  cursor: grabbing;
+}
+.ldt-workspace {
+  touch-action: none;
+}
+.ldt-pile {
+  background: linear-gradient(var(--ldt-tint), var(--ldt-tint)), var(--ldt-paper);
+}
+.ldt-table-actions > .MuiButton-root.Mui-disabled {
+  color: var(--ldt-muted);
+  opacity: 0.4;
+}
+@media (max-width: 700px) {
+  .ldt-selection-bar {
+    bottom: 20px;
+    inset-inline-start: 20px;
+    gap: 0 8px;
+  }
+}

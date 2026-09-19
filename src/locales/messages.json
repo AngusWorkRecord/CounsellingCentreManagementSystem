@@ -1,4 +1,535 @@
 {
+  "抽牌方式": { "cn": "抽牌方式", "en": "Draw mode" },
+  "随机抽牌": { "cn": "随机抽牌", "en": "Random draw" },
+  "按顺序抽牌": { "cn": "按顺序抽牌", "en": "Draw in order" },
+  "爱情价值卡": {
+    "cn": "爱情价值卡",
+    "en": "Love Value Cards"
+  },
+  "探索自己在亲密关系中重视的价值与条件": {
+    "cn": "探索自己在亲密关系中重视的价值与条件",
+    "en": "Explore the values and qualities you seek in a close relationship"
+  },
+  "人生价值": {
+    "cn": "人生价值",
+    "en": "Life values"
+  },
+  "特质能力": {
+    "cn": "特质能力",
+    "en": "Personal qualities"
+  },
+  "生活方式": {
+    "cn": "生活方式",
+    "en": "Lifestyle"
+  },
+  "沟通互动": {
+    "cn": "沟通互动",
+    "en": "Communication"
+  },
+  "外在条件": {
+    "cn": "外在条件",
+    "en": "External circumstances"
+  },
+  "身体激情": {
+    "cn": "身体激情",
+    "en": "Physical passion"
+  },
+  "行动卡": {
+    "cn": "行动卡",
+    "en": "Action Cards"
+  },
+  "通过爱的五种语言探索表达与接收爱的方式": {
+    "cn": "通过爱的五种语言探索表达与接收爱的方式",
+    "en": "Explore how you give and receive love through five love languages"
+  },
+  "支持肯定": {
+    "cn": "支持肯定",
+    "en": "Words of affirmation"
+  },
+  "精心时刻": {
+    "cn": "精心时刻",
+    "en": "Quality time"
+  },
+  "身体接触": {
+    "cn": "身体接触",
+    "en": "Physical touch"
+  },
+  "行动付出": {
+    "cn": "行动付出",
+    "en": "Acts of service"
+  },
+  "真心赠礼": {
+    "cn": "真心赠礼",
+    "en": "Meaningful gifts"
+  },
+  "肯定的言语": {
+    "cn": "肯定的言语",
+    "en": "Words of affirmation"
+  },
+  "服务的行动": {
+    "cn": "服务的行动",
+    "en": "Acts of service"
+  },
+  "接受礼物": {
+    "cn": "接受礼物",
+    "en": "Receiving gifts"
+  },
+  "探索卡": {
+    "cn": "探索卡",
+    "en": "Exploration Cards"
+  },
+  "通过问题进一步探索自己、伴侣及关系模式": {
+    "cn": "通过问题进一步探索自己、伴侣及关系模式",
+    "en": "Explore yourself, your partner and patterns in your relationships"
+  },
+  "自我": {
+    "cn": "自我",
+    "en": "Self"
+  },
+  "伴侣": {
+    "cn": "伴侣",
+    "en": "Partner"
+  },
+  "真诚/诚实/专情": {
+    "cn": "真诚/诚实/专情",
+    "en": "Sincere / honest / faithful"
+  },
+  "负责/有责任感/知道自己要什么": {
+    "cn": "负责/有责任感/知道自己要什么",
+    "en": "Responsible / accountable / knows what they want"
+  },
+  "愿意一起成长/吃苦耐劳/有上进心": {
+    "cn": "愿意一起成长/吃苦耐劳/有上进心",
+    "en": "Willing to grow together / persevering / motivated"
+  },
+  "相近的信仰": {
+    "cn": "相近的信仰",
+    "en": "Similar beliefs"
+  },
+  "对生养小孩有共识": {
+    "cn": "对生养小孩有共识",
+    "en": "Shared views on having and raising children"
+  },
+  "能欣赏美好的事物/品味与我相似": {
+    "cn": "能欣赏美好的事物/品味与我相似",
+    "en": "Appreciates beautiful things / has similar taste"
+  },
+  "金钱观相似": {
+    "cn": "金钱观相似",
+    "en": "Similar attitudes towards money"
+  },
+  "对未来有共识/支持彼此的职业生涯": {
+    "cn": "对未来有共识/支持彼此的职业生涯",
+    "en": "Shared vision of the future / supports each other's career"
+  },
+  "善良": {
+    "cn": "善良",
+    "en": "Kind"
+  },
+  "性格/情绪稳定": {
+    "cn": "性格/情绪稳定",
+    "en": "A steady personality / emotionally stable"
+  },
+  "大方/不计较": {
+    "cn": "大方/不计较",
+    "en": "Generous / does not keep score"
+  },
+  "温柔体贴/善解人意/脾气好": {
+    "cn": "温柔体贴/善解人意/脾气好",
+    "en": "Gentle and considerate / understanding / good-tempered"
+  },
+  "单纯/可爱/会撒娇": {
+    "cn": "单纯/可爱/会撒娇",
+    "en": "Innocent / endearing / playfully affectionate"
+  },
+  "给我惊喜/浪漫": {
+    "cn": "给我惊喜/浪漫",
+    "en": "Surprises me / romantic"
+  },
+  "有自信/喜欢自己": {
+    "cn": "有自信/喜欢自己",
+    "en": "Confident / comfortable with who they are"
+  },
+  "愿意下厨/能做好吃的菜": {
+    "cn": "愿意下厨/能做好吃的菜",
+    "en": "Willing to cook / makes delicious food"
+  },
+  "聪明/有才华/学识丰富": {
+    "cn": "聪明/有才华/学识丰富",
+    "en": "Intelligent / talented / knowledgeable"
+  },
+  "幽默风趣": {
+    "cn": "幽默风趣",
+    "en": "Has a sense of humour"
+  },
+  "不用跟对方家人住一起": {
+    "cn": "不用跟对方家人住一起",
+    "en": "Not having to live with their family"
+  },
+  "可以一起旅行/一起在家无所事事": {
+    "cn": "可以一起旅行/一起在家无所事事",
+    "en": "Travelling together / doing nothing together at home"
+  },
+  "独立/自己能快乐地安排生活": {
+    "cn": "独立/自己能快乐地安排生活",
+    "en": "Independent / able to enjoy life on their own"
+  },
+  "喜欢运动/户外/大自然": {
+    "cn": "喜欢运动/户外/大自然",
+    "en": "Enjoys exercise / the outdoors / nature"
+  },
+  "没有不良嗜好（酗酒/赌博/吸烟）": {
+    "cn": "没有不良嗜好（酗酒/赌博/吸烟）",
+    "en": "No harmful habits (excessive drinking / gambling / smoking)"
+  },
+  "有共同的兴趣爱好": {
+    "cn": "有共同的兴趣爱好",
+    "en": "Shared interests and hobbies"
+  },
+  "爱好整洁/卫生习惯好": {
+    "cn": "爱好整洁/卫生习惯好",
+    "en": "Tidy / good hygiene habits"
+  },
+  "愿意共同分担家务": {
+    "cn": "愿意共同分担家务",
+    "en": "Willing to share household chores"
+  },
+  "孝顺/对我的家人或宠物好": {
+    "cn": "孝顺/对我的家人或宠物好",
+    "en": "Cares for parents / kind to my family or pets"
+  },
+  "能懂我/理解回应我的情绪": {
+    "cn": "能懂我/理解回应我的情绪",
+    "en": "Understands me / recognises and responds to my emotions"
+  },
+  "疼我/宠爱我/欣赏我": {
+    "cn": "疼我/宠爱我/欣赏我",
+    "en": "Cares for me / cherishes me / appreciates me"
+  },
+  "愿意聆听我/好好听我说话": {
+    "cn": "愿意聆听我/好好听我说话",
+    "en": "Willing to listen / gives me their full attention"
+  },
+  "愿意接纳/包容/赞美和支持我": {
+    "cn": "愿意接纳/包容/赞美和支持我",
+    "en": "Accepts me / is tolerant / praises and supports me"
+  },
+  "争执时不会口出恶言/愿意道歉": {
+    "cn": "争执时不会口出恶言/愿意道歉",
+    "en": "Avoids hurtful words during arguments / willing to apologise"
+  },
+  "相处时感到自在": {
+    "cn": "相处时感到自在",
+    "en": "Feeling at ease together"
+  },
+  "尊重我/愿意给我空间与自由": {
+    "cn": "尊重我/愿意给我空间与自由",
+    "en": "Respects me / gives me space and freedom"
+  },
+  "有精神层次的交流": {
+    "cn": "有精神层次的交流",
+    "en": "Connects with me on a deeper level"
+  },
+  "愿意表达爱/说情话": {
+    "cn": "愿意表达爱/说情话",
+    "en": "Willing to express love / says affectionate things"
+  },
+  "有钱/会赚钱": {
+    "cn": "有钱/会赚钱",
+    "en": "Financially well-off / good at earning money"
+  },
+  "工作稳定": {
+    "cn": "工作稳定",
+    "en": "Has a stable job"
+  },
+  "学历好/有社会地位": {
+    "cn": "学历好/有社会地位",
+    "en": "Well-educated / has social standing"
+  },
+  "愿意养我/提供经济支持": {
+    "cn": "愿意养我/提供经济支持",
+    "en": "Willing to provide for me / offers financial support"
+  },
+  "身体健康": {
+    "cn": "身体健康",
+    "en": "Physically healthy"
+  },
+  "不要太穷": {
+    "cn": "不要太穷",
+    "en": "Not too poor"
+  },
+  "家庭条件好/背景好": {
+    "cn": "家庭条件好/背景好",
+    "en": "Comes from a well-off family / a good background"
+  },
+  "懂得投资/理财": {
+    "cn": "懂得投资/理财",
+    "en": "Understands investing / manages money well"
+  },
+  "有车/有房/有户口": {
+    "cn": "有车/有房/有户口",
+    "en": "Has a car / a home / household registration"
+  },
+  "不要太丑/太胖": {
+    "cn": "不要太丑/太胖",
+    "en": "Not too unattractive / overweight"
+  },
+  "帅气/美丽的外貌": {
+    "cn": "帅气/美丽的外貌",
+    "en": "Handsome / beautiful appearance"
+  },
+  "愿意给我很多拥抱和触摸": {
+    "cn": "愿意给我很多拥抱和触摸",
+    "en": "Willing to give me plenty of hugs and touch"
+  },
+  "温柔细致的抚摸": {
+    "cn": "温柔细致的抚摸",
+    "en": "Gentle, attentive touch"
+  },
+  "性感/身材好": {
+    "cn": "性感/身材好",
+    "en": "Sexy / an attractive figure"
+  },
+  "善于营造性爱气氛（言语/香氛/音乐/场地）": {
+    "cn": "善于营造性爱气氛（言语/香氛/音乐/场地）",
+    "en": "Creates an atmosphere for intimacy (words / scents / music / setting)"
+  },
+  "可以接受独特的性癖好/关系形态（BDSM/Cosplay/开放式关系）": {
+    "cn": "可以接受独特的性癖好/关系形态（BDSM/Cosplay/开放式关系）",
+    "en": "Accepts distinctive sexual preferences or relationship styles (BDSM / cosplay / open relationships)"
+  },
+  "性需求接近": {
+    "cn": "性需求接近",
+    "en": "Similar sexual needs"
+  },
+  "刺激的性爱": {
+    "cn": "刺激的性爱",
+    "en": "Exciting sex"
+  },
+  "称赞对方很好看/很迷人/很有气质": {
+    "cn": "称赞对方很好看/很迷人/很有气质",
+    "en": "Compliment their looks / charm / presence"
+  },
+  "接纳他的想法/支持他想做的事情": {
+    "cn": "接纳他的想法/支持他想做的事情",
+    "en": "Accept their ideas / support what they want to do"
+  },
+  "避免批评对方": {
+    "cn": "避免批评对方",
+    "en": "Avoid criticising them"
+  },
+  "温和友善地说话": {
+    "cn": "温和友善地说话",
+    "en": "Speak gently and kindly"
+  },
+  "表达感谢/看到他的付出": {
+    "cn": "表达感谢/看到他的付出",
+    "en": "Express gratitude / recognise their efforts"
+  },
+  "欣赏他/称赞他的表现与成就": {
+    "cn": "欣赏他/称赞他的表现与成就",
+    "en": "Appreciate them / praise their efforts and achievements"
+  },
+  "安排浪漫惊喜": {
+    "cn": "安排浪漫惊喜",
+    "en": "Plan romantic surprises"
+  },
+  "和他独处/陪伴他": {
+    "cn": "和他独处/陪伴他",
+    "en": "Spend time alone with them / keep them company"
+  },
+  "用心聆听/对他说的话感兴趣": {
+    "cn": "用心聆听/对他说的话感兴趣",
+    "en": "Listen attentively / take an interest in what they say"
+  },
+  "和他到处走走/一起旅行": {
+    "cn": "和他到处走走/一起旅行",
+    "en": "Go places with them / travel together"
+  },
+  "放下手机/安排高质量的交流时间": {
+    "cn": "放下手机/安排高质量的交流时间",
+    "en": "Put the phone away / make time for meaningful conversation"
+  },
+  "对他的情绪感同身受": {
+    "cn": "对他的情绪感同身受",
+    "en": "Empathise with their emotions"
+  },
+  "温柔细致地抚摸他": {
+    "cn": "温柔细致地抚摸他",
+    "en": "Touch them gently and attentively"
+  },
+  "拥抱他": {
+    "cn": "拥抱他",
+    "en": "Hug them"
+  },
+  "走路时牵手/揽着对方": {
+    "cn": "走路时牵手/揽着对方",
+    "en": "Hold hands / put an arm around them while walking"
+  },
+  "进行一场高质量的性爱": {
+    "cn": "进行一场高质量的性爱",
+    "en": "Share a fulfilling sexual experience"
+  },
+  "亲吻/轻咬他": {
+    "cn": "亲吻/轻咬他",
+    "en": "Kiss / playfully nibble them"
+  },
+  "撒娇/磨蹭/亲热": {
+    "cn": "撒娇/磨蹭/亲热",
+    "en": "Be playfully affectionate / snuggle / be intimate"
+  },
+  "接送对方": {
+    "cn": "接送对方",
+    "en": "Pick them up / give them a lift"
+  },
+  "为对方做事/服务对方": {
+    "cn": "为对方做事/服务对方",
+    "en": "Do things for them / help them"
+  },
+  "陪伴他面对与解决困难": {
+    "cn": "陪伴他面对与解决困难",
+    "en": "Stand by them as they face and resolve difficulties"
+  },
+  "分担家务/下厨": {
+    "cn": "分担家务/下厨",
+    "en": "Share household chores / cook"
+  },
+  "配合对方的时间/行程": {
+    "cn": "配合对方的时间/行程",
+    "en": "Accommodate their schedule / plans"
+  },
+  "尽量满足他提出的需求": {
+    "cn": "尽量满足他提出的需求",
+    "en": "Try to meet the needs they express"
+  },
+  "给钱/经济支持": {
+    "cn": "给钱/经济支持",
+    "en": "Give money / financial support"
+  },
+  "送对方觉得有价值的礼物": {
+    "cn": "送对方觉得有价值的礼物",
+    "en": "Give gifts they find meaningful"
+  },
+  "看到适合对方的东西会买给他": {
+    "cn": "看到适合对方的东西会买给他",
+    "en": "Buy something when it seems right for them"
+  },
+  "观察对方缺什么/送他需要的东西": {
+    "cn": "观察对方缺什么/送他需要的东西",
+    "en": "Notice what they lack / give them something they need"
+  },
+  "生日/节日/纪念日为他准备礼物": {
+    "cn": "生日/节日/纪念日为他准备礼物",
+    "en": "Prepare gifts for birthdays / holidays / anniversaries"
+  },
+  "亲手做/定制礼物送给对方": {
+    "cn": "亲手做/定制礼物送给对方",
+    "en": "Make / personalise a gift for them"
+  },
+  "你会用什么方式对有兴趣的人表达好感？": {
+    "cn": "你会用什么方式对有兴趣的人表达好感？",
+    "en": "How do you show someone that you are interested in them?"
+  },
+  "你认为你的另一半有什么应尽的责任和义务？": {
+    "cn": "你认为你的另一半有什么应尽的责任和义务？",
+    "en": "What responsibilities and commitments do you expect of a partner?"
+  },
+  "你理想的生活是什么样子？在这个画面中，你的伴侣扮演什么角色？": {
+    "cn": "你理想的生活是什么样子？在这个画面中，你的伴侣扮演什么角色？",
+    "en": "What does your ideal life look like? What role does your partner play in that picture?"
+  },
+  "性跟爱可以分开吗？你的观点是什么？": {
+    "cn": "性跟爱可以分开吗？你的观点是什么？",
+    "en": "Can sex and love be separate? What is your view?"
+  },
+  "当你的伴侣回忆起这段关系时，你会希望他想起什么？": {
+    "cn": "当你的伴侣回忆起这段关系时，你会希望他想起什么？",
+    "en": "When your partner looks back on this relationship, what would you like them to remember?"
+  },
+  "如果你可以跟任何人约会（朋友/名人/虚构角色/历史人物等），你会选谁？为什么？": {
+    "cn": "如果你可以跟任何人约会（朋友/名人/虚构角色/历史人物等），你会选谁？为什么？",
+    "en": "If you could date anyone (a friend, celebrity, fictional character or historical figure), who would you choose? Why?"
+  },
+  "生命中哪一段关系令你难以忘怀？为什么？": {
+    "cn": "生命中哪一段关系令你难以忘怀？为什么？",
+    "en": "Which relationship in your life is unforgettable? Why?"
+  },
+  "当你陷入低潮时，你会怎么表现？你希望身边的人如何陪伴或支持你？": {
+    "cn": "当你陷入低潮时，你会怎么表现？你希望身边的人如何陪伴或支持你？",
+    "en": "How do you behave when you feel low? How would you like the people around you to support you?"
+  },
+  "在谁的身边，让你更喜欢自己/成为更好的人？他说了什么或做了什么？": {
+    "cn": "在谁的身边，让你更喜欢自己/成为更好的人？他说了什么或做了什么？",
+    "en": "Who helps you like yourself more or become a better person? What do they say or do?"
+  },
+  "你有哪些经营关系的秘诀？": {
+    "cn": "你有哪些经营关系的秘诀？",
+    "en": "What have you learned about nurturing a relationship?"
+  },
+  "如果你要跟你的伴侣分开一段时间，你会怎么安排自己的生活？": {
+    "cn": "如果你要跟你的伴侣分开一段时间，你会怎么安排自己的生活？",
+    "en": "If you had to spend some time apart from your partner, how would you organise your life?"
+  },
+  "如果你要拿出所有的积蓄，找一个合伙人共同创业，这个人需要具备什么特质？": {
+    "cn": "如果你要拿出所有的积蓄，找一个合伙人共同创业，这个人需要具备什么特质？",
+    "en": "If you were investing all your savings in a business with someone, what qualities would that person need?"
+  },
+  "说说你和伴侣的金钱观、家务分工与生活习惯。": {
+    "cn": "说说你和伴侣的金钱观、家务分工与生活习惯。",
+    "en": "Talk about your and your partner's views on money, household responsibilities and daily habits."
+  },
+  "什么是你在关系中依然想保有的隐私？": {
+    "cn": "什么是你在关系中依然想保有的隐私？",
+    "en": "What would you still like to keep private within a relationship?"
+  },
+  "你可以接受伴侣与同性/异性友人的相处界限是什么？": {
+    "cn": "你可以接受伴侣与同性/异性友人的相处界限是什么？",
+    "en": "What boundaries feel acceptable to you in your partner's friendships with people of the same or a different gender?"
+  },
+  "你和伴侣各自调整什么行为，可以让关系更好？请说一个自己可以调整的行为。": {
+    "cn": "你和伴侣各自调整什么行为，可以让关系更好？请说一个自己可以调整的行为。",
+    "en": "What could each of you change to improve the relationship? Name one behaviour you could change yourself."
+  },
+  "是什么让你愿意投入一段关系？": {
+    "cn": "是什么让你愿意投入一段关系？",
+    "en": "What makes you willing to invest in a relationship?"
+  },
+  "如果两人的未来发展有难以兼顾的分歧，要以谁为优先？以什么因素衡量？": {
+    "cn": "如果两人的未来发展有难以兼顾的分歧，要以谁为优先？以什么因素衡量？",
+    "en": "If your future paths conflict, whose needs take priority? What factors would you consider?"
+  },
+  "在关系中，你有什么坚持或想主导的事情？": {
+    "cn": "在关系中，你有什么坚持或想主导的事情？",
+    "en": "What do you feel strongly about or want to take the lead on in a relationship?"
+  },
+  "你会怎么向家人朋友介绍你的伴侣？你又会怎么向伴侣介绍你的家人朋友？": {
+    "cn": "你会怎么向家人朋友介绍你的伴侣？你又会怎么向伴侣介绍你的家人朋友？",
+    "en": "How would you introduce your partner to family and friends? How would you introduce them to your partner?"
+  },
+  "当你和伴侣之间发生冲突，你们通常会怎么处理？": {
+    "cn": "当你和伴侣之间发生冲突，你们通常会怎么处理？",
+    "en": "When conflict arises between you and your partner, how do you usually handle it?"
+  },
+  "若有朝一日你们分离，你最想留给对方什么？": {
+    "cn": "若有朝一日你们分离，你最想留给对方什么？",
+    "en": "If you were to part one day, what would you most want to leave with each other?"
+  },
+  "如果你和伴侣遇到难以妥协的价值差异（宗教/宠物/家庭等），你们会如何处理？": {
+    "cn": "如果你和伴侣遇到难以妥协的价值差异（宗教/宠物/家庭等），你们会如何处理？",
+    "en": "How would you and your partner handle differences in values that are hard to compromise on (religion, pets, family and so on)?"
+  },
+  "当你和伴侣一起做什么，会感到快乐和有连接感？": {
+    "cn": "当你和伴侣一起做什么，会感到快乐和有连接感？",
+    "en": "What do you enjoy doing with your partner that helps you feel connected?"
+  },
+  "爱情设计卡": {
+    "cn": "爱情设计卡",
+    "en": "Love Design Cards"
+  },
+  "Love Design｜爱情设计卡": {
+    "cn": "Love Design｜爱情设计卡",
+    "en": "Love Design | Relationship Cards"
+  },
   "Counselling Case Management": {
     "en": "Counselling Case Management",
     "cn": "辅导个案管理"
@@ -6658,5 +7189,189 @@
   "subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur": {
     "en": "subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur",
     "cn": "subtitle2.这是一段用于展示字体、间距和布局效果的示例文字。您可以根据实际需要替换内容。"
+  },
+  "全部": {
+    "cn": "全部",
+    "en": "All"
+  },
+  "牌堆筛选": {
+    "cn": "牌堆筛选",
+    "en": "Deck filter"
+  },
+  "洗牌": {
+    "cn": "洗牌",
+    "en": "Shuffle"
+  },
+  "全部收回": {
+    "cn": "全部收回",
+    "en": "Return all"
+  },
+  "重置": {
+    "cn": "重置",
+    "en": "Reset"
+  },
+  "关闭": {
+    "cn": "关闭",
+    "en": "Close"
+  },
+  "保存的牌桌无法恢复，已打开空牌桌。": {
+    "cn": "保存的牌桌无法恢复，已打开空牌桌。",
+    "en": "The saved table could not be restored. An empty table has been opened."
+  },
+  "浏览器无法保存牌桌，刷新后可能丢失位置。": {
+    "cn": "浏览器无法保存牌桌，刷新后可能丢失位置。",
+    "en": "Your browser cannot save this table. Card positions may be lost when you refresh."
+  },
+  "牌桌": {
+    "cn": "牌桌",
+    "en": "Card table"
+  },
+  "从{{deck}}抽一张，剩余 {{count}} 张": {
+    "cn": "从{{deck}}抽一张，剩余 {{count}} 张",
+    "en": "Draw from {{deck}}, {{count}} cards remaining"
+  },
+  "{{count}} 张": {
+    "cn": "{{count}} 张",
+    "en": "{{count}} cards"
+  },
+  "重置牌桌？": {
+    "cn": "重置牌桌？",
+    "en": "Reset the table?"
+  },
+  "全部收回？": {
+    "cn": "全部收回？",
+    "en": "Return all cards?"
+  },
+  "清空牌桌并恢复初始牌序。": {
+    "cn": "清空牌桌并恢复初始牌序。",
+    "en": "Clear the table and restore the original deck order."
+  },
+  "将桌上的 {{count}} 张卡片放回各自牌堆。": {
+    "cn": "将桌上的 {{count}} 张卡片放回各自牌堆。",
+    "en": "Return all {{count}} cards on the table to their decks."
+  },
+  "取消": {
+    "cn": "取消",
+    "en": "Cancel"
+  },
+  "确认": {
+    "cn": "确认",
+    "en": "Confirm"
+  },
+  "{{category}}：{{text}}": {
+    "cn": "{{category}}：{{text}}",
+    "en": "{{category}}: {{text}}"
+  },
+  "可移动卡片": {
+    "cn": "可移动卡片",
+    "en": "Movable card"
+  },
+  "卡片操作": {
+    "cn": "卡片操作",
+    "en": "Card actions"
+  },
+  "放回牌堆": {
+    "cn": "放回牌堆",
+    "en": "Return to deck"
+  },
+  "移到最上层": {
+    "cn": "移到最上层",
+    "en": "Bring to front"
+  },
+  "移到最下层": {
+    "cn": "移到最下层",
+    "en": "Send to back"
+  },
+  "选择": {
+    "cn": "选择",
+    "en": "Select"
+  },
+  "平移": {
+    "cn": "平移",
+    "en": "Pan"
+  },
+  "牌桌工具": {
+    "cn": "牌桌工具",
+    "en": "Table tools"
+  },
+  "已选择 {{count}} 张": {
+    "cn": "已选择 {{count}} 张",
+    "en": "{{count}} cards selected"
+  },
+  "选中卡片操作": {
+    "cn": "选中卡片操作",
+    "en": "Selection actions"
+  },
+  "取消选择": {
+    "cn": "取消选择",
+    "en": "Clear selection"
+  },
+  "收回选中卡片": {
+    "cn": "收回选中卡片",
+    "en": "Return selected cards"
+  },
+  "整组置顶": {
+    "cn": "整组置顶",
+    "en": "Bring group to front"
+  },
+  "整组置底": {
+    "cn": "整组置底",
+    "en": "Send group to back"
+  },
+  "对齐": {
+    "cn": "对齐",
+    "en": "Align"
+  },
+  "排列": {
+    "cn": "排列",
+    "en": "Arrange"
+  },
+  "左对齐": {
+    "cn": "左对齐",
+    "en": "Align left"
+  },
+  "右对齐": {
+    "cn": "右对齐",
+    "en": "Align right"
+  },
+  "顶部对齐": {
+    "cn": "顶部对齐",
+    "en": "Align top"
+  },
+  "底部对齐": {
+    "cn": "底部对齐",
+    "en": "Align bottom"
+  },
+  "水平居中": {
+    "cn": "水平居中",
+    "en": "Center horizontally"
+  },
+  "垂直居中": {
+    "cn": "垂直居中",
+    "en": "Center vertically"
+  },
+  "横排": {
+    "cn": "横排",
+    "en": "Horizontal row"
+  },
+  "竖排": {
+    "cn": "竖排",
+    "en": "Vertical column"
+  },
+  "网格排列": {
+    "cn": "网格排列",
+    "en": "Grid"
+  },
+  "牌桌空间不足，无法按此方式排列。": {
+    "cn": "牌桌空间不足，无法按此方式排列。",
+    "en": "Not enough table space for this arrangement."
+  },
+  "收回选中的 {{count}} 张卡片？": {
+    "cn": "收回选中的 {{count}} 张卡片？",
+    "en": "Return {{count}} selected cards?"
+  },
+  "仅将选中的 {{count}} 张卡片放回各自牌堆。": {
+    "cn": "仅将选中的 {{count}} 张卡片放回各自牌堆。",
+    "en": "Return only the {{count}} selected cards to their decks."
   }
 }
