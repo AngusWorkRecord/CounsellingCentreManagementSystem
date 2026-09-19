@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Divider, Drawer, Stack, Typography, Tooltip, IconButton } from '@mui/material';
@@ -30,6 +31,8 @@ const SPACING = 2.5;
 
 export default function SettingsDrawer() {
   useUiLanguage();
+  const { pathname } = useLocation();
+  const standaloneTable = /^\/love-design\/?$/i.test(pathname);
   const {
     themeMode,
     themeLayout,
@@ -117,9 +120,11 @@ export default function SettingsDrawer() {
             <DirectionOptions />
           </Block>
 
-          <Block title={tr("Layout")}>
-            <LayoutOptions />
-          </Block>
+          {!standaloneTable && (
+            <Block title={tr("Layout")}>
+              <LayoutOptions />
+            </Block>
+          )}
 
           <Block title={tr("Stretch")} tooltip={tr("Only available at large resolutions > 1600px (xl)")}>
             <StretchOptions />

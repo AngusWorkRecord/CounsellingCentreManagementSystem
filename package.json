@@ -14,6 +14,7 @@
     "build": "cross-env CI=false react-scripts build",
     "test:ai": "npm run test:ai:api && npm run test:ai:ui",
     "test:i18n": "node scripts/check-i18n.cjs && cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/locales/bilingual.test.js",
+    "test:love-design": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/sections/love-design/tableState.test.js src/sections/love-design/LoveDesignTable.test.js",
     "test:ai:api": "node --test api/_lib/ai.test.mjs api/ai/ai-endpoints.test.mjs",
     "test:ai:ui": "cross-env CI=true react-scripts test --watchAll=false --runTestsByPath src/sections/@dashboard/counselling/useAiAnalysis.test.js",
     "eject": "react-scripts eject",

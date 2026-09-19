@@ -21,6 +21,7 @@ export const PATH_AUTH = {
 };
 
 export const PATH_PAGE = {
+  loveDesign: '/love-design',
   comingSoon: '/coming-soon',
   maintenance: '/maintenance',
   pricing: '/pricing',

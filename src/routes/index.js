@@ -13,6 +13,7 @@ import DashboardLayout from '../layouts/dashboard';
 import { PATH_AFTER_LOGIN } from '../config-global';
 //
 import {
+  LoveDesignPage,
   // Auth
   LoginPage,
   RegisterPage,
@@ -156,6 +157,7 @@ import {
 export default function Router() {
   const location = useLocation();
   const routes = useRoutes([
+    { path: 'love-design', element: <LoveDesignPage /> },
     // // Auth
     {
       path: '',
@@ -444,5 +446,5 @@ export default function Router() {
     },
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
-  return <>{!location.pathname.startsWith('/dashboard') && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
+  return <>{!location.pathname.startsWith('/dashboard') && !/^\/love-design\/?$/i.test(location.pathname) && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
 }
