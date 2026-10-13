@@ -1,0 +1,2 @@
+# API tests execute locally/CI and must not be deployed as HTTP functions.
+api/**/*.test.mjs

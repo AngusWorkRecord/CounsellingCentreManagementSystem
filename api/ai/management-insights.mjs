@@ -1,3 +1,4 @@
+import { authorizeRequest, writeAuthError } from '../_lib/auth.mjs';
 import {
   analysisDto,
   analysisLanguage,
@@ -87,12 +88,14 @@ function buildAggregate(rows, filters) {
 export function createManagementInsightsHandler(overrides = {}) {
   const dependencies = {
     assertAiAvailable, getSql, getLatestAnalysis, startAnalysis, requestStructuredAnalysis,
-    completeAnalysis, failAnalysis, ...overrides,
+    completeAnalysis, failAnalysis, authorizeRequest, ...overrides,
   };
 
   return async function handler(request, response) {
   response.setHeader('Cache-Control', 'no-store');
   if (request.method !== 'POST') return response.status(405).json({ success: false, error: { code: 'METHOD_NOT_ALLOWED' } });
+  try { await dependencies.authorizeRequest(request); }
+  catch (error) { return writeAuthError(response, error); }
 
   let analysis;
   let sql;

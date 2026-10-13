@@ -28,6 +28,4 @@ yarn-error.log*
 package-lock.json
 yark.lock
 /database/*
-!/database/003_create_ai_analyses.sql
-!/database/004_soft_delete_counselling_sessions.sql
-!/database/003_create_ai_analyses.sql
+/docs/*

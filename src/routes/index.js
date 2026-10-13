@@ -4,6 +4,8 @@ import LanguagePopover from '../layouts/dashboard/header/LanguagePopover';
 // auth
 import AuthGuard from '../auth/AuthGuard';
 import GuestGuard from '../auth/GuestGuard';
+import RoleBasedGuard from '../auth/RoleBasedGuard';
+import { useAuthContext } from '../auth/useAuthContext';
 // layouts
 import MainLayout from '../layouts/main';
 import SimpleLayout from '../layouts/simple';
@@ -16,10 +18,6 @@ import {
   LoveDesignPage,
   // Auth
   LoginPage,
-  RegisterPage,
-  VerifyCodePage,
-  NewPasswordPage,
-  ResetPasswordPage,
   // Dashboard: General
   GeneralAppPage,
   GeneralFilePage,
@@ -156,39 +154,17 @@ import {
 
 export default function Router() {
   const location = useLocation();
+  const { isAuthenticated } = useAuthContext();
   const routes = useRoutes([
     { path: 'love-design', element: <LoveDesignPage /> },
-    // // Auth
+    // Authentication: public account creation and password recovery are disabled.
     {
       path: '',
       children: [
-        {
-          path: '',
-          element: <Navigate to={PATH_AFTER_LOGIN} replace />,
-          // (
-          //   <GuestGuard>
-          //     <LoginPage />
-          //   </GuestGuard>
-          // ),
-        },
-        {
-          path: 'register',
-          element: (
-            <GuestGuard>
-              <RegisterPage />
-            </GuestGuard>
-          ),
-        },
-        { path: 'login-unprotected', element: <LoginPage /> },
-        { path: 'register-unprotected', element: <RegisterPage /> },
-        {
-          element: <CompactLayout />,
-          children: [
-            { path: 'reset-password', element: <ResetPasswordPage /> },
-            { path: 'new-password', element: <NewPasswordPage /> },
-            { path: 'verify', element: <VerifyCodePage /> },
-          ],
-        },
+        { index: true, element: <GuestGuard><LoginPage /></GuestGuard> },
+        { path: 'login', element: <GuestGuard><LoginPage /></GuestGuard> },
+        ...['register', 'register-unprotected', 'reset-password', 'new-password', 'verify', 'login-unprotected']
+          .map((path) => ({ path, element: <Navigate to="/" replace /> })),
       ],
     },
 
@@ -196,7 +172,7 @@ export default function Router() {
     {
       path: 'dashboard',
       element: (
-        <DashboardLayout />
+        <AuthGuard><DashboardLayout /></AuthGuard>
       ),
       children: [
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
@@ -246,7 +222,7 @@ export default function Router() {
             //     { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
             //     { path: 'profile', element: <UserProfilePage /> },
             //     { path: 'cards', element: <UserCardsPage /> },
-            { path: 'list', element: <UserListPage /> },
+            { path: 'list', element: <RoleBasedGuard roles={['admin']} hasContent><UserListPage /></RoleBasedGuard> },
             // { path: 'new', element: <UserCreatePage /> },
             //     { path: ':name/edit', element: <UserEditPage /> },
             //     { path: 'account', element: <UserAccountPage /> },
@@ -446,5 +422,5 @@ export default function Router() {
     },
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
-  return <>{!location.pathname.startsWith('/dashboard') && !/^\/love-design\/?$/i.test(location.pathname) && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
+  return <>{(!location.pathname.startsWith('/dashboard') || !isAuthenticated) && !/^\/love-design\/?$/i.test(location.pathname) && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
 }

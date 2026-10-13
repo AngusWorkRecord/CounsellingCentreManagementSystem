@@ -1,46 +1,28 @@
-import { Link as RouterLink } from 'react-router-dom';
-// @mui
-import { Stack, Typography, Link } from '@mui/material';
-import { AccountCircle } from '@mui/icons-material'; 
+import { Box, Divider, Stack, Typography } from '@mui/material';
 import { tr, useUiLanguage } from '../../locales/translate';
-// auth
-import { useAuthContext } from '../../auth/useAuthContext';
-// routes
-import { PATH_AUTH } from '../../routes/paths';
-// layouts
 import LoginLayout from '../../layouts/login';
-// components
+import Iconify from '../../components/iconify';
 import AuthLoginForm from './AuthLoginForm';
 
 export default function Login() {
   useUiLanguage();
-  const { method } = useAuthContext();
-
   return (
-    <LoginLayout padding={4}  paddingTop={12}>
-      <Stack spacing={2} sx={{ mb: 5, position: 'relative', textAlign: 'center' }}>
-        {/* Optional title */}
-        <Typography variant="h4" sx={{ color: 'grey.800' }}>{tr("Sign in to CounsellingCentreManagementSystem")}</Typography>
-
-        <Stack direction="row" spacing={0.5} sx={{ justifyContent: 'center' }}>
-          <Typography variant="body2" sx={{ color: 'grey.800' }}>{tr("New user?")}</Typography>
-          <Link component={RouterLink} to={PATH_AUTH.register} variant="subtitle2" sx={{ color: 'grey.800', fontWeight: 'bold' }}>{tr("Create an account")}</Link>
-        </Stack>
+    <LoginLayout branded>
+      <Stack spacing={0.75} sx={{ mb: 3.5 }}>
+        <Typography component="h2" variant="h4" sx={{ color: '#203043' }}>{tr('Welcome Back')}</Typography>
+        <Typography variant="body2" sx={{ color: '#687b89' }}>{tr('Please login to access the Counselling Centre Management System.')}</Typography>
       </Stack>
-
-      {/* Anonymous icon inside the form */}
-      <AccountCircle
-        sx={{
-          fontSize: 80,
-          color: 'grey.800',
-          position: 'absolute',
-          top: 10, // Adjust this to position the icon correctly inside the form
-          left: '50%',
-          transform: 'translateX(-50%)',
-        }}
-      />
-
       <AuthLoginForm />
+      <Divider sx={{ my: 3 }} />
+      <Stack direction="row" spacing={1.5} alignItems="center" sx={{ bgcolor: '#eef9f3', borderRadius: 1.5, p: 1.5 }}>
+        <Box sx={{ bgcolor: '#d2efdf', borderRadius: 1.5, p: 1, display: 'flex', flexShrink: 0 }}>
+          <Iconify icon="eva:shield-fill" sx={{ color: '#00a854', width: 24, height: 24 }} />
+        </Box>
+        <Box>
+          <Typography variant="subtitle2" sx={{ fontSize: 12 }}>{tr('Authorised Access Only')}</Typography>
+          <Typography sx={{ fontSize: 11, lineHeight: 1.6, color: '#687b89' }}>{tr('This system contains confidential counselling information. Unauthorised access is strictly prohibited.')}</Typography>
+        </Box>
+      </Stack>
     </LoginLayout>
   );
 }

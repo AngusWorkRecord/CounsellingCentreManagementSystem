@@ -1,8 +1,9 @@
+import { authenticatedFetch } from '../auth/authClient';
 import i18n from '../locales/i18n';
 import { tr } from '../locales/translate';
 
 async function postAnalysis(path, payload, { signal } = {}) {
-  const response = await fetch(path, {
+  const response = await authenticatedFetch(path, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ...payload, language: payload.language || i18n.resolvedLanguage || 'cn' }),

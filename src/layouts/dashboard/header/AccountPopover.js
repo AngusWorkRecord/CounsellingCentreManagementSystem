@@ -5,7 +5,8 @@ import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem } from '@mui/material';
 import { tr, useUiLanguage } from '../../../locales/translate';
 // routes
-import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../routes/paths';
+import { domainLabel } from '../../../locales/domainLabels';
 // auth
 import { useAuthContext } from '../../../auth/useAuthContext';
 // components
@@ -53,12 +54,11 @@ export default function AccountPopover() {
 
   const handleLogout = async () => {
     try {
-      logout();
+      await logout();
       // navigate(PATH_AUTH.login, { replace: true });
       navigate('/', { replace: true }); 
       handleClosePopover();
     } catch (error) {
-      console.error(error);
       enqueueSnackbar(tr("Unable to logout!"), { variant: 'error' });
     }
   };
@@ -87,17 +87,17 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <CustomAvatar src={user?.photoURL} alt={user?.UserFirstName} name={user?.UserFirstName} />
+        <CustomAvatar alt={user?.fullName} name={user?.fullName} />
       </IconButtonAnimate>
 
       <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 200, p: 0 }}>
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {user?.UserFullName}
+            {user?.fullName}
           </Typography>
 
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {user?.email}
+            {domainLabel(user?.role)}
           </Typography>
         </Box>
 

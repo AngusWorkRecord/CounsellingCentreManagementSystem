@@ -1,6 +1,10 @@
 import { neon } from '@neondatabase/serverless';
+import { authorizeRequest, writeAuthError } from './_lib/auth.mjs';
 
-export default async function handler(request, response) {
+export function createCounsellingSessionsHandler(overrides = {}) {
+const authorize = overrides.authorizeRequest || authorizeRequest;
+return async function handler(request, response) {
+  response.setHeader('Cache-Control', 'no-store');
   if (!['GET', 'POST', 'PUT', 'DELETE'].includes(request.method)) {
     response.setHeader('Allow', 'GET, POST, PUT, DELETE');
     return response.status(405).json({
@@ -9,6 +13,8 @@ export default async function handler(request, response) {
     });
   }
 
+  try { await authorize(request); }
+  catch (error) { return writeAuthError(response, error); }
   try {
     if (!process.env.DATABASE_URL) {
       return response.status(500).json({
@@ -199,3 +205,6 @@ export default async function handler(request, response) {
     });
   }
 }
+}
+
+export default createCounsellingSessionsHandler();
