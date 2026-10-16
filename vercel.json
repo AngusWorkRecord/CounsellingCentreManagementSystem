@@ -1,8 +1,11 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "framework": "create-react-app",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "devCommand": "npm run start",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api(?:/.*)?", "status": 404 },
+    { "src": "/.*", "dest": "/index.html" }
   ]
 }

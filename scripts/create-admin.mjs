@@ -1,6 +1,7 @@
 import { stdin, stdout } from 'node:process';
 import { createInterface, emitKeypressEvents } from 'node:readline';
-import { getAuthSql, hashPassword, normalizeUsername } from '../api/_lib/auth.mjs';
+import { neon } from '@neondatabase/serverless';
+import { hashPassword, normalizeUsername } from '../api/_lib/auth.mjs';
 
 async function question(prompt) {
   const rl = createInterface({ input: stdin, output: stdout });
@@ -34,7 +35,13 @@ async function secret(prompt) {
 }
 
 try {
-  const sql = getAuthSql();
+  if (!stdin.isTTY || !stdout.isTTY) throw new Error('INTERACTIVE_TERMINAL_REQUIRED');
+  let connection = process.env.DATABASE_URL;
+  if (!connection) connection = await secret('Database connection URL (hidden) / 数据库连接（隐藏）: ');
+  let parsed;
+  try { parsed = new URL(connection); } catch { throw new Error('INVALID_DATABASE_URL'); }
+  if (!['postgres:', 'postgresql:'].includes(parsed.protocol)) throw new Error('INVALID_DATABASE_URL');
+  const sql = neon(connection);
   const username = normalizeUsername(await question('Username: '));
   const fullName = (await question('Full name: ')).trim();
   if (!fullName || fullName.length > 100) throw new Error('INVALID_NAME');
@@ -47,7 +54,7 @@ try {
   await sql`SELECT public.auth_bootstrap_admin(${username}, ${passwordHash}, ${fullName}, ${email})`;
   stdout.write('Administrator created successfully.\n');
 } catch (error) {
-  const codes = ['AUTH_NOT_CONFIGURED', 'INTERACTIVE_TERMINAL_REQUIRED', 'INVALID_REQUEST', 'INVALID_NAME', 'INVALID_EMAIL', 'CANCELLED', 'PASSWORDS_DO_NOT_MATCH'];
+  const codes = ['AUTH_NOT_CONFIGURED', 'INVALID_DATABASE_URL', 'INTERACTIVE_TERMINAL_REQUIRED', 'INVALID_REQUEST', 'INVALID_NAME', 'INVALID_EMAIL', 'CANCELLED', 'PASSWORDS_DO_NOT_MATCH'];
   const code = error.code === 'P0001' && error.message === 'ADMIN_ALREADY_EXISTS' ? 'ADMIN_ALREADY_EXISTS'
     : error.code === '23505' ? 'USERNAME_EXISTS'
       : codes.includes(error.code || error.message) ? error.code || error.message : 'ADMIN_CREATION_FAILED';
