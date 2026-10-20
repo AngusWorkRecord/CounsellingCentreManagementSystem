@@ -7401,5 +7401,229 @@
   "AUTH_REQUEST_FAILED": {"cn":"无法完成认证请求，请稍后重试。","en":"Unable to complete authentication. Please try again."},
   "LAST_ADMIN": {"cn":"必须保留至少一位有效管理员。","en":"At least one active administrator must remain."},
   "USERNAME_EXISTS": {"cn":"用户名已存在。","en":"This username already exists."},
-  "USER_NOT_FOUND": {"cn":"找不到此用户。","en":"User not found."}
+  "USER_NOT_FOUND": {"cn":"找不到此用户。","en":"User not found."},
+  "Scheduled": {
+    "en": "Scheduled",
+    "cn": "已预约"
+  },
+  "Appointment completed": {
+    "en": "Appointment completed",
+    "cn": "已完成"
+  },
+  "No-show": {
+    "en": "No-show",
+    "cn": "未出席"
+  },
+  "This field is required": {
+    "en": "This field is required",
+    "cn": "此项必填"
+  },
+  "Select a valid date": {
+    "en": "Select a valid date",
+    "cn": "请选择有效日期"
+  },
+  "Select a valid time": {
+    "en": "Select a valid time",
+    "cn": "请选择有效时间"
+  },
+  "Unable to update appointment": {
+    "en": "Unable to update appointment",
+    "cn": "无法更新预约"
+  },
+  "Edit appointment": {
+    "en": "Edit appointment",
+    "cn": "修改预约"
+  },
+  "Appointment details": {
+    "en": "Appointment details",
+    "cn": "预约详情"
+  },
+  "New appointment": {
+    "en": "New appointment",
+    "cn": "新增预约"
+  },
+  "Counsellor has another appointment at {{start}}–{{end}}.": {
+    "en": "Counsellor has another appointment at {{start}}–{{end}}.",
+    "cn": "该辅导员在 {{start}}–{{end}} 已有其他预约。"
+  },
+  "Related case": {
+    "en": "Related case",
+    "cn": "关联个案"
+  },
+  "New visitor": {
+    "en": "New visitor",
+    "cn": "新来访者"
+  },
+  "Appointment date": {
+    "en": "Appointment date",
+    "cn": "预约日期"
+  },
+  "Mark completion or absence after the appointment ends.": {
+    "en": "Mark completion or absence after the appointment ends.",
+    "cn": "预约结束后可标记已完成或未出席。"
+  },
+  "Cancel appointment": {
+    "en": "Cancel appointment",
+    "cn": "取消预约"
+  },
+  "Mark completed": {
+    "en": "Mark completed",
+    "cn": "标记已完成"
+  },
+  "Mark no-show": {
+    "en": "Mark no-show",
+    "cn": "标记未出席"
+  },
+  "Restore scheduled": {
+    "en": "Restore scheduled",
+    "cn": "恢复为已预约"
+  },
+  "Save appointment": {
+    "en": "Save appointment",
+    "cn": "保存预约"
+  },
+  "Delete this appointment?": {
+    "en": "Delete this appointment?",
+    "cn": "删除此预约？"
+  },
+  "Discard unsaved changes?": {
+    "en": "Discard unsaved changes?",
+    "cn": "放弃未保存的更改？"
+  },
+  "This appointment will be removed. No cancellation history will be kept.": {
+    "en": "This appointment will be removed. No cancellation history will be kept.",
+    "cn": "此预约将被移除，不会保留取消历史。"
+  },
+  "Your unsaved appointment changes will be lost.": {
+    "en": "Your unsaved appointment changes will be lost.",
+    "cn": "未保存的预约更改将丢失。"
+  },
+  "Go back": {
+    "en": "Go back",
+    "cn": "返回"
+  },
+  "Discard changes": {
+    "en": "Discard changes",
+    "cn": "放弃更改"
+  },
+  "Appointment management": {
+    "en": "Appointment management",
+    "cn": "预约管理"
+  },
+  "Coordinate counselling appointments": {
+    "en": "Coordinate counselling appointments",
+    "cn": "安排与协调辅导预约"
+  },
+  "Demo version — fictional data. Reloading resets all changes. Times use Malaysia time (UTC+8).": {
+    "en": "Demo version — fictional data. Reloading resets all changes. Times use Malaysia time (UTC+8).",
+    "cn": "模拟版本：所有资料均为虚构，刷新页面将重置全部更改。时间采用马来西亚时间（UTC+8）。"
+  },
+  "Appointment view": {
+    "en": "Appointment view",
+    "cn": "预约视图"
+  },
+  "Month view": {
+    "en": "Month view",
+    "cn": "月历"
+  },
+  "Day view": {
+    "en": "Day view",
+    "cn": "日程"
+  },
+  "List view": {
+    "en": "List view",
+    "cn": "列表"
+  },
+  "Previous month": {
+    "en": "Previous month",
+    "cn": "上个月"
+  },
+  "Previous day": {
+    "en": "Previous day",
+    "cn": "前一天"
+  },
+  "Next month": {
+    "en": "Next month",
+    "cn": "下个月"
+  },
+  "Next day": {
+    "en": "Next day",
+    "cn": "后一天"
+  },
+  "Back to month": {
+    "en": "Back to month",
+    "cn": "返回月历"
+  },
+  "Today": {
+    "en": "Today",
+    "cn": "今天"
+  },
+  "{{count}} more appointments": {
+    "en": "{{count}} more appointments",
+    "cn": "另有 {{count}} 项预约"
+  },
+  "Search initials / case number": {
+    "en": "Search initials / case number",
+    "cn": "搜索案主简称／个案编号"
+  },
+  "From date": {
+    "en": "From date",
+    "cn": "开始日期"
+  },
+  "To date": {
+    "en": "To date",
+    "cn": "结束日期"
+  },
+  "End date must not precede start date": {
+    "en": "End date must not precede start date",
+    "cn": "结束日期不能早于开始日期"
+  },
+  "Clear filters": {
+    "en": "Clear filters",
+    "cn": "清除筛选"
+  },
+  "No appointments found": {
+    "en": "No appointments found",
+    "cn": "暂无符合条件的预约"
+  },
+  "Rows per page:": {
+    "en": "Rows per page:",
+    "cn": "每页行数："
+  },
+  "{{from}}–{{to}} of {{count}}": {
+    "en": "{{from}}–{{to}} of {{count}}",
+    "cn": "第 {{from}}–{{to}} 项，共 {{count}} 项"
+  },
+  "Appointment saved": {
+    "en": "Appointment saved",
+    "cn": "预约已保存"
+  },
+  "Appointment status updated": {
+    "en": "Appointment status updated",
+    "cn": "预约状态已更新"
+  },
+  "Appointment deleted": {
+    "en": "Appointment deleted",
+    "cn": "预约已删除"
+  },
+  "Client initials": {
+    "en": "Client initials",
+    "cn": "案主简称"
+  },
+  "Case number": {
+    "en": "Case number",
+    "cn": "个案编号"
+  },
+  "Session mode": {
+    "en": "Session mode",
+    "cn": "辅导方式"
+  },
+  "View details": {
+    "en": "View details",
+    "cn": "查看详情"
+  },
+  "Phone": {
+    "en": "Phone",
+    "cn": "电话"
+  }
 }

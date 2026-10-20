@@ -60,6 +60,7 @@ const navConfig = [
         children: [
           { get title() { return tr("Data Overview"); }, path: PATH_DASHBOARD.general.counselling },
           { get title() { return tr("Case Management"); }, path: PATH_DASHBOARD.general.counsellingCases },
+          { get title() { return tr('Appointment management'); }, path: PATH_DASHBOARD.general.counsellingAppointments },
         ],
       },
       // { title: 'Convention', path: PATH_DASHBOARD.general.events, icon: ICONS.booking },
