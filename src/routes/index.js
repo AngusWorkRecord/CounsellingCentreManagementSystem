@@ -17,6 +17,7 @@ import { PATH_AFTER_LOGIN } from '../config-global';
 //
 import {
   LoveDesignPage,
+  CounsellingPracticePage,
   // Auth
   LoginPage,
   // Dashboard: General
@@ -158,6 +159,7 @@ export default function Router() {
   const { isAuthenticated } = useAuthContext();
   const routes = useRoutes([
     { path: 'love-design', element: <LoveDesignPage /> },
+    { path: 'counselling-practice', element: <CounsellingPracticePage /> },
     // Authentication: public account creation and password recovery are disabled.
     {
       path: '',
@@ -424,5 +426,5 @@ export default function Router() {
     },
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
-  return <>{(!location.pathname.startsWith('/dashboard') || !isAuthenticated) && !/^\/love-design\/?$/i.test(location.pathname) && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
+  return <>{(!location.pathname.startsWith('/dashboard') || !isAuthenticated) && !/^\/(love-design|counselling-practice)\/?$/i.test(location.pathname) && <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1500 }}><LanguagePopover /></Box>}{routes}</>;
 }

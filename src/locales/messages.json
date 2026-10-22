@@ -7625,5 +7625,201 @@
   "Phone": {
     "en": "Phone",
     "cn": "电话"
+  },
+  "Practice AI origin is not configured. Please contact an administrator.": {
+    "cn": "练习页面的 AI 服务来源尚未配置，请联系管理员。",
+    "en": "Practice AI origin is not configured. Please contact an administrator."
+  },
+  "Counselling Practice": {
+    "cn": "辅导个案练习",
+    "en": "Counselling Practice"
+  },
+  "Practice case code": {
+    "cn": "练习个案代号",
+    "en": "Practice case code"
+  },
+  "Case category": {
+    "cn": "个案类别",
+    "en": "Case category"
+  },
+  "Case background": {
+    "cn": "个案背景",
+    "en": "Case background"
+  },
+  "Session summary": {
+    "cn": "会谈摘要",
+    "en": "Session summary"
+  },
+  "Actions already taken": {
+    "cn": "已采取的行动",
+    "en": "Actions already taken"
+  },
+  "Your current understanding": {
+    "cn": "你目前的理解",
+    "en": "Your current understanding"
+  },
+  "What would you like help with?": {
+    "cn": "你希望获得什么协助？",
+    "en": "What would you like help with?"
+  },
+  "Session record": {
+    "cn": "本次会谈记录",
+    "en": "Session record"
+  },
+  "Learning and reflection": {
+    "cn": "学习与反思",
+    "en": "Learning and reflection"
+  },
+  "Practice section {{p0}}": {
+    "cn": "第 {{p0}} 部分",
+    "en": "Practice section {{p0}}"
+  },
+  "{{p0}} / {{p1}} characters": {
+    "cn": "{{p0}} / {{p1}} 字符",
+    "en": "{{p0}} / {{p1}} characters"
+  },
+  "Not specified": {
+    "cn": "未指定",
+    "en": "Not specified"
+  },
+  "Practice field is too long.": {
+    "cn": "输入内容超出长度限制。",
+    "en": "Practice field is too long."
+  },
+  "Please enter a session summary.": {
+    "cn": "请输入会谈摘要。",
+    "en": "Please enter a session summary."
+  },
+  "Understanding the case": {
+    "cn": "个案理解",
+    "en": "Understanding the case"
+  },
+  "Information to explore": {
+    "cn": "值得进一步探索的资料",
+    "en": "Information to explore"
+  },
+  "Preparing for the next session": {
+    "cn": "下次会谈准备",
+    "en": "Preparing for the next session"
+  },
+  "Example open-ended questions": {
+    "cn": "开放式问题示例",
+    "en": "Example open-ended questions"
+  },
+  "Discussion with your supervisor": {
+    "cn": "可与督导讨论的要点",
+    "en": "Discussion with your supervisor"
+  },
+  "Points requiring human attention": {
+    "cn": "需要人工关注的事项",
+    "en": "Points requiring human attention"
+  },
+  "For learning and reflection": {
+    "cn": "用于学习与反思",
+    "en": "For learning and reflection"
+  },
+  "AI feedback": {
+    "cn": "AI 反馈",
+    "en": "AI feedback"
+  },
+  "Preparing feedback. You can cancel at any time.": {
+    "cn": "正在准备反馈，你可以随时取消。",
+    "en": "Preparing feedback. You can cancel at any time."
+  },
+  "Your record has changed. This feedback is outdated; generate new feedback before using it.": {
+    "cn": "记录已经修改。这份反馈已过期，请先生成新的反馈。",
+    "en": "Your record has changed. This feedback is outdated; generate new feedback before using it."
+  },
+  "A space to think about your next session": {
+    "cn": "为下次会谈整理思路",
+    "en": "A space to think about your next session"
+  },
+  "Enter a session summary, then generate feedback to explore missing information, next-session questions and points for supervision. AI only runs when you ask.": {
+    "cn": "填写会谈摘要后，主动生成反馈，探索遗漏资料、下次会谈问题和督导讨论点。AI 不会自动运行。",
+    "en": "Enter a session summary, then generate feedback to explore missing information, next-session questions and points for supervision. AI only runs when you ask."
+  },
+  "Feedback language": {
+    "cn": "反馈语言",
+    "en": "Feedback language"
+  },
+  "Feedback applies to this submitted record:": {
+    "cn": "反馈所依据的提交记录：",
+    "en": "Feedback applies to this submitted record:"
+  },
+  "No additional points were returned for this section.": {
+    "cn": "这部分没有返回额外要点。",
+    "en": "No additional points were returned for this section."
+  },
+  "Limitations": {
+    "cn": "资料与反馈的限制",
+    "en": "Limitations"
+  },
+  "AI feedback supports learning. It is not a diagnosis, a final risk assessment or a replacement for supervision. Review suggestions with your supervisor; no listed concerns does not establish safety.": {
+    "cn": "AI 反馈用于辅助学习，不是诊断、最终风险评估，也不能替代督导。请与督导讨论建议；没有列出关注事项并不代表已确认安全。",
+    "en": "AI feedback supports learning. It is not a diagnosis, a final risk assessment or a replacement for supervision. Review suggestions with your supervisor; no listed concerns does not establish safety."
+  },
+  "Reflect. Explore. Prepare.": {
+    "cn": "回顾 · 探索 · 准备",
+    "en": "Reflect. Explore. Prepare."
+  },
+  "Prepare for your next counselling session": {
+    "cn": "为下一次辅导会谈做好准备",
+    "en": "Prepare for your next counselling session"
+  },
+  "Record a fictional or de-identified session and use AI feedback to support your learning and discussion with a supervisor.": {
+    "cn": "记录虚构或已匿名化的会谈，通过 AI 反馈辅助学习，并准备与督导的讨论。",
+    "en": "Record a fictional or de-identified session and use AI feedback to support your learning and discussion with a supervisor."
+  },
+  "Records are kept only while this page is open. Refreshing or leaving clears them. Do not enter names, contact details or other identifying information. Submitted text is sent to an external AI service; its data handling policies apply.": {
+    "cn": "记录仅在本页面开启期间保留，刷新或离开后会清空。请勿输入姓名、联系方式或其他可识别资料。提交内容会送往外部 AI 服务，并适用该服务的资料处理政策。",
+    "en": "Records are kept only while this page is open. Refreshing or leaving clears them. Do not enter names, contact details or other identifying information. Submitted text is sent to an external AI service; its data handling policies apply."
+  },
+  "Load fictional example": {
+    "cn": "载入虚构示例",
+    "en": "Load fictional example"
+  },
+  "Export record and feedback": {
+    "cn": "导出记录与反馈",
+    "en": "Export record and feedback"
+  },
+  "Clear practice": {
+    "cn": "清空练习",
+    "en": "Clear practice"
+  },
+  "Practice panels": {
+    "cn": "练习面板",
+    "en": "Practice panels"
+  },
+  "Case record": {
+    "cn": "个案记录",
+    "en": "Case record"
+  },
+  "I confirm this record is fictional or de-identified and understand that it will be sent to an AI service.": {
+    "cn": "我确认此记录为虚构或已移除识别资料，并了解内容将送往 AI 服务。",
+    "en": "I confirm this record is fictional or de-identified and understand that it will be sent to an AI service."
+  },
+  "Generate AI feedback": {
+    "cn": "生成 AI 反馈",
+    "en": "Generate AI feedback"
+  },
+  "Return to record and retry": {
+    "cn": "返回记录并重试",
+    "en": "Return to record and retry"
+  },
+  "Clear this practice?": {
+    "cn": "清空本次练习？",
+    "en": "Clear this practice?"
+  },
+  "Replace this record with an example?": {
+    "cn": "使用示例替换当前记录？",
+    "en": "Replace this record with an example?"
+  },
+  "The record and all cached feedback will be removed. Export anything you want to keep first.": {
+    "cn": "记录和所有缓存反馈将被清除，请先导出需要保留的内容。",
+    "en": "The record and all cached feedback will be removed. Export anything you want to keep first."
+  },
+  "Your current input will be replaced by a fictional case in the selected language.": {
+    "cn": "当前输入将被所选语言的虚构个案替换。",
+    "en": "Your current input will be replaced by a fictional case in the selected language."
   }
 }

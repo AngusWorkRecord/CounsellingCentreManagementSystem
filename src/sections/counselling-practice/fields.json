@@ -1,0 +1,9 @@
+{
+  "caseCode": { "label": "Practice case code", "limit": 80 },
+  "caseCategory": { "label": "Case category", "limit": 80 },
+  "background": { "label": "Case background", "limit": 2000 },
+  "summary": { "label": "Session summary", "limit": 12000 },
+  "actions": { "label": "Actions already taken", "limit": 8000 },
+  "understanding": { "label": "Your current understanding", "limit": 2000 },
+  "questions": { "label": "What would you like help with?", "limit": 2000 }
+}
