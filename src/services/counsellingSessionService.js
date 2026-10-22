@@ -1,5 +1,8 @@
+import { tr } from '../locales/translate';
+import { authenticatedFetch } from '../auth/authClient';
+
 export async function getCounsellingSessions({ signal } = {}) {
-  const response = await fetch('/api/counselling-sessions', { signal });
+  const response = await authenticatedFetch('/api/counselling-sessions', { signal });
 
   let result;
 
@@ -10,7 +13,7 @@ export async function getCounsellingSessions({ signal } = {}) {
   }
 
   if (!response.ok || !result.success) {
-    throw new Error(result.message || 'Failed to retrieve counselling sessions');
+    throw new Error((result.error?.code ? tr(result.error.code) : result.message) || 'Failed to retrieve counselling sessions');
   }
 
   if (!Array.isArray(result.data)) {
@@ -21,7 +24,7 @@ export async function getCounsellingSessions({ signal } = {}) {
 }
 
 export async function getCounsellingSessionById(id, { signal } = {}) {
-  const response = await fetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, { signal });
+  const response = await authenticatedFetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, { signal });
 
   let result;
 
@@ -33,7 +36,7 @@ export async function getCounsellingSessionById(id, { signal } = {}) {
 
   if (!response.ok || !result.success) {
     // 中文原文：无法读取个案资料
-    const error = new Error(result.message || 'Unable to retrieve case data');
+    const error = new Error((result.error?.code ? tr(result.error.code) : result.message) || 'Unable to retrieve case data');
     error.status = response.status;
     throw error;
   }
@@ -46,7 +49,7 @@ export async function getCounsellingSessionById(id, { signal } = {}) {
 }
 
 export async function createCounsellingSession(payload) {
-  const response = await fetch('/api/counselling-sessions', {
+  const response = await authenticatedFetch('/api/counselling-sessions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -62,7 +65,7 @@ export async function createCounsellingSession(payload) {
 
   if (!response.ok || !result.success) {
     // 中文原文：无法新增个案
-    throw new Error(result.message || 'Unable to create case');
+    throw new Error((result.error?.code ? tr(result.error.code) : result.message) || 'Unable to create case');
   }
 
   if (!result.data || typeof result.data !== 'object') {
@@ -73,7 +76,7 @@ export async function createCounsellingSession(payload) {
 }
 
 export async function updateCounsellingSession(id, payload) {
-  const response = await fetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, {
+  const response = await authenticatedFetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -89,7 +92,7 @@ export async function updateCounsellingSession(id, payload) {
 
   if (!response.ok || !result.success) {
     // 中文原文：无法更新个案
-    const error = new Error(result.message || 'Unable to update case');
+    const error = new Error((result.error?.code ? tr(result.error.code) : result.message) || 'Unable to update case');
     error.status = response.status;
     throw error;
   }
@@ -102,8 +105,10 @@ export async function updateCounsellingSession(id, payload) {
 }
 
 export async function deleteCounsellingSession(id) {
-  const response = await fetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, {
+  const response = await authenticatedFetch(`/api/counselling-sessions?id=${encodeURIComponent(id)}`, {
     method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({}),
   });
 
   let result;
@@ -116,7 +121,7 @@ export async function deleteCounsellingSession(id) {
 
   if (!response.ok || !result.success) {
     // 中文原文：无法删除个案
-    const error = new Error(result.message || 'Unable to delete case');
+    const error = new Error((result.error?.code ? tr(result.error.code) : result.message) || 'Unable to delete case');
     error.status = response.status;
     throw error;
   }

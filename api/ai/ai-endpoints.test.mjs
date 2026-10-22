@@ -2,8 +2,13 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { apiError } from '../_lib/ai.mjs';
-import { createCaseAdviceHandler } from './case-advice.mjs';
-import { createManagementInsightsHandler } from './management-insights.mjs';
+import { createCaseAdviceHandler as makeCaseAdvice } from './case-advice.mjs';
+import { createManagementInsightsHandler as makeManagementInsights } from './management-insights.mjs';
+
+// Analysis behavior tests run as an authenticated caller; auth boundaries are
+// tested separately in api/auth/auth.test.mjs against the real handler factories.
+const createCaseAdviceHandler = (overrides) => makeCaseAdvice({ authorizeRequest: async () => {}, ...overrides });
+const createManagementInsightsHandler = (overrides) => makeManagementInsights({ authorizeRequest: async () => {}, ...overrides });
 
 function responseMock() {
   return {

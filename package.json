@@ -12,6 +12,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env CI=false react-scripts build",
+    "auth:create-admin": "node scripts/create-admin.mjs",
+    "auth:recover-admin": "node scripts/recover-admin.mjs",
+    "test:appointments": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/pages/dashboard/AppointmentManagementPage.test.js src/sections/@dashboard/counselling/appointments/AppointmentDialog.test.js src/sections/@dashboard/counselling/appointments/appointmentService.test.js",
+    "test:auth": "npm run test:auth:api && npm run test:auth:ui",
+    "test:auth:api": "node --test api/auth/auth.test.mjs api/auth/database.test.mjs",
+    "test:auth:ui": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/auth/JwtContext.test.js src/auth/AuthGuard.test.js src/sections/auth/AuthLoginForm.test.js",
+    "test:practice": "node --test api/ai/student-feedback.test.mjs && cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/sections/counselling-practice/practice.test.js",
     "test:ai": "npm run test:ai:api && npm run test:ai:ui",
     "test:i18n": "node scripts/check-i18n.cjs && cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/locales/bilingual.test.js",
     "test:love-design": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/sections/love-design/tableState.test.js src/sections/love-design/LoveDesignTable.test.js",
@@ -133,7 +140,8 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "vercel": "^63.1.2"
   },
   "overrides": {
     "nth-check": "2.1.1"

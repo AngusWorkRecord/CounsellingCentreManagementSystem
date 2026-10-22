@@ -1,202 +1,58 @@
 import PropTypes from 'prop-types';
-import { createContext, useEffect, useReducer, useCallback, useMemo } from 'react';
-// utils
-import axios from '../utils/axios';
-import localStorageAvailable from '../utils/localStorageAvailable';
-//
-import { isValidToken, setSession,setUser } from './utils';
-//
-import { ServerConfiguration } from '../utils/serverConfig';
+import { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AUTH_EXPIRED_EVENT, authRequest } from './authClient';
 
-// ----------------------------------------------------------------------
-
-// NOTE:
-// We only build demo at basic level.
-// Customer will need to do some extra handling yourself if you want to extend the logic and other features...
-
-// ----------------------------------------------------------------------
-
-const initialState = {
-  isInitialized: false,
-  isAuthenticated: false,
-  user: null,
-};
-
-const reducer = (state, action) => {
-  if (action.type === 'INITIAL') {
-    return {
-      isInitialized: true,
-      isAuthenticated: action.payload.isAuthenticated,
-      user: action.payload.user,
-    };
-  }
-  if (action.type === 'LOGIN') {
-    return {
-      ...state,
-      isAuthenticated: true,
-      user: action.payload.user,
-    };
-  }
-  if (action.type === 'REGISTER') {
-    return {
-      ...state,
-      isAuthenticated: true,
-      user: action.payload.user,
-    };
-  }
-  if (action.type === 'LOGOUT') {
-    return {
-      ...state,
-      isAuthenticated: false,
-      user: null,
-    };
-  }
-
-  return state;
-};
-
-// ----------------------------------------------------------------------
-
+// Keep the provider export used by App; credentials and session tokens are
+// now held by the server and its HttpOnly cookie, never browser storage.
 export const AuthContext = createContext(null);
-
-// ----------------------------------------------------------------------
-
-AuthProvider.propTypes = {
-  children: PropTypes.node,
-};
+AuthProvider.propTypes = { children: PropTypes.node };
 
 export function AuthProvider({ children }) {
-  
-  const url = ServerConfiguration.testingServerUrl;
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const storageAvailable = localStorageAvailable();
-
-  const initialize = useCallback(async () => {
-    try {
-      const accessToken = storageAvailable ? localStorage.getItem('accessToken') : '';
-
-      if (accessToken && isValidToken(accessToken)) {
-        setSession(accessToken);
-
-        const response = await axios.get('/api/account/my-account');
-
-        const { user } = {UserFullName:"Demo Account",role:"Administrator"};
-
-        dispatch({
-          type: 'INITIAL',
-          payload: {
-            isAuthenticated: true,
-            user,
-          },
-        });
-      } else {
-        dispatch({
-          type: 'INITIAL',
-          payload: {
-            isAuthenticated: false,
-            user: null,
-          },
-        });
-      }
-    } catch (error) {
-      console.error(error);
-      dispatch({
-        type: 'INITIAL',
-        payload: {
-          isAuthenticated: false,
-          user: null,
-        },
-      });
-    }
-  }, [storageAvailable]);
-
+  const [user, setUser] = useState(null);
+  const [isInitialized, setInitialized] = useState(false);
+  const revision = useRef(0);
   useEffect(() => {
-    initialize();
-  }, [initialize]);
-
-  // LOGIN
-  // const login = useCallback(async (email, password) => 
-  // {
-  //   const response =  await axios.post('/api/account/login', {
-  //     email,
-  //     password,
-  //   });
-  
-  //   const { accessToken, user } = response.data;
-
-  //   setSession(accessToken);
-
-  //   dispatch({
-  //     type: 'LOGIN',
-  //     payload: {
-  //       user,
-  //     },
-  //   });
-  // }, []);
-
-  const login = useCallback(async (email, projectId, password) => {
-    const response = await fetch(
-      `${url}User_Login?USEREMAIL=${email}&USERPASSWORD=${password}`
-    )
-    const json = await response.json();
-    const data = JSON.parse(json)[0];
-    if (data && data.ReturnVal === 1) {
-      setUser(data.ReturnData);
-      // setSession(data.ReturnData);
-      dispatch({
-        type: 'LOGIN',
-        payload: {
-          user: JSON.parse(data.ReturnData)[0],
-        },
-      });
-      return true;
-    }
-    return false;
-  }, [url]);
-
-
-  // REGISTER
-  const register = useCallback(async (email, password, firstName, lastName) => {
-    const response = await axios.post('/api/account/register', {
-      email,
-      password,
-      firstName,
-      lastName,
-    });
-    const { accessToken, user } = response.data;
-
-    localStorage.setItem('accessToken', accessToken);
-
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        user,
-      },
-    });
+    const controller = new AbortController();
+    let active = true;
+    try { localStorage.removeItem('accessToken'); localStorage.removeItem('user'); } catch (_) { /* Storage is optional. */ }
+    const restore = async () => {
+      const { current } = revision;
+      try {
+        const restored = await authRequest('/api/auth/me', { signal: controller.signal });
+        if (active && current === revision.current) setUser(restored);
+      } catch (error) {
+        if (active && current === revision.current && error.status === 401) setUser(null);
+      } finally {
+        if (active) setInitialized(true);
+      }
+    };
+    const expire = () => { revision.current += 1; setUser(null); };
+    const refresh = () => { if (document.visibilityState !== 'hidden') restore(); };
+    restore();
+    window.addEventListener(AUTH_EXPIRED_EVENT, expire);
+    window.addEventListener('focus', refresh);
+    document.addEventListener('visibilitychange', refresh);
+    return () => {
+      active = false;
+      controller.abort();
+      window.removeEventListener(AUTH_EXPIRED_EVENT, expire);
+      window.removeEventListener('focus', refresh);
+      document.removeEventListener('visibilitychange', refresh);
+    };
   }, []);
-
-  // LOGOUT
-  const logout = useCallback(() => {
-    setSession(null);
-    setUser(null);
-    dispatch({
-      type: 'LOGOUT',
-    });
+  const login = useCallback(async (username, password, rememberMe = false) => {
+    revision.current += 1;
+    const { current } = revision;
+    const authenticated = await authRequest('/api/auth/login', { method: 'POST', body: { username, password, rememberMe } });
+    if (current === revision.current) { setUser(authenticated); setInitialized(true); }
+    return true;
   }, []);
-
-  const memoizedValue = useMemo(
-    () => ({
-      isInitialized: state.isInitialized,
-      isAuthenticated: state.isAuthenticated,
-      user: state.user,
-      method: 'jwt',
-      login,
-      register,
-      logout,
-    }),
-    [state.isAuthenticated, state.isInitialized, state.user, login, logout, register]
-  );
-
-  return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
+  const logout = useCallback(async () => {
+    revision.current += 1;
+    const { current } = revision;
+    await authRequest('/api/auth/logout', { method: 'POST', body: {} });
+    if (current === revision.current) setUser(null);
+  }, []);
+  const value = useMemo(() => ({ user, isInitialized, isAuthenticated: Boolean(user), method: 'session', login, logout }), [user, isInitialized, login, logout]);
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

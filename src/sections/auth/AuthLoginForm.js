@@ -1,163 +1,78 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import * as Yup from 'yup';
-import { Link as RouterLink } from 'react-router-dom';
-// form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-// @mui
-import { Link, Stack, Alert, IconButton, InputAdornment } from '@mui/material';
+import { Stack, Alert, Checkbox, FormControlLabel, Typography, IconButton, InputAdornment } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { tr, useUiLanguage } from '../../locales/translate';
-// routes
-import { PATH_AUTH } from '../../routes/paths';
-// auth
+import { uiMessage } from '../../locales/uiMessage';
 import { useAuthContext } from '../../auth/useAuthContext';
-// components
 import Iconify from '../../components/iconify';
 import FormProvider, { RHFTextField } from '../../components/hook-form';
-
-// ----------------------------------------------------------------------
 
 export default function AuthLoginForm() {
   useUiLanguage();
   const { login } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [rememberMe, setRememberMe] = useState(false);
+  const submitting = useRef(false);
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required(tr("Email is required")).email(tr("Email must be a valid email address")),
-    password: Yup.string().required(tr("Password is required")),
+    username: Yup.string().trim().required(tr('Username is required')),
+    password: Yup.string().required(tr('Password is required')),
   });
-
-  const defaultValues = {
-    email: 'admin@gmail.com', // pee0803@unimas.my
-    password: 'admin',
-  };
-
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
-    defaultValues,
+    defaultValues: { username: '', password: '' },
   });
-
-  const {
-    reset,
-    setError,
-    handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = methods;
-
+  const { setError, clearErrors, handleSubmit, formState: { errors, isSubmitting } } = methods;
   const onSubmit = async (data) => {
+    if (submitting.current) return;
+    submitting.current = true;
+    clearErrors('afterSubmit');
     try {
-      const resp = await login(data.email, 1, data.password);
-      if (!resp) {
-        setError('afterSubmit', {
-          message: tr("Invalid username or password."),
-        });
-      }
+      const response = await login(data.username, data.password, rememberMe);
+      if (!response) setError('afterSubmit', { message: tr('Invalid username or password.') });
     } catch (error) {
-      console.error(error);
-      reset();
-      setError('afterSubmit', {
-        ...error,
-        message: error.message,
-      });
+      let message = tr('Unable to login. Please try again.');
+      if (error.code === 'INVALID_CREDENTIALS') message = tr('Invalid username or password.');
+      if (error.code === 'INVALID_REQUEST') message = tr('Please enter a valid username and password.');
+      setError('afterSubmit', { message });
+    } finally {
+      submitting.current = false;
     }
   };
-
+  const fieldSx = {
+    '& .MuiOutlinedInput-root': { borderRadius: 1, color: '#203043', bgcolor: '#fff' },
+    '& .MuiOutlinedInput-notchedOutline': { borderColor: '#dce3e7' },
+    '& .MuiInputBase-input': { fontSize: 14 },
+    '& .MuiInputAdornment-root': { color: '#8796a5' },
+  };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={3}>
-        {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
-
-        <RHFTextField
-          name="email"
-          label={tr("Email address")}
-          variant="standard"
-          fullWidth
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Iconify icon="eva:email-fill" sx={{ color: 'grey.800' }} />
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            '& .MuiInputBase-root': {
-              borderBottom: '2px solid #333333', // Darker underline color
-            },
-            '& .MuiInputLabel-root': {
-              color: '#333333', // Darker color for the label
-            },
-            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
-              transform: 'translate(0, 1.5px) scale(0.75)', // Adjust label position
-            },
-            '& .MuiInputBase-input': {
-              padding: '12px 0', // Adjust padding as needed
-            },
-          }}
-        />
-
-        <RHFTextField
-          name="password"
-          label={tr("Password")}
-          type={showPassword ? 'text' : 'password'}
-          variant="standard"
-          fullWidth
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Iconify icon="eva:lock-fill" sx={{ color: 'grey.800' }} />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} sx={{ color: 'grey.800' }} />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            '& .MuiInputBase-root': {
-              borderBottom: '2px solid #333333', // Darker underline color
-            },
-            '& .MuiInputLabel-root': {
-              color: '#333333', // Darker color for the label
-            },
-            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
-              transform: 'translate(0, 1.5px) scale(0.75)', // Adjust label position
-            },
-            '& .MuiInputBase-input': {
-              padding: '12px 0', // Adjust padding as needed
-            },
-          }}
-        />
+      <Stack spacing={2.5}>
+        {!!errors.afterSubmit && <Alert severity="error">{uiMessage(errors.afterSubmit.message)}</Alert>}
+        <Stack spacing={0.75}>
+          <Typography component="label" htmlFor="login-username" variant="subtitle2">{tr('Username')}</Typography>
+          <RHFTextField id="login-username" name="username" placeholder={tr('Enter your username')} autoComplete="username" size="small" disabled={isSubmitting}
+            inputProps={{ 'aria-label': tr('Username') }}
+            InputProps={{ startAdornment: <InputAdornment position="start"><Iconify icon="eva:person-fill" /></InputAdornment> }} sx={fieldSx} />
+        </Stack>
+        <Stack spacing={0.75}>
+          <Typography component="label" htmlFor="login-password" variant="subtitle2">{tr('Password')}</Typography>
+          <RHFTextField id="login-password" name="password" placeholder={tr('Enter your password')} autoComplete="current-password" size="small" type={showPassword ? 'text' : 'password'} disabled={isSubmitting}
+            inputProps={{ 'aria-label': tr('Password') }}
+            InputProps={{
+              startAdornment: <InputAdornment position="start"><Iconify icon="eva:lock-fill" /></InputAdornment>,
+              endAdornment: <InputAdornment position="end"><IconButton type="button" edge="end" aria-label={showPassword ? tr('Hide password') : tr('Show password')} aria-pressed={showPassword} onClick={() => setShowPassword((value) => !value)}><Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} /></IconButton></InputAdornment>,
+            }} sx={fieldSx} />
+          <Typography variant="caption" sx={{ color: '#687b89', pt: 0.5 }}>{tr('Forgot password? Contact an administrator to reset your password.')}</Typography>
+        </Stack>
+        <Stack spacing={0}>
+          <FormControlLabel disabled={isSubmitting} control={<Checkbox checked={rememberMe} onChange={(event) => setRememberMe(event.target.checked)} size="small" />} label={tr('Keep me signed in')} sx={{ '& .MuiFormControlLabel-label': { fontSize: 13 } }} />
+        </Stack>
+        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting} endIcon={<Iconify icon="eva:arrow-forward-fill" />}
+          sx={{ bgcolor: '#00ad55', color: '#fff', borderRadius: 1, boxShadow: 'none', '&:hover': { bgcolor: '#008f46', boxShadow: 'none' } }}>{tr('Login')}</LoadingButton>
       </Stack>
-
-      <Stack alignItems="flex-end" sx={{ my: 2 }}>
-        <Link
-          component={RouterLink}
-          to={PATH_AUTH.resetPassword}
-          variant="body2"
-          color="inherit"
-          underline="always"
-        >{tr("Forgot password?")}</Link>
-      </Stack>
-
-      <LoadingButton
-        fullWidth
-        color="inherit"
-        size="large"
-        type="submit"
-        variant="contained"
-        loading={isSubmitSuccessful || isSubmitting}
-        sx={{
-          bgcolor: 'grey.800', // Darker background color
-          color: 'common.white', // White text color for contrast
-          '&:hover': {
-            bgcolor: 'grey.900', // Slightly lighter dark color on hover
-          },
-        }}
-      >{tr("Login")}</LoadingButton>
     </FormProvider>
   );
 }

@@ -22,6 +22,7 @@ export const PATH_AUTH = {
 
 export const PATH_PAGE = {
   loveDesign: '/love-design',
+  counsellingPractice: '/counselling-practice',
   comingSoon: '/coming-soon',
   maintenance: '/maintenance',
   pricing: '/pricing',
@@ -68,6 +69,7 @@ export const PATH_DASHBOARD = {
     banking: path(ROOTS_DASHBOARD, '/banking'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
     counselling: path(ROOTS_DASHBOARD, '/counselling'),
+    counsellingAppointments: path(ROOTS_DASHBOARD, '/counselling/appointments'),
     counsellingCases: path(ROOTS_DASHBOARD, '/counselling/cases'),
     counsellingCaseCreate: path(ROOTS_DASHBOARD, '/counselling/cases/new'),
     counsellingCaseDetail: (id) => path(ROOTS_DASHBOARD, `/counselling/cases/${id}`),

@@ -8,6 +8,8 @@ import { useAuthContext } from '../../../auth/useAuthContext';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import { CustomAvatar } from '../../../components/custom-avatar';
+import { useUiLanguage } from '../../../locales/translate';
+import { domainLabel } from '../../../locales/domainLabels';
 
 // ----------------------------------------------------------------------
 
@@ -22,20 +24,21 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function NavAccount() {
+  useUiLanguage();
   const { user } = useAuthContext();
 
   return (
     <Link component={RouterLink} to={PATH_DASHBOARD.user.account} underline="none" color="inherit">
       <StyledRoot>
-        <CustomAvatar src={user?.photoURL} alt={user?.UserFullName} name={user?.UserFullName} />
+        <CustomAvatar alt={user?.fullName} name={user?.fullName} />
 
         <Box sx={{ ml: 2, minWidth: 0 }}>
           <Typography variant="subtitle2" noWrap>
-            {user?.UserFullName}
+            {user?.fullName}
           </Typography>
 
           <Typography variant="body2" noWrap sx={{ color: 'text.secondary' }}>
-            {user?.role}
+            {domainLabel(user?.role)}
           </Typography>
         </Box>
       </StyledRoot>
