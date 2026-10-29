@@ -14,7 +14,7 @@
     "build": "cross-env CI=false react-scripts build",
     "auth:create-admin": "node scripts/create-admin.mjs",
     "auth:recover-admin": "node scripts/recover-admin.mjs",
-    "test:appointments": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/pages/dashboard/AppointmentManagementPage.test.js src/sections/@dashboard/counselling/appointments/AppointmentDialog.test.js src/sections/@dashboard/counselling/appointments/appointmentService.test.js",
+    "test:appointments": "npm run test:appointments:api && npm run test:appointments:ui",
     "test:auth": "npm run test:auth:api && npm run test:auth:ui",
     "test:auth:api": "node --test api/auth/auth.test.mjs api/auth/database.test.mjs",
     "test:auth:ui": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/auth/JwtContext.test.js src/auth/AuthGuard.test.js src/sections/auth/AuthLoginForm.test.js",
@@ -30,7 +30,9 @@
     "prettier": "prettier --write 'src/**/*.{js,jsx}'",
     "clear-all": "rm -rf build node_modules",
     "re-start": "rm -rf build node_modules && yarn install && yarn start",
-    "re-build": "rm -rf build node_modules && yarn install && yarn build"
+    "re-build": "rm -rf build node_modules && yarn install && yarn build",
+    "test:appointments:api": "node --test api/appointments/appointments.test.mjs api/appointments/database.test.mjs",
+    "test:appointments:ui": "cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/pages/dashboard/AppointmentManagementPage.test.js src/sections/@dashboard/counselling/appointments/AppointmentDialog.test.js src/services/appointmentService.test.js"
   },
   "eslintConfig": {
     "extends": [

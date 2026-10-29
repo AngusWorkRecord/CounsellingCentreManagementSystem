@@ -3,7 +3,7 @@ import { tr } from './translate';
 // Database values remain unchanged. Only these system-defined values have display labels.
 const labels = {
   admin: 'Admin', volunteer: 'Volunteer',
-  scheduled: 'Scheduled', completed: 'Appointment completed', no_show: 'No-show',
+  scheduled: 'Scheduled', completed: 'Appointment completed', no_show: 'No-show', cancelled: 'Appointment cancelled',
   '面谈': 'Face-to-face', '电话辅导': 'Telephone Counselling', '线上辅导': 'Online Counselling',
   '精神': 'Mental Health', '情感与婚姻': 'Relationships and Marriage', '家庭': 'Family',
   '亲子教养': 'Parenting', '成瘾': 'Addiction', '人际关系': 'Interpersonal Relationships',

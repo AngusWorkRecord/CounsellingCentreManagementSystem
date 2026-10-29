@@ -37,8 +37,9 @@ import {
 import AppointmentDialog from '../../sections/@dashboard/counselling/appointments/AppointmentDialog';
 import {
   appointmentService,
+  appointmentErrorMessage,
+  getAppointmentRange,
   defaultAppointment,
-  filterAppointments,
   malaysiaNow,
   MODE_COLORS,
   shiftDate,
@@ -56,7 +57,11 @@ export default function AppointmentManagementPage() {
   const today = malaysiaNow().date;
   const view = ['month', 'day', 'list'].includes(params.get('view')) ? params.get('view') : 'month';
   const date = validDate(params.get('date')) ? params.get('date') : today;
-  const [items, setItems] = useState(() => appointmentService.query());
+  const [items, setItems] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+  const [revision, setRevision] = useState(0);
   const [filters, setFilters] = useState(EMPTY_FILTERS);
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
@@ -76,8 +81,32 @@ export default function AppointmentManagementPage() {
     setPage(0);
   };
   const invalidRange = !!(filters.from && filters.to && filters.from > filters.to);
-  const filtered = invalidRange ? [] : filterAppointments(items, filters);
-  const dayItems = filterAppointments(items, { ...EMPTY_FILTERS, from: date, to: date });
+  // Load the entire visible month grid, including the adjacent-month cells.
+  const first = `${date.slice(0, 7)}-01`;
+  const last = shiftDate(shiftDate(first, 1, true), -1);
+  const monthFrom = shiftDate(first, -new Date(`${first}T12:00:00Z`).getUTCDay());
+  const monthTo = shiftDate(last, 6 - new Date(`${last}T12:00:00Z`).getUTCDay());
+  const queryKey = JSON.stringify(view === 'list' ? { ...filters, page, pageSize: rows } : {
+    from: view === 'day' ? date : monthFrom, to: view === 'day' ? date : monthTo, excludeCancelled: 'true',
+  });
+  useEffect(() => {
+    const controller = new AbortController();
+    setItems([]); setLoadError(null); setTotal(0);
+    if (view === 'list' && invalidRange) { setLoading(false); return () => controller.abort(); }
+    setLoading(true);
+    const query = JSON.parse(queryKey);
+    const fetchItems = view === 'list' ? appointmentService.query : getAppointmentRange;
+    fetchItems(query, { signal: controller.signal }).then((result) => {
+      if (controller.signal.aborted) return;
+      if (view === 'list' && query.page > 0 && result.total <= query.page * query.pageSize) {
+        setPage(Math.max(0, Math.ceil(result.total / query.pageSize) - 1)); return;
+      }
+      setItems(result.data); setTotal(result.total);
+    }).catch((error) => {
+      if (!controller.signal.aborted) setLoadError(error);
+    }).finally(() => { if (!controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
+  }, [queryKey, revision, view, invalidRange]);
   const formatDate = (value, month = false) =>
     new Intl.DateTimeFormat(currentLocale(), {
       timeZone: 'Asia/Kuala_Lumpur',
@@ -99,7 +128,7 @@ export default function AppointmentManagementPage() {
       }}
     />
   );
-  const displayItems = view === 'day' ? dayItems : filtered.slice(page * rows, (page + 1) * rows);
+  const displayItems = items;
   const selectFilter = (key, label, values, render) => (
     <TextField
       select
@@ -116,10 +145,10 @@ export default function AppointmentManagementPage() {
       ))}
     </TextField>
   );
-  const changed = (next, message) => {
-    setItems(next);
+  const changed = async (operation, message) => {
+    await operation;
     setDialog(null);
-    setPage(0);
+    setRevision((old) => old + 1);
     enqueueSnackbar(tr(message));
   };
   return (
@@ -143,10 +172,12 @@ export default function AppointmentManagementPage() {
           </Button>
         </Stack>
         <Alert severity="info">
-          {tr(
-            'Demo version — fictional data. Reloading resets all changes. Times use Malaysia time (UTC+8).'
-          )}
+          {tr('Appointment times use Malaysia time (UTC+8).')}
         </Alert>
+        {loading && <Alert severity="info">{tr('Loading appointments…')}</Alert>}
+        {loadError && <Alert severity="error" action={<Button onClick={() => setRevision((old) => old + 1)}>{tr('Retry appointments')}</Button>}>
+          {tr(appointmentErrorMessage(loadError))}
+        </Alert>}
         <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" gap={2}>
           <ToggleButtonGroup
             exclusive
@@ -218,6 +249,7 @@ export default function AppointmentManagementPage() {
                 headerToolbar={false}
                 height="auto"
                 fixedWeekCount={false}
+                firstDay={0}
                 dayMaxEvents={3}
                 eventDisplay="block"
                 editable={false}
@@ -312,7 +344,7 @@ export default function AppointmentManagementPage() {
         )}
         {view !== 'month' && (
           <>
-            {!displayItems.length && <Alert severity="info">{tr('No appointments found')}</Alert>}
+            {!loading && !loadError && !invalidRange && !displayItems.length && <Alert severity="info">{tr('No appointments found')}</Alert>}
             {desktop && displayItems.length > 0 ? (
               <TableContainer component={Card}>
                 <Table>
@@ -379,7 +411,7 @@ export default function AppointmentManagementPage() {
             {view === 'list' && (
               <TablePagination
                 component="div"
-                count={filtered.length}
+                count={total}
                 page={page}
                 rowsPerPage={rows}
                 rowsPerPageOptions={[5, 10, 25]}
@@ -412,10 +444,9 @@ export default function AppointmentManagementPage() {
               'Appointment saved'
             )
           }
-          onStatus={(id, status) =>
-            changed(appointmentService.setStatus(id, status), 'Appointment status updated')
+          onStatus={(id, status, version, reason) =>
+            changed(appointmentService.setStatus(id, status, version, reason), 'Appointment status updated')
           }
-          onDelete={(id) => changed(appointmentService.remove(id), 'Appointment deleted')}
         />
       )}
     </Container>
