@@ -30,5 +30,8 @@ package-lock.json
 yark.lock
 /database/*
 /docs/*
+!/database/005_create_authentication.sql
+!/database/006_create_appointments.sql
+!/docs/appointments.md
 .vercel
 .env*

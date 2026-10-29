@@ -7625,5 +7625,137 @@
   "Phone": {
     "en": "Phone",
     "cn": "电话"
+  },
+  "Appointment cancelled": {
+    "cn": "已取消预约",
+    "en": "Appointment cancelled"
+  },
+  "Appointment text is too long": {
+    "cn": "预约文字超出长度限制",
+    "en": "Appointment text is too long"
+  },
+  "Please select a related case": {
+    "cn": "请选择关联个案",
+    "en": "Please select a related case"
+  },
+  "Please check the appointment fields.": {
+    "cn": "请检查预约资料。",
+    "en": "Please check the appointment fields."
+  },
+  "The related case is no longer available. Select another case.": {
+    "cn": "关联个案已不可用，请选择其他个案。",
+    "en": "The related case is no longer available. Select another case."
+  },
+  "This appointment no longer exists.": {
+    "cn": "此预约已不存在。",
+    "en": "This appointment no longer exists."
+  },
+  "This appointment was changed by someone else. Reload its details before saving again.": {
+    "cn": "此预约已被其他人修改，请重新读取详情后再保存。",
+    "en": "This appointment was changed by someone else. Reload its details before saving again."
+  },
+  "The counsellor already has an appointment during this time.": {
+    "cn": "此辅导员在该时段已有预约。",
+    "en": "The counsellor already has an appointment during this time."
+  },
+  "This status change is not allowed. Reload the appointment details.": {
+    "cn": "无法进行此状态变更，请重新读取预约详情。",
+    "en": "This status change is not allowed. Reload the appointment details."
+  },
+  "You cannot perform this appointment operation.": {
+    "cn": "你无权执行此预约操作。",
+    "en": "You cannot perform this appointment operation."
+  },
+  "Your session has expired. Please sign in again.": {
+    "cn": "登录已过期，请重新登录。",
+    "en": "Your session has expired. Please sign in again."
+  },
+  "Unable to load or save appointments. Please try again.": {
+    "cn": "无法读取或保存预约，请重试。",
+    "en": "Unable to load or save appointments. Please try again."
+  },
+  "Appointment times use Malaysia time (UTC+8).": {
+    "cn": "预约时间采用马来西亚时间（UTC+8）。",
+    "en": "Appointment times use Malaysia time (UTC+8)."
+  },
+  "Loading appointments…": {
+    "cn": "正在读取预约……",
+    "en": "Loading appointments…"
+  },
+  "Retry appointments": {
+    "cn": "重试",
+    "en": "Retry appointments"
+  },
+  "Loading appointment details…": {
+    "cn": "正在读取预约详情……",
+    "en": "Loading appointment details…"
+  },
+  "Reload appointment details": {
+    "cn": "重新读取预约详情",
+    "en": "Reload appointment details"
+  },
+  "Search related cases": {
+    "cn": "搜索关联个案",
+    "en": "Search related cases"
+  },
+  "Loading related cases…": {
+    "cn": "正在读取关联个案……",
+    "en": "Loading related cases…"
+  },
+  "Previous cases": {
+    "cn": "上一页个案",
+    "en": "Previous cases"
+  },
+  "Next cases": {
+    "cn": "下一页个案",
+    "en": "Next cases"
+  },
+  "Saving appointment…": {
+    "cn": "正在保存预约……",
+    "en": "Saving appointment…"
+  },
+  "Cancel this appointment?": {
+    "cn": "确定取消此预约？",
+    "en": "Cancel this appointment?"
+  },
+  "The cancellation will be kept in the appointment history and this time slot will be released.": {
+    "cn": "取消记录将保留在预约历史中，此时段将被释放。",
+    "en": "The cancellation will be kept in the appointment history and this time slot will be released."
+  },
+  "Cancellation reason (optional)": {
+    "cn": "取消原因（选填）",
+    "en": "Cancellation reason (optional)"
+  },
+  "Confirm cancellation": {
+    "cn": "确认取消",
+    "en": "Confirm cancellation"
+  },
+  "Appointment history": {
+    "cn": "预约操作历史",
+    "en": "Appointment history"
+  },
+  "Appointment created": {
+    "cn": "预约已创建",
+    "en": "Appointment created"
+  },
+  "Appointment edited": {
+    "cn": "预约已编辑",
+    "en": "Appointment edited"
+  },
+  "Appointment status changed": {
+    "cn": "预约状态已变更",
+    "en": "Appointment status changed"
+  },
+  "Cancellation reason": {
+    "cn": "取消原因",
+    "en": "Cancellation reason"
+  },
+  "Related case ID": {
+    "cn": "关联个案 ID",
+    "en": "Related case ID"
+  },
+  "{{field}}: {{before}} → {{after}}": {
+    "cn": "{{field}}：{{before}} → {{after}}",
+    "en": "{{field}}: {{before}} → {{after}}"
   }
 }
