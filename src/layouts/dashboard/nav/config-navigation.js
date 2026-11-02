@@ -46,6 +46,11 @@ const navConfig = [
   {
     get subheader() { return tr("general"); },
     items: [
+      {
+        get title() { return tr('Counsellor & Volunteer Management'); },
+        path: PATH_DASHBOARD.counsellingPeople,
+        icon: ICONS.user,
+      },
       // { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
       // { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
       // { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
