@@ -1,4 +1,194 @@
 {
+  "Retry": { "cn": "重试", "en": "Retry" },
+  "Reload directory": { "cn": "重新加载名录", "en": "Reload directory" },
+  "Loading personnel...": { "cn": "正在加载人员资料……", "en": "Loading personnel..." },
+  "You cannot perform this personnel operation.": { "cn": "您没有权限执行此人员操作。", "en": "You cannot perform this personnel operation." },
+  "Personnel service is not configured. Please contact an administrator.": { "cn": "人员服务尚未配置，请联系管理员。", "en": "Personnel service is not configured. Please contact an administrator." },
+  "Please check the personnel fields.": { "cn": "请检查人员资料中的字段。", "en": "Please check the personnel fields." },
+  "This person no longer exists. Close this dialog and reload the directory.": { "cn": "此人员记录已不存在，请关闭弹窗并重新加载名录。", "en": "This person no longer exists. Close this dialog and reload the directory." },
+  "This person was changed by someone else. Close this dialog and reload the directory before editing again.": { "cn": "此人员资料已被其他用户修改，请关闭弹窗并重新加载名录后再编辑。", "en": "This person was changed by someone else. Close this dialog and reload the directory before editing again." },
+  "Unable to load or save personnel. Please try again.": { "cn": "无法加载或保存人员资料，请重试。", "en": "Unable to load or save personnel. Please try again." },
+  "Please reload the directory before editing again.": { "cn": "请重新加载名录后再编辑。", "en": "Please reload the directory before editing again." },
+  "Please select a valid person type.": { "cn": "请选择有效的人员身份。", "en": "Please select a valid person type." },
+  "Please select a valid personnel status.": { "cn": "请选择有效的人员状态。", "en": "Please select a valid personnel status." },
+  "Please select valid languages.": { "cn": "请选择有效的语言。", "en": "Please select valid languages." },
+  "Please enter valid text.": { "cn": "请输入有效的文字。", "en": "Please enter valid text." },
+  "This personnel field is too long.": { "cn": "此人员资料字段超出长度限制。", "en": "This personnel field is too long." },
+  "Reload directory": { "cn": "重新加载名录", "en": "Reload directory" },
+  "Loading personnel...": { "cn": "正在加载人员资料……", "en": "Loading personnel..." },
+  "You cannot perform this personnel operation.": { "cn": "您没有权限执行此人员操作。", "en": "You cannot perform this personnel operation." },
+  "Personnel service is not configured. Please contact an administrator.": { "cn": "人员服务尚未配置，请联系管理员。", "en": "Personnel service is not configured. Please contact an administrator." },
+  "Please check the personnel fields.": { "cn": "请检查人员资料中的字段。", "en": "Please check the personnel fields." },
+  "This person no longer exists. Close this dialog and reload the directory.": { "cn": "此人员记录已不存在，请关闭弹窗并重新加载名录。", "en": "This person no longer exists. Close this dialog and reload the directory." },
+  "This person was changed by someone else. Close this dialog and reload the directory before editing again.": { "cn": "此人员资料已被其他用户修改，请关闭弹窗并重新加载名录后再编辑。", "en": "This person was changed by someone else. Close this dialog and reload the directory before editing again." },
+  "Unable to load or save personnel. Please try again.": { "cn": "无法加载或保存人员资料，请重试。", "en": "Unable to load or save personnel. Please try again." },
+  "Please reload the directory before editing again.": { "cn": "请重新加载名录后再编辑。", "en": "Please reload the directory before editing again." },
+  "Please select a valid person type.": { "cn": "请选择有效的人员身份。", "en": "Please select a valid person type." },
+  "Please select a valid personnel status.": { "cn": "请选择有效的人员状态。", "en": "Please select a valid personnel status." },
+  "Please select valid languages.": { "cn": "请选择有效的语言。", "en": "Please select valid languages." },
+  "Please enter valid text.": { "cn": "请输入有效的文字。", "en": "Please enter valid text." },
+  "This personnel field is too long.": { "cn": "此人员资料字段超出长度限制。", "en": "This personnel field is too long." },
+  "Person name": { "cn": "姓名", "en": "Person name" },
+  "Counsellor & Volunteer Management": {
+    "cn": "辅导员与志工管理",
+    "en": "Counsellor & Volunteer Management"
+  },
+  "Counsellor & Volunteer Directory": {
+    "cn": "辅导员与志工名录",
+    "en": "Counsellor & Volunteer Directory"
+  },
+  "Manage counsellors and counselling volunteers": {
+    "cn": "管理辅导员与辅导志工",
+    "en": "Manage counsellors and counselling volunteers"
+  },
+  "Person type": {
+    "cn": "人员身份",
+    "en": "Person type"
+  },
+  "Active personnel": {
+    "cn": "在职",
+    "en": "Active personnel"
+  },
+  "Inactive personnel": {
+    "cn": "停用",
+    "en": "Inactive personnel"
+  },
+  "Chinese": {
+    "cn": "华文",
+    "en": "Chinese"
+  },
+  "English": {
+    "cn": "英文",
+    "en": "English"
+  },
+  "Malay": {
+    "cn": "马来文",
+    "en": "Malay"
+  },
+  "Tamil": {
+    "cn": "淡米尔文",
+    "en": "Tamil"
+  },
+  "Provide a phone number or email address": {
+    "cn": "请填写电话号码或电邮地址",
+    "en": "Provide a phone number or email address"
+  },
+  "Enter a valid email address": {
+    "cn": "请输入有效的电邮地址",
+    "en": "Enter a valid email address"
+  },
+  "Person saved": {
+    "cn": "人员资料已保存",
+    "en": "Person saved"
+  },
+  "Person deleted": {
+    "cn": "人员已删除",
+    "en": "Person deleted"
+  },
+  "Person status updated": {
+    "cn": "人员状态已更新",
+    "en": "Person status updated"
+  },
+  "Languages": {
+    "cn": "语言",
+    "en": "Languages"
+  },
+  "Specialisation / Focus Area": {
+    "cn": "专长／关注领域",
+    "en": "Specialisation / Focus Area"
+  },
+  "Actions for {{name}}": {
+    "cn": "{{name}} 的操作",
+    "en": "Actions for {{name}}"
+  },
+  "Delete this person?": {
+    "cn": "删除此人员？",
+    "en": "Delete this person?"
+  },
+  "Change person status?": {
+    "cn": "更改人员状态？",
+    "en": "Change person status?"
+  },
+  "Add New Person": {
+    "cn": "新增人员",
+    "en": "Add New Person"
+  },
+  "Export CSV": {
+    "cn": "导出 CSV",
+    "en": "Export CSV"
+  },
+  "Demo data only. Changes are temporary and reset when you refresh this page.": {
+    "cn": "当前为示例资料。所有更改仅临时保存，刷新页面后将恢复示例。",
+    "en": "Demo data only. Changes are temporary and reset when you refresh this page."
+  },
+  "Total Counsellors": {
+    "cn": "辅导员总数",
+    "en": "Total Counsellors"
+  },
+  "Total Volunteers": {
+    "cn": "志工总数",
+    "en": "Total Volunteers"
+  },
+  "Search by name, email or contact no.": {
+    "cn": "搜索姓名、电邮或电话号码",
+    "en": "Search by name, email or contact no."
+  },
+  "Name: ascending": {
+    "cn": "姓名：升序",
+    "en": "Name: ascending"
+  },
+  "Name: descending": {
+    "cn": "姓名：降序",
+    "en": "Name: descending"
+  },
+  "No people found. Add a person or adjust your filters.": {
+    "cn": "没有符合条件的人员，请新增人员或调整筛选。",
+    "en": "No people found. Add a person or adjust your filters."
+  },
+  "View person details": {
+    "cn": "查看人员详情",
+    "en": "View person details"
+  },
+  "Edit person": {
+    "cn": "编辑人员",
+    "en": "Edit person"
+  },
+  "Deactivate person": {
+    "cn": "停用人员",
+    "en": "Deactivate person"
+  },
+  "Reactivate person": {
+    "cn": "恢复在职",
+    "en": "Reactivate person"
+  },
+  "Delete person": {
+    "cn": "删除人员",
+    "en": "Delete person"
+  },
+  "Provide at least one contact method: phone or email.": {
+    "cn": "请至少填写一种联系方式：电话或电邮。",
+    "en": "Provide at least one contact method: phone or email."
+  },
+  "Save person": {
+    "cn": "保存人员",
+    "en": "Save person"
+  },
+  "Your unsaved changes will be lost.": {
+    "cn": "未保存的更改将会丢失。",
+    "en": "Your unsaved changes will be lost."
+  },
+  "Delete {{name}}? This cannot be undone.": {
+    "cn": "确定删除 {{name}}？此操作无法撤销。",
+    "en": "Delete {{name}}? This cannot be undone."
+  },
+  "Deactivate {{name}}? Their details will be retained.": {
+    "cn": "确定停用 {{name}}？人员资料将会保留。",
+    "en": "Deactivate {{name}}? Their details will be retained."
+  },
+  "Reactivate {{name}}?": {
+    "cn": "确定将 {{name}} 恢复为在职？",
+    "en": "Reactivate {{name}}?"
+  },
   "抽牌方式": { "cn": "抽牌方式", "en": "Draw mode" },
   "随机抽牌": { "cn": "随机抽牌", "en": "Random draw" },
   "按顺序抽牌": { "cn": "按顺序抽牌", "en": "Draw in order" },

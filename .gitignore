@@ -32,6 +32,8 @@ yark.lock
 /docs/*
 !/database/005_create_authentication.sql
 !/database/006_create_appointments.sql
+!/database/007_create_counselling_people.sql
 !/docs/appointments.md
+!/docs/counselling-people.md
 .vercel
 .env*
