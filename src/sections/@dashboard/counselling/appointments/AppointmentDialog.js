@@ -4,7 +4,8 @@ import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, 
 import useResponsive from '../../../../hooks/useResponsive';
 import { tr, useUiLanguage, currentLocale } from '../../../../locales/translate';
 import { domainLabel } from '../../../../locales/domainLabels';
-import { COUNSELLORS, SESSION_MODES } from '../cases/create/constants';
+import { SESSION_MODES } from '../cases/create/constants';
+import { peopleService, personErrorMessage } from '../../../../services/peopleService';
 import { appointmentService, appointmentErrorMessage, FIELD_ERROR_MESSAGES, hasEnded, validateAppointment } from '../../../../services/appointmentService';
 
 const HISTORY_FIELDS = [
@@ -58,7 +59,25 @@ export default function AppointmentDialog({ initial, items, onClose, onSave, onS
   const [caseLoading, setCaseLoading] = useState(false);
   const [caseError, setCaseError] = useState(null);
   const [caseRetry, setCaseRetry] = useState(0);
+  const [counsellors, setCounsellors] = useState([]);
+  const [counsellorLoading, setCounsellorLoading] = useState(true);
+  const [counsellorError, setCounsellorError] = useState(null);
+  const [counsellorRetry, setCounsellorRetry] = useState(0);
   const { id } = initial;
+  useEffect(() => {
+    if (!editing) return undefined;
+    const controller = new AbortController();
+    setCounsellorLoading(true); setCounsellorError(null);
+    peopleService.list({ signal: controller.signal }).then((people) => {
+      if (!controller.signal.aborted) setCounsellors([...new Set(people.filter((person) => ['counsellor', 'volunteer'].includes(person.type) && person.status === 'active').map((person) => person.name))]);
+    }).catch((error) => { if (!controller.signal.aborted) setCounsellorError(error); })
+      .finally(() => { if (!controller.signal.aborted) setCounsellorLoading(false); });
+    return () => controller.abort();
+  }, [editing, counsellorRetry]);
+  // An unchanged historical name is valid for an existing appointment only.
+  const counsellorChoices = [...counsellors];
+  if (id && baseline.counsellor && !counsellorChoices.includes(baseline.counsellor)) counsellorChoices.push(baseline.counsellor);
+  const counsellorLocked = counsellorLoading || !!counsellorError;
   useEffect(() => {
     if (!id) return undefined;
     const controller = new AbortController();
@@ -103,9 +122,9 @@ export default function AppointmentDialog({ initial, items, onClose, onSave, onS
   };
   const save = (event) => {
     event.preventDefault();
-    if (pending.current || locked) return;
+    if (pending.current || locked || counsellorLocked) return;
     const clean = { ...form, clientInitials: form.clientInitials.trim(), phone: form.phone.trim(), location: form.location.trim() };
-    const result = validateAppointment(clean, items);
+    const result = validateAppointment(clean, items, counsellorChoices);
     setErrors(result.errors); setConflict(result.conflict);
     if (!Object.keys(result.errors).length && !result.conflict) run(() => onSave(clean));
   };
@@ -156,7 +175,15 @@ export default function AppointmentDialog({ initial, items, onClose, onSave, onS
               </Stack>
               {field('clientInitials', 'Client initials')}{field('phone', 'Phone', 'tel')}{field('date', 'Appointment date', 'date')}
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>{field('start', 'Start time', 'time')}{field('end', 'End time', 'time')}</Stack>
-              {select('counsellor', 'Counsellor', COUNSELLORS)}{select('mode', 'Session mode', SESSION_MODES, domainLabel)}{field('location', 'Location')}
+              {counsellorLoading && <Typography role="status">{tr('Loading counsellors…')}</Typography>}
+              {counsellorError && <Alert severity="error">{tr(personErrorMessage(counsellorError))}</Alert>}
+              {!counsellorLoading && !counsellorError && !counsellors.length && <Alert severity="info">{tr('No active counsellors or volunteers. Add an active person in personnel management first.')}</Alert>}
+              <TextField disabled={locked || counsellorLocked} select required fullWidth label={tr('Counsellor / Volunteer')} value={counsellorChoices.includes(form.counsellor) ? form.counsellor : ''}
+                onChange={(event) => change('counsellor', event.target.value)} error={!!errors.counsellor} helperText={errors.counsellor ? tr(errors.counsellor) : undefined}>
+                {counsellorChoices.map((name) => <MenuItem key={name} value={name} disabled={!counsellors.includes(name)} sx={{ whiteSpace: 'normal', overflowWrap: 'anywhere' }}>{name}</MenuItem>)}
+              </TextField>
+              <Button disabled={locked || counsellorLoading} onClick={() => setCounsellorRetry((value) => value + 1)}>{tr('Reload counsellors')}</Button>
+              {select('mode', 'Session mode', SESSION_MODES, domainLabel)}{field('location', 'Location')}
             </Stack>
           </Box> : <>
             {[
@@ -177,7 +204,7 @@ export default function AppointmentDialog({ initial, items, onClose, onSave, onS
           <Button disabled={locked || !hasEnded(form)} onClick={() => status('no_show')}>{tr('Mark no-show')}</Button>
         </> : <Button disabled={locked} onClick={() => status('scheduled')}>{tr('Restore scheduled')}</Button>)}
         <Button disabled={busy} onClick={close}>{tr('Close')}</Button>
-        {editing && <Button disabled={locked} variant="contained" type="submit" form="appointment-form">{tr(busy ? 'Saving appointment…' : 'Save appointment')}</Button>}
+        {editing && <Button disabled={locked || counsellorLocked || !counsellorChoices.length} variant="contained" type="submit" form="appointment-form">{tr(busy ? 'Saving appointment…' : 'Save appointment')}</Button>}
       </DialogActions>
     </Dialog>
     <Dialog open={!!confirmation} onClose={() => { if (!busy) setConfirmation(''); }} fullWidth maxWidth="xs">

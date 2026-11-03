@@ -1,4 +1,4 @@
-import { COUNSELLORS, SESSION_MODES } from '../sections/@dashboard/counselling/cases/create/constants';
+import { SESSION_MODES } from '../sections/@dashboard/counselling/cases/create/constants';
 import { authenticatedFetch } from '../auth/authClient';
 
 export const STATUS_LABELS = { scheduled: 'Scheduled', completed: 'Appointment completed', no_show: 'No-show', cancelled: 'Appointment cancelled' };
@@ -29,13 +29,13 @@ export function defaultAppointment(date, now = new Date()) {
 export function hasEnded(item, now = new Date()) {
   return new Date(`${item.date}T${item.end}:00+08:00`).getTime() <= now.getTime();
 }
-export function validateAppointment(item, items = []) {
+export function validateAppointment(item, items = [], counsellors = null) {
   const errors = {};
   ['clientInitials', 'phone', 'date', 'start', 'end', 'counsellor', 'mode', 'location'].forEach((key) => { if (!String(item[key] || '').trim()) errors[key] = 'This field is required'; });
   if (!validDate(item.date)) errors.date = 'Select a valid date';
   ['start', 'end'].forEach((key) => { if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(item[key] || '')) errors[key] = 'Select a valid time'; });
   if (!errors.start && !errors.end && item.end <= item.start) errors.end = 'End time must be later than start time';
-  if (!COUNSELLORS.includes(item.counsellor)) errors.counsellor = 'Please select a counsellor';
+  if (typeof item.counsellor !== 'string' || !item.counsellor.trim() || item.counsellor.length > 100 || (counsellors && !counsellors.includes(item.counsellor))) errors.counsellor = 'Please select a counsellor';
   if (!SESSION_MODES.includes(item.mode)) errors.mode = 'Please select a session mode';
   [['clientInitials', 100], ['phone', 50], ['location', 500]].forEach(([key, limit]) => {
     if (String(item[key] || '').length > limit) errors[key] = 'Appointment text is too long';
@@ -44,6 +44,7 @@ export function validateAppointment(item, items = []) {
   return { errors, conflict };
 }
 export const APPOINTMENT_ERROR_MESSAGES = {
+  APPOINTMENT_COUNSELLOR_UNAVAILABLE: 'This person is no longer available. Reload the list and select an active counsellor or volunteer.',
   APPOINTMENT_VALIDATION_FAILED: 'Please check the appointment fields.',
   APPOINTMENT_CASE_NOT_FOUND: 'The related case is no longer available. Select another case.',
   APPOINTMENT_NOT_FOUND: 'This appointment no longer exists.',

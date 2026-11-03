@@ -27,6 +27,7 @@ import {
 import { Helmet } from 'react-helmet-async';
 import { tr, useUiLanguage, currentLocale } from '../../locales/translate';
 import { domainLabel } from '../../locales/domainLabels';
+import { peopleService, personErrorMessage } from '../../services/peopleService';
 import cnCalendar from '../../locales/calendarLocale';
 import useResponsive from '../../hooks/useResponsive';
 import { StyledCalendar } from '../../sections/@dashboard/calendar';
@@ -66,6 +67,18 @@ export default function AppointmentManagementPage() {
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
   const [dialog, setDialog] = useState(null);
+  const [personnelNames, setPersonnelNames] = useState([]);
+  const [personnelError, setPersonnelError] = useState(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    setPersonnelError(null);
+    peopleService.list({ signal: controller.signal }).then((people) => {
+      if (!controller.signal.aborted) setPersonnelNames(people.filter((person) => ['counsellor', 'volunteer'].includes(person.type)).map((person) => person.name));
+    }).catch((error) => { if (!controller.signal.aborted) setPersonnelError(error); });
+    return () => controller.abort();
+  }, [revision]);
+  // Old names remain useful as filters for historical appointments only.
+  const counsellorFilters = [...new Set([...COUNSELLORS, ...personnelNames, ...items.map((item) => item.counsellor), filters.counsellor].filter(Boolean))];
   const calendar = useRef(null);
   const navigate = (nextView, nextDate = date) => {
     const next = new URLSearchParams(params);
@@ -153,6 +166,8 @@ export default function AppointmentManagementPage() {
   };
   return (
     <Container maxWidth="xl" sx={{ pb: 4 }}>
+      {personnelError && <Alert severity="warning" action={<Button onClick={() => setRevision((old) => old + 1)}>{tr('Reload counsellors')}</Button>}>{tr(personErrorMessage(personnelError))}</Alert>}
+      {personnelError && <Alert severity="warning" action={<Button onClick={() => setRevision((old) => old + 1)}>{tr('Reload counsellors')}</Button>}>{tr(personErrorMessage(personnelError))}</Alert>}
       <Helmet>
         <title>{tr('Appointment management')}</title>
       </Helmet>
@@ -324,7 +339,7 @@ export default function AppointmentManagementPage() {
                   error={invalidRange}
                   helperText={invalidRange ? tr('End date must not precede start date') : undefined}
                 />
-                {selectFilter('counsellor', 'Counsellor', COUNSELLORS, (v) => v)}
+                {selectFilter('counsellor', 'Counsellor / Volunteer', counsellorFilters, (v) => v)}
                 {selectFilter('mode', 'Session mode', SESSION_MODES, domainLabel)}
                 {selectFilter('status', 'Status', Object.keys(STATUS_LABELS), (v) =>
                   domainLabel(v)

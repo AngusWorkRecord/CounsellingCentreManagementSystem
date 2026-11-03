@@ -1,6 +1,5 @@
 import { getAuthSql, requireUser, assertWriteOrigin, readSessionToken, tokenHash, methodAllowed, writeAuthError } from './auth.mjs';
 
-export const COUNSELLORS = ['沈佳佳', '林美琪', '陈伟伦', '黄诗婷', '刘志豪'];
 export const MODES = ['面谈', '电话辅导', '线上辅导'];
 export const STATUSES = ['scheduled', 'completed', 'no_show', 'cancelled'];
 const failure = (code, fields) => Object.assign(new Error(code), { code, fields });
@@ -28,7 +27,7 @@ export function validateWrite(body, action) {
     if (!validTime(body.start)) fields.start = 'INVALID_TIME';
     if (!validTime(body.end)) fields.end = 'INVALID_TIME';
     if (!fields.start && !fields.end && body.end <= body.start) fields.end = 'INVALID_END';
-    if (!COUNSELLORS.includes(body.counsellor)) fields.counsellor = 'INVALID_COUNSELLOR';
+    if (!scalar(body.counsellor) || !body.counsellor.trim() || body.counsellor.length > 100 || body.counsellor.includes('\0')) fields.counsellor = 'INVALID_COUNSELLOR';
     if (!MODES.includes(body.mode)) fields.mode = 'INVALID_MODE';
   }
   if (Object.keys(fields).length) throw failure('APPOINTMENT_VALIDATION_FAILED', fields);
@@ -47,7 +46,7 @@ export function validateQuery(query = {}, cases = false) {
   if (q.id && !validId(q.id)) throw failure('INVALID_REQUEST');
   if (query.id !== undefined && !q.id) throw failure('INVALID_REQUEST');
   if (q.search.length > 100 || (q.from && !validDate(q.from)) || (q.to && !validDate(q.to))
-    || (q.from && q.to && q.from > q.to) || (q.counsellor && !COUNSELLORS.includes(q.counsellor))
+    || (q.from && q.to && q.from > q.to) || (q.counsellor.length > 100 || q.counsellor.includes('\0'))
     || (q.mode && !MODES.includes(q.mode)) || (q.status && !STATUSES.includes(q.status))
     || (q.excludeCancelled && !['true', 'false'].includes(q.excludeCancelled))) throw failure('INVALID_REQUEST');
   if ((q.page && !/^\d{1,7}$/.test(q.page)) || (q.pageSize && !/^\d{1,3}$/.test(q.pageSize))) throw failure('INVALID_REQUEST');
@@ -66,7 +65,7 @@ export function appointmentDto(row) {
 function writeError(response, error) {
   const statuses = { INVALID_REQUEST: 400, APPOINTMENT_VALIDATION_FAILED: 400, APPOINTMENT_CASE_NOT_FOUND: 400,
     APPOINTMENT_NOT_FOUND: 404, APPOINTMENT_VERSION_CONFLICT: 409, APPOINTMENT_TIME_CONFLICT: 409,
-    APPOINTMENT_INVALID_STATUS: 409, APPOINTMENT_NOT_ENDED: 409 };
+    APPOINTMENT_INVALID_STATUS: 409, APPOINTMENT_NOT_ENDED: 409, APPOINTMENT_COUNSELLOR_UNAVAILABLE: 409 };
   const code = error.code === 'P0001' ? error.message : error.code;
   if (['UNAUTHENTICATED', 'FORBIDDEN', 'AUTH_NOT_CONFIGURED'].includes(code)) return writeAuthError(response, { code });
   if (statuses[code]) return response.status(statuses[code]).json({ success: false, error: { code, ...(error.fields ? { fields: error.fields } : {}) } });

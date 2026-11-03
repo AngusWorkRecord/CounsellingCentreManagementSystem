@@ -33,6 +33,7 @@ yark.lock
 !/database/005_create_authentication.sql
 !/database/006_create_appointments.sql
 !/database/007_create_counselling_people.sql
+!/database/008_appointment_database_counsellors.sql
 !/docs/appointments.md
 !/docs/counselling-people.md
 .vercel
