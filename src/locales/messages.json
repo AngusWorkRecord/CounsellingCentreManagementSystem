@@ -1,4 +1,11 @@
 {
+  "Counsellor / Volunteer": { "cn": "辅导员／志工", "en": "Counsellor / Volunteer" },
+  "No active counsellors or volunteers. Add an active person in personnel management first.": { "cn": "暂无在职辅导员或志工，请先在人员管理中新增在职人员。", "en": "No active counsellors or volunteers. Add an active person in personnel management first." },
+  "This person is no longer available. Reload the list and select an active counsellor or volunteer.": { "cn": "此人员已不可用，请重新加载名单并选择在职辅导员或志工。", "en": "This person is no longer available. Reload the list and select an active counsellor or volunteer." },
+  "Loading counsellors…": { "cn": "正在加载辅导员……", "en": "Loading counsellors…" },
+  "Reload counsellors": { "cn": "重新加载辅导员", "en": "Reload counsellors" },
+  "No active counsellors. Add an active counsellor in personnel management first.": { "cn": "暂无在职辅导员，请先在人员管理中新增在职辅导员。", "en": "No active counsellors. Add an active counsellor in personnel management first." },
+  "This counsellor is no longer available. Reload the counsellor list and select an active counsellor.": { "cn": "此辅导员已不可用，请重新加载名单并选择在职辅导员。", "en": "This counsellor is no longer available. Reload the counsellor list and select an active counsellor." },
   "Retry": { "cn": "重试", "en": "Retry" },
   "Reload directory": { "cn": "重新加载名录", "en": "Reload directory" },
   "Loading personnel...": { "cn": "正在加载人员资料……", "en": "Loading personnel..." },
