@@ -90,7 +90,10 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
             )}
             {visibleCases.map((item) => (
               <TableRow key={item.id} hover>
-                <TableCell sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{item.id}</TableCell>
+                <TableCell sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>
+                  {item.caseNumber || item.submissionId || item.id}
+                  {item.workflowStatus === 'Case Details Pending' && <Box sx={{ mt: 0.5 }}><Label color="warning">{tr('Case Details Pending')}</Label></Box>}
+                </TableCell>
                 <TableCell>{item.date}</TableCell>
                 <TableCell>{item.initials}</TableCell>
                 <TableCell>{domainLabel(item.sessionMode)}</TableCell>
@@ -101,7 +104,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                   {item.briefReportCompleted ? (
                     <Label color="success">{item.caseNumber}</Label>
                   ) : (
-                    <Button size="small" variant="outlined">{tr("Complete Now")}</Button>
+                    <Button size="small" variant="outlined" onClick={() => onEdit(item.id)}>{tr("Complete Now")}</Button>
                   )}
                 </TableCell>
                 <TableCell sx={{ maxWidth: 220 }}>
@@ -118,7 +121,7 @@ export default function CaseTable({ cases, deletingId, onDelete, onEdit, onView 
                       {item.reportUrl}
                     </Button>
                   ) : (
-                    <Button size="small" variant="outlined">{tr("Complete Now")}</Button>
+                    <Button size="small" variant="outlined" onClick={() => onEdit(item.id)}>{tr("Complete Now")}</Button>
                   )}
                 </TableCell>
                 <TableCell sx={{ whiteSpace: 'nowrap' }}>{tr("RM")}{item.amount}</TableCell>

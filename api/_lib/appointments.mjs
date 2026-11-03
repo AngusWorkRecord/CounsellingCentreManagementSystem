@@ -60,7 +60,8 @@ export function appointmentDto(row) {
     clientInitials: row.client_initials, phone: row.phone, date: String(row.date).slice(0, 10),
     start: row.start_time.slice(0, 5), end: row.end_time.slice(0, 5), counsellor: row.counsellor,
     mode: row.mode, location: row.location, status: row.status, version: row.version,
-    createdBy: String(row.created_by), updatedBy: String(row.updated_by), createdAt: row.created_at, updatedAt: row.updated_at };
+    createdBy: String(row.created_by), updatedBy: String(row.updated_by), createdAt: row.created_at, updatedAt: row.updated_at,
+    generatedCaseId: row.generated_case_id == null ? '' : String(row.generated_case_id), generatedCaseDeleted: row.generated_case_deleted === true };
 }
 function writeError(response, error) {
   const statuses = { INVALID_REQUEST: 400, APPOINTMENT_VALIDATION_FAILED: 400, APPOINTMENT_CASE_NOT_FOUND: 400,
@@ -91,7 +92,7 @@ export function createAppointmentsHandler(overrides = {}, cases = false) {
       }
       if (cases) {
         const rows = await sql`WITH matching AS MATERIALIZED (
-          SELECT id::text AS id, case_number AS "caseNumber", client_initials AS "clientInitials",
+          SELECT id::text AS id, COALESCE(case_number, submission_id) AS "caseNumber", client_initials AS "clientInitials",
             COALESCE(client_phone, '') AS phone, counselling_date::text AS date
           FROM public.counselling_sessions WHERE deleted_at IS NULL AND (${q.search} = '' OR
             strpos(lower(case_number), lower(${q.search})) > 0 OR strpos(lower(client_initials), lower(${q.search})) > 0)

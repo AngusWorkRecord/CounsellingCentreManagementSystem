@@ -1,4 +1,13 @@
 {
+  "Case Details Pending": { "cn": "待补资料", "en": "Case Details Pending" },
+  "Complete case details": { "cn": "补充个案资料", "en": "Complete case details" },
+  "Pending entry": { "cn": "待填写", "en": "Pending entry" },
+  "Please select a counsellor or volunteer": { "cn": "请选择辅导员或志工", "en": "Please select a counsellor or volunteer" },
+  "Automatically created from appointment #{{id}}.": { "cn": "由预约 #{{id}} 自动建立。", "en": "Automatically created from appointment #{{id}}." },
+  "This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved.": { "cn": "此记录由预约自动建立。请补填个案编号与类别以完成资料，也可先保存部分更改。", "en": "This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved." },
+  "Appointment completed. Its counselling record is available in case management.": { "cn": "预约已完成，对应辅导记录可在个案管理中查看。", "en": "Appointment completed. Its counselling record is available in case management." },
+  "This appointment has a counselling record in case management.": { "cn": "此预约已有对应辅导记录，可在个案管理中补充资料。", "en": "This appointment has a counselling record in case management." },
+  "The generated case was deleted. It will not be recreated.": { "cn": "自动生成的个案已被删除，不会重复建立。", "en": "The generated case was deleted. It will not be recreated." },
   "Counsellor / Volunteer": { "cn": "辅导员／志工", "en": "Counsellor / Volunteer" },
   "No active counsellors or volunteers. Add an active person in personnel management first.": { "cn": "暂无在职辅导员或志工，请先在人员管理中新增在职人员。", "en": "No active counsellors or volunteers. Add an active person in personnel management first." },
   "This person is no longer available. Reload the list and select an active counsellor or volunteer.": { "cn": "此人员已不可用，请重新加载名单并选择在职辅导员或志工。", "en": "This person is no longer available. Reload the list and select an active counsellor or volunteer." },

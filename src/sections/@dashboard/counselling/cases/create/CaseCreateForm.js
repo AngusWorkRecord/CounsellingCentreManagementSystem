@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { LoadingButton } from '@mui/lab';
-import { Button, Card, Divider, Grid, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Button, Card, Divider, Grid, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import { tr, useUiLanguage } from '../../../../../locales/translate';
 import { domainLabel } from '../../../../../locales/domainLabels';
 import FormProvider, { RHFSelect, RHFTextField } from '../../../../../components/hook-form';
@@ -15,7 +15,8 @@ import {
   createCounsellingSession,
   updateCounsellingSession,
 } from '../../../../../services/counsellingSessionService';
-import { CASE_CATEGORIES, COUNSELLORS, SESSION_MODES } from './constants';
+import { CASE_CATEGORIES, SESSION_MODES } from './constants';
+import { peopleService, personErrorMessage } from '../../../../../services/peopleService';
 
 function getToday() {
   const now = new Date();
@@ -36,7 +37,7 @@ const schema = Yup.object().shape({
   respondentId: Yup.string().trim(),
   // 中文原文：请选择辅导日期、辅导员、辅导类型、个案类别、开始时间
   counsellingDate: Yup.string().required(() => tr("Please select the counselling date")),
-  counsellor: Yup.string().oneOf(COUNSELLORS).required(() => tr("Please select a counsellor")),
+  counsellor: Yup.string().max(100).required(() => tr("Please select a counsellor")),
   sessionMode: Yup.string().oneOf(SESSION_MODES).required(() => tr("Please select a session mode")),
   caseCategory: Yup.string().oneOf(CASE_CATEGORIES).required(() => tr("Please select a case category")),
   sessionStart: Yup.string().required(() => tr("Please select the start time")),
@@ -87,7 +88,26 @@ export default function CaseCreateForm({ currentSession = null }) {
   const { enqueueSnackbar } = useSnackbar();
   const isEdit = Boolean(currentSession);
   const defaultValues = useMemo(() => getDefaultValues(currentSession), [currentSession]);
-  const methods = useForm({ resolver: yupResolver(schema), defaultValues });
+  const [personnel, setPersonnel] = useState([]);
+  const [personnelLoading, setPersonnelLoading] = useState(true);
+  const [personnelError, setPersonnelError] = useState(null);
+  const [personnelRevision, setPersonnelRevision] = useState(0);
+  const automaticCase = Boolean(currentSession?.source_appointment_id);
+  useEffect(() => {
+    const controller = new AbortController();
+    setPersonnelLoading(true); setPersonnelError(null);
+    peopleService.list({ signal: controller.signal }).then((people) => {
+      if (!controller.signal.aborted) setPersonnel(people.filter((person) => ['counsellor', 'volunteer'].includes(person.type) && person.status === 'active').map((person) => person.name));
+    }).catch((error) => { if (!controller.signal.aborted) setPersonnelError(error); })
+      .finally(() => { if (!controller.signal.aborted) setPersonnelLoading(false); });
+    return () => controller.abort();
+  }, [personnelRevision]);
+  const counsellorNames = useMemo(() => [...new Set([...personnel, currentSession?.counsellor].filter(Boolean))], [personnel, currentSession?.counsellor]);
+  const formSchema = useMemo(() => schema.shape({
+    counsellor: Yup.string().oneOf(counsellorNames, () => tr('Please select a counsellor or volunteer')).required(() => tr('Please select a counsellor or volunteer')),
+    ...(automaticCase ? { caseCategory: Yup.string().oneOf([...CASE_CATEGORIES, '']), caseNumber: Yup.string().trim() } : {}),
+  }), [counsellorNames, automaticCase]);
+  const methods = useForm({ resolver: yupResolver(formSchema), defaultValues });
   const {
     handleSubmit,
     reset,
@@ -112,6 +132,7 @@ export default function CaseCreateForm({ currentSession = null }) {
   }, [uiLanguage]);
 
   const onSubmit = async (values) => {
+    if (personnelLoading || personnelError) return;
     try {
       const payload = {
         ...values,
@@ -142,6 +163,11 @@ export default function CaseCreateForm({ currentSession = null }) {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
+        {currentSession?.intake_pending && <Alert severity="warning">{tr('This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved.')}</Alert>}
+        {personnelLoading && <Alert severity="info">{tr('Loading counsellors…')}</Alert>}
+        {!personnelLoading && !personnelError && !counsellorNames.length && <Alert severity="info">{tr('No active counsellors or volunteers. Add an active person in personnel management first.')}</Alert>}
+        {personnelError && <Alert severity="error" action={<Button onClick={() => setPersonnelRevision((old) => old + 1)}>{tr('Reload counsellors')}</Button>}>{tr(personErrorMessage(personnelError))}</Alert>}
+
         <Card sx={{ p: { xs: 2.5, md: 3 } }}>
           {/* 中文原文：基本资料 */}<Typography variant="h6">{tr("Basic Information")}</Typography>
           <Divider sx={{ my: 2.5 }} />
@@ -149,7 +175,7 @@ export default function CaseCreateForm({ currentSession = null }) {
             <Grid item xs={12} md={6}><RHFTextField name="submissionId" label={tr("Submission ID *")} /></Grid>
             {/* 中文原文：可选、个案编号、案主简称、联系电话 */}
             <Grid item xs={12} md={6}><RHFTextField name="respondentId" label={tr("Respondent ID (Optional)")} /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="caseNumber" label={tr("Case Number *")} /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="caseNumber" label={tr(automaticCase ? "Case Number" : "Case Number *")} /></Grid>
             <Grid item xs={12} md={6}><RHFTextField name="clientInitials" label={tr("Client Initials *")} /></Grid>
             <Grid item xs={12} md={6}><RHFTextField name="clientPhone" label={tr("Contact Number (Optional)")} /></Grid>
             <Grid item xs={12} md={6}>
@@ -164,8 +190,8 @@ export default function CaseCreateForm({ currentSession = null }) {
           <Grid container spacing={2.5}>
             <Grid item xs={12} md={6}><RHFTextField name="counsellingDate" label={tr("Counselling Date *")} type="date" InputLabelProps={{ shrink: true }} /></Grid>
             <Grid item xs={12} md={6}>
-              <RHFSelect name="counsellor" label={tr("Counsellor *")}>
-                {COUNSELLORS.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+              <RHFSelect name="counsellor" label={tr("Counsellor / Volunteer")} disabled={personnelLoading || !!personnelError}>
+                {counsellorNames.map((option) => <MenuItem key={option} value={option} disabled={!personnel.includes(option)}>{option}</MenuItem>)}
               </RHFSelect>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -174,7 +200,8 @@ export default function CaseCreateForm({ currentSession = null }) {
               </RHFSelect>
             </Grid>
             <Grid item xs={12} md={6}>
-              <RHFSelect name="caseCategory" label={tr("Case Category *")}>
+              <RHFSelect name="caseCategory" label={tr(automaticCase ? "Case Category" : "Case Category *")}>
+                {automaticCase && <MenuItem value="">{tr('Pending entry')}</MenuItem>}
                 {CASE_CATEGORIES.map((option) => <MenuItem key={option} value={option}>{domainLabel(option)}</MenuItem>)}
               </RHFSelect>
             </Grid>
@@ -201,7 +228,7 @@ export default function CaseCreateForm({ currentSession = null }) {
         <Stack direction="row" justifyContent="flex-end" spacing={1.5}>
           <Button variant="outlined" disabled={isSubmitting} onClick={() => navigate(PATH_DASHBOARD.general.counsellingCases)}>
             {/* 中文原文：取消 */}{tr("Cancel")}</Button>
-          <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+          <LoadingButton type="submit" variant="contained" loading={isSubmitting} disabled={personnelLoading || !!personnelError || !counsellorNames.length}>
             {/* 中文原文：更新个案、保存个案 */}{isEdit ? tr("Update Case") : tr("Save Case")}
           </LoadingButton>
         </Stack>

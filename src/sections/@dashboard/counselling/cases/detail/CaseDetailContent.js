@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { Box, Grid, Stack } from '@mui/material';
+import { Alert, Box, Button, Grid, Stack } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { PATH_DASHBOARD } from '../../../../../routes/paths';
 import { tr, useUiLanguage } from '../../../../../locales/translate';
 import CaseAiTip from './CaseAiTip';
 import CaseOverviewCard from './CaseOverviewCard';
@@ -33,6 +35,8 @@ export default function CaseDetailContent({ session, onBack }) {
   useUiLanguage();
   return (
     <Stack spacing={2.5}>
+      {session.intake_pending && <Alert severity="warning" action={<Button component={RouterLink} to={PATH_DASHBOARD.general.counsellingCaseEdit(session.id)}>{tr('Complete case details')}</Button>}>{tr('Case Details Pending')}</Alert>}
+      {session.source_appointment_id && <Alert severity="info">{tr('Automatically created from appointment #{{id}}.', { id: session.source_appointment_id })}</Alert>}
       <CaseOverviewCard session={session} />
 
       <Grid container spacing={2.5} alignItems="stretch">

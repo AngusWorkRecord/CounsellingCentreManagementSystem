@@ -2,7 +2,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link as RouterLink, useSearchParams } from 'react-router-dom';
 import {
   Alert,
   Box,
@@ -25,6 +25,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
+import { PATH_DASHBOARD } from '../../routes/paths';
 import { tr, useUiLanguage, currentLocale } from '../../locales/translate';
 import { domainLabel } from '../../locales/domainLabels';
 import { peopleService, personErrorMessage } from '../../services/peopleService';
@@ -67,6 +68,7 @@ export default function AppointmentManagementPage() {
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
   const [dialog, setDialog] = useState(null);
+  const [generatedCase, setGeneratedCase] = useState(null);
   const [personnelNames, setPersonnelNames] = useState([]);
   const [personnelError, setPersonnelError] = useState(null);
   useEffect(() => {
@@ -159,7 +161,8 @@ export default function AppointmentManagementPage() {
     </TextField>
   );
   const changed = async (operation, message) => {
-    await operation;
+    const result = await operation;
+    if (result.status === 'completed' && result.generatedCaseId) setGeneratedCase(result);
     setDialog(null);
     setRevision((old) => old + 1);
     enqueueSnackbar(tr(message));
@@ -172,6 +175,9 @@ export default function AppointmentManagementPage() {
         <title>{tr('Appointment management')}</title>
       </Helmet>
       <Stack spacing={3}>
+        {generatedCase && <Alert severity="success" onClose={() => setGeneratedCase(null)} action={!generatedCase.generatedCaseDeleted && <Button component={RouterLink} to={PATH_DASHBOARD.general.counsellingCaseEdit(generatedCase.generatedCaseId)}>{tr('Complete case details')}</Button>}>
+          {tr(generatedCase.generatedCaseDeleted ? 'The generated case was deleted. It will not be recreated.' : 'Appointment completed. Its counselling record is available in case management.')}
+        </Alert>}
         <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" gap={2}>
           <Box>
             <Typography variant="h4">{tr('Appointment management')}</Typography>

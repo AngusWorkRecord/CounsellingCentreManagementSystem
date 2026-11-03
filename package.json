@@ -12,6 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env CI=false react-scripts build",
+    "test:appointment-cases": "node --test api/_lib/appointment-generated-cases.test.mjs api/_lib/appointment-generated-cases.database.test.mjs && cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/sections/@dashboard/counselling/cases/create/AppointmentCaseForm.test.js src/sections/@dashboard/counselling/appointments/AppointmentGeneratedCase.test.js",
     "auth:create-admin": "node scripts/create-admin.mjs",
     "auth:recover-admin": "node scripts/recover-admin.mjs",
     "test:appointments": "npm run test:appointments:api && npm run test:appointments:ui",
