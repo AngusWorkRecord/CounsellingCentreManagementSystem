@@ -10,6 +10,7 @@
     "npm": ">=9 <11"
   },
   "scripts": {
+    "test:roster": "cross-env CI=true react-scripts test --watchAll=false --runInBand --testPathPattern=src/sections/duty-roster/",
     "start": "react-scripts start",
     "build": "cross-env CI=false react-scripts build",
     "test:appointment-cases": "node --test api/_lib/appointment-generated-cases.test.mjs api/_lib/appointment-generated-cases.database.test.mjs && cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/sections/@dashboard/counselling/cases/create/AppointmentCaseForm.test.js src/sections/@dashboard/counselling/appointments/AppointmentGeneratedCase.test.js",

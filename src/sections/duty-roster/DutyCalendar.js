@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import {
@@ -17,11 +16,16 @@ import {
 } from '@mui/material';
 import Iconify from '../../components/iconify';
 import { tr, useUiLanguage } from '../../locales/translate';
+import { LABELS, METHODS } from './autoRoster';
 import cnCalendar from '../../locales/calendarLocale';
+import { CalendarDaySlot, ManualRosterSlot } from './ManualRosterTools';
+import RosterPersonChip from './RosterPersonChip';
 import { dateKey, malaysiaDateTime } from './rosterModel';
 
 export default function DutyCalendar({
   shifts,
+  drag,
+  onChoosePerson,
   knownPeople,
   date,
   view,
@@ -33,12 +37,16 @@ export default function DutyCalendar({
   const language = useUiLanguage();
   const calendar = useRef(null);
   const [title, setTitle] = useState('');
+  // Roster cards contain complete, interactive personnel lists. Natural-height
+  // day columns prevent them overflowing an hour-sized timeGrid event box.
+  const cardView = { timeGridWeek: 'dayGridWeek', timeGridDay: 'dayGridDay' }[view] || view;
+  const dutyCards = view === 'timeGridWeek' || view === 'timeGridDay';
   useEffect(() => {
     const api = calendar.current?.getApi();
     if (!api) return;
-    if (api.view.type !== view) api.changeView(view, date);
+    if (api.view.type !== cardView) api.changeView(cardView, date);
     else if (dateKey(api.getDate()) !== date) api.gotoDate(date);
-  }, [date, view]);
+  }, [date, cardView]);
   const peopleNames = (ids) =>
     ids.map((id) => knownPeople[id]?.name || tr('Unavailable person #{{id}}', { id })).join(', ');
   return (
@@ -94,7 +102,7 @@ export default function DutyCalendar({
           sx={{
             overflowX: 'auto',
             '& .fc': {
-              minWidth: view === 'timeGridWeek' ? 680 : 0,
+              minWidth: view === 'timeGridWeek' ? 1260 : 0,
               '--fc-border-color': (theme) => theme.palette.divider,
               '--fc-today-bg-color': (theme) => theme.palette.action.hover,
             },
@@ -102,14 +110,25 @@ export default function DutyCalendar({
             '& .fc-event': { cursor: 'pointer' },
             '& .fc-event-main': { color: 'primary.dark' },
             '& .fc-daygrid-event': { whiteSpace: 'normal' },
+            ...(dutyCards && {
+              '& .fc-daygrid-event': {
+                display: 'block',
+                whiteSpace: 'normal',
+                margin: '6px 4px',
+                borderRadius: 1,
+              },
+              '& .fc-daygrid-event .fc-event-main': { overflow: 'visible', minWidth: 0 },
+              '& .fc-daygrid-day-events': { marginBottom: 1.5 },
+              '& .fc-event-main > div': { padding: 1 },
+            }),
             '& .fc-list-event:hover td': { bgcolor: 'action.hover' },
           }}
         >
           <FullCalendar
             ref={calendar}
-            plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
+            plugins={[dayGridPlugin, listPlugin, interactionPlugin]}
             initialDate={date}
-            initialView={view}
+            initialView={cardView}
             headerToolbar={false}
             firstDay={1}
             height="auto"
@@ -121,19 +140,30 @@ export default function DutyCalendar({
             editable={false}
             selectable={false}
             allDaySlot={false}
-            dayMaxEvents={3}
-            slotEventOverlap={false}
-            scrollTime="08:00:00"
+            dayCellContent={({ date: day, dayNumberText }) => (
+              <CalendarDaySlot
+                date={dateKey(day)}
+                dayNumberText={dayNumberText}
+                shifts={shifts}
+                drag={drag}
+              />
+            )}
+            dayMaxEvents={dutyCards ? false : 3}
+            eventDisplay={dutyCards ? 'block' : 'auto'}
+            eventOrder="start,dutyOrder,id"
             noEventsText={tr('No shifts on this day. Add a shift or choose another date.')}
             events={shifts.map((shift) => ({
               id: shift.id,
-              title: peopleNames(shift.personIds),
+              title: `${tr(LABELS[shift.method] || 'Duty roster')} · ${peopleNames(
+                shift.personIds
+              )}`,
               start: `${shift.date}T${shift.start}:00`,
               end: `${shift.date}T${shift.end}:00`,
               backgroundColor: '#e5f3ef',
               borderColor: '#3c8b74',
               textColor: '#185a47',
               extendedProps: { shift },
+              dutyOrder: METHODS.indexOf(shift.method),
             }))}
             datesSet={({ view: currentView }) => {
               setTitle(currentView.title);
@@ -148,19 +178,27 @@ export default function DutyCalendar({
                 <Box component="span" sx={{ fontWeight: 700 }}>
                   {event.extendedProps.shift.start}–{event.extendedProps.shift.end}
                 </Box>
-                <Box
-                  sx={{
-                    overflow: 'hidden',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                  }}
-                >
-                  {event.title}
-                </Box>
+                {event.extendedProps.shift.manualAssignment && <Box>{tr('Manual adjustment')}</Box>}
+                <Box>{tr(LABELS[event.extendedProps.shift.method] || 'Duty roster')}</Box>
+                <ManualRosterSlot shift={event.extendedProps.shift} drag={drag}>
+                  <Stack spacing={0.25}>
+                    {event.extendedProps.shift.personIds.map((id) => (
+                      <RosterPersonChip
+                        key={id}
+                        shiftId={event.id}
+                        personId={id}
+                        name={peopleNames([id])}
+                        drag={drag}
+                        onChoose={() => onChoosePerson(event.id, id)}
+                      />
+                    ))}
+                  </Stack>
+                </ManualRosterSlot>
               </Box>
             )}
-            eventClick={({ event }) => onOpen(event.extendedProps.shift)}
+            eventClick={({ event, jsEvent }) => {
+              if (!jsEvent.target.closest('button')) onOpen(event.extendedProps.shift);
+            }}
             dateClick={({ dateStr }) => {
               const day = dateStr.slice(0, 10);
               if (view === 'dayGridMonth') {
@@ -181,6 +219,8 @@ export default function DutyCalendar({
 }
 DutyCalendar.propTypes = {
   shifts: PropTypes.array.isRequired,
+  drag: PropTypes.object.isRequired,
+  onChoosePerson: PropTypes.func.isRequired,
   knownPeople: PropTypes.object.isRequired,
   date: PropTypes.string.isRequired,
   view: PropTypes.string.isRequired,

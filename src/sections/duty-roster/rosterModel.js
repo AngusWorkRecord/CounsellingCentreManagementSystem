@@ -31,12 +31,29 @@ export function validDate(value) {
   );
 }
 export function periodRange(month) {
+  if (month && typeof month === 'object') {
+    const { from, to } = month;
+    return validDate(from) && validDate(to) && from <= to ? { from, to } : null;
+  }
   if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || !validDate(`${month}-01`)) return null;
   const end = new Date(`${month}-01T12:00:00Z`);
   end.setUTCMonth(end.getUTCMonth() + 3);
   end.setUTCDate(end.getUTCDate() - 1);
   const to = end.toISOString().slice(0, 10);
   return validDate(to) ? { from: `${month}-01`, to } : null;
+}
+export function periodMonths(period) {
+  const range = periodRange(period);
+  if (!range) return [];
+  const start = Number(range.from.slice(0, 4)) * 12 + Number(range.from.slice(5, 7)) - 1;
+  const end = Number(range.to.slice(0, 4)) * 12 + Number(range.to.slice(5, 7)) - 1;
+  return Array.from({ length: end - start + 1 }, (_, i) => {
+    const value = start + i;
+    return `${String(Math.floor(value / 12)).padStart(4, '0')}-${String((value % 12) + 1).padStart(
+      2,
+      '0'
+    )}`;
+  });
 }
 const validTime = (value) => typeof value === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
 export function emptyShift(date = malaysiaDateTime().date, start = '09:00') {
@@ -54,20 +71,15 @@ export const activeStaff = (people) =>
   people.filter(
     (person) => person.status === 'active' && ['counsellor', 'volunteer'].includes(person.type)
   );
-export function validateShift(shift, people) {
+export function validateShift(shift) {
   const errors = {};
   if (!validDate(shift.date)) errors.date = 'Select a valid date';
   if (!validTime(shift.start)) errors.start = 'Select a valid time';
   if (!validTime(shift.end)) errors.end = 'Select a valid time';
   if (!errors.start && !errors.end && shift.end <= shift.start)
     errors.end = 'Shift end time must be later than start time on the same day.';
-  if (!Array.isArray(shift.personIds) || !shift.personIds.length)
-    errors.personIds = 'Select at least one person for this shift.';
-  else if (
-    new Set(shift.personIds).size !== shift.personIds.length ||
-    shift.personIds.some((id) => !activeStaff(people).some((person) => person.id === id))
-  )
-    errors.personIds = 'Choose active counsellors or volunteers before saving.';
+  if (!Array.isArray(shift.personIds) || new Set(shift.personIds).size !== shift.personIds.length)
+    errors.personIds = 'The selected shift or person is no longer available.';
   if (typeof shift.note !== 'string' || shift.note.length > 2000)
     errors.note = 'Shift notes must not exceed 2,000 characters.';
   return errors;

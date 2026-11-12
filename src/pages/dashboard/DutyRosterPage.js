@@ -15,13 +15,22 @@ import Iconify from '../../components/iconify';
 import useResponsive from '../../hooks/useResponsive';
 import { currentLocale, tr, useUiLanguage } from '../../locales/translate';
 import { domainLabel } from '../../locales/domainLabels';
+import { malaysiaHolidays, mergeHolidays } from '../../sections/duty-roster/malaysiaHolidays';
 import useDutyRoster from '../../sections/duty-roster/useDutyRoster';
+import { unassignedPeople } from '../../sections/duty-roster/autoRoster';
+import AutoRosterPanel from '../../sections/duty-roster/AutoRosterPanel';
+import ManualRosterTools from '../../sections/duty-roster/ManualRosterTools';
+import usePersonDragSwap from '../../sections/duty-roster/usePersonDragSwap';
+import { DragSwapFeedback } from '../../sections/duty-roster/RosterPersonChip';
+import PersonSwapDialog from '../../sections/duty-roster/PersonSwapDialog';
 import DutyCalendar from '../../sections/duty-roster/DutyCalendar';
 import DutyShiftDialog from '../../sections/duty-roster/DutyShiftDialog';
+import { printDutyRoster } from '../../sections/duty-roster/rosterPrint';
 import {
   emptyShift,
   malaysiaDateTime,
   periodRange,
+  validDate,
   visibleShifts,
 } from '../../sections/duty-roster/rosterModel';
 
@@ -30,12 +39,48 @@ export default function DutyRosterPage() {
   const desktop = useResponsive('up', 'md');
   const roster = useDutyRoster();
   const [date, setDate] = useState(() => malaysiaDateTime().date);
-  const [period, setPeriod] = useState(() => malaysiaDateTime().date.slice(0, 7));
+  const [period, setPeriod] = useState(() => periodRange(malaysiaDateTime().date.slice(0, 7)));
   const [selectedView, setSelectedView] = useState(null);
   const [personId, setPersonId] = useState('');
   const [dialog, setDialog] = useState(null);
+  const [swapRequest, setSwapRequest] = useState(null);
   const [notice, setNotice] = useState('');
+  const [printError, setPrintError] = useState(false);
+  const [rules, setRules] = useState({
+    preferences: {},
+    groups: [],
+    holidays: [],
+    start: '09:00',
+    end: '10:00',
+    stale: true,
+    period: '',
+  });
+  const nationalCalendar = malaysiaHolidays(period);
+  const effectiveRules = {
+    ...rules,
+    holidays: mergeHolidays(nationalCalendar.holidays, rules.holidays),
+  };
   const view = selectedView || (desktop ? 'timeGridWeek' : 'listDay');
+  const calendarDrag = usePersonDragSwap({
+    scope: 'applied',
+    context: {
+      shifts: roster.shifts,
+      people: roster.people,
+      rules: effectiveRules,
+      period,
+      holidayLabels: effectiveRules.holidays.map((h) => ({
+        ...h,
+        name: rules.holidays.some((manual) => manual.date === h.date) ? h.name : tr(h.name),
+      })),
+    },
+    blocked: roster.loading || !!roster.error,
+    cancelKey: JSON.stringify({ date, view, period }),
+    resetKey: 'applied',
+    onCommit: (selection, snapshot, accepted) =>
+      roster.swap(selection, snapshot, accepted, effectiveRules, period),
+    onConfirm: setSwapRequest,
+    onUndo: (record) => roster.undoSwap(record, effectiveRules, period),
+  });
   const range = periodRange(period);
   const displayedShifts = visibleShifts(roster.shifts, personId);
   const periodShifts = range
@@ -49,9 +94,40 @@ export default function DutyRosterPage() {
     }).format(new Date(`${value}T12:00:00+08:00`));
   const count = (value) => new Intl.NumberFormat(currentLocale()).format(value);
   const add = (day, start = '09:00') => {
-    if (roster.loading || roster.error || !roster.availablePeople.length) return;
+    if (roster.loading || roster.error || !roster.people.length) return;
     setNotice('');
     setDialog(emptyShift(day, start));
+  };
+  const print = () => {
+    const opened = printDutyRoster({
+      period,
+      language: currentLocale() === 'zh-CN' ? 'cn' : 'en',
+      shifts: periodShifts,
+      knownPeople: roster.knownPeople,
+      personName: personId ? roster.knownPeople[personId]?.name || '' : '',
+      holidays: effectiveRules.holidays.map((holiday) => ({
+        ...holiday,
+        name: rules.holidays.some((h) => h.date === holiday.date) ? holiday.name : tr(holiday.name),
+      })),
+      labels: {
+        centre: tr('Kuching Buddhist Lodge Bodhi Counselling Centre'),
+        title: tr('Counselling volunteer duty roster'),
+        date: tr('Date'),
+        phone: tr('Telephone'),
+        f2f: tr('Face-to-face'),
+        zoom: 'Zoom',
+        manualAdjustment: tr('Manual adjustment'),
+        unavailablePerson: (id) => tr('Unavailable person #{{id}}', { id }),
+        continued: tr('Continued'),
+        noDutyDates: tr('No duty dates in this month.'),
+        print: tr('Print / Save PDF'),
+        close: tr('Close'),
+        instructions: tr(
+          'Choose Save as PDF in the print dialog. Use A4 landscape, enable background graphics and turn off browser headers and footers.'
+        ),
+      },
+    });
+    setPrintError(!opened);
   };
   return (
     <>
@@ -72,15 +148,25 @@ export default function DutyRosterPage() {
                 {tr('Plan counsellor and volunteer duty shifts, one day at a time.')}
               </Typography>
             </Box>
-            <Button
-              variant="contained"
-              onClick={() => add(date)}
-              disabled={roster.loading || !!roster.error || !roster.availablePeople.length}
-              startIcon={<Iconify icon="eva:plus-fill" />}
-              sx={{ flexShrink: 0, alignSelf: { xs: 'flex-start', sm: 'center' } }}
-            >
-              {tr('Add shift')}
-            </Button>
+            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+              <Button
+                variant="outlined"
+                onClick={print}
+                disabled={roster.loading || !!roster.error || !range || !periodShifts.length}
+                startIcon={<Iconify icon="eva:printer-outline" />}
+              >
+                {tr('Print / Save PDF')}
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => add(date)}
+                disabled={roster.loading || !!roster.error || !roster.people.length}
+                startIcon={<Iconify icon="eva:plus-fill" />}
+                sx={{ flexShrink: 0, alignSelf: { xs: 'flex-start', sm: 'center' } }}
+              >
+                {tr('Add shift')}
+              </Button>
+            </Stack>
           </Stack>
           <Alert severity="info">
             {tr(
@@ -104,7 +190,7 @@ export default function DutyRosterPage() {
               {tr('Personnel could not be loaded. Retry before adding or editing shifts.')}
             </Alert>
           )}
-          {!roster.loading && !roster.error && !roster.availablePeople.length && (
+          {!roster.loading && !roster.error && !roster.people.length && (
             <Alert severity="warning">
               {tr(
                 'No active counsellors or volunteers. Add an active person in personnel management first.'
@@ -116,28 +202,48 @@ export default function DutyRosterPage() {
               {tr(notice)}
             </Alert>
           )}
+          {printError && (
+            <Alert severity="warning" onClose={() => setPrintError(false)}>
+              {tr('Allow pop-ups for this site, then try printing again.')}
+            </Alert>
+          )}
           <Box sx={{ p: { xs: 2, md: 2.5 }, border: 1, borderColor: 'divider', borderRadius: 2 }}>
             <Stack
-              direction={{ xs: 'column', md: 'row' }}
+              direction={{ xs: 'column', lg: 'row' }}
               spacing={2.5}
-              alignItems={{ md: 'center' }}
+              alignItems={{ lg: 'center' }}
             >
-              <TextField
-                type="month"
-                label={tr('Roster starting month')}
-                value={period}
-                onChange={(event) => {
-                  const next = event.target.value;
-                  setPeriod(next);
-                  if (periodRange(next)) setDate(`${next}-01`);
-                }}
-                InputLabelProps={{ shrink: true }}
-                error={!range}
-                helperText={
-                  !range ? tr('Choose a valid starting month for a three-month period.') : undefined
-                }
-                sx={{ minWidth: { md: 220 } }}
-              />
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ minWidth: 0 }}>
+                {['from', 'to'].map((key) => (
+                  <TextField
+                    key={key}
+                    type="date"
+                    label={tr(key === 'from' ? 'Roster start date' : 'Roster end date')}
+                    value={period[key]}
+                    onChange={(event) => {
+                      const next = event.target.value;
+                      setPeriod((old) => ({ ...old, [key]: next }));
+                      setRules((old) => ({ ...old, stale: true }));
+                      if (key === 'from' && validDate(next)) setDate(next);
+                    }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={
+                      key === 'to'
+                        ? { min: period.from || undefined, max: '9999-12-31' }
+                        : { max: '9999-12-31' }
+                    }
+                    error={!range}
+                    helperText={
+                      !range
+                        ? tr(
+                            'Choose valid start and end dates. The end date must be on or after the start date.'
+                          )
+                        : undefined
+                    }
+                    sx={{ minWidth: { sm: 180 }, flex: 1 }}
+                  />
+                ))}
+              </Stack>
               <TextField
                 select
                 label={tr('Duty personnel')}
@@ -158,7 +264,7 @@ export default function DutyRosterPage() {
               </TextField>
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 <Typography variant="overline" color="text.secondary">
-                  {tr('Three-month planning period')}
+                  {tr('Planning date range')}
                 </Typography>
                 <Typography variant="subtitle1" sx={{ overflowWrap: 'anywhere' }}>
                   {range
@@ -189,9 +295,39 @@ export default function DutyRosterPage() {
               )}
             </Typography>
           </Box>
-        {!roster.shifts.length && <Alert severity="info">{tr('No shifts recorded yet. Add your first shift to start planning.')}</Alert>}
-        {!!roster.shifts.length && !displayedShifts.length && <Alert severity="info">{tr('No shifts match the selected person.')}</Alert>}
-        <DutyCalendar
+          <AutoRosterPanel
+            people={roster.people}
+            period={period}
+            rules={rules}
+            nationalCalendar={nationalCalendar}
+            setRules={setRules}
+            shifts={roster.shifts}
+            blocked={roster.loading || !!roster.error}
+            onApply={(incoming, appliedRange) => {
+              roster.replace(incoming, appliedRange || range);
+              setNotice('Duty shift saved.');
+            }}
+          />
+          {!roster.shifts.length && (
+            <Alert severity="info">
+              {tr('No shifts recorded yet. Add your first shift to start planning.')}
+            </Alert>
+          )}
+          {!!roster.shifts.length && !displayedShifts.length && (
+            <Alert severity="info">{tr('No shifts match the selected person.')}</Alert>
+          )}
+          <ManualRosterTools
+            drag={calendarDrag}
+            priorityIds={unassignedPeople(rules.groups, roster.people, rules.preferences).map(
+              (p) => p.id
+            )}
+          />
+          <DragSwapFeedback drag={calendarDrag} knownPeople={roster.knownPeople} />
+          <DutyCalendar
+            drag={calendarDrag}
+            onChoosePerson={(shiftId, id) =>
+              setSwapRequest({ sourceShiftId: shiftId, sourcePersonId: id })
+            }
             shifts={displayedShifts}
             knownPeople={roster.knownPeople}
             date={date}
@@ -206,8 +342,30 @@ export default function DutyRosterPage() {
           />
         </Stack>
       </Container>
+      {swapRequest && (
+        <PersonSwapDialog
+          {...swapRequest}
+          shifts={roster.shifts}
+          people={roster.people}
+          knownPeople={roster.knownPeople}
+          rules={effectiveRules}
+          period={period}
+          blocked={roster.loading || !!roster.error}
+          onClose={() => setSwapRequest(null)}
+          onConfirm={(selection, snapshot, accepted) => {
+            const result = calendarDrag.commit(selection, snapshot, accepted);
+            if (result.ok) {
+              setSwapRequest(null);
+              setNotice('Personnel swapped.');
+            }
+            return result;
+          }}
+        />
+      )}
       {dialog && (
         <DutyShiftDialog
+          rules={effectiveRules}
+          period={period}
           initial={dialog}
           shifts={roster.shifts}
           people={roster.people}
@@ -215,9 +373,22 @@ export default function DutyRosterPage() {
           loading={roster.loading}
           loadError={roster.error}
           onReload={roster.reload}
+          onSwap={() => {
+            setSwapRequest({ sourceShiftId: dialog.id });
+            setDialog(null);
+          }}
           onClose={() => setDialog(null)}
           onSave={(draft) => {
-            roster.save(draft);
+            const targetShift = {
+              ...draft,
+              id: draft.id || `manual-${Date.now()}-${Math.random()}`,
+            };
+            const result = calendarDrag.apply({
+              kind: 'save',
+              targetShiftId: targetShift.id,
+              targetShift,
+            });
+            if (!result.ok) return;
             setDialog(null);
             setNotice('Duty shift saved.');
           }}
