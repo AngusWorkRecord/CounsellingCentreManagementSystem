@@ -25,6 +25,8 @@ DetailItem.propTypes = {
 };
 
 export default function CaseOverviewCard({ session }) {
+  let statusLabel = session.report_url ? tr('Detailed Report Submitted') : tr('In Progress');
+  if (session.intake_pending) statusLabel = tr('Case Details Pending');
   useUiLanguage();
   const amount = Number(session.amount_received_rm || 0);
   const details = [
@@ -44,7 +46,7 @@ export default function CaseOverviewCard({ session }) {
       <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={3}>
         <Box sx={{ flexGrow: 1 }}>
           <Typography variant="h4" color="primary.main" sx={{ mb: 3 }}>
-            {valueOrDash(session.case_number)}
+            {session.case_number || session.submission_id || '—'}
           </Typography>
           <Grid container spacing={3}>
             {details.map(([icon, label, value]) => (
@@ -58,7 +60,7 @@ export default function CaseOverviewCard({ session }) {
           {/* 中文原文：当前状态 */}<Typography variant="caption" color="text.secondary">{tr("Current Status")}</Typography>
           <Chip
             color={session.report_url ? 'success' : 'warning'}
-            label={session.report_url ? tr("Detailed Report Submitted") : tr("In Progress")}
+            label={statusLabel}
           />
           <Chip color="info" variant="outlined" label={tr("Paid RM{{p0}}", { p0: amount.toFixed(2) })} />
         </Stack>

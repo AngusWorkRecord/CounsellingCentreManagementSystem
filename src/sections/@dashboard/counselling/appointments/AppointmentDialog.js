@@ -1,6 +1,8 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { PATH_DASHBOARD } from '../../../../routes/paths';
 import useResponsive from '../../../../hooks/useResponsive';
 import { tr, useUiLanguage, currentLocale } from '../../../../locales/translate';
 import { domainLabel } from '../../../../locales/domainLabels';
@@ -149,6 +151,9 @@ export default function AppointmentDialog({ initial, items, onClose, onSave, onS
       <DialogContent dividers>
         <Stack spacing={2} component={editing ? 'form' : 'div'} id="appointment-form" onSubmit={save} noValidate>
           {detailLoading && <Alert severity="info">{tr('Loading appointment details…')}</Alert>}
+          {form.generatedCaseId && <Alert severity="info" action={!form.generatedCaseDeleted && <Button component={RouterLink} to={PATH_DASHBOARD.general.counsellingCaseEdit(form.generatedCaseId)}>{tr('Complete case details')}</Button>}>
+            {tr(form.generatedCaseDeleted ? 'The generated case was deleted. It will not be recreated.' : 'This appointment has a counselling record in case management.')}
+          </Alert>}
           {(detailError || operationError) && <Alert severity="error">
             {tr(appointmentErrorMessage(detailError || operationError))}
             {id && <Button disabled={busy || detailLoading} onClick={reloadDetails}>{tr('Reload appointment details')}</Button>}

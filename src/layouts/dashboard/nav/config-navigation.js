@@ -47,6 +47,11 @@ const navConfig = [
     get subheader() { return tr("general"); },
     items: [
       {
+        get title() { return tr('Duty roster'); },
+        path: PATH_DASHBOARD.dutyRoster,
+        icon: ICONS.calendar,
+      },
+      {
         get title() { return tr('Counsellor & Volunteer Management'); },
         path: PATH_DASHBOARD.counsellingPeople,
         icon: ICONS.user,

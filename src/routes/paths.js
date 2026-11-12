@@ -63,6 +63,7 @@ export const PATH_DASHBOARD = {
   permissionDenied: path(ROOTS_DASHBOARD, '/permission-denied'),
   blank: path(ROOTS_DASHBOARD, '/blank'),
   counsellingPeople: path(ROOTS_DASHBOARD, '/counselling-people'),
+  dutyRoster: path(ROOTS_DASHBOARD, '/duty-roster'),
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),

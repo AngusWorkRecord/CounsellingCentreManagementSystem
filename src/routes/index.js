@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 import AppointmentManagementPage from '../pages/dashboard/AppointmentManagementPage';
+import DutyRosterPage from '../pages/dashboard/DutyRosterPage';
 import CounsellingPeoplePage from '../pages/dashboard/CounsellingPeoplePage';
 import LanguagePopover from '../layouts/dashboard/header/LanguagePopover';
 // auth
@@ -189,6 +190,7 @@ export default function Router() {
         { path: 'counselling', element: <CounsellingDashboardPage /> },
         { path: 'counselling/appointments', element: <AppointmentManagementPage /> },
         { path: 'counselling-people', element: <CounsellingPeoplePage /> },
+        { path: 'duty-roster', element: <DutyRosterPage /> },
         { path: 'counselling/cases', element: <CounsellingCaseListPage /> },
         { path: 'counselling/cases/new', element: <CounsellingCaseCreatePage /> },
         { path: 'counselling/cases/:id/edit', element: <CounsellingCaseEditPage /> },

@@ -109,6 +109,7 @@ export default function useCounsellingCaseList() {
   };
 
   const summary = {
+    draftPending: cases.filter((item) => item.workflowStatus === WORKFLOW_STATUS.DRAFT).length,
     total: cases.length,
     briefPending: cases.filter((item) => item.workflowStatus === WORKFLOW_STATUS.BRIEF_PENDING).length,
     detailedPending: cases.filter((item) => item.workflowStatus === WORKFLOW_STATUS.DETAILED_PENDING).length,

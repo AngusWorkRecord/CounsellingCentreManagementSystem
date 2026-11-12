@@ -27,6 +27,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 // ----------------------------------------------------------------------
 
 import { BrowserRouter } from 'react-router-dom';
+import './sections/duty-roster/rosterNavigationEvents';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';

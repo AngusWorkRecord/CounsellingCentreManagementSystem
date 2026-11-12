@@ -100,12 +100,11 @@ return async function handler(request, response) {
       'counsellingDate',
       'counsellor',
       'sessionMode',
-      'caseCategory',
       'sessionStart',
       'sessionEnd',
       'clientInitials',
-      'caseNumber',
     ];
+    if (request.method === 'POST') requiredFields.push('caseCategory', 'caseNumber');
     const missingFields = requiredFields.filter(
       (field) => body[field] === undefined || body[field] === null || String(body[field]).trim() === ''
     );

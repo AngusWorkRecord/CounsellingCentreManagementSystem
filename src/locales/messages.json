@@ -1,4 +1,380 @@
 {
+  "This shift will be deleted from the saved calendar. You can undo the most recent change.": { "cn": "此班次将从已保存的日历中删除，可撤销最近一次修改。", "en": "This shift will be deleted from the saved calendar. You can undo the most recent change." },
+  "Applied shifts are saved automatically. Preview changes remain temporary until applied; save planning settings separately.": { "cn": "已应用的班次会自动保存。预览修改在应用前仅为临时草稿；排班设置需另外保存。", "en": "Applied shifts are saved automatically. Preview changes remain temporary until applied; save planning settings separately." },
+  "Saving roster data...": { "cn": "正在保存排班资料……", "en": "Saving roster data..." },
+  "Calendar changes saved.": { "cn": "日历修改已保存。", "en": "Calendar changes saved." },
+  "Save planning settings": { "cn": "保存排班设置", "en": "Save planning settings" },
+  "Reload planning settings": { "cn": "重新载入排班设置", "en": "Reload planning settings" },
+  "Planning settings have unsaved changes.": { "cn": "排班设置有尚未保存的修改。", "en": "Planning settings have unsaved changes." },
+  "Planning settings are saved separately from calendar shifts.": { "cn": "排班设置与日历班次分别保存。", "en": "Planning settings are saved separately from calendar shifts." },
+  "Loading planning settings...": { "cn": "正在载入排班设置……", "en": "Loading planning settings..." },
+  "Save settings before leaving?": { "cn": "离开前要保存设置吗？", "en": "Save settings before leaving?" },
+  "You have unsaved settings or an unconfirmed save. Save or retry before leaving, discard to leave without further saving, or continue editing.": { "cn": "目前有未保存的设置或尚未确认的保存请求。你可以先保存或重试、放弃后离开，或继续编辑。", "en": "You have unsaved settings or an unconfirmed save. Save or retry before leaving, discard to leave without further saving, or continue editing." },
+  "Continue editing": { "cn": "继续编辑", "en": "Continue editing" },
+  "Discard and leave": { "cn": "放弃并离开", "en": "Discard and leave" },
+  "Save settings and leave": { "cn": "保存设置并离开", "en": "Save settings and leave" },
+  "Resolve the pending roster save before making another change.": { "cn": "请先处理尚未确认的排班保存，再进行其他修改。", "en": "Resolve the pending roster save before making another change." },
+  "Load this planning period before applying the roster.": { "cn": "请先载入这个期间的班次，再应用排班。", "en": "Load this planning period before applying the roster." },
+  "You cannot modify the duty roster.": { "cn": "你没有修改值班表的权限。", "en": "You cannot modify the duty roster." },
+  "Duty roster storage is not configured.": { "cn": "值班资料储存服务尚未配置。", "en": "Duty roster storage is not configured." },
+  "Check the roster dates and fields before saving.": { "cn": "请检查排班日期与填写内容后再保存。", "en": "Check the roster dates and fields before saving." },
+  "A selected person was deleted. Reload personnel before trying again.": { "cn": "所选人员已被删除，请重新载入人员后再试。", "en": "A selected person was deleted. Reload personnel before trying again." },
+  "The roster changed on another device. Reload it before editing again.": { "cn": "其他装置已修改排班，请重新载入后再编辑。", "en": "The roster changed on another device. Reload it before editing again." },
+  "These shifts changed on another device. Reload them; this operation cannot be undone.": { "cn": "其他装置已修改相关班次，请重新载入；这次操作无法撤销。", "en": "These shifts changed on another device. Reload them; this operation cannot be undone." },
+  "This save request does not match its original submission. Reload the roster.": { "cn": "保存请求与原始提交不符，请重新载入排班。", "en": "This save request does not match its original submission. Reload the roster." },
+  "Unable to confirm the roster save. Retry the same request or reload to check the saved data.": { "cn": "无法确认排班是否保存成功。请重试同一请求，或重新载入检查已保存的资料。", "en": "Unable to confirm the roster save. Retry the same request or reload to check the saved data." },
+  "Personnel bank": { "cn": "人员区", "en": "Personnel bank" },
+  "Search personnel": { "cn": "搜索人员", "en": "Search personnel" },
+  "Not automatically grouped": { "cn": "自动分组后剩余", "en": "Not automatically grouped" },
+  "Add person": { "cn": "添加人员", "en": "Add person" },
+  "Move person": { "cn": "移动人员", "en": "Move person" },
+  "Move or swap person": { "cn": "移动或互换人员", "en": "Move or swap person" },
+  "Remove person {{person}}": { "cn": "移除人员：{{person}}", "en": "Remove person {{person}}" },
+  "Automatic rules apply only when generating. Add, move, swap or remove people freely afterwards.": { "cn": "规则仅用于自动生成。生成后可自由添加、移动、互换或删除人员：从人员区拖入为新增，拖到班次空白处为移动，拖到姓名上为互换；也可点击操作。", "en": "Rules apply only to automatic generation. Drag from the personnel bank to add, onto a shift background to move, or onto a name to swap. Click controls are also available." },
+  "Manual roster updated.": { "cn": "已更新手动安排。", "en": "Manual roster updated." },
+  "Manual change undone.": { "cn": "已撤销手动操作。", "en": "Manual change undone." },
+  "Undo manual change": { "cn": "撤销手动操作", "en": "Undo manual change" },
+  "The last manual change can be undone.": { "cn": "可撤销最近一次手动操作。", "en": "The last manual change can be undone." },
+  "The affected assignments changed. This operation can no longer be undone.": { "cn": "相关班次已修改，无法撤销此操作。", "en": "The affected assignments changed. This operation can no longer be undone." },
+  "Release to update this assignment.": { "cn": "松手即可更新安排。", "en": "Release to update this assignment." },
+  "Assignments changed. Recheck the selection before confirming.": { "cn": "相关班次已修改，请重新选择后提交。", "en": "Assignments changed. Recheck the selection before confirming." },
+  "People with identical conditions share one card. Card changes apply to everyone listed; click a name for individual settings.": { "cn": "条件相同的人员共用一张卡片，修改会套用到卡内所有人员；点击姓名可单独设置。", "en": "People with identical conditions share one card. Card changes apply to everyone listed; click a name for individual settings." },
+  "{{count}} people share these conditions": { "cn": "{{count}} 人共用此设置", "en": "{{count}} people share these conditions" },
+  "Individual settings for {{person}}": { "cn": "单独设置：{{person}}", "en": "Individual settings for {{person}}" },
+  "These changes apply only to this person. Matching conditions are merged automatically after saving.": { "cn": "此次修改仅套用到此人员，保存后条件相同的人员会自动合并。", "en": "These changes apply only to this person. Matching conditions are merged automatically after saving." },
+  "Personnel conditions changed. Reopen this editor before saving.": { "cn": "人员条件已改变，请重新打开此窗口后再保存。", "en": "Personnel conditions changed. Reopen this editor before saving." },
+  "Save personnel conditions": { "cn": "保存人员条件", "en": "Save personnel conditions" },
+  "Release to swap these people.": { "cn": "松手即可互换这两位人员。", "en": "Release to swap these people." },
+  "The last drag swap cannot be undone because its assignments or conditions changed.": { "cn": "最近一次拖拽的相关安排或条件已改变，无法撤销。", "en": "The last drag swap cannot be undone because its assignments or conditions changed." },
+  "The last drag swap was undone.": { "cn": "已撤销最近一次拖拽互换。", "en": "The last drag swap was undone." },
+  "Dragging between the preview and calendar is not supported.": { "cn": "不能在预览与日历之间交叉拖拽。", "en": "Dragging between the preview and calendar is not supported." },
+  "Drag onto another person to swap, or click to choose a shift.": { "cn": "拖到另一位人员上进行互换，或点击选择班次。", "en": "Drag onto another person to swap, or click to choose a shift." },
+  "Click to swap this person.": { "cn": "点击互换此人员。", "en": "Click to swap this person." },
+  "Undo last drag swap": { "cn": "撤销最近一次拖拽", "en": "Undo last drag swap" },
+  "The last drag swap can be undone.": { "cn": "可撤销最近一次拖拽互换。", "en": "The last drag swap can be undone." },
+  "Drag a name onto another person to swap. You can also click a name.": { "cn": "将姓名拖到另一位人员上即可互换，也可点击姓名操作。", "en": "Drag a name onto another person to swap. You can also click a name." },
+  "Click a name to swap personnel.": { "cn": "点击姓名可互换人员。", "en": "Click a name to swap personnel." },
+  "Choose two different shifts and two different people.": {"cn": "请选择两个不同的班次和两位不同的人员。", "en": "Choose two different shifts and two different people."},
+  "The selected shift or person is no longer available.": {"cn": "所选班次或人员已不存在。", "en": "The selected shift or person is no longer available."},
+  "A person is already assigned to the other shift.": {"cn": "所选人员已在对方班次中，无法互换。", "en": "A person is already assigned to the other shift."},
+  "Each shift must retain at least one qualified group leader.": {"cn": "互换后每班必须保留至少一位具备组长资格的人员。", "en": "Each shift must retain at least one qualified group leader."},
+  "People cannot be swapped into a holiday shift.": {"cn": "不能互换到假期班次。", "en": "People cannot be swapped into a holiday shift."},
+  "This person has an overlapping duty shift.": {"cn": "此人员已有时间重叠的值班。", "en": "This person has an overlapping duty shift."},
+  "This person is inactive or is not participating in the roster.": {"cn": "此人员已停用或未参与排班。", "en": "This person is inactive or is not participating in the roster."},
+  "Personnel conditions are missing. Configure this person before swapping.": {"cn": "缺少此人员的排班条件，请先完成设置。", "en": "Personnel conditions are missing. Configure this person before swapping."},
+  "This weekday is outside the person’s availability.": {"cn": "此星期不在该人员可值班日内。", "en": "This weekday is outside the person’s availability."},
+  "This duty type is outside the person’s availability.": {"cn": "此类别不在该人员可值班方式内。", "en": "This duty type is outside the person’s availability."},
+  "This month is outside the person’s availability.": {"cn": "此月份不在该人员可值班月份内。", "en": "This month is outside the person’s availability."},
+  "This date is within the person’s unavailable dates.": {"cn": "此日期在该人员的请假或不可值班日期内。", "en": "This date is within the person’s unavailable dates."},
+  "Assignments or conditions changed. Recheck the selection before confirming.": {"cn": "班次或条件已改变，请重新检查选择后再确认。", "en": "Assignments or conditions changed. Recheck the selection before confirming."},
+  "Confirm the listed exceptions before swapping.": {"cn": "请先确认列出的例外条件，再互换人员。", "en": "Confirm the listed exceptions before swapping."},
+  "{{person}} · {{date}} {{method}}: {{reason}}": {"cn": "{{person}} · {{date}} {{method}}：{{reason}}", "en": "{{person}} · {{date}} {{method}}: {{reason}}"},
+  "{{date}} {{start}}–{{end}} · {{method}} · {{people}}": {"cn": "{{date}} {{start}}–{{end}} · {{method}} · {{people}}", "en": "{{date}} {{start}}–{{end}} · {{method}} · {{people}}"},
+  "Swap personnel": {"cn": "互换人员", "en": "Swap personnel"},
+  "Only these two shifts will change. Fixed groups and other dates remain unchanged.": {"cn": "此次仅调整这两个班次，固定分组与其他日期保持不变。", "en": "Only these two shifts will change. Fixed groups and other dates remain unchanged."},
+  "Finish loading personnel and regenerate changed conditions before swapping.": {"cn": "请先完成加载人员，并为已变更的条件重新生成分组后再互换。", "en": "Finish loading personnel and regenerate changed conditions before swapping."},
+  "Recheck selection": {"cn": "重新检查选择", "en": "Recheck selection"},
+  "Person to swap": {"cn": "要互换的人员", "en": "Person to swap"},
+  "Choose a person": {"cn": "请选择人员", "en": "Choose a person"},
+  "Target shift": {"cn": "目标班次", "en": "Target shift"},
+  "Choose a shift": {"cn": "请选择班次", "en": "Choose a shift"},
+  "Person in target shift": {"cn": "目标班次中的人员", "en": "Person in target shift"},
+  "Before: {{people}}": {"cn": "互换前：{{people}}", "en": "Before: {{people}}"},
+  "After: {{people}}": {"cn": "互换后：{{people}}", "en": "After: {{people}}"},
+  "I confirm these exceptions for this swap.": {"cn": "我确认本次互换的上述例外条件。", "en": "I confirm these exceptions for this swap."},
+  "Confirm swap": {"cn": "确认互换", "en": "Confirm swap"},
+  "Manual adjustment": {"cn": "手动调整", "en": "Manual adjustment"},
+  "Confirmed exceptions": {"cn": "已确认例外", "en": "Confirmed exceptions"},
+  "Confirm the current manual assignment before saving.": {"cn": "请先确认目前的手动安排后再保存。", "en": "Confirm the current manual assignment before saving."},
+  "I confirm the current manual assignment and its exceptions.": {"cn": "我确认目前的手动安排及其例外条件。", "en": "I confirm the current manual assignment and its exceptions."},
+  "Personnel swapped.": {"cn": "人员已互换。", "en": "Personnel swapped."},
+  "{{person}}: {{count}} duty shifts": {"cn": "{{person}}：{{count}} 次值班", "en": "{{person}}: {{count}} duty shifts"},
+  "Applying this roster replaces manual adjustments in this date range.": {"cn": "应用此排班会覆盖该日期范围内的手动调整。", "en": "Applying this roster replaces manual adjustments in this date range."},
+  "Regenerate and discard manual adjustments?": {"cn": "重新生成并放弃手动调整？", "en": "Regenerate and discard manual adjustments?"},
+  "Regenerating the preview discards its manual adjustments. Applied calendar shifts remain unchanged until you apply the new roster.": {"cn": "重新生成预览会清除预览中的手动调整；已应用的日历班次会保留，直到您应用新排班。", "en": "Regenerating the preview discards its manual adjustments. Applied calendar shifts remain unchanged until you apply the new roster."},
+
+  "Each duty group needs at least two people.": { "cn": "每个值班组至少需要两人。", "en": "Each duty group needs at least two people." },
+  "Each duty group needs at least two people. Unpaired personnel will not be scheduled.": { "cn": "每个值班组至少需要两人，尚未配对的人员不会被安排值班。", "en": "Each duty group needs at least two people. Unpaired personnel will not be scheduled." },
+  "Two qualified leaders may form one group. Set one person’s preset group leader, or choose a solo leader as a group member below. Both retain their leader qualification.": { "cn": "两位具备组长资格的人也可组成一组：为其中一人选择预设组长，或在下方选择单人组长作为组员；两人的组长资格都会保留。", "en": "Two qualified leaders may form one group. Set one person’s preset group leader, or choose a solo leader as a group member below. Both retain their leader qualification." },
+  "Print / Save PDF": { "cn": "打印／保存 PDF", "en": "Print / Save PDF" },
+  "Kuching Buddhist Lodge Bodhi Counselling Centre": { "cn": "古晋佛教居士林菩提辅导中心", "en": "Kuching Buddhist Lodge Bodhi Counselling Centre" },
+  "Counselling volunteer duty roster": { "cn": "辅导志工值班表", "en": "Counselling volunteer duty roster" },
+  "Telephone": { "cn": "电话", "en": "Telephone" },
+  "Continued": { "cn": "续", "en": "Continued" },
+  "No duty dates in this month.": { "cn": "本月所选范围内无值班日期。", "en": "No duty dates in this month." },
+  "Choose Save as PDF in the print dialog. Use A4 landscape, enable background graphics and turn off browser headers and footers.": { "cn": "请在打印窗口选择另存为 PDF，使用 A4 横向、开启背景图形，并关闭浏览器页眉和页脚。", "en": "Choose Save as PDF in the print dialog. Use A4 landscape, enable background graphics and turn off browser headers and footers." },
+  "Allow pop-ups for this site, then try printing again.": { "cn": "请允许此网站弹出窗口，再尝试打印。", "en": "Allow pop-ups for this site, then try printing again." },
+  "Roster start date": { "cn": "排班开始日期", "en": "Roster start date" },
+  "Roster end date": { "cn": "排班结束日期", "en": "Roster end date" },
+  "Planning date range": { "cn": "排班日期范围", "en": "Planning date range" },
+  "Preview roster": { "cn": "预览排班", "en": "Preview roster" },
+  "Available in {{month}}": { "cn": "{{month}}可值班", "en": "Available in {{month}}" },
+  "Choose valid start and end dates. The end date must be on or after the start date.": { "cn": "请选择有效的开始和结束日期，结束日期不可早于开始日期。", "en": "Choose valid start and end dates. The end date must be on or after the start date." },
+  "Sarawak public holidays": {"cn": "砂拉越公共假期", "en": "Sarawak public holidays"},
+  "Additional holidays": {"cn": "补充假期（手动填写）", "en": "Additional holidays"},
+  "Sarawak public holidays for 2026-2027 are included automatically, including replacement days. Add special holidays and centre closures below. Future dates remain subject to official announcements.": {"cn": "已自动加入 2026–2027 年砂拉越公共假期及补假。可在下方补充特别假期与中心休假；未来日期仍以官方公告为准。", "en": "Sarawak public holidays for 2026-2027 are included automatically, including replacement days. Add special holidays and centre closures below. Future dates remain subject to official announcements."},
+  "No built-in holiday calendar for {{years}}. Add the holidays for these years manually before planning.": {"cn": "尚未内置 {{years}} 年假期，请在排班前手动补充这些年份的假期。", "en": "No built-in holiday calendar for {{years}}. Add the holidays for these years manually before planning."},
+  "Chinese New Year": {"cn": "农历新年", "en": "Chinese New Year"},
+  "Chinese New Year Holiday": {"cn": "农历新年第二天", "en": "Chinese New Year Holiday"},
+  "Hari Raya Aidilfitri": {"cn": "开斋节", "en": "Hari Raya Aidilfitri"},
+  "Hari Raya Aidilfitri Holiday": {"cn": "开斋节第二天", "en": "Hari Raya Aidilfitri Holiday"},
+  "Labour Day": {"cn": "劳动节", "en": "Labour Day"},
+  "Hari Raya Haji": {"cn": "哈芝节", "en": "Hari Raya Haji"},
+  "Wesak Day": {"cn": "卫塞节", "en": "Wesak Day"},
+  "Agong's Birthday": {"cn": "国家元首诞辰", "en": "Agong's Birthday"},
+  "Awal Muharram": {"cn": "回历元旦", "en": "Awal Muharram"},
+  "Prophet Muhammad's Birthday": {"cn": "先知穆罕默德诞辰", "en": "Prophet Muhammad's Birthday"},
+  "National Day": {"cn": "国庆日", "en": "National Day"},
+  "Malaysia Day": {"cn": "马来西亚日", "en": "Malaysia Day"},
+  "Christmas Day": {"cn": "圣诞节", "en": "Christmas Day"},
+  "New Year's Day": {"cn": "元旦", "en": "New Year's Day"},
+  "Hari Raya replacement holiday": {"cn": "开斋节补假", "en": "Hari Raya replacement holiday"},
+  "Good Friday": {"cn": "耶稣受难日", "en": "Good Friday"},
+  "Gawai Dayak": {"cn": "达雅节", "en": "Gawai Dayak"},
+  "Gawai Dayak Holiday": {"cn": "达雅节第二天", "en": "Gawai Dayak Holiday"},
+  "Wesak replacement holiday": {"cn": "卫塞节补假", "en": "Wesak replacement holiday"},
+  "Gawai replacement holiday": {"cn": "达雅节补假", "en": "Gawai replacement holiday"},
+  "Sarawak Day": {"cn": "砂拉越日", "en": "Sarawak Day"},
+  "Sarawak Governor's Birthday": {"cn": "砂拉越元首诞辰", "en": "Sarawak Governor's Birthday"},
+  "Gawai Dayak / Agong's Birthday": {"cn": "达雅节／国家元首诞辰", "en": "Gawai Dayak / Agong's Birthday"},
+  "Chinese New Year replacement holiday": {"cn": "农历新年补假", "en": "Chinese New Year replacement holiday"},
+  "Awal Muharram replacement holiday": {"cn": "回历元旦补假", "en": "Awal Muharram replacement holiday"},
+  "Prophet Muhammad replacement holiday": {"cn": "先知穆罕默德诞辰补假", "en": "Prophet Muhammad replacement holiday"},
+
+  "Monday": { "cn": "周一", "en": "Monday" },
+  "Wednesday": { "cn": "周三", "en": "Wednesday" },
+  "Friday": { "cn": "周五", "en": "Friday" },
+  "Duty type": { "cn": "值班类别", "en": "Duty type" },
+  "Needs review": { "cn": "待检查", "en": "Needs review" },
+  "Automatic roster planning": { "cn": "自动排班", "en": "Automatic roster planning" },
+  "Personnel conditions": { "cn": "人员排班条件", "en": "Personnel conditions" },
+  "Participate in roster": { "cn": "参与排班", "en": "Participate in roster" },
+  "Group leader qualification": { "cn": "具备组长资格", "en": "Group leader qualification" },
+  "Telephone duty": { "cn": "电话值班", "en": "Telephone duty" },
+  "Face-to-face duty": { "cn": "面谈值班", "en": "Face-to-face duty" },
+  "Zoom duty": { "cn": "Zoom 值班", "en": "Zoom duty" },
+  "Available in month {{month}}": { "cn": "第 {{month}} 个月可值班", "en": "Available in month {{month}}" },
+  "Preset group leader": { "cn": "预设组长", "en": "Preset group leader" },
+  "Unavailable from": { "cn": "请假开始日期", "en": "Unavailable from" },
+  "Unavailable until": { "cn": "请假结束日期", "en": "Unavailable until" },
+  "Remove range": { "cn": "移除日期范围", "en": "Remove range" },
+  "Add unavailable dates": { "cn": "新增请假日期", "en": "Add unavailable dates" },
+  "Local holidays": { "cn": "本地假期（需自行填写）", "en": "Local holidays" },
+  "Holiday date": { "cn": "假期日期", "en": "Holiday date" },
+  "Holiday name": { "cn": "假期名称", "en": "Holiday name" },
+  "Remove holiday": { "cn": "移除假期", "en": "Remove holiday" },
+  "Add holiday": { "cn": "新增假期", "en": "Add holiday" },
+  "Generate fixed groups": { "cn": "生成固定分组", "en": "Generate fixed groups" },
+  "Conditions changed. Regenerate groups before previewing.": { "cn": "排班条件已更改，请重新生成分组后再预览。", "en": "Conditions changed. Regenerate groups before previewing." },
+  "Group member": { "cn": "组员", "en": "Group member" },
+  "Group weekday": { "cn": "小组值班星期", "en": "Group weekday" },
+  "Preview three-month roster": { "cn": "预览三个月值班表", "en": "Preview three-month roster" },
+  "No eligible group available for this duty.": { "cn": "没有符合条件的可用小组，或小组已安排其他类别。", "en": "No eligible group available for this duty." },
+  "Apply roster": { "cn": "应用值班表", "en": "Apply roster" },
+  "Cancel preview": { "cn": "取消预览", "en": "Cancel preview" },
+  "Replace shifts in this planning period?": { "cn": "替换本周期的值班安排？", "en": "Replace shifts in this planning period?" },
+  "Replace {{old}} existing shifts with {{next}} planned shifts. Shifts outside this period are retained.": { "cn": "将以 {{next}} 个新班次替换已有的 {{old}} 个班次，周期以外的班次保留。", "en": "Replace {{old}} existing shifts with {{next}} planned shifts. Shifts outside this period are retained." },
+  "{{count}} shifts need review. Open them in the calendar or regenerate the roster.": { "cn": "有 {{count}} 个班次需要检查，请在日历中打开或重新生成值班表。", "en": "{{count}} shifts need review. Open them in the calendar or regenerate the roster." },
+  "Invalid group leader or group size.": { "cn": "组长资格或小组人数无效。", "en": "Invalid group leader or group size." },
+  "A person is duplicated or unavailable.": { "cn": "人员重复、停用或已退出排班。", "en": "A person is duplicated or unavailable." },
+  "The group conflicts with a preset pairing.": { "cn": "分组与预设搭档冲突，请检查组长、人数及共同可用条件。", "en": "The group conflicts with a preset pairing." },
+  "Group members have no shared availability.": { "cn": "小组没有共同的可用星期、类别或月份。", "en": "Group members have no shared availability." },
+  "Select at least one group leader.": { "cn": "请至少指定一名组长。", "en": "Select at least one group leader." },
+  "Review this unassigned person.": { "cn": "请检查这位尚未分组的人员。", "en": "Review this unassigned person." },
+  "No compatible group with an open slot.": { "cn": "没有条件兼容且有空位的小组。", "en": "No compatible group with an open slot." },
+  "Choose a valid planning period and same-day time range.": { "cn": "请选择有效周期及同一天内的起止时间。", "en": "Choose a valid planning period and same-day time range." },
+  "Check unavailable date ranges.": { "cn": "请检查请假日期范围。", "en": "Check unavailable date ranges." },
+  "Enter unique holiday dates and names.": { "cn": "请填写不重复的有效假期日期及名称。", "en": "Enter unique holiday dates and names." },
+  "Choose a fixed group.": { "cn": "请选择固定小组。", "en": "Choose a fixed group." },
+  "Shift date must be within the planning period.": { "cn": "值班日期必须在当前排班周期内。", "en": "Shift date must be within the planning period." },
+  "This group is unavailable for this date or duty type.": { "cn": "该小组在此日期或值班类别不可用。", "en": "This group is unavailable for this date or duty type." },
+  "This group already has a shift on this date.": { "cn": "该小组当天已有值班安排。", "en": "This group already has a shift on this date." },
+  "This duty type already has a shift on this date.": { "cn": "该日期的此类别已有值班安排。", "en": "This duty type already has a shift on this date." },
+  "Fixed group": { "cn": "固定小组", "en": "Fixed group" },
+  "Unavailable group": { "cn": "小组已不可用", "en": "Unavailable group" },
+  "Start time": { "cn": "开始时间", "en": "Start time" },
+  "End time": { "cn": "结束时间", "en": "End time" },
+  "Duty roster": {
+    "cn": "值班管理",
+    "en": "Duty roster"
+  },
+  "Add shift": {
+    "cn": "新增值班",
+    "en": "Add shift"
+  },
+  "Edit shift": {
+    "cn": "编辑值班",
+    "en": "Edit shift"
+  },
+  "Shift details": {
+    "cn": "值班详情",
+    "en": "Shift details"
+  },
+  "Delete shift": {
+    "cn": "删除值班",
+    "en": "Delete shift"
+  },
+  "Save shift": {
+    "cn": "保存值班",
+    "en": "Save shift"
+  },
+  "Duty shift saved.": {
+    "cn": "值班已保存。",
+    "en": "Duty shift saved."
+  },
+  "Duty shift deleted.": {
+    "cn": "值班已删除。",
+    "en": "Duty shift deleted."
+  },
+  "Plan counsellor and volunteer duty shifts, one day at a time.": {
+    "cn": "按日期安排辅导员与志工的值班时段。",
+    "en": "Plan counsellor and volunteer duty shifts, one day at a time."
+  },
+  "Frontend prototype: shifts are temporary and disappear when you refresh or leave this page. Personnel are read from the database. Appointments are managed separately.": {
+    "cn": "前端原型：值班仅临时保存，刷新或离开此页面后将清空。人员从数据库读取，预约另行管理。",
+    "en": "Frontend prototype: shifts are temporary and disappear when you refresh or leave this page. Personnel are read from the database. Appointments are managed separately."
+  },
+  "Roster starting month": {
+    "cn": "排班起始月份",
+    "en": "Roster starting month"
+  },
+  "Three-month planning period": {
+    "cn": "三个月排班期间",
+    "en": "Three-month planning period"
+  },
+  "All duty personnel": {
+    "cn": "全部值班人员",
+    "en": "All duty personnel"
+  },
+  "Duty personnel": {
+    "cn": "值班人员",
+    "en": "Duty personnel"
+  },
+  "Reload personnel": {
+    "cn": "重新加载人员",
+    "en": "Reload personnel"
+  },
+  "Choose a valid starting month for a three-month period.": {
+    "cn": "请选择有效的起始月份，以查看连续三个月的排班期间。",
+    "en": "Choose a valid starting month for a three-month period."
+  },
+  "{{from}} – {{to}}": {
+    "cn": "{{from}} 至 {{to}}",
+    "en": "{{from}} – {{to}}"
+  },
+  "{{count}} duty shifts": {
+    "cn": "{{count}} 个班次",
+    "en": "{{count}} duty shifts"
+  },
+  "{{count}} duty personnel": {
+    "cn": "{{count}} 位值班人员",
+    "en": "{{count}} duty personnel"
+  },
+  "Changing the planning period moves the calendar without clearing shifts. You may also browse dates outside this period.": {
+    "cn": "切换排班期间只移动日历，不清除已录入班次；也可查看期间以外的日期。",
+    "en": "Changing the planning period moves the calendar without clearing shifts. You may also browse dates outside this period."
+  },
+  "Personnel could not be loaded. Retry before adding or editing shifts.": {
+    "cn": "无法加载人员，请重试后再新增或修改值班。",
+    "en": "Personnel could not be loaded. Retry before adding or editing shifts."
+  },
+  "Shift date": {
+    "cn": "值班日期",
+    "en": "Shift date"
+  },
+  "Shift notes (optional)": {
+    "cn": "值班备注（可选）",
+    "en": "Shift notes (optional)"
+  },
+  "Select one or more active counsellors and volunteers.": {
+    "cn": "请选择一位或多位在职辅导员与志工。",
+    "en": "Select one or more active counsellors and volunteers."
+  },
+  "Remove unavailable personnel": {
+    "cn": "移除不可用人员",
+    "en": "Remove unavailable personnel"
+  },
+  "Unavailable person #{{id}}": {
+    "cn": "不可用人员 #{{id}}",
+    "en": "Unavailable person #{{id}}"
+  },
+  "Select at least one person for this shift.": {
+    "cn": "请为此班次选择至少一位人员。",
+    "en": "Select at least one person for this shift."
+  },
+  "Choose active counsellors or volunteers before saving.": {
+    "cn": "保存前请选择在职辅导员或志工。",
+    "en": "Choose active counsellors or volunteers before saving."
+  },
+  "Shift end time must be later than start time on the same day.": {
+    "cn": "值班结束时间必须晚于同一天的开始时间。",
+    "en": "Shift end time must be later than start time on the same day."
+  },
+  "Shift notes must not exceed 2,000 characters.": {
+    "cn": "值班备注不能超过 2,000 个字符。",
+    "en": "Shift notes must not exceed 2,000 characters."
+  },
+  "Delete this shift?": {
+    "cn": "删除此班次？",
+    "en": "Delete this shift?"
+  },
+  "This temporary shift will be deleted. This cannot be undone.": {
+    "cn": "此临时班次将被删除，操作无法撤销。",
+    "en": "This temporary shift will be deleted. This cannot be undone."
+  },
+  "Overlapping duty times": {
+    "cn": "值班时间重叠",
+    "en": "Overlapping duty times"
+  },
+  "Some selected people already have a shift during this time. Save this overlapping shift anyway?": {
+    "cn": "部分所选人员在此时段已有值班，仍要保存重叠的班次吗？",
+    "en": "Some selected people already have a shift during this time. Save this overlapping shift anyway?"
+  },
+  "Save anyway": {
+    "cn": "仍要保存",
+    "en": "Save anyway"
+  },
+  "Previous calendar period": {
+    "cn": "上一个日历期间",
+    "en": "Previous calendar period"
+  },
+  "Next calendar period": {
+    "cn": "下一个日历期间",
+    "en": "Next calendar period"
+  },
+  "Duty calendar view": {
+    "cn": "值班日历视图",
+    "en": "Duty calendar view"
+  },
+  "Week view": {
+    "cn": "周视图",
+    "en": "Week view"
+  },
+  "Daily agenda": {
+    "cn": "当日班次",
+    "en": "Daily agenda"
+  },
+  "No shifts on this day. Add a shift or choose another date.": {
+    "cn": "当天没有值班，可新增班次或选择其他日期。",
+    "en": "No shifts on this day. Add a shift or choose another date."
+  },
+  "No shifts recorded yet. Add your first shift to start planning.": {
+    "cn": "尚未录入值班，新增第一个班次即可开始排班。",
+    "en": "No shifts recorded yet. Add your first shift to start planning."
+  },
+  "No shifts match the selected person.": {
+    "cn": "所选人员没有符合条件的班次。",
+    "en": "No shifts match the selected person."
+  },
+  "Case Details Pending": { "cn": "待补资料", "en": "Case Details Pending" },
+  "Complete case details": { "cn": "补充个案资料", "en": "Complete case details" },
+  "Pending entry": { "cn": "待填写", "en": "Pending entry" },
+  "Please select a counsellor or volunteer": { "cn": "请选择辅导员或志工", "en": "Please select a counsellor or volunteer" },
+  "Automatically created from appointment #{{id}}.": { "cn": "由预约 #{{id}} 自动建立。", "en": "Automatically created from appointment #{{id}}." },
+  "This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved.": { "cn": "此记录由预约自动建立。请补填个案编号与类别以完成资料，也可先保存部分更改。", "en": "This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved." },
+  "Appointment completed. Its counselling record is available in case management.": { "cn": "预约已完成，对应辅导记录可在个案管理中查看。", "en": "Appointment completed. Its counselling record is available in case management." },
+  "This appointment has a counselling record in case management.": { "cn": "此预约已有对应辅导记录，可在个案管理中补充资料。", "en": "This appointment has a counselling record in case management." },
+  "The generated case was deleted. It will not be recreated.": { "cn": "自动生成的个案已被删除，不会重复建立。", "en": "The generated case was deleted. It will not be recreated." },
   "Counsellor / Volunteer": { "cn": "辅导员／志工", "en": "Counsellor / Volunteer" },
   "No active counsellors or volunteers. Add an active person in personnel management first.": { "cn": "暂无在职辅导员或志工，请先在人员管理中新增在职人员。", "en": "No active counsellors or volunteers. Add an active person in personnel management first." },
   "This person is no longer available. Reload the list and select an active counsellor or volunteer.": { "cn": "此人员已不可用，请重新加载名单并选择在职辅导员或志工。", "en": "This person is no longer available. Reload the list and select an active counsellor or volunteer." },

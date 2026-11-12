@@ -1,6 +1,7 @@
 import { tr } from '../../../../locales/translate';
 
 export const WORKFLOW_STATUS = {
+  DRAFT: 'Case Details Pending',
   // 中文原文：接案未完成、待简要报告、待详细报告、全部完成
   INTAKE_PENDING: 'Intake Incomplete',
   BRIEF_PENDING: 'Brief Report Pending',
@@ -29,7 +30,8 @@ export function getSessionEndedAt(date, endTime) {
   return Number.isNaN(value.getTime()) ? null : value;
 }
 
-export function getWorkflowStatus({ sessionEndedAt, caseNumber, reportUrl }, now = new Date()) {
+export function getWorkflowStatus({ sessionEndedAt, caseNumber, reportUrl, intakePending }, now = new Date()) {
+  if (intakePending) return WORKFLOW_STATUS.DRAFT;
   if (!sessionEndedAt || now < sessionEndedAt) return WORKFLOW_STATUS.INTAKE_PENDING;
   if (!String(caseNumber || '').trim()) return WORKFLOW_STATUS.BRIEF_PENDING;
   if (!String(reportUrl || '').trim()) return WORKFLOW_STATUS.DETAILED_PENDING;

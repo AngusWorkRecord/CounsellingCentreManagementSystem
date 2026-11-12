@@ -34,7 +34,10 @@ yark.lock
 !/database/006_create_appointments.sql
 !/database/007_create_counselling_people.sql
 !/database/008_appointment_database_counsellors.sql
+!/database/009_appointment_generated_cases.sql
+!/database/010_create_duty_roster.sql
 !/docs/appointments.md
 !/docs/counselling-people.md
+!/docs/duty-roster.md
 .vercel
 .env*

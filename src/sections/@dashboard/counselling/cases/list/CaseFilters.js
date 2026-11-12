@@ -18,7 +18,7 @@ export default function CaseFilters({ filters, options, onChange, onReset }) {
     // 中文原文：值班类别、个案类别、状态、接案未完成、待简要报告、待详细报告、全部完成
     ['sessionMode', 'Session Mode', [ALL, ...options.sessionModes]],
     ['category', 'Case Category', [ALL, ...options.categories]],
-    ['status', 'Status', [ALL, 'Intake Incomplete', 'Brief Report Pending', 'Detailed Report Pending', 'Completed']],
+    ['status', 'Status', [ALL, 'Case Details Pending', 'Intake Incomplete', 'Brief Report Pending', 'Detailed Report Pending', 'Completed']],
   ];
 
   return (

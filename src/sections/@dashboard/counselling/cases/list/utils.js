@@ -27,6 +27,7 @@ export function getCurrentYear() {
 export function mapSessionToCase(session, index) {
   const sessionEndedAt = getSessionEndedAt(session.counselling_date, session.session_end);
   const workflowStatus = getWorkflowStatus({
+    intakePending: session.intake_pending === true,
     sessionEndedAt,
     caseNumber: session.case_number,
     reportUrl: session.report_url,
