@@ -1,4 +1,178 @@
 {
+  "Start time": { "cn": "开始时间", "en": "Start time" },
+  "End time": { "cn": "结束时间", "en": "End time" },
+  "Duty roster": {
+    "cn": "值班管理",
+    "en": "Duty roster"
+  },
+  "Add shift": {
+    "cn": "新增值班",
+    "en": "Add shift"
+  },
+  "Edit shift": {
+    "cn": "编辑值班",
+    "en": "Edit shift"
+  },
+  "Shift details": {
+    "cn": "值班详情",
+    "en": "Shift details"
+  },
+  "Delete shift": {
+    "cn": "删除值班",
+    "en": "Delete shift"
+  },
+  "Save shift": {
+    "cn": "保存值班",
+    "en": "Save shift"
+  },
+  "Duty shift saved.": {
+    "cn": "值班已保存。",
+    "en": "Duty shift saved."
+  },
+  "Duty shift deleted.": {
+    "cn": "值班已删除。",
+    "en": "Duty shift deleted."
+  },
+  "Plan counsellor and volunteer duty shifts, one day at a time.": {
+    "cn": "按日期安排辅导员与志工的值班时段。",
+    "en": "Plan counsellor and volunteer duty shifts, one day at a time."
+  },
+  "Frontend prototype: shifts are temporary and disappear when you refresh or leave this page. Personnel are read from the database. Appointments are managed separately.": {
+    "cn": "前端原型：值班仅临时保存，刷新或离开此页面后将清空。人员从数据库读取，预约另行管理。",
+    "en": "Frontend prototype: shifts are temporary and disappear when you refresh or leave this page. Personnel are read from the database. Appointments are managed separately."
+  },
+  "Roster starting month": {
+    "cn": "排班起始月份",
+    "en": "Roster starting month"
+  },
+  "Three-month planning period": {
+    "cn": "三个月排班期间",
+    "en": "Three-month planning period"
+  },
+  "All duty personnel": {
+    "cn": "全部值班人员",
+    "en": "All duty personnel"
+  },
+  "Duty personnel": {
+    "cn": "值班人员",
+    "en": "Duty personnel"
+  },
+  "Reload personnel": {
+    "cn": "重新加载人员",
+    "en": "Reload personnel"
+  },
+  "Choose a valid starting month for a three-month period.": {
+    "cn": "请选择有效的起始月份，以查看连续三个月的排班期间。",
+    "en": "Choose a valid starting month for a three-month period."
+  },
+  "{{from}} – {{to}}": {
+    "cn": "{{from}} 至 {{to}}",
+    "en": "{{from}} – {{to}}"
+  },
+  "{{count}} duty shifts": {
+    "cn": "{{count}} 个班次",
+    "en": "{{count}} duty shifts"
+  },
+  "{{count}} duty personnel": {
+    "cn": "{{count}} 位值班人员",
+    "en": "{{count}} duty personnel"
+  },
+  "Changing the planning period moves the calendar without clearing shifts. You may also browse dates outside this period.": {
+    "cn": "切换排班期间只移动日历，不清除已录入班次；也可查看期间以外的日期。",
+    "en": "Changing the planning period moves the calendar without clearing shifts. You may also browse dates outside this period."
+  },
+  "Personnel could not be loaded. Retry before adding or editing shifts.": {
+    "cn": "无法加载人员，请重试后再新增或修改值班。",
+    "en": "Personnel could not be loaded. Retry before adding or editing shifts."
+  },
+  "Shift date": {
+    "cn": "值班日期",
+    "en": "Shift date"
+  },
+  "Shift notes (optional)": {
+    "cn": "值班备注（可选）",
+    "en": "Shift notes (optional)"
+  },
+  "Select one or more active counsellors and volunteers.": {
+    "cn": "请选择一位或多位在职辅导员与志工。",
+    "en": "Select one or more active counsellors and volunteers."
+  },
+  "Remove unavailable personnel": {
+    "cn": "移除不可用人员",
+    "en": "Remove unavailable personnel"
+  },
+  "Unavailable person #{{id}}": {
+    "cn": "不可用人员 #{{id}}",
+    "en": "Unavailable person #{{id}}"
+  },
+  "Select at least one person for this shift.": {
+    "cn": "请为此班次选择至少一位人员。",
+    "en": "Select at least one person for this shift."
+  },
+  "Choose active counsellors or volunteers before saving.": {
+    "cn": "保存前请选择在职辅导员或志工。",
+    "en": "Choose active counsellors or volunteers before saving."
+  },
+  "Shift end time must be later than start time on the same day.": {
+    "cn": "值班结束时间必须晚于同一天的开始时间。",
+    "en": "Shift end time must be later than start time on the same day."
+  },
+  "Shift notes must not exceed 2,000 characters.": {
+    "cn": "值班备注不能超过 2,000 个字符。",
+    "en": "Shift notes must not exceed 2,000 characters."
+  },
+  "Delete this shift?": {
+    "cn": "删除此班次？",
+    "en": "Delete this shift?"
+  },
+  "This temporary shift will be deleted. This cannot be undone.": {
+    "cn": "此临时班次将被删除，操作无法撤销。",
+    "en": "This temporary shift will be deleted. This cannot be undone."
+  },
+  "Overlapping duty times": {
+    "cn": "值班时间重叠",
+    "en": "Overlapping duty times"
+  },
+  "Some selected people already have a shift during this time. Save this overlapping shift anyway?": {
+    "cn": "部分所选人员在此时段已有值班，仍要保存重叠的班次吗？",
+    "en": "Some selected people already have a shift during this time. Save this overlapping shift anyway?"
+  },
+  "Save anyway": {
+    "cn": "仍要保存",
+    "en": "Save anyway"
+  },
+  "Previous calendar period": {
+    "cn": "上一个日历期间",
+    "en": "Previous calendar period"
+  },
+  "Next calendar period": {
+    "cn": "下一个日历期间",
+    "en": "Next calendar period"
+  },
+  "Duty calendar view": {
+    "cn": "值班日历视图",
+    "en": "Duty calendar view"
+  },
+  "Week view": {
+    "cn": "周视图",
+    "en": "Week view"
+  },
+  "Daily agenda": {
+    "cn": "当日班次",
+    "en": "Daily agenda"
+  },
+  "No shifts on this day. Add a shift or choose another date.": {
+    "cn": "当天没有值班，可新增班次或选择其他日期。",
+    "en": "No shifts on this day. Add a shift or choose another date."
+  },
+  "No shifts recorded yet. Add your first shift to start planning.": {
+    "cn": "尚未录入值班，新增第一个班次即可开始排班。",
+    "en": "No shifts recorded yet. Add your first shift to start planning."
+  },
+  "No shifts match the selected person.": {
+    "cn": "所选人员没有符合条件的班次。",
+    "en": "No shifts match the selected person."
+  },
   "Case Details Pending": { "cn": "待补资料", "en": "Case Details Pending" },
   "Complete case details": { "cn": "补充个案资料", "en": "Complete case details" },
   "Pending entry": { "cn": "待填写", "en": "Pending entry" },

@@ -192,9 +192,7 @@ export default function AppointmentManagementPage() {
             {tr('New appointment')}
           </Button>
         </Stack>
-        <Alert severity="info">
-          {tr('Appointment times use Malaysia time (UTC+8).')}
-        </Alert>
+ 
         {loading && <Alert severity="info">{tr('Loading appointments…')}</Alert>}
         {loadError && <Alert severity="error" action={<Button onClick={() => setRevision((old) => old + 1)}>{tr('Retry appointments')}</Button>}>
           {tr(appointmentErrorMessage(loadError))}
