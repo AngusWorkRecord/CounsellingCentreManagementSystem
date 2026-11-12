@@ -138,7 +138,15 @@ export function createSwapUndo(context, afterShifts, selection) {
 }
 export function undoPersonSwap(context, record) {
   const ids = record?.ids || record?.before.map((s) => s.id);
-  if (!record || JSON.stringify(context.shifts.filter((s) => ids.includes(s.id))) !== record.after)
+  const current = record ? context.shifts.filter((s) => ids.includes(s.id)) : [];
+  const versions = (rows) =>
+    JSON.stringify(
+      rows.map(({ id, version }) => ({ id, version })).sort((a, b) => a.id.localeCompare(b.id))
+    );
+  const changed = record?.serverUndo
+    ? versions(current) !== versions(JSON.parse(record.after))
+    : JSON.stringify(current) !== record?.after;
+  if (!record || changed)
     return { ok: false, shifts: context.shifts, errors: [issue(SWAP_REASONS.changed)] };
   return {
     ok: true,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Alert,
@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { tr, useUiLanguage } from '../../locales/translate';
 import RosterPersonChip from './RosterPersonChip';
+import { validDate } from './rosterModel';
 import { LABELS } from './autoRoster';
 
 export function CalendarDaySlot({ date, shifts, drag, dayNumberText }) {
@@ -151,6 +152,19 @@ export default function ManualRosterTools({ drag, priorityIds = [] }) {
           groupId: '',
         }
       : targets.find((s) => s.id === targetId));
+  const loadTarget = drag.context.loadRange;
+  useEffect(() => {
+    if (!request || targetId !== 'new' || !validDate(newDate) || !loadTarget) return undefined;
+    let cancelled = false;
+    loadTarget({ from: newDate, to: newDate }).then((data) => {
+      if (!cancelled && data?.shifts) drag.extendEditorSnapshot(data.shifts);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // Selection loading is independent of translated labels and dialog rerenders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [request?.token, targetId, newDate, loadTarget]);
   const isSource = !!request?.sourceShiftId;
   const label = (shift) => `${shift.date} ${shift.start}-${shift.end} ${tr(LABELS[shift.method])}`;
   const close = () => {
@@ -162,8 +176,8 @@ export default function ManualRosterTools({ drag, priorityIds = [] }) {
     setNewDate('');
     setErrors([]);
   };
-  const submit = () => {
-    const result = drag.apply(
+  const submit = async () => {
+    const result = await drag.apply(
       {
         kind: isSource ? kind : 'add',
         sourceShiftId: request.sourceShiftId,

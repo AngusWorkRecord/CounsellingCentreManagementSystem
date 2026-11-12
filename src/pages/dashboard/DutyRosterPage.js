@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   Alert,
@@ -6,6 +6,10 @@ import {
   Button,
   Chip,
   Container,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
   MenuItem,
   Stack,
   TextField,
@@ -16,6 +20,9 @@ import useResponsive from '../../hooks/useResponsive';
 import { currentLocale, tr, useUiLanguage } from '../../locales/translate';
 import { domainLabel } from '../../locales/domainLabels';
 import { malaysiaHolidays, mergeHolidays } from '../../sections/duty-roster/malaysiaHolidays';
+import useRosterSettings from '../../sections/duty-roster/useRosterSettings';
+import useRosterNavigationGuard from '../../sections/duty-roster/useRosterNavigationGuard';
+import { rosterErrorMessage } from '../../services/dutyRosterService';
 import useDutyRoster from '../../sections/duty-roster/useDutyRoster';
 import { unassignedPeople } from '../../sections/duty-roster/autoRoster';
 import AutoRosterPanel from '../../sections/duty-roster/AutoRosterPanel';
@@ -37,7 +44,6 @@ import {
 export default function DutyRosterPage() {
   useUiLanguage();
   const desktop = useResponsive('up', 'md');
-  const roster = useDutyRoster();
   const [date, setDate] = useState(() => malaysiaDateTime().date);
   const [period, setPeriod] = useState(() => periodRange(malaysiaDateTime().date.slice(0, 7)));
   const [selectedView, setSelectedView] = useState(null);
@@ -46,15 +52,21 @@ export default function DutyRosterPage() {
   const [swapRequest, setSwapRequest] = useState(null);
   const [notice, setNotice] = useState('');
   const [printError, setPrintError] = useState(false);
-  const [rules, setRules] = useState({
-    preferences: {},
-    groups: [],
-    holidays: [],
-    start: '09:00',
-    end: '10:00',
-    stale: true,
-    period: '',
-  });
+  const [visibleRange, setVisibleRange] = useState(null);
+  const updateVisibleRange = useCallback(
+    (next) =>
+      setVisibleRange((old) => (old?.from === next.from && old?.to === next.to ? old : next)),
+    []
+  );
+  const roster = useDutyRoster(period, visibleRange);
+  const settings = useRosterSettings(period);
+  const { rules, setRules } = settings;
+  const navigation = useRosterNavigationGuard(
+    settings.dirty || settings.uncertain || roster.uncertain,
+    settings.saving || roster.saving,
+    settings.save
+  );
+  const busy = roster.loading || roster.saving || roster.blocked || !!roster.error;
   const nationalCalendar = malaysiaHolidays(period);
   const effectiveRules = {
     ...rules,
@@ -68,12 +80,14 @@ export default function DutyRosterPage() {
       people: roster.people,
       rules: effectiveRules,
       period,
+      loadRange: roster.loadRange,
       holidayLabels: effectiveRules.holidays.map((h) => ({
         ...h,
         name: rules.holidays.some((manual) => manual.date === h.date) ? h.name : tr(h.name),
       })),
     },
-    blocked: roster.loading || !!roster.error,
+    blocked: busy,
+    externalUndo: roster.lastUndo,
     cancelKey: JSON.stringify({ date, view, period }),
     resetKey: 'applied',
     onCommit: (selection, snapshot, accepted) =>
@@ -170,9 +184,29 @@ export default function DutyRosterPage() {
           </Stack>
           <Alert severity="info">
             {tr(
-              'Frontend prototype: shifts are temporary and disappear when you refresh or leave this page. Personnel are read from the database. Appointments are managed separately.'
+              'Applied shifts are saved automatically. Preview changes remain temporary until applied; save planning settings separately.'
             )}
           </Alert>
+          {(roster.saving || settings.saving) && (
+            <Alert severity="info" role="status">
+              {tr('Saving roster data...')}
+            </Alert>
+          )}
+          {roster.saved && !roster.saving && !roster.saveError && (
+            <Alert severity="success">{tr('Calendar changes saved.')}</Alert>
+          )}
+          {roster.saveError && (
+            <Alert
+              severity="error"
+              action={
+                <Button color="inherit" disabled={roster.saving} onClick={roster.retry}>
+                  {tr('Retry')}
+                </Button>
+              }
+            >
+              {tr(rosterErrorMessage(roster.saveError))}
+            </Alert>
+          )}
           {roster.loading && (
             <Alert severity="info" role="status">
               {tr('Loading personnel...')}
@@ -187,7 +221,7 @@ export default function DutyRosterPage() {
                 </Button>
               }
             >
-              {tr('Personnel could not be loaded. Retry before adding or editing shifts.')}
+              {tr(rosterErrorMessage(roster.error))}
             </Alert>
           )}
           {!roster.loading && !roster.error && !roster.people.length && (
@@ -222,9 +256,10 @@ export default function DutyRosterPage() {
                     value={period[key]}
                     onChange={(event) => {
                       const next = event.target.value;
-                      setPeriod((old) => ({ ...old, [key]: next }));
-                      setRules((old) => ({ ...old, stale: true }));
-                      if (key === 'from' && validDate(next)) setDate(next);
+                      navigation.request(() => {
+                        setPeriod((old) => ({ ...old, [key]: next }));
+                        if (key === 'from' && validDate(next)) setDate(next);
+                      });
                     }}
                     InputLabelProps={{ shrink: true }}
                     inputProps={
@@ -295,19 +330,81 @@ export default function DutyRosterPage() {
               )}
             </Typography>
           </Box>
-          <AutoRosterPanel
-            people={roster.people}
-            period={period}
-            rules={rules}
-            nationalCalendar={nationalCalendar}
-            setRules={setRules}
-            shifts={roster.shifts}
-            blocked={roster.loading || !!roster.error}
-            onApply={(incoming, appliedRange) => {
-              roster.replace(incoming, appliedRange || range);
-              setNotice('Duty shift saved.');
-            }}
-          />
+          <Box
+            component="fieldset"
+            disabled={settings.loading || settings.saving || roster.saving}
+            sx={{ border: 0, p: 0, m: 0, minWidth: 0 }}
+          >
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              useFlexGap
+              flexWrap="wrap"
+              sx={{ mb: 2 }}
+            >
+              <Button
+                variant="contained"
+                disabled={!settings.ready || !settings.dirty || settings.saving}
+                onClick={settings.save}
+              >
+                {tr('Save planning settings')}
+              </Button>
+              <Button
+                disabled={settings.saving}
+                onClick={() => navigation.request(settings.reload)}
+              >
+                {tr('Reload planning settings')}
+              </Button>
+              <Typography variant="body2">
+                {tr(
+                  settings.dirty
+                    ? 'Planning settings have unsaved changes.'
+                    : 'Planning settings are saved separately from calendar shifts.'
+                )}
+              </Typography>
+            </Stack>
+            {settings.loading && (
+              <Alert severity="info">{tr('Loading planning settings...')}</Alert>
+            )}
+            {settings.error && (
+              <Alert
+                severity="error"
+                action={
+                  <Button
+                    color="inherit"
+                    onClick={
+                      settings.uncertain ? settings.save : () => navigation.request(settings.reload)
+                    }
+                  >
+                    {tr('Retry')}
+                  </Button>
+                }
+              >
+                {tr(settings.errorText)}
+              </Alert>
+            )}
+            {settings.ready && (
+              <AutoRosterPanel
+                key={JSON.stringify(period)}
+                appliedRevision={roster.appliedRevision}
+                saveError={roster.saveError}
+                retryApply={roster.uncertain ? roster.retry : null}
+                people={roster.people}
+                period={period}
+                rules={rules}
+                nationalCalendar={nationalCalendar}
+                setRules={setRules}
+                shifts={roster.shifts}
+                blocked={busy || settings.saving}
+                onApply={async (incoming, appliedRange, expected) => {
+                  const result = await roster.replace(incoming, appliedRange || range, expected);
+                  if (result.ok) setNotice('Duty shift saved.');
+                  return result;
+                }}
+              />
+            )}
+          </Box>
           {!roster.shifts.length && (
             <Alert severity="info">
               {tr('No shifts recorded yet. Add your first shift to start planning.')}
@@ -324,6 +421,7 @@ export default function DutyRosterPage() {
           />
           <DragSwapFeedback drag={calendarDrag} knownPeople={roster.knownPeople} />
           <DutyCalendar
+            onVisibleRangeChange={updateVisibleRange}
             drag={calendarDrag}
             onChoosePerson={(shiftId, id) =>
               setSwapRequest({ sourceShiftId: shiftId, sourcePersonId: id })
@@ -342,6 +440,32 @@ export default function DutyRosterPage() {
           />
         </Stack>
       </Container>
+      <Dialog open={navigation.open} onClose={navigation.cancel} fullWidth maxWidth="sm">
+        <DialogTitle>{tr('Save settings before leaving?')}</DialogTitle>
+        <DialogContent>
+          {tr(
+            'You have unsaved settings or an unconfirmed save. Save or retry before leaving, discard to leave without further saving, or continue editing.'
+          )}
+          {settings.error && <Alert severity="error">{tr(settings.errorText)}</Alert>}
+          {roster.saving && <Alert severity="info">{tr('Saving roster data...')}</Alert>}
+        </DialogContent>
+        <DialogActions sx={{ flexWrap: 'wrap' }}>
+          <Button onClick={navigation.cancel}>{tr('Continue editing')}</Button>
+          <Button
+            color="error"
+            disabled={roster.saving || settings.saving}
+            onClick={navigation.discard}
+          >
+            {tr('Discard and leave')}
+          </Button>
+          <Button
+            disabled={roster.saving || settings.saving || roster.uncertain}
+            onClick={navigation.saveAndLeave}
+          >
+            {tr('Save settings and leave')}
+          </Button>
+        </DialogActions>
+      </Dialog>
       {swapRequest && (
         <PersonSwapDialog
           {...swapRequest}
@@ -350,10 +474,10 @@ export default function DutyRosterPage() {
           knownPeople={roster.knownPeople}
           rules={effectiveRules}
           period={period}
-          blocked={roster.loading || !!roster.error}
+          blocked={busy}
           onClose={() => setSwapRequest(null)}
-          onConfirm={(selection, snapshot, accepted) => {
-            const result = calendarDrag.commit(selection, snapshot, accepted);
+          onConfirm={async (selection, snapshot, accepted) => {
+            const result = await calendarDrag.commit(selection, snapshot, accepted);
             if (result.ok) {
               setSwapRequest(null);
               setNotice('Personnel swapped.');
@@ -370,7 +494,7 @@ export default function DutyRosterPage() {
           shifts={roster.shifts}
           people={roster.people}
           knownPeople={roster.knownPeople}
-          loading={roster.loading}
+          loading={roster.loading || roster.saving || roster.blocked}
           loadError={roster.error}
           onReload={roster.reload}
           onSwap={() => {
@@ -378,24 +502,29 @@ export default function DutyRosterPage() {
             setDialog(null);
           }}
           onClose={() => setDialog(null)}
-          onSave={(draft) => {
+          onSave={async (draft) => {
             const targetShift = {
               ...draft,
               id: draft.id || `manual-${Date.now()}-${Math.random()}`,
             };
-            const result = calendarDrag.apply({
+            const result = await calendarDrag.apply({
               kind: 'save',
               targetShiftId: targetShift.id,
               targetShift,
             });
-            if (!result.ok) return;
-            setDialog(null);
-            setNotice('Duty shift saved.');
+            if (result.ok) {
+              setDialog(null);
+              setNotice('Duty shift saved.');
+            }
+            return result;
           }}
-          onDelete={(id) => {
-            roster.remove(id);
-            setDialog(null);
-            setNotice('Duty shift deleted.');
+          onDelete={async (id) => {
+            const result = await roster.remove(id);
+            if (result.ok) {
+              setDialog(null);
+              setNotice('Duty shift deleted.');
+            }
+            return result;
           }}
         />
       )}

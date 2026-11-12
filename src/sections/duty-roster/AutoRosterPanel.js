@@ -19,6 +19,7 @@ import {
   Typography,
 } from '@mui/material';
 import { tr, useUiLanguage, currentLocale } from '../../locales/translate';
+import { rosterErrorMessage } from '../../services/dutyRosterService';
 import ManualRosterTools, { ManualRosterSlot } from './ManualRosterTools';
 import PersonnelConditions from './PersonnelConditions';
 import { patchPreferences } from './preferenceGroups';
@@ -48,6 +49,9 @@ export default function AutoRosterPanel({
   shifts,
   onApply,
   blocked,
+  appliedRevision = 0,
+  saveError = null,
+  retryApply = null,
   nationalCalendar = { holidays: [], missingYears: [] },
 }) {
   useUiLanguage();
@@ -63,10 +67,20 @@ export default function AutoRosterPanel({
     if (!next) setSwapRequest(null);
   }, []);
   const [confirm, setConfirm] = useState(false);
+  const [applyExpected, setApplyExpected] = useState([]);
+  const [applying, setApplying] = useState(false);
+  const peopleSignature = JSON.stringify(people.map((p) => [p.id, p.status, p.type]));
+  const previousPeople = useRef(people.length ? peopleSignature : null);
+  useEffect(() => {
+    setPreview(null);
+    setConfirm(false);
+  }, [appliedRevision, setPreview]);
   useEffect(() => {
     setConfirm(false);
-    setRules((old) => ({ ...old, stale: true }));
-  }, [people, period, setRules, setPreview]);
+    if (previousPeople.current !== null && previousPeople.current !== peopleSignature)
+      setRules((old) => ({ ...old, stale: true }));
+    if (people.length || previousPeople.current !== null) previousPeople.current = peopleSignature;
+  }, [peopleSignature, people.length, period, setRules]);
   const { preferences, groups, holidays, start, end, stale } = rules;
   const candidates = activeStaff(people);
   const months = periodMonths(period);
@@ -255,7 +269,7 @@ export default function AutoRosterPanel({
         )}
         {nationalCalendar.holidays.map((holiday) => (
           <Typography key={holiday.date} sx={{ overflowWrap: 'anywhere' }}>
-            {dateLabel(holiday.date)} ? {tr(holiday.name)}
+            {dateLabel(holiday.date)} &middot; {tr(holiday.name)}
           </Typography>
         ))}
         <Typography>{tr('Additional holidays')}</Typography>
@@ -369,7 +383,7 @@ export default function AutoRosterPanel({
             blocked ||
             !range ||
             stale ||
-            rules.period !== period ||
+            JSON.stringify(rules.period) !== JSON.stringify(period) ||
             !groups.length ||
             !!groupProblems.length
           }
@@ -482,7 +496,18 @@ export default function AutoRosterPanel({
               </Box>
             ))}
             <Stack direction="row" spacing={1}>
-              <Button variant="contained" disabled={blocked} onClick={() => setConfirm(true)}>
+              <Button
+                variant="contained"
+                disabled={blocked}
+                onClick={() => {
+                  setApplyExpected(
+                    shifts
+                      .filter((s) => s.date >= previewRange.from && s.date <= previewRange.to)
+                      .map(({ id, version }) => ({ id, version }))
+                  );
+                  setConfirm(true);
+                }}
+              >
                 {tr('Apply roster')}
               </Button>
               <Button onClick={() => setPreview(null)}>{tr('Cancel preview')}</Button>
@@ -500,8 +525,8 @@ export default function AutoRosterPanel({
           period={period}
           blocked={blocked}
           onClose={() => setSwapRequest(null)}
-          onConfirm={(selection, snapshot, accepted) => {
-            const result = drag.commit(selection, snapshot, accepted);
+          onConfirm={async (selection, snapshot, accepted) => {
+            const result = await drag.commit(selection, snapshot, accepted);
             if (result.ok) setSwapRequest(null);
             return result;
           }}
@@ -527,6 +552,7 @@ export default function AutoRosterPanel({
       <Dialog open={confirm && !!preview} onClose={() => setConfirm(false)} fullWidth maxWidth="xs">
         <DialogTitle>{tr('Replace shifts in this planning period?')}</DialogTitle>
         <DialogContent>
+          {saveError && <Alert severity="error">{tr(rosterErrorMessage(saveError))}</Alert>}
           {shifts.some(
             (shift) =>
               previewRange &&
@@ -554,11 +580,20 @@ export default function AutoRosterPanel({
         <DialogActions>
           <Button onClick={() => setConfirm(false)}>{tr('Go back')}</Button>
           <Button
-            disabled={blocked}
-            onClick={() => {
-              onApply(preview.shifts, periodRange(preview.period));
-              setConfirm(false);
-              setPreview(null);
+            disabled={(blocked && !retryApply) || applying}
+            onClick={async () => {
+              setApplying(true);
+              try {
+                const result = retryApply
+                  ? await retryApply()
+                  : await onApply(preview.shifts, periodRange(preview.period), applyExpected);
+                if (result?.ok) {
+                  setConfirm(false);
+                  setPreview(null);
+                }
+              } finally {
+                setApplying(false);
+              }
             }}
           >
             {tr('Confirm')}
@@ -570,6 +605,9 @@ export default function AutoRosterPanel({
 }
 
 AutoRosterPanel.propTypes = {
+  saveError: PropTypes.object,
+  retryApply: PropTypes.func,
+  appliedRevision: PropTypes.number,
   nationalCalendar: PropTypes.object,
   people: PropTypes.array.isRequired,
   period: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,

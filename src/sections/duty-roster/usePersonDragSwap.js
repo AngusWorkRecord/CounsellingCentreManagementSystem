@@ -26,6 +26,7 @@ export default function usePersonDragSwap({
   onCommit,
   onConfirm,
   onUndo,
+  externalUndo,
 }) {
   const finePointer = useMediaQuery('(hover: hover) and (pointer: fine)');
   const session = useSyncExternalStore(subscribePersonDrag, getPersonDrag, () => null);
@@ -106,16 +107,20 @@ export default function usePersonDragSwap({
     if (args.blocked) return { ok: false, errors: [message(SWAP_REASONS.changed)] };
     const before = args.context;
     const result = args.onCommit(selection, snapshot, accepted);
-    if (result.ok && result.updated?.length === 0) return result;
-    if (result.ok) {
-      const record = createSwapUndo(before, result.shifts, selection);
-      undoRef.current = record;
-      setUndoRecord(record);
-      setFeedback({ severity: 'success', issues: [message('Manual roster updated.')] });
-    } else setFeedback({ severity: 'error', issues: result.errors });
-    return result;
+    const finish = (response) => {
+      if (response.ok && response.updated?.length === 0) return response;
+      if (response.ok) {
+        const record = response.undoRecord || createSwapUndo(before, response.shifts, selection);
+        undoRef.current = record;
+        setUndoRecord(record);
+        setFeedback({ severity: 'success', issues: [message('Manual roster updated.')] });
+      } else setFeedback({ severity: 'error', issues: response.errors || [] });
+      return response;
+    };
+    return result?.then ? result.then(finish) : finish(result);
   };
-  const undoCheck = undoRecord ? undoPersonSwap(context, undoRecord) : null;
+  const activeUndo = externalUndo === undefined ? undoRecord : externalUndo;
+  const undoCheck = activeUndo ? undoPersonSwap(context, activeUndo) : null;
   const hoverFeedback =
     session && hoverTarget ? inspect(hoverTarget.shiftId, hoverTarget.personId) : null;
   return {
@@ -132,6 +137,18 @@ export default function usePersonDragSwap({
             }
           : null
       ),
+    extendEditorSnapshot: (records) =>
+      edit((old) => {
+        if (!old) return old;
+        const original = JSON.parse(old.snapshot);
+        return {
+          ...old,
+          snapshot: JSON.stringify([
+            ...original,
+            ...records.filter((s) => !original.some((r) => r.id === s.id)),
+          ]),
+        };
+      }),
     apply: (selection, snapshot) =>
       commit(selection, snapshot || swapContextSnapshot(latest.current.context.shifts)),
     session,
@@ -144,7 +161,7 @@ export default function usePersonDragSwap({
       ),
     clearHover: () => setHoverTarget(null),
     dismissFeedback: () => setFeedback(null),
-    hasUndo: !!undoRecord,
+    hasUndo: !!activeUndo,
     canUndo: !!undoCheck?.ok && !blocked,
     undoErrors: undoCheck?.errors || [],
     cancel: endPersonDrag,
@@ -205,13 +222,18 @@ export default function usePersonDragSwap({
       if (check.status === 'valid') commit(check.selection, current.snapshot, false);
     },
     undo: () => {
-      if (!undoRef.current || latest.current.blocked) return;
-      const result = latest.current.onUndo(undoRef.current);
-      if (result.ok) {
-        undoRef.current = null;
-        setUndoRecord(null);
-        setFeedback({ severity: 'success', issues: [message('Manual change undone.')] });
-      } else setFeedback({ severity: 'error', issues: result.errors });
+      const record = externalUndo === undefined ? undoRef.current : externalUndo;
+      if (!record || latest.current.blocked) return undefined;
+      const result = latest.current.onUndo(record);
+      const finish = (response) => {
+        if (response.ok) {
+          undoRef.current = null;
+          setUndoRecord(null);
+          setFeedback({ severity: 'success', issues: [message('Manual change undone.')] });
+        } else setFeedback({ severity: 'error', issues: response.errors || [] });
+        return response;
+      };
+      return result?.then ? result.then(finish) : finish(result);
     },
   };
 }

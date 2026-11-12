@@ -101,9 +101,9 @@ export default function PersonSwapDialog({
         a.start.localeCompare(b.start) ||
         a.method.localeCompare(b.method)
     );
-  const confirm = () => {
+  const confirm = async () => {
     if (blocked || stale || !complete || result.errors.length) return;
-    const response = onConfirm(selection, snapshot);
+    const response = await onConfirm(selection, snapshot);
     if (!response.ok) {
       setSubmitErrors(response.errors);
     }

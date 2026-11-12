@@ -33,6 +33,7 @@ export default function DutyCalendar({
   onViewChange,
   onOpen,
   onCreateAt,
+  onVisibleRangeChange,
 }) {
   const language = useUiLanguage();
   const calendar = useRef(null);
@@ -167,6 +168,10 @@ export default function DutyCalendar({
             }))}
             datesSet={({ view: currentView }) => {
               setTitle(currentView.title);
+              onVisibleRangeChange?.({
+                from: dateKey(currentView.activeStart),
+                to: dateKey(new Date(currentView.activeEnd.getTime() - 86400000)),
+              });
               const api = calendar.current?.getApi();
               if (api) onDateChange(dateKey(api.getDate()));
             }}
@@ -218,6 +223,7 @@ export default function DutyCalendar({
   );
 }
 DutyCalendar.propTypes = {
+  onVisibleRangeChange: PropTypes.func,
   shifts: PropTypes.array.isRequired,
   drag: PropTypes.object.isRequired,
   onChoosePerson: PropTypes.func.isRequired,

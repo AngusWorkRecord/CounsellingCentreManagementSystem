@@ -60,7 +60,7 @@ export default function DutyShiftDialog({
       setConfirmation('discard');
     else onClose();
   };
-  const save = (event) => {
+  const save = async (event) => {
     event.preventDefault();
     const issues = Object.values(validateShift(value));
     if (
@@ -70,7 +70,8 @@ export default function DutyShiftDialog({
       issues.push('Assignments changed. Recheck the selection before confirming.');
     setErrors([...new Set(issues)]);
     if (!issues.length && !loading && !loadError) {
-      onSave({ ...value, manualAssignment: { type: 'manualEdit' } });
+      const result = await onSave({ ...value, manualAssignment: { type: 'manualEdit' } });
+      if (result?.ok === false) setErrors((result.errors || []).map((item) => item.reason));
     }
   };
   let title = 'Shift details';
@@ -225,7 +226,7 @@ export default function DutyShiftDialog({
         <DialogContent>
           {tr(
             confirmation === 'delete'
-              ? 'This temporary shift will be deleted. This cannot be undone.'
+              ? 'This shift will be deleted from the saved calendar. You can undo the most recent change.'
               : 'Your unsaved changes will be lost.'
           )}
         </DialogContent>
@@ -233,7 +234,18 @@ export default function DutyShiftDialog({
           <Button onClick={() => setConfirmation('')}>{tr('Go back')}</Button>
           <Button
             color="error"
-            onClick={() => (confirmation === 'delete' ? onDelete(initial.id) : onClose())}
+            disabled={loading}
+            onClick={async () => {
+              if (confirmation !== 'delete') {
+                onClose();
+                return;
+              }
+              const result = await onDelete(initial.id);
+              if (result?.ok === false) {
+                setConfirmation('');
+                setErrors((result.errors || []).map((item) => item.reason));
+              }
+            }}
           >
             {tr('Confirm')}
           </Button>
