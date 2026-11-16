@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import { authorizeRequest, writeAuthError } from './_lib/auth.mjs';
+import { authorizeRequest, writeAuthError } from './auth.mjs';
 
 export function createCounsellingSessionsHandler(overrides = {}) {
 const authorize = overrides.authorizeRequest || authorizeRequest;

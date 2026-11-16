@@ -1,4 +1,4 @@
-import { authorizeRequest, writeAuthError } from '../_lib/auth.mjs';
+import { authorizeRequest, writeAuthError } from './auth.mjs';
 import {
   analysisDto,
   analysisLanguage,
@@ -15,7 +15,7 @@ import {
   startAnalysis,
   writeApiError,
   apiError,
-} from '../_lib/ai.mjs';
+} from './ai.mjs';
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const MIN_GROUP_SIZE = 5;
