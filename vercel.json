@@ -4,6 +4,9 @@
   "outputDirectory": "build",
   "devCommand": "npm run start",
   "routes": [
+    { "src": "/api/duty-roster-settings", "dest": "/api/duty-roster" },
+    { "src": "/api/(?:counselling-people|auth/(?:login|logout|me|users|users/password))", "dest": "/api/counsellors" },
+    { "src": "/api/(?:counselling-sessions|appointments|appointment-cases|ai/(?:case-advice|management-insights|student-feedback))", "dest": "/api/cases" },
     { "handle": "filesystem" },
     { "src": "/api(?:/.*)?", "status": 404 },
     { "src": "/(static/.*|.*\\.[^/]+|ws|sockjs-node(?:/.*)?)", "dest": "/$1" },

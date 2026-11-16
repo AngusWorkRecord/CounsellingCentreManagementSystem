@@ -1,4 +1,4 @@
-import { authorizeRequest, writeAuthError } from '../_lib/auth.mjs';
+import { authorizeRequest, writeAuthError } from './auth.mjs';
 import {
   analysisDto,
   analysisLanguage,
@@ -15,7 +15,7 @@ import {
   requestStructuredAnalysis,
   startAnalysis,
   writeApiError,
-} from '../_lib/ai.mjs';
+} from './ai.mjs';
 
 function cleanText(value, limit) {
   return typeof value === 'string' ? value.trim().slice(0, limit) : '';

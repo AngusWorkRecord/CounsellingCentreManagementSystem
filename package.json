@@ -10,6 +10,8 @@
     "npm": ">=9 <11"
   },
   "scripts": {
+    "test:routes": "node --test api/_lib/router.test.mjs",
+    "check:vercel-functions": "node scripts/check-vercel-functions.mjs",
     "test:roster": "npm run test:roster:api && npm run test:roster:ui",
     "test:roster:api": "node --test api/roster/roster.test.mjs api/roster/database.test.mjs",
     "test:roster:ui": "cross-env CI=true react-scripts test --watchAll=false --runInBand --testPathPattern=\"(src/sections/duty-roster/|src/services/dutyRosterService.test.js)\"",
