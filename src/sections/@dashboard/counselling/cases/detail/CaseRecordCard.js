@@ -27,7 +27,7 @@ export default function CaseRecordCard({ session }) {
           <Box key={label}>
             <Grid container>
               <Grid item xs={5} sm={4} sx={{ p: 1.5, bgcolor: 'background.neutral' }}><Typography variant="subtitle2">{tr(label)}</Typography></Grid>
-              <Grid item xs={7} sm={8} sx={{ p: 1.5 }}><Typography variant="body2">{valueOrDash(value)}</Typography></Grid>
+              <Grid item xs={7} sm={8} sx={{ p: 1.5 }}><Typography variant="body2" sx={{ overflowWrap: 'anywhere' }}>{valueOrDash(value)}</Typography></Grid>
             </Grid>
             <Divider />
           </Box>

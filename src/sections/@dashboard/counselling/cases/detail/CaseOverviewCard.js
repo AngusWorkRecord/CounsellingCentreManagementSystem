@@ -44,10 +44,11 @@ export default function CaseOverviewCard({ session }) {
   return (
     <Card sx={{ p: { xs: 2.5, md: 4 } }}>
       <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={3}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Typography variant="h4" color="primary.main" sx={{ mb: 3 }}>
+        <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+          <Typography variant="h4" color="primary.main" sx={{ mb: 3, overflowWrap: 'anywhere' }}>
             {session.case_number || session.submission_id || '—'}
           </Typography>
+          {session.number_sequence != null && <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>{tr('This number preserves the details at creation and will not change when this record is edited.')}</Typography>}
           <Grid container spacing={3}>
             {details.map(([icon, label, value]) => (
               <Grid item xs={12} sm={6} lg={3} key={label}>

@@ -1,5 +1,6 @@
 import { SESSION_MODES } from '../sections/@dashboard/counselling/cases/create/constants';
 import { authenticatedFetch } from '../auth/authClient';
+import { validNumberInitials, validNumberPhone } from '../utils/caseNumbering';
 
 export const STATUS_LABELS = { scheduled: 'Scheduled', completed: 'Appointment completed', no_show: 'No-show', cancelled: 'Appointment cancelled' };
 export const MODE_COLORS = { 面谈: '#17834b', 电话辅导: '#1769aa', 线上辅导: '#7841ad' };
@@ -31,6 +32,8 @@ export function hasEnded(item, now = new Date()) {
 }
 export function validateAppointment(item, items = [], counsellors = null) {
   const errors = {};
+  if (!validNumberInitials(item.clientInitials)) errors.clientInitials = 'CASE_NUMBER_INITIALS_INVALID';
+  if (!validNumberPhone(item.phone)) errors.phone = 'CASE_NUMBER_PHONE_INVALID';
   ['clientInitials', 'phone', 'date', 'start', 'end', 'counsellor', 'mode', 'location'].forEach((key) => { if (!String(item[key] || '').trim()) errors[key] = 'This field is required'; });
   if (!validDate(item.date)) errors.date = 'Select a valid date';
   ['start', 'end'].forEach((key) => { if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(item[key] || '')) errors[key] = 'Select a valid time'; });
@@ -44,6 +47,8 @@ export function validateAppointment(item, items = [], counsellors = null) {
   return { errors, conflict };
 }
 export const APPOINTMENT_ERROR_MESSAGES = {
+  CASE_NUMBER_INITIALS_INVALID: 'CASE_NUMBER_INITIALS_INVALID',
+  CASE_NUMBER_PHONE_INVALID: 'Enter a contact number containing at least four digits, using only digits, spaces, +, parentheses or hyphens. Edit the appointment details before completing it.',
   APPOINTMENT_COUNSELLOR_UNAVAILABLE: 'This person is no longer available. Reload the list and select an active counsellor or volunteer.',
   APPOINTMENT_VALIDATION_FAILED: 'Please check the appointment fields.',
   APPOINTMENT_CASE_NOT_FOUND: 'The related case is no longer available. Select another case.',
@@ -58,6 +63,8 @@ export const APPOINTMENT_ERROR_MESSAGES = {
 };
 export const appointmentErrorMessage = (error) => APPOINTMENT_ERROR_MESSAGES[error?.code] || 'Unable to load or save appointments. Please try again.';
 export const FIELD_ERROR_MESSAGES = {
+  CASE_NUMBER_INITIALS_INVALID: 'Use 1 to 10 English letters for client initials.',
+  CASE_NUMBER_PHONE_INVALID: 'Enter a contact number containing at least four digits, using only digits, spaces, +, parentheses or hyphens.',
   REQUIRED: 'This field is required', TEXT_TOO_LONG: 'Appointment text is too long', INVALID_ID: 'Please select a related case',
   INVALID_DATE: 'Select a valid date', INVALID_TIME: 'Select a valid time', INVALID_END: 'End time must be later than start time',
   INVALID_COUNSELLOR: 'Please select a counsellor', INVALID_MODE: 'Please select a session mode',

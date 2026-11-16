@@ -50,7 +50,7 @@ export function mapSessionToCase(session, index) {
     counsellor: session.counsellor || '-',
     duration: formatDuration(session.duration_minutes),
     amount: toNumber(session.amount_received_rm),
-    briefReportCompleted: Boolean(String(session.case_number || '').trim()),
+    briefReportCompleted: !session.intake_pending && Boolean(String(session.case_number || '').trim()),
     detailedReportCompleted: Boolean(String(session.report_url || '').trim()),
     workflowStatus,
     sessionEndedAt,

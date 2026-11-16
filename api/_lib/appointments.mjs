@@ -1,4 +1,5 @@
 import { getAuthSql, requireUser, assertWriteOrigin, readSessionToken, tokenHash, methodAllowed, writeAuthError } from './auth.mjs';
+import { NUMBERING_ERRORS, validateNumberInputs } from './case-numbering.mjs';
 
 export const MODES = ['面谈', '电话辅导', '线上辅导'];
 export const STATUSES = ['scheduled', 'completed', 'no_show', 'cancelled'];
@@ -18,6 +19,8 @@ export function validateWrite(body, action) {
     if (!STATUSES.includes(body.status)) fields.status = 'INVALID_STATUS';
     if (body.reason !== undefined && (!scalar(body.reason) || body.reason.length > 1000)) fields.reason = 'TEXT_TOO_LONG';
   } else {
+    const numberingError = validateNumberInputs(body.clientInitials, body.phone);
+    if (numberingError) fields[numberingError === 'CASE_NUMBER_INITIALS_INVALID' ? 'clientInitials' : 'phone'] = numberingError;
     [['clientInitials', 100], ['phone', 50], ['location', 500]].forEach(([key, max]) => {
       if (!scalar(body[key]) || !body[key].trim()) fields[key] = 'REQUIRED';
       else if (body[key].length > max) fields[key] = 'TEXT_TOO_LONG';
@@ -68,6 +71,7 @@ function writeError(response, error) {
     APPOINTMENT_NOT_FOUND: 404, APPOINTMENT_VERSION_CONFLICT: 409, APPOINTMENT_TIME_CONFLICT: 409,
     APPOINTMENT_INVALID_STATUS: 409, APPOINTMENT_NOT_ENDED: 409, APPOINTMENT_COUNSELLOR_UNAVAILABLE: 409 };
   const code = error.code === 'P0001' ? error.message : error.code;
+  if (NUMBERING_ERRORS.has(error.message)) return response.status(400).json({ success: false, error: { code: error.message } });
   if (['UNAUTHENTICATED', 'FORBIDDEN', 'AUTH_NOT_CONFIGURED'].includes(code)) return writeAuthError(response, { code });
   if (statuses[code]) return response.status(statuses[code]).json({ success: false, error: { code, ...(error.fields ? { fields: error.fields } : {}) } });
   // No connection strings, database diagnostics, or personal records in client errors/logs.

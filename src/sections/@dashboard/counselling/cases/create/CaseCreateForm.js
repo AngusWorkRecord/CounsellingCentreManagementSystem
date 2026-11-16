@@ -17,6 +17,7 @@ import {
 } from '../../../../../services/counsellingSessionService';
 import { CASE_CATEGORIES, SESSION_MODES } from './constants';
 import { peopleService, personErrorMessage } from '../../../../../services/peopleService';
+import { validNumberInitials, validNumberPhone } from '../../../../../utils/caseNumbering';
 
 function getToday() {
   const now = new Date();
@@ -93,6 +94,8 @@ export default function CaseCreateForm({ currentSession = null }) {
   const [personnelError, setPersonnelError] = useState(null);
   const [personnelRevision, setPersonnelRevision] = useState(0);
   const automaticCase = Boolean(currentSession?.source_appointment_id);
+  const numberedCase = currentSession?.number_sequence != null;
+  const numberReadOnly = !isEdit || numberedCase;
   useEffect(() => {
     const controller = new AbortController();
     setPersonnelLoading(true); setPersonnelError(null);
@@ -106,7 +109,13 @@ export default function CaseCreateForm({ currentSession = null }) {
   const formSchema = useMemo(() => schema.shape({
     counsellor: Yup.string().oneOf(counsellorNames, () => tr('Please select a counsellor or volunteer')).required(() => tr('Please select a counsellor or volunteer')),
     ...(automaticCase ? { caseCategory: Yup.string().oneOf([...CASE_CATEGORIES, '']), caseNumber: Yup.string().trim() } : {}),
-  }), [counsellorNames, automaticCase]);
+    ...(!isEdit ? {
+      submissionId: Yup.string().trim(),
+      caseNumber: Yup.string().trim(),
+      clientInitials: Yup.string().test('number-initials', () => tr('Use 1 to 10 English letters for client initials.'), validNumberInitials),
+      clientPhone: Yup.string().test('number-phone', () => tr('Enter a contact number containing at least four digits, using only digits, spaces, +, parentheses or hyphens.'), validNumberPhone),
+    } : {}),
+  }), [counsellorNames, automaticCase, isEdit]);
   const methods = useForm({ resolver: yupResolver(formSchema), defaultValues });
   const {
     handleSubmit,
@@ -143,6 +152,7 @@ export default function CaseCreateForm({ currentSession = null }) {
         reportUrl: values.reportUrl || null,
         amountReceivedRm: Number(values.amountReceivedRm),
       };
+      if (!isEdit) { delete payload.submissionId; delete payload.caseNumber; }
       const saved = isEdit
         ? await updateCounsellingSession(currentSession.id, payload)
         : await createCounsellingSession(payload);
@@ -163,7 +173,8 @@ export default function CaseCreateForm({ currentSession = null }) {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        {currentSession?.intake_pending && <Alert severity="warning">{tr('This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved.')}</Alert>}
+        {numberReadOnly && <Alert severity="info">{tr(isEdit ? 'This number preserves the details at creation and will not change when this record is edited.' : 'Submission ID and case number are assigned together when saved. Example: F001/2026/DNC/1620. F: face-to-face; T: telephone; Z: online. Each type starts at 001 each year.')}</Alert>}
+        {currentSession?.intake_pending && <Alert severity="warning">{tr(numberedCase ? 'This record was created from an appointment. Fill in its category to complete its details. Partial changes can be saved.' : 'This record was created from an appointment. Fill in the case number and category to complete its details. Partial changes can be saved.')}</Alert>}
         {personnelLoading && <Alert severity="info">{tr('Loading counsellors…')}</Alert>}
         {!personnelLoading && !personnelError && !counsellorNames.length && <Alert severity="info">{tr('No active counsellors or volunteers. Add an active person in personnel management first.')}</Alert>}
         {personnelError && <Alert severity="error" action={<Button onClick={() => setPersonnelRevision((old) => old + 1)}>{tr('Reload counsellors')}</Button>}>{tr(personErrorMessage(personnelError))}</Alert>}
@@ -172,12 +183,12 @@ export default function CaseCreateForm({ currentSession = null }) {
           {/* 中文原文：基本资料 */}<Typography variant="h6">{tr("Basic Information")}</Typography>
           <Divider sx={{ my: 2.5 }} />
           <Grid container spacing={2.5}>
-            <Grid item xs={12} md={6}><RHFTextField name="submissionId" label={tr("Submission ID *")} /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="submissionId" label={tr(numberReadOnly ? 'Submission ID' : 'Submission ID *')} InputProps={{ readOnly: numberReadOnly }} placeholder={!isEdit ? tr('Generated when saved') : undefined} /></Grid>
             {/* 中文原文：可选、个案编号、案主简称、联系电话 */}
             <Grid item xs={12} md={6}><RHFTextField name="respondentId" label={tr("Respondent ID (Optional)")} /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="caseNumber" label={tr(automaticCase ? "Case Number" : "Case Number *")} /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="caseNumber" label={tr(automaticCase || numberReadOnly ? "Case Number" : "Case Number *")} InputProps={{ readOnly: numberReadOnly }} placeholder={!isEdit ? tr('Generated when saved') : undefined} /></Grid>
             <Grid item xs={12} md={6}><RHFTextField name="clientInitials" label={tr("Client Initials *")} /></Grid>
-            <Grid item xs={12} md={6}><RHFTextField name="clientPhone" label={tr("Contact Number (Optional)")} /></Grid>
+            <Grid item xs={12} md={6}><RHFTextField name="clientPhone" label={tr(isEdit ? 'Contact Number (Optional)' : 'Contact Number *')} /></Grid>
             <Grid item xs={12} md={6}>
               <RHFTextField name="amountReceivedRm" label={tr("Payment Amount (RM)")} type="number" inputProps={{ min: 0, step: '0.01' }} />
             </Grid>
