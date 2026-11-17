@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { assertWriteOrigin } from './auth.mjs';
 import { analysisLanguage, apiError, assertAiAvailable, commonSafetyPrompt, languageInstruction, requestStructuredAnalysis, writeApiError } from './ai.mjs';
-import contract from '../../src/sections/counselling-practice/feedbackContract.cjs';
+import * as contract from '../../src/sections/counselling-practice/feedbackContract.mjs';
 
 const fields = JSON.parse(readFileSync(new URL('../../src/sections/counselling-practice/fields.json', import.meta.url), 'utf8'));
 const categories = ['精神', '情感与婚姻', '家庭', '亲子教养', '成瘾', '人际关系', '职业生涯', '学业', '身体健康', '其他', '咨询'];

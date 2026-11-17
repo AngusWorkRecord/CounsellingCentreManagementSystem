@@ -43,7 +43,10 @@ function matches(value, schema, allowedRefs) {
     && (key !== 'sourceRefs' || !allowedRefs || value[key].every((ref) => allowedRefs.has(ref))));
 }
 function validFeedbackResult(result, version, sourceRefs) {
-  const schema = version === 1 ? legacyFeedbackSchema : version === 2 ? feedbackSchema : null;
+  let schema;
+  if (version === 1) schema = legacyFeedbackSchema;
+  else if (version === 2) schema = feedbackSchema;
+  else return false;
   return Boolean(schema && matches(result, schema, sourceRefs ? new Set(sourceRefs) : null));
 }
-module.exports = { FEEDBACK_VERSION, STAGE_KEYS, LEGACY_SECTIONS, legacyFeedbackSchema, feedbackSchema, validFeedbackResult };
+export { FEEDBACK_VERSION, STAGE_KEYS, LEGACY_SECTIONS, legacyFeedbackSchema, feedbackSchema, validFeedbackResult };
