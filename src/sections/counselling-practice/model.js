@@ -46,10 +46,11 @@ export async function requestFeedback(record, language, signal) {
   return payload.data;
 }
 
-export function exportText(record, feedback, translate, categoryLabel) {
+export function exportText(record, feedback, translate, categoryLabel, locale) {
   const lines = [translate('Counselling Practice'), ...Object.entries(fields).map(([key, field]) => `${translate(field.label)}: ${key === 'caseCategory' ? categoryLabel(record[key]) : record[key]}`)];
   if (feedback) {
-    lines.push('', `${translate('Feedback language')}: ${feedback.language}`, `${translate('Generated:')} ${feedback.generatedAt}`, translate('Feedback applies to this submitted record:'), JSON.stringify(feedback.record, null, 2));
+    const languageLabel = translate(feedback.language === 'cn' ? 'Chinese' : 'English');
+    lines.push('', `${translate('Feedback language')}: ${languageLabel} (${feedback.language})`, `${translate('Generated:')} ${new Date(feedback.generatedAt).toLocaleString(locale)}`, translate('Feedback applies to this submitted record:'), JSON.stringify(feedback.record, null, 2));
     Object.entries(sections).forEach(([key, label]) => {
       lines.push('', translate(label));
       feedback.result[key].forEach((entry) => lines.push(`${entry.title}\n${entry.detail}\n${translate('Sources:')} ${entry.sourceRefs.join(', ')}`));

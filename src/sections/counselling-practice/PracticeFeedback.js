@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import { Alert, Box, Chip, Divider, LinearProgress, Stack, Typography } from '@mui/material';
 import { tr, useUiLanguage, currentLocale } from '../../locales/translate';
+import { domainLabel } from '../../locales/domainLabels';
 import fields from './fields.json';
 import { sections } from './model';
 
 export default function PracticeFeedback({ feedback, stale, loading, error }) {
-  useUiLanguage();
+  const language = useUiLanguage();
   return <Stack spacing={2} aria-live="polite" sx={{ overflowWrap: 'anywhere' }}>
     <Box><Chip size="small" label={tr('For learning and reflection')} color="primary" variant="outlined" sx={{ mb: 1 }} />
       <Typography variant="h5">{tr('AI feedback')}</Typography></Box>
@@ -13,9 +14,10 @@ export default function PracticeFeedback({ feedback, stale, loading, error }) {
     {error && <Alert severity="error">{tr(error)}</Alert>}
     {stale && <Alert severity="warning">{tr('Your record has changed. This feedback is outdated; generate new feedback before using it.')}</Alert>}
     {!feedback && <Box sx={{ py: 4 }}><Typography variant="h6" gutterBottom>{tr('A space to think about your next session')}</Typography>
-      <Typography color="text.secondary">{tr('Enter a session summary, then generate feedback to explore missing information, next-session questions and points for supervision. AI only runs when you ask.')}</Typography></Box>}
+      <Typography color="text.secondary">{tr('Enter a session summary, then generate feedback to explore missing information, next-session questions and points for supervision. AI only runs when you ask.')}</Typography>
+      {!loading && <Typography variant="body2" sx={{ mt: 2 }}>{tr('No feedback in {{language}} yet. Click Generate AI feedback to create it.', { language: domainLabel(language) })}</Typography>}</Box>}
     {feedback && <>
-      <Typography variant="caption" color="text.secondary">{tr('Generated:')} {new Date(feedback.generatedAt).toLocaleString(currentLocale())} · {tr('Feedback language')}: {feedback.language === 'cn' ? '中文' : 'English'}</Typography>
+      <Typography variant="caption" color="text.secondary">{tr('Generated:')} {new Date(feedback.generatedAt).toLocaleString(currentLocale())} · {tr('Feedback language')}: {domainLabel(feedback.language)}</Typography>
       {Object.entries(sections).map(([key, title]) => {
         const items = feedback.result[key];
         if (key === 'humanReview' && !items.length) return null;
