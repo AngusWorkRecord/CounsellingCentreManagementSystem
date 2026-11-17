@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Alert, Box, Button, Card, Checkbox, Container, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Stack, Tab, Tabs, Typography } from '@mui/material';
-import i18n from '../locales/i18n';
-import { tr, useUiLanguage } from '../locales/translate';
+import useLocales from '../locales/useLocales';
+import { tr, currentLocale } from '../locales/translate';
 import { domainLabel } from '../locales/domainLabels';
 import PracticeForm from '../sections/counselling-practice/PracticeForm';
 import PracticeFeedback from '../sections/counselling-practice/PracticeFeedback';
@@ -10,7 +10,8 @@ import usePractice from '../sections/counselling-practice/usePractice';
 import { examples, exportText } from '../sections/counselling-practice/model';
 
 export default function CounsellingPracticePage() {
-  const language = useUiLanguage();
+  const { currentLang, onChangeLang } = useLocales();
+  const language = currentLang.value;
   const practice = usePractice(language);
   const [tab, setTab] = useState(0);
   const [confirmation, setConfirmation] = useState(null);
@@ -23,7 +24,7 @@ export default function CounsellingPracticePage() {
   };
   const confirmAction = (action) => hasContent ? setConfirmation(action) : execute(action);
   const download = () => {
-    const text = exportText(practice.record, practice.feedback, tr, (value) => value ? domainLabel(value) : '');
+    const text = exportText(practice.record, practice.feedback, tr, (value) => value ? domainLabel(value) : '', currentLocale());
     const url = URL.createObjectURL(new Blob(['\uFEFF', text], { type: 'text/plain;charset=utf-8' }));
     const anchor = document.createElement('a');
     anchor.href = url;
@@ -40,11 +41,11 @@ export default function CounsellingPracticePage() {
   return <Box sx={{ minHeight: '100vh', bgcolor: 'background.neutral', pb: 6 }}>
     <Helmet><title>{tr('Counselling Practice')}</title></Helmet>
     <Box component="header" sx={{ bgcolor: 'background.paper', borderBottom: 1, borderColor: 'divider', py: 2 }}>
-      <Container maxWidth="xl"><Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+      <Container maxWidth="xl"><Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2}>
         <Typography variant="subtitle1">{tr('Counselling Practice')}</Typography>
         <Stack direction="row" spacing={0.5}>
-          <Button lang="zh-CN" size="small" aria-pressed={language === 'cn'} variant={language === 'cn' ? 'contained' : 'text'} onClick={() => i18n.changeLanguage('cn')}>华文</Button>
-          <Button lang="en" size="small" aria-pressed={language === 'en'} variant={language === 'en' ? 'contained' : 'text'} onClick={() => i18n.changeLanguage('en')}>English</Button>
+          <Button lang="zh-CN" size="small" aria-pressed={language === 'cn'} variant={language === 'cn' ? 'contained' : 'text'} onClick={() => onChangeLang('cn')}>华文</Button>
+          <Button lang="en" size="small" aria-pressed={language === 'en'} variant={language === 'en' ? 'contained' : 'text'} onClick={() => onChangeLang('en')}>English</Button>
         </Stack>
       </Stack></Container>
     </Box>

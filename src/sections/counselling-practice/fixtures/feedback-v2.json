@@ -1,0 +1,34 @@
+{
+  "priorities": [{ "title": "Clarify the pressure around assignments", "detail": "The summary describes repeated checking and reduced concentration. Check what feels most difficult to the client.", "sourceRefs": ["field:summary"] }],
+  "sessionRoute": {
+    "opening": {
+      "aim": "Agree on what would make this conversation useful.",
+      "question": "Since we last spoke, which part of the assignment pressure would you most like us to understand today?",
+      "rationale": "The student described several difficulties, but their current priority has not been confirmed.",
+      "followUps": [{ "when": "If the client says they do not know where to start.", "question": "Could we look together at one recent moment that felt difficult?" }],
+      "sourceRefs": ["field:summary"]
+    },
+    "exploration": {
+      "aim": "Understand one difficult moment in the client's own words.",
+      "question": "When a group member takes time to reply, what do you notice happening for you?",
+      "rationale": "Repeated message checking appears in the summary; its meaning and purpose are not yet known.",
+      "followUps": [{ "when": "If the client describes feeling worried.", "question": "What feels most uncertain in that moment?" }, { "when": "If the client describes a different experience.", "question": "How would you describe that experience in your own words?" }],
+      "sourceRefs": ["field:summary"]
+    },
+    "closing": {
+      "aim": "Check shared understanding and choose whether any next step feels useful.",
+      "question": "What feels important to take away from today, and is there anything you would like us to return to next time?",
+      "rationale": "Specific goals have not yet been agreed, so the next step should be chosen collaboratively.",
+      "followUps": [],
+      "sourceRefs": ["field:summary"]
+    }
+  },
+  "reasoning": {
+    "facts": [{ "title": "What was reported", "detail": "The student described pressure related to assignments and group work.", "sourceRefs": ["field:summary"] }],
+    "hypotheses": [{ "title": "A tentative understanding", "detail": "Uncertainty may play a role in repeated checking, but this needs to be explored with the client.", "sourceRefs": ["field:summary"] }],
+    "missingInfo": [{ "title": "Daily impact remains unclear", "detail": "Explore the client's sleep and available support rather than assuming either is a problem.", "sourceRefs": ["field:summary"] }]
+  },
+  "supervision": [{ "title": "Discuss the pace of exploration", "detail": "How could I explore the pattern while following the client's chosen focus?", "sourceRefs": ["field:summary"] }],
+  "humanReview": [],
+  "limitations": ["This route is based on a short fictional record and does not establish a diagnosis or safety assessment."]
+}
