@@ -4,6 +4,7 @@ import { tr, useUiLanguage } from '../../../../locales/translate';
 import Chart, { useChart } from '../../../../components/chart';
 import ChartEmptyState from './ChartEmptyState';
 import { toNumber } from '../utils';
+import { caseChartSuffix } from '../../../../utils/caseNumbering';
 
 SessionDurationChart.propTypes = {
   onSelect: PropTypes.func.isRequired,
@@ -21,7 +22,7 @@ function buildLabels(sessions) {
   return sessions.map((session) => {
     const initials = session.client_initials || 'Unknown';
     if (totals[initials] === 1) return initials;
-    const suffix = String(session.case_number || session.id || '').split('/').pop();
+    const suffix = caseChartSuffix(session);
     return `${initials}-${suffix || 'Case'}`;
   });
 }

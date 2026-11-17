@@ -1,5 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import { authorizeRequest, writeAuthError } from './auth.mjs';
+import { NUMBERING_ERRORS, validateNumberInputs } from './case-numbering.mjs';
 
 export function createCounsellingSessionsHandler(overrides = {}) {
 const authorize = overrides.authorizeRequest || authorizeRequest;
@@ -23,7 +24,7 @@ return async function handler(request, response) {
       });
     }
 
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = overrides.getSql ? overrides.getSql() : neon(process.env.DATABASE_URL);
     if (request.method === 'GET') {
       const requestedId = request.query?.id;
 
@@ -96,7 +97,6 @@ return async function handler(request, response) {
     }
 
     const requiredFields = [
-      'submissionId',
       'counsellingDate',
       'counsellor',
       'sessionMode',
@@ -104,7 +104,8 @@ return async function handler(request, response) {
       'sessionEnd',
       'clientInitials',
     ];
-    if (request.method === 'POST') requiredFields.push('caseCategory', 'caseNumber');
+    if (request.method === 'POST') requiredFields.push('caseCategory', 'clientPhone');
+    else requiredFields.push('submissionId');
     const missingFields = requiredFields.filter(
       (field) => body[field] === undefined || body[field] === null || String(body[field]).trim() === ''
     );
@@ -114,6 +115,11 @@ return async function handler(request, response) {
         success: false,
         message: `Missing required fields: ${missingFields.join(', ')}`,
       });
+    }
+
+    if (request.method === 'POST') {
+      const code = validateNumberInputs(body.clientInitials, body.clientPhone);
+      if (code) return response.status(400).json({ success: false, error: { code }, message: code });
     }
 
     const amount = body.amountReceivedRm === '' || body.amountReceivedRm == null
@@ -152,7 +158,7 @@ return async function handler(request, response) {
       : await sql`
           SELECT *
           FROM public.create_counselling_session(
-            ${body.submissionId}::varchar,
+            ${null}::text,
             ${body.respondentId || null}::varchar,
             ${body.counsellingDate}::date,
             ${body.counsellor}::varchar,
@@ -164,7 +170,7 @@ return async function handler(request, response) {
             ${body.clientPhone || null}::varchar,
             ${body.clientSummary || null}::text,
             ${body.volunteerActions || null}::text,
-            ${body.caseNumber}::varchar,
+            ${null}::text,
             ${body.reportUrl || null}::text,
             ${amount}::numeric
           )
@@ -182,6 +188,9 @@ return async function handler(request, response) {
       data: rows[0],
     });
   } catch (error) {
+    if (NUMBERING_ERRORS.has(error.message)) {
+      return response.status(400).json({ success: false, error: { code: error.message }, message: error.message });
+    }
     console.error('Database error:', error);
 
     if (error?.code === '23505') {

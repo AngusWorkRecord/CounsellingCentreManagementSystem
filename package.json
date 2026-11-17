@@ -10,6 +10,7 @@
     "npm": ">=9 <11"
   },
   "scripts": {
+    "test:numbering": "node --test api/_lib/case-numbering.test.mjs api/_lib/case-numbering.database.test.mjs && cross-env CI=true react-scripts test --watchAll=false --runInBand --runTestsByPath src/utils/caseNumbering.test.js",
     "test:routes": "node --test api/_lib/router.test.mjs",
     "check:vercel-functions": "node scripts/check-vercel-functions.mjs",
     "test:roster": "npm run test:roster:api && npm run test:roster:ui",
