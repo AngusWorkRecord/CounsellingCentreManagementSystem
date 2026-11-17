@@ -17,7 +17,6 @@ import {
   Container,
   IconButton,
   TableContainer,
-  DeleteIcon,
 } from '@mui/material';
 import { tr, useUiLanguage } from '../../locales/translate';
 // routes
