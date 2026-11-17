@@ -1,7 +1,7 @@
 import fields from './fields.json';
-import contract from './feedbackContract.cjs';
+import { FEEDBACK_VERSION, STAGE_KEYS, validFeedbackResult } from './feedbackContract.mjs';
 
-export const { FEEDBACK_VERSION, STAGE_KEYS, validFeedbackResult } = contract;
+export { FEEDBACK_VERSION, STAGE_KEYS, validFeedbackResult };
 export const stageTitles = { opening: 'First, connect and confirm', exploration: 'Then, explore further', closing: 'Reflect and close together' };
 export const reasoningTitles = { facts: 'What the record says', hypotheses: 'Possible understandings to check', missingInfo: 'Information still to explore' };
 

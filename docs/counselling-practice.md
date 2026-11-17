@@ -18,7 +18,7 @@
 
 - 未传版本或传 `1`：保持旧响应 `{ success: true, data: { generatedAt, language, result } }`。结果包含 `caseUnderstanding`、`dataGaps`、`nextSession`、`openQuestions`、`supervision`、`humanReview`（各项含 `title/detail/sourceRefs`）及字符串数组 `limitations`。
 - 新页面明确请求 `2`：响应 `data` 增加 `feedbackVersion: 2`。结果包含最多三个 `priorities`，以及固定的 `sessionRoute.opening/exploration/closing` 三阶段。每阶段有 `aim/question/rationale/followUps/sourceRefs`；追问分支含假设条件 `when` 和问题 `question`，每阶段最多两条。
-- 新版 `reasoning.facts/hypotheses/missingInfo` 分别表达记录事实、待确认理解和资料缺口；另有 `supervision/humanReview/limitations`。人工关注事项始终置顶显示，其他详细内容默认折叠。完整字段、字数和数量限制由共用的 `feedbackContract.cjs` 定义；前后端均验证结构、限制及提交资料的来源引用。
+- 新版 `reasoning.facts/hypotheses/missingInfo` 分别表达记录事实、待确认理解和资料缺口；另有 `supervision/humanReview/limitations`。人工关注事项始终置顶显示，其他详细内容默认折叠。完整字段、字数和数量限制由共用的 ES Module `feedbackContract.mjs` 定义；前后端均验证结构、限制及提交资料的来源引用。
 
 新版按温和的整合视角，为有实习经验的学生及辅导员提供具体而可调整的提问路线，不套用固定取向或虚构案主回应。旧反馈保留原文并标示旧版，不在前端拼造新版内容；导出兼容两个版本，并包含所有尚未展开的内容。模型请求沿用原有严格 JSON 结构；数量及字数限制还会在本地验证，不依赖不同模型对约束关键字的支持。无效结果返回 `AI_INVALID_OUTPUT`，不进入缓存。
 
@@ -37,3 +37,5 @@ AI 只在主动点击后运行。切换语言不翻译学生输入、不重新�
 ## 验证 / Validation
 
 运行 `npm run test:practice`、`npm run test:i18n`、`npm run test:ai`、`npm run build`。自动测试模拟 AI，不调用付费服务。发布前另验证实际 AI 输出语言及桌面／手机中英文布局。
+
+生产构建还会执行 `scripts/check-practice-build.cjs`，检查反馈模块没有被错误输出成静态资源。浏览器共用模块使用 `.mjs`，不能改回 `.cjs`：CRA 会把后者当成资源 URL，导致版本常量变成 `undefined`，请求 JSON 中的 `feedbackVersion` 被省略。只通过 Jest 测试不足以排除此打包问题。
