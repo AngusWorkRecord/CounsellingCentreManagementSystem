@@ -200,7 +200,7 @@ function validateResult(result, schema, sourceRefs) {
 }
 
 export async function requestStructuredAnalysis({ instructions, input, schema, schemaName, sourceRefs }) {
-  const timeoutMs = Math.min(Math.max(Number(process.env.AI_REQUEST_TIMEOUT_MS) || 20000, 5000), 60000);
+  const timeoutMs = Math.min(Math.max(Number(process.env.AI_REQUEST_TIMEOUT_MS) || 45000, 5000), 60000);
   let lastError;
   for (let attempt = 0; attempt < 2; attempt += 1) {
     const controller = new AbortController();
