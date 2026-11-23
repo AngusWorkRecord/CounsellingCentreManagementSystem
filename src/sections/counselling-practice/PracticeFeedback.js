@@ -5,15 +5,13 @@ import { tr, useUiLanguage, currentLocale } from '../../locales/translate';
 import { domainLabel } from '../../locales/domainLabels';
 import { validFeedbackResult } from './model';
 import PreparationCards from './PreparationCards';
-import LegacyFeedback from './LegacyFeedback';
 import { FeedbackItems } from './FeedbackDetails';
 
 export default function PracticeFeedback({ feedback, stale, loading, error }) {
   const language = useUiLanguage();
   const [expandedByFeedback, setExpandedByFeedback] = useState({});
-  const version = feedback?.feedbackVersion ?? 1;
-  const valid = feedback && validFeedbackResult(feedback.result, version);
-  const identity = feedback?.key || JSON.stringify([version, feedback?.language, feedback?.generatedAt]);
+  const valid = feedback && validFeedbackResult(feedback.result);
+  const identity = feedback?.key || JSON.stringify([feedback?.language, feedback?.generatedAt]);
   const details = { expanded: expandedByFeedback[identity] || {}, onChange: (name, value) => {
     setExpandedByFeedback((previous) => ({ ...previous, [identity]: { ...previous[identity], [name]: value } }));
   } };
@@ -33,7 +31,7 @@ export default function PracticeFeedback({ feedback, stale, loading, error }) {
         <Typography variant="h6" sx={{ mb: 1 }}>{tr('Points requiring human attention')}</Typography>
         <FeedbackItems items={feedback.result.humanReview} warning />
       </Box>}
-      {version === 2 ? <PreparationCards result={feedback.result} {...details} /> : <LegacyFeedback result={feedback.result} {...details} />}
+      <PreparationCards result={feedback.result} {...details} />
     </>}
     <Alert severity="info">{tr('AI feedback supports learning. It is not a diagnosis, a final risk assessment or a replacement for supervision. Review suggestions with your supervisor; no listed concerns does not establish safety.')}</Alert>
   </Stack>;

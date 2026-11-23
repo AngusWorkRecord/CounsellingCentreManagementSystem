@@ -1,7 +1,6 @@
 // Shared by the browser and Node API: no React, storage or network dependencies.
 const FEEDBACK_VERSION = 2;
 const STAGE_KEYS = ['opening', 'exploration', 'closing'];
-const LEGACY_SECTIONS = ['caseUnderstanding', 'dataGaps', 'nextSession', 'openQuestions', 'supervision', 'humanReview'];
 const object = (properties) => ({ type: 'object', additionalProperties: false, required: Object.keys(properties), properties });
 const array = (items, minItems, maxItems) => ({ type: 'array', items,
   ...(minItems === undefined ? {} : { minItems, maxItems }) });
@@ -9,10 +8,6 @@ const text = { type: 'string' };
 const shortText = { type: 'string', minLength: 1, maxLength: 480 };
 const sources = array(text, 1, 7);
 const entry = object({ title: { ...shortText, maxLength: 100 }, detail: shortText, sourceRefs: sources });
-const legacyEntry = object({ title: text, detail: text, sourceRefs: array(text) });
-const legacyFeedbackSchema = object(Object.fromEntries([
-  ...LEGACY_SECTIONS.map((key) => [key, array(legacyEntry)]), ['limitations', array(text)],
-]));
 const stage = object({
   aim: { ...shortText, maxLength: 180 }, question: { ...shortText, maxLength: 360 }, rationale: shortText,
   followUps: array(object({ when: { ...shortText, maxLength: 180 }, question: { ...shortText, maxLength: 360 } }), 0, 2),
@@ -42,11 +37,8 @@ function matches(value, schema, allowedRefs) {
     && matches(value[key], schema.properties[key], allowedRefs)
     && (key !== 'sourceRefs' || !allowedRefs || value[key].every((ref) => allowedRefs.has(ref))));
 }
-function validFeedbackResult(result, version, sourceRefs) {
-  let schema;
-  if (version === 1) schema = legacyFeedbackSchema;
-  else if (version === 2) schema = feedbackSchema;
-  else return false;
-  return Boolean(schema && matches(result, schema, sourceRefs ? new Set(sourceRefs) : null));
+function validFeedbackResult(result, sourceRefs) {
+  return matches(result, feedbackSchema, sourceRefs ? new Set(sourceRefs) : null);
 }
-export { FEEDBACK_VERSION, STAGE_KEYS, LEGACY_SECTIONS, legacyFeedbackSchema, feedbackSchema, validFeedbackResult };
+
+export { FEEDBACK_VERSION, STAGE_KEYS, feedbackSchema, validFeedbackResult };

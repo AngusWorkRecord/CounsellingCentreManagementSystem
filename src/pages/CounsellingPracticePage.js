@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Alert, Box, Button, Card, Checkbox, Container, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Stack, Tab, Tabs, Typography } from '@mui/material';
 import useLocales from '../locales/useLocales';
-import { tr, currentLocale } from '../locales/translate';
-import { domainLabel } from '../locales/domainLabels';
+import { tr } from '../locales/translate';
 import PracticeForm from '../sections/counselling-practice/PracticeForm';
 import PracticeFeedback from '../sections/counselling-practice/PracticeFeedback';
 import usePractice from '../sections/counselling-practice/usePractice';
-import { examples, exportText } from '../sections/counselling-practice/model';
+import { examples } from '../sections/counselling-practice/model';
+import practiceReport from '../sections/counselling-practice/practiceReport';
 
 export default function CounsellingPracticePage() {
   const { currentLang, onChangeLang } = useLocales();
@@ -15,6 +15,8 @@ export default function CounsellingPracticePage() {
   const practice = usePractice(language);
   const [tab, setTab] = useState(0);
   const [confirmation, setConfirmation] = useState(null);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState(false);
   const { hasContent } = practice;
   const execute = (action) => {
     if (action === 'clear') practice.clear();
@@ -23,14 +25,18 @@ export default function CounsellingPracticePage() {
     setTab(0);
   };
   const confirmAction = (action) => hasContent ? setConfirmation(action) : execute(action);
-  const download = () => {
-    const text = exportText(practice.record, practice.feedback, tr, (value) => value ? domainLabel(value) : '', currentLocale());
-    const url = URL.createObjectURL(new Blob(['\uFEFF', text], { type: 'text/plain;charset=utf-8' }));
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = 'counselling-practice.txt';
-    anchor.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const download = async () => {
+    setExporting(true);
+    setExportError(false);
+    try {
+      const report = practiceReport(practice);
+      const { default: downloadPracticePdf } = await import('../sections/counselling-practice/PracticePdf');
+      await downloadPracticePdf(report);
+    } catch {
+      setExportError(true);
+    } finally {
+      setExporting(false);
+    }
   };
   const generate = async (event) => {
     event.preventDefault();
@@ -56,9 +62,12 @@ export default function CounsellingPracticePage() {
       <Alert severity="info" sx={{ mb: 3 }}>{tr('Records are kept only while this page is open. Refreshing or leaving clears them. Do not enter names, contact details or other identifying information. Submitted text is sent to an external AI service; its data handling policies apply.')}</Alert>
       <Stack direction="row" flexWrap="wrap" gap={1} sx={{ mb: 3 }}>
         <Button variant="outlined" onClick={() => confirmAction('example')}>{tr('Load fictional example')}</Button>
-        <Button variant="outlined" disabled={!hasContent} onClick={download}>{tr('Export record and feedback')}</Button>
+        <Button variant="outlined" disabled={!hasContent || exporting} onClick={download}>
+          {exporting ? tr('Generating PDF…') : tr('Export record and feedback as PDF')}
+        </Button>
         <Button color="inherit" disabled={!hasContent && !practice.loading} onClick={() => confirmAction('clear')}>{tr('Clear practice')}</Button>
       </Stack>
+      {exportError && <Alert severity="error" sx={{ mb: 2 }}>{tr('Could not export the PDF. Please try again.')}</Alert>}
       <Tabs value={tab} onChange={(_, value) => setTab(value)} variant="fullWidth" sx={{ display: { md: 'none' }, mb: 2 }} aria-label={tr('Practice panels')}>
         <Tab id="practice-record-tab" aria-controls="practice-record" label={tr('Case record')} />
         <Tab id="practice-feedback-tab" aria-controls="practice-feedback" label={tr('AI feedback')} />

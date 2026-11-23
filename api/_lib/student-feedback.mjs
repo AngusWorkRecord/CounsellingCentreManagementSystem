@@ -5,8 +5,6 @@ import * as contract from '../../src/sections/counselling-practice/feedbackContr
 
 const fields = JSON.parse(readFileSync(new URL('../../src/sections/counselling-practice/fields.json', import.meta.url), 'utf8'));
 const categories = ['精神', '情感与婚姻', '家庭', '亲子教养', '成瘾', '人际关系', '职业生涯', '学业', '身体健康', '其他', '咨询'];
-export const feedbackSections = contract.LEGACY_SECTIONS;
-export const studentFeedbackSchema = contract.legacyFeedbackSchema;
 // Keep the provider schema within the basic subset already used by this app.
 // Length/count constraints vary by model; enforce the full contract locally.
 function modelSchema({ minLength, maxLength, minItems, maxItems, properties, items, ...schema }) {
@@ -35,8 +33,8 @@ export function validateStudentInput(body) {
     || Object.keys(body).some((key) => ![...Object.keys(fields), 'language', 'confirmed', 'feedbackVersion'].includes(key))
     || body.confirmed !== true) throw apiError('INVALID_REQUEST', 400);
   const language = analysisLanguage(body.language);
-  const feedbackVersion = body.feedbackVersion === undefined ? 1 : body.feedbackVersion;
-  if (feedbackVersion !== 1 && feedbackVersion !== 2) throw apiError('INVALID_REQUEST', 400);
+  const feedbackVersion = body.feedbackVersion === undefined ? contract.FEEDBACK_VERSION : body.feedbackVersion;
+  if (feedbackVersion !== contract.FEEDBACK_VERSION) throw apiError('INVALID_REQUEST', 400);
   const record = {};
   for (const [key, { limit }] of Object.entries(fields)) {
     const value = body[key] ?? '';
@@ -63,13 +61,13 @@ export function createStudentFeedbackHandler(overrides = {}) {
       // No database calls or application logging: anonymous practice remains ephemeral.
       const records = Object.entries(record).filter(([, content]) => content).map(([key, content]) => ({ sourceRef: `field:${key}`, content }));
       const result = await dependencies.requestStructuredAnalysis({
-        instructions: `${commonSafetyPrompt}\n${languageInstruction(language)}\n${feedbackVersion === 2 ? preparationInstructions : "Support a novice counselling student's reflection using only this fictional or de-identified session. Do not grade the student or diagnose the client. Separate documented facts from cautious interpretations. Give practical next-session preparation, example open-ended questions, and points to discuss with a human supervisor. If information is missing, acknowledge it rather than inventing it. Put potential concerns requiring human attention in humanReview, with supporting sources and advice to consult a supervisor. Do not treat an empty humanReview as a declaration of safety. Cite the supplied field sources for suggestions; these are input references, not external research citations."}`,
-        input: { records }, schema: feedbackVersion === 2 ? studentFeedbackSchemaV2 : studentFeedbackSchema,
-        schemaName: feedbackVersion === 2 ? 'student_feedback_v2' : 'student_feedback', sourceRefs: records.map((entry) => entry.sourceRef),
+        instructions: `${commonSafetyPrompt}\n${languageInstruction(language)}\n${preparationInstructions}`,
+        input: { records }, schema: studentFeedbackSchemaV2,
+        schemaName: 'student_feedback_v2', sourceRefs: records.map((entry) => entry.sourceRef),
       });
-      if (!contract.validFeedbackResult(result, feedbackVersion, records.map((entry) => entry.sourceRef))) throw apiError('AI_INVALID_OUTPUT', 502);
+      if (!contract.validFeedbackResult(result, records.map((entry) => entry.sourceRef))) throw apiError('AI_INVALID_OUTPUT', 502);
       return response.status(200).json({ success: true, data: { generatedAt: new Date().toISOString(), language,
-        ...(feedbackVersion === 2 ? { feedbackVersion } : {}), result } });
+        feedbackVersion, result } });
     } catch (error) {
       if (['FORBIDDEN', 'AUTH_NOT_CONFIGURED'].includes(error.code)) return response.status(error.status || 503).json({ success: false, error: { code: error.code } });
       return writeApiError(response, error);

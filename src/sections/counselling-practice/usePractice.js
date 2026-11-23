@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { emptyRecord, recordKey, requestFeedback, validateRecord, FEEDBACK_VERSION } from './model';
+import { emptyRecord, recordKey, requestFeedback, validateRecord } from './model';
 
-export default function usePractice(language, feedbackVersion = FEEDBACK_VERSION) {
+export default function usePractice(language) {
   const [record, setRecord] = useState(emptyRecord);
   const [confirmed, setConfirmed] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [cache, setCache] = useState({});
-  const [selectedVersions, setSelectedVersions] = useState({});
   const [last, setLast] = useState(null);
   const controller = useRef(null);
-  const key = recordKey(record, language, feedbackVersion);
+  const key = recordKey(record, language);
   // Assign during render too, so a response cannot win the interval before effect cleanup.
   const activeKey = useRef(key);
   activeKey.current = key;
@@ -23,10 +22,7 @@ export default function usePractice(language, feedbackVersion = FEEDBACK_VERSION
     setError('');
     return () => controller.current?.abort();
   }, [key]);
-  const selectedKey = recordKey(record, language, selectedVersions[key] ?? feedbackVersion);
-  const feedback = cache[selectedKey]
-    || (feedbackVersion === 2 ? cache[recordKey(record, language, 1)] : null)
-    || (last?.language === language ? last : null);
+  const feedback = cache[key] || (last?.language === language ? last : null);
   const run = async () => {
     const invalid = validateRecord(record);
     setErrors(invalid);
@@ -37,13 +33,10 @@ export default function usePractice(language, feedbackVersion = FEEDBACK_VERSION
     setLoading(true);
     setError('');
     try {
-      const data = await requestFeedback(record, language, request.signal, feedbackVersion);
+      const data = await requestFeedback(record, language, request.signal);
       if (!request.signal.aborted && activeKey.current === key) {
-        const actualVersion = data.feedbackVersion ?? 1;
-        const actualKey = recordKey(record, language, actualVersion);
-        const entry = { ...data, record: { ...record }, key: actualKey };
-        setCache((previous) => ({ ...previous, [actualKey]: entry }));
-        setSelectedVersions((previous) => ({ ...previous, [key]: actualVersion }));
+        const entry = { ...data, record: { ...record }, key };
+        setCache((previous) => ({ ...previous, [key]: entry }));
         setLast(entry);
       }
     } catch (failure) {
@@ -60,8 +53,8 @@ export default function usePractice(language, feedbackVersion = FEEDBACK_VERSION
     setErrors({});
     setError('');
   };
-  const clear = () => { replaceRecord(emptyRecord()); setCache({}); setSelectedVersions({}); setLast(null); };
+  const clear = () => { replaceRecord(emptyRecord()); setCache({}); setLast(null); };
   return { record, setRecord, confirmed, setConfirmed, errors, loading, error, feedback,
     hasContent: Object.values(record).some(Boolean) || Object.keys(cache).length > 0,
-    stale: Boolean(feedback && feedback.key !== recordKey(record, language, feedback.feedbackVersion ?? 1)), run, cancel, replaceRecord, clear };
+    stale: Boolean(feedback && feedback.key !== key), run, cancel, replaceRecord, clear };
 }
